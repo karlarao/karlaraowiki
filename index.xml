@@ -6,8 +6,8 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2017 KarlArao</copyright>
-<pubDate>Tue, 27 Jun 2017 19:50:35 GMT</pubDate>
-<lastBuildDate>Tue, 27 Jun 2017 19:50:35 GMT</lastBuildDate>
+<pubDate>Tue, 27 Jun 2017 19:59:21 GMT</pubDate>
+<lastBuildDate>Tue, 27 Jun 2017 19:59:21 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
@@ -55,7 +55,7 @@ appserver1                                                       ALLOC_APP_USER 
 appserver1                                                       ALLOC_APP_USER  UPDATE ALGO_INPUT_FOR_REVIEW SET LOCK_FLAG ='Y' WHERE STORE_          4          7
 appserver1                                                       ALLOC_APP_USER  WITH MAX_SEQ AS     (SELECT                                           4          6
 
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; sesstat open cursors count by SID, &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;here SID 1012 shows open cursors reaching the 1000 limit of the database parameter (which is a per session limit). &lt;br&gt;&lt;pre&gt;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; sesstat open cursors count by SID, &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;here SID 1012 shows open cursors reaching the 1000 limit of the database parameter (notice the number is increasing which is a per session limit). &lt;br&gt;&lt;pre&gt;
 set lines 300
 col username format a30
     select c.username,
@@ -146,7 +146,7 @@ select * from v$open_cursor
 &lt;/pre&gt;&lt;br&gt;&lt;h2&gt; Also run sqld360 to get the overall metadata definition of objects and related objects&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>DynSampling,CursorSharing,VersionCount,PlanHashValue</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BORA-01000%3A%20maximum%20open%20cursors%20exceeded%5D%5D</link>
-<pubDate>Tue, 27 Jun 2017 19:50:34 GMT</pubDate>
+<pubDate>Tue, 27 Jun 2017 19:59:20 GMT</pubDate>
 
 </item>
 <item>
