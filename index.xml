@@ -6,10 +6,737 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2017 YourName</copyright>
-<pubDate>Fri, 21 Jul 2017 20:12:21 GMT</pubDate>
-<lastBuildDate>Fri, 21 Jul 2017 20:12:21 GMT</lastBuildDate>
+<pubDate>Mon, 24 Jul 2017 23:17:15 GMT</pubDate>
+<lastBuildDate>Mon, 24 Jul 2017 23:17:15 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>..row lock mode</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&quot; href=&quot;https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&quot; class=&quot;externalLink&quot;&gt;https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;when w.wait_event_text like 'enq: TM%' then
+    ' mode '||decode(w.p1 ,1414332418,'Row-S' ,1414332419,'Row-X' ,1414332420,'Share' ,1414332421,'Share RX' ,1414332422,'eXclusive')
+     ||( select ' on '||object_type||' &quot;'||owner||'&quot;.&quot;'||object_name||'&quot; ' from all_objects where object_id=w.p2 )
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jonathanlewis.wordpress.com/2010/06/21/locks/&quot; href=&quot;https://jonathanlewis.wordpress.com/2010/06/21/locks/&quot; class=&quot;externalLink&quot;&gt;https://jonathanlewis.wordpress.com/2010/06/21/locks/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;This list is specifically about the lock modes for a TM lock:
+
+Value   Name(s)                    Table method (TM lock)
+    0   No lock                    n/a
+ 
+    1   Null lock (NL)             Used during some parallel DML operations (e.g. update) by
+                                   the pX slaves while the QC is holding an exclusive lock.
+ 
+    2   Sub-share (SS)             Until 9.2.0.5/6 &quot;select for update&quot;
+        Row-share (RS)             Since 9.2.0.1/2 used at opposite end of RI during DML until 11.1
+                                   Lock table in row share mode
+                                   Lock table in share update mode
+ 
+    3   Sub-exclusive(SX)          Update (also &quot;select for update&quot; from 9.2.0.5/6)
+        Row-exclusive(RX)          Lock table in row exclusive mode
+                                   Since 11.1 used at opposite end of RI during DML
+ 
+    4   Share (S)                  Lock table in share mode
+                                   Can appear during parallel DML with id2 = 1, in the PX slave sessions
+                                   Common symptom of &quot;foreign key locking&quot; (missing index) problem
+                                   Note that bitmap indexes on the child DON'T address the locking problem
+ 
+    5   share sub exclusive (SSX)  Lock table in share row exclusive mode
+        share row exclusive (SRX)  Less common symptom of &quot;foreign key locking&quot; but likely to be more
+                                   frequent if the FK constraint is defined with &quot;on delete cascade.&quot;
+ 
+    6   Exclusive (X)              Lock table in exclusive mode
+                                   create index    -- duration and timing depend on options used
+                                   insert /*+ append */ 
+&lt;/pre&gt;</description>
+<category>row lock contention</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B..row%20lock%20mode%5D%5D</link>
+<pubDate>Mon, 24 Jul 2017 23:17:14 GMT</pubDate>
+
+</item>
+<item>
+<title>row lock contention</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enqueues&quot; href=&quot;https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enqueues&quot; class=&quot;externalLink&quot;&gt;https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enqueues&lt;/a&gt;&lt;br&gt;Analysing Row Lock Contention with &lt;a tiddlylink=&quot;LogMiner&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#LogMiner&quot; href=&quot;http://karlarao.tiddlyspot.com#LogMiner&quot; class=&quot;externalLink null&quot;&gt;LogMiner&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://antognini.ch/2012/03/analysing-row-lock-contention-with-logminer/&quot; href=&quot;http://antognini.ch/2012/03/analysing-row-lock-contention-with-logminer/&quot; class=&quot;externalLink&quot;&gt;http://antognini.ch/2012/03/analysing-row-lock-contention-with-logminer/&lt;/a&gt;&lt;br&gt;&lt;br&gt;TX Transaction and Enq: Tx - Row Lock Contention - Example wait scenarios [ID 62354.1]&lt;br&gt;How to Determine The Lock Type and Mode from an Enqueue Wait [ID 413934.1]&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://forums.oracle.com/forums/thread.jspa?threadID=860488&quot; href=&quot;https://forums.oracle.com/forums/thread.jspa?threadID=860488&quot; class=&quot;externalLink&quot;&gt;https://forums.oracle.com/forums/thread.jspa?threadID=860488&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jonathanlewis.wordpress.com/2009/07/26/empiricism/&quot; href=&quot;http://jonathanlewis.wordpress.com/2009/07/26/empiricism/&quot; class=&quot;externalLink&quot;&gt;http://jonathanlewis.wordpress.com/2009/07/26/empiricism/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.freelists.org/post/oracle-l/Tx-row-lock-contention-after-implementing-transaction-management-in-application-server,6&quot; href=&quot;http://www.freelists.org/post/oracle-l/Tx-row-lock-contention-after-implementing-transaction-management-in-application-server,6&quot; class=&quot;externalLink&quot;&gt;http://www.freelists.org/post/oracle-l/Tx-row-lock-contention-after-implementing-transaction-management-in-application-server,6&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orafaq.com/maillist/oracle-l/2002/07/11/0881.htm&quot; href=&quot;http://www.orafaq.com/maillist/oracle-l/2002/07/11/0881.htm&quot; class=&quot;externalLink&quot;&gt;http://www.orafaq.com/maillist/oracle-l/2002/07/11/0881.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dioncho.wordpress.com/2009/05/07/tracking-the-bind-value/&quot; href=&quot;http://dioncho.wordpress.com/2009/05/07/tracking-the-bind-value/&quot; class=&quot;externalLink&quot;&gt;http://dioncho.wordpress.com/2009/05/07/tracking-the-bind-value/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/8826726/getting-the-value-that-fired-the-oracle-trigger&quot; href=&quot;http://stackoverflow.com/questions/8826726/getting-the-value-that-fired-the-oracle-trigger&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/8826726/getting-the-value-that-fired-the-oracle-trigger&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/thread/1126953&quot; href=&quot;https://community.oracle.com/thread/1126953&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/thread/1126953&lt;/a&gt;  &amp;lt;- trigger stuff&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle-base.com/articles/8i/logminer.php#QueryingLogInfo&quot; href=&quot;http://oracle-base.com/articles/8i/logminer.php#QueryingLogInfo&quot; class=&quot;externalLink&quot;&gt;http://oracle-base.com/articles/8i/logminer.php#QueryingLogInfo&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.idevelopment.info/data/Oracle/DBA_tips/LogMiner/LOGMINER_15.shtml&quot; href=&quot;http://www.idevelopment.info/data/Oracle/DBA_tips/LogMiner/LOGMINER_15.shtml&quot; class=&quot;externalLink&quot;&gt;http://www.idevelopment.info/data/Oracle/DBA_tips/LogMiner/LOGMINER_15.shtml&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracleflash.com/24/How-to-read-or-analyze-redo-log-files-using-LogMiner.html&quot; href=&quot;http://www.oracleflash.com/24/How-to-read-or-analyze-redo-log-files-using-LogMiner.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracleflash.com/24/How-to-read-or-analyze-redo-log-files-using-LogMiner.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2012/11/30/enqueue-is-it-a-pk-fk-or-bitmap-index-problem/&quot; href=&quot;http://dboptimizer.com/2012/11/30/enqueue-is-it-a-pk-fk-or-bitmap-index-problem/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2012/11/30/enqueue-is-it-a-pk-fk-or-bitmap-index-problem/&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;One distinguishing factor is the lock mode. If the lock mode is exclusive (mode 6) then it’s most likely a classic row lock where two sessions are trying to modify the same row. On the other hand if the lock mode is share (mode 4)  it’s typically going to be&lt;br&gt;&lt;br&gt;inserting a unique key when  someone else has already inserted that key but not committed&lt;br&gt;Inserting a foreign when then parent value has been inserted but not committed or deleted and not commited (not to be confused with locks due to un-indexed foreign key which cause a “enq: TM – contention”  wait not a TX wait)&lt;br&gt;bitmap index chunk contention&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;Automatic Locks in DML Operations &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/SQLRF/ap_locks001.htm#SQLRF55502&quot; href=&quot;https://docs.oracle.com/database/121/SQLRF/ap_locks001.htm#SQLRF55502&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/SQLRF/ap_locks001.htm#SQLRF55502&lt;/a&gt;&lt;br&gt;&lt;br&gt;Data Concurrency and Consistency &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/B28359_01/server.111/b28318/consist.htm#CNCPT020&quot; href=&quot;https://docs.oracle.com/cd/B28359_01/server.111/b28318/consist.htm#CNCPT020&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/B28359_01/server.111/b28318/consist.htm#CNCPT020&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Troubleshooting & Internals</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Brow%20lock%20contention%5D%5D</link>
+<pubDate>Mon, 24 Jul 2017 23:16:00 GMT</pubDate>
+
+</item>
+<item>
+<title>ash_wait_chains.sql, ash wait chains</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' troubleshooting SYS:(GTXn) DFS lock handle', event)&quot;&gt; troubleshooting SYS:(GTXn) DFS lock handle&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' troubleshooting buffer pins were preempted by RM (concurrency + CPU starvation)', event)&quot;&gt; troubleshooting buffer pins were preempted by RM (concurrency + CPU starvation)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' troubleshooting library cache: mutex X', event)&quot;&gt; troubleshooting library cache: mutex X&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SCRIPT: Troubleshooting Database Contention With V$Wait_Chains (Doc ID 1428210.1)', event)&quot;&gt; SCRIPT: Troubleshooting Database Contention With V$Wait_Chains (Doc ID 1428210.1)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' tm, tx lock chain ', event)&quot;&gt; tm, tx lock chain &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;Troubleshooting Database Contention With V$&lt;a tiddlylink=&quot;Wait_Chains&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Wait_Chains&quot; href=&quot;http://karlarao.tiddlyspot.com#Wait_Chains&quot; class=&quot;externalLink null&quot;&gt;Wait_Chains&lt;/a&gt; (Doc ID 1428210.1)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/2013/09/11/advanced-oracle-troubleshooting-guide-part-11-complex-wait-chain-signature-analysis-with-ash_wait_chains-sql/&quot; href=&quot;http://blog.tanelpoder.com/2013/09/11/advanced-oracle-troubleshooting-guide-part-11-complex-wait-chain-signature-analysis-with-ash_wait_chains-sql/&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/2013/09/11/advanced-oracle-troubleshooting-guide-part-11-complex-wait-chain-signature-analysis-with-ash_wait_chains-sql/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.dbi-services.com/oracle-is-hanging-dont-forget-hanganalyze-and-systemstate/&quot; href=&quot;http://blog.dbi-services.com/oracle-is-hanging-dont-forget-hanganalyze-and-systemstate/&quot; class=&quot;externalLink&quot;&gt;http://blog.dbi-services.com/oracle-is-hanging-dont-forget-hanganalyze-and-systemstate/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; troubleshooting SYS:(&lt;a tiddlylink=&quot;GTXn&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GTXn&quot; href=&quot;http://karlarao.tiddlyspot.com#GTXn&quot; class=&quot;externalLink null&quot;&gt;GTXn&lt;/a&gt;) DFS lock handle&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;ASH wait chain saves the day again! ;) &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/7QCSyW&quot; href=&quot;http://goo.gl/7QCSyW&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/7QCSyW&lt;/a&gt;  @&lt;a tiddlylink=&quot;TanelPoder&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TanelPoder&quot; href=&quot;http://karlarao.tiddlyspot.com#TanelPoder&quot; class=&quot;externalLink null&quot;&gt;TanelPoder&lt;/a&gt; XA config issue.. rdbms ipc reply  -&amp;gt; SYS:(&lt;a tiddlylink=&quot;GTXn&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GTXn&quot; href=&quot;http://karlarao.tiddlyspot.com#GTXn&quot; class=&quot;externalLink null&quot;&gt;GTXn&lt;/a&gt;) DFS lock handle&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twitter.com/karlarao/status/477168595223326721&quot; href=&quot;https://twitter.com/karlarao/status/477168595223326721&quot; class=&quot;externalLink&quot;&gt;https://twitter.com/karlarao/status/477168595223326721&lt;/a&gt;&lt;br&gt;&lt;pre&gt;@&amp;lt;the script&amp;gt; username||':'||program2||event2 session_type='FOREGROUND' &quot;TIMESTAMP'2014-11-19 17:00:00'&quot; &quot;TIMESTAMP'2014-11-19 18:00:00'&quot;
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; troubleshooting buffer pins were preempted by RM (concurrency + CPU starvation)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;I've experienced a scenario where buffer pins were preempted by RM (concurrency + CPU starvation), see more details here &lt;a target=&quot;_blank&quot; title=&quot;External link to http://bit.ly/1xuqbfM&quot; href=&quot;http://bit.ly/1xuqbfM&quot; class=&quot;externalLink&quot;&gt;http://bit.ly/1xuqbfM&lt;/a&gt; or this evernote link if the bitly URL doesn't work &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.evernote.com/l/ADBZSq7DnIpCsLIloybj-87jZ-q0LxHo6uA&quot; href=&quot;https://www.evernote.com/l/ADBZSq7DnIpCsLIloybj-87jZ-q0LxHo6uA&quot; class=&quot;externalLink&quot;&gt;https://www.evernote.com/l/ADBZSq7DnIpCsLIloybj-87jZ-q0LxHo6uA&lt;/a&gt;&lt;br&gt;&lt;pre&gt;22:18:35 SYS@pib01scp4&amp;gt; @ash_wait_chains program2||event2||sql_id &quot;event='buffer busy waits'&quot; sysdate-1/24/60 sysdate
+
+%This     SECONDS
+------ ----------
+WAIT_CHAIN
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  72%        2085
+-&amp;gt; (JDBC Thin Client) buffer busy waits [segment header] fv4fs01rvgdju -&amp;gt; (JDBC Thin Client) resmgr:cpu quantum fv4fs01rvgdju
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; troubleshooting library cache: mutex X&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;@&amp;lt;the script&amp;gt; username||':'||program2||event2||top_level_call_name||sql_opname||p1text||p1 session_type='FOREGROUND' &quot;TIMESTAMP'2014-11-19 13:00:00'&quot; &quot;TIMESTAMP'2014-11-19 14:00:00'&quot;
+
+SELECT * FROM *v$db_object_cache* WHERE hash_value = *3309402135*
+select * from (
+ select case when (kglhdadr = kglhdpar) then 'Parent' else 'Child '||kglobt09 end cursor,
+ kglhdadr ADDRESS, substr(kglnaobj,1,20) NAME, kglnahsh HASH_VALUE, kglobtyd TYPE, 
+ kglobt23 LOCKED_TOTAL, kglobt24 PINNED_TOTAL,kglhdexc EXECUTIONS, kglhdnsp NAMESPACE
+ from x$kglob -- where kglobtyd != 'CURSOR'
+order by kglobt24 desc)
+where rownum &amp;lt;= 20;
+&lt;/pre&gt;see more here &lt;a tiddlylink=&quot;library cache: mutex X&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#library cache: mutex X&quot; href=&quot;http://karlarao.tiddlyspot.com#library%20cache:%20mutex%20X&quot; class=&quot;externalLink null&quot;&gt;library cache: mutex X&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SCRIPT: Troubleshooting Database Contention With V$&lt;a tiddlylink=&quot;Wait_Chains&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Wait_Chains&quot; href=&quot;http://karlarao.tiddlyspot.com#Wait_Chains&quot; class=&quot;externalLink null&quot;&gt;Wait_Chains&lt;/a&gt; (Doc ID 1428210.1)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set pages 1000
+set lines 120
+set heading off
+column w_proc format a50 tru
+column instance format a20 tru
+column inst format a28 tru
+column wait_event format a50 tru
+column p1 format a16 tru
+column p2 format a16 tru
+column p3 format a15 tru
+column Seconds format a50 tru
+column sincelw format a50 tru
+column blocker_proc format a50 tru
+column fblocker_proc format a50 tru
+column waiters format a50 tru
+column chain_signature format a100 wra
+column blocker_chain format a100 wra
+
+SELECT * 
+FROM (SELECT 'Current Process: '||osid W_PROC, 'SID '||i.instance_name INSTANCE, 
+ 'INST #: '||instance INST,'Blocking Process: '||decode(blocker_osid,null,'&amp;lt;none&amp;gt;',blocker_osid)|| 
+ ' from Instance '||blocker_instance BLOCKER_PROC,
+ 'Number of waiters: '||num_waiters waiters,
+ 'Final Blocking Process: '||decode(p.spid,null,'&amp;lt;none&amp;gt;',
+ p.spid)||' from Instance '||s.final_blocking_instance FBLOCKER_PROC, 
+ 'Program: '||p.program image,
+ 'Wait Event: ' ||wait_event_text wait_event, 'P1: '||wc.p1 p1, 'P2: '||wc.p2 p2, 'P3: '||wc.p3 p3,
+ 'Seconds in Wait: '||in_wait_secs Seconds, 'Seconds Since Last Wait: '||time_since_last_wait_secs sincelw,
+ 'Wait Chain: '||chain_id ||': '||chain_signature chain_signature,'Blocking Wait Chain: '||decode(blocker_chain_id,null,
+ '&amp;lt;none&amp;gt;',blocker_chain_id) blocker_chain
+FROM v$wait_chains wc,
+ gv$session s,
+ gv$session bs,
+ gv$instance i,
+ gv$process p
+WHERE wc.instance = i.instance_number (+)
+ AND (wc.instance = s.inst_id (+) and wc.sid = s.sid (+)
+ and wc.sess_serial# = s.serial# (+))
+ AND (s.final_blocking_instance = bs.inst_id (+) and s.final_blocking_session = bs.sid (+))
+ AND (bs.inst_id = p.inst_id (+) and bs.paddr = p.addr (+))
+ AND ( num_waiters &amp;gt; 0
+ OR ( blocker_osid IS NOT NULL
+ AND in_wait_secs &amp;gt; 10 ) )
+ORDER BY chain_id,
+ num_waiters DESC)
+WHERE ROWNUM &amp;lt; 101;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; tm, tx lock chain &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;column &quot;wait event&quot; format a50 word_wrap
+column &quot;session&quot; format a25
+column &quot;minutes&quot; format 9999D9
+column CHAIN_ID noprint
+column N noprint
+column l noprint
+with w as (
+select
+ chain_id,rownum n,level l
+ ,lpad(' ',level,' ')||(select instance_name from gv$instance where inst_id=w.instance)||' '''||w.sid||','||w.sess_serial#||'@'||w.instance||'''' &quot;session&quot;
+ ,lpad(' ',level,' ')||w.wait_event_text ||
+   case
+   when w.wait_event_text like 'enq: TM%' then
+    ' mode '||decode(w.p1 ,1414332418,'Row-S' ,1414332419,'Row-X' ,1414332420,'Share' ,1414332421,'Share RX' ,1414332422,'eXclusive')
+     ||( select ' on '||object_type||' &quot;'||owner||'&quot;.&quot;'||object_name||'&quot; ' from all_objects where object_id=w.p2 )
+   when w.wait_event_text like 'enq: TX%' then
+    (
+     select ' on '||object_type||' &quot;'||owner||'&quot;.&quot;'||object_name||'&quot; on rowid '
+     ||dbms_rowid.rowid_create(1,data_object_id,relative_fno,w.row_wait_block#,w.row_wait_row#)
+     from all_objects ,dba_data_files where object_id=w.row_wait_obj# and w.row_wait_file#=file_id
+    )
+   end &quot;wait event&quot;
+ , w.in_wait_secs/60 &quot;minutes&quot;
+ , s.username , s.program
+ from v$wait_chains w join gv$session s on (s.sid=w.sid and s.serial#=w.sess_serial# and s.inst_id=w.instance)
+ connect by prior w.sid=w.blocker_sid and prior w.sess_serial#=w.blocker_sess_serial# and prior w.instance = w.blocker_instance
+ start with w.blocker_sid is null
+)
+select * from w where chain_id in (select chain_id from w group by chain_id having max(&quot;minutes&quot;) &amp;gt;= 1 and max(l)&amp;gt;1 )
+order by n
+/
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>DB Observability Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bash_wait_chains.sql%2C%20ash%20wait%20chains%5D%5D</link>
+<pubDate>Mon, 24 Jul 2017 23:15:00 GMT</pubDate>
+
+</item>
+<item>
+<title>enq tm contention</title>
+<description>table modification lock&lt;br&gt;, often caused by foreign keys lacking index&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enq-tm---contention&quot; href=&quot;https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enq-tm---contention&quot; class=&quot;externalLink&quot;&gt;https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enq-tm---contention&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://aprakash.wordpress.com/2011/01/17/enq-tx-row-lock-contention-and-enqtm-contention/&quot; href=&quot;https://aprakash.wordpress.com/2011/01/17/enq-tx-row-lock-contention-and-enqtm-contention/&quot; class=&quot;externalLink&quot;&gt;https://aprakash.wordpress.com/2011/01/17/enq-tx-row-lock-contention-and-enqtm-contention/&lt;/a&gt;</description>
+<category>row lock contention</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Benq%20tm%20contention%5D%5D</link>
+<pubDate>Mon, 24 Jul 2017 23:11:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Terminator</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://software.jessies.org/terminator/#downloads&quot; href=&quot;http://software.jessies.org/terminator/#downloads&quot; class=&quot;externalLink&quot;&gt;http://software.jessies.org/terminator/#downloads&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&quot; href=&quot;http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&quot; class=&quot;externalLink&quot;&gt;http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&lt;/a&gt;</description>
+<category>LinuxBits</category>
+<link>http://karlarao.tiddlyspot.com#Terminator</link>
+<pubDate>Sun, 23 Jul 2017 19:27:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Tableau</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' download and documentation', event)&quot;&gt; download and documentation&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' license ', event)&quot;&gt; license &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' viz types', event)&quot;&gt; viz types&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' connectors', event)&quot;&gt; connectors&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTOs', event)&quot;&gt; HOWTOs&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' highlight SQL ', event)&quot;&gt; highlight SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' get underlying SQL ', event)&quot;&gt; get underlying SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' automating tableau reports ', event)&quot;&gt; automating tableau reports &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' remove last 2 characters', event)&quot;&gt; remove last 2 characters&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' measure names, measure values ', event)&quot;&gt; measure names, measure values &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' initial SQL filter', event)&quot;&gt; initial SQL filter&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' add total to stacked bar chart ', event)&quot;&gt; add total to stacked bar chart &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Videos', event)&quot;&gt; Videos&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; download and documentation&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Alternate download site across versions &lt;a target=&quot;_blank&quot; title=&quot;External link to https://licensing.tableausoftware.com/esdalt/&quot; href=&quot;https://licensing.tableausoftware.com/esdalt/&quot; class=&quot;externalLink&quot;&gt;https://licensing.tableausoftware.com/esdalt/&lt;/a&gt;&lt;br&gt;Release notes across versions &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&quot; href=&quot;http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&lt;/a&gt;&lt;br&gt;Official doc &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/community/support/documentation-old&quot; href=&quot;http://www.tableausoftware.com/community/support/documentation-old&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/community/support/documentation-old&lt;/a&gt;&lt;br&gt;knowledgebase &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/&quot; href=&quot;http://kb.tableausoftware.com/&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/&lt;/a&gt;&lt;br&gt;manuals &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/manuals&quot; href=&quot;http://www.tableausoftware.com/support/manuals&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/manuals&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/6.0&quot; href=&quot;http://www.tableausoftware.com/new-features/6.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/6.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/7.0&quot; href=&quot;http://www.tableausoftware.com/new-features/7.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/7.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/8.0&quot; href=&quot;http://www.tableausoftware.com/new-features/8.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/8.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/fast-pace-innovation&quot; href=&quot;http://www.tableausoftware.com/fast-pace-innovation&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/fast-pace-innovation&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; timeline across versions&lt;br&gt;&lt;br&gt;&lt;strong&gt;Tableau - Think Data Thursday Video Library&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/community/groups/tdt-video-library&quot; href=&quot;http://community.tableausoftware.com/community/groups/tdt-video-library&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/community/groups/tdt-video-library&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Tableau Style Guide&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&quot; href=&quot;https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Software Development Lifecycle With Tableau&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/russch/tableau-sdlc-sample&quot; href=&quot;https://github.com/russch/tableau-sdlc-sample&quot; class=&quot;externalLink&quot;&gt;https://github.com/russch/tableau-sdlc-sample&lt;/a&gt;&lt;br&gt;&lt;strong&gt;How to share data with a statistician&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/davidski/datasharing&quot; href=&quot;https://github.com/davidski/datasharing&quot; class=&quot;externalLink&quot;&gt;https://github.com/davidski/datasharing&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; license &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;upgrading tableau desktop &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&lt;/a&gt;&lt;br&gt;offline activation &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&lt;/a&gt;&lt;br&gt;renewal cost for desktop and personal &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&quot; href=&quot;http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&lt;/a&gt;&lt;br&gt;renewal FAQ &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/customer-success&quot; href=&quot;http://www.tableausoftware.com/support/customer-success&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/customer-success&lt;/a&gt;&lt;br&gt;eula &lt;a target=&quot;_blank&quot; title=&quot;External link to http://mkt.tableausoftware.com/files/eula.pdf&quot; href=&quot;http://mkt.tableausoftware.com/files/eula.pdf&quot; class=&quot;externalLink&quot;&gt;http://mkt.tableausoftware.com/files/eula.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; viz types&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; treemap &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/new-view-types&quot; href=&quot;http://www.tableausoftware.com/new-features/new-view-types&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/new-view-types&lt;/a&gt;&lt;/li&gt;&lt;li&gt; bubble chart&lt;/li&gt;&lt;li&gt; word cloud&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; connectors&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;strong&gt;Oracle Driver&lt;/strong&gt;&lt;br&gt;there’s an Oracle Driver so you can connect directly to a database &lt;a target=&quot;_blank&quot; title=&quot;External link to http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&quot; href=&quot;http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&quot; class=&quot;externalLink&quot;&gt;http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/drivers&quot; href=&quot;http://www.tableausoftware.com/support/drivers&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/drivers&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;a tiddlylink=&quot;HOWTOs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HOWTOs&quot; href=&quot;http://karlarao.tiddlyspot.com#HOWTOs&quot; class=&quot;externalLink null&quot;&gt;HOWTOs&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/learn/training&quot; href=&quot;http://www.tableausoftware.com/learn/training&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/learn/training&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; LOTS OF GOOD STUFF!!!&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/242749#242749&quot; href=&quot;http://community.tableausoftware.com/message/242749#242749&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/242749#242749&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; Johan's Ideas Collections&lt;br&gt;&lt;br&gt;&lt;strong&gt;parameters&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=wvF7gAV82_c&quot; href=&quot;http://www.youtube.com/watch?v=wvF7gAV82_c&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=wvF7gAV82_c&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;calculated fields&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=FpppiLBdtGc&quot; href=&quot;http://www.youtube.com/watch?v=FpppiLBdtGc&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=FpppiLBdtGc&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/table-calculations&quot; href=&quot;http://www.tableausoftware.com/table-calculations&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/table-calculations&lt;/a&gt;. &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;scatter plots&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=RYMlIY4nT9k&quot; href=&quot;http://www.youtube.com/watch?v=RYMlIY4nT9k&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=RYMlIY4nT9k&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&quot; href=&quot;http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&quot; class=&quot;externalLink&quot;&gt;http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;getting the r2&lt;/strong&gt;,&lt;strong&gt;trendlines&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;forecasting&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&quot; href=&quot;http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&lt;/a&gt;, resolving forecast errors &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;tableau forecast model - &lt;a tiddlylink=&quot;Holt-Winters&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Holt-Winters&quot; href=&quot;http://karlarao.tiddlyspot.com#Holt-Winters&quot; class=&quot;externalLink null&quot;&gt;Holt-Winters&lt;/a&gt; exponential smoothing&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;Method for Creating Multipass Aggregations Using Tableau Server  &amp;lt;&lt;span&gt;—&lt;/span&gt; doing various statistical methods in tableau&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/181143#181143&quot; href=&quot;http://community.tableausoftware.com/message/181143#181143&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/181143#181143&lt;/a&gt;&lt;br&gt;&lt;br&gt;Monte Carlo in Tableau&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&quot; href=&quot;http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&quot; class=&quot;externalLink&quot;&gt;http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboards&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&quot; href=&quot;http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&quot; href=&quot;http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&quot; href=&quot;http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&quot; class=&quot;externalLink&quot;&gt;http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboard size&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboard multiple sources&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference line weekend highlight , reference line weekend in tableau&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/123456&quot; href=&quot;https://community.tableau.com/thread/123456&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/123456&lt;/a&gt; (shading in weekends), &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&quot; href=&quot;http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&quot; class=&quot;externalLink&quot;&gt;http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://discussions.apple.com/thread/1919024?tstart=0&quot; href=&quot;https://discussions.apple.com/thread/1919024?tstart=0&quot; class=&quot;externalLink&quot;&gt;https://discussions.apple.com/thread/1919024?tstart=0&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&quot; href=&quot;https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&quot; class=&quot;externalLink&quot;&gt;https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&lt;/a&gt; , 	&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&quot; href=&quot;http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/120260&quot; href=&quot;https://community.tableau.com/thread/120260&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/120260&lt;/a&gt; (How can I add weekend reference lines) 	&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference line&lt;/strong&gt;, &lt;strong&gt;reference band&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&lt;/a&gt;,  &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&quot; href=&quot;http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/121369&quot; href=&quot;http://community.tableausoftware.com/thread/121369&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/121369&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;custom reference line - based on a measure field&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/275150&quot; href=&quot;http://community.tableausoftware.com/message/275150&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/275150&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; drag calculated field on the marks area&lt;br&gt;&lt;br&gt;&lt;strong&gt;dynamic reference line&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/124998&quot; href=&quot;http://community.tableausoftware.com/thread/124998&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/124998&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/105433&quot; href=&quot;http://community.tableausoftware.com/thread/105433&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/105433&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&quot; href=&quot;http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&quot; class=&quot;externalLink&quot;&gt;http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dynamic parameter&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&quot; href=&quot;http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&quot; class=&quot;externalLink&quot;&gt;http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;thresholds&lt;/strong&gt; Multiple thresholds for different cells on one worksheet &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/122285&quot; href=&quot;http://community.tableausoftware.com/thread/122285&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/122285&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;email and alerting&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&quot; href=&quot;http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&quot; class=&quot;externalLink&quot;&gt;http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/124411&quot; href=&quot;http://community.tableausoftware.com/thread/124411&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/124411&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;templates&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/public/templates/schools&quot; href=&quot;http://www.tableausoftware.com/public/templates/schools&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/public/templates/schools&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&quot; href=&quot;http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&quot; class=&quot;externalLink&quot;&gt;http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&quot; href=&quot;http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&quot; class=&quot;externalLink&quot;&gt;http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;click to filter&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau worksheet actions&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/138785&quot; href=&quot;http://community.tableausoftware.com/thread/138785&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/138785&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;date functions and calculations&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&quot; href=&quot;http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&quot; class=&quot;externalLink&quot;&gt;http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;date dimension&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&quot; href=&quot;http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&quot; class=&quot;externalLink&quot;&gt;http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Date Range filter and Default date filter&lt;/strong&gt;&lt;br&gt;google search &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;Creating a Filter for Start and End Dates Using Parameters &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&quot; href=&quot;http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&lt;/a&gt;&lt;br&gt;Tableau Tip: Showing all dates on a date filter after a Server refresh &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&quot; href=&quot;http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&lt;/a&gt;&lt;br&gt;Tableau Tip: Default a date filter to the last N days &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&quot; href=&quot;http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;hide NULL values&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://reports4u.co.uk/tableau-hide-null-values/&quot; href=&quot;http://reports4u.co.uk/tableau-hide-null-values/&quot; class=&quot;externalLink&quot;&gt;http://reports4u.co.uk/tableau-hide-null-values/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://reports4u.co.uk/tableau-hide-values-quick-filter/&quot; href=&quot;http://reports4u.co.uk/tableau-hide-values-quick-filter/&quot; class=&quot;externalLink&quot;&gt;http://reports4u.co.uk/tableau-hide-values-quick-filter/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/null-values&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/null-values&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/null-values&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;br&gt;&lt;strong&gt;logical functions - if then else, case when then&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau working with sets&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&quot; href=&quot;https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&quot; class=&quot;externalLink&quot;&gt;https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/136845&quot; href=&quot;http://community.tableausoftware.com/thread/136845&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/136845&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good example on filters&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&quot; href=&quot;https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&quot; class=&quot;externalLink&quot;&gt;https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; GOOD STUFF video tutorial &lt;br&gt;IOPS SIORS - Combining several measures in one dimension - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableau-ext.hosted.jivesoftware.com/thread/137680&quot; href=&quot;http://tableau-ext.hosted.jivesoftware.com/thread/137680&quot; class=&quot;externalLink&quot;&gt;http://tableau-ext.hosted.jivesoftware.com/thread/137680&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau groups&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&quot; href=&quot;http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&quot; href=&quot;http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; VIDEO tutorial &lt;br&gt;&lt;br&gt;&lt;strong&gt;Random Number generation in tableau&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/docs/DOC-1474&quot; href=&quot;http://community.tableausoftware.com/docs/DOC-1474&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/docs/DOC-1474&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Calendar view viz&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&quot; href=&quot;http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Custom SQL&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&quot; href=&quot;http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&quot; href=&quot;http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&quot; class=&quot;externalLink&quot;&gt;http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&quot; href=&quot;http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&lt;/a&gt;&lt;br&gt;Using Raw SQL Functions &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/131017&quot; href=&quot;http://community.tableausoftware.com/thread/131017&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/131017&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Geolocation&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&quot; href=&quot;http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&quot; href=&quot;http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&quot; class=&quot;externalLink&quot;&gt;http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://public.tableausoftware.com/profile/timothyvermeiren#!/vizhome/TimothyAllRuns/Dashboard&quot; href=&quot;https://public.tableausoftware.com/profile/timothyvermeiren#%21/vizhome/TimothyAllRuns/Dashboard&quot; class=&quot;externalLink&quot;&gt;https://public.tableausoftware.com/profile/timothyvermeiren#!/vizhome/TimothyAllRuns/Dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau - import custom geocoding data - world map&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/200454&quot; href=&quot;https://community.tableau.com/thread/200454&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/200454&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=nVrCH-PWM10&quot; href=&quot;https://www.youtube.com/watch?v=nVrCH-PWM10&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=nVrCH-PWM10&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=IDyMMPiNVGw&quot; href=&quot;https://www.youtube.com/watch?v=IDyMMPiNVGw&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=IDyMMPiNVGw&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau perf analyzer&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&quot; href=&quot;http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&quot; class=&quot;externalLink&quot;&gt;http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau and python&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&quot; href=&quot;http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&quot; class=&quot;externalLink&quot;&gt;http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Visualize and Understand Tableau Functions&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://public.tableausoftware.com/profile/tyler3281#!/vizhome/EVERYONEWILLUSEME/MainScreen&quot; href=&quot;https://public.tableausoftware.com/profile/tyler3281#%21/vizhome/EVERYONEWILLUSEME/MainScreen&quot; class=&quot;externalLink&quot;&gt;https://public.tableausoftware.com/profile/tyler3281#!/vizhome/EVERYONEWILLUSEME/MainScreen&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau workbook on github&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&quot; href=&quot;http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&quot; class=&quot;externalLink&quot;&gt;http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau radar chart / spider graph&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&quot; href=&quot;https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&quot; class=&quot;externalLink&quot;&gt;https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;maps animation&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&quot; href=&quot;http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;if in list&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/ideas/1870&quot; href=&quot;http://community.tableausoftware.com/ideas/1870&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/ideas/1870&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/ideas/1500&quot; href=&quot;http://community.tableausoftware.com/ideas/1500&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/ideas/1500&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;pre&gt;IF 
+trim([ENV])='x07d' OR 
+trim([ENV])='x07p'  
+THEN 'AML' 
+ELSE 'OTHER' END
+
+
+IF 
+TRIM([ENV]) = 'x07d' THEN 'AML' ELSEIF 
+TRIM([ENV]) = 'x07p' THEN 'AML' 
+ELSE 'OTHER' END
+
+
+IF [Processor AMD] THEN 'AMD'
+ELSEIF [Processor Intel] THEN 'INTEL'
+ELSEIF [Processor IBM Power] THEN 'IBM Power'
+ELSEIF [Processor SPARC] THEN 'SPARC'
+ELSE 'Other' END
+
+
+IF contains('x11p,x08p,x28p',trim([ENV]))=true THEN 'PROD' 
+ELSEIF contains('x29u,x10u,x01u',trim([ENV]))=true THEN 'UAT' 
+ELSEIF contains('x06d,x07d,x12d',trim([ENV]))=true THEN 'DEV' 
+ELSEIF contains('x06t,x14t,x19t',trim([ENV]))=true THEN 'TEST' 
+ELSE 'OTHER' END
+
+[Snap Id] = (150106) or
+[Snap Id] = (150107) or
+[Snap Id] = (150440) or
+[Snap Id] = (150441)
+&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;calculated field filter&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&quot; href=&quot;http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;pre&gt;DRW
+SUM(IF contains('CD_IO_RQ_R_LG_SEC-CD,CD_IO_RQ_R_SM_SEC-CD,CD_IO_RQ_W_LG_SEC-CD,CD_IO_RQ_W_SM_SEC-CD',trim([Metric]))=true THEN 1 END) &amp;gt; 0
+
+CD_IO_RQ_R_LG_SEC-CD,0.21
+CD_IO_RQ_R_SM_SEC-CD,0.62
+CD_IO_RQ_W_LG_SEC-CD,2.14
+CD_IO_RQ_W_SM_SEC-CD,5.69
+&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;What is the difference between Tableau Server and Tableau Server Worker?&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/109121&quot; href=&quot;http://community.tableausoftware.com/thread/109121&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/109121&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau vs spotfire vs qlikview&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/116055&quot; href=&quot;http://community.tableausoftware.com/thread/116055&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/116055&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&quot; href=&quot;https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&quot; class=&quot;externalLink&quot;&gt;https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&quot; href=&quot;http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&quot; class=&quot;externalLink&quot;&gt;http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&quot; href=&quot;https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&quot; class=&quot;externalLink&quot;&gt;https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;twbx for sending workbooks&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;YOY moving average&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&quot; href=&quot;http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&quot; class=&quot;externalLink&quot;&gt;http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;json&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableau.com/ideas/1276&quot; href=&quot;http://community.tableau.com/ideas/1276&quot; class=&quot;externalLink&quot;&gt;http://community.tableau.com/ideas/1276&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau reverse engineering&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&quot; href=&quot;http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&quot; class=&quot;externalLink&quot;&gt;http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;filter partial highlight&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/143761&quot; href=&quot;https://community.tableau.com/thread/143761&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/143761&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&quot; href=&quot;http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Window functions&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/144402&quot; href=&quot;https://community.tableau.com/thread/144402&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/144402&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&quot; href=&quot;http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&quot; href=&quot;http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&quot; class=&quot;externalLink&quot;&gt;http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&quot; href=&quot;https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&quot; class=&quot;externalLink&quot;&gt;https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&lt;/a&gt;&lt;br&gt;&lt;pre&gt;LOOKUP(sum([Net]),-1)
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Count only the numbers that are positive, and get the percentage&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;(COUNT(IF [Diff] &amp;gt;= 0 THEN [Diff] END) / COUNT([Diff]))*100
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Add category for stock Position Type&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;IF contains('Buy,Sell',trim([Type 1]))=true THEN 'Long' 
+ELSEIF contains('Buy to Cover,Sell Short',trim([Type 1]))=true THEN 'Short' 
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;updated processor group filter&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Processor])),'amd')=true THEN 'AMD' 
+ELSEIF contains(lower(trim([Processor])),'intel')=true THEN 'INTEL' 
+ELSEIF contains(lower(trim([Processor])),'power')=true THEN 'IBM' 
+ELSEIF contains(lower(trim([Processor])),'sparc')=true THEN 'SPARC' 
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;storage cell dimension for x2 and x3 cells on the same diskgroup - useful for destage &lt;a tiddlylink=&quot;IOs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IOs&quot; href=&quot;http://karlarao.tiddlyspot.com#IOs&quot; class=&quot;externalLink null&quot;&gt;IOs&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;IF 
+trim([Cellname])='192.168.10.9' OR 
+trim([Cellname])='192.168.10.10' OR
+trim([Cellname])='192.168.10.11' OR
+trim([Cellname])='192.168.10.12' OR
+trim([Cellname])='192.168.10.13' OR
+trim([Cellname])='192.168.10.14' OR
+trim([Cellname])='192.168.10.15' OR
+trim([Cellname])='192.168.10.16' OR
+trim([Cellname])='192.168.10.17' OR
+trim([Cellname])='192.168.10.18' OR
+trim([Cellname])='192.168.10.19' OR
+trim([Cellname])='192.168.10.20' OR
+trim([Cellname])='192.168.10.21' OR
+trim([Cellname])='192.168.10.22' 
+THEN 'x2' 
+elseif 
+trim([Cellname])='192.168.10.38' OR 
+trim([Cellname])='192.168.10.39' OR
+trim([Cellname])='192.168.10.40' OR
+trim([Cellname])='192.168.10.41' OR
+trim([Cellname])='192.168.10.42' OR
+trim([Cellname])='192.168.10.43' OR
+trim([Cellname])='192.168.10.44' OR
+trim([Cellname])='192.168.10.45' OR
+trim([Cellname])='192.168.10.46' OR
+trim([Cellname])='192.168.10.47' OR
+trim([Cellname])='192.168.10.48' OR
+trim([Cellname])='192.168.10.49' OR
+trim([Cellname])='192.168.10.50' OR
+trim([Cellname])='192.168.10.51' 
+THEN 'x3'
+else 
+'other'
+end
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; highlight SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Sql Id])),'069k4ppu1n1nc')=true THEN [Sql Id]
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Sql Id])),'069k4ppu1n1nc')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'0vzyv2wsr2apz')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'0xsz99mn2nuvc')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'0zwcr39tvssxj')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'1d9qrkfvh78bt')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'1zbk54du40dnu')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'2xjwy1jvu31xu')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'2ywv61bm22pw7')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3fn33utt2ptns')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3knptw3bxf1c9')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3qvc497pz6hvp')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3tpznswf2f7ak')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'4v775zu1p3b3f')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'51u31qah6z8d9')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'59wrat188thgf')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'5f2t4rq7xkfav')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'61r81qmqpt1bs')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'6cwh5bz0d0jkv')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'6fyy4v8c85cmk')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'6k6g6725pwjpw')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'7x0psn00ac54g')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'7xmjvrazhyntv')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'82psz0nhm68wf')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'885mt394synz4')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'af4vzj7jyv5mz')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'azkbmbyxahmh2')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'cws1kfprz7u8f')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'d6h43fh3d9p7g')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'dwgtzzmc509zf')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'f3frkf6tvkjwn')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'gd55mjru6w8x')=true THEN [Sql Id]
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; get underlying SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/170370&quot; href=&quot;https://community.tableau.com/thread/170370&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/170370&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&quot; href=&quot;http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&lt;/a&gt;&lt;br&gt;&lt;pre&gt;C:\Users\karl\Documents\My Tableau Repository\Logs
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; automating tableau reports &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Tableau-generated PDF imports to Inkscape with text missing &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/118822&quot; href=&quot;https://community.tableau.com/thread/118822&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/118822&lt;/a&gt;&lt;br&gt;Automate pdf generation using Tableau Desktop &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/137724&quot; href=&quot;https://community.tableau.com/thread/137724&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/137724&lt;/a&gt;&lt;br&gt;Tableau Scripting Engine &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/ideas/1694&quot; href=&quot;https://community.tableau.com/ideas/1694&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/ideas/1694&lt;/a&gt;&lt;br&gt;tableau community &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/message/199249#199249&quot; href=&quot;https://community.tableau.com/message/199249#199249&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/message/199249#199249&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://powertoolsfortableau.com/tools/portals-for-tableau&quot; href=&quot;http://powertoolsfortableau.com/tools/portals-for-tableau&quot; class=&quot;externalLink&quot;&gt;http://powertoolsfortableau.com/tools/portals-for-tableau&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&quot; href=&quot;https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&quot; class=&quot;externalLink&quot;&gt;https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&lt;/a&gt; &amp;lt;- GOOD STUFF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.autoitscript.com/site/autoit/&quot; href=&quot;https://www.autoitscript.com/site/autoit/&quot; class=&quot;externalLink&quot;&gt;https://www.autoitscript.com/site/autoit/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&quot; href=&quot;http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&quot; href=&quot;http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&quot; class=&quot;externalLink&quot;&gt;http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; remove last 2 characters&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/docs/DOC-1391&quot; href=&quot;https://community.tableau.com/docs/DOC-1391&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/docs/DOC-1391&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/message/325328&quot; href=&quot;https://community.tableau.com/message/325328&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/message/325328&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; measure names, measure values &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Combining several measures in one dimension &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/137680&quot; href=&quot;https://community.tableau.com/thread/137680&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/137680&lt;/a&gt;&lt;br&gt;Tableau Tips and Tricks: Measure Names and Measure Values &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=m0DGW_WYKtA&quot; href=&quot;https://www.youtube.com/watch?v=m0DGW_WYKtA&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=m0DGW_WYKtA&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&quot; href=&quot;http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; initial SQL filter&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;When the user opens the workbook there will be parameter1 and parameter2 prompts for date range. And that date range will be in effect for all the sheets on that workbook &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&quot; href=&quot;https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&quot; class=&quot;externalLink&quot;&gt;https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&quot; href=&quot;https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&quot; class=&quot;externalLink&quot;&gt;https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; add total to stacked bar chart &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&quot; href=&quot;https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&quot; class=&quot;externalLink&quot;&gt;https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Videos&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Tableau &lt;a tiddlylink=&quot;TCC12&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TCC12&quot; href=&quot;http://karlarao.tiddlyspot.com#TCC12&quot; class=&quot;externalLink null&quot;&gt;TCC12&lt;/a&gt; Session: Facebook &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.ustream.tv/recorded/26807227&quot; href=&quot;http://www.ustream.tv/recorded/26807227&quot; class=&quot;externalLink&quot;&gt;http://www.ustream.tv/recorded/26807227&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Tableau Server/Desktop videos&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&quot; href=&quot;http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&quot; class=&quot;externalLink&quot;&gt;http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://beta.pluralsight.com/search/?searchTerm=tableau&quot; href=&quot;http://beta.pluralsight.com/search/?searchTerm=tableau&quot; class=&quot;externalLink&quot;&gt;http://beta.pluralsight.com/search/?searchTerm=tableau&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pluralsight.com/training/Authors/Details/ben-sullins&quot; href=&quot;http://pluralsight.com/training/Authors/Details/ben-sullins&quot; class=&quot;externalLink&quot;&gt;http://pluralsight.com/training/Authors/Details/ben-sullins&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.livefyre.com/profile/21361843/&quot; href=&quot;http://www.livefyre.com/profile/21361843/&quot; class=&quot;externalLink&quot;&gt;http://www.livefyre.com/profile/21361843/&lt;/a&gt; ben sullins comments/questions&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Visualization</category>
+<link>http://karlarao.tiddlyspot.com#Tableau</link>
+<pubDate>Sun, 23 Jul 2017 04:35:00 GMT</pubDate>
+
+</item>
+<item>
+<title>tx mode 6</title>
+<description>&lt;pre&gt;-- create a simple test case
+
+drop table t purge;
+-- session 1
+CREATE TABLE t (n NUMBER PRIMARY KEY);
+VARIABLE n NUMBER
+execute :n := 1
+INSERT INTO t VALUES (:n);
+commit;
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;session 1
+
+          15:47:55 KARLARAO@orcl&amp;gt; select * from t;
+          
+                   N
+          ----------
+                   1
+          
+          15:48:00 KARLARAO@orcl&amp;gt; update t set n=1 where n=1;
+          
+          1 row updated.
+
+          
+session 2 
+          
+          15:46:14 KARLARAO@orcl&amp;gt; select * from t;
+          
+                   N
+          ----------
+                   1
+          
+          15:46:20 KARLARAO@orcl&amp;gt;
+          15:46:21 KARLARAO@orcl&amp;gt; commit;
+          
+          Commit complete.
+          
+          15:47:49 KARLARAO@orcl&amp;gt; update t set n=1 where n=1;   &amp;lt;-- this hangs!
+          
+          
+
+-- waits for row lock 
+SQL&amp;gt; SQL&amp;gt; Sampling SID all@* with interval 2 seconds, taking 1 snapshots...
+
+-- Session Snapper v4.06 BETA - by Tanel Poder ( http://blog.tanelpoder.com ) - Enjoy the Most Advanced Oracle Troubleshooting Script on the Planet! :)
+
+
+----------------------------------------------------------------------------------------------------
+Active% | INST | SQL_ID          | SQL_CHILD | EVENT                               | WAIT_CLASS
+----------------------------------------------------------------------------------------------------
+   100% |    1 | adbw30mjk2dn4   | 0         | enq: TX - row lock contention       | Application
+
+--  End of ASH snap 1, end=2015-02-05 15:50:20, seconds=2, samples_taken=11
+
+
+PL/SQL procedure successfully completed.
+
+          
+
+
+-- waits for mode 6 
+
+15:48:44 SYS@orcl&amp;gt; col program format a40
+15:49:33 SYS@orcl&amp;gt; col module format a20
+15:49:33 SYS@orcl&amp;gt; col event format a30
+15:49:33 SYS@orcl&amp;gt; select session_id, program, module, sql_id, event, mod(p1,16) as lock_mode, BLOCKING_SESSION from
+15:49:33   2  v$active_session_history
+15:49:33   3  where sample_time &amp;gt; sysdate - &amp;amp;minutes /( 60*24)
+15:49:33   4  -- and lower(module) like 'ex_%'
+15:49:33   5  and event like 'enq: T%';
+Enter value for minutes: 1
+old   3: where sample_time &amp;gt; sysdate - &amp;amp;minutes /( 60*24)
+new   3: where sample_time &amp;gt; sysdate - 1 /( 60*24)
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+
+SESSION_ID PROGRAM                                  MODULE               SQL_ID        EVENT                           LOCK_MODE BLOCKING_SESSION
+---------- ---------------------------------------- -------------------- ------------- ------------------------------ ---------- ----------------
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+        45 sqlplus@localhost.localdomain (TNS V1-V3 SQL*Plus             adbw30mjk2dn4 enq: TX - row lock contention           6               37
+           )
+
+
+58 rows selected.
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; scripts&lt;/h1&gt;&lt;pre&gt;-- QUERY TX MODE from ASH
+col program format a40
+col module format a20
+col event format a30
+select TO_CHAR(sample_time,'MM/DD/YY HH24:MI:SS') TM, inst_id, session_id, BLOCKING_SESSION, machine, substr(module,1,20) module, sql_id, event, mod(p1,16) as lock_mode from 
+gv$active_session_history
+where sample_time &amp;gt; sysdate - 1 /( 60*24)
+and event like 'enq: T%';
+
+-- RAC user locks tree
+set lines 500 
+set pagesize 66 
+col inst format 99
+col object_name format a20
+col spid format a6
+col type format a4
+col machine format a30
+SELECT TO_CHAR(SYSDATE,'MM/DD/YY HH24:MI:SS') TM, o.name object_name, u.name owner, lid.*
+  FROM (SELECT
+               s.inst_id inst, s.SID, s.serial#, p.spid, s.blocking_session blocking_sid, s.machine, NVL (s.sql_id, 0) sqlid, s.sql_hash_value sqlhv,
+               DECODE (l.TYPE,
+                       'TM', l.id1,
+                       'TX', DECODE (l.request,
+                                     0, NVL (lo.object_id, -1),
+                                     s.row_wait_obj#
+                                    ),
+                       -1
+                      ) AS object_id,
+                 l.TYPE type,
+               DECODE (l.lmode,
+                       0, 'NONE',
+                       1, 'NULL',
+                       2, 'ROW SHARE',
+                       3, 'ROW EXCLUSIVE',
+                       4, 'SHARE',
+                       5, 'SHARE ROW EXCLUSIVE',
+                       6, 'EXCLUSIVE',
+                       '?'
+                      ) mode_held,
+               DECODE (l.request,
+                       0, 'NONE',
+                       1, 'NULL',
+                       2, 'ROW SHARE',
+                      3, 'ROW EXCLUSIVE',
+                       4, 'SHARE',
+                       5, 'SHARE ROW EXCLUSIVE',
+                       6, 'EXCLUSIVE',
+                       '?'
+                      ) mode_requested,
+               l.id1, l.id2, l.ctime time_in_mode,s.row_wait_obj#, s.row_wait_block#,
+               s.row_wait_row#, s.row_wait_file#
+          FROM gv$lock l,
+               gv$session s,
+               gv$process p,
+               (SELECT object_id, session_id, xidsqn
+                  FROM gv$locked_object
+                 WHERE xidsqn &amp;gt; 0) lo
+         WHERE l.inst_id = s.inst_id
+           AND s.inst_id = p.inst_id
+           AND s.SID = l.SID
+           AND p.addr = s.paddr
+           AND l.SID = lo.session_id(+)
+           AND l.id2 = lo.xidsqn(+)) lid,
+       SYS.obj$ o,
+       SYS.user$ u
+WHERE o.obj#(+) = lid.object_id
+AND o.owner# = u.user#(+)
+AND object_id &amp;lt;&amp;gt; -1
+/
+&lt;/pre&gt;&lt;br&gt;new version &lt;br&gt;&lt;pre&gt;set lines 500 
+set pagesize 66 
+col inst format 99
+col object_name format a20
+col spid format a6
+col type format a4
+col machine format a30
+col owner format a20
+SELECT TO_CHAR(SYSDATE,'MM/DD/YY HH24:MI:SS') TM, u.username owner, o.object_name object_name, lid.*
+  FROM (SELECT
+               s.inst_id inst, s.SID, s.serial#, p.spid, s.blocking_session blocking_sid, s.machine, NVL (s.sql_id, 0) sqlid, s.sql_hash_value sqlhv,
+               DECODE (l.TYPE,
+                       'TM', l.id1,
+                       'TX', DECODE (l.request,
+                                     0, NVL (lo.object_id, -1),
+                                     s.row_wait_obj#
+                                    ),
+                       -1
+                      ) AS object_id,
+                 l.TYPE type,
+               DECODE (l.lmode,
+                       0, 'NONE',
+                       1, 'NULL',
+                       2, 'ROW SHARE',
+                       3, 'ROW EXCLUSIVE',
+                       4, 'SHARE',
+                       5, 'SHARE ROW EXCLUSIVE',
+                       6, 'EXCLUSIVE',
+                       '?'
+                      ) mode_held,
+               DECODE (l.request,
+                       0, 'NONE',
+                       1, 'NULL',
+                       2, 'ROW SHARE',
+                      3, 'ROW EXCLUSIVE',
+                       4, 'SHARE',
+                       5, 'SHARE ROW EXCLUSIVE',
+                       6, 'EXCLUSIVE',
+                       '?'
+                      ) mode_requested,
+               l.id1, l.id2, l.ctime time_in_mode,s.row_wait_obj#, s.row_wait_block#,
+               s.row_wait_row#, s.row_wait_file#
+          FROM gv$lock l,
+               gv$session s,
+               gv$process p,
+               (SELECT object_id, session_id, xidsqn
+                  FROM gv$locked_object
+                 WHERE xidsqn &amp;gt; 0) lo
+         WHERE l.inst_id = s.inst_id
+           AND s.inst_id = p.inst_id
+           AND s.SID = l.SID
+           AND p.addr = s.paddr
+           AND l.SID = lo.session_id(+)
+           AND l.id2 = lo.xidsqn(+)) lid,
+       dba_objects o,
+       dba_users u
+WHERE o.object_id(+) = lid.object_id
+AND o.owner = u.username(+)
+AND o.object_id &amp;lt;&amp;gt; -1
+/
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enqueues&quot; href=&quot;https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enqueues&quot; class=&quot;externalLink&quot;&gt;https://sites.google.com/site/embtdbo/wait-event-documentation/oracle-enqueues&lt;/a&gt;&lt;br&gt;p1,p2,p3 &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/thread/924272&quot; href=&quot;https://community.oracle.com/thread/924272&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/thread/924272&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; some other stuff that can be done &lt;/h1&gt;get the distribution of bind variables when this locking mode6 issue happens &lt;br&gt;the reason is, there could be an outlier user that frequently keys in that problematic value that could be causing the issue&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>row lock contention</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Btx%20mode%206%5D%5D</link>
+<pubDate>Sat, 22 Jul 2017 23:43:00 GMT</pubDate>
+
+</item>
 <item>
 <title>ez connect, ez_connect, easy connect</title>
 <description>&lt;pre&gt;sqlplus sys/oracle@enkdb03.enkitec.com/dw.enkitec.com as sysdba
@@ -20,7 +747,7 @@ sqlplus scott/aaa@//SERVER/orcl
 &lt;/pre&gt;</description>
 <category>NetServices,Network,Mail</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bez%20connect%2C%20ez_connect%2C%20easy%20connect%5D%5D</link>
-<pubDate>Fri, 21 Jul 2017 20:12:06 GMT</pubDate>
+<pubDate>Fri, 21 Jul 2017 20:12:00 GMT</pubDate>
 
 </item>
 <item>
@@ -548,407 +1275,6 @@ where username = 'ALLOC_APP_USER';
 <category>DatabaseHealthCheck</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bkill%20session%20procedure%5D%5D</link>
 <pubDate>Mon, 17 Jul 2017 20:03:00 GMT</pubDate>
-
-</item>
-<item>
-<title>SRVCTL useful commands</title>
-<description>&lt;h1&gt; Starting/Stopping CRS processes&lt;/h1&gt;• Use crsctl as root to perform these actions&lt;br&gt;o To start Oracle high availability services on local node&lt;br&gt;&lt;ul&gt;&lt;li&gt; crsctl start crs&lt;/li&gt;&lt;/ul&gt;o To stop Oracle high availability services on local node&lt;br&gt;&lt;ul&gt;&lt;li&gt; crsctl stop crs&lt;/li&gt;&lt;/ul&gt;o To start Oracle high availability services in exclusive mode&lt;br&gt;&lt;ul&gt;&lt;li&gt; crsctl start crs -excl&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; other stop commands&lt;br&gt;crsctl stop cluster&lt;br&gt;crsctl stop resource&lt;br&gt;crsctl stop crs&lt;br&gt;crsctl stop has&lt;br&gt;crsctl stop ip&lt;br&gt;crsctl stop testdns&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Administering databases&lt;/h1&gt;• Use srvctl command as oracle to perform these actions&lt;br&gt;o To check the status of a database&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl status database -d &amp;lt;database&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To start a database&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl start database -d &amp;lt;database&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To stop a database&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl stop database -d &amp;lt;database&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To start a database instance&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl start instance -i &amp;lt;instance&amp;gt; -d &amp;lt;database&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To stop a database instance&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl stop instance -i &amp;lt;instance&amp;gt; -d &amp;lt;database&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To start a database service&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl start instance -s &amp;lt;service&amp;gt; -d &amp;lt;database&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To stop a database service&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl stop instance -s &amp;lt;service&amp;gt; -d &amp;lt;database&amp;gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Administering database services&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/&quot; href=&quot;https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/&quot; class=&quot;externalLink&quot;&gt;https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://easyoradba.com/2012/01/29/transparent-application-failover-taf-service-in-oracle-rac-11gr2/&quot; href=&quot;https://easyoradba.com/2012/01/29/transparent-application-failover-taf-service-in-oracle-rac-11gr2/&quot; class=&quot;externalLink&quot;&gt;https://easyoradba.com/2012/01/29/transparent-application-failover-taf-service-in-oracle-rac-11gr2/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Add service &lt;/li&gt;&lt;/ul&gt;srvctl add service -d dw -s dw.local -r dw1,dw2&lt;br&gt;• Use srvctl command as oracle to perform these actions&lt;br&gt;o To start a service&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl start service -d &amp;lt;database&amp;gt; -s &amp;lt;service&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To stop a service&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl stop service -d &amp;lt;database&amp;gt; -s &amp;lt;service&amp;gt;&lt;/li&gt;&lt;/ul&gt;o To relocate a service from one instance to another&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl relocate service -d &amp;lt;database&amp;gt; -s &amp;lt;service&amp;gt; -i &amp;lt;old_instance&amp;gt; -t &amp;lt;new_instance&amp;gt; &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;-f Disconnect all sessions during stop or relocate service operations.&lt;br&gt;&lt;br&gt;o To delete a service&lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl remove service -d &amp;lt;database&amp;gt; -s &amp;lt;service&amp;gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; inventory services &lt;/li&gt;&lt;/ul&gt;srvctl config service -d PALLOC&lt;br&gt;srvctl config scan&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; service creation example for Weblogic connection pool &lt;/li&gt;&lt;/ul&gt;srvctl add service -d PALLOC -s &lt;a tiddlylink=&quot;PALLOC_SVC&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PALLOC_SVC&quot; href=&quot;http://karlarao.tiddlyspot.com#PALLOC_SVC&quot; class=&quot;externalLink null&quot;&gt;PALLOC_SVC&lt;/a&gt; -preferred &lt;a tiddlylink=&quot;PALLOC1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PALLOC1&quot; href=&quot;http://karlarao.tiddlyspot.com#PALLOC1&quot; class=&quot;externalLink null&quot;&gt;PALLOC1&lt;/a&gt;,&lt;a tiddlylink=&quot;PALLOC2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PALLOC2&quot; href=&quot;http://karlarao.tiddlyspot.com#PALLOC2&quot; class=&quot;externalLink null&quot;&gt;PALLOC2&lt;/a&gt; -clbgoal short -rlbgoal &lt;a tiddlylink=&quot;SERVICE_TIME&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SERVICE_TIME&quot; href=&quot;http://karlarao.tiddlyspot.com#SERVICE_TIME&quot; class=&quot;externalLink null&quot;&gt;SERVICE_TIME&lt;/a&gt; -notification true&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Checking the status of cluster managed resources&lt;/h1&gt;• The following command is in /usr/local/bin and will give the status of cluster resources:&lt;br&gt;o crsstat&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Listener &lt;/h1&gt;To migrate listener to the new &lt;a tiddlylink=&quot;ORACLE_HOME&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORACLE_HOME&quot; href=&quot;http://karlarao.tiddlyspot.com#ORACLE_HOME&quot; class=&quot;externalLink null&quot;&gt;ORACLE_HOME&lt;/a&gt; &lt;br&gt;&lt;ul&gt;&lt;li&gt; srvctl modify listener -l &lt;a tiddlylink=&quot;LISTENER_HCMPRD&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#LISTENER_HCMPRD&quot; href=&quot;http://karlarao.tiddlyspot.com#LISTENER_HCMPRD&quot; class=&quot;externalLink null&quot;&gt;LISTENER_HCMPRD&lt;/a&gt; -o /u01/app/oracle/product/11.2.0.3/dbhome_1&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/gverma/entry/crsctl_start_crs_does_not_work&quot; href=&quot;https://blogs.oracle.com/gverma/entry/crsctl_start_crs_does_not_work&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/gverma/entry/crsctl_start_crs_does_not_work&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.datadisk.co.uk/html_docs/rac/rac_cs.htm&quot; href=&quot;http://www.datadisk.co.uk/html_docs/rac/rac_cs.htm&quot; class=&quot;externalLink&quot;&gt;http://www.datadisk.co.uk/html_docs/rac/rac_cs.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-home.ro/Oracle_Database/RAC/Startup-start-up-Oracle-Clusterware.html&quot; href=&quot;http://www.oracle-home.ro/Oracle_Database/RAC/Startup-start-up-Oracle-Clusterware.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-home.ro/Oracle_Database/RAC/Startup-start-up-Oracle-Clusterware.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-home.ro/Oracle_Database/RAC/11gR2-Clusterware-Startup-Sequence.html&quot; href=&quot;http://www.oracle-home.ro/Oracle_Database/RAC/11gR2-Clusterware-Startup-Sequence.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-home.ro/Oracle_Database/RAC/11gR2-Clusterware-Startup-Sequence.html&lt;/a&gt;&lt;br&gt;Troubleshoot Grid Infrastructure Startup Issues [ID 1050908.1]&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dbaexpert.com/ASM.Pocket.pdf&quot; href=&quot;http://www.dbaexpert.com/ASM.Pocket.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.dbaexpert.com/ASM.Pocket.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>RACServices</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSRVCTL%20useful%20commands%5D%5D</link>
-<pubDate>Mon, 17 Jul 2017 19:53:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Oracle Cloud Licensing</title>
-<description>&lt;strong&gt;jan 23 oracle cloud policy&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=jan+23+oracle+cloud+policy&amp;amp;oq=jan+23+oracle+cloud+policy&amp;amp;aqs=chrome..69i57.5666j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=jan+23+oracle+cloud+policy&amp;amp;oq=jan+23+oracle+cloud+policy&amp;amp;aqs=chrome..69i57.5666j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=jan+23+oracle+cloud+policy&amp;amp;oq=jan+23+oracle+cloud+policy&amp;amp;aqs=chrome..69i57.5666j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;Licensing Oracle Software in the Cloud Computing Environment &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf&quot; href=&quot;http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf&lt;/a&gt;&lt;br&gt;Oracle programs are eligible for Authorized Cloud Environments &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf&quot; href=&quot;http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/blog/2017/01/28/oracles-cloud-licensing-change-be-warned/&quot; href=&quot;https://oracle-base.com/blog/2017/01/28/oracles-cloud-licensing-change-be-warned/&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/blog/2017/01/28/oracles-cloud-licensing-change-be-warned/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://houseofbrick.com/oracle-gives-itself-a-100-raise-in-authorized-cloud-compute-environments/&quot; href=&quot;http://houseofbrick.com/oracle-gives-itself-a-100-raise-in-authorized-cloud-compute-environments/&quot; class=&quot;externalLink&quot;&gt;http://houseofbrick.com/oracle-gives-itself-a-100-raise-in-authorized-cloud-compute-environments/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.redwoodcompliance.com/dealing-oracles-cloud-licensing-policy/&quot; href=&quot;http://www.redwoodcompliance.com/dealing-oracles-cloud-licensing-policy/&quot; class=&quot;externalLink&quot;&gt;http://www.redwoodcompliance.com/dealing-oracles-cloud-licensing-policy/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pythian.com/blog/oracle-new-public-cloud-licensing-policy-good-or-bad/&quot; href=&quot;https://www.pythian.com/blog/oracle-new-public-cloud-licensing-policy-good-or-bad/&quot; class=&quot;externalLink&quot;&gt;https://www.pythian.com/blog/oracle-new-public-cloud-licensing-policy-good-or-bad/&lt;/a&gt;&lt;br&gt;Oracle Authorized Cloud Environments Overview of Policy Changes &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.version1.com/getattachment/3cd6ec0f-2e95-42be-b082-25b32afc71da/Version-1-Oracle-Licensing-in-the-Cloud-Policy&quot; href=&quot;http://www.version1.com/getattachment/3cd6ec0f-2e95-42be-b082-25b32afc71da/Version-1-Oracle-Licensing-in-the-Cloud-Policy&quot; class=&quot;externalLink&quot;&gt;http://www.version1.com/getattachment/3cd6ec0f-2e95-42be-b082-25b32afc71da/Version-1-Oracle-Licensing-in-the-Cloud-Policy&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://madora.co.uk/oracle-changes-the-licensing-rules-for-cloud-again/&quot; href=&quot;http://madora.co.uk/oracle-changes-the-licensing-rules-for-cloud-again/&quot; class=&quot;externalLink&quot;&gt;http://madora.co.uk/oracle-changes-the-licensing-rules-for-cloud-again/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/pulse/dealing-oracles-cloud-licensing-policy-mohammad-inamullah&quot; href=&quot;https://www.linkedin.com/pulse/dealing-oracles-cloud-licensing-policy-mohammad-inamullah&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/pulse/dealing-oracles-cloud-licensing-policy-mohammad-inamullah&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://awsinsider.net/articles/2017/01/31/oracle-licensing-cost-for-aws.aspx&quot; href=&quot;https://awsinsider.net/articles/2017/01/31/oracle-licensing-cost-for-aws.aspx&quot; class=&quot;externalLink&quot;&gt;https://awsinsider.net/articles/2017/01/31/oracle-licensing-cost-for-aws.aspx&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://houseofbrick.com/resources/white-papers/&quot; href=&quot;http://houseofbrick.com/resources/white-papers/&quot; class=&quot;externalLink&quot;&gt;http://houseofbrick.com/resources/white-papers/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>LicensingAndSupport</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Cloud%20Licensing%5D%5D</link>
-<pubDate>Mon, 17 Jul 2017 16:48:00 GMT</pubDate>
-
-</item>
-<item>
-<title>License Auditing</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oraclemusings.com/?p=103&quot; href=&quot;http://www.oraclemusings.com/?p=103&quot; class=&quot;externalLink&quot;&gt;http://www.oraclemusings.com/?p=103&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/blog/2013/12/11/oracle-license-audit/&quot; href=&quot;https://oracle-base.com/blog/2013/12/11/oracle-license-audit/&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/blog/2013/12/11/oracle-license-audit/&lt;/a&gt;</description>
-<category>Security</category>
-<category>LicensingAndSupport</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BLicense%20Auditing%5D%5D</link>
-<pubDate>Mon, 17 Jul 2017 16:45:00 GMT</pubDate>
-
-</item>
-<item>
-<title>TAF vs FAN vs FCF vs ONS</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle-dba-yi.blogspot.com/2010/01/taf-vs-fan-vs-fcf-vs-ons.html&quot; href=&quot;http://oracle-dba-yi.blogspot.com/2010/01/taf-vs-fan-vs-fcf-vs-ons.html&quot; class=&quot;externalLink&quot;&gt;http://oracle-dba-yi.blogspot.com/2010/01/taf-vs-fan-vs-fcf-vs-ons.html&lt;/a&gt; &amp;lt;- good stuff &lt;br&gt;&lt;br&gt;&lt;pre&gt;What the differences and relationship among TAF/FAN/FCF/ONS?
-1 Definition
-1) TAF
-a feature of Oracle Net Services for OCI8 clients. TAF is transparent application failover which will move a session to a backup connection if the session fails. With Oracle 10g Release 2, you can define the TAF policy on the service using dbms_service package. It will only work with OCI clients. It will only move the session and if the parameter is set, it will failover the select statement. For insert, update or delete transactions, the application must be TAF aware and roll back the transaction. YES, you should enable FCF on your OCI client when you use TAF, it will make the failover faster.
-
-Note: TAF will not work with JDBC thin.
-2) FAN
-FAN is a feature of Oracle RAC which stands for Fast Application Notification. This allows the database to notify the client of any change (Node up/down, instance up/down, database up/down). For integrated clients, inflight transactions are interrupted and an error message is returned. Inactive connections are terminated. 
-FCF is the client feature for Oracle Clients that have integrated with FAN to provide fast failover for connections. Oracle JDBC Implicit Connection Cache, Oracle Data Provider for .NET (ODP.NET) and Oracle Call Interface are all integrated clients which provide the Fast Connection Failover feature.
-3) FCF
-FCF is a feature of Oracle clients that are integrated to receive FAN events and abort inflight transactions, clean up connections when a down event is received as well as create new connections when a up event is received. Tomcat or JBOSS can take advantage of FCF if the Oracle connection pool is used underneath. This can be either UCP (Universal Connection Pool for JAVA) or ICC (JDBC Implicit Connection Cache). UCP is recommended as ICC will be deprecated in a future release. 
-4) ONS
-
-http://forums.oracle.com/forums/thread.jspa?messageID=3566976
-
-ONS is part of the clusterware and is used to propagate messages both between nodes and to application-tiers
-
-ONS is the foundation for FAN upon which is built FCF.
-
-RAC uses FAN to publish configuration changes and LBA events. Applications can react as those published events in two way :
-- by using ONS api (you need to program it)
-- by using FCF (automatic by using JDBC implicit connection cache on the application server)
-
-you can also respond to FAN event by using server-side callout but this on the server side (as their name suggests it)
-
-
-Rodrigo Mufalani
-&quot;ONS send/receive messages about failures automatically. It is a daemon process that runs on each node notifying status from components of database, nodeapps.
-If listener process fails on node1 his failure is notified by EVMD, then local ONS communicates the failure to remote ONS in remote nodes, then local ONS on these nodes notifying all aplications about failure that occurred on node1.&quot;
-
-
-2 Relationship
-ONS --&amp;gt; FAN --&amp;gt; FCF
-ONS -&amp;gt; send/receive messages on local and remote nodes.
-FAN -&amp;gt; uses ONS to notify other processes about changes in configuration of service level
-FCF -&amp;gt; uses FAN information working with conection pools JAVA and others.
-http://forums.oracle.com/forums/thread.jspa?messageID=3566976
-
-3 To use TAF/FAN/FCF/ONS, do you need to configure/install in server or client side?
-
-4 Does ONS automatically send messages ? 
-or is there any settings to be done ?
-Does ONS only broadcast msgs ?
-http://forums.oracle.com/forums/thread.jspa?messageID=3566976
-
-ONS is part of the clusterware and is used to propagate messages both between nodes and to application-tiers
-
-ONS is the foundation for FAN upon which is built FCF.
-
-RAC uses FAN to publish configuration changes and LBA events. Applications can react as those published events in two way :
-- by using ONS api (you need to program it)
-- by using FCF (automatic by using JDBC implicit connection cache on the application server)
-
-you can also respond to FAN event by using server-side callout but this on the server side (as their name suggests it)
-
-
-Rodrigo Mufalani
-&quot;ONS send/receive messages about failures automatically. It is a daemon process that runs on each node notifying status from components of database, nodeapps.
-If listener process fails on node1 his failure is notified by EVMD, then local ONS communicates the failure to remote ONS in remote nodes, then local ONS on these nodes notifying all aplications about failure that occurred on node1.&quot;
-
-
-5 Are TAF and FAN mutually exclusive? or if TAF and FCF are mutually exclusive?
-No. You can use both TAF and FAN at the same time, or both TAF and FCF, it depends on what you want to achieve with it. 
-
-6 TAF Basic Configuration with FAN: Example
-Oracle Database 10g Release 2 supports server-side TAF with FAN. 
-To use server-side TAF:
-1) create and start your service using SRVCTL
-$ srvctl add service -d RACDB -s AP -r I1,I2
-$ srvctl start service -d RACDB -s AP
-2) configure TAF in the RDBMS by using the DBMS_SERVICE package.
-execute dbms_service.modify_service ( ,-
-service_name =&amp;gt; 'AP' ,-
-aq_ha_notifications =&amp;gt; true ,-
-failover_method =&amp;gt; dbms_service.failover_method_basic ,-
-failover_type =&amp;gt; dbms_service.failover_type_session ,-
-failover_retries =&amp;gt; 180, failover_delay =&amp;gt; 5 ,-
-clb_goal =&amp;gt; dbms_service.clb_goal_long);
-3) When done, make sure that you define a TNS entry for it in your tnsnames.ora file. 
-AP =
-(DESCRIPTION =(FAILOVER=ON)(LOAD_BALANCE=ON)
-(ADDRESS=(PROTOCOL=TCP)(HOST=N1VIP)(PORT=1521))
-(ADDRESS=(PROTOCOL=TCP)(HOST=N2VIP)(PORT=1521))
-(CONNECT_DATA = (SERVICE_NAME = AP)))
-Note that this TNS name does not need to specify TAF parameters as with the previous slide.
-
-7 TAF Basic Configuration without FAN: Example
-1) Before using TAF, it is recommended that you create and start a service that is used during connections. 
-By doing so, you benefit from the integration of TAF and services. When you want to use BASIC TAF with a service, you should have the -P BASIC option when creating the service.
-After the service is created, you simply start it on your database.
-$ srvctl add service -d RACDB -s AP -r I1,I2  -P BASIC
-$ srvctl start service -d RACDB -s AP
-2) Then, your application needs to connect to the service by using a connection descriptor similar to the one shown in the slide. The FAILOVER_MODE parameter must be included in the CONNECT_DATA section of your connection descriptor.
-AP =
-(DESCRIPTION =(FAILOVER=ON)(LOAD_BALANCE=ON)
-(ADDRESS=(PROTOCOL=TCP)(HOST=N1VIP)(PORT=1521))
-(ADDRESS=(PROTOCOL=TCP)(HOST=N2VIP)(PORT=1521))
-(CONNECT_DATA =
-(SERVICE_NAME = AP)
-(FAILOVER_MODE =
-(TYPE=SESSION)
-(METHOD=BASIC)
-(RETRIES=180)
-(DELAY=5))))
-
-Note: If using TAF, do not set the GLOBAL_DBNAME parameter in your listener.ora file.
-
-8 Metalink notes
---Understanding Transparent Application Failover (TAF) and Fast Connection Failover (FCF) [ID 334471.1]
---How To Verify And Test Fast Connection Failover (FCF) Setup From a JDBC Thin Client Against a 10.2.x RAC Cluster [ID 433827.1] 
---Fast Connection Failover (FCF) Test Client Using 11g JDBC Driver and 11g RAC Cluster [ID 566573.1]
---Questions about how ONS and FCF work with JDBC [ID 752595.1]
---Configuring ONS For Fast Connection Failover
---How To Implement (Fast Connection Failover) FCF Using JDBC driver ? [ID 414199.1]
-
---How to Implement Load Balancing With RAC Configured System Using JDBC [ID 247135.1]
-&lt;/pre&gt;</description>
-<category>Failover</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BTAF%20vs%20FAN%20vs%20FCF%20vs%20ONS%5D%5D</link>
-<pubDate>Thu, 13 Jul 2017 23:55:00 GMT</pubDate>
-
-</item>
-<item>
-<title>RAC relocate services back preferred node</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.ritzyblogs.com/OraTalk/PostID/108/Using-FAN-callouts-relocate-a-service-back&quot; href=&quot;http://www.ritzyblogs.com/OraTalk/PostID/108/Using-FAN-callouts-relocate-a-service-back&quot; class=&quot;externalLink&quot;&gt;http://www.ritzyblogs.com/OraTalk/PostID/108/Using-FAN-callouts-relocate-a-service-back&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Failover</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BRAC%20relocate%20services%20back%20preferred%20node%5D%5D</link>
-<pubDate>Thu, 13 Jul 2017 23:53:00 GMT</pubDate>
-
-</item>
-<item>
-<title>ORA-01000: maximum open cursors exceeded , weblogic cursor leak</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Problem and fix - function not closing cursors', event)&quot;&gt; Problem and fix - function not closing cursors&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Below are the SQLs I used for troubleshooting ', event)&quot;&gt; Below are the SQLs I used for troubleshooting &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' count SQLs on v$open_cursor ', event)&quot;&gt; count SQLs on v$open_cursor &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' breakdown by SID on v$open_cursor', event)&quot;&gt; breakdown by SID on v$open_cursor&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' sesstat open cursors count by SID, SQL_ID', event)&quot;&gt; sesstat open cursors count by SID, SQL_ID&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' detail on specific SQLs ', event)&quot;&gt; detail on specific SQLs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Also run sqld360 to get the overall metadata definition of objects and related objects', event)&quot;&gt; Also run sqld360 to get the overall metadata definition of objects and related objects&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' References', event)&quot;&gt; References&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' database ', event)&quot;&gt; database &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' weblogic ', event)&quot;&gt; weblogic &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' final ', event)&quot;&gt; final &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Problem and fix - function not closing cursors&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;Here the &quot;BAS.&lt;a tiddlylink=&quot;ALLOC_UTILITIES_SQL_CALC&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ALLOC_UTILITIES_SQL_CALC&quot; href=&quot;http://karlarao.tiddlyspot.com#ALLOC_UTILITIES_SQL_CALC&quot; class=&quot;externalLink null&quot;&gt;ALLOC_UTILITIES_SQL_CALC&lt;/a&gt;.&lt;a tiddlylink=&quot;CAL_QTY_ALLOC_FR_IMNT_RE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CAL_QTY_ALLOC_FR_IMNT_RE&quot; href=&quot;http://karlarao.tiddlyspot.com#CAL_QTY_ALLOC_FR_IMNT_RE&quot; class=&quot;externalLink null&quot;&gt;CAL_QTY_ALLOC_FR_IMNT_RE&lt;/a&gt;&quot; function is called multiple times and inside it's not closing the opened cursors. &lt;br&gt;Adding the close of cursors fixed the issue. &lt;br&gt;&lt;br&gt;The troubleshooting steps:&lt;br&gt;&lt;ul&gt;&lt;li&gt; profile the session and cursor usage (get all diagnostic data)&lt;/li&gt;&lt;li&gt; increase open_cursors from 300 to 1000 &lt;/li&gt;&lt;li&gt; restart the database and weblogic app server (to get a clean slate) &lt;/li&gt;&lt;li&gt; profile the session and cursor usage and detail on the &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; - catch the increase of cursors up to 1000 max, and validate the SQL from initial profiling. In this case the same function popped up as the culprit &lt;/li&gt;&lt;li&gt; implement fix on the function &lt;/li&gt;&lt;li&gt; kill the problem weblogic session to get clean slate on cursors of that session&lt;/li&gt;&lt;li&gt; re-run app &lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; Below are the &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; I used for troubleshooting &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; count &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; on v$open_cursor &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;COLUMN USER_NAME FORMAT A15
-
-SELECT s.machine, oc.user_name, oc.sql_text, count(1) 
-FROM v$open_cursor oc, v$session s
-WHERE oc.sid = s.sid
-GROUP BY s.machine, oc.user_name, oc.sql_text
-HAVING COUNT(1) &amp;gt; 2
-ORDER BY count(1) DESC
-;
-
-
-MACHINE                                                          USER_NAME       SQL_TEXT                                                       COUNT(1)
----------------------------------------------------------------- --------------- ------------------------------------------------------------ ----------
-appserver1                                                       ALLOC_APP_USER  SELECT BAS.ALLOC_UTILITIES_SQL_CALC.CAL_QTY_ALLOC_FR_IMNT_RE        360
-appserver1                                                       ALLOC_APP_USER  WITH MAX_SEQ AS     (SELECT                                          40
-appserver1                                                       ALLOC_APP_USER  SELECT                              apbs.SKU,                        33
-appserver1                                                       ALLOC_APP_USER  WITH MAX_SEQ AS            (SELECT                    /*+ MA         28
-appserver1                                                       ALLOC_APP_USER  WITH MAX_SEQ AS             (SELECT                     /*+          25
-appserver1                                                       ALLOC_APP_USER  SELECT DISTINCT FISCAL_MONTH,  CASE     WHEN FISCAL_MONTH =          23
-appserver1                                                       ALLOC_APP_USER  WITH MAX_SEQ AS           (SELECT              /*+ MATERIALI         22
-appserver1                                                       ALLOC_APP_USER  SELECT COUNT ( DISTINCT AIR.STORE_ID) STR_COUNT_STYLE  FROM          22
-appserver1                                                       ALLOC_APP_USER  SELECT DISTINCT BUYER_NAME, BUYER_ID FROM COMPANY_HIER_BUYER         21
-appserver1                                                       ALLOC_APP_USER  SELECT LI_DETAILS.BATCH_ID,         ALLOC_SKU0.SKU2,                 21
-appserver1                                                       ALLOC_APP_USER  SELECT DISTINCT ALLOC_ID,  ALLOC_LINE_ID,  APPT_DATE,  DC_RE         20
-&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; breakdown by SID on v$open_cursor&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;set lines 300
-COLUMN USER_NAME FORMAT A15
-SELECT s.machine, oc.user_name, oc.sql_text, s.sid, count(1)
-FROM v$open_cursor oc, v$session s
-WHERE oc.sid = s.sid
-GROUP BY s.machine, oc.user_name, oc.sql_text, s.sid
-HAVING COUNT(1) &amp;gt; 2
-ORDER BY count(1) DESC
-;
-
-MACHINE                                                          USER_NAME       SQL_TEXT                                                            SID   COUNT(1)
----------------------------------------------------------------- --------------- ------------------------------------------------------------ ---------- ----------
-appserver1                                                       ALLOC_APP_USER  SELECT BAS.ALLOC_UTILITIES_SQL_CALC.CAL_QTY_ALLOC_FR_IMNT_RE          4        167
-appserver1                                                       ALLOC_APP_USER  SELECT BAS.ALLOC_UTILITIES_SQL_CALC.CAL_QTY_ALLOC_FR_IMNT_RE       1466        109
-appserver1                                                       ALLOC_APP_USER  SELECT BAS.ALLOC_UTILITIES_SQL_CALC.CAL_QTY_ALLOC_FR_IMNT_RE       1489         84
-appserver1                                                       ALLOC_APP_USER  SELECT                              apbs.SKU,                      1466         30
-appserver1                                                       ALLOC_APP_USER  UPDATE ALGO_INPUT_FOR_REVIEW SET LOCK_FLAG ='Y' WHERE STORE_          4          7
-appserver1                                                       ALLOC_APP_USER  WITH MAX_SEQ AS     (SELECT                                           4          6
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; sesstat open cursors count by SID, &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;here SID 1012 shows open cursors reaching the 1000 limit of the database parameter (notice the number is increasing which is a per session limit). &lt;br&gt;&lt;pre&gt;
-set lines 300
-col username format a30
-    select c.username,
-           a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id,
-           sum(a.value) &quot;opened cursors current&quot;
-    from   v$sesstat a, v$statname b, v$session c
-    where  a.statistic# = b.statistic#
-    and    b.name = 'opened cursors current'
-    and    c.sid = a.sid
-    group  by c.username, a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id
-    order by  sum(a.value) asc; 
-
-
-
-
-USERNAME                          SID MACHINE                        SQL_ID        PREV_SQL_ID   PLSQL_OBJECT_ID opened cursors current
------------------------------- ------ ------------------------------ ------------- ------------- --------------- ----------------------
-
-... 
-
-
-ALLOC_APP_USER                    412 appserver1                                   4azbr8f51a1nr                                     49
-ALLOC_APP_USER                     98 appserver1                                   bm3tbmdznzg62                                     80
-ALLOC_APP_USER                   1012 appserver1                                   4ps27vbzfnw10                                    122  &amp;lt;&amp;lt;
-
-135 rows selected.
-
-USERNAME                          SID MACHINE                        SQL_ID        PREV_SQL_ID   PLSQL_OBJECT_ID opened cursors current
------------------------------- ------ ------------------------------ ------------- ------------- --------------- ----------------------
-
-... 
-
-
-ALLOC_APP_USER                   1106 appserver1                                   7xs6pawnx3gj2                                     51
-ALLOC_APP_USER                     98 appserver1                                   bm3tbmdznzg62                                     80
-ALLOC_APP_USER                   1012 appserver1                                   5m4nu3860346k                                    335  &amp;lt;&amp;lt;
-
-137 rows selected.
-
-USERNAME                          SID MACHINE                        SQL_ID        PREV_SQL_ID   PLSQL_OBJECT_ID opened cursors current
------------------------------- ------ ------------------------------ ------------- ------------- --------------- ----------------------
-
-... 
-
-ALLOC_APP_USER                   1106 appserver1                                   31vdxhgw47a00                                     72
-ALLOC_APP_USER                     98 appserver1                                   bm3tbmdznzg62                                     80
-ALLOC_APP_USER                   1012 appserver1                                   akkhfudfrvf92                                    996  &amp;lt;&amp;lt;
-
-135 rows selected.
-
-USERNAME                          SID MACHINE                        SQL_ID        PREV_SQL_ID   PLSQL_OBJECT_ID opened cursors current
------------------------------- ------ ------------------------------ ------------- ------------- --------------- ----------------------
-
-... 
-
-ALLOC_APP_USER                   1106 appserver1                                   31vdxhgw47a00                                     72
-ALLOC_APP_USER                     98 appserver1                                   bm3tbmdznzg62                                     80
-ALLOC_APP_USER                   1012 appserver1                                   9uydavp0gr167                                    997  &amp;lt;&amp;lt;
-
-135 rows selected.
-
-USERNAME                          SID MACHINE                        SQL_ID        PREV_SQL_ID   PLSQL_OBJECT_ID opened cursors current
------------------------------- ------ ------------------------------ ------------- ------------- --------------- ----------------------
-
-... 
-
-ALLOC_APP_USER                   1106 appserver1                                   31vdxhgw47a00                                     72
-ALLOC_APP_USER                     98 appserver1                                   bm3tbmdznzg62                                     80
-ALLOC_APP_USER                   1012 appserver1                                   7t6r7kutfr2s0                                   1000  &amp;lt;&amp;lt;
-
-135 rows selected.
-
-USERNAME                          SID MACHINE                        SQL_ID        PREV_SQL_ID   PLSQL_OBJECT_ID opened cursors current
------------------------------- ------ ------------------------------ ------------- ------------- --------------- ----------------------
-
-... 
-
-ALLOC_APP_USER                   1106 appserver1                                   31vdxhgw47a00                                     72
-ALLOC_APP_USER                     98 appserver1                                   31vdxhgw47a00                                     79
-ALLOC_APP_USER                   1012 appserver1                                   31vdxhgw47a00                                   1000  &amp;lt;&amp;lt;
-
-128 rows selected.
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; detail on specific &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;
--- then from SQL Developer to investigate in detail just do
-select * from v$open_cursor 
-
-set lines 300
-col username format a30
-select SQL_ID, hash_value, sid, user_name, sql_text
-from v$open_cursor
-where sid in (
-    select sid
-    from (
-        select c.username,
-               a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id,
-               sum(a.value) &quot;opened cursors current&quot;
-        from   v$sesstat a, v$statname b, v$session c
-        where  a.statistic# = b.statistic#
-        and    b.name = 'opened cursors current'
-        and    c.sid = a.sid
-        group  by c.username, a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id
-        order by  sum(a.value) desc
-        )
-    where rownum &amp;lt; 2
-)
-order by sql_text asc;
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; Also run sqld360 to get the overall metadata definition of objects and related objects&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; References&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; database &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;asktom - Open cursors exceeded &lt;a target=&quot;_blank&quot; title=&quot;External link to http://bit.ly/2sjvcMN&quot; href=&quot;http://bit.ly/2sjvcMN&quot; class=&quot;externalLink&quot;&gt;http://bit.ly/2sjvcMN&lt;/a&gt;&lt;br&gt;Working with Cursors &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23plsql-1906474.html&quot; href=&quot;http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23plsql-1906474.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23plsql-1906474.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://gennick.com/database/does-plsql-implicitly-close-cursors&quot; href=&quot;http://gennick.com/database/does-plsql-implicitly-close-cursors&quot; class=&quot;externalLink&quot;&gt;http://gennick.com/database/does-plsql-implicitly-close-cursors&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://gennick.com/database/more-on-plsqls-cursor-handling&quot; href=&quot;http://gennick.com/database/more-on-plsqls-cursor-handling&quot; class=&quot;externalLink&quot;&gt;http://gennick.com/database/more-on-plsqls-cursor-handling&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://gennick.com/database/plsql-cursor-handling-explained&quot; href=&quot;http://gennick.com/database/plsql-cursor-handling-explained&quot; class=&quot;externalLink&quot;&gt;http://gennick.com/database/plsql-cursor-handling-explained&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://gennick.com/the-box/on-the-importance-of-mental-models&quot; href=&quot;http://gennick.com/the-box/on-the-importance-of-mental-models&quot; class=&quot;externalLink&quot;&gt;http://gennick.com/the-box/on-the-importance-of-mental-models&lt;/a&gt;&lt;br&gt;Troubleshooting Open Cursor Issues &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E40329_01/admin.1112/e27149/cursor.htm#OMADM5352&quot; href=&quot;https://docs.oracle.com/cd/E40329_01/admin.1112/e27149/cursor.htm#OMADM5352&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E40329_01/admin.1112/e27149/cursor.htm#OMADM5352&lt;/a&gt;&lt;br&gt;How To: Identify a cursor leak in Oracle &lt;a target=&quot;_blank&quot; title=&quot;External link to http://support.esri.com/technical-article/000010136&quot; href=&quot;http://support.esri.com/technical-article/000010136&quot; class=&quot;externalLink&quot;&gt;http://support.esri.com/technical-article/000010136&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; weblogic &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;weblogic inactive connection timeout &lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/21006782/why-we-need-weblogic-inactive-connection-timeout&quot; href=&quot;https://stackoverflow.com/questions/21006782/why-we-need-weblogic-inactive-connection-timeout&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/21006782/why-we-need-weblogic-inactive-connection-timeout&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/21006782/why-we-need-weblogic-inactive-connection-timeout&quot; href=&quot;https://stackoverflow.com/questions/21006782/why-we-need-weblogic-inactive-connection-timeout&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/21006782/why-we-need-weblogic-inactive-connection-timeout&lt;/a&gt;&lt;br&gt;Tuning Data Source Connection Pools &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E17904_01/web.1111/e13737/ds_tuning.htm#JDBCA490&quot; href=&quot;https://docs.oracle.com/cd/E17904_01/web.1111/e13737/ds_tuning.htm#JDBCA490&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E17904_01/web.1111/e13737/ds_tuning.htm#JDBCA490&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/18328886/weblogic-leaked-connection-timeout&quot; href=&quot;https://stackoverflow.com/questions/18328886/weblogic-leaked-connection-timeout&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/18328886/weblogic-leaked-connection-timeout&lt;/a&gt;&lt;br&gt;&quot;Inactive Connection Timeout&quot; and &quot;Remove Infected Connections Enabled&quot; parameters in &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.raastech.com/2015/07/inactive-connection-timeout-and-remove.html&quot; href=&quot;http://blog.raastech.com/2015/07/inactive-connection-timeout-and-remove.html&quot; class=&quot;externalLink&quot;&gt;http://blog.raastech.com/2015/07/inactive-connection-timeout-and-remove.html&lt;/a&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://andrejusb.blogspot.com/2010/02/monitoring-data-source-connection-leaks.html&quot; href=&quot;http://andrejusb.blogspot.com/2010/02/monitoring-data-source-connection-leaks.html&quot; class=&quot;externalLink&quot;&gt;http://andrejusb.blogspot.com/2010/02/monitoring-data-source-connection-leaks.html&lt;/a&gt;&lt;br&gt;Setting the JDBC Connection timeout properties in weblogic server through WLST &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.albinsblog.com/2014/04/setting-jdbc-connection-timeouts.html#.WVQYqSJKWkI&quot; href=&quot;http://www.albinsblog.com/2014/04/setting-jdbc-connection-timeouts.html#.WVQYqSJKWkI&quot; class=&quot;externalLink&quot;&gt;http://www.albinsblog.com/2014/04/setting-jdbc-connection-timeouts.html#.WVQYqSJKWkI&lt;/a&gt;&lt;br&gt;JDBC Connection leaks – Generation and Detection [&lt;a tiddlylink=&quot;BEA-001153&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BEA-001153&quot; href=&quot;http://karlarao.tiddlyspot.com#BEA-001153&quot; class=&quot;externalLink null&quot;&gt;BEA-001153&lt;/a&gt;] &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.sysco.no/db/locking/jdbc-leak/&quot; href=&quot;http://blog.sysco.no/db/locking/jdbc-leak/&quot; class=&quot;externalLink&quot;&gt;http://blog.sysco.no/db/locking/jdbc-leak/&lt;/a&gt;    &amp;lt;- this blog has a program to generate leak &lt;a tiddlylink=&quot;JDBCLeak&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#JDBCLeak&quot; href=&quot;http://karlarao.tiddlyspot.com#JDBCLeak&quot; class=&quot;externalLink null&quot;&gt;JDBCLeak&lt;/a&gt;.zip&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; final &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
-REM ##########################################
-REM count SQLs on v$open_cursor 
-REM ##########################################
-
-set lines 300
-COLUMN USER_NAME FORMAT A15
-SELECT s.machine, oc.user_name, oc.sql_text, count(1)
-FROM v$open_cursor oc, v$session s
-WHERE oc.sid = s.sid
-GROUP BY s.machine, oc.user_name, oc.sql_text
-HAVING COUNT(1) &amp;gt; 2
-ORDER BY count(1) ASC
-;
-
-
-REM ##########################################
-REM breakdown by SID on v$open_cursor
-REM ##########################################
-
-set lines 300
-COLUMN USER_NAME FORMAT A15
-SELECT s.machine, oc.user_name, oc.sql_text, s.sid, count(1)
-FROM v$open_cursor oc, v$session s
-WHERE oc.sid = s.sid
-GROUP BY s.machine, oc.user_name, oc.sql_text, s.sid
-HAVING COUNT(1) &amp;gt; 2
-ORDER BY count(1) ASC
-;
-
-
-REM ##########################################
-REM sesstat open cursors count by SID, SQL_ID 
-REM ##########################################
-
-set lines 300
-col username format a30
-    select c.username,
-           a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id,
-           sum(a.value) &quot;opened cursors current&quot;
-    from   v$sesstat a, v$statname b, v$session c
-    where  a.statistic# = b.statistic#
-    and    b.name = 'opened cursors current'
-    and    c.sid = a.sid
-    group  by c.username, a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id
-    order by  sum(a.value) asc;
-
-
-REM ##########################################
-REM detail on specific SQLs 
-REM ##########################################
-
-set lines 300
-col username format a30
-select SQL_ID, hash_value, sid, user_name, sql_text
-from v$open_cursor
-where sid in (
-    select sid
-    from (
-        select c.username,
-               a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id,
-               sum(a.value) &quot;opened cursors current&quot;
-        from   v$sesstat a, v$statname b, v$session c
-        where  a.statistic# = b.statistic#
-        and    b.name = 'opened cursors current'
-        and    c.sid = a.sid
-        group  by c.username, a.sid, c.machine, c.sql_id, c.prev_sql_id, c.plsql_object_id
-        order by  sum(a.value) desc
-        )
-    where rownum &amp;lt; 2
-)
-order by sql_text asc;
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>DynSampling,CursorSharing,VersionCount,PlanHashValue</category>
-<category>weblogic</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BORA-01000%3A%20maximum%20open%20cursors%20exceeded%20%2C%20weblogic%20cursor%20leak%5D%5D</link>
-<pubDate>Thu, 13 Jul 2017 23:42:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Web Server / App Server</title>
-<description></description>
-<category>Linux</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BWeb%20Server%20%2F%20App%20Server%5D%5D</link>
-<pubDate>Thu, 13 Jul 2017 23:42:00 GMT</pubDate>
 
 </item>
 </channel>
