@@ -6,10 +6,398 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2017 YourName</copyright>
-<pubDate>Mon, 24 Jul 2017 23:17:15 GMT</pubDate>
-<lastBuildDate>Mon, 24 Jul 2017 23:17:15 GMT</lastBuildDate>
+<pubDate>Tue, 01 Aug 2017 07:24:34 GMT</pubDate>
+<lastBuildDate>Tue, 01 Aug 2017 07:24:34 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>..Stats Gathering Procedure</title>
+<description>&lt;br&gt;&lt;pre&gt;
+CREATE OR REPLACE PROCEDURE alloc_app_perf.table_stats 
+( 
+    p_owner IN varchar2,
+    p_tabname IN varchar2, 
+    p_partname IN varchar2 default NULL,  
+    p_granularity IN varchar2 default 'GLOBAL AND PARTITION',
+    p_est_percent IN varchar2 default 'DBMS_STATS.AUTO_SAMPLE_SIZE',
+    p_method_opt IN varchar2 default 'FOR ALL COLUMNS SIZE AUTO'
+) 
+IS
+    action varchar2(128);
+    v_mode varchar2(30);
+    cmd varchar2(2000);
+BEGIN
+    action := 'Analyzing the table ' || p_tabname; 
+    IF p_partname IS NOT NULL THEN
+        action := action||', partition '||p_partname;
+        v_mode := p_granularity;
+
+        cmd := '
+        BEGIN 
+            DBMS_STATS.GATHER_TABLE_STATS('||
+            'ownname=&amp;gt;'''||p_owner||''',tabname=&amp;gt;'''||p_tabname||
+            ''',partname=&amp;gt;'''||p_partname||''',granularity=&amp;gt;'''||v_mode||
+            ''',estimate_percent=&amp;gt;'||p_est_percent||',method_opt=&amp;gt;'''||p_method_opt||''',cascade=&amp;gt;TRUE,degree=&amp;gt;4);
+        END;';
+
+        execute immediate cmd;
+    ELSE 
+        v_mode := 'DEFAULT';
+
+        cmd := '
+        BEGIN 
+            DBMS_STATS.GATHER_TABLE_STATS('||
+            'ownname=&amp;gt;'''||p_owner||''',tabname=&amp;gt;'''||p_tabname||
+            ''',estimate_percent=&amp;gt;'||p_est_percent||',method_opt=&amp;gt;'''||p_method_opt||''',cascade=&amp;gt;TRUE,degree=&amp;gt;4);
+        END;';
+
+        execute immediate cmd;
+    END IF; 
+END;
+/
+
+
+parameters: 
+    p_owner       
+    p_tabname     
+    p_partname    
+    p_granularity 
+    p_est_percent 
+    p_method_opt
+
+grant analyze any to alloc_app_perf;
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'CLASS_SALES')
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'CLASS_SALES',p_est_percent=&amp;gt;'dbms_stats.auto_sample_size')
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'CLASS_SALES',p_est_percent=&amp;gt;'1')
+
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'DBA_OBJECTS')
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'DBA_OBJECTS',p_est_percent=&amp;gt;'1')
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'DBA_OBJECTS',p_est_percent=&amp;gt;'100')
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'DBA_OBJECTS',p_est_percent=&amp;gt;'dbms_stats.auto_sample_size')
+
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'DEMO_SKEW')
+exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'DEMO_SKEW',p_method_opt=&amp;gt;'for all columns size skewonly')
+
+
+&lt;/pre&gt;</description>
+<category>stats gathering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B..Stats%20Gathering%20Procedure%5D%5D</link>
+<pubDate>Tue, 01 Aug 2017 07:24:33 GMT</pubDate>
+
+</item>
+<item>
+<title>method_opt</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://carlos-sierra.net/2013/07/27/two-common-mistakes-using-method_opt-in-dbms_stats/&quot; href=&quot;https://carlos-sierra.net/2013/07/27/two-common-mistakes-using-method_opt-in-dbms_stats/&quot; class=&quot;externalLink&quot;&gt;https://carlos-sierra.net/2013/07/27/two-common-mistakes-using-method_opt-in-dbms_stats/&lt;/a&gt;&lt;br&gt;two common mistakes:&lt;br&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt; &lt;a tiddlylink=&quot;METHOD_OPT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#METHOD_OPT&quot; href=&quot;http://karlarao.tiddlyspot.com#METHOD_OPT&quot; class=&quot;externalLink null&quot;&gt;METHOD_OPT&lt;/a&gt; =&amp;gt; ‘FOR ALL INDEXED COLUMNS SIZE…’&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;METHOD_OPT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#METHOD_OPT&quot; href=&quot;http://karlarao.tiddlyspot.com#METHOD_OPT&quot; class=&quot;externalLink null&quot;&gt;METHOD_OPT&lt;/a&gt; =&amp;gt; NULL&lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/how-does-the-methodopt-parameter-work&quot; href=&quot;https://blogs.oracle.com/optimizer/how-does-the-methodopt-parameter-work&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/how-does-the-methodopt-parameter-work&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.dbi-services.com/a-migration-pitfall-with-all-column-size-auto/&quot; href=&quot;https://blog.dbi-services.com/a-migration-pitfall-with-all-column-size-auto/&quot; class=&quot;externalLink&quot;&gt;https://blog.dbi-services.com/a-migration-pitfall-with-all-column-size-auto/&lt;/a&gt;&lt;br&gt;</description>
+<category>Histogram</category>
+<link>http://karlarao.tiddlyspot.com#method_opt</link>
+<pubDate>Thu, 27 Jul 2017 21:20:00 GMT</pubDate>
+
+</item>
+<item>
+<title>buffer overflow, limit of 1000000 bytes</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/16476568/how-to-increase-dbms-output-buffer&quot; href=&quot;https://stackoverflow.com/questions/16476568/how-to-increase-dbms-output-buffer&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/16476568/how-to-increase-dbms-output-buffer&lt;/a&gt;&lt;br&gt;&lt;pre&gt;BEGIN
+  dbms_output.enable(NULL); -- Disables the limit of DBMS
+  -- Your print here !
+END;
+&lt;/pre&gt;&lt;br&gt;&lt;a tiddlylink=&quot;ORA-20000&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA-20000&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA-20000&quot; class=&quot;externalLink null&quot;&gt;ORA-20000&lt;/a&gt;: &lt;a tiddlylink=&quot;ORU-10027&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORU-10027&quot; href=&quot;http://karlarao.tiddlyspot.com#ORU-10027&quot; class=&quot;externalLink null&quot;&gt;ORU-10027&lt;/a&gt;: buffer overflow, limit of 1000000 bytes  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/thread/308557&quot; href=&quot;https://community.oracle.com/thread/308557&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/thread/308557&lt;/a&gt;</description>
+<category>sqlplus errors</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbuffer%20overflow%2C%20limit%20of%201000000%20bytes%5D%5D</link>
+<pubDate>Thu, 27 Jul 2017 20:54:00 GMT</pubDate>
+
+</item>
+<item>
+<title>sqlplus errors</title>
+<description></description>
+<category>SQL*Plus</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsqlplus%20errors%5D%5D</link>
+<pubDate>Thu, 27 Jul 2017 20:53:00 GMT</pubDate>
+
+</item>
+<item>
+<title>kill session procedure</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' prereq grant ', event)&quot;&gt; prereq grant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the script ', event)&quot;&gt; the script &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' grant this to the performance user', event)&quot;&gt; grant this to the performance user&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' kill session usage ', event)&quot;&gt; kill session usage &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' generate kill all commands', event)&quot;&gt; generate kill all commands&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' monitor', event)&quot;&gt; monitor&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;Please create the “killsession” procedure using the SYSDBA user. And then as SYSDBA grant “alter system” and “select on sys.v_$session” to SYSTEM user. And then finally grant “execute on system.killsession” to alloc_app_perf&lt;br&gt;Please create on all ALLOC environments. Then later on we can drop the procedure.&lt;br&gt;&lt;br&gt;&lt;h1&gt; prereq grant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;grant alter system to system;
+grant select on sys.gv_$session to system;
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; the script &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;pre&gt;create or replace procedure system.killsession 
+( p_sid IN number default NULL, 
+p_serial IN number default NULL, 
+p_instance IN number default NULL,
+p_username IN varchar2 default NULL,
+p_machine IN varchar2 default NULL,
+p_osuser IN varchar2 default NULL
+) as
+    BEGIN
+      FOR c IN (
+          SELECT  username, machine, osuser, sid, serial#, inst_id
+          FROM sys.gv_$session
+          WHERE sid = nvl(p_sid,sid)
+          AND serial# = nvl(p_serial,serial#)
+          AND inst_id = nvl(p_instance,inst_id)
+          AND upper(username) = upper(nvl(p_username,username))
+          AND upper(machine) = upper(nvl(p_machine,machine))
+          AND upper(osuser) = upper(nvl(p_osuser,osuser))
+          AND USERNAME IS NOT NULL
+          AND TYPE &amp;lt;&amp;gt; 'BACKGROUND'
+          AND STATUS &amp;lt;&amp;gt; 'KILLED'
+          AND SID NOT IN (select upper(sys_context ('userenv','SID')) from dual)
+      )
+      LOOP
+          EXECUTE IMMEDIATE 'alter system kill session ''' || c.sid || ', ' || c.serial# || ', @' || c.inst_id || ''' immediate';
+          dbms_output.put_line('Kill session : ''' || c.username || ', ' || c.machine || ', ' || c.osuser || ', ' || c.sid || ', ' || c.serial# || ', @' || c.inst_id || ''' ');
+      END LOOP;
+    END;
+    /
+&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; grant this to the performance user&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;grant execute on system.killsession to &amp;lt;user&amp;gt;;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; kill session usage &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set serveroutput on 
+-- kill all 
+exec system.killsession();   
+-- kill sid 
+exec system.killsession(p_sid=&amp;gt;'36')   
+-- kill sid, serial, inst
+exec system.killsession(p_sid=&amp;gt;'44', p_serial=&amp;gt;'54916', p_instance=&amp;gt;'1')   
+-- kill inst
+exec system.killsession(p_instance=&amp;gt;'1')  
+-- kill alloc app user 
+exec system.killsession(p_username=&amp;gt;'ALLOC_APP_USER')   
+-- kill machine
+exec system.killsession(p_machine=&amp;gt;'karldevfedora')  
+-- kill osuser 
+exec system.killsession(p_osuser=&amp;gt;'karl')  
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; generate kill all commands&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set pages 0
+select /* kill all */ 'exec system.killsession ('''||sid||''');'
+from v$session 
+where username = 'ALLOC_APP_USER';
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; monitor&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set lines 300
+select username, machine, osuser, sid, serial#, inst_id
+ from gv$session
+where username is not null
+  and type &amp;lt;&amp;gt; 'BACKGROUND'
+  order by 1
+/
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;also create &lt;a tiddlylink=&quot;CreatePerformanceTuningUser&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CreatePerformanceTuningUser&quot; href=&quot;http://karlarao.tiddlyspot.com#CreatePerformanceTuningUser&quot; class=&quot;externalLink null&quot;&gt;CreatePerformanceTuningUser&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&quot; href=&quot;https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&quot; class=&quot;externalLink&quot;&gt;https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&quot; href=&quot;https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&quot; class=&quot;externalLink&quot;&gt;https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/misc/killing-oracle-sessions&quot; href=&quot;https://oracle-base.com/articles/misc/killing-oracle-sessions&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/misc/killing-oracle-sessions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/2008/06/19/killing-an-oracle-process-from-inside-oracle/&quot; href=&quot;http://blog.tanelpoder.com/2008/06/19/killing-an-oracle-process-from-inside-oracle/&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/2008/06/19/killing-an-oracle-process-from-inside-oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chandlerdba.com/2014/05/29/developers-killing-sessions/&quot; href=&quot;https://chandlerdba.com/2014/05/29/developers-killing-sessions/&quot; class=&quot;externalLink&quot;&gt;https://chandlerdba.com/2014/05/29/developers-killing-sessions/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>DatabaseHealthCheck</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bkill%20session%20procedure%5D%5D</link>
+<pubDate>Wed, 26 Jul 2017 22:33:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Disconnect Oracle Sessions from Logon Trigger</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' prereq ', event)&quot;&gt; prereq &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the trigger to prevent users from login in ', event)&quot;&gt; the trigger to prevent users from login in &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the kill procedure executed in UC4 ', event)&quot;&gt; the kill procedure executed in UC4 &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the user that will execute the kill should have the following privs ', event)&quot;&gt; the user that will execute the kill should have the following privs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; prereq &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; user should not have ADMINISTER DATABASE TRIGGER priv &lt;/li&gt;&lt;li&gt; user should not own the trigger &lt;/li&gt;&lt;li&gt; user that needs to be locked does not apply to SYS,SYSTEM&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the trigger to prevent users from login in &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;-- EXECUTE THIS SCRIPT AS ALLOC_APP_PERF
+
+create or replace trigger alloc_app_perf.revoke_alloc_app_user
+    after logon on database
+       begin
+         -- not allow app schema
+         if sys_context('USERENV','SESSION_USER') in ('ALLOC_APP_USER') 
+         -- not allow users outside of this server (change the server name accordingly)
+         and UPPER(SYS_CONTEXT ('USERENV','HOST')) not in ('KARLDEVFEDORA')
+         then
+           raise_application_error(-20001,'&amp;lt;&amp;lt;&amp;lt; NIGHTLY BATCH RUNNING. PLEASE COME BACK LATER. &amp;gt;&amp;gt;&amp;gt;');
+       end if;
+     end;
+/
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; the kill procedure executed in &lt;a tiddlylink=&quot;UC4&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#UC4&quot; href=&quot;http://karlarao.tiddlyspot.com#UC4&quot; class=&quot;externalLink null&quot;&gt;UC4&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;-- EXECUTE THIS SCRIPT AS SYSDBA
+
+grant alter system to system;
+grant select on sys.gv_$session to system;
+
+create or replace procedure system.uc4_kill_all_alloc_app_user
+as 
+    BEGIN
+      FOR c IN (
+          SELECT sid, serial#, inst_id
+          FROM sys.gv_$session
+          WHERE USERNAME = 'ALLOC_APP_USER'
+          AND upper(MACHINE) NOT IN (select upper(sys_context ('userenv','HOST')) from dual)
+          AND STATUS &amp;lt;&amp;gt; 'KILLED'
+      )
+      LOOP
+          EXECUTE IMMEDIATE 'alter system kill session ''' || c.sid || ', ' || c.serial# || ', @' || c.inst_id || ''' immediate';
+      END LOOP;
+    END;
+    /
+
+grant execute on system.uc4_kill_all_alloc_app_user to alloc_app_perf;
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the user that will execute the kill should have the following privs &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
+-- quotas
+alter user &quot;alloc_app_perf&quot; quota unlimited on bas_data;
+
+-- roles, privs
+grant alloc_app_r to alloc_app_perf;
+grant select_catalog_role to alloc_app_perf;
+grant resource to alloc_app_perf;
+grant select any dictionary to alloc_app_perf;
+grant advisor to alloc_app_perf;
+grant create job to alloc_app_perf;
+grant oem_monitor to alloc_app_perf;
+grant administer any sql tuning set to alloc_app_perf;   
+grant administer sql management object to alloc_app_perf; 
+grant create any sql_profile to alloc_app_perf;
+grant drop any sql_profile to alloc_app_perf;
+grant alter any sql_profile to alloc_app_perf;   
+grant create any trigger to alloc_app_perf;
+grant alter any trigger to alloc_app_perf;
+grant administer database trigger to alloc_app_perf with admin option;
+
+-- execute  
+grant execute on dbms_monitor to alloc_app_perf;
+grant execute on dbms_application_info to alloc_app_perf;
+grant execute on dbms_workload_repository to alloc_app_perf;
+grant execute on dbms_xplan to alloc_app_perf;     
+grant execute on dbms_sqltune to alloc_app_perf;
+grant execute on sys.dbms_lock to alloc_app_perf;
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;references&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://serverfault.com/questions/58856/disconnecting-an-oracle-session-from-a-logon-trigger&quot; href=&quot;https://serverfault.com/questions/58856/disconnecting-an-oracle-session-from-a-logon-trigger&quot; class=&quot;externalLink&quot;&gt;https://serverfault.com/questions/58856/disconnecting-an-oracle-session-from-a-logon-trigger&lt;/a&gt;&lt;br&gt;How do i prevent end users from connecting to the database other than my application &lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:561622956788&quot; href=&quot;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:561622956788&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:561622956788&lt;/a&gt;&lt;br&gt;Raise_application_error procedure in AFTER LOGON trigger &lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:3236035522926&quot; href=&quot;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:3236035522926&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:3236035522926&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle.ittoolbox.com/groups/technical-functional/oracle-db-l/after-logon-trigger-not-killing-the-user-session-5108880&quot; href=&quot;http://oracle.ittoolbox.com/groups/technical-functional/oracle-db-l/after-logon-trigger-not-killing-the-user-session-5108880&quot; class=&quot;externalLink&quot;&gt;http://oracle.ittoolbox.com/groups/technical-functional/oracle-db-l/after-logon-trigger-not-killing-the-user-session-5108880&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.freelists.org/post/oracle-l/Disconnecting-session-from-an-on-logon-trigger,3&quot; href=&quot;https://www.freelists.org/post/oracle-l/Disconnecting-session-from-an-on-logon-trigger,3&quot; class=&quot;externalLink&quot;&gt;https://www.freelists.org/post/oracle-l/Disconnecting-session-from-an-on-logon-trigger,3&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/55342/how-can-i-kill-all-sessions-connecting-to-my-oracle-database&quot; href=&quot;https://stackoverflow.com/questions/55342/how-can-i-kill-all-sessions-connecting-to-my-oracle-database&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/55342/how-can-i-kill-all-sessions-connecting-to-my-oracle-database&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>kill session procedure</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BDisconnect%20Oracle%20Sessions%20from%20Logon%20Trigger%5D%5D</link>
+<pubDate>Wed, 26 Jul 2017 19:10:00 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL books, articles</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' books ', event)&quot;&gt; books &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' articles ', event)&quot;&gt; articles &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; books &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;SQL performance explained &lt;a target=&quot;_blank&quot; title=&quot;External link to https://use-the-index-luke.com/sql/table-of-contents&quot; href=&quot;https://use-the-index-luke.com/sql/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://use-the-index-luke.com/sql/table-of-contents&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Programming-Oracle-Triggers-Procedures-Prentice&quot; href=&quot;https://www.amazon.com/Programming-Oracle-Triggers-Procedures-Prentice&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Programming-Oracle-Triggers-Procedures-Prentice&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/SQL-Antipatterns-Programming-Pragmatic-Programmers-eboo&quot; href=&quot;https://www.amazon.com/SQL-Antipatterns-Programming-Pragmatic-Programmers-eboo&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/SQL-Antipatterns-Programming-Pragmatic-Programmers-eboo&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; articles &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/community/tutorials/sql-tutorial-query#gs.ePzPPkU&quot; href=&quot;https://www.datacamp.com/community/tutorials/sql-tutorial-query#gs.ePzPPkU&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/community/tutorials/sql-tutorial-query#gs.ePzPPkU&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>.video content</category>
+<category>,</category>
+<category>SQL Tuning</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20books%2C%20articles%5D%5D</link>
+<pubDate>Wed, 26 Jul 2017 18:41:00 GMT</pubDate>
+
+</item>
+<item>
+<title>empty log file /dev/null</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://unix.stackexchange.com/questions/147044/cat-dev-null-emptied-my-log-file-but-size-did-not-change&quot; href=&quot;https://unix.stackexchange.com/questions/147044/cat-dev-null-emptied-my-log-file-but-size-did-not-change&quot; class=&quot;externalLink&quot;&gt;https://unix.stackexchange.com/questions/147044/cat-dev-null-emptied-my-log-file-but-size-did-not-change&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;this simple&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;&amp;gt; file  
+&lt;/pre&gt;</description>
+<category>BashShell</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bempty%20log%20file%20%2Fdev%2Fnull%5D%5D</link>
+<pubDate>Wed, 26 Jul 2017 18:25:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Disable Auto Stats Job</title>
+<description>How to Disable Automatic Statistics Collection in 11g [ID 1056968.1]&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-base.com/articles/11g/AutomatedDatabaseMaintenanceTaskManagement_11gR1.php&quot; href=&quot;http://www.oracle-base.com/articles/11g/AutomatedDatabaseMaintenanceTaskManagement_11gR1.php&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-base.com/articles/11g/AutomatedDatabaseMaintenanceTaskManagement_11gR1.php&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B19306_01/appdev.102/b14258/d_job.htm#i1000521&quot; href=&quot;http://docs.oracle.com/cd/B19306_01/appdev.102/b14258/d_job.htm#i1000521&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B19306_01/appdev.102/b14258/d_job.htm#i1000521&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;to check&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;SQL&amp;gt; col status format a20
+SQL&amp;gt; r
+  1* select client_name,status from Dba_Autotask_Client
+
+CLIENT_NAME                                                      STATUS
+---------------------------------------------------------------- --------------------
+auto optimizer stats collection                                  ENABLED
+auto space advisor                                               ENABLED
+sql tuning advisor                                               ENABLED
+
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;&lt;span&gt;—&lt;/span&gt; disable a specific job or auto job&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;EXEC DBMS_AUTO_TASK_ADMIN.DISABLE('auto optimizer stats collection', NULL, NULL);
+exec dbms_scheduler.disable('gather_stats_job'); 
+exec dbms_scheduler.disable( 'SYS.BSLN_MAINTAIN_STATS_JOB' );
+EXEC DBMS_JOB.BROKEN(62,TRUE);
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;&lt;span&gt;—&lt;/span&gt; disable all maintenance jobs altogether&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;EXEC DBMS_AUTO_TASK_ADMIN.disable;
+EXEC DBMS_AUTO_TASK_ADMIN.enable;
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;&lt;span&gt;—&lt;/span&gt; to address the maintenance window on your newly created resource_plan&lt;/strong&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; you can just do a single level plan.. then add the ORA$&lt;a tiddlylink=&quot;AUTOTASK_SUB_PLAN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#AUTOTASK_SUB_PLAN&quot; href=&quot;http://karlarao.tiddlyspot.com#AUTOTASK_SUB_PLAN&quot; class=&quot;externalLink null&quot;&gt;AUTOTASK_SUB_PLAN&lt;/a&gt; and ORA$DIAGNOSTICS consumer groups and edit the maintenance windows from &lt;a tiddlylink=&quot;DEFAULT_MAINTENANCE_PLAN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DEFAULT_MAINTENANCE_PLAN&quot; href=&quot;http://karlarao.tiddlyspot.com#DEFAULT_MAINTENANCE_PLAN&quot; class=&quot;externalLink null&quot;&gt;DEFAULT_MAINTENANCE_PLAN&lt;/a&gt; to your newly created resource plan. by doing this each time the window is executed all the jobs will conform to the new resource plan and their allocations&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Enabling Oracle Database Resource Manager and Switching Plans &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B28359_01/server.111/b28310/dbrm005.htm#ADMIN11890&quot; href=&quot;http://docs.oracle.com/cd/B28359_01/server.111/b28310/dbrm005.htm#ADMIN11890&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B28359_01/server.111/b28310/dbrm005.htm#ADMIN11890&lt;/a&gt;&lt;br&gt;&lt;pre&gt;ALTER SYSTEM SET RESOURCE_MANAGER_PLAN = 'FORCE:mydb_plan';
+&lt;/pre&gt;Windows &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B28359_01/server.111/b28310/schedover007.htm#i1106396&quot; href=&quot;http://docs.oracle.com/cd/B28359_01/server.111/b28310/schedover007.htm#i1106396&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B28359_01/server.111/b28310/schedover007.htm#i1106396&lt;/a&gt;&lt;br&gt;Configuring Resource Allocations for Automated Maintenance Tasks &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B28359_01/server.111/b28310/tasks005.htm#BABHEFEH&quot; href=&quot;http://docs.oracle.com/cd/B28359_01/server.111/b28310/tasks005.htm#BABHEFEH&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B28359_01/server.111/b28310/tasks005.htm#BABHEFEH&lt;/a&gt;&lt;br&gt;Automated Database Maintenance Task Management &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-base.com/articles/11g/automated-database-maintenance-task-management-11gr1.php&quot; href=&quot;http://www.oracle-base.com/articles/11g/automated-database-maintenance-task-management-11gr1.php&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-base.com/articles/11g/automated-database-maintenance-task-management-11gr1.php&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>stats gathering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BDisable%20Auto%20Stats%20Job%5D%5D</link>
+<pubDate>Wed, 26 Jul 2017 02:42:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Change Password</title>
+<description>to get rid of &lt;a tiddlylink=&quot;ORA-28003&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA-28003&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA-28003&quot; class=&quot;externalLink null&quot;&gt;ORA-28003&lt;/a&gt;: password verification for the specified password failed&lt;br&gt;&lt;pre&gt;ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL;
+alter profile DEFAULT limit PASSWORD_REUSE_MAX 6 PASSWORD_REUSE_TIME unlimited;
+ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
+&lt;/pre&gt;&lt;br&gt;to change profile for a specific user&lt;br&gt;&lt;pre&gt;select username, account_status, PROFILE from dba_users;
+ALTER PROFILE MONITORING_USER LIMIT PASSWORD_VERIFY_FUNCTION NULL;
+alter profile MONITORING_USER limit PASSWORD_REUSE_MAX 6 PASSWORD_REUSE_TIME unlimited;
+alter user HCMREADONLY identified by noentry;
+ALTER PROFILE MONITORING_USER LIMIT PASSWORD_VERIFY_FUNCTION VERIFY_FUNCTION;
+&lt;/pre&gt;&lt;br&gt;to get the old password and put it back after&lt;br&gt;&lt;pre&gt;create user TEST identified by TEST;
+grant create session to TEST;
+select username, password from dba_users where username = 'TEST';
+
+ select username, password from dba_users where username = 'TEST';
+
+USERNAME                       PASSWORD
+------------------------------ ------------------------------
+TEST                           7A0F2B316C212D67
+
+alter user TEST identified by TEST2;
+
+Alter user TEST identified by values 'OLD HASH VALUE ';
+Alter user TEST identified by values '7A0F2B316C212D67';
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; expired and locked&lt;/h1&gt;&lt;pre&gt;select username, account_status from dba_users;
+select 'ALTER USER ' || username || ' ACCOUNT UNLOCK;' from dba_users where account_status like '%LOCKED%';
+
+set heading off
+set echo off
+set long 9999999
+select dbms_metadata.get_ddl('USER', username) || ';' usercreate
+from dba_users where username = 'SYSMAN';
+
+If you are, (if sec_case_sensitive_logon = TRUE), then you can do this:
+select 'alter user '|| username '||' identified by values '||chr(39)||spare4||chr(39)||';' from dba_users where account_status like '%EXPIRED%';
+If you're not using mixed case passwords (sec_case_sensitive_logon = FALSE), then do:
+select 'alter user '||username '||' identified by value '||chr(39)||password||chr(39)||';' from dba_users where account_status like '%EXPIRED%';
+
+select 'ALTER USER ' || username || ' identified by oracle1;' from dba_users where account_status like '%EXPIRED%';
+
+http://laurentschneider.com/wordpress/2008/03/alter-user-identified-by-values-in-11g.html
+http://coskan.wordpress.com/2009/03/11/alter-user-identified-by-values-on-11g-without-using-sysuser/
+
+-- for sysman do this starting 10204
+emctl setpasswd dbconsole
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; example&lt;/h1&gt;&lt;pre&gt;21:06:35 SYS@cdb1&amp;gt; SET LONG 999999
+21:06:45 SYS@cdb1&amp;gt; select dbms_metadata.get_ddl('USER','ALLOC_APP_USER') from dual;
+ 
+DBMS_METADATA.GET_DDL('USER','ALLOC_APP_USER')
+--------------------------------------------------------------------------------
+ 
+   CREATE USER &quot;ALLOC_APP_USER&quot; IDENTIFIED BY VALUES 'S:135E0A81F4B08AD2EE81B3A0
+E4B28DB3A08983E40524264C4764EDCEE856;H:9BCF43B8002C09A03D7C5B0C80D35B86;T:42BE3A
+2EC61307ED9FF704DF80951D76986F47D43EA835799836001399562899F95FB95B171C9D58A16E45
+F7459ADEE74901C7B4A9A9AEFDD92FD03278F3038B0EE0A03F14A3C7520FABCC386FA6A72A;E0E79
+5741BD02FB0'
+      DEFAULT TABLESPACE &quot;USERS&quot;
+      TEMPORARY TABLESPACE &quot;TEMP2&quot;
+ 
+ 
+21:06:49 SYS@cdb1&amp;gt;
+21:06:51 SYS@cdb1&amp;gt; conn system/xxx
+Connected.
+21:07:15 SYSTEM@cdb1&amp;gt;
+21:07:16 SYSTEM@cdb1&amp;gt;
+21:07:16 SYSTEM@cdb1&amp;gt; alter user alloc_app_user identified by karlarao;
+ 
+User altered.
+ 
+21:07:37 SYSTEM@cdb1&amp;gt; conn alloc_app_user/karlarao
+Connected.
+21:07:45 ALLOC_APP_USER@cdb1&amp;gt;
+21:07:46 ALLOC_APP_USER@cdb1&amp;gt;
+21:07:46 ALLOC_APP_USER@cdb1&amp;gt; conn system/xxx
+Connected.
+21:07:51 SYSTEM@cdb1&amp;gt;
+21:07:51 SYSTEM@cdb1&amp;gt;
+21:07:51 SYSTEM@cdb1&amp;gt; alter user alloc_app_user identified by values 'S:135E0A81F4B08AD2EE81B3A0E4B28DB3A08983E40524264C4764EDCEE856;H:9BCF43B8002C09A03D7C5B0C80D35B86;T:42BE3A2EC61307ED9FF704DF80951D76986F47D43EA835799836001399562899F95FB95B171C9D58A16E45F7459ADEE74901C7B4A9A9AEFDD92FD03278F3038B0EE0A03F14A3C7520FABCC386FA6A72A;E0E795741BD02FB0';
+ 
+User altered.
+ 
+21:08:46 SYSTEM@cdb1&amp;gt; conn alloc_app_user/karlarao
+ERROR:
+ORA-01017: invalid username/password; logon denied
+ 
+ 
+Warning: You are no longer connected to ORACLE.
+21:08:55 @&amp;gt;
+21:08:56 @&amp;gt; conn alloc_app_user/testalloc
+Connected.
+21:09:07 ALLOC_APP_USER@cdb1&amp;gt;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Security</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BChange%20Password%5D%5D</link>
+<pubDate>Tue, 25 Jul 2017 21:18:00 GMT</pubDate>
+
+</item>
 <item>
 <title>..row lock mode</title>
 <description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&quot; href=&quot;https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&quot; class=&quot;externalLink&quot;&gt;https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;when w.wait_event_text like 'enq: TM%' then
@@ -47,7 +435,7 @@ Value   Name(s)                    Table method (TM lock)
 &lt;/pre&gt;</description>
 <category>row lock contention</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B..row%20lock%20mode%5D%5D</link>
-<pubDate>Mon, 24 Jul 2017 23:17:14 GMT</pubDate>
+<pubDate>Mon, 24 Jul 2017 23:17:00 GMT</pubDate>
 
 </item>
 <item>
@@ -812,469 +1200,6 @@ order by 5 asc;
 <category>row lock contention</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Brow%20lock%20contention%20w%2F%20ash%5D%5D</link>
 <pubDate>Thu, 20 Jul 2017 16:19:00 GMT</pubDate>
-
-</item>
-<item>
-<title>ADG (Active Data Guard) RM config on SAP</title>
-<description>&lt;pre&gt;
-Summary:
-&amp;gt; Implement Instance Caging
-&amp;gt; Enable Parallel Force Query and Parallel Statement Queuing  
-&amp;gt; A database trigger has to be created on the Active Data Guard for all databases to enable Parallel Force Query on the session level upon login
-&amp;gt; Create a new Resource Management Plan to limit the per session parallelism to 4
-&amp;gt; Enable IORM and set to objective of AUTO on the Storage Cells
-
-Commands to implement the recommended changes:
-&amp;gt; The numbers 1 and 2 need to be executed on each database of the Active Data Guard environment
-&amp;gt; #3 needs to be executed on all the Storage Cells, use the dcli and execute only on the 1st storage cell if passwordless ssh is configured
-&amp;gt; #4 needs to be executed on each database (ECC, EWM, GTS, APO) of the Primary site to create the new Resource Management Plan
-&amp;gt; #5 needs to be executed on each database of the Active Data Guard environment to activate the Resource Management Plan
-
-The behavior:
-        instance caging is set to CPU_COUNT of 40 (83% max CPU utilization)	
-	parallel 4 will be set to all users logged in as ENTERPRISE, no need for hints	
-	although the hints override the session settings, the non-ENTERPRISE users will be throttled on the resource management layer to PX of 4 even if hints are set	
-		RM plan has PX limit of 4 for other_groups 
-		We can set a higher limit (let's say 8) for the ENTERPRISE users so they can override the PX 4 to a higher value through hints
-	this configuration will be done on all 4 databases 	
-		
-Switchover steps - just in case the 4 DBs will switchover to Exadata:
-	disable the px trigger	
-	alter the resource plan to SAP primary	
-
-
-######################################################################
-
-1) instance caging 
-
-alter system set cpu_count=40 scope=both sid='*';
-alter system set resource_manager_plan=default_plan; 
-
-2) statement queueing and create trigger
-
-alter system set parallel_force_local=false scope=both sid='*';
-alter system set parallel_max_servers=128 scope=both sid='*';
-alter system set parallel_servers_target=64 scope=both sid='*';
-alter system set parallel_min_servers=64 scope=both sid='*';
-alter system set &quot;_parallel_statement_queuing&quot;=true scope=both sid='*';
-
--- alter trigger sys.adg_pxforce_trigger disable;
-
--- the trigger checks if ENTERPRISE user is logged on, if it's running as PHYSICAL STANDBY, and if it's running on X4DP cluster
-
-CREATE OR REPLACE TRIGGER adg_pxforce_trigger
-AFTER LOGON ON database
-WHEN (USER in ('ENTERPRISE'))
-BEGIN
-IF (SYS_CONTEXT('USERENV','DATABASE_ROLE') IN ('PHYSICAL STANDBY'))
-AND (UPPER(SUBSTR(SYS_CONTEXT ('USERENV','SERVER_HOST'),1,4)) IN ('X4DP'))
-THEN
-execute immediate 'alter session force parallel query parallel 4';
-END IF;
-END;
-/
-
-
-3) IORM AUTO
-
--- execute on each storage cell
-cellcli -e list iormplan detail
-cellcli -e alter iormplan objective = auto
-cellcli -e alter iormplan active
-
--- use these commands if passwordless ssh is configured 
-dcli -g ~/cell_group -l root 'cellcli -e list iormplan detail'
-dcli -g ~/cell_group -l root 'cellcli -e alter iormplan objective = auto'
-dcli -g ~/cell_group -l root 'cellcli -e alter iormplan active'
-
-######################################################################
-
-4) RM plan to be created on the primary site
-
-
-exec DBMS_RESOURCE_MANAGER.CLEAR_PENDING_AREA;
-
-BEGIN
-DBMS_RESOURCE_MANAGER.CREATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.CREATE_PLAN(PLAN =&amp;gt; 'px_force', COMMENT =&amp;gt; 'force parallel query parallel 4');
-DBMS_RESOURCE_MANAGER.CREATE_CONSUMER_GROUP(CONSUMER_GROUP =&amp;gt; 'CG_ENTERPRISE',    COMMENT =&amp;gt; 'CG for ENTERPRISE users');
-DBMS_RESOURCE_MANAGER.CREATE_PLAN_DIRECTIVE(PLAN =&amp;gt;'px_force', GROUP_OR_SUBPLAN =&amp;gt; 'CG_ENTERPRISE', COMMENT =&amp;gt; 'Directive for ENTERPRISE users', PARALLEL_DEGREE_LIMIT_P1 =&amp;gt; 4);
-DBMS_RESOURCE_MANAGER.CREATE_PLAN_DIRECTIVE(PLAN =&amp;gt;'px_force', GROUP_OR_SUBPLAN =&amp;gt; 'OTHER_GROUPS', COMMENT =&amp;gt; 'Low priority users', PARALLEL_DEGREE_LIMIT_P1 =&amp;gt; 4);
-DBMS_RESOURCE_MANAGER.VALIDATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.SUBMIT_PENDING_AREA();
-END;
-/ 
-
-begin
- dbms_resource_manager_privs.grant_switch_consumer_group(grantee_name =&amp;gt; 'ENTERPRISE',consumer_group =&amp;gt; 'CG_ENTERPRISE', grant_option =&amp;gt; FALSE);
-end;
-/ 
-
-begin
-DBMS_RESOURCE_MANAGER.CREATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.SET_INITIAL_CONSUMER_GROUP ('ENTERPRISE', 'CG_ENTERPRISE');
-DBMS_RESOURCE_MANAGER.VALIDATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.SUBMIT_PENDING_AREA();
-END;
-/
-
-
--- check config 
-
-set wrap off
-set head on
-set linesize 300
-set pagesize 132
-col comments format a64
-
--- show current resource plan
-select * from  V$RSRC_PLAN;
-
--- show all resource plans
-select PLAN,NUM_PLAN_DIRECTIVES,CPU_METHOD,substr(COMMENTS,1,64) &quot;COMMENTS&quot;,STATUS,MANDATORY 
-from dba_rsrc_plans 
-order by plan;
-
--- show consumer groups
-select CONSUMER_GROUP,CPU_METHOD,STATUS,MANDATORY,substr(COMMENTS,1,64) &quot;COMMENTS&quot; 
-from DBA_RSRC_CONSUMER_GROUPS 
-order by consumer_group;
-
--- show  category
-SELECT consumer_group, category
-FROM DBA_RSRC_CONSUMER_GROUPS
-ORDER BY category;
-
--- show mappings
-col value format a30
-select ATTRIBUTE, VALUE, CONSUMER_GROUP, STATUS 
-from DBA_RSRC_GROUP_MAPPINGS
-order by 3;
-
--- show mapping priority 
-select * from DBA_RSRC_MAPPING_PRIORITY;
-
--- show directives 
-SELECT plan,group_or_subplan,cpu_p1,cpu_p2,cpu_p3, PARALLEL_DEGREE_LIMIT_P1, status 
-FROM dba_rsrc_plan_directives 
-order by 1,3 desc,4 desc,5 desc;
-
--- show grants
-select * from DBA_RSRC_CONSUMER_GROUP_PRIVS order by grantee;
-select * from DBA_RSRC_MANAGER_SYSTEM_PRIVS order by grantee;
-
--- show scheduler windows
-select window_name, resource_plan, START_DATE, DURATION, WINDOW_PRIORITY, enabled, active from dba_scheduler_windows;
-
-
-5) enforce on the standby site
-connect / as sysdba
---ALTER SYSTEM SET RESOURCE_MANAGER_PLAN = 'FORCE:px_force';
-
-
-
--- revert
-connect / as sysdba
-exec DBMS_RESOURCE_MANAGER.CLEAR_PENDING_AREA;
-
-ALTER SYSTEM SET RESOURCE_MANAGER_PLAN = 'default_plan';
-
-BEGIN
-  DBMS_RESOURCE_MANAGER.CREATE_PENDING_AREA();
-  DBMS_RESOURCE_MANAGER.DELETE_PLAN_CASCADE ('px_force');
-DBMS_RESOURCE_MANAGER.VALIDATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.SUBMIT_PENDING_AREA();
-END;
-/
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>HOWTO: Resource Manager and IORM by Cluster Service</category>
-<category>logon triggers</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BADG%20(Active%20Data%20Guard)%20RM%20config%20on%20SAP%5D%5D</link>
-<pubDate>Wed, 19 Jul 2017 19:42:00 GMT</pubDate>
-
-</item>
-<item>
-<title>resource manager - FORCE serial sessions , logon trigger</title>
-<description>&lt;h1&gt; this will do the job &lt;/h1&gt;&lt;pre&gt;
-
-CREATE OR REPLACE TRIGGER px_force_serial
-AFTER LOGON ON database
-WHEN (USER in ('ALLOC_APP_USER','SYSTEM'))
-BEGIN
-execute immediate 'alter session disable parallel query';
-END;
-/
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; this somehow limits 1 parallel for every slave &lt;/h1&gt;&lt;pre&gt;
-
-exec DBMS_RESOURCE_MANAGER.CLEAR_PENDING_AREA;
-
-BEGIN
-DBMS_RESOURCE_MANAGER.CREATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.DELETE_PLAN_DIRECTIVE(PLAN =&amp;gt;'default_plan', GROUP_OR_SUBPLAN =&amp;gt; 'OTHER_GROUPS', PARALLEL_DEGREE_LIMIT_P1 =&amp;gt; default);
-DBMS_RESOURCE_MANAGER.VALIDATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.SUBMIT_PENDING_AREA();
-END;
-/ 
-
-ALTER SYSTEM SET RESOURCE_MANAGER_PLAN = 'FORCE:default_plan';
-
-
-
-exec DBMS_RESOURCE_MANAGER.CLEAR_PENDING_AREA;
-
-BEGIN
-DBMS_RESOURCE_MANAGER.CREATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.UPDATE_PLAN_DIRECTIVE(PLAN =&amp;gt;'default_plan', GROUP_OR_SUBPLAN =&amp;gt; 'OTHER_GROUPS', NEW_PARALLEL_DEGREE_LIMIT_P1 =&amp;gt; -1 );
-DBMS_RESOURCE_MANAGER.VALIDATE_PENDING_AREA();
-DBMS_RESOURCE_MANAGER.SUBMIT_PENDING_AREA();
-END;
-/ 
-
-
-SELECT plan,group_or_subplan,cpu_p1,cpu_p2,cpu_p3, PARALLEL_DEGREE_LIMIT_P1, status 
-FROM dba_rsrc_plan_directives 
-order by 1,3 desc,4 desc,5 desc;
-
-
-
-
-
-select
-        a.SID,
-        a.RM_CONSUMER_GROUP RM_GROUP,  
-        a.SQL_ID,
-        b.CHILD_NUMBER CH,
-        a.SQL_PLAN_HASH_VALUE PHV,
-        a.sql_exec_id SQL_EXEC,
-        a.INST_ID ,
-        a.USERNAME,
-        a.PX_SERVERS_REQUESTED RQ,
-        a.PX_SERVERS_ALLOCATED ALLOC,
-        to_char(a.SQL_EXEC_START,'MMDDYY HH24:MI:SS') SQL_EXEC_START
-from gv$sql_monitor a, gv$sql b
-where a.sql_id = b.sql_id
-and a.inst_id = b.inst_id
-and a.sql_child_address = b.child_address
-and username is not null
-order by a.STATUS, a.SQL_EXEC_START, a.SQL_EXEC_ID, a.PX_SERVERS_ALLOCATED, a.PX_SERVER_SET, a.PX_SERVER# asc
-/
-
-
-
-&lt;/pre&gt;</description>
-<category>ResourceManager</category>
-<category>logon triggers</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bresource%20manager%20-%20FORCE%20serial%20sessions%20%2C%20logon%20trigger%5D%5D</link>
-<pubDate>Wed, 19 Jul 2017 19:42:00 GMT</pubDate>
-
-</item>
-<item>
-<title>logon triggers</title>
-<description></description>
-<category>coderepo PL/SQL</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Blogon%20triggers%5D%5D</link>
-<pubDate>Wed, 19 Jul 2017 19:41:00 GMT</pubDate>
-
-</item>
-<item>
-<title>pl/sql loops, conditional statements</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' reference ', event)&quot;&gt; reference &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' define VARIABLE to pass on SQL ', event)&quot;&gt; define VARIABLE to pass on SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' pass parameter, IF ELSE on execute immediate', event)&quot;&gt; pass parameter, IF ELSE on execute immediate&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; reference &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cloud/latest/db112/LNPLS/controlstatements.htm#LNPLS004&quot; href=&quot;https://docs.oracle.com/cloud/latest/db112/LNPLS/controlstatements.htm#LNPLS004&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cloud/latest/db112/LNPLS/controlstatements.htm#LNPLS004&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; define VARIABLE to pass on SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;VARIABLE  g_retention  NUMBER
-DEFINE    p_default = 8
-DEFINE    p_max = 100
-SET VERIFY OFF
-DECLARE
-  v_default  NUMBER(3) := &amp;amp;p_default;
-  v_max      NUMBER(3) := &amp;amp;p_max;
-BEGIN
-  select
-    ((TRUNC(SYSDATE) + RETENTION - TRUNC(SYSDATE)) * 86400)/60/60/24 AS RETENTION_DAYS
-    into :g_retention
-  from dba_hist_wr_control
-  where dbid in (select dbid from v$database);
-
-  if :g_retention &amp;gt; v_default then
-    :g_retention := v_max;
-  else
-    :g_retention := v_default;
-  end if;
-END;
-/
-
-
-... at the SQL level 
-WHERE
-to_date(tm,'MM/DD/YY HH24:MI:SS') &amp;gt; sysdate - :g_retention
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; pass parameter, IF ELSE on execute immediate&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>coderepo PL/SQL</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpl%2Fsql%20loops%2C%20conditional%20statements%5D%5D</link>
-<pubDate>Wed, 19 Jul 2017 19:12:00 GMT</pubDate>
-
-</item>
-<item>
-<title>coderepo PL/SQL</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' steve's videos - the plsql channel', event)&quot;&gt; steve's videos - the plsql channel&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' style guide ', event)&quot;&gt; style guide &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bulk collect and forall ', event)&quot;&gt; bulk collect and forall &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' mvc pl/sq/', event)&quot;&gt; mvc pl/sq/&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' references/books', event)&quot;&gt; references/books&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' wiki', event)&quot;&gt; wiki&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' end', event)&quot;&gt; end&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; steve's videos - the plsql channel&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tutorials.plsqlchannel.com/public/index.php&quot; href=&quot;http://tutorials.plsqlchannel.com/public/index.php&quot; class=&quot;externalLink&quot;&gt;http://tutorials.plsqlchannel.com/public/index.php&lt;/a&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; style guide &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle.readthedocs.org/en/latest/sql/basics/style-guide.html&quot; href=&quot;http://oracle.readthedocs.org/en/latest/sql/basics/style-guide.html&quot; class=&quot;externalLink&quot;&gt;http://oracle.readthedocs.org/en/latest/sql/basics/style-guide.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.williamrobertson.net/documents/plsqlcodingstandards.htlm&quot; href=&quot;http://www.williamrobertson.net/documents/plsqlcodingstandards.htlm&quot; class=&quot;externalLink&quot;&gt;http://www.williamrobertson.net/documents/plsqlcodingstandards.htlm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bulk collect and forall &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://venzi.wordpress.com/2007/09/27/bulk-collect-forall-vs-cursor-for-loop/&quot; href=&quot;https://venzi.wordpress.com/2007/09/27/bulk-collect-forall-vs-cursor-for-loop/&quot; class=&quot;externalLink&quot;&gt;https://venzi.wordpress.com/2007/09/27/bulk-collect-forall-vs-cursor-for-loop/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; mvc pl/sq/&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dba-oracle.com/oracle_news/2004_10_27_MVC_development_using_plsql.htm&quot; href=&quot;http://www.dba-oracle.com/oracle_news/2004_10_27_MVC_development_using_plsql.htm&quot; class=&quot;externalLink&quot;&gt;http://www.dba-oracle.com/oracle_news/2004_10_27_MVC_development_using_plsql.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/osalvador/dbax&quot; href=&quot;https://github.com/osalvador/dbax&quot; class=&quot;externalLink&quot;&gt;https://github.com/osalvador/dbax&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://it.toolbox.com/blogs/jjflash-oracle-journal/mvc-for-plsql-and-the-apex-listener-42688&quot; href=&quot;http://it.toolbox.com/blogs/jjflash-oracle-journal/mvc-for-plsql-and-the-apex-listener-42688&quot; class=&quot;externalLink&quot;&gt;http://it.toolbox.com/blogs/jjflash-oracle-journal/mvc-for-plsql-and-the-apex-listener-42688&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jj-blogger.blogspot.com/2006/05/plsql-and-faces.html&quot; href=&quot;http://jj-blogger.blogspot.com/2006/05/plsql-and-faces.html&quot; class=&quot;externalLink&quot;&gt;http://jj-blogger.blogspot.com/2006/05/plsql-and-faces.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.rittmanmead.com/blog/2004/09/john-flack-on-mvc-development-using-plsql/&quot; href=&quot;https://www.rittmanmead.com/blog/2004/09/john-flack-on-mvc-development-using-plsql/&quot; class=&quot;externalLink&quot;&gt;https://www.rittmanmead.com/blog/2004/09/john-flack-on-mvc-development-using-plsql/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.liberidu.com/blog/2016/11/02/how-you-should-or-shouldnt-design-program-for-a-performing-database-environment/&quot; href=&quot;http://www.liberidu.com/blog/2016/11/02/how-you-should-or-shouldnt-design-program-for-a-performing-database-environment/&quot; class=&quot;externalLink&quot;&gt;http://www.liberidu.com/blog/2016/11/02/how-you-should-or-shouldnt-design-program-for-a-performing-database-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references/books&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stevenfeuersteinonplsql.blogspot.com/2014/05/resources-for-new-plsql-developers.html&quot; href=&quot;http://stevenfeuersteinonplsql.blogspot.com/2014/05/resources-for-new-plsql-developers.html&quot; class=&quot;externalLink&quot;&gt;http://stevenfeuersteinonplsql.blogspot.com/2014/05/resources-for-new-plsql-developers.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/&quot; href=&quot;https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/beginning-oracle-plsql/9781484207376/&quot; href=&quot;https://www.safaribooksonline.com/library/view/beginning-oracle-plsql/9781484207376/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/beginning-oracle-plsql/9781484207376/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-plsql-for/9780764599576/&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-plsql-for/9780764599576/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-plsql-for/9780764599576/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; wiki&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.java2s.com/Tutorials/Database/Oracle_PL_SQL_Tutorial/index.htm&quot; href=&quot;http://www.java2s.com/Tutorials/Database/Oracle_PL_SQL_Tutorial/index.htm&quot; class=&quot;externalLink&quot;&gt;http://www.java2s.com/Tutorials/Database/Oracle_PL_SQL_Tutorial/index.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gerardnico.com/wiki/plsql/plsql&quot; href=&quot;https://gerardnico.com/wiki/plsql/plsql&quot; class=&quot;externalLink&quot;&gt;https://gerardnico.com/wiki/plsql/plsql&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; end&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Coderepo</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bcoderepo%20PL%2FSQL%5D%5D</link>
-<pubDate>Wed, 19 Jul 2017 18:55:00 GMT</pubDate>
-
-</item>
-<item>
-<title>PK/FK troubleshooting test case</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' to log the PK/FK errors ', event)&quot;&gt; to log the PK/FK errors &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' references', event)&quot;&gt; references&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; to log the PK/FK errors &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;
-ALTER TABLE MY_MASTER_TABLE ADD 
-CONSTRAINT MY_FK1
- FOREIGN KEY (MY_LOOKUP_TABLE1_ID)
- REFERENCES MY_LOOKUP_TABLE1 (ID)
- ENABLE
- NOVALIDATE;
- 
-ALTER TABLE MY_MASTER_TABLE ADD 
-CONSTRAINT MY_FK2
- FOREIGN KEY (MY_LOOKUP_TABLE2_ID)
- REFERENCES MY_LOOKUP_TABLE2 (ID)
- ENABLE
- VALIDATE
- EXCEPTIONS INTO MY_EXCEPT_TABLE;
-
-CREATE TABLE MY_EXCEPT_TABLE
-(
-  ROW_ID      ROWID,
-  OWNER       VARCHAR2(30 BYTE),
-  TABLE_NAME  VARCHAR2(30 BYTE),
-  CONSTRAINT  VARCHAR2(30 BYTE)
-);
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.java2s.com/Code/Oracle/Table/Createtablewithforeignkey.htm&quot; href=&quot;http://www.java2s.com/Code/Oracle/Table/Createtablewithforeignkey.htm&quot; class=&quot;externalLink&quot;&gt;http://www.java2s.com/Code/Oracle/Table/Createtablewithforeignkey.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apexplained.wordpress.com/2013/04/20/the-emp-and-dept-tables-in-oracle/&quot; href=&quot;https://apexplained.wordpress.com/2013/04/20/the-emp-and-dept-tables-in-oracle/&quot; class=&quot;externalLink&quot;&gt;https://apexplained.wordpress.com/2013/04/20/the-emp-and-dept-tables-in-oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.techonthenet.com/oracle/foreign_keys/foreign_keys.php&quot; href=&quot;https://www.techonthenet.com/oracle/foreign_keys/foreign_keys.php&quot; class=&quot;externalLink&quot;&gt;https://www.techonthenet.com/oracle/foreign_keys/foreign_keys.php&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Joins</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BPK%2FFK%20troubleshooting%20test%20case%5D%5D</link>
-<pubDate>Wed, 19 Jul 2017 18:06:00 GMT</pubDate>
-
-</item>
-<item>
-<title>dboptimizer vst grants</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docwiki.embarcadero.com/DBOptimizer/en/Grants_Example&quot; href=&quot;http://docwiki.embarcadero.com/DBOptimizer/en/Grants_Example&quot; class=&quot;externalLink&quot;&gt;http://docwiki.embarcadero.com/DBOptimizer/en/Grants_Example&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;CONFIGURING PROFILING
-
-Configuring Oracle
-Oracle users need access to V$ views. In order to configure Oracle to provide users with these privleges:
-If you are setting up Oracle 10 or later, ensure you are logged in as sys or system with the sysdba role, or the SELECT_CATALOG_ROLE has been granted to user_name.
-If you are setting up an earlier version of Oracle, ensure you are logged in as sys or system with the sysdba role.
-
-CONFIGURING TUNING
-
-Set Roles and Permissions on Data Sources
-In order to take advantage of all tuning features, each user must have a specific set of permissions. The code below creates a role with all required permissions. To create the required role, execute the SQL against the target data source, modified according to the specific needs of your site:
-/* Create the role */
-CREATE ROLE SQLTUNING NOT IDENTIFIED
-/
-GRANT SQLTUNING TO &quot;CONNECT&quot;
-/
-GRANT SQLTUNING TO SELECT_CATALOG_ROLE.
-/
-GRANT ANALYZE ANY TO SQLTUNING
-/
-GRANT CREATE ANY OUTLINE TO SQLTUNING
-/
-GRANT CREATE ANY PROCEDURE TO SQLTUNING
-/
-GRANT CREATE ANY TABLE TO SQLTUNING
-/
-GRANT CREATE ANY TRIGGER TO SQLTUNING
-/
-GRANT CREATE ANY VIEW TO SQLTUNING
-/
-GRANT CREATE PROCEDURE TO SQLTUNING
-/
-GRANT CREATE SESSION TO SQLTUNING
-/
-GRANT CREATE TRIGGER TO SQLTUNING
-/
-GRANT CREATE VIEW TO SQLTUNING
-/
-GRANT DROP ANY OUTLINE TO SQLTUNING
-/
-GRANT DROP ANY PROCEDURE TO SQLTUNING
-/
-GRANT DROP ANY TRIGGER TO SQLTUNING
-/
-GRANT DROP ANY VIEW TO SQLTUNING
-/
-GRANT SELECT ON SYS.V_$SESSION TO SQLTUNING /
-GRANT SELECT ON SYS.V_$SESSTAT TO SQLTUNING /
-GRANT SELECT ON SYS.V_$SQL TO SQLTUNING
-/
-GRANT SELECT ON SYS.V_$STATNAME TO SQLTUNING /
-
-Once complete, you can assign the role to users who will be running tuning jobs:
-
-/* Create a sample user*/
-CREATE USER TUNINGUSER IDENTIFIED BY VALUES '05FFD26E95CF4A4B'
-DEFAULT TABLESPACE USERS
-TEMPORARY TABLESPACE TEMP
-QUOTA UNLIMITED ON USERS
-PROFILE DEFAULT
-ACCOUNT UNLOCK
-/
-GRANT SQLTUNING TO TUNINGUSER
-/
-ALTER USER TUNINGUSER DEFAULT ROLE SQLTUNING /
-
-&lt;/pre&gt;</description>
-<category>CreatePerformanceTuningUser</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bdboptimizer%20vst%20grants%5D%5D</link>
-<pubDate>Wed, 19 Jul 2017 17:29:00 GMT</pubDate>
-
-</item>
-<item>
-<title>configure weblogic on RAC , active gridlink</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' References ', event)&quot;&gt; References &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Different approaches for connecting Weblogic Server to RAC database', event)&quot;&gt; Different approaches for connecting Weblogic Server to RAC database&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' youtube - Oracle WebLogic Active GridLink for RAC Demo', event)&quot;&gt; youtube - Oracle WebLogic Active GridLink for RAC Demo&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' whitepaper - Active GridLink for RAC: Intelligent Integration Between WebLogic Server and Oracle Real Application Clusters    &lt;- really good stuff	', event)&quot;&gt; whitepaper - Active GridLink for RAC: Intelligent Integration Between WebLogic Server and Oracle Real Application Clusters    &amp;lt;- really good stuff	&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' whitepaper - Oracle WebLogic Server Active GridLink for Oracle Real Application Clusters (RAC)', event)&quot;&gt; whitepaper - Oracle WebLogic Server Active GridLink for Oracle Real Application Clusters (RAC)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/', event)&quot;&gt; https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' How To Configure and Test a WebLogic Gridlink Datasource Connecting To An Oracle RAC SCAN Address (Doc ID 1382656.1)   &lt;- good stuff (with gridlink_ha.war)', event)&quot;&gt; How To Configure and Test a WebLogic Gridlink Datasource Connecting To An Oracle RAC SCAN Address (Doc ID 1382656.1)   &amp;lt;- good stuff (with gridlink_ha.war)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB  &lt;- Using GridLink Data Sources', event)&quot;&gt; https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB  &amp;lt;- Using GridLink Data Sources&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' https://docs.oracle.com/middleware/1212/wls/JDBCA/gridlink_datasources.htm#JDBCA373  &lt;- Using Active GridLink Data Sources', event)&quot;&gt; https://docs.oracle.com/middleware/1212/wls/JDBCA/gridlink_datasources.htm#JDBCA373  &amp;lt;- Using Active GridLink Data Sources&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 10.3.4 - How-To: Use Oracle WebLogic Server with a JDBC GridLink Data Source', event)&quot;&gt; 10.3.4 - How-To: Use Oracle WebLogic Server with a JDBC GridLink Data Source&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' configure ONS on weblogic ', event)&quot;&gt; configure ONS on weblogic &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other HOWTO ', event)&quot;&gt; other HOWTO &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' old - How-To Configure and Use Oracle Real Application Clusters (RAC) with Oracle WebLogic Server 10.3 ', event)&quot;&gt; old - How-To Configure and Use Oracle Real Application Clusters (RAC) with Oracle WebLogic Server 10.3 &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' pdf - Oracle WebLogic Server 10.3 and Oracle Real Application Clusters (RAC)', event)&quot;&gt; pdf - Oracle WebLogic Server 10.3 and Oracle Real Application Clusters (RAC)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' books safari ', event)&quot;&gt; books safari &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Oracle WebLogic Server 12c: First Look ', event)&quot;&gt; Oracle WebLogic Server 12c: First Look &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Tuning multi data sources – surviving RAC node failures', event)&quot;&gt; Tuning multi data sources – surviving RAC node failures&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', '  Using WebLogic Server with Oracle RAC', event)&quot;&gt;  Using WebLogic Server with Oracle RAC&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other videos', event)&quot;&gt; other videos&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' tuning weblogic ', event)&quot;&gt; tuning weblogic &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Tuning WebLogic Server', event)&quot;&gt; Tuning WebLogic Server&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Oracle Optimized Solution for Secure Oracle WebLogic Server', event)&quot;&gt; Oracle Optimized Solution for Secure Oracle WebLogic Server&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' How to Load balance heavy Traffic on Application Servers - Understanding Network Channels on WLS', event)&quot;&gt; How to Load balance heavy Traffic on Application Servers - Understanding Network Channels on WLS&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Performance Tuning Oracle Weblogic Server 12c', event)&quot;&gt; Performance Tuning Oracle Weblogic Server 12c&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' https://tekslate.com/weblogic-performance-tuning/', event)&quot;&gt; https://tekslate.com/weblogic-performance-tuning/&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Top Tuning Recommendations for WebLogic Server', event)&quot;&gt; Top Tuning Recommendations for WebLogic Server&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gorbachev weblogic workload management RAC ', event)&quot;&gt; gorbachev weblogic workload management RAC &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' weblogic app continuity ', event)&quot;&gt; weblogic app continuity &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' srvctl commit_outcome ', event)&quot;&gt; srvctl commit_outcome &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Advanced Configurations for Oracle Drivers and Databases ', event)&quot;&gt; Advanced Configurations for Oracle Drivers and Databases &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' doc - Programming WebLogic JDBC - Using WebLogic Server with Oracle RAC ', event)&quot;&gt; doc - Programming WebLogic JDBC - Using WebLogic Server with Oracle RAC &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' doc - Fusion Middleware Configuring and Managing JDBC Data Sources for Oracle WebLogic Server - Using Multi Data Sources with Oracle RAC ', event)&quot;&gt; doc - Fusion Middleware Configuring and Managing JDBC Data Sources for Oracle WebLogic Server - Using Multi Data Sources with Oracle RAC &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' weblogic deploy war file', event)&quot;&gt; weblogic deploy war file&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Weblogic Server - Deploy The WAR file', event)&quot;&gt; Weblogic Server - Deploy The WAR file&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; References &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; Different approaches for connecting Weblogic Server to RAC database&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.albinsblog.com/2014/04/different-approaches-for-connecting.html&quot; href=&quot;http://www.albinsblog.com/2014/04/different-approaches-for-connecting.html&quot; class=&quot;externalLink&quot;&gt;http://www.albinsblog.com/2014/04/different-approaches-for-connecting.html&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://java-x.blogspot.com/2006/05/weblogic-server-and-oracle-rac.html&quot; href=&quot;http://java-x.blogspot.com/2006/05/weblogic-server-and-oracle-rac.html&quot; class=&quot;externalLink&quot;&gt;http://java-x.blogspot.com/2006/05/weblogic-server-and-oracle-rac.html&lt;/a&gt;&lt;br&gt;weblogic is an application server &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=is+weblogic+a+web+server+or+application+server&amp;amp;oq=is+weblogic+a+web+server+or+app&amp;amp;aqs=chrome.1.69i57j0l2j33.5824j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=is+weblogic+a+web+server+or+application+server&amp;amp;oq=is+weblogic+a+web+server+or+app&amp;amp;aqs=chrome.1.69i57j0l2j33.5824j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=is+weblogic+a+web+server+or+application+server&amp;amp;oq=is+weblogic+a+web+server+or+app&amp;amp;aqs=chrome.1.69i57j0l2j33.5824j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; youtube - Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Active &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; for RAC Demo&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=8D6cf6Y5z94&quot; href=&quot;https://www.youtube.com/watch?v=8D6cf6Y5z94&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=8D6cf6Y5z94&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; whitepaper - Active &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; for RAC: Intelligent Integration Between &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server and Oracle Real Application Clusters    &amp;lt;- really good stuff	&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/middleware/weblogic/overview/activegridlinkwhitepaperoraclenec-1987937.pdf&quot; href=&quot;http://www.oracle.com/technetwork/middleware/weblogic/overview/activegridlinkwhitepaperoraclenec-1987937.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/middleware/weblogic/overview/activegridlinkwhitepaperoraclenec-1987937.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jpn.nec.com/soft/oracle/files/WLS_NECpart_OOW_2014.pdf&quot; href=&quot;http://jpn.nec.com/soft/oracle/files/WLS_NECpart_OOW_2014.pdf&quot; class=&quot;externalLink&quot;&gt;http://jpn.nec.com/soft/oracle/files/WLS_NECpart_OOW_2014.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/jeckels/oracle-web-logic-server-12c-seamless-oracle-database-integration&quot; href=&quot;https://www.slideshare.net/jeckels/oracle-web-logic-server-12c-seamless-oracle-database-integration&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/jeckels/oracle-web-logic-server-12c-seamless-oracle-database-integration&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/weblogicserver/active-gridlink-configuration-for-database-outages&quot; href=&quot;https://blogs.oracle.com/weblogicserver/active-gridlink-configuration-for-database-outages&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/weblogicserver/active-gridlink-configuration-for-database-outages&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; whitepaper - Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server Active &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; for Oracle Real Application Clusters (RAC)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/middleware/weblogic/gridlink-rac-wp-494900.pdf&quot; href=&quot;http://www.oracle.com/technetwork/middleware/weblogic/gridlink-rac-wp-494900.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/middleware/weblogic/gridlink-rac-wp-494900.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/&quot; href=&quot;https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/&quot; class=&quot;externalLink&quot;&gt;https://martincarstenbach.wordpress.com/2014/02/18/runtime-load-balancing-advisory-in-rac-12c/&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;h2&gt; How To Configure and Test a &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Gridlink Datasource Connecting To An Oracle RAC SCAN Address (Doc ID 1382656.1)   &amp;lt;- good stuff (with gridlink_ha.war)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;Note: Ideally the ONS and FAN should be configured due to the choice of the balancing algorithm to allocate connections to Oracle RAC nodes.&lt;br&gt;&lt;br&gt;Refer to the Documentation:&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB&quot; href=&quot;https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;hr&gt;&lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; data sources provide load balancing in XA and non-XA environments. &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; data sources use runtime connection load balancing (RCLB) to distribute connections to Oracle RAC instances based on Oracle FAN events issued by the database. This simplifies data source configuration and improves performance as the database drives load balancing of connections through the &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; data source, independent of the database topology.&lt;br&gt;(...)&lt;br&gt;If FAN is not enabled, &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; data sources use a round-robin load balancing algorithm to allocate connections to Oracle RAC nodes.&lt;br&gt;&lt;/blockquote&gt;&lt;h2&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB&quot; href=&quot;https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/middleware/11119/wls/JDBCA/gridlink_datasources.htm#CHDHHADB&lt;/a&gt;  &amp;lt;- Using &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; Data Sources&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h2&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/middleware/1212/wls/JDBCA/gridlink_datasources.htm#JDBCA373&quot; href=&quot;https://docs.oracle.com/middleware/1212/wls/JDBCA/gridlink_datasources.htm#JDBCA373&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/middleware/1212/wls/JDBCA/gridlink_datasources.htm#JDBCA373&lt;/a&gt;  &amp;lt;- Using Active &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; Data Sources&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;h2&gt; 10.3.4 - &lt;a tiddlylink=&quot;How-To&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#How-To&quot; href=&quot;http://karlarao.tiddlyspot.com#How-To&quot; class=&quot;externalLink null&quot;&gt;How-To&lt;/a&gt;: Use Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server with a JDBC &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; Data Source&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/middleware/weblogic/wls-jdbc-gridlink-howto-333331.html&quot; href=&quot;http://www.oracle.com/technetwork/middleware/weblogic/wls-jdbc-gridlink-howto-333331.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/middleware/weblogic/wls-jdbc-gridlink-howto-333331.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; configure ONS on weblogic &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dbhk.wordpress.com/2009/12/16/change-ons-listening-ports/&quot; href=&quot;https://dbhk.wordpress.com/2009/12/16/change-ons-listening-ports/&quot; class=&quot;externalLink&quot;&gt;https://dbhk.wordpress.com/2009/12/16/change-ons-listening-ports/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/weblogicserver/ons-configuration-in-wls&quot; href=&quot;https://blogs.oracle.com/weblogicserver/ons-configuration-in-wls&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/weblogicserver/ons-configuration-in-wls&lt;/a&gt;	&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.dbauniversity.com/2009/02/ons-port-and-crs-installation.html&quot; href=&quot;http://blog.dbauniversity.com/2009/02/ons-port-and-crs-installation.html&quot; class=&quot;externalLink&quot;&gt;http://blog.dbauniversity.com/2009/02/ons-port-and-crs-installation.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E11882_01/java.112/e16548/apxracfan.htm#JJDBC28947&quot; href=&quot;https://docs.oracle.com/cd/E11882_01/java.112/e16548/apxracfan.htm#JJDBC28947&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E11882_01/java.112/e16548/apxracfan.htm#JJDBC28947&lt;/a&gt;	&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://web.stanford.edu/dept/itss/docs/oracle/10gR2/java.102/b14355/fstconfo.htm&quot; href=&quot;https://web.stanford.edu/dept/itss/docs/oracle/10gR2/java.102/b14355/fstconfo.htm&quot; class=&quot;externalLink&quot;&gt;https://web.stanford.edu/dept/itss/docs/oracle/10gR2/java.102/b14355/fstconfo.htm&lt;/a&gt;&lt;br&gt;Testing WLS and ONS Configuration &lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/weblogicserver/testing-wls-and-ons-configuration&quot; href=&quot;https://blogs.oracle.com/weblogicserver/testing-wls-and-ons-configuration&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/weblogicserver/testing-wls-and-ons-configuration&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; other HOWTO &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; old - &lt;a tiddlylink=&quot;How-To&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#How-To&quot; href=&quot;http://karlarao.tiddlyspot.com#How-To&quot; class=&quot;externalLink null&quot;&gt;How-To&lt;/a&gt; Configure and Use Oracle Real Application Clusters (RAC) with Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server 10.3 &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/middleware/weblogic/index-086651.html&quot; href=&quot;http://www.oracle.com/technetwork/middleware/weblogic/index-086651.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/middleware/weblogic/index-086651.html&lt;/a&gt;&lt;br&gt;&lt;h3&gt; pdf - Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server 10.3 and Oracle Real Application Clusters (RAC)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/middleware/weblogic/oraclewls-rac-1-131306.pdf&quot; href=&quot;http://www.oracle.com/technetwork/middleware/weblogic/oraclewls-rac-1-131306.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/middleware/weblogic/oraclewls-rac-1-131306.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; books safari &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server 12c: First Look &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-weblogic-server/9781849687188/ch06.html#ch06lvl3sec05&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-weblogic-server/9781849687188/ch06.html#ch06lvl3sec05&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-weblogic-server/9781849687188/ch06.html#ch06lvl3sec05&lt;/a&gt;	&lt;br&gt;&lt;h3&gt; Tuning multi data sources – surviving RAC node failures&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-weblogic-server/9781849686846/ch03s08.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-weblogic-server/9781849686846/ch03s08.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-weblogic-server/9781849686846/ch03s08.html&lt;/a&gt;&lt;br&gt;&lt;h3&gt;  Using &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server with Oracle RAC&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://sqltech.cl/doc/oas11gR1/web.1111/e13737/oracle_rac.htm&quot; href=&quot;http://sqltech.cl/doc/oas11gR1/web.1111/e13737/oracle_rac.htm&quot; class=&quot;externalLink&quot;&gt;http://sqltech.cl/doc/oas11gR1/web.1111/e13737/oracle_rac.htm&lt;/a&gt;&lt;br&gt;Configuring And Managing &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; JDBC - Using &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server with Oracle RAC &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E13222_01/wls/docs103/jdbc_admin/oracle_rac.html&quot; href=&quot;https://docs.oracle.com/cd/E13222_01/wls/docs103/jdbc_admin/oracle_rac.html&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E13222_01/wls/docs103/jdbc_admin/oracle_rac.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; other videos&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;Creating a &lt;a tiddlylink=&quot;GridLink&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GridLink&quot; href=&quot;http://karlarao.tiddlyspot.com#GridLink&quot; class=&quot;externalLink null&quot;&gt;GridLink&lt;/a&gt; Data Source in &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server 12c &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=bRu-vFNWxPo&quot; href=&quot;https://www.youtube.com/watch?v=bRu-vFNWxPo&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=bRu-vFNWxPo&lt;/a&gt;&lt;br&gt;Advance Weblogic JDBC Configuration Tutorials - Connecting WLS with Oracle Database &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=5Od9iU3VahA&quot; href=&quot;https://www.youtube.com/watch?v=5Od9iU3VahA&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=5Od9iU3VahA&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/user/vimalkabra/videos&quot; href=&quot;https://www.youtube.com/user/vimalkabra/videos&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/user/vimalkabra/videos&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Admin Training (&lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; JDBC Configuration) - nCodeIT - Live Sample1 &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=fK2pUBiQUNo&quot; href=&quot;https://www.youtube.com/watch?v=fK2pUBiQUNo&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=fK2pUBiQUNo&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; tuning weblogic &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; Tuning &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E24329_01/web.1211/e24390/wls_tuning.htm#PERFM173&quot; href=&quot;https://docs.oracle.com/cd/E24329_01/web.1211/e24390/wls_tuning.htm#PERFM173&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E24329_01/web.1211/e24390/wls_tuning.htm#PERFM173&lt;/a&gt;&lt;br&gt;&lt;h3&gt; Oracle Optimized Solution for Secure Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://static.ziftsolutions.com/files/0000000055eeed84015608bba82c7933&quot; href=&quot;https://static.ziftsolutions.com/files/0000000055eeed84015608bba82c7933&quot; class=&quot;externalLink&quot;&gt;https://static.ziftsolutions.com/files/0000000055eeed84015608bba82c7933&lt;/a&gt;&lt;br&gt;&lt;h3&gt; How to Load balance heavy Traffic on Application Servers - Understanding Network Channels on WLS&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=7DHCDXQBro0&quot; href=&quot;https://www.youtube.com/watch?v=7DHCDXQBro0&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=7DHCDXQBro0&lt;/a&gt;&lt;br&gt;&lt;h3&gt; Performance Tuning Oracle Weblogic Server 12c&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/ajithpathiyil1/performance-tuning-oracle-weblogic-server-12c&quot; href=&quot;https://www.slideshare.net/ajithpathiyil1/performance-tuning-oracle-weblogic-server-12c&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/ajithpathiyil1/performance-tuning-oracle-weblogic-server-12c&lt;/a&gt;&lt;br&gt;&lt;h3&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://tekslate.com/weblogic-performance-tuning/&quot; href=&quot;https://tekslate.com/weblogic-performance-tuning/&quot; class=&quot;externalLink&quot;&gt;https://tekslate.com/weblogic-performance-tuning/&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; Top Tuning Recommendations for &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E13222_01/wls/docs81/perform/topten.html&quot; href=&quot;https://docs.oracle.com/cd/E13222_01/wls/docs81/perform/topten.html&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E13222_01/wls/docs81/perform/topten.html&lt;/a&gt;&lt;br&gt;&lt;h3&gt; gorbachev weblogic workload management RAC &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/alexgorbachev/demistifying-oracle-rac-workload-management-by-alex-gorbachev-nocoug-2010-spring-conference&quot; href=&quot;https://www.slideshare.net/alexgorbachev/demistifying-oracle-rac-workload-management-by-alex-gorbachev-nocoug-2010-spring-conference&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/alexgorbachev/demistifying-oracle-rac-workload-management-by-alex-gorbachev-nocoug-2010-spring-conference&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; weblogic app continuity &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; srvctl commit_outcome &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://books.google.com/books?id=gbp5AAAAQBAJ&amp;amp;pg=PA85&amp;amp;lpg=PA85&amp;amp;dq=srvctl+commit_outcome&amp;amp;source=bl&amp;amp;ots=6f4I6UabTa&amp;amp;sig=5td22Keu0pgA-bh_ivQkq09LBMA&amp;amp;hl=en&amp;amp;sa=X&amp;amp;ved=0ahUKEwjDhtDC-YjVAhXK34MKHY6gD84Q6AEISTAF#v=onepage&amp;amp;q=srvctl%20commit_outcome&amp;amp;f=false&quot; href=&quot;https://books.google.com/books?id=gbp5AAAAQBAJ&amp;amp;pg=PA85&amp;amp;lpg=PA85&amp;amp;dq=srvctl+commit_outcome&amp;amp;source=bl&amp;amp;ots=6f4I6UabTa&amp;amp;sig=5td22Keu0pgA-bh_ivQkq09LBMA&amp;amp;hl=en&amp;amp;sa=X&amp;amp;ved=0ahUKEwjDhtDC-YjVAhXK34MKHY6gD84Q6AEISTAF#v=onepage&amp;amp;q=srvctl%20commit_outcome&amp;amp;f=false&quot; class=&quot;externalLink&quot;&gt;https://books.google.com/books?id=gbp5AAAAQBAJ&amp;amp;pg=PA85&amp;amp;lpg=PA85&amp;amp;dq=srvctl+commit_outcome&amp;amp;source=bl&amp;amp;ots=6f4I6UabTa&amp;amp;sig=5td22Keu0pgA-bh_ivQkq09LBMA&amp;amp;hl=en&amp;amp;sa=X&amp;amp;ved=0ahUKEwjDhtDC-YjVAhXK34MKHY6gD84Q6AEISTAF#v=onepage&amp;amp;q=srvctl%20commit_outcome&amp;amp;f=false&lt;/a&gt;&lt;br&gt;&lt;h3&gt; Advanced Configurations for Oracle Drivers and Databases &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/middleware/1212/wls/JDBCA/ds_oracledriver.htm#JDBCA478&quot; href=&quot;https://docs.oracle.com/middleware/1212/wls/JDBCA/ds_oracledriver.htm#JDBCA478&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/middleware/1212/wls/JDBCA/ds_oracledriver.htm#JDBCA478&lt;/a&gt;&lt;br&gt;&lt;h3&gt; doc - Programming &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; JDBC - Using &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server with Oracle RAC &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E13222_01/wls/docs81/jdbc/oracle_rac.html&quot; href=&quot;https://docs.oracle.com/cd/E13222_01/wls/docs81/jdbc/oracle_rac.html&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E13222_01/wls/docs81/jdbc/oracle_rac.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/E17904_01/web.1111/e13737/oracle_rac.htm#JDBCA394&quot; href=&quot;http://docs.oracle.com/cd/E17904_01/web.1111/e13737/oracle_rac.htm#JDBCA394&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/E17904_01/web.1111/e13737/oracle_rac.htm#JDBCA394&lt;/a&gt;&lt;br&gt;&lt;h3&gt; doc - Fusion Middleware Configuring and Managing JDBC Data Sources for Oracle &lt;a tiddlylink=&quot;WebLogic&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#WebLogic&quot; href=&quot;http://karlarao.tiddlyspot.com#WebLogic&quot; class=&quot;externalLink null&quot;&gt;WebLogic&lt;/a&gt; Server - Using Multi Data Sources with Oracle RAC &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/E17904_01/web.1111/e13737/generic_oracle_rac.htm#JDBCA292&quot; href=&quot;http://docs.oracle.com/cd/E17904_01/web.1111/e13737/generic_oracle_rac.htm#JDBCA292&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/E17904_01/web.1111/e13737/generic_oracle_rac.htm#JDBCA292&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; weblogic deploy war file&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; Weblogic Server - Deploy The WAR file&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=yex4n8WXBlI&quot; href=&quot;https://www.youtube.com/watch?v=yex4n8WXBlI&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=yex4n8WXBlI&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>weblogic</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bconfigure%20weblogic%20on%20RAC%20%2C%20active%20gridlink%5D%5D</link>
-<pubDate>Tue, 18 Jul 2017 20:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>pl/sql cursor</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://sqlandplsql.com/2013/02/18/oracle-cursor-examples/&quot; href=&quot;https://sqlandplsql.com/2013/02/18/oracle-cursor-examples/&quot; class=&quot;externalLink&quot;&gt;https://sqlandplsql.com/2013/02/18/oracle-cursor-examples/&lt;/a&gt;    &amp;lt;- good stuff &lt;br&gt;PL/SQL multiple values select into &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=PL%2FSQL+multiple+values+select+into&amp;amp;oq=pl%2Fsql+mu&amp;amp;aqs=chrome.0.69i59j69i58j69i57j0l3.3831j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=PL%2FSQL+multiple+values+select+into&amp;amp;oq=pl%2Fsql+mu&amp;amp;aqs=chrome.0.69i59j69i58j69i57j0l3.3831j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=PL%2FSQL+multiple+values+select+into&amp;amp;oq=pl%2Fsql+mu&amp;amp;aqs=chrome.0.69i59j69i58j69i57j0l3.3831j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.rebellionrider.com/pl-sql-tutorials/how-to-initialize-variable-using-select-into-statement-in-pl-sql-by-manish-sharma.htm#.WWanmMZKWkI&quot; href=&quot;http://www.rebellionrider.com/pl-sql-tutorials/how-to-initialize-variable-using-select-into-statement-in-pl-sql-by-manish-sharma.htm#.WWanmMZKWkI&quot; class=&quot;externalLink&quot;&gt;http://www.rebellionrider.com/pl-sql-tutorials/how-to-initialize-variable-using-select-into-statement-in-pl-sql-by-manish-sharma.htm#.WWanmMZKWkI&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;ORA-01422&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA-01422&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA-01422&quot; class=&quot;externalLink null&quot;&gt;ORA-01422&lt;/a&gt;: fetch returns more than requested number of rows	&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tekstream.com/resources/ora-01422-exact-fetch-returns-more-than-requested-number-of-rows/&quot; href=&quot;https://www.tekstream.com/resources/ora-01422-exact-fetch-returns-more-than-requested-number-of-rows/&quot; class=&quot;externalLink&quot;&gt;https://www.tekstream.com/resources/ora-01422-exact-fetch-returns-more-than-requested-number-of-rows/&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>PL/SQL</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpl%2Fsql%20cursor%5D%5D</link>
-<pubDate>Mon, 17 Jul 2017 20:13:00 GMT</pubDate>
-
-</item>
-<item>
-<title>kill session procedure</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' prereq grant ', event)&quot;&gt; prereq grant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the script ', event)&quot;&gt; the script &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the grant ', event)&quot;&gt; the grant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' kill session ', event)&quot;&gt; kill session &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' generate kill all commands', event)&quot;&gt; generate kill all commands&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;Please create the “killsession” procedure using the SYSDBA user. And then as SYSDBA grant “alter system” and “select on sys.v_$session” to SYSTEM user. And then finally grant “execute on system.killsession” to alloc_app_perf&lt;br&gt;Please create on all ALLOC environments. Then later on we can drop the procedure.&lt;br&gt;&lt;br&gt;&lt;h1&gt; prereq grant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;grant alter system to system;
-grant select on sys.v_$session to system;
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; the script &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;pre&gt;create or replace procedure system.killsession (killsid IN VARCHAR2)
-as
-killserial   varchar2(20);
- 
-begin
-killserial:='none';
-select serial#
-into killserial
-from sys.v_$session
-where sid = killsid;
- 
-execute immediate 'alter system kill session ''' || to_char (killsid) || ', ' || to_char (killserial) || ''' immediate' ;
- 
-EXCEPTION
-WHEN NO_DATA_FOUND THEN
-dbms_output.put_line('The SID ' || killsid || ' does not exist or cannot be killed');
- 
-end ;
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; the grant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;grant execute on system.killsession to &amp;lt;user&amp;gt;;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; kill session &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set serveroutput on
-exec system.killsession ('35');
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; generate kill all commands&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set pages 0
-select /* kill all */ 'exec system.killsession ('''||sid||''');'
-from v$session 
-where username = 'ALLOC_APP_USER';
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;also create &lt;a tiddlylink=&quot;CreatePerformanceTuningUser&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CreatePerformanceTuningUser&quot; href=&quot;http://karlarao.tiddlyspot.com#CreatePerformanceTuningUser&quot; class=&quot;externalLink null&quot;&gt;CreatePerformanceTuningUser&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&quot; href=&quot;https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&quot; class=&quot;externalLink&quot;&gt;https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&quot; href=&quot;https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&quot; class=&quot;externalLink&quot;&gt;https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/misc/killing-oracle-sessions&quot; href=&quot;https://oracle-base.com/articles/misc/killing-oracle-sessions&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/misc/killing-oracle-sessions&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>DatabaseHealthCheck</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bkill%20session%20procedure%5D%5D</link>
-<pubDate>Mon, 17 Jul 2017 20:03:00 GMT</pubDate>
 
 </item>
 </channel>
