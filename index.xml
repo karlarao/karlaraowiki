@@ -6,13 +6,91 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2017 YourName</copyright>
-<pubDate>Tue, 01 Aug 2017 07:24:34 GMT</pubDate>
-<lastBuildDate>Tue, 01 Aug 2017 07:24:34 GMT</lastBuildDate>
+<pubDate>Thu, 03 Aug 2017 19:27:41 GMT</pubDate>
+<lastBuildDate>Thu, 03 Aug 2017 19:27:41 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>Plan Line ID</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 12.1.0.2', event)&quot;&gt; 12.1.0.2&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' yes Plan Line ID on SQL Monitor Plan Tab was introduced', event)&quot;&gt; yes Plan Line ID on SQL Monitor Plan Tab was introduced&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 12.1.0.1', event)&quot;&gt; 12.1.0.1&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' no Plan Line ID on SQL Monitor Plan Tab ', event)&quot;&gt; no Plan Line ID on SQL Monitor Plan Tab &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' @@ How to get Plan Tab - Plan Line ID from 11.2 (I think even 11.1 - SQL_PLAN_LINE_ID was introduced) to 12.1.0.1  ??? @@ &lt;- Use SQL Developer 4.2 ', event)&quot;&gt; @@ How to get Plan Tab - Plan Line ID from 11.2 (I think even 11.1 - SQL_PLAN_LINE_ID was introduced) to 12.1.0.1  ??? @@ &amp;lt;- Use SQL Developer 4.2 &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 12.1.0.1 SQL Developer -&gt; Tools -&gt; Real Time SQL Monitor', event)&quot;&gt; 12.1.0.1 SQL Developer -&amp;gt; Tools -&amp;gt; Real Time SQL Monitor&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 11.2.0.4 SQL Developer -&gt; Tools -&gt; Real Time SQL Monitor', event)&quot;&gt; 11.2.0.4 SQL Developer -&amp;gt; Tools -&amp;gt; Real Time SQL Monitor&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DB Optimizer - my go-to SQL profiling/tuning tool ', event)&quot;&gt; DB Optimizer - my go-to SQL profiling/tuning tool &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the testcase SQL I used ', event)&quot;&gt; the testcase SQL I used &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt; &lt;br&gt;&lt;br&gt;&lt;blockquote&gt;&lt;span class=&quot;marked&quot;&gt;&lt;br&gt;Starting version 12.1.0.2 the &quot;Plan Line ID&quot; was introduced in SQL Monitor - Plan Tab. And for versions below 12.1.0.2, to get &quot;Plan Line ID&quot; on Plan Tab use SQL Developer 4.2&lt;br&gt;&lt;/span&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;&lt;span class=&quot;marked&quot;&gt; What's important about the Plan Line ID ? &lt;/span&gt;&lt;br&gt;&lt;br&gt;On SQL Monitor reports the first two sections are Plan Statistics and Plan tabs. And the way you would correlate these two information is through Plan Line ID. &lt;br&gt;&lt;ul&gt;&lt;li&gt; Plan Statistics - is where you check for details where the time is being spent on the execution plan&lt;/li&gt;&lt;li&gt; Plan Tab - contains the critical information for drilling down further (see wiki &lt;a tiddlylink=&quot;“Object Name”, “Access Predicates”, “Filter Predicates”, “Projection”&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#“Object Name”, “Access Predicates”, “Filter Predicates”, “Projection”&quot; href=&quot;http://karlarao.tiddlyspot.com#%E2%80%9CObject%20Name%E2%80%9D,%20%E2%80%9CAccess%20Predicates%E2%80%9D,%20%E2%80%9CFilter%20Predicates%E2%80%9D,%20%E2%80%9CProjection%E2%80%9D&quot; class=&quot;externalLink null&quot;&gt;“Object Name”, “Access Predicates”, “Filter Predicates”, “Projection”&lt;/a&gt;) on the specific part of the SQL text  &lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;marked&quot;&gt;Imagine &lt;strong&gt;&lt;u&gt;without&lt;/u&gt;&lt;/strong&gt; Plan Line ID on Plan Tab section of SQL Monitor and you are reading a 1000 lines of SQL execution plan and the bottleneck is on line 342. What would you do? Well, you start from line 1 then hit the down arrow key then count 342 times until you reach that specific Plan Line.&lt;/span&gt; As a consultant dealing with remote databases if this is the only info you have it's not a good troubleshooting experience, and you are better off getting this info using &lt;a tiddlylink=&quot;DBMS_XPLAN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_XPLAN&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_XPLAN&quot; class=&quot;externalLink null&quot;&gt;DBMS_XPLAN&lt;/a&gt;.&lt;a tiddlylink=&quot;DISPLAY_CURSOR&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DISPLAY_CURSOR&quot; href=&quot;http://karlarao.tiddlyspot.com#DISPLAY_CURSOR&quot; class=&quot;externalLink null&quot;&gt;DISPLAY_CURSOR&lt;/a&gt; (Column Projection and Predicate filter/access Information sections)&lt;br&gt;&lt;br&gt;On SQL Developer 4.2 there's an enhanced &quot;Real Time SQL Monitoring viewer&quot; where the Plan Tab section Plan Line ID is aligned with “Obj”,“Access”,“Filter”,“Projection”,“&lt;a tiddlylink=&quot;QBlock&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#QBlock&quot; href=&quot;http://karlarao.tiddlyspot.com#QBlock&quot; class=&quot;externalLink null&quot;&gt;QBlock&lt;/a&gt;” - all of that info exposed in every row, no more clicking on every line (yes you click on every line of SQL Monitor html report to expose filter/access predicates). This improvement is very powerful and makes troubleshooting very easy. &lt;br&gt;&lt;br&gt;In SQL Monitor or SQL Developer - &quot;Real Time SQL Monitoring viewer&quot; you have to flip back and forth on both the Plan Statistics and Plan Tabs. I personally like having the &quot;time spent&quot; and &quot;other plan info&quot; shown all in one line. That's why I use &lt;span class=&quot;marked&quot;&gt;DB Optimizer - my go-to SQL profiling/tuning tool (see the bottom section of this post)&lt;/span&gt; whenever I'd like to dig in deeper on the business logic behind the SQL. It makes it easy to go through hundreds of lines of exec plan with all info in one line, VST and &lt;a tiddlylink=&quot;SQL_TEXT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_TEXT&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_TEXT&quot; class=&quot;externalLink null&quot;&gt;SQL_TEXT&lt;/a&gt; (with dynamic highlighting) on the top, and system level and session level profiling on another tab. And all of this can be saved offline! :)  &lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 12.1.0.2&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; yes Plan Line ID on SQL Monitor Plan Tab was introduced&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;Plan Statistics    &lt;br&gt;&lt;img src=&quot;http://i.imgur.com/azLlOxk.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;Plan Tab&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/MGU1JYt.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; 12.1.0.1&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; no Plan Line ID on SQL Monitor Plan Tab &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;Plan Statistics&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/fojDlku.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;Plan Tab&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/Z0E9WyY.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; &lt;span class=&quot;marked&quot;&gt; How to get Plan Tab - Plan Line ID from 11.2 (I think even 11.1 - &lt;a tiddlylink=&quot;SQL_PLAN_LINE_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_PLAN_LINE_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_PLAN_LINE_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_PLAN_LINE_ID&lt;/a&gt; was introduced) to 12.1.0.1  ??? &lt;/span&gt; &amp;lt;- Use SQL Developer 4.2 &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;On version 4.2 of SQL Developer they enhanced the &quot;Real Time SQL Monitoring viewer&quot; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/developer-tools/sql-developer/sqldev-newfeatures-v42-3211987.html&quot; href=&quot;http://www.oracle.com/technetwork/developer-tools/sql-developer/sqldev-newfeatures-v42-3211987.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/developer-tools/sql-developer/sqldev-newfeatures-v42-3211987.html&lt;/a&gt; &lt;br&gt;&lt;h2&gt; 12.1.0.1 SQL Developer -&amp;gt; Tools -&amp;gt; Real Time SQL Monitor&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;Plan Statistics&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/cQ5ctHG.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;Plan Tab&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/zWrVlDL.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h2&gt; 11.2.0.4 SQL Developer -&amp;gt; Tools -&amp;gt; Real Time SQL Monitor&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;Plan Statistics&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/AnPiIE3.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;Plan Tab&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/HcMYsfA.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; DB Optimizer - my go-to SQL profiling/tuning tool &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;span class=&quot;marked&quot;&gt;DB Optimizer - Tuning Tab&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Here I can quickly correlate where the time is being spent vs what the logic behind the SQL (VST - Visual SQL Tuning Diagram) vs SQL TEXT. When I click on SKEW (B) object the corresponding sections in SQL TEXT with any association to SKEW (B) gets highlighted. The VST Diagram area also shows the row count and filter ratios/rows between joined tables, and also the join method used and execution path (dark green - START, red - FINISH). Plus the object details (index,tables,stats,histogram) around the &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt;. &lt;/li&gt;&lt;li&gt; Here we are doing many to many join of the SKEW table (alias A to D). And as we join step by step from A to D you can see on the &quot;Actual Statistics&quot; section &quot;CR Buffer Gets&quot; column that the number linearly increases per table join. From 1.67M (A-&amp;gt;B) to 3.3M (B-&amp;gt;C) to 4.9M (C-&amp;gt;D). That's why this is CPU/LIO intensive SQL. &lt;/li&gt;&lt;li&gt; It produces this row source stats by injecting gather_plan_statistics hint when you run the SQL. So yes the SQL has to finish to get &quot;Actual Statistics&quot; data and here I modified the SQL from 10000000 to 1000. On cases where I can't easily do this &quot;trick&quot; to produce the &quot;Actual Statistics&quot; and if the SQL would run for hours, I would just grab the VST diagram, Execution Plan from DB optimizer and correlate this info with SQL Monitor. But then the pain here is DB Optimizer doesn't show Plan Line ID, arghh. But it allows wildcard search on the execution plan so I can just key in the specific operation and from there I can highlight and get to my Plan Line ID and do correlation. This issue is not a deal breaker for me, but I hope they fix this on the next release :) &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/5bY7S3R.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;While doing SQL tuning on one tab, you can also do system level and session level profiling on another tab. This interface looks like OEM. And it's very powerful and fast and &lt;a tiddlylink=&quot;RAC-aware&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#RAC-aware&quot; href=&quot;http://karlarao.tiddlyspot.com#RAC-aware&quot; class=&quot;externalLink null&quot;&gt;RAC-aware&lt;/a&gt;. Drilling down from System to Session level is very easy. And I can read PL/SQL packages/procedures right away where the &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; bottleneck is coming from. &lt;br&gt;&lt;span class=&quot;marked&quot;&gt;DB Optimizer - Profiling Tab&lt;/span&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/ptkNUEL.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 95%; height: 95%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;And the beauty about this is I can save my profiling and SQL tuning sessions offline together with my screenshots, SQL Monitor, and &lt;a tiddlylink=&quot;SQLD360&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLD360&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLD360&quot; class=&quot;externalLink null&quot;&gt;SQLD360&lt;/a&gt; files. &lt;br&gt;&lt;img src=&quot;http://i.imgur.com/TQYkUF4.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the testcase SQL I used &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;create table hr.skew as select * from dba_objects; 
+
+select /*+ monitor ordered
+        use_nl(b) use_nl(c) use_nl(d)
+        full(a) full(b) full(c) full(d) */
+    count(*)
+from
+    hr.skew a,
+    hr.skew b,
+    hr.skew c,
+    hr.skew d
+where
+    a.object_id = b.object_id
+and b.object_id = c.object_id
+and c.object_id = d.object_id
+and rownum &amp;lt;= 10000000;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>RealTimeSQLMonitoring-sql_monitor</category>
+<category>ExecutionPlans</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BPlan%20Line%20ID%5D%5D</link>
+<pubDate>Thu, 03 Aug 2017 19:27:40 GMT</pubDate>
+
+</item>
+<item>
+<title>“Object Name”, “Access Predicates”, “Filter Predicates”, “Projection”</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Reading Execution Plans ', event)&quot;&gt; Reading Execution Plans &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' “Access Predicates” ', event)&quot;&gt; “Access Predicates” &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' “Filter Predicates”', event)&quot;&gt; “Filter Predicates”&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' column projection ', event)&quot;&gt; column projection &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' QB name ', event)&quot;&gt; QB name &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Reading Execution Plans &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/TGSQL/tgsql_interp.htm#TGSQL94618&quot; href=&quot;https://docs.oracle.com/database/121/TGSQL/tgsql_interp.htm#TGSQL94618&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/TGSQL/tgsql_interp.htm#TGSQL94618&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/sql/query-tuning-101:-comparing-execution-plans-and-access-vs-filter-predicates&quot; href=&quot;https://blogs.oracle.com/sql/query-tuning-101:-comparing-execution-plans-and-access-vs-filter-predicates&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/sql/query-tuning-101:-comparing-execution-plans-and-access-vs-filter-predicates&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/files/Oracle_SQL_Plan_Execution.pdf&quot; href=&quot;http://blog.tanelpoder.com/files/Oracle_SQL_Plan_Execution.pdf&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/files/Oracle_SQL_Plan_Execution.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; “Access Predicates” &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Predicates used to locate rows in an access structure. For example, start or stop predicates for an index range scan, hash join &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; “Filter Predicates”&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Predicates used to filter rows before producing them.&lt;/li&gt;&lt;li&gt; Any condition that would throw away/filter rows &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; column projection &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;“column projection” is what you extract from the rowsource you are reading.&lt;br&gt;In set theory you project (subset of columns) and filter (subset of rows) &lt;br&gt;so for example “select object_id from table” then you are projecting just “object_id” column&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; QB name &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; name of the query block, either system-generated or defined by the user with the &lt;a tiddlylink=&quot;QB_NAME&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#QB_NAME&quot; href=&quot;http://karlarao.tiddlyspot.com#QB_NAME&quot; class=&quot;externalLink null&quot;&gt;QB_NAME&lt;/a&gt; hint&lt;/li&gt;&lt;/ul&gt;</description>
+<category>ExecutionPlans</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B%E2%80%9CObject%20Name%E2%80%9D%2C%20%E2%80%9CAccess%20Predicates%E2%80%9D%2C%20%E2%80%9CFilter%20Predicates%E2%80%9D%2C%20%E2%80%9CProjection%E2%80%9D%5D%5D</link>
+<pubDate>Thu, 03 Aug 2017 18:54:00 GMT</pubDate>
+
+</item>
+<item>
+<title>RealTimeSQLMonitoring-sql_monitor</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ''Monitoring SQL statements with Real-Time SQL Monitoring [ID 1380492.1]''', event)&quot;&gt; ''Monitoring SQL statements with Real-Time SQL Monitoring [ID 1380492.1]''&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ''hint''', event)&quot;&gt; ''hint''&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ''spool from SQL Developer''', event)&quot;&gt; ''spool from SQL Developer''&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using SQLD360 - all SQL monitor report types in one shot ', event)&quot;&gt; using SQLD360 - all SQL monitor report types in one shot &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' references ', event)&quot;&gt; references &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;strong&gt;Monitoring SQL statements with &lt;a tiddlylink=&quot;Real-Time&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Real-Time&quot; href=&quot;http://karlarao.tiddlyspot.com#Real-Time&quot; class=&quot;externalLink null&quot;&gt;Real-Time&lt;/a&gt; SQL Monitoring [ID 1380492.1]&lt;/strong&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://structureddata.org/2008/01/06/oracle-11g-real-time-sql-monitoring-using-dbms_sqltunereport_sql_monitor&quot; href=&quot;http://structureddata.org/2008/01/06/oracle-11g-real-time-sql-monitoring-using-dbms_sqltunereport_sql_monitor&quot; class=&quot;externalLink&quot;&gt;http://structureddata.org/2008/01/06/oracle-11g-real-time-sql-monitoring-using-dbms_sqltunereport_sql_monitor&lt;/a&gt; &lt;br&gt;&lt;pre&gt;If you want to get a SQL Monitor report for a statement you just ran in your session (similar to dbms_xplan.display_cursor) then use this command:
+
+set pagesize 0 echo off timing off linesize 1000 trimspool on trim on long 2000000 longchunksize 2000000
+select DBMS_SQLTUNE.REPORT_SQL_MONITOR(
+   session_id=&amp;gt;sys_context('userenv','sid'),
+   report_level=&amp;gt;'ALL') as report
+from dual;
+
+Or if you want to generate the EM Active SQL Monitor Report (my recommendation) from any SQL_ID you can use:
+
+set pagesize 0 echo off timing off linesize 1000 trimspool on trim on long 2000000 longchunksize 2000000 feedback off
+spool sqlmon_4vbqtp97hwqk8.html
+select dbms_sqltune.report_sql_monitor(report_level=&amp;gt;'+histogram', type=&amp;gt;'EM', sql_id=&amp;gt;'4vbqtp97hwqk8') monitor_report from dual;
+spool off
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; &lt;strong&gt;hint&lt;/strong&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;/*+ MONITOR */
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; &lt;strong&gt;spool from SQL Developer&lt;/strong&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;--select * from v$sql where sql_fulltext like '%&amp;amp;txt%' order by last_load_time;
+SET TERMOUT OFF
+SET verify off;
+ 
+ 
+spool C:\Users\Administrator\Documents\sql_stats\fe_stage2a.html;
+ 
+select
+  dbms_sql_monitor.report_sql_monitor(sql_id =&amp;gt; '&amp;amp;sql_id',
+                                      type =&amp;gt; decode(upper('&amp;amp;&amp;amp;ptype'),'A', 'ACTIVE', 'H' , 'HTML', 'TEXT'), --'TEXT'  'HTML'  'ACTIVE'
+                                      report_level =&amp;gt; 'ALL') as report
+FROM DUAL;
+SPOOL OFF;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; using &lt;a tiddlylink=&quot;SQLD360&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLD360&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLD360&quot; class=&quot;externalLink null&quot;&gt;SQLD360&lt;/a&gt; - all SQL monitor report types in one shot &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/karlarao/report_sql_monitor&quot; href=&quot;https://github.com/karlarao/report_sql_monitor&quot; class=&quot;externalLink&quot;&gt;https://github.com/karlarao/report_sql_monitor&lt;/a&gt;&lt;br&gt;run with &lt;br&gt;&lt;pre&gt;@sqld360 &amp;lt;SQL_ID&amp;gt; T 
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/database/focus-areas/manageability/sqlmonitor-084401.html?ssSourceSiteId=otncn&quot; href=&quot;http://www.oracle.com/technetwork/database/focus-areas/manageability/sqlmonitor-084401.html?ssSourceSiteId=otncn&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/database/focus-areas/manageability/sqlmonitor-084401.html?ssSourceSiteId=otncn&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; SQL Monitor FAQ&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracledoug.com/serendipity/index.php?/archives/1506-Real-Time-SQL-Monitoring-in-SQL-Developer.html&quot; href=&quot;http://oracledoug.com/serendipity/index.php?/archives/1506-Real-Time-SQL-Monitoring-in-SQL-Developer.html&quot; class=&quot;externalLink&quot;&gt;http://oracledoug.com/serendipity/index.php?/archives/1506-Real-Time-SQL-Monitoring-in-SQL-Developer.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; SQL Developer&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracledoug.com/serendipity/index.php?/archives/1642-Real-Time-SQL-Monitoring-Statement-Not-Appearing.html&quot; href=&quot;http://oracledoug.com/serendipity/index.php?/archives/1642-Real-Time-SQL-Monitoring-Statement-Not-Appearing.html&quot; class=&quot;externalLink&quot;&gt;http://oracledoug.com/serendipity/index.php?/archives/1642-Real-Time-SQL-Monitoring-Statement-Not-Appearing.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; hidden parameter to increase the lines - statement not appearing&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracledoug.com/serendipity/index.php?%2Farchives%2F1646-Real-Time-SQL-Monitoring-Retention.html&quot; href=&quot;http://oracledoug.com/serendipity/index.php?%2Farchives%2F1646-Real-Time-SQL-Monitoring-Retention.html&quot; class=&quot;externalLink&quot;&gt;http://oracledoug.com/serendipity/index.php?%2Farchives%2F1646-Real-Time-SQL-Monitoring-Retention.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; retention&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://structureddata.org/2011/08/28/reading-active-sql-monitor-reports-offline/&quot; href=&quot;http://structureddata.org/2011/08/28/reading-active-sql-monitor-reports-offline/&quot; class=&quot;externalLink&quot;&gt;http://structureddata.org/2011/08/28/reading-active-sql-monitor-reports-offline/&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; &lt;strong&gt;offline view&lt;/strong&gt; of sql monitor reports&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-base.com/blog/2011/03/22/real-time-sql-monitoring-update/&quot; href=&quot;http://www.oracle-base.com/blog/2011/03/22/real-time-sql-monitoring-update/&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-base.com/blog/2011/03/22/real-time-sql-monitoring-update/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.aristadba.com/?tag=real-time-sql-monitoring&quot; href=&quot;http://blog.aristadba.com/?tag=real-time-sql-monitoring&quot; class=&quot;externalLink&quot;&gt;http://blog.aristadba.com/?tag=real-time-sql-monitoring&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pythian.com/news/582/tuning-pack-11g-real-time-sql-monitoring/&quot; href=&quot;http://www.pythian.com/news/582/tuning-pack-11g-real-time-sql-monitoring/&quot; class=&quot;externalLink&quot;&gt;http://www.pythian.com/news/582/tuning-pack-11g-real-time-sql-monitoring/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://joze-senegacnik.blogspot.com/2009/12/vsqlmonitor-and-vsqlplanmonitor.html&quot; href=&quot;http://joze-senegacnik.blogspot.com/2009/12/vsqlmonitor-and-vsqlplanmonitor.html&quot; class=&quot;externalLink&quot;&gt;http://joze-senegacnik.blogspot.com/2009/12/vsqlmonitor-and-vsqlplanmonitor.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; V$&lt;a tiddlylink=&quot;SQL_MONITOR&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_MONITOR&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_MONITOR&quot; class=&quot;externalLink null&quot;&gt;SQL_MONITOR&lt;/a&gt; and V$&lt;a tiddlylink=&quot;SQL_PLAN_MONITOR&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_PLAN_MONITOR&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_PLAN_MONITOR&quot; class=&quot;externalLink null&quot;&gt;SQL_PLAN_MONITOR&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL Tuning</category>
+<link>http://karlarao.tiddlyspot.com#RealTimeSQLMonitoring-sql_monitor</link>
+<pubDate>Thu, 03 Aug 2017 17:18:00 GMT</pubDate>
+
+</item>
+<item>
 <title>..Stats Gathering Procedure</title>
-<description>&lt;br&gt;&lt;pre&gt;
+<description>&lt;pre&gt;parameters: 
+    p_owner       
+    p_tabname     
+    p_partname    
+    p_granularity 
+    p_est_percent 
+    p_method_opt
+    p_degree
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;
 CREATE OR REPLACE PROCEDURE alloc_app_perf.table_stats 
 ( 
     p_owner IN varchar2,
@@ -20,7 +98,8 @@ CREATE OR REPLACE PROCEDURE alloc_app_perf.table_stats
     p_partname IN varchar2 default NULL,  
     p_granularity IN varchar2 default 'GLOBAL AND PARTITION',
     p_est_percent IN varchar2 default 'DBMS_STATS.AUTO_SAMPLE_SIZE',
-    p_method_opt IN varchar2 default 'FOR ALL COLUMNS SIZE AUTO'
+    p_method_opt IN varchar2 default 'FOR ALL COLUMNS SIZE AUTO',
+    p_degree IN varchar2 default 8
 ) 
 IS
     action varchar2(128);
@@ -37,7 +116,7 @@ BEGIN
             DBMS_STATS.GATHER_TABLE_STATS('||
             'ownname=&amp;gt;'''||p_owner||''',tabname=&amp;gt;'''||p_tabname||
             ''',partname=&amp;gt;'''||p_partname||''',granularity=&amp;gt;'''||v_mode||
-            ''',estimate_percent=&amp;gt;'||p_est_percent||',method_opt=&amp;gt;'''||p_method_opt||''',cascade=&amp;gt;TRUE,degree=&amp;gt;4);
+            ''',estimate_percent=&amp;gt;'||p_est_percent||',method_opt=&amp;gt;'''||p_method_opt||''',cascade=&amp;gt;TRUE,degree=&amp;gt;'||p_degree||');
         END;';
 
         execute immediate cmd;
@@ -48,7 +127,7 @@ BEGIN
         BEGIN 
             DBMS_STATS.GATHER_TABLE_STATS('||
             'ownname=&amp;gt;'''||p_owner||''',tabname=&amp;gt;'''||p_tabname||
-            ''',estimate_percent=&amp;gt;'||p_est_percent||',method_opt=&amp;gt;'''||p_method_opt||''',cascade=&amp;gt;TRUE,degree=&amp;gt;4);
+            ''',estimate_percent=&amp;gt;'||p_est_percent||',method_opt=&amp;gt;'''||p_method_opt||''',cascade=&amp;gt;TRUE,degree=&amp;gt;'||p_degree||');
         END;';
 
         execute immediate cmd;
@@ -56,15 +135,7 @@ BEGIN
 END;
 /
 
-
-parameters: 
-    p_owner       
-    p_tabname     
-    p_partname    
-    p_granularity 
-    p_est_percent 
-    p_method_opt
-
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;
 grant analyze any to alloc_app_perf;
 exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'CLASS_SALES')
 exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'CLASS_SALES',p_est_percent=&amp;gt;'dbms_stats.auto_sample_size')
@@ -82,7 +153,7 @@ exec alloc_app_perf.table_stats(p_owner=&amp;gt;'BAS',p_tabname=&amp;gt;'DEMO_SK
 &lt;/pre&gt;</description>
 <category>stats gathering</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B..Stats%20Gathering%20Procedure%5D%5D</link>
-<pubDate>Tue, 01 Aug 2017 07:24:33 GMT</pubDate>
+<pubDate>Wed, 02 Aug 2017 21:05:00 GMT</pubDate>
 
 </item>
 <item>
@@ -1123,83 +1194,6 @@ AND o.object_id &amp;lt;&amp;gt; -1
 <category>row lock contention</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Btx%20mode%206%5D%5D</link>
 <pubDate>Sat, 22 Jul 2017 23:43:00 GMT</pubDate>
-
-</item>
-<item>
-<title>ez connect, ez_connect, easy connect</title>
-<description>&lt;pre&gt;sqlplus sys/oracle@enkdb03.enkitec.com/dw.enkitec.com as sysdba
-
-sqlplus scott/aaa@SERVER/orcl
-sqlplus scott/aaa@SERVER:1234/orcl
-sqlplus scott/aaa@//SERVER/orcl
-&lt;/pre&gt;</description>
-<category>NetServices,Network,Mail</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bez%20connect%2C%20ez_connect%2C%20easy%20connect%5D%5D</link>
-<pubDate>Fri, 21 Jul 2017 20:12:00 GMT</pubDate>
-
-</item>
-<item>
-<title>no more data to read from socket</title>
-<description>java.sql.&lt;a tiddlylink=&quot;SQLRecoverableException&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLRecoverableException&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLRecoverableException&quot; class=&quot;externalLink null&quot;&gt;SQLRecoverableException&lt;/a&gt;: No More Data To Read From Socket (Doc ID 1633316.1)&lt;br&gt;&lt;br&gt;alter session set &quot;_&lt;a tiddlylink=&quot;OPTIMIZER_COST_BASED_TRANSFORMATION&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OPTIMIZER_COST_BASED_TRANSFORMATION&quot; href=&quot;http://karlarao.tiddlyspot.com#OPTIMIZER_COST_BASED_TRANSFORMATION&quot; class=&quot;externalLink null&quot;&gt;OPTIMIZER_COST_BASED_TRANSFORMATION&lt;/a&gt;&quot; = OFF;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>NetServices,Network,Mail</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bno%20more%20data%20to%20read%20from%20socket%5D%5D</link>
-<pubDate>Thu, 20 Jul 2017 20:53:00 GMT</pubDate>
-
-</item>
-<item>
-<title>row lock contention w/ ash</title>
-<description>&lt;h1&gt; generate ash report&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; instrument with ash (hist)&lt;/h1&gt;&lt;pre&gt;define _start_time='09/26/2012 15:00'
-define _end_time='09/26/2012 16:00'
-
-
--- QUERY MODULE
-col program format a40
-col module format a20
-col event format a30
-select count(*), session_id, program, module, CLIENT_ID, sql_id, event, mod(p1,16) as lock_mode, BLOCKING_SESSION from 
-dba_hist_active_sess_history
-where sample_time 
-                                       between to_date('&amp;amp;_start_time', 'MM/DD/YY HH24:MI') 
-                                       and to_date('&amp;amp;_end_time', 'MM/DD/YY HH24:MI')
-and session_id in (sid1,sid2,sid3) -- walk the chain of blockers
-and client_id = '10094003'
-group by session_id, program, module, CLIENT_ID, sql_id, event, mod(p1,16), BLOCKING_SESSION
-order by 1 asc;
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; with v$active_session_history&lt;/h1&gt;&lt;pre&gt;define _start_time='04/20/2017 15:15'
-define _end_time='04/20/2017 16:00'
-
-
--- QUERY MODULE
-col program format a40
-col module format a20
-col event format a30
-select count(*), session_id, program, module, CLIENT_ID, sql_id, event, mod(p1,16) as lock_mode, BLOCKING_SESSION from 
-v$active_Session_history
-where sample_time 
-                                       between to_date('&amp;amp;_start_time', 'MM/DD/YY HH24:MI') 
-                                       and to_date('&amp;amp;_end_time', 'MM/DD/YY HH24:MI')
-group by session_id, program, module, CLIENT_ID, sql_id, event, mod(p1,16), BLOCKING_SESSION
-order by 1 asc;
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; with v$active_session_history last 10 minutes&lt;/h1&gt;&lt;pre&gt;set lines 300
-col program format a40
-col module format a20
-col event format a30
-select count(*), session_id, program, module, CLIENT_ID, sql_id, event, mod(p1,16) as lock_mode, BLOCKING_SESSION from 
-v$active_Session_history
-where SAMPLE_TIME &amp;gt; sysdate - 10/1440
-group by session_id, program, module, CLIENT_ID, sql_id, event, mod(p1,16), BLOCKING_SESSION
-order by 1 asc;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; at least get the bind capture&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;col name format a10
-col position format 99
-col value_string format a20
-select snap_id, name, position, value_string, last_captured
-from dba_hist_sqlbind
-where sql_id = '&amp;amp;sql_id'
-order by 5 asc;
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://lefterhs.blogspot.com/2010/12/10g-use-vsqlbindcapture-to-find-bind.html&quot; href=&quot;http://lefterhs.blogspot.com/2010/12/10g-use-vsqlbindcapture-to-find-bind.html&quot; class=&quot;externalLink&quot;&gt;http://lefterhs.blogspot.com/2010/12/10g-use-vsqlbindcapture-to-find-bind.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dioncho.wordpress.com/2009/05/07/tracking-the-bind-value/&quot; href=&quot;https://dioncho.wordpress.com/2009/05/07/tracking-the-bind-value/&quot; class=&quot;externalLink&quot;&gt;https://dioncho.wordpress.com/2009/05/07/tracking-the-bind-value/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dba.stackexchange.com/questions/18569/how-to-troubleshoot-enq-tx-row-lock-contention&quot; href=&quot;http://dba.stackexchange.com/questions/18569/how-to-troubleshoot-enq-tx-row-lock-contention&quot; class=&quot;externalLink&quot;&gt;http://dba.stackexchange.com/questions/18569/how-to-troubleshoot-enq-tx-row-lock-contention&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/2010/10/18/read-currently-running-sql-statements-bind-variable-values/&quot; href=&quot;http://blog.tanelpoder.com/2010/10/18/read-currently-running-sql-statements-bind-variable-values/&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/2010/10/18/read-currently-running-sql-statements-bind-variable-values/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tech.e2sn.com/oracle/troubleshooting/oracle-s-real-time-sql-monitoring-feature-v-sql_monitor&quot; href=&quot;http://tech.e2sn.com/oracle/troubleshooting/oracle-s-real-time-sql-monitoring-feature-v-sql_monitor&quot; class=&quot;externalLink&quot;&gt;http://tech.e2sn.com/oracle/troubleshooting/oracle-s-real-time-sql-monitoring-feature-v-sql_monitor&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>row lock contention</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Brow%20lock%20contention%20w%2F%20ash%5D%5D</link>
-<pubDate>Thu, 20 Jul 2017 16:19:00 GMT</pubDate>
 
 </item>
 </channel>
