@@ -6,10 +6,91 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2017 KarlArao</copyright>
-<pubDate>Wed, 09 Aug 2017 17:11:22 GMT</pubDate>
-<lastBuildDate>Wed, 09 Aug 2017 17:11:22 GMT</lastBuildDate>
+<pubDate>Thu, 10 Aug 2017 05:30:41 GMT</pubDate>
+<lastBuildDate>Thu, 10 Aug 2017 05:30:41 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>error tracking, bug tracking</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://rollbar.com/features/&quot; href=&quot;https://rollbar.com/features/&quot; class=&quot;externalLink&quot;&gt;https://rollbar.com/features/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://rollbar.com/why-rollbar/&quot; href=&quot;https://rollbar.com/why-rollbar/&quot; class=&quot;externalLink&quot;&gt;https://rollbar.com/why-rollbar/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Rollbar vs Raygun vs Sentry vs Airbrake vs Bugsnag vs &lt;a tiddlylink=&quot;OverOps&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OverOps&quot; href=&quot;http://karlarao.tiddlyspot.com#OverOps&quot; class=&quot;externalLink null&quot;&gt;OverOps&lt;/a&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.takipi.com/the-complete-guide-to-error-tracking-tools-rollbar-vs-raygun-vs-sentry-vs-airbrake-vs-bugsnag-vs-overops/&quot; href=&quot;http://blog.takipi.com/the-complete-guide-to-error-tracking-tools-rollbar-vs-raygun-vs-sentry-vs-airbrake-vs-bugsnag-vs-overops/&quot; class=&quot;externalLink&quot;&gt;http://blog.takipi.com/the-complete-guide-to-error-tracking-tools-rollbar-vs-raygun-vs-sentry-vs-airbrake-vs-bugsnag-vs-overops/&lt;/a&gt;</description>
+<category>CodeNinja Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Berror%20tracking%2C%20bug%20tracking%5D%5D</link>
+<pubDate>Wed, 09 Aug 2017 18:46:00 GMT</pubDate>
+
+</item>
+<item>
+<title>.ML products</title>
+<description>&lt;h1&gt; metaverse &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.matelabs.in/#home&quot; href=&quot;http://www.matelabs.in/#home&quot; class=&quot;externalLink&quot;&gt;http://www.matelabs.in/#home&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.mateverse.com/user-guide/getting-started/&quot; href=&quot;http://docs.mateverse.com/user-guide/getting-started/&quot; class=&quot;externalLink&quot;&gt;http://docs.mateverse.com/user-guide/getting-started/&lt;/a&gt;</description>
+<category>Machine Learning</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.ML%20products%5D%5D</link>
+<pubDate>Wed, 09 Aug 2017 18:27:00 GMT</pubDate>
+
+</item>
+<item>
+<title>..data science cheatsheet</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5&quot; href=&quot;https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5&quot; class=&quot;externalLink&quot;&gt;https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5&lt;/a&gt;</description>
+<category>Data Science</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B..data%20science%20cheatsheet%5D%5D</link>
+<pubDate>Wed, 09 Aug 2017 17:31:00 GMT</pubDate>
+
+</item>
+<item>
+<title>DB flavors</title>
+<description></description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BDB%20flavors%5D%5D</link>
+<pubDate>Wed, 09 Aug 2017 17:29:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Visualization</title>
+<description>Tableau Visualization Gallery &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/learn/gallery&quot; href=&quot;http://www.tableausoftware.com/learn/gallery&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/learn/gallery&lt;/a&gt;&lt;br&gt;&lt;br&gt;Google Chart API documentation&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://groups.google.com/group/google-chart-api/web/useful-links-to-api-libraries?hl=en&amp;amp;pli=1&quot; href=&quot;http://groups.google.com/group/google-chart-api/web/useful-links-to-api-libraries?hl=en&amp;amp;pli=1&quot; class=&quot;externalLink&quot;&gt;http://groups.google.com/group/google-chart-api/web/useful-links-to-api-libraries?hl=en&amp;amp;pli=1&lt;/a&gt;&lt;br&gt;&lt;br&gt;Google Motion Chart&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.excelcharts.com/blog/google-motion-chart-api-visualization-population-trends/&quot; href=&quot;http://www.excelcharts.com/blog/google-motion-chart-api-visualization-population-trends/&quot; class=&quot;externalLink&quot;&gt;http://www.excelcharts.com/blog/google-motion-chart-api-visualization-population-trends/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jpbi.blogspot.com/2008/03/motion-chart-provided-by-google.html&quot; href=&quot;http://jpbi.blogspot.com/2008/03/motion-chart-provided-by-google.html&quot; class=&quot;externalLink&quot;&gt;http://jpbi.blogspot.com/2008/03/motion-chart-provided-by-google.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.segfl.org.uk/spot/post/how_to_use_google_motion_chart_gadget_to_liven_up_those_tables_of_data/&quot; href=&quot;http://www.segfl.org.uk/spot/post/how_to_use_google_motion_chart_gadget_to_liven_up_those_tables_of_data/&quot; class=&quot;externalLink&quot;&gt;http://www.segfl.org.uk/spot/post/how_to_use_google_motion_chart_gadget_to_liven_up_those_tables_of_data/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.google.com/viewer?url=http://nationsreportcard.gov/math_2009/media/pdf/motion_chart.pdf&quot; href=&quot;https://docs.google.com/viewer?url=http://nationsreportcard.gov/math_2009/media/pdf/motion_chart.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.google.com/viewer?url=http://nationsreportcard.gov/math_2009/media/pdf/motion_chart.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;Tablespace Allocation&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pythian.com/news/1490/&quot; href=&quot;http://www.pythian.com/news/1490/&quot; class=&quot;externalLink&quot;&gt;http://www.pythian.com/news/1490/&lt;/a&gt;&lt;br&gt;&lt;br&gt;3D rotator - Picturing, Rotation, Isolation, and Masking&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://had.blip.tv/file/1522611/&quot; href=&quot;http://had.blip.tv/file/1522611/&quot; class=&quot;externalLink&quot;&gt;http://had.blip.tv/file/1522611/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Disk IO and Latency&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://fedoraproject.org/wiki/File:Benchmark2.png&quot; href=&quot;http://fedoraproject.org/wiki/File:Benchmark2.png&quot; class=&quot;externalLink&quot;&gt;http://fedoraproject.org/wiki/File:Benchmark2.png&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://fedoraproject.org/wiki/F13_one_page_release_notes&quot; href=&quot;http://fedoraproject.org/wiki/F13_one_page_release_notes&quot; class=&quot;externalLink&quot;&gt;http://fedoraproject.org/wiki/F13_one_page_release_notes&lt;/a&gt;&lt;br&gt;Visualizing System Latency &lt;a target=&quot;_blank&quot; title=&quot;External link to http://queue.acm.org/detail.cfm?id=1809426&quot; href=&quot;http://queue.acm.org/detail.cfm?id=1809426&quot; class=&quot;externalLink&quot;&gt;http://queue.acm.org/detail.cfm?id=1809426&lt;/a&gt;&lt;br&gt;&lt;br&gt;Some Examples of Data Visualization&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mathworld.wolfram.com/topics/DataVisualization.html&quot; href=&quot;http://mathworld.wolfram.com/topics/DataVisualization.html&quot; class=&quot;externalLink&quot;&gt;http://mathworld.wolfram.com/topics/DataVisualization.html&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Google Visualization API Gallery&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://code.google.com/apis/visualization/documentation/gallery.html&quot; href=&quot;http://code.google.com/apis/visualization/documentation/gallery.html&quot; class=&quot;externalLink&quot;&gt;http://code.google.com/apis/visualization/documentation/gallery.html&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Yahoo Finance&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://finance.yahoo.com/&quot; href=&quot;http://finance.yahoo.com/&quot; class=&quot;externalLink&quot;&gt;http://finance.yahoo.com/&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://finance.yahoo.com/echarts?s=^DJI+Interactive#chart4:symbol=^dji;range=1d;indicator=volume;charttype=line;crosshair=on;ohlcvalues=0;logscale=on;source=undefined&quot; href=&quot;http://finance.yahoo.com/echarts?s=%5EDJI+Interactive#chart4:symbol=%5Edji;range=1d;indicator=volume;charttype=line;crosshair=on;ohlcvalues=0;logscale=on;source=undefined&quot; class=&quot;externalLink&quot;&gt;http://finance.yahoo.com/echarts?s=^DJI+Interactive#chart4:symbol=^dji;range=1d;indicator=volume;charttype=line;crosshair=on;ohlcvalues=0;logscale=on;source=undefined&lt;/a&gt;&lt;br&gt;28 Rich Data Visualization Tools &lt;a target=&quot;_blank&quot; title=&quot;External link to http://insideria.com/2009/12/28-rich-data-visualization-too.html&quot; href=&quot;http://insideria.com/2009/12/28-rich-data-visualization-too.html&quot; class=&quot;externalLink&quot;&gt;http://insideria.com/2009/12/28-rich-data-visualization-too.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;Videos/Talks on Visualization&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.gapminder.org/videos/the-joy-of-stats/&quot; href=&quot;http://www.gapminder.org/videos/the-joy-of-stats/&quot; class=&quot;externalLink&quot;&gt;http://www.gapminder.org/videos/the-joy-of-stats/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.ted.com/talks/thomas_goetz_it_s_time_to_redesign_medical_data.html&quot; href=&quot;http://www.ted.com/talks/thomas_goetz_it_s_time_to_redesign_medical_data.html&quot; class=&quot;externalLink&quot;&gt;http://www.ted.com/talks/thomas_goetz_it_s_time_to_redesign_medical_data.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.ted.com/talks/lang/eng/david_mccandless_the_beauty_of_data_visualization.html&quot; href=&quot;http://www.ted.com/talks/lang/eng/david_mccandless_the_beauty_of_data_visualization.html&quot; class=&quot;externalLink&quot;&gt;http://www.ted.com/talks/lang/eng/david_mccandless_the_beauty_of_data_visualization.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;Historical milestones in data visualization&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.datavis.ca/milestones/&quot; href=&quot;http://www.datavis.ca/milestones/&quot; class=&quot;externalLink&quot;&gt;http://www.datavis.ca/milestones/&lt;/a&gt;&lt;br&gt;&lt;br&gt;jfreechart&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.jfree.org/jfreechart/&quot; href=&quot;http://www.jfree.org/jfreechart/&quot; class=&quot;externalLink&quot;&gt;http://www.jfree.org/jfreechart/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.webforefront.com/about/danielrubio/articles/ostg/jfreechart.html&quot; href=&quot;http://www.webforefront.com/about/danielrubio/articles/ostg/jfreechart.html&quot; class=&quot;externalLink&quot;&gt;http://www.webforefront.com/about/danielrubio/articles/ostg/jfreechart.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cewolf.sourceforge.net/new/index.html&quot; href=&quot;http://cewolf.sourceforge.net/new/index.html&quot; class=&quot;externalLink&quot;&gt;http://cewolf.sourceforge.net/new/index.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;RRDTOOL&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.ludovicocaldara.net/dba/oracle-capacity-planning-with-rrdtool/&quot; href=&quot;http://www.ludovicocaldara.net/dba/oracle-capacity-planning-with-rrdtool/&quot; class=&quot;externalLink&quot;&gt;http://www.ludovicocaldara.net/dba/oracle-capacity-planning-with-rrdtool/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Oracle and visualization&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://rnm1978.wordpress.com/2011/03/11/getting-good-quality-io-throughput-data/&quot; href=&quot;http://rnm1978.wordpress.com/2011/03/11/getting-good-quality-io-throughput-data/&quot; class=&quot;externalLink&quot;&gt;http://rnm1978.wordpress.com/2011/03/11/getting-good-quality-io-throughput-data/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://rnm1978.wordpress.com/2011/03/09/comparing-methods-for-recording-io-vsysstat-vs-hp-measureware/&quot; href=&quot;http://rnm1978.wordpress.com/2011/03/09/comparing-methods-for-recording-io-vsysstat-vs-hp-measureware/&quot; class=&quot;externalLink&quot;&gt;http://rnm1978.wordpress.com/2011/03/09/comparing-methods-for-recording-io-vsysstat-vs-hp-measureware/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/grahn/oow-vote-hacking&quot; href=&quot;https://github.com/grahn/oow-vote-hacking&quot; class=&quot;externalLink&quot;&gt;https://github.com/grahn/oow-vote-hacking&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.crummy.com/software/BeautifulSoup/&quot; href=&quot;http://www.crummy.com/software/BeautifulSoup/&quot; class=&quot;externalLink&quot;&gt;http://www.crummy.com/software/BeautifulSoup/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://gephi.org/&quot; href=&quot;http://gephi.org/&quot; class=&quot;externalLink&quot;&gt;http://gephi.org/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://wiki.gephi.org/index.php/Modularity&quot; href=&quot;http://wiki.gephi.org/index.php/Modularity&quot; class=&quot;externalLink&quot;&gt;http://wiki.gephi.org/index.php/Modularity&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://inmaps.linkedinlabs.com/&quot; href=&quot;http://inmaps.linkedinlabs.com/&quot; class=&quot;externalLink&quot;&gt;http://inmaps.linkedinlabs.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cloudera.com/blog/2010/12/hadoop-world-2010-tweet-analysis/&quot; href=&quot;http://www.cloudera.com/blog/2010/12/hadoop-world-2010-tweet-analysis/&quot; class=&quot;externalLink&quot;&gt;http://www.cloudera.com/blog/2010/12/hadoop-world-2010-tweet-analysis/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.wordle.net/&quot; href=&quot;http://www.wordle.net/&quot; class=&quot;externalLink&quot;&gt;http://www.wordle.net/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://infosthetics.com/archives/2010/07/review_gephi_graph_exploration_software.html&quot; href=&quot;http://infosthetics.com/archives/2010/07/review_gephi_graph_exploration_software.html&quot; class=&quot;externalLink&quot;&gt;http://infosthetics.com/archives/2010/07/review_gephi_graph_exploration_software.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Flame Graphs&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://dtrace.org/blogs/brendan/2011/12/16/flame-graphs/&quot; href=&quot;http://dtrace.org/blogs/brendan/2011/12/16/flame-graphs/&quot; class=&quot;externalLink&quot;&gt;http://dtrace.org/blogs/brendan/2011/12/16/flame-graphs/&lt;/a&gt; , and here &lt;a target=&quot;_blank&quot; title=&quot;External link to http://137.254.16.27/realneel/entry/visualizing_callstacks_via_dtrace_and&quot; href=&quot;http://137.254.16.27/realneel/entry/visualizing_callstacks_via_dtrace_and&quot; class=&quot;externalLink&quot;&gt;http://137.254.16.27/realneel/entry/visualizing_callstacks_via_dtrace_and&lt;/a&gt;&lt;br&gt;Visualizing device utilization - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://dtrace.org/blogs/brendan/2011/12/18/visualizing-device-utilization/&quot; href=&quot;http://dtrace.org/blogs/brendan/2011/12/18/visualizing-device-utilization/&quot; class=&quot;externalLink&quot;&gt;http://dtrace.org/blogs/brendan/2011/12/18/visualizing-device-utilization/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;Command Line Interface Tools
+Tabulated Data
+Highlighted Data
+3D Surface Plot
+Animated Data
+Instantaneous Values
+Bar Graphs
+Vector Graphs
+Line Graphs
+Ternary Plots
+Quantized Heat Maps
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Visualizing Active Session History (ASH) Data With R&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://structureddata.org/2011/12/20/visualizing-active-session-history-ash-data-with-r/&quot; href=&quot;http://structureddata.org/2011/12/20/visualizing-active-session-history-ash-data-with-r/&quot; class=&quot;externalLink&quot;&gt;http://structureddata.org/2011/12/20/visualizing-active-session-history-ash-data-with-r/&lt;/a&gt;  &lt;br&gt;also talks about &lt;strong&gt;&lt;a tiddlylink=&quot;TIME_WAITED&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TIME_WAITED&quot; href=&quot;http://karlarao.tiddlyspot.com#TIME_WAITED&quot; class=&quot;externalLink null&quot;&gt;TIME_WAITED&lt;/a&gt; – micro, only the last sample is fixed up, the others will have &lt;a tiddlylink=&quot;TIME_WAITED&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TIME_WAITED&quot; href=&quot;http://karlarao.tiddlyspot.com#TIME_WAITED&quot; class=&quot;externalLink null&quot;&gt;TIME_WAITED&lt;/a&gt;=0&lt;br&gt;thanks to John Beresniewicz for this info. &lt;/strong&gt;  &lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2011/07/20/oracle-time-units-in-v-views/&quot; href=&quot;http://dboptimizer.com/2011/07/20/oracle-time-units-in-v-views/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2011/07/20/oracle-time-units-in-v-views/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Operating System Interface Design Between 1981-2009 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.webdesignerdepot.com/2009/03/operating-system-interface-design-between-1981-2009/&quot; href=&quot;http://www.webdesignerdepot.com/2009/03/operating-system-interface-design-between-1981-2009/&quot; class=&quot;externalLink&quot;&gt;http://www.webdesignerdepot.com/2009/03/operating-system-interface-design-between-1981-2009/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;dboptimizer Kyle Hailey &lt;strong&gt;ggplot2&lt;/strong&gt; looks cool had.co.nz/ggplot2/, check out cool graphic with ggplot by @gregrahn bit.ly/&lt;a tiddlylink=&quot;Akj6X4&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Akj6X4&quot; href=&quot;http://karlarao.tiddlyspot.com#Akj6X4&quot; class=&quot;externalLink null&quot;&gt;Akj6X4&lt;/a&gt;&lt;br&gt;hive plots &lt;a target=&quot;_blank&quot; title=&quot;External link to http://mkweb.bcgsc.ca/linnet/&quot; href=&quot;http://mkweb.bcgsc.ca/linnet/&quot; class=&quot;externalLink&quot;&gt;http://mkweb.bcgsc.ca/linnet/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Box Plots&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.lcgceurope.com/lcgceurope/data/articlestandard/lcgceurope/132005/152912/article.pdf&quot; href=&quot;http://www.lcgceurope.com/lcgceurope/data/articlestandard/lcgceurope/132005/152912/article.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.lcgceurope.com/lcgceurope/data/articlestandard/lcgceurope/132005/152912/article.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/box-plot-analog&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/box-plot-analog&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/box-plot-analog&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mkt.tableausoftware.com/files/tips/pdf/BoxPlot.pdf&quot; href=&quot;http://mkt.tableausoftware.com/files/tips/pdf/BoxPlot.pdf&quot; class=&quot;externalLink&quot;&gt;http://mkt.tableausoftware.com/files/tips/pdf/BoxPlot.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Heatmap&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/public/gallery/nba-heatmap&quot; href=&quot;http://www.tableausoftware.com/public/gallery/nba-heatmap&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/public/gallery/nba-heatmap&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://support.uptimesoftware.com/community/?showtopic=81&quot; href=&quot;http://support.uptimesoftware.com/community/?showtopic=81&quot; class=&quot;externalLink&quot;&gt;http://support.uptimesoftware.com/community/?showtopic=81&lt;/a&gt; &amp;lt;- heatmap example&lt;br&gt;How to Create Heat Maps in Tableau &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=Yk1odFhBJxc&quot; href=&quot;http://www.youtube.com/watch?v=Yk1odFhBJxc&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=Yk1odFhBJxc&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.visualisingdata.com/index.php/2010/07/visualising-the-wikileaks-war-logs-using-tableau-public/&quot; href=&quot;http://www.visualisingdata.com/index.php/2010/07/visualising-the-wikileaks-war-logs-using-tableau-public/&quot; class=&quot;externalLink&quot;&gt;http://www.visualisingdata.com/index.php/2010/07/visualising-the-wikileaks-war-logs-using-tableau-public/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dtrace.org/blogs/brendan/2012/03/26/subsecond-offset-heat-maps/&quot; href=&quot;http://dtrace.org/blogs/brendan/2012/03/26/subsecond-offset-heat-maps/&quot; class=&quot;externalLink&quot;&gt;http://dtrace.org/blogs/brendan/2012/03/26/subsecond-offset-heat-maps/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.stephenwolfram.com/2012/03/the-personal-analytics-of-my-life/&quot; href=&quot;http://blog.stephenwolfram.com/2012/03/the-personal-analytics-of-my-life/&quot; class=&quot;externalLink&quot;&gt;http://blog.stephenwolfram.com/2012/03/the-personal-analytics-of-my-life/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Motion Charts&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/blog/6-techniques-experts&quot; href=&quot;http://www.tableausoftware.com/blog/6-techniques-experts&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/blog/6-techniques-experts&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.jeromecukier.net/blog/2009/09/01/review-of-tableau-50/&quot; href=&quot;http://www.jeromecukier.net/blog/2009/09/01/review-of-tableau-50/&quot; class=&quot;externalLink&quot;&gt;http://www.jeromecukier.net/blog/2009/09/01/review-of-tableau-50/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://eden.rutgers.edu/~arousos/554/final/files/visualizing_data.ppt&quot; href=&quot;http://eden.rutgers.edu/%7Earousos/554/final/files/visualizing_data.ppt&quot; class=&quot;externalLink&quot;&gt;http://eden.rutgers.edu/~arousos/554/final/files/visualizing_data.ppt&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Stepped Line Charts&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/106204&quot; href=&quot;http://community.tableausoftware.com/thread/106204&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/106204&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Histogram&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/pro/online/en-us/i524769.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/pro/online/en-us/i524769.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/pro/online/en-us/i524769.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.interworks.com/blogs/iwbiteam/2012/01/30/simple-histograms-tableau&quot; href=&quot;http://www.interworks.com/blogs/iwbiteam/2012/01/30/simple-histograms-tableau&quot; class=&quot;externalLink&quot;&gt;http://www.interworks.com/blogs/iwbiteam/2012/01/30/simple-histograms-tableau&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;d3.js&lt;/strong&gt;&lt;br&gt;Visualizing Oracle Data - &lt;a tiddlylink=&quot;ApEx&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ApEx&quot; href=&quot;http://karlarao.tiddlyspot.com#ApEx&quot; class=&quot;externalLink null&quot;&gt;ApEx&lt;/a&gt; and Beyond &lt;a target=&quot;_blank&quot; title=&quot;External link to http://ba6.us/book/export/html/268&quot; href=&quot;http://ba6.us/book/export/html/268&quot; class=&quot;externalLink&quot;&gt;http://ba6.us/book/export/html/268&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://ba6.us/d3js_application_express_basic_dynamic_action&quot; href=&quot;http://ba6.us/d3js_application_express_basic_dynamic_action&quot; class=&quot;externalLink&quot;&gt;http://ba6.us/d3js_application_express_basic_dynamic_action&lt;/a&gt;&lt;br&gt;Mike Bostock &lt;a target=&quot;_blank&quot; title=&quot;External link to http://bost.ocks.org/mike/&quot; href=&quot;http://bost.ocks.org/mike/&quot; class=&quot;externalLink&quot;&gt;http://bost.ocks.org/mike/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mbostock/d3/wiki/Gallery&quot; href=&quot;https://github.com/mbostock/d3/wiki/Gallery&quot; class=&quot;externalLink&quot;&gt;https://github.com/mbostock/d3/wiki/Gallery&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mbostock.github.com/d3/tutorial/bar-1.html&quot; href=&quot;http://mbostock.github.com/d3/tutorial/bar-1.html&quot; class=&quot;externalLink&quot;&gt;http://mbostock.github.com/d3/tutorial/bar-1.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mbostock.github.com/d3/tutorial/bar-2.html&quot; href=&quot;http://mbostock.github.com/d3/tutorial/bar-2.html&quot; class=&quot;externalLink&quot;&gt;http://mbostock.github.com/d3/tutorial/bar-2.html&lt;/a&gt;&lt;br&gt;AJAX retrieval using Javascript Object Notation (JSON) &lt;a target=&quot;_blank&quot; title=&quot;External link to http://anthonyrayner.blogspot.com/2007/06/ajax-retrieval-using-javascript-object.html&quot; href=&quot;http://anthonyrayner.blogspot.com/2007/06/ajax-retrieval-using-javascript-object.html&quot; class=&quot;externalLink&quot;&gt;http://anthonyrayner.blogspot.com/2007/06/ajax-retrieval-using-javascript-object.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2012/01/22/ash-visualizations-r-ggplot2-gephi-jit-highcharts-excel-svg/&quot; href=&quot;http://dboptimizer.com/2012/01/22/ash-visualizations-r-ggplot2-gephi-jit-highcharts-excel-svg/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2012/01/22/ash-visualizations-r-ggplot2-gephi-jit-highcharts-excel-svg/&lt;/a&gt;&lt;br&gt;Videos:&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://css.dzone.com/articles/d3js-way-way-more-just-another&quot; href=&quot;http://css.dzone.com/articles/d3js-way-way-more-just-another&quot; class=&quot;externalLink&quot;&gt;http://css.dzone.com/articles/d3js-way-way-more-just-another&lt;/a&gt;&lt;br&gt;&lt;br&gt;json - data&lt;br&gt;html - structure&lt;br&gt;JS+D3 - layout&lt;br&gt;CSS - pretty&lt;br&gt;&lt;br&gt;webdevelop toolkit&lt;br&gt;chrome development&lt;br&gt;chrome developer toolkit&lt;br&gt;&lt;br&gt;readables: &lt;br&gt;mbostock.github.com/d3/api&lt;br&gt;book: javascript: the good bits by douglas crockford&lt;br&gt;browse: &lt;a target=&quot;_blank&quot; title=&quot;External link to https://developer.mozilla.org/en/SVG&quot; href=&quot;https://developer.mozilla.org/en/SVG&quot; class=&quot;externalLink&quot;&gt;https://developer.mozilla.org/en/SVG&lt;/a&gt;&lt;br&gt;watch: vimeo.com/29458354&lt;br&gt;clone: &lt;a tiddlylink=&quot;GraphDB&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GraphDB&quot; href=&quot;http://karlarao.tiddlyspot.com#GraphDB&quot; class=&quot;externalLink null&quot;&gt;GraphDB&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/sones/sones&quot; href=&quot;https://github.com/sones/sones&quot; class=&quot;externalLink&quot;&gt;https://github.com/sones/sones&lt;/a&gt;&lt;br&gt;clone: Cube &lt;a target=&quot;_blank&quot; title=&quot;External link to http://square.github.com/cube&quot; href=&quot;http://square.github.com/cube&quot; class=&quot;externalLink&quot;&gt;http://square.github.com/cube&lt;/a&gt;&lt;br&gt;clone: d3py &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mikedewar/D3py&quot; href=&quot;https://github.com/mikedewar/D3py&quot; class=&quot;externalLink&quot;&gt;https://github.com/mikedewar/D3py&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Highcharts and JSON&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.highcharts.com/demo/arearange&quot; href=&quot;http://www.highcharts.com/demo/arearange&quot; class=&quot;externalLink&quot;&gt;http://www.highcharts.com/demo/arearange&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;W-ASH&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#W-ASH&quot; href=&quot;http://karlarao.tiddlyspot.com#W-ASH&quot; class=&quot;externalLink null&quot;&gt;W-ASH&lt;/a&gt; : Web Enabled ASH &lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2011/10/31/w-ash-web-enabled-ash/&quot; href=&quot;http://dboptimizer.com/2011/10/31/w-ash-web-enabled-ash/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2011/10/31/w-ash-web-enabled-ash/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2012/06/15/how-do-people-prototype-their-quantitiative-visualizations/&quot; href=&quot;http://dboptimizer.com/2012/06/15/how-do-people-prototype-their-quantitiative-visualizations/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2012/06/15/how-do-people-prototype-their-quantitiative-visualizations/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2011/01/05/graphing-packages-which-are-the-best-and-why/&quot; href=&quot;http://dboptimizer.com/2011/01/05/graphing-packages-which-are-the-best-and-why/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2011/01/05/graphing-packages-which-are-the-best-and-why/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2011/08/30/highchart-and-json-fun/&quot; href=&quot;http://dboptimizer.com/2011/08/30/highchart-and-json-fun/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2011/08/30/highchart-and-json-fun/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Click and Drag - XKCD&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.xkcd.com/1110/&quot; href=&quot;http://www.xkcd.com/1110/&quot; class=&quot;externalLink&quot;&gt;http://www.xkcd.com/1110/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://xkcd-map.rent-a-geek.de/#9/1.4322/18.2483&quot; href=&quot;http://xkcd-map.rent-a-geek.de/#9/1.4322/18.2483&quot; class=&quot;externalLink&quot;&gt;http://xkcd-map.rent-a-geek.de/#9/1.4322/18.2483&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Timezone case study&lt;/strong&gt;  &lt;a target=&quot;_blank&quot; title=&quot;External link to http://worrydream.com/MagicInk/#case_study_train_schedules&quot; href=&quot;http://worrydream.com/MagicInk/#case_study_train_schedules&quot; class=&quot;externalLink&quot;&gt;http://worrydream.com/MagicInk/#case_study_train_schedules&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Security visualization&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://gigaom.com/data/6-ways-big-data-is-helping-reinvent-enterprise-security/&quot; href=&quot;http://gigaom.com/data/6-ways-big-data-is-helping-reinvent-enterprise-security/&quot; class=&quot;externalLink&quot;&gt;http://gigaom.com/data/6-ways-big-data-is-helping-reinvent-enterprise-security/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://secviz.org/&quot; href=&quot;http://secviz.org/&quot; class=&quot;externalLink&quot;&gt;http://secviz.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Pareto Chart&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.qimacros.com/quality-tools/pareto-compare/&quot; href=&quot;http://www.qimacros.com/quality-tools/pareto-compare/&quot; class=&quot;externalLink&quot;&gt;http://www.qimacros.com/quality-tools/pareto-compare/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=TBtGI2z8V48&quot; href=&quot;http://www.youtube.com/watch?v=TBtGI2z8V48&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=TBtGI2z8V48&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Harvard Visualization online videos &lt;a target=&quot;_blank&quot; title=&quot;External link to http://cm.dce.harvard.edu/2012/02/22872/publicationListing.shtml&quot; href=&quot;http://cm.dce.harvard.edu/2012/02/22872/publicationListing.shtml&quot; class=&quot;externalLink&quot;&gt;http://cm.dce.harvard.edu/2012/02/22872/publicationListing.shtml&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;6 comprehensive dataviz catalogues for journalists &amp;amp; designers &lt;a target=&quot;_blank&quot; title=&quot;External link to http://mediakar.org/2014/05/18/1708/&quot; href=&quot;http://mediakar.org/2014/05/18/1708/&quot; class=&quot;externalLink&quot;&gt;http://mediakar.org/2014/05/18/1708/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Data Science</category>
+<link>http://karlarao.tiddlyspot.com#Visualization</link>
+<pubDate>Wed, 09 Aug 2017 17:27:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Data Engineering</title>
+<description></description>
+<link>http://karlarao.tiddlyspot.com#%5B%5BData%20Engineering%5D%5D</link>
+<pubDate>Wed, 09 Aug 2017 17:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>DevOps</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/learn-devops-continuously-deliver-better-software/learn/v4/content&quot; href=&quot;https://www.udemy.com/learn-devops-continuously-deliver-better-software/learn/v4/content&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/learn-devops-continuously-deliver-better-software/learn/v4/content&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/learn-devops-scaling-apps-on-premise-and-in-the-cloud/learn/v4/content&quot; href=&quot;https://www.udemy.com/learn-devops-scaling-apps-on-premise-and-in-the-cloud/learn/v4/content&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/learn-devops-scaling-apps-on-premise-and-in-the-cloud/learn/v4/content&lt;/a&gt;</description>
+<link>http://karlarao.tiddlyspot.com#DevOps</link>
+<pubDate>Wed, 09 Aug 2017 17:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Data Science</title>
+<description></description>
+<link>http://karlarao.tiddlyspot.com#%5B%5BData%20Science%5D%5D</link>
+<pubDate>Wed, 09 Aug 2017 17:16:00 GMT</pubDate>
+
+</item>
+<item>
+<title>R</title>
+<description>&lt;h1&gt; official docs &lt;/h1&gt;R style guide &lt;a target=&quot;_blank&quot; title=&quot;External link to http://r-pkgs.had.co.nz/style.html&quot; href=&quot;http://r-pkgs.had.co.nz/style.html&quot; class=&quot;externalLink&quot;&gt;http://r-pkgs.had.co.nz/style.html&lt;/a&gt;&lt;br&gt;searchable documentation &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.rdocumentation.org/&quot; href=&quot;http://www.rdocumentation.org/&quot; class=&quot;externalLink&quot;&gt;http://www.rdocumentation.org/&lt;/a&gt;&lt;br&gt;introduction to R &lt;a target=&quot;_blank&quot; title=&quot;External link to http://cran.r-project.org/doc/manuals/R-intro.html&quot; href=&quot;http://cran.r-project.org/doc/manuals/R-intro.html&quot; class=&quot;externalLink&quot;&gt;http://cran.r-project.org/doc/manuals/R-intro.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; open courses&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/community/open-courses&quot; href=&quot;https://www.datacamp.com/community/open-courses&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/community/open-courses&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; structured learning&lt;/h1&gt;&lt;br&gt;Introduction to R&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/courses/introduction-to-r&quot; href=&quot;https://www.datacamp.com/courses/introduction-to-r&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/courses/introduction-to-r&lt;/a&gt;&lt;br&gt;&lt;br&gt;Try R&lt;br&gt;&lt;span class=&quot;marked&quot;&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tryr.codeschool.com/levels/1/challenges/1&quot; href=&quot;http://tryr.codeschool.com/levels/1/challenges/1&quot; class=&quot;externalLink&quot;&gt;http://tryr.codeschool.com/levels/1/challenges/1&lt;/a&gt; &amp;lt;- &lt;strong&gt;vectors, matrices, summary statistics&lt;/strong&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;R programming fundamentals&lt;br&gt;&lt;span class=&quot;marked&quot;&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/table-of-contents/r-programming-fundamentals&quot; href=&quot;http://www.pluralsight.com/courses/table-of-contents/r-programming-fundamentals&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/table-of-contents/r-programming-fundamentals&lt;/a&gt;  &amp;lt;- &lt;strong&gt;functions, flow control, packages, import data, exploring data with R&lt;/strong&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;data.table&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/courses/data-analysis-the-data-table-way&quot; href=&quot;https://www.datacamp.com/courses/data-analysis-the-data-table-way&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/courses/data-analysis-the-data-table-way&lt;/a&gt;&lt;br&gt;&lt;br&gt;Data Analysis and Statistical Inference&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/courses/data-analysis-and-statistical-inference_mine-cetinkaya-rundel-by-datacamp&quot; href=&quot;https://www.datacamp.com/courses/data-analysis-and-statistical-inference_mine-cetinkaya-rundel-by-datacamp&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/courses/data-analysis-and-statistical-inference_mine-cetinkaya-rundel-by-datacamp&lt;/a&gt;&lt;br&gt;&lt;br&gt;Introduction to Computational Finance and Financial Econometrics&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/courses/introduction-to-computational-finance-and-financial-econometrics&quot; href=&quot;https://www.datacamp.com/courses/introduction-to-computational-finance-and-financial-econometrics&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/courses/introduction-to-computational-finance-and-financial-econometrics&lt;/a&gt;&lt;br&gt;&lt;br&gt;dplyr &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/courses/dplyr&quot; href=&quot;https://www.datacamp.com/courses/dplyr&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/courses/dplyr&lt;/a&gt;&lt;br&gt;&lt;br&gt;Build Web Apps in R with Shiny&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/build-web-apps-in-r-with-shiny/?dtcode=JB9Dbu61IsjQ&quot; href=&quot;https://www.udemy.com/build-web-apps-in-r-with-shiny/?dtcode=JB9Dbu61IsjQ&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/build-web-apps-in-r-with-shiny/?dtcode=JB9Dbu61IsjQ&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.coursera.org/course/statistics?utm_content=bufferc229d&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer&quot; href=&quot;https://www.coursera.org/course/statistics?utm_content=bufferc229d&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer&quot; class=&quot;externalLink&quot;&gt;https://www.coursera.org/course/statistics?utm_content=bufferc229d&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; presentations&lt;/h1&gt;Bigvis &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.meetup.com/nyhackr/events/112271042/&quot; href=&quot;http://www.meetup.com/nyhackr/events/112271042/&quot; class=&quot;externalLink&quot;&gt;http://www.meetup.com/nyhackr/events/112271042/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://files.meetup.com/1406240/bigvis.pdf&quot; href=&quot;http://files.meetup.com/1406240/bigvis.pdf&quot; class=&quot;externalLink&quot;&gt;http://files.meetup.com/1406240/bigvis.pdf&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/0DTE4a&quot; href=&quot;http://goo.gl/0DTE4a&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/0DTE4a&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>CodeNinja</category>
+<category>Data Science</category>
+<link>http://karlarao.tiddlyspot.com#R</link>
+<pubDate>Wed, 09 Aug 2017 17:16:00 GMT</pubDate>
+
+</item>
 <item>
 <title>kill session procedure</title>
 <description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' prereq grant ', event)&quot;&gt; prereq grant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the script ', event)&quot;&gt; the script &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' grant this to the performance user', event)&quot;&gt; grant this to the performance user&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' kill session usage ', event)&quot;&gt; kill session usage &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' generate kill all commands', event)&quot;&gt; generate kill all commands&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' monitor', event)&quot;&gt; monitor&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;Please create the “killsession” procedure using the SYSDBA user. And then as SYSDBA grant “alter system” and “select on sys.v_$session” to SYSTEM user. And then finally grant “execute on system.killsession” to alloc_app_perf&lt;br&gt;Please create on all ALLOC environments. Then later on we can drop the procedure.&lt;br&gt;&lt;br&gt;&lt;h1&gt; prereq grant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;grant alter system to system;
@@ -60,7 +141,7 @@ exec system.killsession(p_machine=&amp;gt;'karldevfedora')
 -- kill osuser 
 exec system.killsession(p_osuser=&amp;gt;'karl')  
 &lt;/pre&gt;&lt;br&gt;&lt;h1&gt; generate kill all commands&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set pages 0
-select /* kill all */ 'exec system.killsession(p_sid=&amp;gt;'''||sid||''', p_serial=&amp;gt;'''||serial#||''', p_instance=&amp;gt;'''||inst_id||''');'
+select /* generate kill command */ 'exec system.killsession(p_sid=&amp;gt;'''||sid||''', p_serial=&amp;gt;'''||serial#||''', p_instance=&amp;gt;'''||inst_id||''');'
 from gv$session 
 where username = 'ALLOC_APP_USER'
 and machine = 'example.com';
@@ -74,7 +155,7 @@ where username is not null
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;also create &lt;a tiddlylink=&quot;CreatePerformanceTuningUser&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CreatePerformanceTuningUser&quot; href=&quot;http://karlarao.tiddlyspot.com#CreatePerformanceTuningUser&quot; class=&quot;externalLink null&quot;&gt;CreatePerformanceTuningUser&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&quot; href=&quot;https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&quot; class=&quot;externalLink&quot;&gt;https://jhdba.wordpress.com/2009/08/18/procedure-to-kill-a-session/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&quot; href=&quot;https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&quot; class=&quot;externalLink&quot;&gt;https://jhdba.wordpress.com/2016/03/23/killing-sessions-across-multiple-instances/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/misc/killing-oracle-sessions&quot; href=&quot;https://oracle-base.com/articles/misc/killing-oracle-sessions&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/misc/killing-oracle-sessions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/2008/06/19/killing-an-oracle-process-from-inside-oracle/&quot; href=&quot;http://blog.tanelpoder.com/2008/06/19/killing-an-oracle-process-from-inside-oracle/&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/2008/06/19/killing-an-oracle-process-from-inside-oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chandlerdba.com/2014/05/29/developers-killing-sessions/&quot; href=&quot;https://chandlerdba.com/2014/05/29/developers-killing-sessions/&quot; class=&quot;externalLink&quot;&gt;https://chandlerdba.com/2014/05/29/developers-killing-sessions/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>DatabaseHealthCheck</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bkill%20session%20procedure%5D%5D</link>
-<pubDate>Tue, 08 Aug 2017 23:56:00 GMT</pubDate>
+<pubDate>Wed, 09 Aug 2017 17:13:00 GMT</pubDate>
 
 </item>
 <item>
@@ -481,293 +562,6 @@ SPOOL OFF;
 <category>SQL Tuning</category>
 <link>http://karlarao.tiddlyspot.com#RealTimeSQLMonitoring-sql_monitor</link>
 <pubDate>Thu, 03 Aug 2017 17:18:00 GMT</pubDate>
-
-</item>
-<item>
-<title>method_opt</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://carlos-sierra.net/2013/07/27/two-common-mistakes-using-method_opt-in-dbms_stats/&quot; href=&quot;https://carlos-sierra.net/2013/07/27/two-common-mistakes-using-method_opt-in-dbms_stats/&quot; class=&quot;externalLink&quot;&gt;https://carlos-sierra.net/2013/07/27/two-common-mistakes-using-method_opt-in-dbms_stats/&lt;/a&gt;&lt;br&gt;two common mistakes:&lt;br&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt; &lt;a tiddlylink=&quot;METHOD_OPT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#METHOD_OPT&quot; href=&quot;http://karlarao.tiddlyspot.com#METHOD_OPT&quot; class=&quot;externalLink null&quot;&gt;METHOD_OPT&lt;/a&gt; =&amp;gt; ‘FOR ALL INDEXED COLUMNS SIZE…’&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;METHOD_OPT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#METHOD_OPT&quot; href=&quot;http://karlarao.tiddlyspot.com#METHOD_OPT&quot; class=&quot;externalLink null&quot;&gt;METHOD_OPT&lt;/a&gt; =&amp;gt; NULL&lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/how-does-the-methodopt-parameter-work&quot; href=&quot;https://blogs.oracle.com/optimizer/how-does-the-methodopt-parameter-work&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/how-does-the-methodopt-parameter-work&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.dbi-services.com/a-migration-pitfall-with-all-column-size-auto/&quot; href=&quot;https://blog.dbi-services.com/a-migration-pitfall-with-all-column-size-auto/&quot; class=&quot;externalLink&quot;&gt;https://blog.dbi-services.com/a-migration-pitfall-with-all-column-size-auto/&lt;/a&gt;&lt;br&gt;</description>
-<category>Histogram</category>
-<link>http://karlarao.tiddlyspot.com#method_opt</link>
-<pubDate>Thu, 27 Jul 2017 21:20:00 GMT</pubDate>
-
-</item>
-<item>
-<title>buffer overflow, limit of 1000000 bytes</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/16476568/how-to-increase-dbms-output-buffer&quot; href=&quot;https://stackoverflow.com/questions/16476568/how-to-increase-dbms-output-buffer&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/16476568/how-to-increase-dbms-output-buffer&lt;/a&gt;&lt;br&gt;&lt;pre&gt;BEGIN
-  dbms_output.enable(NULL); -- Disables the limit of DBMS
-  -- Your print here !
-END;
-&lt;/pre&gt;&lt;br&gt;&lt;a tiddlylink=&quot;ORA-20000&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA-20000&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA-20000&quot; class=&quot;externalLink null&quot;&gt;ORA-20000&lt;/a&gt;: &lt;a tiddlylink=&quot;ORU-10027&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORU-10027&quot; href=&quot;http://karlarao.tiddlyspot.com#ORU-10027&quot; class=&quot;externalLink null&quot;&gt;ORU-10027&lt;/a&gt;: buffer overflow, limit of 1000000 bytes  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/thread/308557&quot; href=&quot;https://community.oracle.com/thread/308557&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/thread/308557&lt;/a&gt;</description>
-<category>sqlplus errors</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bbuffer%20overflow%2C%20limit%20of%201000000%20bytes%5D%5D</link>
-<pubDate>Thu, 27 Jul 2017 20:54:00 GMT</pubDate>
-
-</item>
-<item>
-<title>sqlplus errors</title>
-<description></description>
-<category>SQL*Plus</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsqlplus%20errors%5D%5D</link>
-<pubDate>Thu, 27 Jul 2017 20:53:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Disconnect Oracle Sessions from Logon Trigger</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' prereq ', event)&quot;&gt; prereq &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the trigger to prevent users from login in ', event)&quot;&gt; the trigger to prevent users from login in &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the kill procedure executed in UC4 ', event)&quot;&gt; the kill procedure executed in UC4 &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the user that will execute the kill should have the following privs ', event)&quot;&gt; the user that will execute the kill should have the following privs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; prereq &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; user should not have ADMINISTER DATABASE TRIGGER priv &lt;/li&gt;&lt;li&gt; user should not own the trigger &lt;/li&gt;&lt;li&gt; user that needs to be locked does not apply to SYS,SYSTEM&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the trigger to prevent users from login in &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;-- EXECUTE THIS SCRIPT AS ALLOC_APP_PERF
-
-create or replace trigger alloc_app_perf.revoke_alloc_app_user
-    after logon on database
-       begin
-         -- not allow app schema
-         if sys_context('USERENV','SESSION_USER') in ('ALLOC_APP_USER') 
-         -- not allow users outside of this server (change the server name accordingly)
-         and UPPER(SYS_CONTEXT ('USERENV','HOST')) not in ('KARLDEVFEDORA')
-         then
-           raise_application_error(-20001,'&amp;lt;&amp;lt;&amp;lt; NIGHTLY BATCH RUNNING. PLEASE COME BACK LATER. &amp;gt;&amp;gt;&amp;gt;');
-       end if;
-     end;
-/
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; the kill procedure executed in &lt;a tiddlylink=&quot;UC4&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#UC4&quot; href=&quot;http://karlarao.tiddlyspot.com#UC4&quot; class=&quot;externalLink null&quot;&gt;UC4&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;-- EXECUTE THIS SCRIPT AS SYSDBA
-
-grant alter system to system;
-grant select on sys.gv_$session to system;
-
-create or replace procedure system.uc4_kill_all_alloc_app_user
-as 
-    BEGIN
-      FOR c IN (
-          SELECT sid, serial#, inst_id
-          FROM sys.gv_$session
-          WHERE USERNAME = 'ALLOC_APP_USER'
-          AND upper(MACHINE) NOT IN (select upper(sys_context ('userenv','HOST')) from dual)
-          AND STATUS &amp;lt;&amp;gt; 'KILLED'
-      )
-      LOOP
-          EXECUTE IMMEDIATE 'alter system kill session ''' || c.sid || ', ' || c.serial# || ', @' || c.inst_id || ''' immediate';
-      END LOOP;
-    END;
-    /
-
-grant execute on system.uc4_kill_all_alloc_app_user to alloc_app_perf;
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the user that will execute the kill should have the following privs &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
--- quotas
-alter user &quot;alloc_app_perf&quot; quota unlimited on bas_data;
-
--- roles, privs
-grant alloc_app_r to alloc_app_perf;
-grant select_catalog_role to alloc_app_perf;
-grant resource to alloc_app_perf;
-grant select any dictionary to alloc_app_perf;
-grant advisor to alloc_app_perf;
-grant create job to alloc_app_perf;
-grant oem_monitor to alloc_app_perf;
-grant administer any sql tuning set to alloc_app_perf;   
-grant administer sql management object to alloc_app_perf; 
-grant create any sql_profile to alloc_app_perf;
-grant drop any sql_profile to alloc_app_perf;
-grant alter any sql_profile to alloc_app_perf;   
-grant create any trigger to alloc_app_perf;
-grant alter any trigger to alloc_app_perf;
-grant administer database trigger to alloc_app_perf with admin option;
-
--- execute  
-grant execute on dbms_monitor to alloc_app_perf;
-grant execute on dbms_application_info to alloc_app_perf;
-grant execute on dbms_workload_repository to alloc_app_perf;
-grant execute on dbms_xplan to alloc_app_perf;     
-grant execute on dbms_sqltune to alloc_app_perf;
-grant execute on sys.dbms_lock to alloc_app_perf;
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;references&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://serverfault.com/questions/58856/disconnecting-an-oracle-session-from-a-logon-trigger&quot; href=&quot;https://serverfault.com/questions/58856/disconnecting-an-oracle-session-from-a-logon-trigger&quot; class=&quot;externalLink&quot;&gt;https://serverfault.com/questions/58856/disconnecting-an-oracle-session-from-a-logon-trigger&lt;/a&gt;&lt;br&gt;How do i prevent end users from connecting to the database other than my application &lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:561622956788&quot; href=&quot;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:561622956788&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:561622956788&lt;/a&gt;&lt;br&gt;Raise_application_error procedure in AFTER LOGON trigger &lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:3236035522926&quot; href=&quot;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:3236035522926&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:3236035522926&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle.ittoolbox.com/groups/technical-functional/oracle-db-l/after-logon-trigger-not-killing-the-user-session-5108880&quot; href=&quot;http://oracle.ittoolbox.com/groups/technical-functional/oracle-db-l/after-logon-trigger-not-killing-the-user-session-5108880&quot; class=&quot;externalLink&quot;&gt;http://oracle.ittoolbox.com/groups/technical-functional/oracle-db-l/after-logon-trigger-not-killing-the-user-session-5108880&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.freelists.org/post/oracle-l/Disconnecting-session-from-an-on-logon-trigger,3&quot; href=&quot;https://www.freelists.org/post/oracle-l/Disconnecting-session-from-an-on-logon-trigger,3&quot; class=&quot;externalLink&quot;&gt;https://www.freelists.org/post/oracle-l/Disconnecting-session-from-an-on-logon-trigger,3&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/55342/how-can-i-kill-all-sessions-connecting-to-my-oracle-database&quot; href=&quot;https://stackoverflow.com/questions/55342/how-can-i-kill-all-sessions-connecting-to-my-oracle-database&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/55342/how-can-i-kill-all-sessions-connecting-to-my-oracle-database&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>kill session procedure</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BDisconnect%20Oracle%20Sessions%20from%20Logon%20Trigger%5D%5D</link>
-<pubDate>Wed, 26 Jul 2017 19:10:00 GMT</pubDate>
-
-</item>
-<item>
-<title>SQL books, articles</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' books ', event)&quot;&gt; books &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' articles ', event)&quot;&gt; articles &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; books &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;SQL performance explained &lt;a target=&quot;_blank&quot; title=&quot;External link to https://use-the-index-luke.com/sql/table-of-contents&quot; href=&quot;https://use-the-index-luke.com/sql/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://use-the-index-luke.com/sql/table-of-contents&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Programming-Oracle-Triggers-Procedures-Prentice&quot; href=&quot;https://www.amazon.com/Programming-Oracle-Triggers-Procedures-Prentice&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Programming-Oracle-Triggers-Procedures-Prentice&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/SQL-Antipatterns-Programming-Pragmatic-Programmers-eboo&quot; href=&quot;https://www.amazon.com/SQL-Antipatterns-Programming-Pragmatic-Programmers-eboo&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/SQL-Antipatterns-Programming-Pragmatic-Programmers-eboo&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; articles &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/community/tutorials/sql-tutorial-query#gs.ePzPPkU&quot; href=&quot;https://www.datacamp.com/community/tutorials/sql-tutorial-query#gs.ePzPPkU&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/community/tutorials/sql-tutorial-query#gs.ePzPPkU&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>.video content</category>
-<category>,</category>
-<category>SQL Tuning</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20books%2C%20articles%5D%5D</link>
-<pubDate>Wed, 26 Jul 2017 18:41:00 GMT</pubDate>
-
-</item>
-<item>
-<title>empty log file /dev/null</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://unix.stackexchange.com/questions/147044/cat-dev-null-emptied-my-log-file-but-size-did-not-change&quot; href=&quot;https://unix.stackexchange.com/questions/147044/cat-dev-null-emptied-my-log-file-but-size-did-not-change&quot; class=&quot;externalLink&quot;&gt;https://unix.stackexchange.com/questions/147044/cat-dev-null-emptied-my-log-file-but-size-did-not-change&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;this simple&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;&amp;gt; file  
-&lt;/pre&gt;</description>
-<category>BashShell</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bempty%20log%20file%20%2Fdev%2Fnull%5D%5D</link>
-<pubDate>Wed, 26 Jul 2017 18:25:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Disable Auto Stats Job</title>
-<description>How to Disable Automatic Statistics Collection in 11g [ID 1056968.1]&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-base.com/articles/11g/AutomatedDatabaseMaintenanceTaskManagement_11gR1.php&quot; href=&quot;http://www.oracle-base.com/articles/11g/AutomatedDatabaseMaintenanceTaskManagement_11gR1.php&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-base.com/articles/11g/AutomatedDatabaseMaintenanceTaskManagement_11gR1.php&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B19306_01/appdev.102/b14258/d_job.htm#i1000521&quot; href=&quot;http://docs.oracle.com/cd/B19306_01/appdev.102/b14258/d_job.htm#i1000521&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B19306_01/appdev.102/b14258/d_job.htm#i1000521&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;to check&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;SQL&amp;gt; col status format a20
-SQL&amp;gt; r
-  1* select client_name,status from Dba_Autotask_Client
-
-CLIENT_NAME                                                      STATUS
----------------------------------------------------------------- --------------------
-auto optimizer stats collection                                  ENABLED
-auto space advisor                                               ENABLED
-sql tuning advisor                                               ENABLED
-
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;&lt;span&gt;—&lt;/span&gt; disable a specific job or auto job&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;EXEC DBMS_AUTO_TASK_ADMIN.DISABLE('auto optimizer stats collection', NULL, NULL);
-exec dbms_scheduler.disable('gather_stats_job'); 
-exec dbms_scheduler.disable( 'SYS.BSLN_MAINTAIN_STATS_JOB' );
-EXEC DBMS_JOB.BROKEN(62,TRUE);
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;&lt;span&gt;—&lt;/span&gt; disable all maintenance jobs altogether&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;EXEC DBMS_AUTO_TASK_ADMIN.disable;
-EXEC DBMS_AUTO_TASK_ADMIN.enable;
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;&lt;span&gt;—&lt;/span&gt; to address the maintenance window on your newly created resource_plan&lt;/strong&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; you can just do a single level plan.. then add the ORA$&lt;a tiddlylink=&quot;AUTOTASK_SUB_PLAN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#AUTOTASK_SUB_PLAN&quot; href=&quot;http://karlarao.tiddlyspot.com#AUTOTASK_SUB_PLAN&quot; class=&quot;externalLink null&quot;&gt;AUTOTASK_SUB_PLAN&lt;/a&gt; and ORA$DIAGNOSTICS consumer groups and edit the maintenance windows from &lt;a tiddlylink=&quot;DEFAULT_MAINTENANCE_PLAN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DEFAULT_MAINTENANCE_PLAN&quot; href=&quot;http://karlarao.tiddlyspot.com#DEFAULT_MAINTENANCE_PLAN&quot; class=&quot;externalLink null&quot;&gt;DEFAULT_MAINTENANCE_PLAN&lt;/a&gt; to your newly created resource plan. by doing this each time the window is executed all the jobs will conform to the new resource plan and their allocations&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Enabling Oracle Database Resource Manager and Switching Plans &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B28359_01/server.111/b28310/dbrm005.htm#ADMIN11890&quot; href=&quot;http://docs.oracle.com/cd/B28359_01/server.111/b28310/dbrm005.htm#ADMIN11890&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B28359_01/server.111/b28310/dbrm005.htm#ADMIN11890&lt;/a&gt;&lt;br&gt;&lt;pre&gt;ALTER SYSTEM SET RESOURCE_MANAGER_PLAN = 'FORCE:mydb_plan';
-&lt;/pre&gt;Windows &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B28359_01/server.111/b28310/schedover007.htm#i1106396&quot; href=&quot;http://docs.oracle.com/cd/B28359_01/server.111/b28310/schedover007.htm#i1106396&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B28359_01/server.111/b28310/schedover007.htm#i1106396&lt;/a&gt;&lt;br&gt;Configuring Resource Allocations for Automated Maintenance Tasks &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B28359_01/server.111/b28310/tasks005.htm#BABHEFEH&quot; href=&quot;http://docs.oracle.com/cd/B28359_01/server.111/b28310/tasks005.htm#BABHEFEH&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B28359_01/server.111/b28310/tasks005.htm#BABHEFEH&lt;/a&gt;&lt;br&gt;Automated Database Maintenance Task Management &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-base.com/articles/11g/automated-database-maintenance-task-management-11gr1.php&quot; href=&quot;http://www.oracle-base.com/articles/11g/automated-database-maintenance-task-management-11gr1.php&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-base.com/articles/11g/automated-database-maintenance-task-management-11gr1.php&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>stats gathering</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BDisable%20Auto%20Stats%20Job%5D%5D</link>
-<pubDate>Wed, 26 Jul 2017 02:42:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Change Password</title>
-<description>to get rid of &lt;a tiddlylink=&quot;ORA-28003&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA-28003&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA-28003&quot; class=&quot;externalLink null&quot;&gt;ORA-28003&lt;/a&gt;: password verification for the specified password failed&lt;br&gt;&lt;pre&gt;ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL;
-alter profile DEFAULT limit PASSWORD_REUSE_MAX 6 PASSWORD_REUSE_TIME unlimited;
-ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
-&lt;/pre&gt;&lt;br&gt;to change profile for a specific user&lt;br&gt;&lt;pre&gt;select username, account_status, PROFILE from dba_users;
-ALTER PROFILE MONITORING_USER LIMIT PASSWORD_VERIFY_FUNCTION NULL;
-alter profile MONITORING_USER limit PASSWORD_REUSE_MAX 6 PASSWORD_REUSE_TIME unlimited;
-alter user HCMREADONLY identified by noentry;
-ALTER PROFILE MONITORING_USER LIMIT PASSWORD_VERIFY_FUNCTION VERIFY_FUNCTION;
-&lt;/pre&gt;&lt;br&gt;to get the old password and put it back after&lt;br&gt;&lt;pre&gt;create user TEST identified by TEST;
-grant create session to TEST;
-select username, password from dba_users where username = 'TEST';
-
- select username, password from dba_users where username = 'TEST';
-
-USERNAME                       PASSWORD
------------------------------- ------------------------------
-TEST                           7A0F2B316C212D67
-
-alter user TEST identified by TEST2;
-
-Alter user TEST identified by values 'OLD HASH VALUE ';
-Alter user TEST identified by values '7A0F2B316C212D67';
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; expired and locked&lt;/h1&gt;&lt;pre&gt;select username, account_status from dba_users;
-select 'ALTER USER ' || username || ' ACCOUNT UNLOCK;' from dba_users where account_status like '%LOCKED%';
-
-set heading off
-set echo off
-set long 9999999
-select dbms_metadata.get_ddl('USER', username) || ';' usercreate
-from dba_users where username = 'SYSMAN';
-
-If you are, (if sec_case_sensitive_logon = TRUE), then you can do this:
-select 'alter user '|| username '||' identified by values '||chr(39)||spare4||chr(39)||';' from dba_users where account_status like '%EXPIRED%';
-If you're not using mixed case passwords (sec_case_sensitive_logon = FALSE), then do:
-select 'alter user '||username '||' identified by value '||chr(39)||password||chr(39)||';' from dba_users where account_status like '%EXPIRED%';
-
-select 'ALTER USER ' || username || ' identified by oracle1;' from dba_users where account_status like '%EXPIRED%';
-
-http://laurentschneider.com/wordpress/2008/03/alter-user-identified-by-values-in-11g.html
-http://coskan.wordpress.com/2009/03/11/alter-user-identified-by-values-on-11g-without-using-sysuser/
-
--- for sysman do this starting 10204
-emctl setpasswd dbconsole
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; example&lt;/h1&gt;&lt;pre&gt;21:06:35 SYS@cdb1&amp;gt; SET LONG 999999
-21:06:45 SYS@cdb1&amp;gt; select dbms_metadata.get_ddl('USER','ALLOC_APP_USER') from dual;
- 
-DBMS_METADATA.GET_DDL('USER','ALLOC_APP_USER')
---------------------------------------------------------------------------------
- 
-   CREATE USER &quot;ALLOC_APP_USER&quot; IDENTIFIED BY VALUES 'S:135E0A81F4B08AD2EE81B3A0
-E4B28DB3A08983E40524264C4764EDCEE856;H:9BCF43B8002C09A03D7C5B0C80D35B86;T:42BE3A
-2EC61307ED9FF704DF80951D76986F47D43EA835799836001399562899F95FB95B171C9D58A16E45
-F7459ADEE74901C7B4A9A9AEFDD92FD03278F3038B0EE0A03F14A3C7520FABCC386FA6A72A;E0E79
-5741BD02FB0'
-      DEFAULT TABLESPACE &quot;USERS&quot;
-      TEMPORARY TABLESPACE &quot;TEMP2&quot;
- 
- 
-21:06:49 SYS@cdb1&amp;gt;
-21:06:51 SYS@cdb1&amp;gt; conn system/xxx
-Connected.
-21:07:15 SYSTEM@cdb1&amp;gt;
-21:07:16 SYSTEM@cdb1&amp;gt;
-21:07:16 SYSTEM@cdb1&amp;gt; alter user alloc_app_user identified by karlarao;
- 
-User altered.
- 
-21:07:37 SYSTEM@cdb1&amp;gt; conn alloc_app_user/karlarao
-Connected.
-21:07:45 ALLOC_APP_USER@cdb1&amp;gt;
-21:07:46 ALLOC_APP_USER@cdb1&amp;gt;
-21:07:46 ALLOC_APP_USER@cdb1&amp;gt; conn system/xxx
-Connected.
-21:07:51 SYSTEM@cdb1&amp;gt;
-21:07:51 SYSTEM@cdb1&amp;gt;
-21:07:51 SYSTEM@cdb1&amp;gt; alter user alloc_app_user identified by values 'S:135E0A81F4B08AD2EE81B3A0E4B28DB3A08983E40524264C4764EDCEE856;H:9BCF43B8002C09A03D7C5B0C80D35B86;T:42BE3A2EC61307ED9FF704DF80951D76986F47D43EA835799836001399562899F95FB95B171C9D58A16E45F7459ADEE74901C7B4A9A9AEFDD92FD03278F3038B0EE0A03F14A3C7520FABCC386FA6A72A;E0E795741BD02FB0';
- 
-User altered.
- 
-21:08:46 SYSTEM@cdb1&amp;gt; conn alloc_app_user/karlarao
-ERROR:
-ORA-01017: invalid username/password; logon denied
- 
- 
-Warning: You are no longer connected to ORACLE.
-21:08:55 @&amp;gt;
-21:08:56 @&amp;gt; conn alloc_app_user/testalloc
-Connected.
-21:09:07 ALLOC_APP_USER@cdb1&amp;gt;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Security</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BChange%20Password%5D%5D</link>
-<pubDate>Tue, 25 Jul 2017 21:18:00 GMT</pubDate>
-
-</item>
-<item>
-<title>..row lock mode</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&quot; href=&quot;https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&quot; class=&quot;externalLink&quot;&gt;https://blog.dbi-services.com/oracle-locks-identifiying-blocking-sessions/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;when w.wait_event_text like 'enq: TM%' then
-    ' mode '||decode(w.p1 ,1414332418,'Row-S' ,1414332419,'Row-X' ,1414332420,'Share' ,1414332421,'Share RX' ,1414332422,'eXclusive')
-     ||( select ' on '||object_type||' &quot;'||owner||'&quot;.&quot;'||object_name||'&quot; ' from all_objects where object_id=w.p2 )
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jonathanlewis.wordpress.com/2010/06/21/locks/&quot; href=&quot;https://jonathanlewis.wordpress.com/2010/06/21/locks/&quot; class=&quot;externalLink&quot;&gt;https://jonathanlewis.wordpress.com/2010/06/21/locks/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;This list is specifically about the lock modes for a TM lock:
-
-Value   Name(s)                    Table method (TM lock)
-    0   No lock                    n/a
- 
-    1   Null lock (NL)             Used during some parallel DML operations (e.g. update) by
-                                   the pX slaves while the QC is holding an exclusive lock.
- 
-    2   Sub-share (SS)             Until 9.2.0.5/6 &quot;select for update&quot;
-        Row-share (RS)             Since 9.2.0.1/2 used at opposite end of RI during DML until 11.1
-                                   Lock table in row share mode
-                                   Lock table in share update mode
- 
-    3   Sub-exclusive(SX)          Update (also &quot;select for update&quot; from 9.2.0.5/6)
-        Row-exclusive(RX)          Lock table in row exclusive mode
-                                   Since 11.1 used at opposite end of RI during DML
- 
-    4   Share (S)                  Lock table in share mode
-                                   Can appear during parallel DML with id2 = 1, in the PX slave sessions
-                                   Common symptom of &quot;foreign key locking&quot; (missing index) problem
-                                   Note that bitmap indexes on the child DON'T address the locking problem
- 
-    5   share sub exclusive (SSX)  Lock table in share row exclusive mode
-        share row exclusive (SRX)  Less common symptom of &quot;foreign key locking&quot; but likely to be more
-                                   frequent if the FK constraint is defined with &quot;on delete cascade.&quot;
- 
-    6   Exclusive (X)              Lock table in exclusive mode
-                                   create index    -- duration and timing depend on options used
-                                   insert /*+ append */ 
-&lt;/pre&gt;</description>
-<category>row lock contention</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B..row%20lock%20mode%5D%5D</link>
-<pubDate>Mon, 24 Jul 2017 23:17:00 GMT</pubDate>
 
 </item>
 </channel>
