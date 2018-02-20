@@ -1,5 +1,9 @@
-cp /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/karlarao.html index.html
-cp /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/karlarao.xml index.xml
+cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/xyz.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/xyz.xml /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/karlarao.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/karlarao.xml /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/karlarao.html index.html
+cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/karlarao.xml index.xml
 git config --global user.name "karlarao"
 git config --global user.email "karlarao@gmail.com"
 git add .

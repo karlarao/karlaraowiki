@@ -6,163 +6,106 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 KarlArao</copyright>
-<pubDate>Wed, 31 Jan 2018 21:54:58 GMT</pubDate>
-<lastBuildDate>Wed, 31 Jan 2018 21:54:58 GMT</lastBuildDate>
+<pubDate>Tue, 20 Feb 2018 21:22:18 GMT</pubDate>
+<lastBuildDate>Tue, 20 Feb 2018 21:22:18 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
-<title>script - get row count of tables</title>
-<description>&lt;br&gt;&lt;br&gt;&lt;h1&gt; get tables count of all tables in a database &lt;/h1&gt;sh hive_table_count.sh &amp;lt;databasename&amp;gt;&lt;br&gt;&lt;pre&gt;[raj_ops@sandbox ~]$ cat hive_table_count.sh 
-#!/bin/bash
-rm -f tableNames.txt
-rm -f HiveTableDDL.txt
-hive -e &quot;use $1; show tables;&quot; &amp;gt; tableNames.txt  
-wait
-cat tableNames.txt |while read LINE
-   do
-   echo -e $LINE &amp;gt;&amp;gt; HiveTableDDL.txt
-   hive -e &quot;use $1;select count(*) from $LINE&quot; &amp;gt;&amp;gt;HiveTableDDL.txt
-   echo  -e &quot;\n&quot; &amp;gt;&amp;gt; HiveTableDDL.txt
-   done
-
-sed '/^$/d' HiveTableDDL.txt  &amp;gt; combinecount.txt
-awk '!(NR%2){print$0p}{p=&quot; &quot;$0}' combinecount.txt &amp;gt; finalcount.txt
-
-echo &quot;Table Count Done...&quot;
-cat finalcount.txt
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; get table count based on tables on file tableNames.txt&lt;/h1&gt;sh hive_table_count.sh &amp;lt;databasename&amp;gt;&lt;br&gt;&lt;pre&gt;[raj_ops@sandbox ~]$ cat tableNames.txt 
-product
-store
-
-[raj_ops@sandbox ~]$ cat hive_table_count.sh 
-#!/bin/bash
-rm -f HiveTableDDL.txt 
-wait
-cat tableNames.txt |while read LINE
-   do
-   echo -e $LINE &amp;gt;&amp;gt; HiveTableDDL.txt
-   hive -e &quot;use $1;select count(*) from $LINE&quot; &amp;gt;&amp;gt;HiveTableDDL.txt
-   echo  -e &quot;\n&quot; &amp;gt;&amp;gt; HiveTableDDL.txt
-   done
-
-sed '/^$/d' HiveTableDDL.txt  &amp;gt; combinecount.txt
-awk '!(NR%2){print$0p}{p=&quot; &quot;$0}' combinecount.txt &amp;gt; finalcount.txt
-
-echo &quot;Table Count Done...&quot;
-cat finalcount.txt
-
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; example run &lt;/h1&gt;&lt;pre&gt;[raj_ops@sandbox ~]$ sh hive_table_count.sh foodmart
-
-Logging initialized using configuration in file:/etc/hive/2.5.0.0-1245/0/hive-log4j.properties
-OK
-Time taken: 2.923 seconds
-Query ID = raj_ops_20180123123341_474704d8-3d04-421c-8cfa-6c7f92cfe2cb
-Total jobs = 1
-Launching Job 1 out of 1
-
-
-Status: Running (Executing on YARN cluster with App id application_1516661636204_0040)
-
-Map 1: -/-	Reducer 2: 0/1	
-Map 1: 0/1	Reducer 2: 0/1	
-Map 1: 0(+1)/1	Reducer 2: 0/1	
-Map 1: 1/1	Reducer 2: 0(+1)/1	
-Map 1: 1/1	Reducer 2: 1/1	
-OK
-Time taken: 11.666 seconds, Fetched: 1 row(s)
-
-Logging initialized using configuration in file:/etc/hive/2.5.0.0-1245/0/hive-log4j.properties
-OK
-Time taken: 2.736 seconds
-Query ID = raj_ops_20180123123411_0b27390f-a606-42f9-ac4d-682607af30af
-Total jobs = 1
-Launching Job 1 out of 1
-
-
-Status: Running (Executing on YARN cluster with App id application_1516661636204_0041)
-
-Map 1: -/-	Reducer 2: 0/1	
-Map 1: 0/1	Reducer 2: 0/1	
-Map 1: 0/1	Reducer 2: 0/1	
-Map 1: 0(+1)/1	Reducer 2: 0/1	
-Map 1: 0(+1)/1	Reducer 2: 0/1	
-Map 1: 0/1	Reducer 2: 0/1	
-Map 1: 1/1	Reducer 2: 0(+1)/1	
-Map 1: 1/1	Reducer 2: 1/1	
-OK
-Time taken: 13.599 seconds, Fetched: 1 row(s)
-Table Count Done...
-1560 product
-25 store
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; reference &lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/21900886/get-row-count-from-all-tables-in-hive&quot; href=&quot;https://stackoverflow.com/questions/21900886/get-row-count-from-all-tables-in-hive&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/21900886/get-row-count-from-all-tables-in-hive&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;You will need to do a&lt;br&gt;&lt;br&gt;&lt;pre&gt;select count(*) from table
-&lt;/pre&gt;&lt;br&gt;for all tables.&lt;br&gt;&lt;br&gt;To automate this, you can make a small bash script and some bash commands. First run&lt;br&gt;&lt;br&gt;&lt;pre&gt;$hive -e 'show tables' | tee tables.txt
-&lt;/pre&gt;&lt;br&gt;This stores all tables in the database in a text file tables.txt&lt;br&gt;&lt;br&gt;Create a bash file (count_tables.sh) with the following contents.&lt;br&gt;&lt;br&gt;&lt;pre&gt;while read line
-do
- echo &quot;$line &quot;
- eval &quot;hive -e 'select count(*) from $line'&quot;
-done
-&lt;/pre&gt;&lt;br&gt;Now run the following commands.&lt;br&gt;&lt;br&gt;&lt;pre&gt;$chmod +x count_tables.sh
-$./count_tables.sh &amp;lt; tables.txt &amp;gt; counts.txt
-&lt;/pre&gt;&lt;br&gt;This creates a text file(counts.txt) with the counts of all the tables in the database&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bscript%20-%20get%20row%20count%20of%20tables%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 21:53:26 GMT</pubDate>
+<title>dboptimizer</title>
+<description>&lt;br&gt;&lt;h1&gt; download &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://edn.embarcadero.com/&quot; href=&quot;http://edn.embarcadero.com/&quot; class=&quot;externalLink&quot;&gt;http://edn.embarcadero.com/&lt;/a&gt;&lt;br&gt;go to my account &amp;gt; My registered user downloads&lt;br&gt;go to my account &amp;gt; My registered products&lt;br&gt;&lt;br&gt;&lt;h1&gt; new features&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20User%20Guide.pdf&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20User%20Guide.pdf&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20User%20Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20Quick%20Start%20Guide.pdf&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20Quick%20Start%20Guide.pdf&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20Quick%20Start%20Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/17.0/DBOptimizer_17.0.0_ReadMe.htm&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/17.0/DBOptimizer_17.0.0_ReadMe.htm&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/17.0/DBOptimizer_17.0.0_ReadMe.htm&lt;/a&gt;&lt;br&gt;</description>
+<category>SQL VST</category>
+<link>http://karlarao.tiddlyspot.com#dboptimizer</link>
+<pubDate>Tue, 20 Feb 2018 21:21:57 GMT</pubDate>
 
 </item>
 <item>
-<title>hive create database</title>
-<description>&lt;pre&gt;create database hr;
-
-CREATE TABLE IF NOT EXISTS hr.employees ( eid int, name String,
-salary String, destination String)
-COMMENT 'Employee details'
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '\t'
-LINES TERMINATED BY '\n'
-STORED AS TEXTFILE;
-&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;[root@sandbox ~]# hadoop fs -ls /apps/hive/warehouse/
-Found 5 items
-drwxrwxrwx   - hive    hdfs          0 2016-10-25 08:10 /apps/hive/warehouse/foodmart.db
-drwxrwxrwx   - raj_ops hdfs          0 2018-01-23 10:07 /apps/hive/warehouse/hr.db
-drwxrwxrwx   - hive    hdfs          0 2016-10-25 08:11 /apps/hive/warehouse/sample_07
-drwxrwxrwx   - hive    hdfs          0 2016-10-25 08:11 /apps/hive/warehouse/sample_08
-drwxrwxrwx   - hive    hdfs          0 2016-10-25 08:02 /apps/hive/warehouse/xademo.db
-
-[root@sandbox ~]# hadoop fs -ls /apps/hive/warehouse/hr.db
-Found 1 items
-drwxrwxrwx   - raj_ops hdfs          0 2018-01-23 10:08 /apps/hive/warehouse/hr.db/employees
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20create%20database%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 19:35:00 GMT</pubDate>
+<title>SQL VST</title>
+<description></description>
+<category>DevTools, Dev Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20VST%5D%5D</link>
+<pubDate>Tue, 20 Feb 2018 21:18:46 GMT</pubDate>
 
 </item>
 <item>
-<title>.hive scripting</title>
-<description>&lt;h1&gt; run query&lt;/h1&gt;&lt;pre&gt;[raj_ops@sandbox ~]$ hive -e 'select * from foodmart.customer limit 2'
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; run script&lt;/h1&gt;&lt;pre&gt;[raj_ops@sandbox ~]$ hive -f test.sql 
-[raj_ops@sandbox ~]$ cat test.sql 
-select * from foodmart.customer limit 2;
+<title>Result fetch timed out</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/90768/how-to-fix-ambari-hive-view-15-result-fetch-timed.html&quot; href=&quot;https://community.hortonworks.com/articles/90768/how-to-fix-ambari-hive-view-15-result-fetch-timed.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/90768/how-to-fix-ambari-hive-view-15-result-fetch-timed.html&lt;/a&gt;</description>
+<category>ambari issues</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BResult%20fetch%20timed%20out%5D%5D</link>
+<pubDate>Tue, 20 Feb 2018 21:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>ambari issues</title>
+<description></description>
+<category>hive</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bambari%20issues%5D%5D</link>
+<pubDate>Tue, 20 Feb 2018 21:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>tUniqueRow</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://talend-training.blogspot.com/2011/12/how-to-optimize-tuniquerow-component-in.html&quot; href=&quot;https://talend-training.blogspot.com/2011/12/how-to-optimize-tuniquerow-component-in.html&quot; class=&quot;externalLink&quot;&gt;https://talend-training.blogspot.com/2011/12/how-to-optimize-tuniquerow-component-in.html&lt;/a&gt; &lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.talend.com/reader/iYcvdknuprDzYycT3WRU8w/sh7RZbAtg4KTo7vc06k4Kw&quot; href=&quot;https://help.talend.com/reader/iYcvdknuprDzYycT3WRU8w/sh7RZbAtg4KTo7vc06k4Kw&quot; class=&quot;externalLink&quot;&gt;https://help.talend.com/reader/iYcvdknuprDzYycT3WRU8w/sh7RZbAtg4KTo7vc06k4Kw&lt;/a&gt; &amp;lt;- talend doc&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.talend.com/t5/Design-and-Development/different-results-for-tUniqueRow-and-tAggregateRow/td-p/27328&quot; href=&quot;https://community.talend.com/t5/Design-and-Development/different-results-for-tUniqueRow-and-tAggregateRow/td-p/27328&quot; class=&quot;externalLink&quot;&gt;https://community.talend.com/t5/Design-and-Development/different-results-for-tUniqueRow-and-tAggregateRow/td-p/27328&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.talendforge.org/forum/viewtopic.php?id=27325&quot; href=&quot;https://www.talendforge.org/forum/viewtopic.php?id=27325&quot; class=&quot;externalLink&quot;&gt;https://www.talendforge.org/forum/viewtopic.php?id=27325&lt;/a&gt; &amp;lt;- 420,000 rows x 55 columns&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://souravinayak.blogspot.com/2017/02/data-deduplication-with-tuniquerow.html&quot; href=&quot;http://souravinayak.blogspot.com/2017/02/data-deduplication-with-tuniquerow.html&quot; class=&quot;externalLink&quot;&gt;http://souravinayak.blogspot.com/2017/02/data-deduplication-with-tuniquerow.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/34734723/how-to-retrive-duplicate-records-in-talend-integration&quot; href=&quot;https://stackoverflow.com/questions/34734723/how-to-retrive-duplicate-records-in-talend-integration&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/34734723/how-to-retrive-duplicate-records-in-talend-integration&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.talend.com/t5/Design-and-Development/howa-to-optimise-tUniqRow-and-tSortRow/td-p/49309&quot; href=&quot;https://community.talend.com/t5/Design-and-Development/howa-to-optimise-tUniqRow-and-tSortRow/td-p/49309&quot; class=&quot;externalLink&quot;&gt;https://community.talend.com/t5/Design-and-Development/howa-to-optimise-tUniqRow-and-tSortRow/td-p/49309&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Talend</category>
+<link>http://karlarao.tiddlyspot.com#tUniqueRow</link>
+<pubDate>Tue, 20 Feb 2018 21:16:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Talend</title>
+<description></description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#Talend</link>
+<pubDate>Tue, 20 Feb 2018 21:12:00 GMT</pubDate>
+
+</item>
+<item>
+<title>18c new features</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/en/database/oracle/oracle-database/18/newft/new-features.html#GUID-04A4834D-848F-44D5-8C34-36237D40F194&quot; href=&quot;https://docs.oracle.com/en/database/oracle/oracle-database/18/newft/new-features.html#GUID-04A4834D-848F-44D5-8C34-36237D40F194&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/en/database/oracle/oracle-database/18/newft/new-features.html#GUID-04A4834D-848F-44D5-8C34-36237D40F194&lt;/a&gt;</description>
+<category>New Features</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B18c%20new%20features%5D%5D</link>
+<pubDate>Tue, 20 Feb 2018 06:26:00 GMT</pubDate>
+
+</item>
+<item>
+<title>.hive cheatsheet, beeline cheatsheet</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&quot; href=&quot;http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&quot; class=&quot;externalLink&quot;&gt;http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; show all config parameters&lt;/h1&gt;&lt;pre&gt;set;
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; connect on beeline&lt;/h1&gt;&lt;pre&gt;beeline&amp;gt; !connect jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
+Connecting to jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
+Enter username for jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2:
+Enter password for jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2:
+Connected to: Apache Hive (version 1.2.1000.2.5.0.0-1245)
+Driver: Hive JDBC (version 1.2.1000.2.5.0.0-1245)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://sandbox.hortonworks.com:2181/&amp;gt;
+0: jdbc:hive2://sandbox.hortonworks.com:2181/&amp;gt; show databases;
++----------------+--+
+| database_name  |
++----------------+--+
+| default        |
+| foodmart       |
+| hr             |
+| xademo         |
++----------------+--+
+4 rows selected (0.14 seconds)
+
+
 &lt;/pre&gt;</description>
 <category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.hive%20scripting%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 19:23:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.hive%20cheatsheet%2C%20beeline%20cheatsheet%5D%5D</link>
+<pubDate>Wed, 14 Feb 2018 22:14:00 GMT</pubDate>
 
 </item>
 <item>
-<title>.hive cheatsheet</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&quot; href=&quot;http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&quot; class=&quot;externalLink&quot;&gt;http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&lt;/a&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.hive%20cheatsheet%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 19:16:00 GMT</pubDate>
+<title>macbook vbox download</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.virtualbox.org/wiki/Download_Old_Builds_5_0&quot; href=&quot;https://www.virtualbox.org/wiki/Download_Old_Builds_5_0&quot; class=&quot;externalLink&quot;&gt;https://www.virtualbox.org/wiki/Download_Old_Builds_5_0&lt;/a&gt;&lt;br&gt;look for &lt;a tiddlylink=&quot;VirtualBox&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VirtualBox&quot; href=&quot;http://karlarao.tiddlyspot.com#VirtualBox&quot; class=&quot;externalLink null&quot;&gt;VirtualBox&lt;/a&gt; 5.0.30&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.virtualbox.org/virtualbox/5.0.30/VirtualBox-5.0.30-112061-OSX.dmg&quot; href=&quot;http://download.virtualbox.org/virtualbox/5.0.30/VirtualBox-5.0.30-112061-OSX.dmg&quot; class=&quot;externalLink&quot;&gt;http://download.virtualbox.org/virtualbox/5.0.30/VirtualBox-5.0.30-112061-OSX.dmg&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.virtualbox.org/virtualbox/5.0.30/Oracle_VM_VirtualBox_Extension_Pack-5.0.30-112061.vbox-extpack&quot; href=&quot;http://download.virtualbox.org/virtualbox/5.0.30/Oracle_VM_VirtualBox_Extension_Pack-5.0.30-112061.vbox-extpack&quot; class=&quot;externalLink&quot;&gt;http://download.virtualbox.org/virtualbox/5.0.30/Oracle_VM_VirtualBox_Extension_Pack-5.0.30-112061.vbox-extpack&lt;/a&gt;</description>
+<category>MacBook, macosx, mac osx</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bmacbook%20vbox%20download%5D%5D</link>
+<pubDate>Wed, 14 Feb 2018 21:53:00 GMT</pubDate>
 
 </item>
 <item>
 <title>hdp sandbox installation 2.5</title>
-<description>&lt;h1&gt; to access&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;-- from within the VM 
+<description>&lt;h1&gt; on networking &lt;/h1&gt;setup a host only adapter and create a 2nd adapter, then ssh to it&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; to access&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;-- from within the VM 
 docker ps -a 
 ssh -p 2222 root@localhost
 root/xxx1txx$1
@@ -189,193 +132,292 @@ drwxrwxrwx   - hive hdfs          0 2016-10-25 08:02 /apps/hive/warehouse/xademo
 &lt;/pre&gt;</description>
 <category>.hadoop sandbox</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.5%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 19:15:00 GMT</pubDate>
+<pubDate>Wed, 14 Feb 2018 21:47:00 GMT</pubDate>
 
 </item>
 <item>
-<title>Joins</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jonathanlewis.wordpress.com/2010/08/02/joins/&quot; href=&quot;http://jonathanlewis.wordpress.com/2010/08/02/joins/&quot; class=&quot;externalLink&quot;&gt;http://jonathanlewis.wordpress.com/2010/08/02/joins/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jonathanlewis.wordpress.com/2010/08/09/joins-nlj/&quot; href=&quot;http://jonathanlewis.wordpress.com/2010/08/09/joins-nlj/&quot; class=&quot;externalLink&quot;&gt;http://jonathanlewis.wordpress.com/2010/08/09/joins-nlj/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jonathanlewis.wordpress.com/2010/08/10/joins-hj/&quot; href=&quot;http://jonathanlewis.wordpress.com/2010/08/10/joins-hj/&quot; class=&quot;externalLink&quot;&gt;http://jonathanlewis.wordpress.com/2010/08/10/joins-hj/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jonathanlewis.wordpress.com/2010/08/15/joins-mj/&quot; href=&quot;http://jonathanlewis.wordpress.com/2010/08/15/joins-mj/&quot; class=&quot;externalLink&quot;&gt;http://jonathanlewis.wordpress.com/2010/08/15/joins-mj/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; Optimizing two table join - video! TROUG&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jonathanlewis.wordpress.com/2011/06/23/video/&quot; href=&quot;http://jonathanlewis.wordpress.com/2011/06/23/video/&quot; class=&quot;externalLink&quot;&gt;http://jonathanlewis.wordpress.com/2011/06/23/video/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL Joins Graphically&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://db-optimizer.blogspot.com/2010/09/sql-joins-graphically.html&quot; href=&quot;http://db-optimizer.blogspot.com/2010/09/sql-joins-graphically.html&quot; class=&quot;externalLink&quot;&gt;http://db-optimizer.blogspot.com/2010/09/sql-joins-graphically.html&lt;/a&gt; based on &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.codeproject.com/KB/database/Visual_SQL_Joins.aspx?msg=2919602&quot; href=&quot;http://www.codeproject.com/KB/database/Visual_SQL_Joins.aspx?msg=2919602&quot; class=&quot;externalLink&quot;&gt;http://www.codeproject.com/KB/database/Visual_SQL_Joins.aspx?msg=2919602&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://db-optimizer.blogspot.com/2009/06/sql-joins.html&quot; href=&quot;http://db-optimizer.blogspot.com/2009/06/sql-joins.html&quot; class=&quot;externalLink&quot;&gt;http://db-optimizer.blogspot.com/2009/06/sql-joins.html&lt;/a&gt; based on &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&quot; href=&quot;http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&quot; class=&quot;externalLink&quot;&gt;http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.gplivna.eu/papers/sql_join_types.htm&quot; href=&quot;http://www.gplivna.eu/papers/sql_join_types.htm&quot; class=&quot;externalLink&quot;&gt;http://www.gplivna.eu/papers/sql_join_types.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oaktable.net/content/sql-joins-visualized-surprising-way&quot; href=&quot;http://www.oaktable.net/content/sql-joins-visualized-surprising-way&quot; class=&quot;externalLink&quot;&gt;http://www.oaktable.net/content/sql-joins-visualized-surprising-way&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.techonthenet.com/oracle/joins.php&quot; href=&quot;https://www.techonthenet.com/oracle/joins.php&quot; class=&quot;externalLink&quot;&gt;https://www.techonthenet.com/oracle/joins.php&lt;/a&gt;   &amp;lt;&lt;span&gt;—&lt;/span&gt; GOOD STUFF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://searchoracle.techtarget.com/answer/Alternative-to-LEFT-OUTER-JOIN&quot; href=&quot;http://searchoracle.techtarget.com/answer/Alternative-to-LEFT-OUTER-JOIN&quot; class=&quot;externalLink&quot;&gt;http://searchoracle.techtarget.com/answer/Alternative-to-LEFT-OUTER-JOIN&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docwiki.embarcadero.com/DBOptimizer/en/Subquery_Diagramming&quot; href=&quot;http://docwiki.embarcadero.com/DBOptimizer/en/Subquery_Diagramming&quot; class=&quot;externalLink&quot;&gt;http://docwiki.embarcadero.com/DBOptimizer/en/Subquery_Diagramming&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&quot; href=&quot;http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&quot; class=&quot;externalLink&quot;&gt;http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQL Tuning</category>
-<category>VisualSQLTuning, VST, SQL tuning methodology</category>
-<link>http://karlarao.tiddlyspot.com#Joins</link>
-<pubDate>Wed, 31 Jan 2018 03:41:00 GMT</pubDate>
+<title>.hive commands</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LanguageManual&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LanguageManual&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hive.apache.org/&quot; href=&quot;http://hive.apache.org/&quot; class=&quot;externalLink&quot;&gt;http://hive.apache.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' WITH AS ', event)&quot;&gt; WITH AS &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' UNION ALL ', event)&quot;&gt; UNION ALL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' CASE function', event)&quot;&gt; CASE function&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' hive JOINS', event)&quot;&gt; hive JOINS&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL ', event)&quot;&gt; DDL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' spool to CSV', event)&quot;&gt; spool to CSV&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' alter table CSV header property skip header', event)&quot;&gt; alter table CSV header property skip header&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; WITH AS &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; UNION ALL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/16181684/combine-many-tables-in-hive-using-union-all&quot; href=&quot;https://stackoverflow.com/questions/16181684/combine-many-tables-in-hive-using-union-all&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/16181684/combine-many-tables-in-hive-using-union-all&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; CASE function&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.folkstalk.com/2011/11/conditional-functions-in-hive.html&quot; href=&quot;http://www.folkstalk.com/2011/11/conditional-functions-in-hive.html&quot; class=&quot;externalLink&quot;&gt;http://www.folkstalk.com/2011/11/conditional-functions-in-hive.html&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/41023835/case-statements-in-hive&quot; href=&quot;https://stackoverflow.com/questions/41023835/case-statements-in-hive&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/41023835/case-statements-in-hive&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.modeanalytics.com/sql/tutorial/sql-case/&quot; href=&quot;https://community.modeanalytics.com/sql/tutorial/sql-case/&quot; class=&quot;externalLink&quot;&gt;https://community.modeanalytics.com/sql/tutorial/sql-case/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; hive JOINS&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tutorialspoint.com/hive/hiveql_joins.htm&quot; href=&quot;https://www.tutorialspoint.com/hive/hiveql_joins.htm&quot; class=&quot;externalLink&quot;&gt;https://www.tutorialspoint.com/hive/hiveql_joins.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; DDL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;show create table
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; spool to CSV&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;hive -e 'header =true, select * from table' &amp;gt; file.csv
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; alter table CSV header property skip header&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;hadoop fs -copyFromLocal mts_main_v1.csv /sdxx/derived/restou/dc_master_target_summary_v1
 
-</item>
-<item>
-<title>VisualSQLTuning, VST, SQL tuning methodology</title>
-<description>&lt;strong&gt;Start with the following youtube videos&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=urK9sQErxHI&amp;amp;list=PLklSCDzsQHdmNhQUKYydLHO5d7E_2NDwK&quot; href=&quot;https://www.youtube.com/watch?v=urK9sQErxHI&amp;amp;list=PLklSCDzsQHdmNhQUKYydLHO5d7E_2NDwK&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=urK9sQErxHI&amp;amp;list=PLklSCDzsQHdmNhQUKYydLHO5d7E_2NDwK&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;the VST concept&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://sites.google.com/site/embtdbo/sql-tuning-1&quot; href=&quot;https://sites.google.com/site/embtdbo/sql-tuning-1&quot; class=&quot;externalLink&quot;&gt;https://sites.google.com/site/embtdbo/sql-tuning-1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://sites.google.com/site/embtdbo/Home/sql-hint-documentation&quot; href=&quot;https://sites.google.com/site/embtdbo/Home/sql-hint-documentation&quot; class=&quot;externalLink&quot;&gt;https://sites.google.com/site/embtdbo/Home/sql-hint-documentation&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;SQL tuning methodology&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docwiki.embarcadero.com/DBOptimizer/en/SQL_Tuning&quot; href=&quot;http://docwiki.embarcadero.com/DBOptimizer/en/SQL_Tuning&quot; class=&quot;externalLink&quot;&gt;http://docwiki.embarcadero.com/DBOptimizer/en/SQL_Tuning&lt;/a&gt;&lt;br&gt;&lt;pre&gt;1. List tables in query
-2. List the joins in the query
-3. Layout a diagram tables as nodes
-4. Draw connectors for each join in where clause
-1 to 1 connection
-use blue line
-1 to many
-use black line
-crows feet towards many
-many to many
-crows feet on both ends
-5. Calculate filter ratios for any tables with filters
-filter ratio = number of rows returned with fitler / number of rows
-display in yellow below table node
-6. Calculate two table join sizes for all two table joins in diagram (ie for every connection line)
-extract the join information, including filters, and run count on that join
-display in red on join line
-Alternatively, or as a complement, calculate join filter ratios in both directions
-display at each end of join connection line
-7. Find the table sizes for each table
-display in green above table node
-&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;1 Methodology
-1.1 Step 1 : Tables
-1.2 Step 2 : Joins
-1.3 Step 3: Laying Out Join Diagram
-1.4 Step 4: Join Connectors
-1.5 Step 5: Predicate Filter Ratio
-1.6 Step 6: Two Table Join Sizes and Join Filters
-1.7 Step 7: Table Sizes
-2 Analyzing Results
-2.1 Query 1
-2.2 Query 2
-2.3 Query 3
-2.4 Query 4
-3 Subquery Diagramming
-3.1 Simple join and non-correlated subqueries
-3.2 Single row subquery
-3.3 Correlated subquery
-3.3.1 Example
-3.4 Outer Joins
-3.5 In/Exists
-3.6 Semi Joins
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Patents&lt;/strong&gt;&lt;br&gt;Dan Tow Memory structure and method for tuning a database statement using a join-tree data structure representation, including selectivity factors, of a master table and detail table &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.freepatentsonline.com/5761654.html&quot; href=&quot;http://www.freepatentsonline.com/5761654.html&quot; class=&quot;externalLink&quot;&gt;http://www.freepatentsonline.com/5761654.html&lt;/a&gt;&lt;br&gt;Mozes, Ari Method and system for sample size determination for database optimizers &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.freepatentsonline.com/6732085.html&quot; href=&quot;http://www.freepatentsonline.com/6732085.html&quot; class=&quot;externalLink&quot;&gt;http://www.freepatentsonline.com/6732085.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.freelists.org/post/oracle-l/Dan-Tows-SQL-formula&quot; href=&quot;http://www.freelists.org/post/oracle-l/Dan-Tows-SQL-formula&quot; class=&quot;externalLink&quot;&gt;http://www.freelists.org/post/oracle-l/Dan-Tows-SQL-formula&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.hotsos.com/sym09/sym_speakers_tow.html&quot; href=&quot;http://www.hotsos.com/sym09/sym_speakers_tow.html&quot; class=&quot;externalLink&quot;&gt;http://www.hotsos.com/sym09/sym_speakers_tow.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Recommended readables&lt;/strong&gt;&lt;br&gt;SQL Tuning by Dan Tow&lt;br&gt;Refactoring SQL Applications by Stephan Faroult , chapter 5&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Related blog posts&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://db-optimizer.blogspot.com/2010/09/sql-tuning-best-practice-visualizing.html&quot; href=&quot;http://db-optimizer.blogspot.com/2010/09/sql-tuning-best-practice-visualizing.html&quot; class=&quot;externalLink&quot;&gt;http://db-optimizer.blogspot.com/2010/09/sql-tuning-best-practice-visualizing.html&lt;/a&gt;&lt;br&gt;&quot;Designing Efficient SQL: A Visual Approach&quot; by Jonathan Lewis&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.simple-talk.com/sql/performance/designing-efficient-sql-a-visual-approach/&quot; href=&quot;http://www.simple-talk.com/sql/performance/designing-efficient-sql-a-visual-approach/&quot; class=&quot;externalLink&quot;&gt;http://www.simple-talk.com/sql/performance/designing-efficient-sql-a-visual-approach/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oaktable.net/content/kscope-2013-win-db-optimizer-license-sql-tuning-presentation&quot; href=&quot;http://www.oaktable.net/content/kscope-2013-win-db-optimizer-license-sql-tuning-presentation&quot; class=&quot;externalLink&quot;&gt;http://www.oaktable.net/content/kscope-2013-win-db-optimizer-license-sql-tuning-presentation&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Other Visualizations&lt;/strong&gt;&lt;br&gt;SQL Joins Graphically&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://db-optimizer.blogspot.com/2010/09/sql-joins-graphically.html&quot; href=&quot;http://db-optimizer.blogspot.com/2010/09/sql-joins-graphically.html&quot; class=&quot;externalLink&quot;&gt;http://db-optimizer.blogspot.com/2010/09/sql-joins-graphically.html&lt;/a&gt; based on &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.codeproject.com/KB/database/Visual_SQL_Joins.aspx?msg=2919602&quot; href=&quot;http://www.codeproject.com/KB/database/Visual_SQL_Joins.aspx?msg=2919602&quot; class=&quot;externalLink&quot;&gt;http://www.codeproject.com/KB/database/Visual_SQL_Joins.aspx?msg=2919602&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://db-optimizer.blogspot.com/2009/06/sql-joins.html&quot; href=&quot;http://db-optimizer.blogspot.com/2009/06/sql-joins.html&quot; class=&quot;externalLink&quot;&gt;http://db-optimizer.blogspot.com/2009/06/sql-joins.html&lt;/a&gt; based on &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&quot; href=&quot;http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&quot; class=&quot;externalLink&quot;&gt;http://blog.mclaughlinsoftware.com/oracle-sql-programming/basic-sql-join-semantics/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.gplivna.eu/papers/sql_join_types.htm&quot; href=&quot;http://www.gplivna.eu/papers/sql_join_types.htm&quot; class=&quot;externalLink&quot;&gt;http://www.gplivna.eu/papers/sql_join_types.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docwiki.embarcadero.com/DBOptimizer/en/Subquery_Diagramming&quot; href=&quot;http://docwiki.embarcadero.com/DBOptimizer/en/Subquery_Diagramming&quot; class=&quot;externalLink&quot;&gt;http://docwiki.embarcadero.com/DBOptimizer/en/Subquery_Diagramming&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQL Tuning</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BVisualSQLTuning%2C%20VST%2C%20SQL%20tuning%20methodology%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 03:40:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hive EXPLAIN plan</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Explain&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Explain&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Explain&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;EXPLAIN [EXTENDED|DEPENDENCY|AUTHORIZATION] query
-&lt;/pre&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20EXPLAIN%20plan%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 03:24:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hive KILL session</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/24595/how-to-shut-downkill-all-queries-in-hive.html&quot; href=&quot;https://community.hortonworks.com/questions/24595/how-to-shut-downkill-all-queries-in-hive.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/24595/how-to-shut-downkill-all-queries-in-hive.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;[root@sandbox ~]# yarn application -kill application_1482410373661_0002
-&lt;/pre&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20KILL%20session%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 03:16:00 GMT</pubDate>
-
-</item>
-<item>
-<title>script - hive create table</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/18134131/how-to-get-generate-the-create-statement-for-an-existing-hive-table&quot; href=&quot;https://stackoverflow.com/questions/18134131/how-to-get-generate-the-create-statement-for-an-existing-hive-table&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/18134131/how-to-get-generate-the-create-statement-for-an-existing-hive-table&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.quora.com/How-can-I-list-all-Hive-tables-and-store-its-DDL-schema-CREATE-TABLE-statement-in-a-text-file&quot; href=&quot;https://www.quora.com/How-can-I-list-all-Hive-tables-and-store-its-DDL-schema-CREATE-TABLE-statement-in-a-text-file&quot; class=&quot;externalLink&quot;&gt;https://www.quora.com/How-can-I-list-all-Hive-tables-and-store-its-DDL-schema-CREATE-TABLE-statement-in-a-text-file&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; step 1) create a .sh file with the below content ,say hive_table_ddl.sh&lt;/h1&gt;&lt;pre&gt;#!/bin/bash
-rm -f tableNames.txt
-rm -f HiveTableDDL.txt
-hive -e &quot;use $1; show tables;&quot; &amp;gt; tableNames.txt  
-wait
-cat tableNames.txt |while read LINE
-   do
-   hive -e &quot;use $1;show create table $LINE&quot; &amp;gt;&amp;gt;HiveTableDDL.txt
-   echo  -e &quot;\n&quot; &amp;gt;&amp;gt; HiveTableDDL.txt
-   done
-rm -f tableNames.txt
-echo &quot;Table DDL generated&quot;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; step 2) Run the above shell script by passing 'db name' as paramanter&lt;/h1&gt;&lt;pre&gt;&amp;gt;bash hive_table_dd.sh &amp;lt;&amp;lt;databasename&amp;gt;&amp;gt;
-&lt;/pre&gt;&lt;br&gt;&lt;blockquote&gt;output :&lt;br&gt;&lt;br&gt;All the create table statements of your DB will be written into the &lt;a tiddlylink=&quot;HiveTableDDL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HiveTableDDL&quot; href=&quot;http://karlarao.tiddlyspot.com#HiveTableDDL&quot; class=&quot;externalLink null&quot;&gt;HiveTableDDL&lt;/a&gt;.txt&lt;br&gt;&lt;/blockquote&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bscript%20-%20hive%20create%20table%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 03:15:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hive SYSDATE</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/17905873/how-to-select-current-date-in-hive-sql/38734565#38734565&quot; href=&quot;https://stackoverflow.com/questions/17905873/how-to-select-current-date-in-hive-sql/38734565#38734565&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/17905873/how-to-select-current-date-in-hive-sql/38734565#38734565&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;To fetch only current date excluding time stamp:
-
-in lower versions, looks like hive CURRENT_DATE is not available, hence you can use (it worked for me on Hive 0.14)
-
-select TO_DATE(FROM_UNIXTIME(UNIX_TIMESTAMP()));
-In higher versions say hive 2.0, you can use :
-
-select CURRENT_DATE;
-&lt;/pre&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20SYSDATE%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 03:13:00 GMT</pubDate>
-
-</item>
-<item>
-<title>script - hive sequence</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/38949699/hive-auto-increment-after-certain-number/39011768#39011768&quot; href=&quot;https://stackoverflow.com/questions/38949699/hive-auto-increment-after-certain-number/39011768#39011768&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/38949699/hive-auto-increment-after-certain-number/39011768#39011768&lt;/a&gt;</description>
-<category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bscript%20-%20hive%20sequence%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 03:11:00 GMT</pubDate>
-
-</item>
-<item>
-<title>RAC-aware applications checklist</title>
-<description>Oracle RAC Database aware Applications - A Developer’s Checklist  &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/database/availability/racdbawareapplications-1933522.pdf&quot; href=&quot;http://www.oracle.com/technetwork/database/availability/racdbawareapplications-1933522.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/database/availability/racdbawareapplications-1933522.pdf&lt;/a&gt;</description>
-<category>RACAssuranceBestPractices</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BRAC-aware%20applications%20checklist%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 02:49:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Siebel hash partition, gc buffer busy acquire</title>
-<description>gc buffer busy acquire  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://juliandontcheff.wordpress.com/2013/04/21/dba-tips-for-tuning-siebel-on-rac-and-exadata/&quot; href=&quot;https://juliandontcheff.wordpress.com/2013/04/21/dba-tips-for-tuning-siebel-on-rac-and-exadata/&quot; class=&quot;externalLink&quot;&gt;https://juliandontcheff.wordpress.com/2013/04/21/dba-tips-for-tuning-siebel-on-rac-and-exadata/&lt;/a&gt;&lt;br&gt;Oracle RAC Database aware Applications - A Developer’s Checklist  &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/database/availability/racdbawareapplications-1933522.pdf&quot; href=&quot;http://www.oracle.com/technetwork/database/availability/racdbawareapplications-1933522.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/database/availability/racdbawareapplications-1933522.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;Bug 14618938 : EXADATA: GCS DRM FREEZE IN ENTER SERVER MODE&lt;br&gt;</description>
-<category>OracleOnSiebel</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSiebel%20hash%20partition%2C%20gc%20buffer%20busy%20acquire%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 02:49:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Siebel on Exadata, RAC</title>
-<description>Oracle Database - the best choice for Siebel Applications    &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/us/products/database/oracle-database-siebel-bwp-068927.pdf&quot; href=&quot;http://www.oracle.com/us/products/database/oracle-database-siebel-bwp-068927.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/us/products/database/oracle-database-siebel-bwp-068927.pdf&lt;/a&gt;&lt;br&gt;Guidelines for Using Real Application Clusters for an Oracle Database  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E14004_01/books/SiebInstWIN/SiebInstCOM_RDBMS13.html&quot; href=&quot;https://docs.oracle.com/cd/E14004_01/books/SiebInstWIN/SiebInstCOM_RDBMS13.html&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E14004_01/books/SiebInstWIN/SiebInstCOM_RDBMS13.html&lt;/a&gt;&lt;br&gt;Siebel on Exadata   &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/database/features/availability/maa-wp-siebel-exadata-177506.pdf&quot; href=&quot;http://www.oracle.com/technetwork/database/features/availability/maa-wp-siebel-exadata-177506.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/database/features/availability/maa-wp-siebel-exadata-177506.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>OracleOnSiebel</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSiebel%20on%20Exadata%2C%20RAC%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 02:37:00 GMT</pubDate>
-
-</item>
-<item>
-<title>OracleOnSiebel</title>
-<description></description>
-<category>Oracle</category>
-<link>http://karlarao.tiddlyspot.com#OracleOnSiebel</link>
-<pubDate>Wed, 31 Jan 2018 02:34:00 GMT</pubDate>
-
-</item>
-<item>
-<title>grouping oracle RAC events</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://orainternals.files.wordpress.com/2017/01/rac_performance-wait-events.pdf&quot; href=&quot;https://orainternals.files.wordpress.com/2017/01/rac_performance-wait-events.pdf&quot; class=&quot;externalLink&quot;&gt;https://orainternals.files.wordpress.com/2017/01/rac_performance-wait-events.pdf&lt;/a&gt; &amp;lt;- GOOD STUFF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle-help.com/oracle-rac/grouping-oracle-rac-wait-events/&quot; href=&quot;http://oracle-help.com/oracle-rac/grouping-oracle-rac-wait-events/&quot; class=&quot;externalLink&quot;&gt;http://oracle-help.com/oracle-rac/grouping-oracle-rac-wait-events/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/wRiyvuQ.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;</description>
-<category>gc waits RAC</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgrouping%20oracle%20RAC%20events%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 02:29:00 GMT</pubDate>
-
-</item>
-<item>
-<title>enq index contention , index block split</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=index+contention+1415053316&amp;amp;oq=index+contention+1415053316&amp;amp;aqs=chrome..69i57.2715j1j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=index+contention+1415053316&amp;amp;oq=index+contention+1415053316&amp;amp;aqs=chrome..69i57.2715j1j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=index+contention+1415053316&amp;amp;oq=index+contention+1415053316&amp;amp;aqs=chrome..69i57.2715j1j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jonathanlewis.wordpress.com/2008/09/29/index-analysis-2/&quot; href=&quot;https://jonathanlewis.wordpress.com/2008/09/29/index-analysis-2/&quot; class=&quot;externalLink&quot;&gt;https://jonathanlewis.wordpress.com/2008/09/29/index-analysis-2/&lt;/a&gt;  &amp;lt;-index block split&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.freelists.org/post/oracle-l/TX-index-contention&quot; href=&quot;https://www.freelists.org/post/oracle-l/TX-index-contention&quot; class=&quot;externalLink&quot;&gt;https://www.freelists.org/post/oracle-l/TX-index-contention&lt;/a&gt;</description>
-<category>Troubleshooting & Internals</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Benq%20index%20contention%20%2C%20index%20block%20split%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 02:27:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gc current block congested</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=gc+current+block+congested&amp;amp;oq=gc+current+block+congested&amp;amp;aqs=chrome..69i57j0l4.220j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=gc+current+block+congested&amp;amp;oq=gc+current+block+congested&amp;amp;aqs=chrome..69i57j0l4.220j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=gc+current+block+congested&amp;amp;oq=gc+current+block+congested&amp;amp;aqs=chrome..69i57j0l4.220j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;</description>
-<category>gc waits RAC</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgc%20current%20block%20congested%5D%5D</link>
-<pubDate>Wed, 31 Jan 2018 02:23:00 GMT</pubDate>
-
-</item>
-<item>
-<title>partitioning vs bucketing</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/vaquarkhan/vk-wiki-notes/wiki/What-is-the-difference-between-partitioning-and-bucketing-a-table-in-Hive-%3F&quot; href=&quot;https://github.com/vaquarkhan/vk-wiki-notes/wiki/What-is-the-difference-between-partitioning-and-bucketing-a-table-in-Hive-%3F&quot; class=&quot;externalLink&quot;&gt;https://github.com/vaquarkhan/vk-wiki-notes/wiki/What-is-the-difference-between-partitioning-and-bucketing-a-table-in-Hive-%3F&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/19128940/what-is-the-difference-between-partitioning-and-bucketing-a-table-in-hive&quot; href=&quot;https://stackoverflow.com/questions/19128940/what-is-the-difference-between-partitioning-and-bucketing-a-table-in-hive&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/19128940/what-is-the-difference-between-partitioning-and-bucketing-a-table-in-hive&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/pulse/hive-partitioning-bucketing-examples-gaurav-singh/&quot; href=&quot;https://www.linkedin.com/pulse/hive-partitioning-bucketing-examples-gaurav-singh/&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/pulse/hive-partitioning-bucketing-examples-gaurav-singh/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/13815179/how-to-update-drop-a-hive-partition&quot; href=&quot;https://stackoverflow.com/questions/13815179/how-to-update-drop-a-hive-partition&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/13815179/how-to-update-drop-a-hive-partition&lt;/a&gt;</description>
+alter table dc_master_target_summary_v1 set TBLPROPERTIES (&quot;skip.header.line.count&quot;=&quot;1&quot;);
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>hive</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpartitioning%20vs%20bucketing%5D%5D</link>
-<pubDate>Thu, 25 Jan 2018 02:24:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.hive%20commands%5D%5D</link>
+<pubDate>Wed, 14 Feb 2018 19:52:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Vbox Templates, developer vm</title>
+<description>&lt;strong&gt;Developer &lt;a tiddlylink=&quot;VMs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VMs&quot; href=&quot;http://karlarao.tiddlyspot.com#VMs&quot; class=&quot;externalLink null&quot;&gt;VMs&lt;/a&gt;&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/community/developer-vm/index.html&quot; href=&quot;http://www.oracle.com/technetwork/community/developer-vm/index.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/community/developer-vm/index.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;&lt;a tiddlylink=&quot;VirtualBox&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VirtualBox&quot; href=&quot;http://karlarao.tiddlyspot.com#VirtualBox&quot; class=&quot;externalLink null&quot;&gt;VirtualBox&lt;/a&gt; Template for Oracle VM Manager&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/server-storage/vm/template-1482544.html&quot; href=&quot;http://www.oracle.com/technetwork/server-storage/vm/template-1482544.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/server-storage/vm/template-1482544.html&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Oracle VM 3:Building a Demo Environment using Oracle VM &lt;a tiddlylink=&quot;VirtualBox&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VirtualBox&quot; href=&quot;http://karlarao.tiddlyspot.com#VirtualBox&quot; class=&quot;externalLink null&quot;&gt;VirtualBox&lt;/a&gt;&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/server-storage/vm/ovm3-demo-vbox-1680215.pdf&quot; href=&quot;http://www.oracle.com/technetwork/server-storage/vm/ovm3-demo-vbox-1680215.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/server-storage/vm/ovm3-demo-vbox-1680215.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;sunstorage7000 simulator&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.oracle.com/otn/other/servers-storage/storage/open-storage/sunstorage7000/SunStorageVBox.zip&quot; href=&quot;http://download.oracle.com/otn/other/servers-storage/storage/open-storage/sunstorage7000/SunStorageVBox.zip&quot; class=&quot;externalLink&quot;&gt;http://download.oracle.com/otn/other/servers-storage/storage/open-storage/sunstorage7000/SunStorageVBox.zip&lt;/a&gt;, &lt;strong&gt;quick start guide&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/us/dm/h2fy11/simulator5-minute-guide-192152.pdf&quot; href=&quot;http://www.oracle.com/us/dm/h2fy11/simulator5-minute-guide-192152.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/us/dm/h2fy11/simulator5-minute-guide-192152.pdf&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;Setup &lt;br&gt;&lt;br&gt;When the simulator initially boots you will be prompted for some basic network settings (this is exactly the same as if you were using an actual 7110, 7210 or 7410). Many of these fields should be filled in for you. Here are some tips if you're unsure how to fill in any of the required fields:&lt;br&gt;&lt;br&gt;Host Name: Any name you want.&lt;br&gt;DNS Domain: &quot;localdomain&quot;&lt;br&gt;Default Router: The same as the IP address, but put 1 as the final octet.&lt;br&gt;DNS Server: The same as the IP address, but put 1 as the final octet.&lt;br&gt;Password: Whatever you want.&lt;br&gt;After you enter this information, wait until the screen provides you with two &lt;a tiddlylink=&quot;URLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#URLs&quot; href=&quot;http://karlarao.tiddlyspot.com#URLs&quot; class=&quot;externalLink null&quot;&gt;URLs&lt;/a&gt; to use for subsequent configuration and administration, one with an IP address and one with the hostname you specified. Direct a web browser to the URL with the IP address (for example, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://192.168.56.101:215/&quot; href=&quot;https://192.168.56.101:215/&quot; class=&quot;externalLink&quot;&gt;https://192.168.56.101:215/&lt;/a&gt;) to complete appliance configuration. The login name is 'root' and the password is what you entered in the initial configuration screen.&lt;br&gt;&lt;br&gt;&lt;strong&gt;a quick samba demo&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evernote.com/shard/s48/sh/be6faabd-df78-465a-bc4b-ce4db3c99358/6b4d5f084d8b5d1351b081009914829e&quot; href=&quot;http://www.evernote.com/shard/s48/sh/be6faabd-df78-465a-bc4b-ce4db3c99358/6b4d5f084d8b5d1351b081009914829e&quot; class=&quot;externalLink&quot;&gt;http://www.evernote.com/shard/s48/sh/be6faabd-df78-465a-bc4b-ce4db3c99358/6b4d5f084d8b5d1351b081009914829e&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;Solaris 11.1 admin&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.oracle.com/otn/solaris/11_1/README_OracleSolaris11_1-VM.txt?AuthParam=1351355880_da0ac074c8dcb5decf237138474298fe&quot; href=&quot;http://download.oracle.com/otn/solaris/11_1/README_OracleSolaris11_1-VM.txt?AuthParam=1351355880_da0ac074c8dcb5decf237138474298fe&quot; class=&quot;externalLink&quot;&gt;http://download.oracle.com/otn/solaris/11_1/README_OracleSolaris11_1-VM.txt?AuthParam=1351355880_da0ac074c8dcb5decf237138474298fe&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;12c VM 12.1.0.1&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.thatjeffsmith.com/archive/2014/02/introducing-the-otn-developer-day-database-12c-virtualbox-image/&quot; href=&quot;http://www.thatjeffsmith.com/archive/2014/02/introducing-the-otn-developer-day-database-12c-virtualbox-image/&quot; class=&quot;externalLink&quot;&gt;http://www.thatjeffsmith.com/archive/2014/02/introducing-the-otn-developer-day-database-12c-virtualbox-image/&lt;/a&gt;&lt;br&gt;&lt;strong&gt;12c VM 12.1.0.2 with &lt;a tiddlylink=&quot;In-Memory&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#In-Memory&quot; href=&quot;http://karlarao.tiddlyspot.com#In-Memory&quot; class=&quot;externalLink null&quot;&gt;In-Memory&lt;/a&gt; Option&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html&quot; href=&quot;http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>VirtualBox</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BVbox%20Templates%2C%20developer%20vm%5D%5D</link>
+<pubDate>Wed, 14 Feb 2018 17:56:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hive beeline</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93NewCommandLineShell&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93NewCommandLineShell&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93NewCommandLineShell&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;For DEV:
+
+$ beeline
+
+&amp;gt; !connect jdbc:hive2://hostname:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;For QA:
+
+$ beeline
+
+&amp;gt; !connect jdbc:hive2://hostname:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
+&lt;/pre&gt;</description>
+<category>hive tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20beeline%5D%5D</link>
+<pubDate>Thu, 08 Feb 2018 23:11:00 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL format code</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dpriver.com/pp/sqlformat.htm&quot; href=&quot;http://www.dpriver.com/pp/sqlformat.htm&quot; class=&quot;externalLink&quot;&gt;http://www.dpriver.com/pp/sqlformat.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://elentok.com/sql&quot; href=&quot;http://elentok.com/sql&quot; class=&quot;externalLink&quot;&gt;http://elentok.com/sql&lt;/a&gt;     &amp;lt;&lt;span&gt;—&lt;/span&gt; allows collapsing the multiple subqueries of the SQL</description>
+<category>DevTools, Dev Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20format%20code%5D%5D</link>
+<pubDate>Thu, 08 Feb 2018 18:39:00 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL generate DDL/SQL</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apex.oracle.com/en/quicksql/&quot; href=&quot;https://apex.oracle.com/en/quicksql/&quot; class=&quot;externalLink&quot;&gt;https://apex.oracle.com/en/quicksql/&lt;/a&gt;</description>
+<category>DevTools, Dev Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20generate%20DDL%2FSQL%5D%5D</link>
+<pubDate>Thu, 08 Feb 2018 18:39:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hive tools from github</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/dharmeshkakadia/hive-faq&quot; href=&quot;https://github.com/dharmeshkakadia/hive-faq&quot; class=&quot;externalLink&quot;&gt;https://github.com/dharmeshkakadia/hive-faq&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/zhuguangbin/HiveHistoryParser&quot; href=&quot;https://github.com/zhuguangbin/HiveHistoryParser&quot; class=&quot;externalLink&quot;&gt;https://github.com/zhuguangbin/HiveHistoryParser&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/zhuguangbin/hadoop-dashboard&quot; href=&quot;https://github.com/zhuguangbin/hadoop-dashboard&quot; class=&quot;externalLink&quot;&gt;https://github.com/zhuguangbin/hadoop-dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/t3rmin4t0r/lipwig&quot; href=&quot;https://github.com/t3rmin4t0r/lipwig&quot; class=&quot;externalLink&quot;&gt;https://github.com/t3rmin4t0r/lipwig&lt;/a&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/dharmeshkakadia/PlanSummarizer&quot; href=&quot;https://github.com/dharmeshkakadia/PlanSummarizer&quot; class=&quot;externalLink&quot;&gt;https://github.com/dharmeshkakadia/PlanSummarizer&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/hdinsight/HivePerformanceAutomation&quot; href=&quot;https://github.com/hdinsight/HivePerformanceAutomation&quot; class=&quot;externalLink&quot;&gt;https://github.com/hdinsight/HivePerformanceAutomation&lt;/a&gt;</description>
+<category>hive tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20tools%20from%20github%5D%5D</link>
+<pubDate>Thu, 08 Feb 2018 18:37:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hive kerberos</title>
+<description>&lt;pre&gt;cat /etc/krb5.conf
+
+klist
+
+ls -ltr /etc/security/keytabs
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/hadoop-security/9781491900970/ch04.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/hadoop-security/9781491900970/ch04.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/hadoop-security/9781491900970/ch04.html&lt;/a&gt;   &amp;lt;- introduction/concepts&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/39362326/connect-to-kerberised-hive-using-jdbc-from-remote-windows-system&quot; href=&quot;https://stackoverflow.com/questions/39362326/connect-to-kerberised-hive-using-jdbc-from-remote-windows-system&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/39362326/connect-to-kerberised-hive-using-jdbc-from-remote-windows-system&lt;/a&gt;   &amp;lt;- use MIT kinit&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://appcrawler.com/wordpress/2015/06/18/examples-of-connecting-to-kerberos-hive-in-jdbc/&quot; href=&quot;http://appcrawler.com/wordpress/2015/06/18/examples-of-connecting-to-kerberos-hive-in-jdbc/&quot; class=&quot;externalLink&quot;&gt;http://appcrawler.com/wordpress/2015/06/18/examples-of-connecting-to-kerberos-hive-in-jdbc/&lt;/a&gt;   &amp;lt;- kinit keytab file&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://db-blog.web.cern.ch/blog/prasanth-kothuri/2016-02-using-sql-developer-access-apache-hive-kerberos-authentication&quot; href=&quot;https://db-blog.web.cern.ch/blog/prasanth-kothuri/2016-02-using-sql-developer-access-apache-hive-kerberos-authentication&quot; class=&quot;externalLink&quot;&gt;https://db-blog.web.cern.ch/blog/prasanth-kothuri/2016-02-using-sql-developer-access-apache-hive-kerberos-authentication&lt;/a&gt;   &amp;lt;- CERN&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://querysurge.zendesk.com/hc/en-us/articles/115001218863-Setting-Up-a-Hive-Connection-with-Kerberos-using-Apache-JDBC-Drivers-Windows&quot; href=&quot;https://querysurge.zendesk.com/hc/en-us/articles/115001218863-Setting-Up-a-Hive-Connection-with-Kerberos-using-Apache-JDBC-Drivers-Windows&quot; class=&quot;externalLink&quot;&gt;https://querysurge.zendesk.com/hc/en-us/articles/115001218863-Setting-Up-a-Hive-Connection-with-Kerberos-using-Apache-JDBC-Drivers-Windows&lt;/a&gt;-   &amp;lt;- keytab &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other references&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/practical-hadoop-security/9781430265450/9781430265443_FM_1_Title.xhtml&quot; href=&quot;https://www.safaribooksonline.com/library/view/practical-hadoop-security/9781430265450/9781430265443_FM_1_Title.xhtml&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/practical-hadoop-security/9781430265450/9781430265443_FM_1_Title.xhtml&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cloudera.com/documentation/manager/5-0-x/Configuring-Hadoop-Security-with-Cloudera-Manager/cm5chs_get_princ_keytab_s4.html&quot; href=&quot;http://www.cloudera.com/documentation/manager/5-0-x/Configuring-Hadoop-Security-with-Cloudera-Manager/cm5chs_get_princ_keytab_s4.html&quot; class=&quot;externalLink&quot;&gt;http://www.cloudera.com/documentation/manager/5-0-x/Configuring-Hadoop-Security-with-Cloudera-Manager/cm5chs_get_princ_keytab_s4.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.cloudera.com/documentation/enterprise/5-5-x/topics/cdh_sg_kadmin_kerberos_keytab.html&quot; href=&quot;https://www.cloudera.com/documentation/enterprise/5-5-x/topics/cdh_sg_kadmin_kerberos_keytab.html&quot; class=&quot;externalLink&quot;&gt;https://www.cloudera.com/documentation/enterprise/5-5-x/topics/cdh_sg_kadmin_kerberos_keytab.html&lt;/a&gt;   &amp;lt;- ktutil/klist&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/en/SSZUMP_7.1.2/management_sym/sym_kerberos_creating_principal_keytab.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/en/SSZUMP_7.1.2/management_sym/sym_kerberos_creating_principal_keytab.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/en/SSZUMP_7.1.2/management_sym/sym_kerberos_creating_principal_keytab.html&lt;/a&gt;  &amp;lt;- create keytab/principal file&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.cloudera.com/documentation/cdh/5-0-x/CDH5-Security-Guide/cdh5sg_kadmin_kerberos_keytab.html&quot; href=&quot;https://www.cloudera.com/documentation/cdh/5-0-x/CDH5-Security-Guide/cdh5sg_kadmin_kerberos_keytab.html&quot; class=&quot;externalLink&quot;&gt;https://www.cloudera.com/documentation/cdh/5-0-x/CDH5-Security-Guide/cdh5sg_kadmin_kerberos_keytab.html&lt;/a&gt;  &amp;lt;- keytab&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>hive</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20kerberos%5D%5D</link>
+<pubDate>Thu, 08 Feb 2018 04:05:00 GMT</pubDate>
+
+</item>
+<item>
+<title>online sandbox - hue</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://demo.gethue.com/&quot; href=&quot;http://demo.gethue.com/&quot; class=&quot;externalLink&quot;&gt;http://demo.gethue.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.cloudera.com/blog/2013/04/demo-analyzing-data-with-hue-and-hive/&quot; href=&quot;http://blog.cloudera.com/blog/2013/04/demo-analyzing-data-with-hue-and-hive/&quot; class=&quot;externalLink&quot;&gt;http://blog.cloudera.com/blog/2013/04/demo-analyzing-data-with-hue-and-hive/&lt;/a&gt;</description>
+<category>.hadoop sandbox</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bonline%20sandbox%20-%20hue%5D%5D</link>
+<pubDate>Tue, 06 Feb 2018 19:36:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hive</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/DesignDocs&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/DesignDocs&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/DesignDocs&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LanguageManual&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LanguageManual&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hive.apache.org/&quot; href=&quot;http://hive.apache.org/&quot; class=&quot;externalLink&quot;&gt;http://hive.apache.org/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://repo.spring.io/simple/hortonworks/org/apache/hive/hive-jdbc/&quot; href=&quot;https://repo.spring.io/simple/hortonworks/org/apache/hive/hive-jdbc/&quot; class=&quot;externalLink&quot;&gt;https://repo.spring.io/simple/hortonworks/org/apache/hive/hive-jdbc/&lt;/a&gt;    &amp;lt;- &lt;strong&gt;hive versions&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://en.wikipedia.org/wiki/Apache_Hive#Comparison_with_traditional_databases&quot; href=&quot;https://en.wikipedia.org/wiki/Apache_Hive#Comparison_with_traditional_databases&quot; class=&quot;externalLink&quot;&gt;https://en.wikipedia.org/wiki/Apache_Hive#Comparison_with_traditional_databases&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.networkworld.com/article/2161959/tech-primers/hadoop-on-windows-azure--hive-vs--javascript-for-processing-big-data.html&quot; href=&quot;http://www.networkworld.com/article/2161959/tech-primers/hadoop-on-windows-azure--hive-vs--javascript-for-processing-big-data.html&quot; class=&quot;externalLink&quot;&gt;http://www.networkworld.com/article/2161959/tech-primers/hadoop-on-windows-azure--hive-vs--javascript-for-processing-big-data.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#hive</link>
+<pubDate>Tue, 06 Feb 2018 00:20:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hdp sandbox installation 2.6.3</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1) download the docker sandbox ', event)&quot;&gt; 1) download the docker sandbox &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2) Read - Deploying Hortonworks Sandbox on Docker', event)&quot;&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 3) Create a new directory hdp26-demo-sandbox and load the docker file ', event)&quot;&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 4) Download the script and run ', event)&quot;&gt; 4) Download the script and run &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 5) Change root and ambari admin password ', event)&quot;&gt; 5) Change root and ambari admin password &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 6) Check status of container, login, open the ambari console', event)&quot;&gt; 6) Check status of container, login, open the ambari console&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 7) other commands ', event)&quot;&gt; 7) other commands &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 1) download the docker sandbox &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/downloads/#sandbox&quot; href=&quot;https://hortonworks.com/downloads/#sandbox&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/downloads/#sandbox&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; href=&quot;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ls -l ../
+total 24323232
+-rw-r--r--@ 1 kristofferson.a.arao  DIR\Domain Users  12453491200 Jan 18 19:21 HDP_2.6.3_docker_10_11_2017.tar
+drwxr-xr-x  6 kristofferson.a.arao  DIR\Domain Users          204 Jan 22 11:12 hdp26-demo-sandbox
+
+cd hdp26-demo-sandbox
+
+:hdp26-demo-sandbox kristofferson.a.arao$ cat 0_docker_load.sh 
+docker load &amp;lt; ../HDP_2.6.3_docker_10_11_2017.tar
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 4) Download the script and run &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; href=&quot;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; class=&quot;externalLink&quot;&gt;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&lt;/a&gt;&lt;br&gt;I edited the script to mount the current directory&lt;br&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ cat 3_star_sandbox.sh 
+#!/bin/bash
+echo &quot;Waiting for docker daemon to start up:&quot;
+until docker ps 2&amp;gt;&amp;amp;1| grep STATUS&amp;gt;/dev/null; do  sleep 1; done;  &amp;gt;/dev/null
+docker ps -a | grep sandbox-hdp
+if [ $? -eq 0 ]; then
+ docker start sandbox-hdp
+else
+docker run -v `pwd`:`pwd` -v hadoop:/hadoop --name sandbox-hdp --hostname &quot;sandbox-hdp.hortonworks.com&quot; --privileged -d \
+-p 15500:15500 \
+-p 15501:15501 \
+-p 15502:15502 \
+-p 15503:15503 \
+-p 15504:15504 \
+-p 15505:15505 \
+-p 1111:111 \
+-p 4242:4242 \
+-p 50079:50079 \
+-p 6080:6080 \
+-p 16000:16000 \
+-p 16020:16020 \
+-p 10502:10502 \
+-p 33553:33553 \
+-p 39419:39419 \
+-p 15002:15002 \
+-p 18080:18080 \
+-p 10015:10015 \
+-p 10016:10016 \
+-p 2049:2049 \
+-p 9090:9090 \
+-p 3000:3000 \
+-p 9000:9000 \
+-p 8000:8000 \
+-p 8020:8020 \
+-p 2181:2181 \
+-p 42111:42111 \
+-p 10500:10500 \
+-p 16030:16030 \
+-p 8042:8042 \
+-p 8040:8040 \
+-p 2100:2100 \
+-p 4200:4200 \
+-p 4040:4040 \
+-p 8032:8032 \
+-p 9996:9996 \
+-p 9995:9995 \
+-p 8080:8080 \
+-p 8088:8088 \
+-p 8886:8886 \
+-p 8889:8889 \
+-p 8443:8443 \
+-p 8744:8744 \
+-p 8888:8888 \
+-p 8188:8188 \
+-p 8983:8983 \
+-p 1000:1000 \
+-p 1100:1100 \
+-p 11000:11000 \
+-p 10001:10001 \
+-p 15000:15000 \
+-p 10000:10000 \
+-p 8993:8993 \
+-p 1988:1988 \
+-p 5007:5007 \
+-p 50070:50070 \
+-p 19888:19888 \
+-p 16010:16010 \
+-p 50111:50111 \
+-p 50075:50075 \
+-p 50095:50095 \
+-p 18081:18081 \
+-p 60000:60000 \
+-p 8090:8090 \
+-p 8091:8091 \
+-p 8005:8005 \
+-p 8086:8086 \
+-p 8082:8082 \
+-p 60080:60080 \
+-p 8765:8765 \
+-p 5011:5011 \
+-p 6001:6001 \
+-p 6003:6003 \
+-p 6008:6008 \
+-p 1220:1220 \
+-p 21000:21000 \
+-p 6188:6188 \
+-p 2222:22 \
+sandbox-hdp /usr/sbin/sshd -D
+fi
+docker exec -t sandbox-hdp /bin/sh -c 'echo &quot;127.0.0.1 sandbox.hortonworks.com&quot; &amp;gt;&amp;gt; /etc/hosts'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R mysql:mysql /var/lib/mysql'
+docker exec -t sandbox-hdp service mysqld start
+docker exec -t sandbox-hdp service postgresql start
+docker exec -t sandbox-hdp ambari-server start
+docker exec -t sandbox-hdp ambari-agent start
+docker exec -t sandbox-hdp /bin/sh -c 'rm -f /usr/hdp/current/oozie-server/libext/falcon-oozie-el-extension-*'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R hdfs:hadoop /hadoop/hdfs'
+docker exec -t sandbox-hdp /etc/init.d/shellinaboxd start
+
+
+echo &quot;Waiting for ambari agent to connect&quot;
+docker exec -t sandbox-hdp /bin/sh -c ' until curl --silent -u raj_ops:raj_ops -H &quot;X-Requested-By:ambari&quot; -i -X GET  http://localhost:8080/api/v1/clusters/Sandbox/hosts/sandbox-hdp.hortonworks.com/host_components/ZOOKEEPER_SERVER | grep state | grep -v desired | grep INSTALLED; do sleep 5; echo -n .; done;'
+
+echo &quot;Waiting for ambari services to start &quot;
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.HDFS\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;SERVICE\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;,\&quot;service_name\&quot;:\&quot;HDFS\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services/HDFS | grep -i accept &amp;gt;/dev/null; do echo -n .; sleep 5; done;'
+
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.ALL_SERVICES\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;CLUSTER\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services | grep -i accept &amp;gt; /dev/null; do sleep 5; echo -n .; done; '
+
+docker exec -t sandbox-hdp /bin/sh -c 'until /usr/bin/curl --silent --user raj_ops:raj_ops -H &quot;X-Requested-By: ambari&quot; &quot;http://localhost:8080/api/v1/clusters/Sandbox/requests?to=end&amp;amp;page_size=10&amp;amp;fields=Requests&quot; | tail -n 27 | grep COMPLETED | grep COMPLETED &amp;gt; /dev/null; do echo -n .; sleep 1; done;'
+
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/tutorials/tutorials_app/run/run.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/hue/tools/start_scripts/update-tutorials.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp touch /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp chown oozie:hadoop /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp /etc/init.d/tutorials start
+docker exec -t sandbox-hdp /etc/init.d/splash
+echo &quot;&quot;
+echo &quot;Started Hortonworks HDP container&quot;
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 5) Change root and ambari admin password &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ssh -p 2222 root@localhost
+root@localhost's password: 
+You are required to change your password immediately (root enforced)
+Changing password for root.
+(current) UNIX password: 
+New password: 
+Retype new password: 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# ambari-admin-password-reset
+Please set the password for admin: 
+Please retype the password for admin: 
+
+The admin password has been set.
+Restarting ambari-server to make the password change effective...
+
+Using python  /usr/bin/python
+Restarting ambari-server
+Waiting for server stop...
+Ambari Server stopped
+Ambari Server running with administrator privileges.
+Organizing resource files at /var/lib/ambari-server/resources...
+Ambari database consistency check started...
+Server PID at: /var/run/ambari-server/ambari-server.pid
+Server out at: /var/log/ambari-server/ambari-server.out
+Server log at: /var/log/ambari-server/ambari-server.log
+Waiting for server start........................................
+Server started listening on 8080
+
+DB configs consistency check: no errors and warnings were found.
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 6) Check status of container, login, open the ambari console&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;docker ps -a 
+
+ssh -p 2222 root@localhost
+root/welcome1
+
+-- LOGIN
+http://localhost:8888
+http://127.0.0.1:8080/#/main/dashboard/metrics
+
+-- FOLLOW HOWTO
+https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#admin-password-reset
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 7) other commands &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
+docker start &amp;lt;container id&amp;gt; 
+docker stop &amp;lt;container id&amp;gt; 
+
+-- remove container 
+docker rm &amp;lt;container id&amp;gt;
+
+-- remove container image
+docker rmi &amp;lt;container name&amp;gt;
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>.hadoop sandbox</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.6.3%5D%5D</link>
+<pubDate>Tue, 06 Feb 2018 00:16:00 GMT</pubDate>
 
 </item>
 </channel>
