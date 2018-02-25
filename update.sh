@@ -1,4 +1,4 @@
-cp /Users/kristofferson.a.arao/Dropbox2/00_GTD/* /Volumes/vm/Dropbox/CodeNinja/GitHub/00_GTD/
+cp -R /Users/kristofferson.a.arao/Dropbox2/00_GTD/* /Volumes/vm/Dropbox/CodeNinja/GitHub/00_GTD/
 cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/xyz.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
 cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/xyz.xml /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
 cp /Users/kristofferson.a.arao/Dropbox2/TiddlyWiki/karlarao.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
