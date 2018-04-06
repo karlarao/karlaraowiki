@@ -5,634 +5,687 @@
 <link>http://karlarao.tiddlyspot.com</link>
 <description></description>
 <language>en</language>
-<copyright>Copyright 2018 KarlArao</copyright>
-<pubDate>Sun, 25 Feb 2018 16:35:39 GMT</pubDate>
-<lastBuildDate>Sun, 25 Feb 2018 16:35:39 GMT</lastBuildDate>
+<copyright>Copyright 2018 YourName</copyright>
+<pubDate>Fri, 06 Apr 2018 21:55:06 GMT</pubDate>
+<lastBuildDate>Fri, 06 Apr 2018 21:55:06 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
-<title>.hive commands</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LanguageManual&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LanguageManual&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/Home#Home-HiveDocumentation&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hive.apache.org/&quot; href=&quot;http://hive.apache.org/&quot; class=&quot;externalLink&quot;&gt;http://hive.apache.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' WITH AS ', event)&quot;&gt; WITH AS &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' UNION ALL ', event)&quot;&gt; UNION ALL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' CASE function', event)&quot;&gt; CASE function&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' hive JOINS', event)&quot;&gt; hive JOINS&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL ', event)&quot;&gt; DDL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' spool to CSV', event)&quot;&gt; spool to CSV&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' spool to pipe delimited ', event)&quot;&gt; spool to pipe delimited &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' alter table CSV header property skip header', event)&quot;&gt; alter table CSV header property skip header&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; WITH AS &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; UNION ALL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/16181684/combine-many-tables-in-hive-using-union-all&quot; href=&quot;https://stackoverflow.com/questions/16181684/combine-many-tables-in-hive-using-union-all&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/16181684/combine-many-tables-in-hive-using-union-all&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; CASE function&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.folkstalk.com/2011/11/conditional-functions-in-hive.html&quot; href=&quot;http://www.folkstalk.com/2011/11/conditional-functions-in-hive.html&quot; class=&quot;externalLink&quot;&gt;http://www.folkstalk.com/2011/11/conditional-functions-in-hive.html&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/41023835/case-statements-in-hive&quot; href=&quot;https://stackoverflow.com/questions/41023835/case-statements-in-hive&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/41023835/case-statements-in-hive&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.modeanalytics.com/sql/tutorial/sql-case/&quot; href=&quot;https://community.modeanalytics.com/sql/tutorial/sql-case/&quot; class=&quot;externalLink&quot;&gt;https://community.modeanalytics.com/sql/tutorial/sql-case/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; hive JOINS&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tutorialspoint.com/hive/hiveql_joins.htm&quot; href=&quot;https://www.tutorialspoint.com/hive/hiveql_joins.htm&quot; class=&quot;externalLink&quot;&gt;https://www.tutorialspoint.com/hive/hiveql_joins.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; DDL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;show create table
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; spool to CSV&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;hive -e 'header =true, select * from table' &amp;gt; file.csv
-
-hive -e &quot;use default;set hive.cli.print.header=true;select * from test1;&quot; | sed 's/[\t]/,/g' &amp;gt;/temp/test.csv
-INSERT OVERWRITE LOCAL DIRECTORY '/path/to/hive/csv' ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' SELECT * FROM hivetablename;	
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; spool to pipe delimited &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/44333450/hive-e-with-delimiter?rq=1&quot; href=&quot;https://stackoverflow.com/questions/44333450/hive-e-with-delimiter?rq=1&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/44333450/hive-e-with-delimiter?rq=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/30224875/exporting-hive-table-to-csv-in-hdfs&quot; href=&quot;https://stackoverflow.com/questions/30224875/exporting-hive-table-to-csv-in-hdfs&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/30224875/exporting-hive-table-to-csv-in-hdfs&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;[raj_ops@sandbox ~]$ hive -e &quot;use default;set hive.cli.print.header=true;select * from hr.departments;&quot; | sed 's/[\t]/|/g' &amp;gt; testdata.csv
-
-Logging initialized using configuration in file:/etc/hive/2.5.0.0-1245/0/hive-log4j.properties
-OK
-Time taken: 3.496 seconds
-OK
-Time taken: 1.311 seconds, Fetched: 30 row(s)
-[raj_ops@sandbox ~]$
-[raj_ops@sandbox ~]$
-[raj_ops@sandbox ~]$ cat testdata.csv
-departments.department_id|departments.department_name|departments.manager_id|departments.location_id
-10|Administration|200|1700
-20|Marketing|201|1800
-110|Accounting|205|1700
-120|Treasury|NULL|1700
-130|Corporate Tax|NULL|1700
-140|Control And Credit|NULL|1700
-150|Shareholder Services|NULL|1700
-160|Benefits|NULL|1700
-170|Manufacturing|NULL|1700
-180|Construction|NULL|1700
-190|Contracting|NULL|1700
-200|Operations|NULL|1700
-30|Purchasing|114|1700
-210|IT Support|NULL|1700
-220|NOC|NULL|1700
-230|IT Helpdesk|NULL|1700
-240|Government Sales|NULL|1700
-250|Retail Sales|NULL|1700
-260|Recruiting|NULL|1700
-270|Payroll|NULL|1700
-10|Administration|200|1700
-50|Shipping|121|1500
-50|Shipping|121|1500
-40|Human Resources|203|2400
-50|Shipping|121|1500
-60|IT|103|1400
-70|Public Relations|204|2700
-80|Sales|145|2500
-90|Executive|100|1700
-100|Finance|108|1700
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; alter table CSV header property skip header&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;hadoop fs -copyFromLocal mts_main_v1.csv /sdxx/derived/restou/dc_master_target_summary_v1
-
-alter table dc_master_target_summary_v1 set TBLPROPERTIES (&quot;skip.header.line.count&quot;=&quot;1&quot;);
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>hive</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.hive%20commands%5D%5D</link>
-<pubDate>Sat, 24 Feb 2018 22:41:11 GMT</pubDate>
+<title>pl/sql unit test</title>
+<description>&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://databaseline.bitbucket.io/unit-testing-plsql-code/&quot; href=&quot;https://databaseline.bitbucket.io/unit-testing-plsql-code/&quot; class=&quot;externalLink&quot;&gt;https://databaseline.bitbucket.io/unit-testing-plsql-code/&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;CodeTalk&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CodeTalk&quot; href=&quot;http://karlarao.tiddlyspot.com#CodeTalk&quot; class=&quot;externalLink null&quot;&gt;CodeTalk&lt;/a&gt; Series: Unit Testing PL SQL Code in the Real World &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=1qAZvS5rvyY&quot; href=&quot;https://www.youtube.com/watch?v=1qAZvS5rvyY&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=1qAZvS5rvyY&lt;/a&gt;&lt;br&gt;pl/sql unit test &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=pl%2Fsql+unit+test&quot; href=&quot;https://www.youtube.com/results?search_query=pl%2Fsql+unit+test&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=pl%2Fsql+unit+test&lt;/a&gt;+&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.thatjeffsmith.com/archive/2014/04/unit-testing-your-plsql-with-oracle-sql-developer/&quot; href=&quot;http://www.thatjeffsmith.com/archive/2014/04/unit-testing-your-plsql-with-oracle-sql-developer/&quot; class=&quot;externalLink&quot;&gt;http://www.thatjeffsmith.com/archive/2014/04/unit-testing-your-plsql-with-oracle-sql-developer/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/32099621/pl-sql-and-sql-script-in-one-sqlfile-with-liquibase/36134227&quot; href=&quot;https://stackoverflow.com/questions/32099621/pl-sql-and-sql-script-in-one-sqlfile-with-liquibase/36134227&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/32099621/pl-sql-and-sql-script-in-one-sqlfile-with-liquibase/36134227&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://es.slideshare.net/StevenFeuerstein/unit-testing-oracle-plsql-code-utplsql-excel-and-more&quot; href=&quot;https://es.slideshare.net/StevenFeuerstein/unit-testing-oracle-plsql-code-utplsql-excel-and-more&quot; class=&quot;externalLink&quot;&gt;https://es.slideshare.net/StevenFeuerstein/unit-testing-oracle-plsql-code-utplsql-excel-and-more&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;CHAPTER 17: Unit Testing With utPLSQL - Oracle and PL/SQL Recipes: A &lt;a tiddlylink=&quot;Problem-Solution&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Problem-Solution&quot; href=&quot;http://karlarao.tiddlyspot.com#Problem-Solution&quot; class=&quot;externalLink null&quot;&gt;Problem-Solution&lt;/a&gt; Approach &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&lt;/a&gt;&lt;br&gt;C H A P T E R  5 - PL/SQL Unit Testing - Expert PL/SQL Practices for Oracle Developers and &lt;a tiddlylink=&quot;DBAs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBAs&quot; href=&quot;http://karlarao.tiddlyspot.com#DBAs&quot; class=&quot;externalLink null&quot;&gt;DBAs&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/expert-plsql-practices/9781430234852/Chapter05.html#ch5&quot; href=&quot;https://www.safaribooksonline.com/library/view/expert-plsql-practices/9781430234852/Chapter05.html#ch5&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/expert-plsql-practices/9781430234852/Chapter05.html#ch5&lt;/a&gt;&lt;br&gt;CHAPTER 8 Test, Test, Test, and Test Again - Beginning PL/SQL: From Novice to Professional &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/Chapter08.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/Chapter08.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/Chapter08.html&lt;/a&gt;&lt;br&gt;Resources for Developing PL/SQL Expertise - Oracle PL/SQL for &lt;a tiddlylink=&quot;DBAs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBAs&quot; href=&quot;http://karlarao.tiddlyspot.com#DBAs&quot; class=&quot;externalLink null&quot;&gt;DBAs&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/pr03s05.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/pr03s05.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/pr03s05.html&lt;/a&gt;&lt;br&gt;Chapter 20. Managing PL/SQL Code - Oracle PL/SQL Programming, 4th Edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-plsql-programming/0596009771/ch20.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-plsql-programming/0596009771/ch20.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-plsql-programming/0596009771/ch20.html&lt;/a&gt;&lt;br&gt;Testing PL/SQL Programs - Oracle PL/SQL Programming, Third Edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-plsql-programming/0596003811/ch19s04.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-plsql-programming/0596003811/ch19s04.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-plsql-programming/0596003811/ch19s04.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>PL/SQL</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bpl%2Fsql%20unit%20test%5D%5D</link>
+<pubDate>Fri, 06 Apr 2018 21:55:05 GMT</pubDate>
 
 </item>
 <item>
-<title>OuterJoins</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blogs.oracle.com/optimizer/2010/07/outerjoins_in_oracle.html&quot; href=&quot;http://blogs.oracle.com/optimizer/2010/07/outerjoins_in_oracle.html&quot; class=&quot;externalLink&quot;&gt;http://blogs.oracle.com/optimizer/2010/07/outerjoins_in_oracle.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;outer joins 101 &lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::p11_question_id:5229892958977&quot; href=&quot;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::p11_question_id:5229892958977&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::p11_question_id:5229892958977&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;outer join 101: &lt;br&gt;&lt;br&gt;you have two tables &lt;span&gt;—&lt;/span&gt; emp and dept. dept has 4 rows (deptno = 10, 20, 30, 40). emp has 14 rows but only 3 distinct values for deptno (10,20,30). &lt;br&gt;&lt;br&gt;You need to write a report that shows the DEPTNO and count of employees for ALL departments. This requires an OUTER JOIN since the natural join: &lt;br&gt;&lt;br&gt;select d.deptno, count(empno) &lt;br&gt;from emp e, dept d &lt;br&gt;where e.deptno = d.deptno &lt;br&gt;group by d.deptno; &lt;br&gt;&lt;br&gt;would &quot;lose&quot; deptno = 40. So, we: &lt;br&gt;&lt;br&gt;select d.deptno, count(empno) &lt;br&gt;from emp e, dept d &lt;br&gt;where e.deptno(+) = d.deptno &lt;br&gt;group by d.deptno; &lt;br&gt;&lt;br&gt;and that simply means &quot;use DEPT as the driving table, for each row in DEPT, find and count all of the EMPNOS we find. IF there isn't a match in EMP for a given DEPTNO &lt;span&gt;—&lt;/span&gt; then &quot;make up&quot; a record in EMP with all NULL values and join that record &lt;span&gt;—&lt;/span&gt; so we don't drop the dept record&quot; &lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;If we needed to use t3.pk = t2.pk(+) &lt;span&gt;—&lt;/span&gt; then t2.pk will be NULL and therefore t1.pk = t2.pk will not be satisified. HENCE, when we actually outer join t2 to t3 and &quot;make up a row in t2&quot;, we also immediately turn around and throw it out. &lt;br&gt;&lt;br&gt;THEREFORE, the results of the queries: &lt;br&gt;&lt;br&gt;where t1.pk = t2.pk &lt;br&gt;and t2.pk (+) = t3.pk &lt;br&gt;and tb.c = 'SWE' &lt;br&gt;&lt;br&gt;&lt;br&gt;and &lt;br&gt;&lt;br&gt;where t1.pk = t2.pk &lt;br&gt;and t2.pk = t3.pk &lt;br&gt;and tb.c = 'SWE' &lt;br&gt;&lt;br&gt;&lt;br&gt;are identitical. By adding the (+) to the first one, all you did was remove many different possible execution plans. And given all of your other comments about the performance of the query with and without the (+) you removed the PLAN THAT ACTUALLY WORKS BEST from even being considered. &lt;br&gt;&lt;br&gt;&lt;br&gt;Anytime &lt;span&gt;—&lt;/span&gt; anytime &lt;span&gt;—&lt;/span&gt; you see: &lt;br&gt;&lt;br&gt;&lt;br&gt;where t1.x = t2.x(+) &lt;br&gt;and t2.any_column = any_value &lt;br&gt;&lt;br&gt;&lt;br&gt;you know that you can (should, must, be silly not to) remove the (+) from the query. Because if we &quot;make up a NULL row for t2&quot; then we KNOW that t2.any_column cannnot be equal to any_value (it is NULL after all!!) &lt;br&gt;&lt;/blockquote&gt;</description>
-<category>Joins</category>
-<link>http://karlarao.tiddlyspot.com#OuterJoins</link>
-<pubDate>Sat, 24 Feb 2018 19:20:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hive export import</title>
-<description>&lt;pre&gt;
-create a test export first 
-export table testtable to 'hdfs_exports_location/testtable';
-
-then get the location hdfs://sandbox.hortonworks.com:8020
-
-from here explicitly set the directory name
-
-hive&amp;gt;
-    &amp;gt; export table departments to 'hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments';
-Copying data from file:/tmp/raj_ops/b80ec6b0-1852-464b-b925-ab6684f3bd88/hive_2018-02-09_01-05-56_358_7720928324786932039-1/-local-10000/_metadata
-Copying file: file:/tmp/raj_ops/b80ec6b0-1852-464b-b925-ab6684f3bd88/hive_2018-02-09_01-05-56_358_7720928324786932039-1/-local-10000/_metadata
-Copying data from hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_1
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_10
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_11
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_12
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_13
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_14
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_15
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_16
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_17
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_18
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_19
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_2
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_20
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_21
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_22
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_23
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_24
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_25
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_26
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_27
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_28
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_29
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_3
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_4
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_5
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_6
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_7
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_8
-Copying file: hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments/000000_0_copy_9
-OK
-Time taken: 3.823 seconds
- 
- 
-[raj_ops@sandbox ~]$ hadoop fs -du -h /tmp/expimp/*
-1.4 K  /tmp/expimp/departments/_metadata
-709    /tmp/expimp/departments/data
- 
- 
- 
-hive&amp;gt;
-    &amp;gt; import table hr2.departments from 'hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments';
-Copying data from hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_1
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_10
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_11
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_12
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_13
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_14
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_15
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_16
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_17
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_18
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_19
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_2
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_20
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_21
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_22
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_23
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_24
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_25
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_26
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_27
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_28
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_29
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_3
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_4
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_5
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_6
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_7
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_8
-Copying file: hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments/data/000000_0_copy_9
-Loading data to table hr2.departments
-OK
-Time taken: 4.487 seconds
-hive&amp;gt;
-    &amp;gt;
-    &amp;gt; use hr2;
-OK
-Time taken: 0.241 seconds
-hive&amp;gt; show tables;
-OK
-departments
-Time taken: 0.303 seconds, Fetched: 1 row(s)
-hive&amp;gt; select * from departments;
-OK
-10      Administration  200     1700
-20      Marketing       201     1800
-110     Accounting      205     1700
-120     Treasury        NULL    1700
-130     Corporate Tax   NULL    1700
-140     Control And Credit      NULL    1700
-150     Shareholder Services    NULL    1700
-160     Benefits        NULL    1700
-170     Manufacturing   NULL    1700
-180     Construction    NULL    1700
-190     Contracting     NULL    1700
-200     Operations      NULL    1700
-30      Purchasing      114     1700
-210     IT Support      NULL    1700
-220     NOC     NULL    1700
-230     IT Helpdesk     NULL    1700
-240     Government Sales        NULL    1700
-250     Retail Sales    NULL    1700
-260     Recruiting      NULL    1700
-270     Payroll NULL    1700
-10      Administration  200     1700
-50      Shipping        121     1500
-50      Shipping        121     1500
-40      Human Resources 203     2400
-50      Shipping        121     1500
-60      IT      103     1400
-70      Public Relations        204     2700
-80      Sales   145     2500
-90      Executive       100     1700
-100     Finance 108     1700
-Time taken: 0.382 seconds, Fetched: 30 row(s)
- 
- 
-hive&amp;gt; import table hr2.departments from 'hdfs://sandbox.hortonworks.com:8020/tmp/expimp/departments';
-FAILED: SemanticException [Error 10119]: Table exists and contains data files
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;
-# create the export directory
-# (execute on prod)
-hadoop fs -mkdir /sdge/derived/restou/dc_crm_master_tg_from_prod
-
-# export the table
-# (execute on prod) 
-export table restou_raw.manual_master_tg_from_prod to 'hdfs://prod/sdge/derived/restou/dc_crm_master_tg_from_prod';
-
-# transfer the table 
-# (execute on prod)
-# distcp &amp;lt;srcurl&amp;gt; &amp;lt;desturl&amp;gt; copy file or directories recursively
-distcp hdfs://prod/sdge/derived/restou/dc_crm_master_tg_from_prod hdfs://dev/sdge/derived/restou/dc_crm_master_tg_from_prod 
-
-# import the table
-# (execute on dev)
-import table restou_raw.manual_master_tg_from_prod from 'hdfs://dev/sdge/derived/restou/dc_crm_master_tg_from_prod';
+<title>hive EXPLAIN plan</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' EXPLAIN command ', event)&quot;&gt; EXPLAIN command &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' tools to use', event)&quot;&gt; tools to use&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' lipwig ', event)&quot;&gt; lipwig &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' json viewer for easy navigation/exploration ', event)&quot;&gt; json viewer for easy navigation/exploration &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Explain&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Explain&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Explain&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; EXPLAIN command &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;set hive.log.explain.output=true;
+set hive.explain.user=true;
+set hive.tez.exec.print.summary=true;
 
 
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;# create the export directory
-# (execute on prod)
-hadoop fs -mkdir /sdge/tmp/dc_crm_master_tg_from_prod
- 
-# create the import directory
-# (execute on dev)
-hadoop fs -mkdir /sdge/derived/restou/dc_crm_master_tg_from_prod
- 
-# export the table
-# (execute on prod)
-export table restou_raw.manual_master_tg_from_prod to 'hdfs://prod/sdge/tmp/dc_crm_master_tg_from_prod';
- 
-# transfer the table
-# (execute on prod)
-# distcp &amp;lt;srcurl&amp;gt; &amp;lt;desturl&amp;gt; copy file or directories recursively
-hadoop distcp hdfs://prod/sdge/tmp/dc_crm_master_tg_from_prod hdfs://dev/sdge/derived/restou/dc_crm_master_tg_from_prod
- 
-# import the table
-# (execute on dev)
-import table restou_raw.manual_master_tg_from_prod from 'hdfs://dev/sdge/derived/restou/dc_crm_master_tg_from_prod';
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>hive cloning/replication</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20export%20import%5D%5D</link>
-<pubDate>Fri, 23 Feb 2018 04:47:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hive cloning/replication</title>
-<description></description>
-<category>hive</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20cloning%2Freplication%5D%5D</link>
-<pubDate>Wed, 21 Feb 2018 22:33:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hive csv data from prod to dev</title>
-<description>&lt;pre&gt;[raj_ops@sandbox ~]$ vi hrdepartments.sql
-select * from hr.departments;
- 
-[raj_ops@sandbox ~]$ hive -f hrdepartments.sql &amp;gt; hrdepartments.csv
- 
- 
-# create directory and put the csv in hadoop
-[raj_ops@sandbox ~]$ hadoop fs -mkdir /tmp/expimp/departments2
-[raj_ops@sandbox ~]$ hadoop fs -put hrdepartments.csv /tmp/expimp/departments2
-[raj_ops@sandbox ~]$ hadoop fs -ls /tmp/expimp/departments2
-Found 1 items
--rw-r--r--   1 raj_ops hdfs        741 2018-02-09 01:31 /tmp/expimp/departments2/hrdepartments.csv
- 
- 
-# get table metadata
-hive&amp;gt; show create table hr.departments;
-OK
-CREATE TABLE `hr.departments`(
-  `department_id` int,
-  `department_name` varchar(30),
-  `manager_id` int,
-  `location_id` int)
-ROW FORMAT SERDE
-  'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
-STORED AS INPUTFORMAT
-  'org.apache.hadoop.mapred.TextInputFormat'
-OUTPUTFORMAT
-  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
-LOCATION
-  'hdfs://sandbox.hortonworks.com:8020/apps/hive/warehouse/hr.db/departments'
-TBLPROPERTIES (
-  'COLUMN_STATS_ACCURATE'='{\&quot;BASIC_STATS\&quot;:\&quot;true\&quot;}',
-  'numFiles'='30',
-  'numRows'='30',
-  'rawDataSize'='679',
-  'totalSize'='709',
-  'transient_lastDdlTime'='1518096058')
-Time taken: 2.808 seconds, Fetched: 20 row(s)
- 
- 
-hive&amp;gt;
-    &amp;gt; use hr2;
-OK
-Time taken: 0.248 seconds
- 
- 
-hive&amp;gt; show tables;
-OK
-departments
- 
- 
-# from the metadata edit the storage settings
-hive&amp;gt; CREATE TABLE `hr2.departments2`(
-    &amp;gt;   `department_id` int,
-    &amp;gt;   `department_name` varchar(30),
-    &amp;gt;   `manager_id` int,
-    &amp;gt;   `location_id` int)
-    &amp;gt; ROW FORMAT DELIMITED
-    &amp;gt;   FIELDS TERMINATED BY '\t'
-    &amp;gt; STORED AS TEXTFILE
-    &amp;gt; LOCATION
-    &amp;gt;   '/tmp/expimp/departments2';
-OK
-Time taken: 0.509 seconds
- 
- 
-# validation
-hive&amp;gt;
-    &amp;gt; select * from hr.departments;
-OK
-10      Administration  200     1700
-20      Marketing       201     1800
-110     Accounting      205     1700
-120     Treasury        NULL    1700
-130     Corporate Tax   NULL    1700
-140     Control And Credit      NULL    1700
-150     Shareholder Services    NULL    1700
-160     Benefits        NULL    1700
-170     Manufacturing   NULL    1700
-180     Construction    NULL    1700
-190     Contracting     NULL    1700
-200     Operations      NULL    1700
-30      Purchasing      114     1700
-210     IT Support      NULL    1700
-220     NOC     NULL    1700
-230     IT Helpdesk     NULL    1700
-240     Government Sales        NULL    1700
-250     Retail Sales    NULL    1700
-260     Recruiting      NULL    1700
-270     Payroll NULL    1700
-10      Administration  200     1700
-50      Shipping        121     1500
-50      Shipping        121     1500
-40      Human Resources 203     2400
-50      Shipping        121     1500
-60      IT      103     1400
-70      Public Relations        204     2700
-80      Sales   145     2500
-90      Executive       100     1700
-100     Finance 108     1700
-Time taken: 0.532 seconds, Fetched: 30 row(s)
- 
-hive&amp;gt; select * from hr2.departments2;
-OK
-10      Administration  200     1700
-20      Marketing       201     1800
-110     Accounting      205     1700
-120     Treasury        NULL    1700
-130     Corporate Tax   NULL    1700
-140     Control And Credit      NULL    1700
-150     Shareholder Services    NULL    1700
-160     Benefits        NULL    1700
-170     Manufacturing   NULL    1700
-180     Construction    NULL    1700
-190     Contracting     NULL    1700
-200     Operations      NULL    1700
-30      Purchasing      114     1700
-210     IT Support      NULL    1700
-220     NOC     NULL    1700
-230     IT Helpdesk     NULL    1700
-240     Government Sales        NULL    1700
-250     Retail Sales    NULL    1700
-260     Recruiting      NULL    1700
-270     Payroll NULL    1700
-10      Administration  200     1700
-50      Shipping        121     1500
-50      Shipping        121     1500
-40      Human Resources 203     2400
-50      Shipping        121     1500
-60      IT      103     1400
-70      Public Relations        204     2700
-80      Sales   145     2500
-90      Executive       100     1700
-100     Finance 108     1700
-Time taken: 0.18 seconds, Fetched: 30 row(s)
- 
-hive&amp;gt; desc hr2.departments2;
-OK
-department_id           int
-department_name         varchar(30)
-manager_id              int
-location_id             int
-Time taken: 0.539 seconds, Fetched: 4 row(s)
- 
- 
-# nulls stay null
-hive&amp;gt; select * from hr2.departments2 where manager_id is null;
-OK
-120     Treasury        NULL    1700
-130     Corporate Tax   NULL    1700
-140     Control And Credit      NULL    1700
-150     Shareholder Services    NULL    1700
-160     Benefits        NULL    1700
-170     Manufacturing   NULL    1700
-180     Construction    NULL    1700
-190     Contracting     NULL    1700
-200     Operations      NULL    1700
-210     IT Support      NULL    1700
-220     NOC     NULL    1700
-230     IT Helpdesk     NULL    1700
-240     Government Sales        NULL    1700
-250     Retail Sales    NULL    1700
-260     Recruiting      NULL    1700
-270     Payroll NULL    1700
-Time taken: 0.311 seconds, Fetched: 16 row(s)
- 
-hive&amp;gt; select * from hr.departments where manager_id is null;
-OK
-120     Treasury        NULL    1700
-130     Corporate Tax   NULL    1700
-140     Control And Credit      NULL    1700
-150     Shareholder Services    NULL    1700
-160     Benefits        NULL    1700
-170     Manufacturing   NULL    1700
-180     Construction    NULL    1700
-190     Contracting     NULL    1700
-200     Operations      NULL    1700
-210     IT Support      NULL    1700
-220     NOC     NULL    1700
-230     IT Helpdesk     NULL    1700
-240     Government Sales        NULL    1700
-250     Retail Sales    NULL    1700
-260     Recruiting      NULL    1700
-270     Payroll NULL    1700
-Time taken: 0.219 seconds, Fetched: 16 row(s)
-&lt;/pre&gt;</description>
-<category>hive cloning/replication</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20csv%20data%20from%20prod%20to%20dev%5D%5D</link>
-<pubDate>Wed, 21 Feb 2018 22:33:00 GMT</pubDate>
-
-</item>
-<item>
-<title>dboptimizer</title>
-<description>&lt;h1&gt; download &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://edn.embarcadero.com/&quot; href=&quot;http://edn.embarcadero.com/&quot; class=&quot;externalLink&quot;&gt;http://edn.embarcadero.com/&lt;/a&gt;&lt;br&gt;go to my account &amp;gt; My registered user downloads&lt;br&gt;go to my account &amp;gt; My registered products&lt;br&gt;&lt;br&gt;&lt;h1&gt; new features&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20User%20Guide.pdf&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20User%20Guide.pdf&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20User%20Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20Quick%20Start%20Guide.pdf&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20Quick%20Start%20Guide.pdf&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/17.0/DB%20Optimizer%2017.0.0%20Quick%20Start%20Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.embarcadero.com/products/db_optimizer/17.0/DBOptimizer_17.0.0_ReadMe.htm&quot; href=&quot;http://docs.embarcadero.com/products/db_optimizer/17.0/DBOptimizer_17.0.0_ReadMe.htm&quot; class=&quot;externalLink&quot;&gt;http://docs.embarcadero.com/products/db_optimizer/17.0/DBOptimizer_17.0.0_ReadMe.htm&lt;/a&gt;&lt;br&gt;</description>
-<category>SQL VST</category>
-<link>http://karlarao.tiddlyspot.com#dboptimizer</link>
-<pubDate>Tue, 20 Feb 2018 21:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>SQL VST</title>
-<description></description>
-<category>DevTools, Dev Tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20VST%5D%5D</link>
-<pubDate>Tue, 20 Feb 2018 21:18:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Result fetch timed out</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/90768/how-to-fix-ambari-hive-view-15-result-fetch-timed.html&quot; href=&quot;https://community.hortonworks.com/articles/90768/how-to-fix-ambari-hive-view-15-result-fetch-timed.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/90768/how-to-fix-ambari-hive-view-15-result-fetch-timed.html&lt;/a&gt;</description>
-<category>ambari issues</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BResult%20fetch%20timed%20out%5D%5D</link>
-<pubDate>Tue, 20 Feb 2018 21:17:00 GMT</pubDate>
-
-</item>
-<item>
-<title>ambari issues</title>
-<description></description>
-<category>hive</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bambari%20issues%5D%5D</link>
-<pubDate>Tue, 20 Feb 2018 21:17:00 GMT</pubDate>
-
-</item>
-<item>
-<title>tUniqueRow</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://talend-training.blogspot.com/2011/12/how-to-optimize-tuniquerow-component-in.html&quot; href=&quot;https://talend-training.blogspot.com/2011/12/how-to-optimize-tuniquerow-component-in.html&quot; class=&quot;externalLink&quot;&gt;https://talend-training.blogspot.com/2011/12/how-to-optimize-tuniquerow-component-in.html&lt;/a&gt; &lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.talend.com/reader/iYcvdknuprDzYycT3WRU8w/sh7RZbAtg4KTo7vc06k4Kw&quot; href=&quot;https://help.talend.com/reader/iYcvdknuprDzYycT3WRU8w/sh7RZbAtg4KTo7vc06k4Kw&quot; class=&quot;externalLink&quot;&gt;https://help.talend.com/reader/iYcvdknuprDzYycT3WRU8w/sh7RZbAtg4KTo7vc06k4Kw&lt;/a&gt; &amp;lt;- talend doc&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.talend.com/t5/Design-and-Development/different-results-for-tUniqueRow-and-tAggregateRow/td-p/27328&quot; href=&quot;https://community.talend.com/t5/Design-and-Development/different-results-for-tUniqueRow-and-tAggregateRow/td-p/27328&quot; class=&quot;externalLink&quot;&gt;https://community.talend.com/t5/Design-and-Development/different-results-for-tUniqueRow-and-tAggregateRow/td-p/27328&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.talendforge.org/forum/viewtopic.php?id=27325&quot; href=&quot;https://www.talendforge.org/forum/viewtopic.php?id=27325&quot; class=&quot;externalLink&quot;&gt;https://www.talendforge.org/forum/viewtopic.php?id=27325&lt;/a&gt; &amp;lt;- 420,000 rows x 55 columns&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://souravinayak.blogspot.com/2017/02/data-deduplication-with-tuniquerow.html&quot; href=&quot;http://souravinayak.blogspot.com/2017/02/data-deduplication-with-tuniquerow.html&quot; class=&quot;externalLink&quot;&gt;http://souravinayak.blogspot.com/2017/02/data-deduplication-with-tuniquerow.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/34734723/how-to-retrive-duplicate-records-in-talend-integration&quot; href=&quot;https://stackoverflow.com/questions/34734723/how-to-retrive-duplicate-records-in-talend-integration&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/34734723/how-to-retrive-duplicate-records-in-talend-integration&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.talend.com/t5/Design-and-Development/howa-to-optimise-tUniqRow-and-tSortRow/td-p/49309&quot; href=&quot;https://community.talend.com/t5/Design-and-Development/howa-to-optimise-tUniqRow-and-tSortRow/td-p/49309&quot; class=&quot;externalLink&quot;&gt;https://community.talend.com/t5/Design-and-Development/howa-to-optimise-tUniqRow-and-tSortRow/td-p/49309&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Talend</category>
-<link>http://karlarao.tiddlyspot.com#tUniqueRow</link>
-<pubDate>Tue, 20 Feb 2018 21:16:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Talend</title>
-<description></description>
-<category>Data Engineering</category>
-<link>http://karlarao.tiddlyspot.com#Talend</link>
-<pubDate>Tue, 20 Feb 2018 21:12:00 GMT</pubDate>
-
-</item>
-<item>
-<title>18c new features</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/en/database/oracle/oracle-database/18/newft/new-features.html#GUID-04A4834D-848F-44D5-8C34-36237D40F194&quot; href=&quot;https://docs.oracle.com/en/database/oracle/oracle-database/18/newft/new-features.html#GUID-04A4834D-848F-44D5-8C34-36237D40F194&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/en/database/oracle/oracle-database/18/newft/new-features.html#GUID-04A4834D-848F-44D5-8C34-36237D40F194&lt;/a&gt;</description>
-<category>New Features</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B18c%20new%20features%5D%5D</link>
-<pubDate>Tue, 20 Feb 2018 06:26:00 GMT</pubDate>
-
-</item>
-<item>
-<title>.hive cheatsheet, beeline cheatsheet</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&quot; href=&quot;http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&quot; class=&quot;externalLink&quot;&gt;http://hortonworks.com/wp-content/uploads/2016/05/Hortonworks.CheatSheet.SQLtoHive.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; show all config parameters&lt;/h1&gt;&lt;pre&gt;set;
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; connect on beeline&lt;/h1&gt;&lt;pre&gt;beeline&amp;gt; !connect jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
-Connecting to jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
-Enter username for jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2:
-Enter password for jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2:
-Connected to: Apache Hive (version 1.2.1000.2.5.0.0-1245)
-Driver: Hive JDBC (version 1.2.1000.2.5.0.0-1245)
-Transaction isolation: TRANSACTION_REPEATABLE_READ
-0: jdbc:hive2://sandbox.hortonworks.com:2181/&amp;gt;
-0: jdbc:hive2://sandbox.hortonworks.com:2181/&amp;gt; show databases;
-+----------------+--+
-| database_name  |
-+----------------+--+
-| default        |
-| foodmart       |
-| hr             |
-| xademo         |
-+----------------+--+
-4 rows selected (0.14 seconds)
-
-
-&lt;/pre&gt;</description>
+EXPLAIN [FORMATTED|EXTENDED|DEPENDENCY|AUTHORIZATION] query
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; tools to use&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; lipwig &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/t3rmin4t0r/lipwig&quot; href=&quot;https://github.com/t3rmin4t0r/lipwig&quot; class=&quot;externalLink&quot;&gt;https://github.com/t3rmin4t0r/lipwig&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dzone.com/articles/lipwig-for-hive-is-the-greatest&quot; href=&quot;https://dzone.com/articles/lipwig-for-hive-is-the-greatest&quot; class=&quot;externalLink&quot;&gt;https://dzone.com/articles/lipwig-for-hive-is-the-greatest&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.linuxdevcenter.com/pub/a/linux/2004/05/06/graphviz_dot.html&quot; href=&quot;http://www.linuxdevcenter.com/pub/a/linux/2004/05/06/graphviz_dot.html&quot; class=&quot;externalLink&quot;&gt;http://www.linuxdevcenter.com/pub/a/linux/2004/05/06/graphviz_dot.html&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h2&gt; json viewer for easy navigation/exploration &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jsonviewer.stack.hu/&quot; href=&quot;http://jsonviewer.stack.hu/&quot; class=&quot;externalLink&quot;&gt;http://jsonviewer.stack.hu/&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>.hive commands</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.hive%20cheatsheet%2C%20beeline%20cheatsheet%5D%5D</link>
-<pubDate>Wed, 14 Feb 2018 22:14:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20EXPLAIN%20plan%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 10:10:00 GMT</pubDate>
 
 </item>
 <item>
-<title>macbook vbox download</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.virtualbox.org/wiki/Download_Old_Builds_5_0&quot; href=&quot;https://www.virtualbox.org/wiki/Download_Old_Builds_5_0&quot; class=&quot;externalLink&quot;&gt;https://www.virtualbox.org/wiki/Download_Old_Builds_5_0&lt;/a&gt;&lt;br&gt;look for &lt;a tiddlylink=&quot;VirtualBox&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VirtualBox&quot; href=&quot;http://karlarao.tiddlyspot.com#VirtualBox&quot; class=&quot;externalLink null&quot;&gt;VirtualBox&lt;/a&gt; 5.0.30&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.virtualbox.org/virtualbox/5.0.30/VirtualBox-5.0.30-112061-OSX.dmg&quot; href=&quot;http://download.virtualbox.org/virtualbox/5.0.30/VirtualBox-5.0.30-112061-OSX.dmg&quot; class=&quot;externalLink&quot;&gt;http://download.virtualbox.org/virtualbox/5.0.30/VirtualBox-5.0.30-112061-OSX.dmg&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.virtualbox.org/virtualbox/5.0.30/Oracle_VM_VirtualBox_Extension_Pack-5.0.30-112061.vbox-extpack&quot; href=&quot;http://download.virtualbox.org/virtualbox/5.0.30/Oracle_VM_VirtualBox_Extension_Pack-5.0.30-112061.vbox-extpack&quot; class=&quot;externalLink&quot;&gt;http://download.virtualbox.org/virtualbox/5.0.30/Oracle_VM_VirtualBox_Extension_Pack-5.0.30-112061.vbox-extpack&lt;/a&gt;</description>
-<category>MacBook, macosx, mac osx</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bmacbook%20vbox%20download%5D%5D</link>
-<pubDate>Wed, 14 Feb 2018 21:53:00 GMT</pubDate>
+<title>hdp sandbox installation 2.6.3</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1) download the docker sandbox ', event)&quot;&gt; 1) download the docker sandbox &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2) Read - Deploying Hortonworks Sandbox on Docker', event)&quot;&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 3) Create a new directory hdp26-demo-sandbox and load the docker file ', event)&quot;&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 4) Download the script and run ', event)&quot;&gt; 4) Download the script and run &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 5) Change root and ambari admin password ', event)&quot;&gt; 5) Change root and ambari admin password &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 6) Check status of container, login, open the ambari console', event)&quot;&gt; 6) Check status of container, login, open the ambari console&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 7) other commands ', event)&quot;&gt; 7) other commands &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' AFTER INSTALLATION - HOW TO RUN', event)&quot;&gt; AFTER INSTALLATION - HOW TO RUN&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1_docker_load.sh', event)&quot;&gt; 1_docker_load.sh&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2_start_sandbox.sh', event)&quot;&gt; 2_start_sandbox.sh&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 1) download the docker sandbox &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/downloads/#sandbox&quot; href=&quot;https://hortonworks.com/downloads/#sandbox&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/downloads/#sandbox&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; href=&quot;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ls -l ../
+total 24323232
+-rw-r--r--@ 1 kristofferson.a.arao  DIR\Domain Users  12453491200 Jan 18 19:21 HDP_2.6.3_docker_10_11_2017.tar
+drwxr-xr-x  6 kristofferson.a.arao  DIR\Domain Users          204 Jan 22 11:12 hdp26-demo-sandbox
 
-</item>
-<item>
-<title>hdp sandbox installation 2.5</title>
-<description>&lt;h1&gt; on networking &lt;/h1&gt;setup a host only adapter and create a 2nd adapter, then ssh to it&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; to access&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;-- from within the VM 
-docker ps -a 
+cd hdp26-demo-sandbox
+
+:hdp26-demo-sandbox kristofferson.a.arao$ cat 0_docker_load.sh 
+docker load &amp;lt; ../HDP_2.6.3_docker_10_11_2017.tar
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 4) Download the script and run &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; href=&quot;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; class=&quot;externalLink&quot;&gt;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&lt;/a&gt;&lt;br&gt;I edited the script to mount the current directory&lt;br&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ cat 3_star_sandbox.sh 
+#!/bin/bash
+echo &quot;Waiting for docker daemon to start up:&quot;
+until docker ps 2&amp;gt;&amp;amp;1| grep STATUS&amp;gt;/dev/null; do  sleep 1; done;  &amp;gt;/dev/null
+docker ps -a | grep sandbox-hdp
+if [ $? -eq 0 ]; then
+ docker start sandbox-hdp
+else
+docker run -v `pwd`:`pwd` -v hadoop:/hadoop --name sandbox-hdp --hostname &quot;sandbox-hdp.hortonworks.com&quot; --privileged -d \
+-p 15500:15500 \
+-p 15501:15501 \
+-p 15502:15502 \
+-p 15503:15503 \
+-p 15504:15504 \
+-p 15505:15505 \
+-p 1111:111 \
+-p 4242:4242 \
+-p 50079:50079 \
+-p 6080:6080 \
+-p 16000:16000 \
+-p 16020:16020 \
+-p 10502:10502 \
+-p 33553:33553 \
+-p 39419:39419 \
+-p 15002:15002 \
+-p 18080:18080 \
+-p 10015:10015 \
+-p 10016:10016 \
+-p 2049:2049 \
+-p 9090:9090 \
+-p 3000:3000 \
+-p 9000:9000 \
+-p 8000:8000 \
+-p 8020:8020 \
+-p 2181:2181 \
+-p 42111:42111 \
+-p 10500:10500 \
+-p 16030:16030 \
+-p 8042:8042 \
+-p 8040:8040 \
+-p 2100:2100 \
+-p 4200:4200 \
+-p 4040:4040 \
+-p 8032:8032 \
+-p 9996:9996 \
+-p 9995:9995 \
+-p 8080:8080 \
+-p 8088:8088 \
+-p 8886:8886 \
+-p 8889:8889 \
+-p 8443:8443 \
+-p 8744:8744 \
+-p 8888:8888 \
+-p 8188:8188 \
+-p 8983:8983 \
+-p 1000:1000 \
+-p 1100:1100 \
+-p 11000:11000 \
+-p 10001:10001 \
+-p 15000:15000 \
+-p 10000:10000 \
+-p 8993:8993 \
+-p 1988:1988 \
+-p 5007:5007 \
+-p 50070:50070 \
+-p 19888:19888 \
+-p 16010:16010 \
+-p 50111:50111 \
+-p 50075:50075 \
+-p 50095:50095 \
+-p 18081:18081 \
+-p 60000:60000 \
+-p 8090:8090 \
+-p 8091:8091 \
+-p 8005:8005 \
+-p 8086:8086 \
+-p 8082:8082 \
+-p 60080:60080 \
+-p 8765:8765 \
+-p 5011:5011 \
+-p 6001:6001 \
+-p 6003:6003 \
+-p 6008:6008 \
+-p 1220:1220 \
+-p 21000:21000 \
+-p 6188:6188 \
+-p 2222:22 \
+sandbox-hdp /usr/sbin/sshd -D
+fi
+docker exec -t sandbox-hdp /bin/sh -c 'echo &quot;127.0.0.1 sandbox.hortonworks.com&quot; &amp;gt;&amp;gt; /etc/hosts'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R mysql:mysql /var/lib/mysql'
+docker exec -t sandbox-hdp service mysqld start
+docker exec -t sandbox-hdp service postgresql start
+docker exec -t sandbox-hdp ambari-server start
+docker exec -t sandbox-hdp ambari-agent start
+docker exec -t sandbox-hdp /bin/sh -c 'rm -f /usr/hdp/current/oozie-server/libext/falcon-oozie-el-extension-*'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R hdfs:hadoop /hadoop/hdfs'
+docker exec -t sandbox-hdp /etc/init.d/shellinaboxd start
+
+
+echo &quot;Waiting for ambari agent to connect&quot;
+docker exec -t sandbox-hdp /bin/sh -c ' until curl --silent -u raj_ops:raj_ops -H &quot;X-Requested-By:ambari&quot; -i -X GET  http://localhost:8080/api/v1/clusters/Sandbox/hosts/sandbox-hdp.hortonworks.com/host_components/ZOOKEEPER_SERVER | grep state | grep -v desired | grep INSTALLED; do sleep 5; echo -n .; done;'
+
+echo &quot;Waiting for ambari services to start &quot;
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.HDFS\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;SERVICE\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;,\&quot;service_name\&quot;:\&quot;HDFS\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services/HDFS | grep -i accept &amp;gt;/dev/null; do echo -n .; sleep 5; done;'
+
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.ALL_SERVICES\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;CLUSTER\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services | grep -i accept &amp;gt; /dev/null; do sleep 5; echo -n .; done; '
+
+docker exec -t sandbox-hdp /bin/sh -c 'until /usr/bin/curl --silent --user raj_ops:raj_ops -H &quot;X-Requested-By: ambari&quot; &quot;http://localhost:8080/api/v1/clusters/Sandbox/requests?to=end&amp;amp;page_size=10&amp;amp;fields=Requests&quot; | tail -n 27 | grep COMPLETED | grep COMPLETED &amp;gt; /dev/null; do echo -n .; sleep 1; done;'
+
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/tutorials/tutorials_app/run/run.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/hue/tools/start_scripts/update-tutorials.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp touch /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp chown oozie:hadoop /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp /etc/init.d/tutorials start
+docker exec -t sandbox-hdp /etc/init.d/splash
+echo &quot;&quot;
+echo &quot;Started Hortonworks HDP container&quot;
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 5) Change root and ambari admin password &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ssh -p 2222 root@localhost
+root@localhost's password: 
+You are required to change your password immediately (root enforced)
+Changing password for root.
+(current) UNIX password: 
+New password: 
+Retype new password: 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# ambari-admin-password-reset
+Please set the password for admin: 
+Please retype the password for admin: 
+
+The admin password has been set.
+Restarting ambari-server to make the password change effective...
+
+Using python  /usr/bin/python
+Restarting ambari-server
+Waiting for server stop...
+Ambari Server stopped
+Ambari Server running with administrator privileges.
+Organizing resource files at /var/lib/ambari-server/resources...
+Ambari database consistency check started...
+Server PID at: /var/run/ambari-server/ambari-server.pid
+Server out at: /var/log/ambari-server/ambari-server.out
+Server log at: /var/log/ambari-server/ambari-server.log
+Waiting for server start........................................
+Server started listening on 8080
+
+DB configs consistency check: no errors and warnings were found.
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 6) Check status of container, login, open the ambari console&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;docker ps -a 
+
 ssh -p 2222 root@localhost
-root/xxx1txx$1
+root/welcome1
 
--- login as raj_ops
-hive
-
--- then from ambari
+-- LOGIN
 http://localhost:8888
 http://127.0.0.1:8080/#/main/dashboard/metrics
-admin/hadoop
 
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; hive directory &lt;/h1&gt;to get the directory&lt;br&gt;&lt;pre&gt;find / | grep -i hive-site.xml
- less /etc/hive2/2.5.0.0-1245/0/hive-site.xml
- less /etc/hive/2.5.0.0-1245/0/hive-site.xml
-&lt;/pre&gt;another way &lt;br&gt;&lt;pre&gt;describe formatted dbname.tablename
-describe formatted dbname.tablename partition (name=value)
-&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;[root@sandbox ~]# hadoop fs -ls /apps/hive/warehouse/
-Found 4 items
-drwxrwxrwx   - hive hdfs          0 2016-10-25 08:10 /apps/hive/warehouse/foodmart.db
-drwxrwxrwx   - hive hdfs          0 2016-10-25 08:11 /apps/hive/warehouse/sample_07
-drwxrwxrwx   - hive hdfs          0 2016-10-25 08:11 /apps/hive/warehouse/sample_08
-drwxrwxrwx   - hive hdfs          0 2016-10-25 08:02 /apps/hive/warehouse/xademo.db
-&lt;/pre&gt;</description>
+-- FOLLOW HOWTO
+https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#admin-password-reset
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 7) other commands &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
+docker start &amp;lt;container id&amp;gt; 
+docker stop &amp;lt;container id&amp;gt; 
+
+-- remove container 
+docker rm &amp;lt;container id&amp;gt;
+
+-- remove container image
+docker rmi &amp;lt;container name&amp;gt;
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; AFTER INSTALLATION - HOW TO RUN&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; two scripts are created after installation, you DON'T have to run the 1_docker_load.sh unless you want to refresh your image. &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;cd /Users/kristofferson.a.arao/docker/hdp26-demo-sandbox
+ls
+1_docker_load.sh	2_start_sandbox.sh
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; 1_docker_load.sh&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;docker load &amp;lt; ../HDP_2.6.3_docker_10_11_2017.tar
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; 2_start_sandbox.sh&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;#!/bin/bash
+echo &quot;Waiting for docker daemon to start up:&quot;
+until docker ps 2&amp;gt;&amp;amp;1| grep STATUS&amp;gt;/dev/null; do  sleep 1; done;  &amp;gt;/dev/null
+docker ps -a | grep sandbox-hdp
+if [ $? -eq 0 ]; then
+ docker start sandbox-hdp
+else
+docker run -v `pwd`:`pwd` -v hadoop:/hadoop --name sandbox-hdp --hostname &quot;sandbox-hdp.hortonworks.com&quot; --privileged -d \
+-p 15500:15500 \
+-p 15501:15501 \
+-p 15502:15502 \
+-p 15503:15503 \
+-p 15504:15504 \
+-p 15505:15505 \
+-p 1111:111 \
+-p 4242:4242 \
+-p 50079:50079 \
+-p 6080:6080 \
+-p 16000:16000 \
+-p 16020:16020 \
+-p 10502:10502 \
+-p 33553:33553 \
+-p 39419:39419 \
+-p 15002:15002 \
+-p 18080:18080 \
+-p 10015:10015 \
+-p 10016:10016 \
+-p 2049:2049 \
+-p 9090:9090 \
+-p 3000:3000 \
+-p 9000:9000 \
+-p 8000:8000 \
+-p 8020:8020 \
+-p 2181:2181 \
+-p 42111:42111 \
+-p 10500:10500 \
+-p 16030:16030 \
+-p 8042:8042 \
+-p 8040:8040 \
+-p 2100:2100 \
+-p 4200:4200 \
+-p 4040:4040 \
+-p 8032:8032 \
+-p 9996:9996 \
+-p 9995:9995 \
+-p 8080:8080 \
+-p 8088:8088 \
+-p 8886:8886 \
+-p 8889:8889 \
+-p 8443:8443 \
+-p 8744:8744 \
+-p 8888:8888 \
+-p 8188:8188 \
+-p 8983:8983 \
+-p 1000:1000 \
+-p 1100:1100 \
+-p 11000:11000 \
+-p 10001:10001 \
+-p 15000:15000 \
+-p 10000:10000 \
+-p 8993:8993 \
+-p 1988:1988 \
+-p 5007:5007 \
+-p 50070:50070 \
+-p 19888:19888 \
+-p 16010:16010 \
+-p 50111:50111 \
+-p 50075:50075 \
+-p 50095:50095 \
+-p 18081:18081 \
+-p 60000:60000 \
+-p 8090:8090 \
+-p 8091:8091 \
+-p 8005:8005 \
+-p 8086:8086 \
+-p 8082:8082 \
+-p 60080:60080 \
+-p 8765:8765 \
+-p 5011:5011 \
+-p 6001:6001 \
+-p 6003:6003 \
+-p 6008:6008 \
+-p 1220:1220 \
+-p 21000:21000 \
+-p 6188:6188 \
+-p 2222:22 \
+sandbox-hdp /usr/sbin/sshd -D
+fi
+docker exec -t sandbox-hdp /bin/sh -c 'echo &quot;127.0.0.1 sandbox.hortonworks.com&quot; &amp;gt;&amp;gt; /etc/hosts'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R mysql:mysql /var/lib/mysql'
+docker exec -t sandbox-hdp service mysqld start
+docker exec -t sandbox-hdp service postgresql start
+docker exec -t sandbox-hdp ambari-server start
+docker exec -t sandbox-hdp ambari-agent start
+docker exec -t sandbox-hdp /bin/sh -c 'rm -f /usr/hdp/current/oozie-server/libext/falcon-oozie-el-extension-*'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R hdfs:hadoop /hadoop/hdfs'
+docker exec -t sandbox-hdp /etc/init.d/shellinaboxd start
+
+
+echo &quot;Waiting for ambari agent to connect&quot;
+docker exec -t sandbox-hdp /bin/sh -c ' until curl --silent -u raj_ops:raj_ops -H &quot;X-Requested-By:ambari&quot; -i -X GET  http://localhost:8080/api/v1/clusters/Sandbox/hosts/sandbox-hdp.hortonworks.com/host_components/ZOOKEEPER_SERVER | grep state | grep -v desired | grep INSTALLED; do sleep 5; echo -n .; done;'
+
+echo &quot;Waiting for ambari services to start &quot;
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.HDFS\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;SERVICE\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;,\&quot;service_name\&quot;:\&quot;HDFS\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services/HDFS | grep -i accept &amp;gt;/dev/null; do echo -n .; sleep 5; done;'
+
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.ALL_SERVICES\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;CLUSTER\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services | grep -i accept &amp;gt; /dev/null; do sleep 5; echo -n .; done; '
+
+docker exec -t sandbox-hdp /bin/sh -c 'until /usr/bin/curl --silent --user raj_ops:raj_ops -H &quot;X-Requested-By: ambari&quot; &quot;http://localhost:8080/api/v1/clusters/Sandbox/requests?to=end&amp;amp;page_size=10&amp;amp;fields=Requests&quot; | tail -n 27 | grep COMPLETED | grep COMPLETED &amp;gt; /dev/null; do echo -n .; sleep 1; done;'
+
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/tutorials/tutorials_app/run/run.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/hue/tools/start_scripts/update-tutorials.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp touch /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp chown oozie:hadoop /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp /etc/init.d/tutorials start
+docker exec -t sandbox-hdp /etc/init.d/splash
+echo &quot;&quot;
+echo &quot;Started Hortonworks HDP container&quot;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>.hadoop sandbox</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.5%5D%5D</link>
-<pubDate>Wed, 14 Feb 2018 21:47:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.6.3%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 08:07:00 GMT</pubDate>
 
 </item>
 <item>
-<title>Vbox Templates, developer vm</title>
-<description>&lt;strong&gt;Developer &lt;a tiddlylink=&quot;VMs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VMs&quot; href=&quot;http://karlarao.tiddlyspot.com#VMs&quot; class=&quot;externalLink null&quot;&gt;VMs&lt;/a&gt;&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/community/developer-vm/index.html&quot; href=&quot;http://www.oracle.com/technetwork/community/developer-vm/index.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/community/developer-vm/index.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;&lt;a tiddlylink=&quot;VirtualBox&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VirtualBox&quot; href=&quot;http://karlarao.tiddlyspot.com#VirtualBox&quot; class=&quot;externalLink null&quot;&gt;VirtualBox&lt;/a&gt; Template for Oracle VM Manager&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/server-storage/vm/template-1482544.html&quot; href=&quot;http://www.oracle.com/technetwork/server-storage/vm/template-1482544.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/server-storage/vm/template-1482544.html&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Oracle VM 3:Building a Demo Environment using Oracle VM &lt;a tiddlylink=&quot;VirtualBox&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VirtualBox&quot; href=&quot;http://karlarao.tiddlyspot.com#VirtualBox&quot; class=&quot;externalLink null&quot;&gt;VirtualBox&lt;/a&gt;&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/server-storage/vm/ovm3-demo-vbox-1680215.pdf&quot; href=&quot;http://www.oracle.com/technetwork/server-storage/vm/ovm3-demo-vbox-1680215.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/server-storage/vm/ovm3-demo-vbox-1680215.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;sunstorage7000 simulator&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.oracle.com/otn/other/servers-storage/storage/open-storage/sunstorage7000/SunStorageVBox.zip&quot; href=&quot;http://download.oracle.com/otn/other/servers-storage/storage/open-storage/sunstorage7000/SunStorageVBox.zip&quot; class=&quot;externalLink&quot;&gt;http://download.oracle.com/otn/other/servers-storage/storage/open-storage/sunstorage7000/SunStorageVBox.zip&lt;/a&gt;, &lt;strong&gt;quick start guide&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/us/dm/h2fy11/simulator5-minute-guide-192152.pdf&quot; href=&quot;http://www.oracle.com/us/dm/h2fy11/simulator5-minute-guide-192152.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/us/dm/h2fy11/simulator5-minute-guide-192152.pdf&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;Setup &lt;br&gt;&lt;br&gt;When the simulator initially boots you will be prompted for some basic network settings (this is exactly the same as if you were using an actual 7110, 7210 or 7410). Many of these fields should be filled in for you. Here are some tips if you're unsure how to fill in any of the required fields:&lt;br&gt;&lt;br&gt;Host Name: Any name you want.&lt;br&gt;DNS Domain: &quot;localdomain&quot;&lt;br&gt;Default Router: The same as the IP address, but put 1 as the final octet.&lt;br&gt;DNS Server: The same as the IP address, but put 1 as the final octet.&lt;br&gt;Password: Whatever you want.&lt;br&gt;After you enter this information, wait until the screen provides you with two &lt;a tiddlylink=&quot;URLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#URLs&quot; href=&quot;http://karlarao.tiddlyspot.com#URLs&quot; class=&quot;externalLink null&quot;&gt;URLs&lt;/a&gt; to use for subsequent configuration and administration, one with an IP address and one with the hostname you specified. Direct a web browser to the URL with the IP address (for example, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://192.168.56.101:215/&quot; href=&quot;https://192.168.56.101:215/&quot; class=&quot;externalLink&quot;&gt;https://192.168.56.101:215/&lt;/a&gt;) to complete appliance configuration. The login name is 'root' and the password is what you entered in the initial configuration screen.&lt;br&gt;&lt;br&gt;&lt;strong&gt;a quick samba demo&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evernote.com/shard/s48/sh/be6faabd-df78-465a-bc4b-ce4db3c99358/6b4d5f084d8b5d1351b081009914829e&quot; href=&quot;http://www.evernote.com/shard/s48/sh/be6faabd-df78-465a-bc4b-ce4db3c99358/6b4d5f084d8b5d1351b081009914829e&quot; class=&quot;externalLink&quot;&gt;http://www.evernote.com/shard/s48/sh/be6faabd-df78-465a-bc4b-ce4db3c99358/6b4d5f084d8b5d1351b081009914829e&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;Solaris 11.1 admin&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://download.oracle.com/otn/solaris/11_1/README_OracleSolaris11_1-VM.txt?AuthParam=1351355880_da0ac074c8dcb5decf237138474298fe&quot; href=&quot;http://download.oracle.com/otn/solaris/11_1/README_OracleSolaris11_1-VM.txt?AuthParam=1351355880_da0ac074c8dcb5decf237138474298fe&quot; class=&quot;externalLink&quot;&gt;http://download.oracle.com/otn/solaris/11_1/README_OracleSolaris11_1-VM.txt?AuthParam=1351355880_da0ac074c8dcb5decf237138474298fe&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;12c VM 12.1.0.1&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.thatjeffsmith.com/archive/2014/02/introducing-the-otn-developer-day-database-12c-virtualbox-image/&quot; href=&quot;http://www.thatjeffsmith.com/archive/2014/02/introducing-the-otn-developer-day-database-12c-virtualbox-image/&quot; class=&quot;externalLink&quot;&gt;http://www.thatjeffsmith.com/archive/2014/02/introducing-the-otn-developer-day-database-12c-virtualbox-image/&lt;/a&gt;&lt;br&gt;&lt;strong&gt;12c VM 12.1.0.2 with &lt;a tiddlylink=&quot;In-Memory&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#In-Memory&quot; href=&quot;http://karlarao.tiddlyspot.com#In-Memory&quot; class=&quot;externalLink null&quot;&gt;In-Memory&lt;/a&gt; Option&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html&quot; href=&quot;http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>VirtualBox</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BVbox%20Templates%2C%20developer%20vm%5D%5D</link>
-<pubDate>Wed, 14 Feb 2018 17:56:00 GMT</pubDate>
+<title>TEZ view , DAG view</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-views/content/section_understanding_dags_vertices_tasks.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-views/content/section_understanding_dags_vertices_tasks.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-views/content/section_understanding_dags_vertices_tasks.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/TEZ/How+to+Diagnose+Tez+App&quot; href=&quot;https://cwiki.apache.org/confluence/display/TEZ/How+to+Diagnose+Tez+App&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/TEZ/How+to+Diagnose+Tez+App&lt;/a&gt;</description>
+<category>hive LLAP and tez, spark LLAP, ibm big SQL</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BTEZ%20view%20%2C%20DAG%20view%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 05:57:00 GMT</pubDate>
 
 </item>
 <item>
-<title>hive beeline</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93NewCommandLineShell&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93NewCommandLineShell&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93NewCommandLineShell&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;For DEV:
+<title>query ambari postgresql</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/37765/backing-up-the-ambari-database-with-postgres.html&quot; href=&quot;https://community.hortonworks.com/articles/37765/backing-up-the-ambari-database-with-postgres.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/37765/backing-up-the-ambari-database-with-postgres.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://discuss.pivotal.io/hc/en-us/articles/217649658-How-to-connect-to-Ambari-s-PostgreSQL-database&quot; href=&quot;https://discuss.pivotal.io/hc/en-us/articles/217649658-How-to-connect-to-Ambari-s-PostgreSQL-database&quot; class=&quot;externalLink&quot;&gt;https://discuss.pivotal.io/hc/en-us/articles/217649658-How-to-connect-to-Ambari-s-PostgreSQL-database&lt;/a&gt;-</description>
+<category>.hive commands</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bquery%20ambari%20postgresql%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 05:57:00 GMT</pubDate>
 
-$ beeline
+</item>
+<item>
+<title>query hive metastore</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://analyticsanvil.wordpress.com/2016/08/21/useful-queries-for-the-hive-metastore/&quot; href=&quot;https://analyticsanvil.wordpress.com/2016/08/21/useful-queries-for-the-hive-metastore/&quot; class=&quot;externalLink&quot;&gt;https://analyticsanvil.wordpress.com/2016/08/21/useful-queries-for-the-hive-metastore/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/16738516/hive-how-to-see-the-table-created-in-metastore&quot; href=&quot;https://stackoverflow.com/questions/16738516/hive-how-to-see-the-table-created-in-metastore&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/16738516/hive-how-to-see-the-table-created-in-metastore&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.cloudera.com/t5/Batch-SQL-Apache-Hive/Accessing-Hive-Metadata/td-p/26836&quot; href=&quot;https://community.cloudera.com/t5/Batch-SQL-Apache-Hive/Accessing-Hive-Metadata/td-p/26836&quot; class=&quot;externalLink&quot;&gt;https://community.cloudera.com/t5/Batch-SQL-Apache-Hive/Accessing-Hive-Metadata/td-p/26836&lt;/a&gt;</description>
+<category>.hive commands</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bquery%20hive%20metastore%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 05:56:00 GMT</pubDate>
 
-&amp;gt; !connect jdbc:hive2://hostname:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
-&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;For QA:
-
-$ beeline
-
-&amp;gt; !connect jdbc:hive2://hostname:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2
+</item>
+<item>
+<title>hive show all running container ids</title>
+<description>&lt;pre&gt;yarn application -list -appStates ALL
+18/02/09 11:32:57 INFO impl.TimelineClientImpl: Timeline service address: http://sandbox.hortonworks.com:8188/ws/v1/timeline/
+18/02/09 11:32:58 INFO client.RMProxy: Connecting to ResourceManager at sandbox.hortonworks.com/172.17.0.2:8050
+18/02/09 11:32:58 INFO client.AHSProxy: Connecting to Application History server at sandbox.hortonworks.com/172.17.0.2:10200
+Total number of applications (application-types: [] and states: [NEW, NEW_SAVING, SUBMITTED, ACCEPTED, RUNNING, FINISHED, FAILED, KILLED]):115
+                Application-Id	    Application-Name	    Application-Type	      User	     Queue	             State	       Final-State	       Progress	                       Tracking-URL
+application_1518033396548_0104	HIVE-525a34f4-0e74-4835-9410-c6084d9f35d5	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0105	HIVE-876aaeb0-2414-427a-a302-e9fc2e0d2ff7	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0102	HIVE-9a4bcc62-8f15-472b-9359-1087f2d4bb41	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0103	HIVE-ecd63290-5ff6-4824-a799-27fd0ae81977	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0108	HIVE-262ba513-5098-4275-b392-76f0a3db03d3	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0109	HIVE-86d707f4-ad9a-45ed-aec1-0628f0b41faf	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0106	HIVE-0f1fb3be-2e2d-4afe-8d07-363b30348708	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0107	HIVE-43b106ab-facb-40b8-827e-9b6c3e7ae5a4	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0112	HIVE-f713a53b-b249-4031-9a11-10c40b995cc6	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0113	HIVE-9f4bf0c1-e4dc-4ed4-bb2c-88f9ed7cd01c	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0110	HIVE-00e727c7-fc28-4374-8c10-e8bb7ebca78a	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0111	HIVE-d899e95b-3e5f-45f3-a5fa-f00a03bc5091	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0114	HIVE-1b3f5ca3-8fdf-4046-9194-93f5f2e0c726	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0115	HIVE-ea34018a-1432-43ca-b296-622062df06b0	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0088	HIVE-83f5c9a8-1b01-4cbf-930e-68112a227d8e	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0089	HIVE-e6eb5158-e5f9-442b-a541-eddf2192f2bb	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0086	HIVE-54acaa7c-a85d-4666-abfd-291176a08a7e	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0087	HIVE-0b5e5528-f17c-410f-8150-6ff7cea618a9	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0092	HIVE-fdf829c4-6dd1-4216-8479-ff010f6c3811	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0093	HIVE-052bbc04-b1da-4201-82c0-a9144c58c05c	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0090	HIVE-6da421dc-5fdd-436f-9141-273276c4a155	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0091	HIVE-beb3bbb7-3ac1-4a18-bdb7-c5407eaae00d	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0096	HIVE-ab012f46-f2b0-459e-92fc-4b2f3ae9189a	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0097	HIVE-439d0063-c6b6-40ff-8311-ef910655eeb3	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0094	HIVE-cccf45b3-fbfb-4eac-8898-67c65a7c5b1f	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0095	HIVE-5449b5a4-51bf-405b-a2eb-57a7748de889	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0100	HIVE-6c33738a-0337-46e8-89e3-87d21a54fd7c	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0101	HIVE-23fcaf10-b67a-4f09-a9c3-6907524f5117	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0098	HIVE-fc81d276-f4cd-49e8-8950-07cdefbcda6f	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0099	HIVE-014d38b5-8d7c-4468-8e68-18abb9c19273	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0072	HIVE-c7c62260-3268-4819-8987-5fb6d55f6fc9	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0073	HIVE-c09824e9-0445-4233-8ef6-3aa47d2bde68	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0070	HIVE-2584eb0c-d725-465d-8765-7f7877a3c6ad	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0071	HIVE-dc7c67a2-6991-48ec-b1be-1e4bc4a90814	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0076	HIVE-11bfd25e-aa03-4564-ab53-a406a8c98acc	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0077	HIVE-ae0c1fc6-6e4f-4a97-b934-77d3528e0881	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0074	HIVE-8a61e18d-36bd-4fc8-802f-cef51fc100c7	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0075	HIVE-a512d254-f1dd-441a-8f79-ddffb3ceffd9	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0080	HIVE-f9554014-5665-4e29-9017-f848598d69ea	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0081	HIVE-085b1385-7182-4da2-ac70-ab9b1f635b2c	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0078	HIVE-267748c2-dcfb-4a26-8028-36f709394a9f	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0079	HIVE-88f0773a-2e36-4070-937c-31eef5335d74	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0084	HIVE-c1037e65-282a-4cd6-9937-6b552d1733c9	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0085	HIVE-665cd8d5-39d3-4c0e-8c2c-102a963b0250	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0082	HIVE-34c4184d-d3c4-4bc3-8db2-a48b2bcbf20f	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0083	HIVE-5e507c41-c1e0-4114-a5b5-bece1eae0c22	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0056	HIVE-6bd7b366-7c46-40af-b4be-8067df42aef2	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0057	HIVE-4bd4f459-2375-48af-bf49-695c7f79e883	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0054	HIVE-ebe17540-90a0-4f0c-aa8e-07eb74b1bdc0	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0055	HIVE-ca911ed7-2860-4fc3-97d0-898c06be84a7	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0060	HIVE-ce17e975-5edc-428b-b580-c28b5f87969c	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0061	HIVE-17038cc9-dcfd-4a9f-948f-1a2454bcd66a	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0058	HIVE-e1a7e639-0e09-4c88-a03f-c6d1e6023ca4	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0059	HIVE-d63a99a1-23a1-4980-9940-ffefe86fbb0f	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0064	HIVE-a3f6f6e9-ce76-4786-ba5c-ccbce298b5fe	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0065	HIVE-3fa5d0ab-30aa-4324-8c97-1b3f7b392e5d	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0062	HIVE-55eb069b-9cdd-4e16-b097-47009caaeea1	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0063	HIVE-52fdd475-34ff-4f3b-80b8-a9795578354d	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0068	HIVE-edc48ebd-d984-4628-b6a9-310762052b08	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0069	HIVE-f5502257-07c2-40cd-a4ef-cce42a304863	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0066	HIVE-f29e1042-77ea-4602-afc6-3257b7d2e4cd	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0067	HIVE-71dff5d0-8956-49a6-a787-a27abb857274	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0040	HIVE-d8ed76b4-17dd-4387-af96-0b722eac615e	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0041	HIVE-faadd9ab-d0db-45fb-aa19-30a3e9f01ec8	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0038	HIVE-749ae0be-ad4c-4abf-9ecd-0961acf7228d	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0039	HIVE-2ceb8774-9767-45a2-b2f2-9bbcee53f6f7	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0044	HIVE-2263669d-00f0-4c45-9b40-1dffb698102f	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0045	HIVE-5d02b7c7-f8db-4784-aa25-c92ce6c7019f	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0042	HIVE-58139ae0-14f4-483b-b5b5-6cab9f477078	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0043	HIVE-d5aab4fc-b79b-45d2-9776-f76c2d0687ab	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0048	HIVE-8bd84c64-bd18-4732-8430-928ddc97c4f2	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0049	HIVE-aea5b343-46e5-4b9b-b532-a10d7b7287ea	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0046	HIVE-bccc7ecc-627f-4858-90bc-ff4442f60aa7	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0047	HIVE-dfb7ab32-2994-45f4-8300-afe4cbe3768e	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0052	HIVE-b80ec6b0-1852-464b-b925-ab6684f3bd88	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0053	HIVE-0e19b3f5-5c35-4fd5-a74c-a4f441f17e9a	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0050	HIVE-4f1ff7d9-6a9b-4550-a6a2-b9c8b46e76a5	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0051	HIVE-730ff159-d62c-49ad-b811-e7e9611953e9	                 TEZ	   raj_ops	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0024	HIVE-76964d2c-baba-4888-aa50-99960f787111	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0025	HIVE-f978e598-c517-48a6-8d0b-6519dc16e8c1	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0022	HIVE-842b2131-d8ca-4195-bb95-6f0a354389a4	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0023	HIVE-bfb1da58-6bc4-4307-be54-461657d6af03	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0028	HIVE-1e53acb0-2498-4fbe-8a4e-588cbeaf3fb9	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0029	HIVE-366eb523-2dbb-4554-b569-f7d335f57a4b	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0026	HIVE-4a7c0137-6e8f-41e9-83c3-1aee1c8c4f16	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0027	HIVE-c4cf19f4-63a4-4d28-9bc2-ee35c3eaca09	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0032	HIVE-c4cf19f4-63a4-4d28-9bc2-ee35c3eaca09	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0033	HIVE-abdd99e3-6024-41ae-adec-4dfd9d0353fd	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0030	HIVE-4618646e-ecc5-423b-bffb-a7b192bc4d5a	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0031	HIVE-8abf9635-3c86-4cab-876b-4b4de71a2358	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0036	HIVE-fa699973-2db1-44fe-85c1-4277143eab11	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0037	HIVE-f68a4a88-2e53-4beb-82fa-c512794fccf8	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0034	HIVE-c4566d3c-e136-42d1-a833-08acc29b8648	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0035	HIVE-8a08c632-e446-457d-a420-a06d1a4b827f	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0008	HIVE-cc66a9ec-d512-4829-9838-f9c4fe97823a	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0009	HIVE-694f7d31-2436-4916-8ee4-bb221b212066	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0006	HIVE-6075ade9-25a6-45af-823f-d536bf6e7d80	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0007	HIVE-999e5bb9-4d4d-4efd-8334-6ef6e003d168	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0012	HIVE-7e3e5881-b6cb-4c15-8e27-63a6956c8e2a	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0013	HIVE-90957090-78b6-478e-874e-7e38b4208ef4	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0010	HIVE-47ab6557-758b-4278-9d58-07aee860da24	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0011	HIVE-c4cf19f4-63a4-4d28-9bc2-ee35c3eaca09	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0016	HIVE-c4cf19f4-63a4-4d28-9bc2-ee35c3eaca09	                 TEZ	      root	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0017	HIVE-f46a1805-e8fc-4c27-b5c5-ecde65a5b99f	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0014	HIVE-46b9172f-979e-42f1-b1cc-298d895cf9a2	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0015	HIVE-08949f50-3f87-42a9-9191-93789fc9e5b2	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0020	HIVE-7bda99f2-e832-43e5-ba1a-e4bfcf815e72	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0021	HIVE-2534e004-ad41-486c-b2cb-5bcece9234a8	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0018	HIVE-fcca89f0-ec4f-4a06-90ff-c590e0f1c615	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0019	HIVE-a7ed5cef-a8d2-4180-94ab-fdf8e99e1aab	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0001	HIVE-03a84ff5-74f3-4141-a0c5-f52129fb285e	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0004	HIVE-a85039f6-0018-41d4-b361-09c6db629766	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0005	HIVE-7d1c062c-6bdc-45f4-bc04-8f546547b25a	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0002	HIVE-89735e71-8095-4ac3-a846-616b383296f1	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+application_1518033396548_0003	HIVE-107f09e1-e575-469f-86b8-c39305742f97	                 TEZ	      hive	   default	          FINISHED	         SUCCEEDED	           100%	                                N/A
+[raj_ops@sandbox log]$ 
+[raj_ops@sandbox log]$ 
+[raj_ops@sandbox log]$ yarn logs -applicationId application_1518033396548_0115
 &lt;/pre&gt;</description>
-<category>hive tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20beeline%5D%5D</link>
-<pubDate>Thu, 08 Feb 2018 23:11:00 GMT</pubDate>
+<category>.yarn commands</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20show%20all%20running%20container%20ids%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 05:51:00 GMT</pubDate>
 
 </item>
 <item>
-<title>SQL format code</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dpriver.com/pp/sqlformat.htm&quot; href=&quot;http://www.dpriver.com/pp/sqlformat.htm&quot; class=&quot;externalLink&quot;&gt;http://www.dpriver.com/pp/sqlformat.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://elentok.com/sql&quot; href=&quot;http://elentok.com/sql&quot; class=&quot;externalLink&quot;&gt;http://elentok.com/sql&lt;/a&gt;     &amp;lt;&lt;span&gt;—&lt;/span&gt; allows collapsing the multiple subqueries of the SQL</description>
-<category>DevTools, Dev Tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20format%20code%5D%5D</link>
-<pubDate>Thu, 08 Feb 2018 18:39:00 GMT</pubDate>
+<title>hive KILL session</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/24595/how-to-shut-downkill-all-queries-in-hive.html&quot; href=&quot;https://community.hortonworks.com/questions/24595/how-to-shut-downkill-all-queries-in-hive.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/24595/how-to-shut-downkill-all-queries-in-hive.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;[root@sandbox ~]# yarn application -kill application_1482410373661_0002
+&lt;/pre&gt;</description>
+<category>.yarn commands</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20KILL%20session%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 05:50:00 GMT</pubDate>
 
 </item>
 <item>
-<title>SQL generate DDL/SQL</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apex.oracle.com/en/quicksql/&quot; href=&quot;https://apex.oracle.com/en/quicksql/&quot; class=&quot;externalLink&quot;&gt;https://apex.oracle.com/en/quicksql/&lt;/a&gt;</description>
-<category>DevTools, Dev Tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20generate%20DDL%2FSQL%5D%5D</link>
-<pubDate>Thu, 08 Feb 2018 18:39:00 GMT</pubDate>
+<title>.yarn commands</title>
+<description></description>
+<category>hive</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.yarn%20commands%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 05:49:00 GMT</pubDate>
 
 </item>
 <item>
-<title>hive tools from github</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/dharmeshkakadia/hive-faq&quot; href=&quot;https://github.com/dharmeshkakadia/hive-faq&quot; class=&quot;externalLink&quot;&gt;https://github.com/dharmeshkakadia/hive-faq&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/zhuguangbin/HiveHistoryParser&quot; href=&quot;https://github.com/zhuguangbin/HiveHistoryParser&quot; class=&quot;externalLink&quot;&gt;https://github.com/zhuguangbin/HiveHistoryParser&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/zhuguangbin/hadoop-dashboard&quot; href=&quot;https://github.com/zhuguangbin/hadoop-dashboard&quot; class=&quot;externalLink&quot;&gt;https://github.com/zhuguangbin/hadoop-dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/t3rmin4t0r/lipwig&quot; href=&quot;https://github.com/t3rmin4t0r/lipwig&quot; class=&quot;externalLink&quot;&gt;https://github.com/t3rmin4t0r/lipwig&lt;/a&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/dharmeshkakadia/PlanSummarizer&quot; href=&quot;https://github.com/dharmeshkakadia/PlanSummarizer&quot; class=&quot;externalLink&quot;&gt;https://github.com/dharmeshkakadia/PlanSummarizer&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/hdinsight/HivePerformanceAutomation&quot; href=&quot;https://github.com/hdinsight/HivePerformanceAutomation&quot; class=&quot;externalLink&quot;&gt;https://github.com/hdinsight/HivePerformanceAutomation&lt;/a&gt;</description>
-<category>hive tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20tools%20from%20github%5D%5D</link>
-<pubDate>Thu, 08 Feb 2018 18:37:00 GMT</pubDate>
+<title>TEZ DAG , hive DAG</title>
+<description>&lt;h1&gt; what is DAG - Directed acyclic graph&lt;/h1&gt;&lt;blockquote&gt;Tez uses an algorithim called DAG to schedule its execution&lt;br&gt;DAG is a fancy term for an explain plan tree in Oracle where the execution flows one way (producers/consumers)&lt;br&gt;&lt;br&gt;DAG = explain plan, the high level process&lt;br&gt;vertex = server process&lt;br&gt;edge = connection between producer/consumer vertex&lt;br&gt;tasks = are the producer/consumer map/reduce tasks&lt;br&gt;container = reusable JVM containers across &lt;a tiddlylink=&quot;DAGs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DAGs&quot; href=&quot;http://karlarao.tiddlyspot.com#DAGs&quot; class=&quot;externalLink null&quot;&gt;DAGs&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; DAG is also like a hierarchical query&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://people.apache.org/~dongsheng/horak/100309_dag_structures_sql.pdf&quot; href=&quot;http://people.apache.org/%7Edongsheng/horak/100309_dag_structures_sql.pdf&quot; class=&quot;externalLink&quot;&gt;http://people.apache.org/~dongsheng/horak/100309_dag_structures_sql.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.codeproject.com/Articles/22824/A-Model-to-Represent-Directed-Acyclic-Graphs-DAG-o&quot; href=&quot;https://www.codeproject.com/Articles/22824/A-Model-to-Represent-Directed-Acyclic-Graphs-DAG-o&quot; class=&quot;externalLink&quot;&gt;https://www.codeproject.com/Articles/22824/A-Model-to-Represent-Directed-Acyclic-Graphs-DAG-o&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/middleware/1221/jdev/api-reference-esdk/oracle/javatools/util/DependencyGraph.html&quot; href=&quot;https://docs.oracle.com/middleware/1221/jdev/api-reference-esdk/oracle/javatools/util/DependencyGraph.html&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/middleware/1221/jdev/api-reference-esdk/oracle/javatools/util/DependencyGraph.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://codemonth.dk/code_is_good/dev_qa_prod.assert?condition=codemonth:::22::A-PLSQL-DAG-implementation&quot; href=&quot;https://codemonth.dk/code_is_good/dev_qa_prod.assert?condition=codemonth:::22::A-PLSQL-DAG-implementation&quot; class=&quot;externalLink&quot;&gt;https://codemonth.dk/code_is_good/dev_qa_prod.assert?condition=codemonth:::22::A-PLSQL-DAG-implementation&lt;/a&gt;.&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/misc/hierarchical-queries&quot; href=&quot;https://oracle-base.com/articles/misc/hierarchical-queries&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/misc/hierarchical-queries&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/SQLRF/queries003.htm#SQLRF52335&quot; href=&quot;https://docs.oracle.com/database/121/SQLRF/queries003.htm#SQLRF52335&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/SQLRF/queries003.htm#SQLRF52335&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oradev.com/connect_by.html&quot; href=&quot;http://www.oradev.com/connect_by.html&quot; class=&quot;externalLink&quot;&gt;http://www.oradev.com/connect_by.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.toadworld.com/platforms/oracle/b/weblog/archive/2014/06/15/hitchhikers-guide-to-explain-plan-7&quot; href=&quot;https://community.toadworld.com/platforms/oracle/b/weblog/archive/2014/06/15/hitchhikers-guide-to-explain-plan-7&quot; class=&quot;externalLink&quot;&gt;https://community.toadworld.com/platforms/oracle/b/weblog/archive/2014/06/15/hitchhikers-guide-to-explain-plan-7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://renenyffenegger.ch/notes/development/databases/Oracle/SQL/select/hierarchical-queries/start-with_connect-by/index&quot; href=&quot;https://renenyffenegger.ch/notes/development/databases/Oracle/SQL/select/hierarchical-queries/start-with_connect-by/index&quot; class=&quot;externalLink&quot;&gt;https://renenyffenegger.ch/notes/development/databases/Oracle/SQL/select/hierarchical-queries/start-with_connect-by/index&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>hive LLAP and tez, spark LLAP, ibm big SQL</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BTEZ%20DAG%20%2C%20hive%20DAG%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 04:15:00 GMT</pubDate>
+
+</item>
+<item>
+<title>DAG containers</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/56636/hive-understanding-concurrent-sessions-queue-alloc.html&quot; href=&quot;https://community.hortonworks.com/articles/56636/hive-understanding-concurrent-sessions-queue-alloc.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/56636/hive-understanding-concurrent-sessions-queue-alloc.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/introducing-tez-sessions/&quot; href=&quot;https://hortonworks.com/blog/introducing-tez-sessions/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/introducing-tez-sessions/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/25521363/apache-tez-architecture-explanation?rq=1&quot; href=&quot;https://stackoverflow.com/questions/25521363/apache-tez-architecture-explanation?rq=1&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/25521363/apache-tez-architecture-explanation?rq=1&lt;/a&gt;&lt;br&gt;</description>
+<category>hive LLAP and tez, spark LLAP, ibm big SQL</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BDAG%20containers%5D%5D</link>
+<pubDate>Thu, 05 Apr 2018 04:14:00 GMT</pubDate>
+
+</item>
+<item>
+<title>partitioning vs bucketing</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hadooptutorial.info/partitioning-in-hive/&quot; href=&quot;http://hadooptutorial.info/partitioning-in-hive/&quot; class=&quot;externalLink&quot;&gt;http://hadooptutorial.info/partitioning-in-hive/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/vaquarkhan/vk-wiki-notes/wiki/What-is-the-difference-between-partitioning-and-bucketing-a-table-in-Hive-%3F&quot; href=&quot;https://github.com/vaquarkhan/vk-wiki-notes/wiki/What-is-the-difference-between-partitioning-and-bucketing-a-table-in-Hive-%3F&quot; class=&quot;externalLink&quot;&gt;https://github.com/vaquarkhan/vk-wiki-notes/wiki/What-is-the-difference-between-partitioning-and-bucketing-a-table-in-Hive-%3F&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/19128940/what-is-the-difference-between-partitioning-and-bucketing-a-table-in-hive&quot; href=&quot;https://stackoverflow.com/questions/19128940/what-is-the-difference-between-partitioning-and-bucketing-a-table-in-hive&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/19128940/what-is-the-difference-between-partitioning-and-bucketing-a-table-in-hive&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/pulse/hive-partitioning-bucketing-examples-gaurav-singh/&quot; href=&quot;https://www.linkedin.com/pulse/hive-partitioning-bucketing-examples-gaurav-singh/&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/pulse/hive-partitioning-bucketing-examples-gaurav-singh/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/13815179/how-to-update-drop-a-hive-partition&quot; href=&quot;https://stackoverflow.com/questions/13815179/how-to-update-drop-a-hive-partition&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/13815179/how-to-update-drop-a-hive-partition&lt;/a&gt;</description>
+<category>hive join/search optimizations</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bpartitioning%20vs%20bucketing%5D%5D</link>
+<pubDate>Mon, 02 Apr 2018 23:12:00 GMT</pubDate>
+
+</item>
+<item>
+<title>SetProcessing , set based processing</title>
+<description>Peoplesoft - Using Set Processing &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E57990_01/pt853pbh2/eng/pt/tape/task_UsingSetProcessing-07720a.html#topofpage&quot; href=&quot;https://docs.oracle.com/cd/E57990_01/pt853pbh2/eng/pt/tape/task_UsingSetProcessing-07720a.html#topofpage&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E57990_01/pt853pbh2/eng/pt/tape/task_UsingSetProcessing-07720a.html#topofpage&lt;/a&gt;&lt;br&gt;Moving from Procedural to &lt;a tiddlylink=&quot;Set-Based&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Set-Based&quot; href=&quot;http://karlarao.tiddlyspot.com#Set-Based&quot; class=&quot;externalLink null&quot;&gt;Set-Based&lt;/a&gt; Thinking &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orchestrapit.co.uk/?p=171&quot; href=&quot;http://www.orchestrapit.co.uk/?p=171&quot; class=&quot;externalLink&quot;&gt;http://www.orchestrapit.co.uk/?p=171&lt;/a&gt;&lt;br&gt;Faster Batch Processing &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/testcontent/o26performance-096310.html&quot; href=&quot;http://www.oracle.com/technetwork/testcontent/o26performance-096310.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/testcontent/o26performance-096310.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://savvinov.com/2017/07/10/set-based-processing/&quot; href=&quot;https://savvinov.com/2017/07/10/set-based-processing/&quot; class=&quot;externalLink&quot;&gt;https://savvinov.com/2017/07/10/set-based-processing/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.orapub.com/20120513/oracle-database-row-versus-set-processing-surprise.html&quot; href=&quot;http://blog.orapub.com/20120513/oracle-database-row-versus-set-processing-surprise.html&quot; class=&quot;externalLink&quot;&gt;http://blog.orapub.com/20120513/oracle-database-row-versus-set-processing-surprise.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://structureddata.org/2010/07/20/the-core-performance-fundamentals-of-oracle-data-warehousing-set-processing-vs-row-processing/&quot; href=&quot;http://structureddata.org/2010/07/20/the-core-performance-fundamentals-of-oracle-data-warehousing-set-processing-vs-row-processing/&quot; class=&quot;externalLink&quot;&gt;http://structureddata.org/2010/07/20/the-core-performance-fundamentals-of-oracle-data-warehousing-set-processing-vs-row-processing/&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;Real-World&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Real-World&quot; href=&quot;http://karlarao.tiddlyspot.com#Real-World&quot; class=&quot;externalLink null&quot;&gt;Real-World&lt;/a&gt; Performance - 8 - Set Based Parallel Processing &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=sriSU6eWGzU&quot; href=&quot;https://www.youtube.com/watch?v=sriSU6eWGzU&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=sriSU6eWGzU&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.codeproject.com/Articles/34142/Understanding-Set-based-and-Procedural-approaches&quot; href=&quot;https://www.codeproject.com/Articles/34142/Understanding-Set-based-and-Procedural-approaches&quot; class=&quot;externalLink&quot;&gt;https://www.codeproject.com/Articles/34142/Understanding-Set-based-and-Procedural-approaches&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL Rewrite/Refactoring</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSetProcessing%20%2C%20set%20based%20processing%5D%5D</link>
+<pubDate>Sun, 01 Apr 2018 22:27:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hive CBO</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; href=&quot;http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; class=&quot;externalLink&quot;&gt;http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&lt;/a&gt;</description>
+<category>hive performance tuning, courses</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20CBO%5D%5D</link>
+<pubDate>Sat, 31 Mar 2018 22:18:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hive LLAP and tez, spark LLAP, ibm big SQL</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/3x-faster-interactive-query-hive-llap/&quot; href=&quot;https://hortonworks.com/blog/3x-faster-interactive-query-hive-llap/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/3x-faster-interactive-query-hive-llap/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hadoop-pig-hive-thejas.blogspot.com/2017/09/new-apache-hive-with-llap-vs-impala.html&quot; href=&quot;http://hadoop-pig-hive-thejas.blogspot.com/2017/09/new-apache-hive-with-llap-vs-impala.html&quot; class=&quot;externalLink&quot;&gt;http://hadoop-pig-hive-thejas.blogspot.com/2017/09/new-apache-hive-with-llap-vs-impala.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.infoworld.com/article/3131058/analytics/big-data-face-off-spark-vs-impala-vs-hive-vs-presto.html&quot; href=&quot;https://www.infoworld.com/article/3131058/analytics/big-data-face-off-spark-vs-impala-vs-hive-vs-presto.html&quot; class=&quot;externalLink&quot;&gt;https://www.infoworld.com/article/3131058/analytics/big-data-face-off-spark-vs-impala-vs-hive-vs-presto.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/&quot; href=&quot;https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/HadoopSummit/llap-subsecond-analytical-queries-in-hive-74811820&quot; href=&quot;https://www.slideshare.net/HadoopSummit/llap-subsecond-analytical-queries-in-hive-74811820&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/HadoopSummit/llap-subsecond-analytical-queries-in-hive-74811820&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/interactive-sql-on-hadoop-with-hive-llap/&quot; href=&quot;https://hortonworks.com/tutorial/interactive-sql-on-hadoop-with-hive-llap/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/interactive-sql-on-hadoop-with-hive-llap/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/fast-analytics-in-the-cloud-with-hive-llap/&quot; href=&quot;https://hortonworks.com/tutorial/fast-analytics-in-the-cloud-with-hive-llap/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/fast-analytics-in-the-cloud-with-hive-llap/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LLAP&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LLAP&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LLAP&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; official doc&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=hive+LLAP+and+tez&quot; href=&quot;https://www.youtube.com/results?search_query=hive+LLAP+and+tez&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=hive+LLAP+and+tez&lt;/a&gt;&lt;br&gt;Hive LLAP &quot;Inside Out&quot; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=n8jHOVkvNoc&quot; href=&quot;https://www.youtube.com/watch?v=n8jHOVkvNoc&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=n8jHOVkvNoc&lt;/a&gt;	&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://resources.zaloni.com/blog/tez-and-llap-improvements-to-make-hive-faster&quot; href=&quot;https://resources.zaloni.com/blog/tez-and-llap-improvements-to-make-hive-faster&quot; class=&quot;externalLink&quot;&gt;https://resources.zaloni.com/blog/tez-and-llap-improvements-to-make-hive-faster&lt;/a&gt;&lt;br&gt;&lt;br&gt;hive llap vs spark sql &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?ei=2jVhWpqvIIn8zgL14YfwAQ&amp;amp;q=hive+llap+vs+spark+sql&amp;amp;oq=hive+llap+vs&amp;amp;gs_l=psy-ab.3.3.0i67k1j0l5.25475.25475.0.27870.1.1.0.0.0.0.244.244.2-1.1.0....0...1c.1.64.psy-ab..0.1.244....0.bm3eynqJK6w&quot; href=&quot;https://www.google.com/search?ei=2jVhWpqvIIn8zgL14YfwAQ&amp;amp;q=hive+llap+vs+spark+sql&amp;amp;oq=hive+llap+vs&amp;amp;gs_l=psy-ab.3.3.0i67k1j0l5.25475.25475.0.27870.1.1.0.0.0.0.244.244.2-1.1.0....0...1c.1.64.psy-ab..0.1.244....0.bm3eynqJK6w&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?ei=2jVhWpqvIIn8zgL14YfwAQ&amp;amp;q=hive+llap+vs+spark+sql&amp;amp;oq=hive+llap+vs&amp;amp;gs_l=psy-ab.3.3.0i67k1j0l5.25475.25475.0.27870.1.1.0.0.0.0.244.244.2-1.1.0....0...1c.1.64.psy-ab..0.1.244....0.bm3eynqJK6w&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/sparksql-ranger-llap-via-spark-thrift-server-bi-scenarios-provide-row-column-level-security-masking/&quot; href=&quot;https://hortonworks.com/blog/sparksql-ranger-llap-via-spark-thrift-server-bi-scenarios-provide-row-column-level-security-masking/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/sparksql-ranger-llap-via-spark-thrift-server-bi-scenarios-provide-row-column-level-security-masking/&lt;/a&gt;&lt;br&gt;spark LLAP use cases &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/hortonworks-spark/spark-llap/wiki/3.-Use-Cases&quot; href=&quot;https://github.com/hortonworks-spark/spark-llap/wiki/3.-Use-Cases&quot; class=&quot;externalLink&quot;&gt;https://github.com/hortonworks-spark/spark-llap/wiki/3.-Use-Cases&lt;/a&gt;&lt;br&gt;spark LLAP github &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/hortonworks-spark/spark-llap/wiki&quot; href=&quot;https://github.com/hortonworks-spark/spark-llap/wiki&quot; class=&quot;externalLink&quot;&gt;https://github.com/hortonworks-spark/spark-llap/wiki&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://developer.ibm.com/hadoop/2017/02/07/experiences-comparing-big-sql-and-spark-sql-at-100tb/&quot; href=&quot;https://developer.ibm.com/hadoop/2017/02/07/experiences-comparing-big-sql-and-spark-sql-at-100tb/&quot; class=&quot;externalLink&quot;&gt;https://developer.ibm.com/hadoop/2017/02/07/experiences-comparing-big-sql-and-spark-sql-at-100tb/&lt;/a&gt;    &amp;lt;&lt;span&gt;—&lt;/span&gt; big SQL at 100TB&lt;br&gt;&lt;br&gt;kudu vs LLAP &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=kudu+vs+llap&quot; href=&quot;https://www.youtube.com/results?search_query=kudu+vs+llap&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=kudu+vs+llap&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>hive performance tuning, courses</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20LLAP%20and%20tez%2C%20spark%20LLAP%2C%20ibm%20big%20SQL%5D%5D</link>
+<pubDate>Sat, 31 Mar 2018 22:18:00 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL Rewrite/Refactoring</title>
+<description>Issues arise from:&lt;br&gt;&lt;ul&gt;&lt;li&gt; coding&lt;/li&gt;&lt;li&gt; data mapping / model&lt;/li&gt;&lt;li&gt; logic &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;delays come from: &lt;br&gt;&lt;ul&gt;&lt;li&gt; poor requirements gathering&lt;/li&gt;&lt;li&gt; technical debt &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL Tuning</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20Rewrite%2FRefactoring%5D%5D</link>
+<pubDate>Sat, 31 Mar 2018 22:12:00 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL*Net debug</title>
+<description>There was a whitepaper about oracle sqlnet and debugging it, not written by someone of our group I think. Does anyone remember that whitepaper?&lt;br&gt;I try to look up some oracle network related functions, and try to see if I can get some basics like network layers and accompanying functions.&lt;br&gt;&lt;br&gt;&lt;br&gt;I think the paper you are looking for is still available at&lt;br&gt;Examining Oracle Net, Net8, SQL*Net Trace Files (Doc ID 156485.1)&lt;br&gt; &lt;br&gt;Other MOS related notes/references&lt;br&gt;SQL*NET PACKET STRUCTURE: NS PACKET HEADER (Doc ID 1007807.6)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.nyoug.org/Presentations/2008/Sep/Harris_Listening%20In.pdf&quot; href=&quot;http://www.nyoug.org/Presentations/2008/Sep/Harris_Listening%20In.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.nyoug.org/Presentations/2008/Sep/Harris_Listening%20In.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://ondoc.logand.com/d/359/html&quot; href=&quot;http://ondoc.logand.com/d/359/html&quot; class=&quot;externalLink&quot;&gt;http://ondoc.logand.com/d/359/html&lt;/a&gt;&lt;br&gt; &lt;br&gt; &lt;br&gt;</description>
+<category>NetServices,Network,Mail</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL*Net%20debug%5D%5D</link>
+<pubDate>Mon, 26 Mar 2018 22:24:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hive ACID</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/50434/hive-and-acid-table-performance-for-updates.html&quot; href=&quot;https://community.hortonworks.com/questions/50434/hive-and-acid-table-performance-for-updates.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/50434/hive-and-acid-table-performance-for-updates.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/adding-acid-to-apache-hive/&quot; href=&quot;https://hortonworks.com/blog/adding-acid-to-apache-hive/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/adding-acid-to-apache-hive/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.remay.com.br/blog/how-to-work-with-acid-tables-in-hive/&quot; href=&quot;http://www.remay.com.br/blog/how-to-work-with-acid-tables-in-hive/&quot; class=&quot;externalLink&quot;&gt;http://www.remay.com.br/blog/how-to-work-with-acid-tables-in-hive/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;If we have to work with hive tables in the transactional mode we have to use two characteristics below:
+
+– bucketing
+– table property transactional=true
+– Ambari – Hive – Configs – ACID Transactions = ON
+
+ 
+
+We can test with these commands:
+
+
+--Sets for update the engine and vectorized processing
+set hive.execution.engine=tez;
+set hive.vectorized.execution.enabled=true;
+set hive.vectorized.execution.reduce.enabled=true;
+
+--------------------------
+--Target table to create
+--------------------------
+drop table tbl1;
+create table tbl1
+(
+f1 int,
+f2 string
+)
+clustered by (f2) into 1 buckets
+stored as orc tblproperties (&quot;transactional&quot;=&quot;true&quot;);
+
+
+----------------------------------------------------
+--Simple load using the transactional way
+----------------------------------------------------
+insert into table tbl1 values (1, 'line1');
+insert into table tbl1 values (2, 'line2');
+insert into table tbl1 values (3, 'line3');
+
+--------------------------
+--First Result
+--------------------------
+Select * from tbl1;
+
+1 line1
+2 line2
+3 line3
+Time taken: 0.798 seconds, Fetched: 3 row(s)
+
+
+--------------------------
+--Simple update
+--------------------------
+update tbl1 set
+f1 = 200
+where f1 = 2;
+
+
+--------------------------
+--Second Result
+--------------------------
+select * from tbl1 ;
+
+1 line1
+200 line2
+3 line3
+
+
+--------------------------
+--Simple delete
+--------------------------
+delete from tbl1 where f1 = 3;
+
+--------------------------
+--Third Result
+--------------------------
+select * from tbl1 ;
+1 line1
+200 line2
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; issues &lt;/h1&gt;&lt;ul&gt;&lt;li&gt; you can't update a bucketed column&lt;/li&gt;&lt;li&gt; you can delete and insert but just not update&lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;hive&amp;gt; update tbl1 set
+    &amp;gt; f2 = 200
+    &amp;gt; where f2 = 'line2';
+FAILED: SemanticException [Error 10302]: Updating values of bucketing columns is not supported.  Column f2.
+
+&lt;/pre&gt;</description>
+<category>hive ala RDBMS</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20ACID%5D%5D</link>
+<pubDate>Thu, 22 Mar 2018 21:21:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bucketing vs indexing</title>
+<description>&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt; you can't update a bucketed column&lt;/li&gt;&lt;li&gt; bucketing is needed for transactional table&lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/30818447/hivebigdata-difference-between-bucketing-and-indexing&quot; href=&quot;https://stackoverflow.com/questions/30818447/hivebigdata-difference-between-bucketing-and-indexing&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/30818447/hivebigdata-difference-between-bucketing-and-indexing&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://acadgild.com/blog/indexing-in-hive/&quot; href=&quot;https://acadgild.com/blog/indexing-in-hive/&quot; class=&quot;externalLink&quot;&gt;https://acadgild.com/blog/indexing-in-hive/&lt;/a&gt;</description>
+<category>hive join/search optimizations</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbucketing%20vs%20indexing%5D%5D</link>
+<pubDate>Wed, 21 Mar 2018 21:59:00 GMT</pubDate>
+
+</item>
+<item>
+<title>row hash on SCD</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dataintegration.ninja/loading-star-schema-dimensions-facts-in-parallel/&quot; href=&quot;http://www.dataintegration.ninja/loading-star-schema-dimensions-facts-in-parallel/&quot; class=&quot;externalLink&quot;&gt;http://www.dataintegration.ninja/loading-star-schema-dimensions-facts-in-parallel/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;&lt;a tiddlylink=&quot;MD5&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#MD5&quot; href=&quot;http://karlarao.tiddlyspot.com#MD5&quot; class=&quot;externalLink null&quot;&gt;MD5&lt;/a&gt; are columns outside primary key &lt;br&gt;&lt;/blockquote&gt;</description>
+<category>time series papers, discussions, books, SCD, temporal, outlier, pattern recognition</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Brow%20hash%20on%20SCD%5D%5D</link>
+<pubDate>Thu, 08 Mar 2018 01:49:00 GMT</pubDate>
 
 </item>
 </channel>
