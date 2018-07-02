@@ -6,16 +6,40 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 KarlArao</copyright>
-<pubDate>Sat, 30 Jun 2018 06:46:02 GMT</pubDate>
-<lastBuildDate>Sat, 30 Jun 2018 06:46:02 GMT</lastBuildDate>
+<pubDate>Mon, 02 Jul 2018 05:18:24 GMT</pubDate>
+<lastBuildDate>Mon, 02 Jul 2018 05:18:24 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>jupyter notebooks</title>
+<description>Notebook Gallery - Links to the best &lt;a tiddlylink=&quot;IPython&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IPython&quot; href=&quot;http://karlarao.tiddlyspot.com#IPython&quot; class=&quot;externalLink null&quot;&gt;IPython&lt;/a&gt; and Jupyter Notebooks - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://nb.bianp.net/&quot; href=&quot;http://nb.bianp.net/&quot; class=&quot;externalLink&quot;&gt;http://nb.bianp.net/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; setup&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&quot; href=&quot;https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&quot; class=&quot;externalLink&quot;&gt;https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&quot; href=&quot;https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&quot; class=&quot;externalLink&quot;&gt;https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; use &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; href=&quot;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&lt;/a&gt;</description>
+<category>data science notebooks</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bjupyter%20notebooks%5D%5D</link>
+<pubDate>Mon, 02 Jul 2018 05:18:22 GMT</pubDate>
+
+</item>
+<item>
+<title>cx_Oracle</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle.github.io/python-cx_Oracle/&quot; href=&quot;https://oracle.github.io/python-cx_Oracle/&quot; class=&quot;externalLink&quot;&gt;https://oracle.github.io/python-cx_Oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; href=&quot;https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/python-cx_Oracle/tree/master/samples&lt;/a&gt;&lt;br&gt;</description>
+<category>Python</category>
+<link>http://karlarao.tiddlyspot.com#cx_Oracle</link>
+<pubDate>Mon, 02 Jul 2018 05:17:23 GMT</pubDate>
+
+</item>
+<item>
+<title>camtasia</title>
+<description>camtasia9&lt;br&gt;camtasia recorder9  </description>
+<category>video authoring tools</category>
+<link>http://karlarao.tiddlyspot.com#camtasia</link>
+<pubDate>Mon, 02 Jul 2018 01:05:00 GMT</pubDate>
+
+</item>
 <item>
 <title>vscode</title>
 <description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs?start=true&quot; href=&quot;https://code.visualstudio.com/docs?start=true&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs?start=true&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs/getstarted/introvideos&quot; href=&quot;https://code.visualstudio.com/docs/getstarted/introvideos&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs/getstarted/introvideos&lt;/a&gt;</description>
 <category>texteditors</category>
 <link>http://karlarao.tiddlyspot.com#vscode</link>
-<pubDate>Sat, 30 Jun 2018 06:46:01 GMT</pubDate>
+<pubDate>Sat, 30 Jun 2018 06:46:00 GMT</pubDate>
 
 </item>
 <item>
@@ -693,30 +717,6 @@ http://download.fedora.redhat.com/pub/epel
 <category>CodeNinja</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bdaemon%2C%20agent%2C%20socket%5D%5D</link>
 <pubDate>Tue, 22 May 2018 17:22:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hadoop aws</title>
-<description></description>
-<category>hadoop on cloud</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20aws%5D%5D</link>
-<pubDate>Wed, 16 May 2018 07:14:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hadoop azure</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&quot; href=&quot;https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&lt;/a&gt;</description>
-<category>hadoop on cloud</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20azure%5D%5D</link>
-<pubDate>Wed, 16 May 2018 07:14:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hadoop on cloud</title>
-<description></description>
-<category>Data Engineering</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20on%20cloud%5D%5D</link>
-<pubDate>Wed, 16 May 2018 07:13:00 GMT</pubDate>
 
 </item>
 </channel>
