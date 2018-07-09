@@ -6,24 +6,32 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 KarlArao</copyright>
-<pubDate>Mon, 02 Jul 2018 05:18:24 GMT</pubDate>
-<lastBuildDate>Mon, 02 Jul 2018 05:18:24 GMT</lastBuildDate>
+<pubDate>Mon, 09 Jul 2018 18:47:12 GMT</pubDate>
+<lastBuildDate>Mon, 09 Jul 2018 18:47:12 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>vscode</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs?start=true&quot; href=&quot;https://code.visualstudio.com/docs?start=true&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs?start=true&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs/getstarted/introvideos&quot; href=&quot;https://code.visualstudio.com/docs/getstarted/introvideos&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs/getstarted/introvideos&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; commands&lt;/h1&gt;&lt;blockquote&gt;    ctrl + alt + n &amp;lt;- to run the script and run only the selection&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; vscode plsql &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/OraOpenSource/OXAR/blob/master/docs/connect_oracle.md&quot; href=&quot;https://github.com/OraOpenSource/OXAR/blob/master/docs/connect_oracle.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/OraOpenSource/OXAR/blob/master/docs/connect_oracle.md&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs/editor/tasks&quot; href=&quot;https://code.visualstudio.com/docs/editor/tasks&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs/editor/tasks&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://ora-00001.blogspot.com/2017/03/using-vs-code-for-plsql-development.html&quot; href=&quot;https://ora-00001.blogspot.com/2017/03/using-vs-code-for-plsql-development.html&quot; class=&quot;externalLink&quot;&gt;https://ora-00001.blogspot.com/2017/03/using-vs-code-for-plsql-development.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://ruepprich.wordpress.com/2017/03/27/compile-plsql-with-vs-code-using-ssh/&quot; href=&quot;https://ruepprich.wordpress.com/2017/03/27/compile-plsql-with-vs-code-using-ssh/&quot; class=&quot;externalLink&quot;&gt;https://ruepprich.wordpress.com/2017/03/27/compile-plsql-with-vs-code-using-ssh/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/dotnet/debugging/Debugging.htm&quot; href=&quot;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/dotnet/debugging/Debugging.htm&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/dotnet/debugging/Debugging.htm&lt;/a&gt;</description>
+<category>texteditors</category>
+<link>http://karlarao.tiddlyspot.com#vscode</link>
+<pubDate>Thu, 05 Jul 2018 17:24:00 GMT</pubDate>
+
+</item>
 <item>
 <title>jupyter notebooks</title>
 <description>Notebook Gallery - Links to the best &lt;a tiddlylink=&quot;IPython&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IPython&quot; href=&quot;http://karlarao.tiddlyspot.com#IPython&quot; class=&quot;externalLink null&quot;&gt;IPython&lt;/a&gt; and Jupyter Notebooks - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://nb.bianp.net/&quot; href=&quot;http://nb.bianp.net/&quot; class=&quot;externalLink&quot;&gt;http://nb.bianp.net/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; setup&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&quot; href=&quot;https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&quot; class=&quot;externalLink&quot;&gt;https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&quot; href=&quot;https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&quot; class=&quot;externalLink&quot;&gt;https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; use &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; href=&quot;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&lt;/a&gt;</description>
 <category>data science notebooks</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bjupyter%20notebooks%5D%5D</link>
-<pubDate>Mon, 02 Jul 2018 05:18:22 GMT</pubDate>
+<pubDate>Mon, 02 Jul 2018 05:18:00 GMT</pubDate>
 
 </item>
 <item>
 <title>cx_Oracle</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle.github.io/python-cx_Oracle/&quot; href=&quot;https://oracle.github.io/python-cx_Oracle/&quot; class=&quot;externalLink&quot;&gt;https://oracle.github.io/python-cx_Oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; href=&quot;https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/python-cx_Oracle/tree/master/samples&lt;/a&gt;&lt;br&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle.github.io/python-cx_Oracle/&quot; href=&quot;https://oracle.github.io/python-cx_Oracle/&quot; class=&quot;externalLink&quot;&gt;https://oracle.github.io/python-cx_Oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; href=&quot;https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/python-cx_Oracle/tree/master/samples&lt;/a&gt;&lt;br&gt;</description>
 <category>Python</category>
 <link>http://karlarao.tiddlyspot.com#cx_Oracle</link>
-<pubDate>Mon, 02 Jul 2018 05:17:23 GMT</pubDate>
+<pubDate>Mon, 02 Jul 2018 05:17:00 GMT</pubDate>
 
 </item>
 <item>
@@ -32,14 +40,6 @@
 <category>video authoring tools</category>
 <link>http://karlarao.tiddlyspot.com#camtasia</link>
 <pubDate>Mon, 02 Jul 2018 01:05:00 GMT</pubDate>
-
-</item>
-<item>
-<title>vscode</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs?start=true&quot; href=&quot;https://code.visualstudio.com/docs?start=true&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs?start=true&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs/getstarted/introvideos&quot; href=&quot;https://code.visualstudio.com/docs/getstarted/introvideos&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs/getstarted/introvideos&lt;/a&gt;</description>
-<category>texteditors</category>
-<link>http://karlarao.tiddlyspot.com#vscode</link>
-<pubDate>Sat, 30 Jun 2018 06:46:00 GMT</pubDate>
 
 </item>
 <item>
