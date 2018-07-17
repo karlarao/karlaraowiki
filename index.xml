@@ -6,24 +6,230 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 KarlArao</copyright>
-<pubDate>Mon, 09 Jul 2018 18:47:12 GMT</pubDate>
-<lastBuildDate>Mon, 09 Jul 2018 18:47:12 GMT</lastBuildDate>
+<pubDate>Tue, 17 Jul 2018 04:08:55 GMT</pubDate>
+<lastBuildDate>Tue, 17 Jul 2018 04:08:55 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>jupyter notebooks</title>
+<description>Notebook Gallery - Links to the best &lt;a tiddlylink=&quot;IPython&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IPython&quot; href=&quot;http://karlarao.tiddlyspot.com#IPython&quot; class=&quot;externalLink null&quot;&gt;IPython&lt;/a&gt; and Jupyter Notebooks - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://nb.bianp.net/&quot; href=&quot;http://nb.bianp.net/&quot; class=&quot;externalLink&quot;&gt;http://nb.bianp.net/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; install and howto &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://app.pluralsight.com/library/courses/jupyter-notebook-python/table-of-contents&quot; href=&quot;https://app.pluralsight.com/library/courses/jupyter-notebook-python/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://app.pluralsight.com/library/courses/jupyter-notebook-python/table-of-contents&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; href=&quot;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running R &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/videos/learning-path-jupyter/9781788394918&quot; href=&quot;https://www.safaribooksonline.com/videos/learning-path-jupyter/9781788394918&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/videos/learning-path-jupyter/9781788394918&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>data science notebooks</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bjupyter%20notebooks%5D%5D</link>
+<pubDate>Tue, 17 Jul 2018 04:08:54 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL*Developer, SQL Developer</title>
+<description>&lt;strong&gt;Download&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html&quot; href=&quot;http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/developer-tools/sqlcl/downloads/sqlcl-relnotes-421-3415922.html&quot; href=&quot;http://www.oracle.com/technetwork/developer-tools/sqlcl/downloads/sqlcl-relnotes-421-3415922.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/developer-tools/sqlcl/downloads/sqlcl-relnotes-421-3415922.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/developer-tools/sql-developer/sqldev-newfeatures-v42-3211987.html&quot; href=&quot;http://www.oracle.com/technetwork/developer-tools/sql-developer/sqldev-newfeatures-v42-3211987.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/developer-tools/sql-developer/sqldev-newfeatures-v42-3211987.html&lt;/a&gt;&lt;br&gt;SQL Developer Data Modeler User's Guide &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/database/sql-developer-4.2/DMDUG/toc.htm&quot; href=&quot;http://docs.oracle.com/database/sql-developer-4.2/DMDUG/toc.htm&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/database/sql-developer-4.2/DMDUG/toc.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Migrate settings to new machine&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://zacktutorials.blogspot.com/2011/02/how-to-copy-oracle-sqldeveloper.html&quot; href=&quot;http://zacktutorials.blogspot.com/2011/02/how-to-copy-oracle-sqldeveloper.html&quot; class=&quot;externalLink&quot;&gt;http://zacktutorials.blogspot.com/2011/02/how-to-copy-oracle-sqldeveloper.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracledeli.wordpress.com/2011/09/28/sql-developer_migrate_settings_files/&quot; href=&quot;http://oracledeli.wordpress.com/2011/09/28/sql-developer_migrate_settings_files/&quot; class=&quot;externalLink&quot;&gt;http://oracledeli.wordpress.com/2011/09/28/sql-developer_migrate_settings_files/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;Navigate to the following location,
+Step 1: C:\Documents and Settings\\Application Data\SQL Developer
+Step 2: C:\Documents and Settings\\Application Data\SQL Developer\systemXX.X.X.X.XX
+Step 3: Copy the product-preferences.xml in the location below,
+C:\Documents and Settings\\Application Data\SQL Developer\systemXX.X.X.X.XX\o.sqldeveloper.XX.X.X.XX.XX
+Step 4: Copy the connections.xml in the location below,
+C:\Documents and Settings\\Application Data\SQL Developer\systemXX.X.X.X.XX\o.jdeveloper.db.connection.XX.X.X.X.XX.XX.XX
+Copy the 2 files(product-preferences.xml &amp;amp; connections.xml ) to your new machine in the same location
+
+C:\Users\karl\AppData\Roaming\SQL Developer\system4.2.0.17.089.1709\o.jdeveloper.db.connection.13.0.0.1.42.170225.201
+C:\Users\karl\AppData\Roaming\SQL Developer\system4.2.0.17.089.1709\o.sqldeveloper.12.2.1.17.89.1709
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;&lt;a tiddlylink=&quot;SetJavaHome&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SetJavaHome&quot; href=&quot;http://karlarao.tiddlyspot.com#SetJavaHome&quot; class=&quot;externalLink null&quot;&gt;SetJavaHome&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/7876502/how-can-i-run-oracle-sql-developer-on-jdk-1-6-and-everything-else-on-1-7&quot; href=&quot;http://stackoverflow.com/questions/7876502/how-can-i-run-oracle-sql-developer-on-jdk-1-6-and-everything-else-on-1-7&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/7876502/how-can-i-run-oracle-sql-developer-on-jdk-1-6-and-everything-else-on-1-7&lt;/a&gt;&lt;br&gt;&lt;pre&gt;version 4.x
+%APPDATA%\sqldeveloper\1.0.0.0.0\product.conf
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;instance viewer&lt;/strong&gt;  &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.thatjeffsmith.com/archive/2014/12/sql-developer-4-1-instance-viewer/&quot; href=&quot;http://www.thatjeffsmith.com/archive/2014/12/sql-developer-4-1-instance-viewer/&quot; class=&quot;externalLink&quot;&gt;http://www.thatjeffsmith.com/archive/2014/12/sql-developer-4-1-instance-viewer/&lt;/a&gt;   , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=FrdUCdGJEG8&quot; href=&quot;https://www.youtube.com/watch?v=FrdUCdGJEG8&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=FrdUCdGJEG8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL*Plus</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL*Developer%2C%20SQL%20Developer%5D%5D</link>
+<pubDate>Mon, 16 Jul 2018 21:49:00 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL*Plus</title>
+<description>&lt;span&gt;—&lt;/span&gt; easy CSV with headings &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-sqlplus-the/0596007469/re105.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-sqlplus-the/0596007469/re105.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-sqlplus-the/0596007469/re105.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/5576901/sqlplus-spooling-how-to-get-rid-of-first-empty-line&quot; href=&quot;https://stackoverflow.com/questions/5576901/sqlplus-spooling-how-to-get-rid-of-first-empty-line&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/5576901/sqlplus-spooling-how-to-get-rid-of-first-empty-line&lt;/a&gt;&lt;br&gt;&lt;pre&gt;set colsep ',' underline off newpage none feedback off term off
+&lt;/pre&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; easy HTML &lt;br&gt;&lt;pre&gt;SET MARKUP HTML ON 
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; define variable &lt;br&gt;&lt;pre&gt;COL edb360_bypass NEW_V edb360_bypass;
+select 3600 edb360_bypass from dual;
+
+or this 
+
+define edb360_secs2go = 3600
+&lt;/pre&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; PRELIM&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://laurentschneider.com/wordpress/2011/07/sqlplus-prelim.html&quot; href=&quot;http://laurentschneider.com/wordpress/2011/07/sqlplus-prelim.html&quot; class=&quot;externalLink&quot;&gt;http://laurentschneider.com/wordpress/2011/07/sqlplus-prelim.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; ESCAPE CHARACTER&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orafaq.com/faq/how_does_one_escape_special_characters_when_writing_sql_queries&quot; href=&quot;http://www.orafaq.com/faq/how_does_one_escape_special_characters_when_writing_sql_queries&quot; class=&quot;externalLink&quot;&gt;http://www.orafaq.com/faq/how_does_one_escape_special_characters_when_writing_sql_queries&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orafaq.com/wiki/SQL*Plus_FAQ&quot; href=&quot;http://www.orafaq.com/wiki/SQL*Plus_FAQ&quot; class=&quot;externalLink&quot;&gt;http://www.orafaq.com/wiki/SQL*Plus_FAQ&lt;/a&gt;&lt;br&gt;&lt;pre&gt;Define an escape character:
+SET ESCAPE '\'
+SELECT '\&amp;amp;abc' FROM dual;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; Don't scan for substitution variables:&lt;br&gt;&lt;pre&gt;SET SCAN OFF
+SELECT '&amp;amp;ABC' x FROM dual;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; NULLIF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://forums.oracle.com/forums/thread.jspa?threadID=2303647&quot; href=&quot;https://forums.oracle.com/forums/thread.jspa?threadID=2303647&quot; class=&quot;externalLink&quot;&gt;https://forums.oracle.com/forums/thread.jspa?threadID=2303647&lt;/a&gt;&lt;br&gt;&lt;pre&gt;The simplest way is NULLIF
+NULLIF (x, y)
+returns NULL if x and y are the same; otherwise, it returns x. So
+n / NULLIF (d, 0)
+returns NULL if d is 0; otherwise, it returns n/d.
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; ACCEPT/HIDE&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B19306_01/server.102/b14357/ch12005.htm&quot; href=&quot;http://docs.oracle.com/cd/B19306_01/server.102/b14357/ch12005.htm&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B19306_01/server.102/b14357/ch12005.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.database-expert.com/white_papers/oracle_sql_script_that_accepts_passwords.htm&quot; href=&quot;http://www.database-expert.com/white_papers/oracle_sql_script_that_accepts_passwords.htm&quot; class=&quot;externalLink&quot;&gt;http://www.database-expert.com/white_papers/oracle_sql_script_that_accepts_passwords.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL*Plus command line history completion - RLWRAP&lt;br&gt;  	Doc ID: 	460591.1&lt;br&gt;&lt;pre&gt;Purpose
+
+The SQL*Plus, the primary interface to the Oracle Database server, 
+provides a powerful yet easy-to-use environment for querying, defining, and controlling data.
+However, some command-line utilities, for example bash, provide features such as:
+
+- command history (up/down arrow keys)
+- auto completion (TAB key)
+- searchable command line history (Ctrl+r)
+
+The scope of this bulletin is to provide these features to SQL*Plus.
+
+Scope and Application
+
+For all SQL*Plus users, but in particular for Linux platforms as this note has been written thinking at that Operating System. In any case this idea can work on other OSs as well.
+SQL*Plus command line history completion
+
+SQL*Plus users working on Linux platforms have the opportunity to use a readline wrapper &quot;rlwrap&quot;. rlwrap is a 'readline wrapper' that uses the GNU readline library to allow the editing of keyboard input for any other command. Input history is remembered across invocations, separately for each command; history completion and search work as in bash and completion word lists can be specified on the command line. Since SQL*Plus is not built with readline library, rlwrap is just doing the job.
+
+- 'rlwrap' is really a tiny program. It's about 24K in size, and you can download it from the official developper (Hans Lub) website http://utopia.knoware.nl/~hlub/uck/rlwrap/
+
+What do you need to compile and run it
+A newer (4.2+) GNU readline (you can get it at ftp://ftp.gnu.org/gnu/readline/)
+and an ANSI C compiler. 
+rlwrap compiles and runs on many Unix systems and on cygwin.
+
+Installation should be as simple as:
+
+./configure
+make
+make install
+ 
+
+Compile rlwrap statically
+
+If you don't have the root account you can compile rlwrap statically
+and install it under $HOME/bin executing this command:
+
+CFLAGS=-I$HOME/readline-6.0 CPPFLAGS=-I$HOME/readline-6.0 LDFLAGS=-static ./configure --prefix=$HOME/bin
+make
+make install
+
+where $HOME/readline-6.0 is the 'readline' source location
+
+ 
+
+
+
+A different option and if your are using Linux, it is to download the newest source rpm package from e.g.: http://download.fedora.redhat.com/pub/epel/5/SRPMS/rlwrap-0.37-1.el5.src.rpm and build the binary rpm package by
+
+# rpm -ivh rlwrap-0.37-1.el5.src.rpm
+# cd /usr/src/redhat/SPECS/
+# rpmbuild -bb rlwrap.spec
+# cd ../RPMS/&amp;lt;arch&amp;gt;/
+and then you can install it as any other rpm package by e.g.
+
+# rpm -ivh rlwrap-0.37-1.x86_64.rpm
+ 
+
+- After installing the package, you should to configure a user's environment so that it makes use of the installed utility, add the following line in '/etc/bashrc' (globally) or in '${HOME}/.bashrc' (locally for the user). Change '&amp;lt;path&amp;gt;' with the right path of your rlwrap:
+
+alias sqlplus='&amp;lt;path&amp;gt;/rlwrap ${ORACLE_HOME}/bin/sqlplus'
+The modified .bashrc won't take effect until you launch a new terminal session or until you source .bashrc. So shut down any terminals you already have open and start a new one.
+
+If you now launch SQL*Plus in exactly the way you've used so far, you should be able to type one SQL command and submit it, and then immediately be able to press the up-arrow key and retrieve it. The more SQL commands you issue over time, the more commands rlwrap will remember. As well as just scrolling through your previous SQL commands, you can press 'Ctrl+r' to give you a searchable command line history.
+
+
+You can also create your own '${HOME}/.sqlplus_completions' file (locally)or '/usr/share/rlwrap/sqlplus' file (globally) with all SQL reserved words (or in case whatever you want) as your auto-completion list (see rlwrap man page for dettails).
+
+And example of '${HOME}/.sqlplus_completions' with some reserved words:
+
+ 
+
+COPY PAUSE SHUTDOWN 
+DEFINE PRINT SPOOL 
+DEL PROMPT SQLPLUS 
+ACCEPT DESCRIBE QUIT START 
+APPEND DISCONNECT RECOVER STARTUP 
+ARCHIVE LOG EDIT REMARK STORE 
+ATTRIBUTE EXECUTE REPFOOTER TIMING 
+BREAK EXIT REPHEADER TTITLE 
+BTITLE GET RESERVED UNDEFINE 
+CHANGE HELP RESERVED VARIABLE 
+CLEAR HOST RUN WHENEVER 
+copy pause shutdown 
+define print spool 
+del prompt sqlplus 
+accept describe quit start 
+append disconnect recover startup 
+archive log edit remark store 
+attribute execute repfooter timing 
+break exit repheader ttitle 
+btitle get reserved undefine 
+change help reserved variable 
+clear host run whenever 
+
+ALL ALTER AND ANY ARRAY ARROW AS ASC AT 
+BEGIN BETWEEN BY 
+CASE CHECK CLUSTERS CLUSTER COLAUTH COLUMNS COMPRESS CONNECT CRASH CREATE CURRENT 
+DECIMAL DECLARE DEFAULT DELETE DESC DISTINCT DROP 
+ELSE END EXCEPTION EXCLUSIVE EXISTS 
+FETCH FORM FOR FROM 
+GOTO GRANT GROUP 
+HAVING 
+IDENTIFIED IF IN INDEXES INDEX INSERT INTERSECT INTO IS 
+LIKE LOCK 
+MINUS MODE 
+NOCOMPRESS NOT NOWAIT NULL 
+OF ON OPTION OR ORDEROVERLAPS 
+PRIOR PROCEDURE PUBLIC 
+RANGE RECORD RESOURCE REVOKE 
+SELECT SHARE SIZE SQL START SUBTYPE 
+TABAUTH TABLE THEN TO TYPE 
+UNION UNIQUE UPDATE USE 
+VALUES VIEW VIEWS 
+WHEN WHERE WITH 
+all alter and any array arrow as asc at 
+begin between by 
+case check clusters cluster colauth columns compress connect crash create current 
+decimal declare default delete desc distinct drop 
+else end exception exclusive exists 
+fetch form for from 
+goto grant group 
+having 
+identified if in indexes index insert intersect into is 
+like lock 
+minus mode 
+nocompress not nowait null 
+of on option or orderoverlaps 
+prior procedure public 
+range record resource revoke 
+select share size sql start subtype 
+tabauth table then to type 
+union unique update use 
+values view views
+ 
+
+Note: 
+You can use 'rlwrap' with all Oracle command line utilities such as Recovery Manager (RMAN) , Oracle Data Pump (expdp), ASM command (asmcmd), etc. 
+
+i.e.: 
+
+
+alias rman='/usr/bin/rlwrap ${ORACLE_HOME}/bin/rman' 
+alias expdp='/usr/bin/rlwrap ${ORACLE_HOME}/bin/expdp'
+alias asmcmd='/usr/bin/rlwrap ${ORACLE_HOME}/bin/asmcmd'
+References
+
+http://utopia.knoware.nl/~hlub/uck/rlwrap/
+ftp://ftp.gnu.org/gnu/readline
+http://download.fedora.redhat.com/pub/epel
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; HEX, DECIMAL, ASCII&lt;br&gt;&lt;br&gt;Script To Convert Hexadecimal Input Into a Decimal Value&lt;br&gt;  	Doc ID: 	1019580.6&lt;br&gt;&lt;br&gt;How to Convert Numbers to Words&lt;br&gt;  	Doc ID: 	135986.1&lt;br&gt;&lt;br&gt;Need To Convert A Varchar2 String Into Its Hexadecimal Equivalent&lt;br&gt;  	Doc ID: 	269578.1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL Tuning</category>
+<link>http://karlarao.tiddlyspot.com#SQL*Plus</link>
+<pubDate>Thu, 12 Jul 2018 04:33:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hdp on cloud install</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&quot; href=&quot;https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&lt;/a&gt;&lt;br&gt;Hadoop Series- Part1 Multinode Hadoop Cluster Installation using Ambari &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=wHaVBoLwzwU&quot; href=&quot;https://www.youtube.com/watch?v=wHaVBoLwzwU&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=wHaVBoLwzwU&lt;/a&gt;&lt;br&gt;Hadoop Series- Part2 How to Add Node To Existing Hadoop Cluster &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=jiCI4yIkUlc&quot; href=&quot;https://www.youtube.com/watch?v=jiCI4yIkUlc&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=jiCI4yIkUlc&lt;/a&gt;&lt;br&gt;	</description>
+<category>.hadoop sandbox</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20on%20cloud%20install%5D%5D</link>
+<pubDate>Wed, 11 Jul 2018 16:55:00 GMT</pubDate>
+
+</item>
 <item>
 <title>vscode</title>
 <description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs?start=true&quot; href=&quot;https://code.visualstudio.com/docs?start=true&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs?start=true&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs/getstarted/introvideos&quot; href=&quot;https://code.visualstudio.com/docs/getstarted/introvideos&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs/getstarted/introvideos&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; commands&lt;/h1&gt;&lt;blockquote&gt;    ctrl + alt + n &amp;lt;- to run the script and run only the selection&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; vscode plsql &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/OraOpenSource/OXAR/blob/master/docs/connect_oracle.md&quot; href=&quot;https://github.com/OraOpenSource/OXAR/blob/master/docs/connect_oracle.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/OraOpenSource/OXAR/blob/master/docs/connect_oracle.md&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.visualstudio.com/docs/editor/tasks&quot; href=&quot;https://code.visualstudio.com/docs/editor/tasks&quot; class=&quot;externalLink&quot;&gt;https://code.visualstudio.com/docs/editor/tasks&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://ora-00001.blogspot.com/2017/03/using-vs-code-for-plsql-development.html&quot; href=&quot;https://ora-00001.blogspot.com/2017/03/using-vs-code-for-plsql-development.html&quot; class=&quot;externalLink&quot;&gt;https://ora-00001.blogspot.com/2017/03/using-vs-code-for-plsql-development.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://ruepprich.wordpress.com/2017/03/27/compile-plsql-with-vs-code-using-ssh/&quot; href=&quot;https://ruepprich.wordpress.com/2017/03/27/compile-plsql-with-vs-code-using-ssh/&quot; class=&quot;externalLink&quot;&gt;https://ruepprich.wordpress.com/2017/03/27/compile-plsql-with-vs-code-using-ssh/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/dotnet/debugging/Debugging.htm&quot; href=&quot;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/dotnet/debugging/Debugging.htm&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/dotnet/debugging/Debugging.htm&lt;/a&gt;</description>
 <category>texteditors</category>
 <link>http://karlarao.tiddlyspot.com#vscode</link>
 <pubDate>Thu, 05 Jul 2018 17:24:00 GMT</pubDate>
-
-</item>
-<item>
-<title>jupyter notebooks</title>
-<description>Notebook Gallery - Links to the best &lt;a tiddlylink=&quot;IPython&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IPython&quot; href=&quot;http://karlarao.tiddlyspot.com#IPython&quot; class=&quot;externalLink null&quot;&gt;IPython&lt;/a&gt; and Jupyter Notebooks - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://nb.bianp.net/&quot; href=&quot;http://nb.bianp.net/&quot; class=&quot;externalLink&quot;&gt;http://nb.bianp.net/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; setup&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&quot; href=&quot;https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&quot; class=&quot;externalLink&quot;&gt;https://www.lynda.com/Python-tutorials/Getting-started-Jupyter/520233/601936-4.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&quot; href=&quot;https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&quot; class=&quot;externalLink&quot;&gt;https://www.lynda.com/Python-tutorials/Jupyter-notebooks/534425/583126-4.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; use &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; href=&quot;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&lt;/a&gt;</description>
-<category>data science notebooks</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bjupyter%20notebooks%5D%5D</link>
-<pubDate>Mon, 02 Jul 2018 05:18:00 GMT</pubDate>
 
 </item>
 <item>
@@ -478,183 +684,6 @@ git push origin master --force
 
 </item>
 <item>
-<title>SQL*Plus</title>
-<description>&lt;span&gt;—&lt;/span&gt; easy CSV with headings &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-sqlplus-the/0596007469/re105.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-sqlplus-the/0596007469/re105.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-sqlplus-the/0596007469/re105.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/5576901/sqlplus-spooling-how-to-get-rid-of-first-empty-line&quot; href=&quot;https://stackoverflow.com/questions/5576901/sqlplus-spooling-how-to-get-rid-of-first-empty-line&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/5576901/sqlplus-spooling-how-to-get-rid-of-first-empty-line&lt;/a&gt;&lt;br&gt;&lt;pre&gt;set colsep ',' underline off newpage none feedback off term off
-&lt;/pre&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; easy HTML &lt;br&gt;&lt;pre&gt;SET MARKUP HTML ON 
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; define variable &lt;br&gt;&lt;pre&gt;COL edb360_bypass NEW_V edb360_bypass;
-select 3600 edb360_bypass from dual;
-
-or this 
-
-def edb360_secs2go = 3600
-&lt;/pre&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; PRELIM&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://laurentschneider.com/wordpress/2011/07/sqlplus-prelim.html&quot; href=&quot;http://laurentschneider.com/wordpress/2011/07/sqlplus-prelim.html&quot; class=&quot;externalLink&quot;&gt;http://laurentschneider.com/wordpress/2011/07/sqlplus-prelim.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; ESCAPE CHARACTER&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orafaq.com/faq/how_does_one_escape_special_characters_when_writing_sql_queries&quot; href=&quot;http://www.orafaq.com/faq/how_does_one_escape_special_characters_when_writing_sql_queries&quot; class=&quot;externalLink&quot;&gt;http://www.orafaq.com/faq/how_does_one_escape_special_characters_when_writing_sql_queries&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orafaq.com/wiki/SQL*Plus_FAQ&quot; href=&quot;http://www.orafaq.com/wiki/SQL*Plus_FAQ&quot; class=&quot;externalLink&quot;&gt;http://www.orafaq.com/wiki/SQL*Plus_FAQ&lt;/a&gt;&lt;br&gt;&lt;pre&gt;Define an escape character:
-SET ESCAPE '\'
-SELECT '\&amp;amp;abc' FROM dual;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; Don't scan for substitution variables:&lt;br&gt;&lt;pre&gt;SET SCAN OFF
-SELECT '&amp;amp;ABC' x FROM dual;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; NULLIF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://forums.oracle.com/forums/thread.jspa?threadID=2303647&quot; href=&quot;https://forums.oracle.com/forums/thread.jspa?threadID=2303647&quot; class=&quot;externalLink&quot;&gt;https://forums.oracle.com/forums/thread.jspa?threadID=2303647&lt;/a&gt;&lt;br&gt;&lt;pre&gt;The simplest way is NULLIF
-NULLIF (x, y)
-returns NULL if x and y are the same; otherwise, it returns x. So
-n / NULLIF (d, 0)
-returns NULL if d is 0; otherwise, it returns n/d.
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; ACCEPT/HIDE&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/B19306_01/server.102/b14357/ch12005.htm&quot; href=&quot;http://docs.oracle.com/cd/B19306_01/server.102/b14357/ch12005.htm&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/B19306_01/server.102/b14357/ch12005.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.database-expert.com/white_papers/oracle_sql_script_that_accepts_passwords.htm&quot; href=&quot;http://www.database-expert.com/white_papers/oracle_sql_script_that_accepts_passwords.htm&quot; class=&quot;externalLink&quot;&gt;http://www.database-expert.com/white_papers/oracle_sql_script_that_accepts_passwords.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL*Plus command line history completion - RLWRAP&lt;br&gt;  	Doc ID: 	460591.1&lt;br&gt;&lt;pre&gt;Purpose
-
-The SQL*Plus, the primary interface to the Oracle Database server, 
-provides a powerful yet easy-to-use environment for querying, defining, and controlling data.
-However, some command-line utilities, for example bash, provide features such as:
-
-- command history (up/down arrow keys)
-- auto completion (TAB key)
-- searchable command line history (Ctrl+r)
-
-The scope of this bulletin is to provide these features to SQL*Plus.
-
-Scope and Application
-
-For all SQL*Plus users, but in particular for Linux platforms as this note has been written thinking at that Operating System. In any case this idea can work on other OSs as well.
-SQL*Plus command line history completion
-
-SQL*Plus users working on Linux platforms have the opportunity to use a readline wrapper &quot;rlwrap&quot;. rlwrap is a 'readline wrapper' that uses the GNU readline library to allow the editing of keyboard input for any other command. Input history is remembered across invocations, separately for each command; history completion and search work as in bash and completion word lists can be specified on the command line. Since SQL*Plus is not built with readline library, rlwrap is just doing the job.
-
-- 'rlwrap' is really a tiny program. It's about 24K in size, and you can download it from the official developper (Hans Lub) website http://utopia.knoware.nl/~hlub/uck/rlwrap/
-
-What do you need to compile and run it
-A newer (4.2+) GNU readline (you can get it at ftp://ftp.gnu.org/gnu/readline/)
-and an ANSI C compiler. 
-rlwrap compiles and runs on many Unix systems and on cygwin.
-
-Installation should be as simple as:
-
-./configure
-make
-make install
- 
-
-Compile rlwrap statically
-
-If you don't have the root account you can compile rlwrap statically
-and install it under $HOME/bin executing this command:
-
-CFLAGS=-I$HOME/readline-6.0 CPPFLAGS=-I$HOME/readline-6.0 LDFLAGS=-static ./configure --prefix=$HOME/bin
-make
-make install
-
-where $HOME/readline-6.0 is the 'readline' source location
-
- 
-
-
-
-A different option and if your are using Linux, it is to download the newest source rpm package from e.g.: http://download.fedora.redhat.com/pub/epel/5/SRPMS/rlwrap-0.37-1.el5.src.rpm and build the binary rpm package by
-
-# rpm -ivh rlwrap-0.37-1.el5.src.rpm
-# cd /usr/src/redhat/SPECS/
-# rpmbuild -bb rlwrap.spec
-# cd ../RPMS/&amp;lt;arch&amp;gt;/
-and then you can install it as any other rpm package by e.g.
-
-# rpm -ivh rlwrap-0.37-1.x86_64.rpm
- 
-
-- After installing the package, you should to configure a user's environment so that it makes use of the installed utility, add the following line in '/etc/bashrc' (globally) or in '${HOME}/.bashrc' (locally for the user). Change '&amp;lt;path&amp;gt;' with the right path of your rlwrap:
-
-alias sqlplus='&amp;lt;path&amp;gt;/rlwrap ${ORACLE_HOME}/bin/sqlplus'
-The modified .bashrc won't take effect until you launch a new terminal session or until you source .bashrc. So shut down any terminals you already have open and start a new one.
-
-If you now launch SQL*Plus in exactly the way you've used so far, you should be able to type one SQL command and submit it, and then immediately be able to press the up-arrow key and retrieve it. The more SQL commands you issue over time, the more commands rlwrap will remember. As well as just scrolling through your previous SQL commands, you can press 'Ctrl+r' to give you a searchable command line history.
-
-
-You can also create your own '${HOME}/.sqlplus_completions' file (locally)or '/usr/share/rlwrap/sqlplus' file (globally) with all SQL reserved words (or in case whatever you want) as your auto-completion list (see rlwrap man page for dettails).
-
-And example of '${HOME}/.sqlplus_completions' with some reserved words:
-
- 
-
-COPY PAUSE SHUTDOWN 
-DEFINE PRINT SPOOL 
-DEL PROMPT SQLPLUS 
-ACCEPT DESCRIBE QUIT START 
-APPEND DISCONNECT RECOVER STARTUP 
-ARCHIVE LOG EDIT REMARK STORE 
-ATTRIBUTE EXECUTE REPFOOTER TIMING 
-BREAK EXIT REPHEADER TTITLE 
-BTITLE GET RESERVED UNDEFINE 
-CHANGE HELP RESERVED VARIABLE 
-CLEAR HOST RUN WHENEVER 
-copy pause shutdown 
-define print spool 
-del prompt sqlplus 
-accept describe quit start 
-append disconnect recover startup 
-archive log edit remark store 
-attribute execute repfooter timing 
-break exit repheader ttitle 
-btitle get reserved undefine 
-change help reserved variable 
-clear host run whenever 
-
-ALL ALTER AND ANY ARRAY ARROW AS ASC AT 
-BEGIN BETWEEN BY 
-CASE CHECK CLUSTERS CLUSTER COLAUTH COLUMNS COMPRESS CONNECT CRASH CREATE CURRENT 
-DECIMAL DECLARE DEFAULT DELETE DESC DISTINCT DROP 
-ELSE END EXCEPTION EXCLUSIVE EXISTS 
-FETCH FORM FOR FROM 
-GOTO GRANT GROUP 
-HAVING 
-IDENTIFIED IF IN INDEXES INDEX INSERT INTERSECT INTO IS 
-LIKE LOCK 
-MINUS MODE 
-NOCOMPRESS NOT NOWAIT NULL 
-OF ON OPTION OR ORDEROVERLAPS 
-PRIOR PROCEDURE PUBLIC 
-RANGE RECORD RESOURCE REVOKE 
-SELECT SHARE SIZE SQL START SUBTYPE 
-TABAUTH TABLE THEN TO TYPE 
-UNION UNIQUE UPDATE USE 
-VALUES VIEW VIEWS 
-WHEN WHERE WITH 
-all alter and any array arrow as asc at 
-begin between by 
-case check clusters cluster colauth columns compress connect crash create current 
-decimal declare default delete desc distinct drop 
-else end exception exclusive exists 
-fetch form for from 
-goto grant group 
-having 
-identified if in indexes index insert intersect into is 
-like lock 
-minus mode 
-nocompress not nowait null 
-of on option or orderoverlaps 
-prior procedure public 
-range record resource revoke 
-select share size sql start subtype 
-tabauth table then to type 
-union unique update use 
-values view views
- 
-
-Note: 
-You can use 'rlwrap' with all Oracle command line utilities such as Recovery Manager (RMAN) , Oracle Data Pump (expdp), ASM command (asmcmd), etc. 
-
-i.e.: 
-
-
-alias rman='/usr/bin/rlwrap ${ORACLE_HOME}/bin/rman' 
-alias expdp='/usr/bin/rlwrap ${ORACLE_HOME}/bin/expdp'
-alias asmcmd='/usr/bin/rlwrap ${ORACLE_HOME}/bin/asmcmd'
-References
-
-http://utopia.knoware.nl/~hlub/uck/rlwrap/
-ftp://ftp.gnu.org/gnu/readline
-http://download.fedora.redhat.com/pub/epel
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; HEX, DECIMAL, ASCII&lt;br&gt;&lt;br&gt;Script To Convert Hexadecimal Input Into a Decimal Value&lt;br&gt;  	Doc ID: 	1019580.6&lt;br&gt;&lt;br&gt;How to Convert Numbers to Words&lt;br&gt;  	Doc ID: 	135986.1&lt;br&gt;&lt;br&gt;Need To Convert A Varchar2 String Into Its Hexadecimal Equivalent&lt;br&gt;  	Doc ID: 	269578.1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQL Tuning</category>
-<link>http://karlarao.tiddlyspot.com#SQL*Plus</link>
-<pubDate>Fri, 25 May 2018 15:07:00 GMT</pubDate>
-
-</item>
-<item>
 <title>hive CBO, cost based optimizer</title>
 <description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; href=&quot;http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; class=&quot;externalLink&quot;&gt;http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; spark and hive cbo&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/download/attachments/73636892/%E7%8E%8B%E6%8C%AF%E5%8D%8E.pdf?version=1&amp;amp;modificationDate=1504755749000&amp;amp;api=v2&quot; href=&quot;https://cwiki.apache.org/confluence/download/attachments/73636892/%E7%8E%8B%E6%8C%AF%E5%8D%8E.pdf?version=1&amp;amp;modificationDate=1504755749000&amp;amp;api=v2&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/download/attachments/73636892/%E7%8E%8B%E6%8C%AF%E5%8D%8E.pdf?version=1&amp;amp;modificationDate=1504755749000&amp;amp;api=v2&lt;/a&gt;   &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=spark.sql.cbo.enabled&amp;amp;oq=spark.sql.cbo.enabled&amp;amp;aqs=chrome..69i57.463j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=spark.sql.cbo.enabled&amp;amp;oq=spark.sql.cbo.enabled&amp;amp;aqs=chrome..69i57.463j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=spark.sql.cbo.enabled&amp;amp;oq=spark.sql.cbo.enabled&amp;amp;aqs=chrome..69i57.463j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/bk_hive-performance-tuning/content/ch_cost-based-optimizer.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/bk_hive-performance-tuning/content/ch_cost-based-optimizer.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/bk_hive-performance-tuning/content/ch_cost-based-optimizer.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; href=&quot;https://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final&quot; href=&quot;https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.facebook.com/posts/229861827208629/scaling-the-facebook-data-warehouse-to-300-pb/&quot; href=&quot;https://code.facebook.com/posts/229861827208629/scaling-the-facebook-data-warehouse-to-300-pb/&quot; class=&quot;externalLink&quot;&gt;https://code.facebook.com/posts/229861827208629/scaling-the-facebook-data-warehouse-to-300-pb/&lt;/a&gt;&lt;br&gt;Illustrating Spark SQL 2.2.0 &lt;a tiddlylink=&quot;Cost-Based&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Cost-Based&quot; href=&quot;http://karlarao.tiddlyspot.com#Cost-Based&quot; class=&quot;externalLink null&quot;&gt;Cost-Based&lt;/a&gt; Optimization in example of Hive and &lt;a tiddlylink=&quot;MySQL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#MySQL&quot; href=&quot;http://karlarao.tiddlyspot.com#MySQL&quot; class=&quot;externalLink null&quot;&gt;MySQL&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=RYIwBfqJZ34&quot; href=&quot;https://www.youtube.com/watch?v=RYIwBfqJZ34&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=RYIwBfqJZ34&lt;/a&gt;&lt;br&gt;</description>
 <category>hive performance tuning, courses</category>
@@ -700,23 +729,6 @@ http://download.fedora.redhat.com/pub/epel
 <category>CodeNinja</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20structures%20and%20algorithms%5D%5D</link>
 <pubDate>Tue, 22 May 2018 17:59:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Scala</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/learning-functional-data/9781785888731/&quot; href=&quot;https://www.safaribooksonline.com/library/view/learning-functional-data/9781785888731/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/learning-functional-data/9781785888731/&lt;/a&gt;</description>
-<category>Data Science</category>
-<category>CodeNinja</category>
-<link>http://karlarao.tiddlyspot.com#Scala</link>
-<pubDate>Tue, 22 May 2018 17:37:00 GMT</pubDate>
-
-</item>
-<item>
-<title>daemon, agent, socket</title>
-<description>&lt;h1&gt; pm2&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pm2.keymetrics.io/docs/tutorials/capistrano-like-deployments&quot; href=&quot;http://pm2.keymetrics.io/docs/tutorials/capistrano-like-deployments&quot; class=&quot;externalLink&quot;&gt;http://pm2.keymetrics.io/docs/tutorials/capistrano-like-deployments&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://keymetrics.io/&quot; href=&quot;https://keymetrics.io/&quot; class=&quot;externalLink&quot;&gt;https://keymetrics.io/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://ifelse.io/2015/09/02/running-node-js-apps-in-production/&quot; href=&quot;https://ifelse.io/2015/09/02/running-node-js-apps-in-production/&quot; class=&quot;externalLink&quot;&gt;https://ifelse.io/2015/09/02/running-node-js-apps-in-production/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=pm2+keymetrics&quot; href=&quot;https://www.youtube.com/results?search_query=pm2+keymetrics&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=pm2+keymetrics&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; socket programming&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/linux-socket-programming/0789722410/&quot; href=&quot;https://www.safaribooksonline.com/library/view/linux-socket-programming/0789722410/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/linux-socket-programming/0789722410/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>CodeNinja</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bdaemon%2C%20agent%2C%20socket%5D%5D</link>
-<pubDate>Tue, 22 May 2018 17:22:00 GMT</pubDate>
 
 </item>
 </channel>
