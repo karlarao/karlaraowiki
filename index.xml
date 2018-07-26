@@ -6,16 +6,582 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 KarlArao</copyright>
-<pubDate>Tue, 17 Jul 2018 04:08:55 GMT</pubDate>
-<lastBuildDate>Tue, 17 Jul 2018 04:08:55 GMT</lastBuildDate>
+<pubDate>Thu, 26 Jul 2018 06:21:52 GMT</pubDate>
+<lastBuildDate>Thu, 26 Jul 2018 06:21:52 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>columns to rows</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://alexzeng.wordpress.com/2009/06/29/how-to-conver-column-to-row-and-convert-row-to-column/&quot; href=&quot;https://alexzeng.wordpress.com/2009/06/29/how-to-conver-column-to-row-and-convert-row-to-column/&quot; class=&quot;externalLink&quot;&gt;https://alexzeng.wordpress.com/2009/06/29/how-to-conver-column-to-row-and-convert-row-to-column/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.club-oracle.com/forums/pivoting-row-to-column-conversion-techniques-sql-t144/&quot; href=&quot;http://www.club-oracle.com/forums/pivoting-row-to-column-conversion-techniques-sql-t144/&quot; class=&quot;externalLink&quot;&gt;http://www.club-oracle.com/forums/pivoting-row-to-column-conversion-techniques-sql-t144/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/9319997/oracle-sql-convert-n-rows-column-values-to-n-columns-in-1-row&quot; href=&quot;http://stackoverflow.com/questions/9319997/oracle-sql-convert-n-rows-column-values-to-n-columns-in-1-row&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/9319997/oracle-sql-convert-n-rows-column-values-to-n-columns-in-1-row&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/19812930/transpose-rows-to-columns-in-oracle-10g&quot; href=&quot;http://stackoverflow.com/questions/19812930/transpose-rows-to-columns-in-oracle-10g&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/19812930/transpose-rows-to-columns-in-oracle-10g&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hearingtheoracle.com/2013/01/11/more-about-pivot-queries/&quot; href=&quot;http://hearingtheoracle.com/2013/01/11/more-about-pivot-queries/&quot; class=&quot;externalLink&quot;&gt;http://hearingtheoracle.com/2013/01/11/more-about-pivot-queries/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-developer.net/display.php?id=506&quot; href=&quot;http://www.oracle-developer.net/display.php?id=506&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-developer.net/display.php?id=506&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.modeanalytics.com/sql/tutorial/sql-pivot-table/&quot; href=&quot;https://community.modeanalytics.com/sql/tutorial/sql-pivot-table/&quot; class=&quot;externalLink&quot;&gt;https://community.modeanalytics.com/sql/tutorial/sql-pivot-table/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL*Plus</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bcolumns%20to%20rows%5D%5D</link>
+<pubDate>Thu, 26 Jul 2018 06:21:51 GMT</pubDate>
+
+</item>
+<item>
+<title>graphviz execution plans</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=graphviz&quot; href=&quot;https://www.youtube.com/results?search_query=graphviz&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=graphviz&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://iggyfernandez.wordpress.com/2010/11/26/explaining-the-explain-plan-using-pictures/&quot; href=&quot;https://iggyfernandez.wordpress.com/2010/11/26/explaining-the-explain-plan-using-pictures/&quot; class=&quot;externalLink&quot;&gt;https://iggyfernandez.wordpress.com/2010/11/26/explaining-the-explain-plan-using-pictures/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.toadworld.com/platforms/oracle/w/wiki/11002.explaining-the-explain-plan-using-pictures&quot; href=&quot;https://community.toadworld.com/platforms/oracle/w/wiki/11002.explaining-the-explain-plan-using-pictures&quot; class=&quot;externalLink&quot;&gt;https://community.toadworld.com/platforms/oracle/w/wiki/11002.explaining-the-explain-plan-using-pictures&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;/*
+ 
+Copyright 2010 Iggy Fernandez
+ 
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+ 
+The purpose of this SQL*Plus script is to generate a Graphviz
+program that can draw a tree-structure graphical version of a query
+plan. It prompts for a SQL_ID and CHILD_NUMBER. The following basic
+data items are first obtained from V$SQL_PLAN_STATISTICS_ALL:
+ 
+  id
+  parent_id
+  object_name
+  operation
+  options
+  last_starts
+  last_elapsed_time / 1000000 AS last_elapsed_time
+  cardinality
+  last_output_rows
+  last_cr_buffer_gets + last_cu_buffer_gets AS last_buffer_gets
+  last_disk_reads
+ 
+The following items are then computed from the basic data:
+ 
+  execution_sequence#
+  delta_elapsed_time
+  delta_buffer_gets
+  delta_disk_reads
+  delta_percentage_elapsed_time
+  delta_percentage_buffer_gets
+  delta_percentage_disk_reads
+  last_percentage_elapsed_time
+  last_percentage_buffer_gets
+  last_percentage_disk_reads
+ 
+Graphviz commands are then spooled to plan.dot. If Graphviz has been
+installed, the following command can be used to produce graphical
+output.
+ 
+  dot -Tjpg -oplan.jpg plan.dot
+ 
+As an example, the following query generates a list of employees
+whose salaries are higher than their respective managers.
+ 
+SELECT
+  emp.employee_id AS emp_id,
+  emp.salary AS emp_salary
+FROM
+  employees emp
+WHERE EXISTS (
+  SELECT
+    *
+  FROM
+    employees mgr
+  WHERE
+    emp.manager_id = mgr.employee_id
+  AND
+    emp.salary &amp;gt; mgr.salary
+);
+ 
+Here is an abbreviated version of the traditional tabular query
+plan.
+ 
+----------------------------------------
+| Id  | Operation          | Name      |
+----------------------------------------
+|   0 | SELECT STATEMENT   |           |
+|   1 |  HASH JOIN SEMI    |           |
+|   2 |   TABLE ACCESS FULL| EMPLOYEES |
+|   3 |   TABLE ACCESS FULL| EMPLOYEES |
+----------------------------------------
+ 
+And here is an abbreviated version of the Graphviz program produced
+by this script.
+ 
+digraph EnhancedPlan {graph[ordering=&quot;out&quot;];node[fontname=Arial fontsize=8];
+&quot;0&quot; [label=&quot;Step 4 (Id 0)\nSELECT STATEMENT&quot;, shape=plaintext];
+&quot;1&quot; [label=&quot;Step 3 (Id 1)\nHASH JOIN SEMI&quot;, shape=plaintext];
+&quot;2&quot; [label=&quot;Step 1 (Id 2)\nTABLE ACCESS FULL EMPLOYEES&quot;, shape=plaintext];
+&quot;3&quot; [label=&quot;Step 2 (Id 3)\nTABLE ACCESS FULL EMPLOYEES&quot;, shape=plaintext];
+&quot;0&quot;-&amp;gt;&quot;1&quot; [dir=back];
+&quot;1&quot;-&amp;gt;&quot;2&quot; [dir=back];
+&quot;1&quot;-&amp;gt;&quot;3&quot; [dir=back];
+}
+ 
+*/
+--------------------------------------------------------------------------------
+ 
+-- SQL*Plus settings
+ 
+SET linesize 1000
+SET trimspool on
+SET pagesize 0
+SET echo off
+SET heading off
+SET feedback off
+SET verify off
+SET time off
+SET timing off
+SET sqlblanklines on
+ 
+SPOOL plan.dot
+ 
+--------------------------------------------------------------------------------
+ 
+-- First retrieve the basic data from V$SQL_PLAN_STATISTICS_ALL.
+-- Modify this subquery if you want data from a different source.
+ 
+WITH plan_table AS
+ 
+(
+ 
+  SELECT
+ 
+    id,
+    parent_id,
+    object_name,
+    operation,
+    options,
+    last_starts,
+    last_elapsed_time / 1000000 AS last_elapsed_time,
+    cardinality,
+    last_output_rows,
+    last_cr_buffer_gets + last_cu_buffer_gets AS last_buffer_gets,
+    last_disk_reads
+ 
+  FROM
+ 
+    v$sql_plan_statistics_all
+ 
+  WHERE
+ 
+    sql_id = '&amp;amp;sql_id'
+    AND child_number = &amp;amp;child_number
+ 
+),
+ 
+--------------------------------------------------------------------------------
+ 
+-- Determine the order in which steps are actually executed
+ 
+execution_sequence AS
+ 
+(
+ 
+  SELECT
+ 
+    id,
+    ROWNUM AS execution_sequence#
+ 
+  FROM
+ 
+    plan_table pt1
+ 
+  START WITH
+ 
+    -- Start with the leaf nodes
+    NOT EXISTS (
+      SELECT *
+      FROM plan_table pt2
+      WHERE pt2.parent_id = pt1.id
+    )
+ 
+  CONNECT BY
+ 
+    -- Connect to the parent node
+    pt1.id = PRIOR pt1.parent_id
+    -- if the prior node was the oldest sibling
+    AND PRIOR pt1.id &amp;gt;= ALL(
+      SELECT pt2.id
+      FROM plan_table pt2
+      WHERE pt2.parent_id = pt1.id
+    )
+ 
+  -- Process the leaf nodes from left to right
+  ORDER SIBLINGS BY pt1.id
+ 
+),
+ 
+--------------------------------------------------------------------------------
+ 
+-- Calculate deltas for elapsed time, buffer gets, and disk reads
+ 
+deltas AS
+ 
+(
+ 
+  SELECT
+ 
+    t1.id,
+    t1.last_elapsed_time - NVL(SUM(t2.last_elapsed_time),0) AS delta_elapsed_time,
+    t1.last_buffer_gets - NVL(SUM(t2.last_buffer_gets),0) AS delta_buffer_gets,
+    t1.last_disk_reads - NVL(SUM(t2.last_disk_reads),0) AS delta_disk_reads
+ 
+  FROM
+ 
+    plan_table t1
+    LEFT OUTER JOIN plan_table t2
+    ON t1.id = t2.parent_id
+ 
+  GROUP BY
+ 
+    t1.id,
+    t1.last_elapsed_time,
+    t1.last_buffer_gets,
+    t1.last_disk_reads
+ 
+),
+ 
+--------------------------------------------------------------------------------
+ 
+-- Join the results of the previous subqueries
+ 
+enhanced_plan_table AS
+ 
+(
+ 
+  SELECT
+ 
+    -- Items from the plan_table subquery
+ 
+    plan_table.id,
+    plan_table.parent_id,
+    plan_table.object_name,
+    plan_table.operation,
+    plan_table.options,
+    plan_table.last_starts,
+    plan_table.last_elapsed_time,
+    plan_table.cardinality,
+    plan_table.last_output_rows,
+    plan_table.last_buffer_gets,
+    plan_table.last_disk_reads,
+ 
+    -- Items from the execution_sequence subquery
+ 
+    execution_sequence.execution_sequence#,
+ 
+    -- Items from the deltas subquery
+ 
+    deltas.delta_elapsed_time,
+    deltas.delta_buffer_gets,
+    deltas.delta_disk_reads,
+ 
+    -- Computed percentages
+ 
+    CASE
+      WHEN (SUM(deltas.delta_elapsed_time) OVER () = 0)
+      THEN (100)
+      ELSE (100 * deltas.delta_elapsed_time / SUM(deltas.delta_elapsed_time) OVER ())
+    END AS delta_percentage_elapsed_time,
+ 
+    CASE
+      WHEN (SUM(deltas.delta_buffer_gets) OVER () = 0)
+      THEN (100)
+      ELSE (100 * deltas.delta_buffer_gets / SUM(deltas.delta_buffer_gets) OVER ())
+    END AS delta_percentage_buffer_gets,
+ 
+    CASE
+      WHEN (SUM(deltas.delta_disk_reads) OVER () = 0)
+      THEN (100)
+      ELSE (100 * deltas.delta_disk_reads / SUM(deltas.delta_disk_reads) OVER ())
+    END AS delta_percentage_disk_reads,
+ 
+    CASE
+      WHEN (SUM(deltas.delta_elapsed_time) OVER () = 0)
+      THEN (100)
+      ELSE (100 * plan_table.last_elapsed_time / SUM(deltas.delta_elapsed_time) OVER ())
+    END AS last_percentage_elapsed_time,
+ 
+    CASE
+      WHEN (SUM(deltas.delta_buffer_gets) OVER () = 0)
+      THEN (100)
+      ELSE (100 * plan_table.last_buffer_gets / SUM(deltas.delta_buffer_gets) OVER ())
+    END AS last_percentage_buffer_gets,
+ 
+    CASE
+      WHEN (SUM(deltas.delta_disk_reads) OVER () = 0)
+      THEN (100)
+      ELSE (100 * plan_table.last_disk_reads / SUM(deltas.delta_disk_reads) OVER ())
+    END AS last_percentage_disk_reads
+ 
+  FROM
+ 
+    plan_table,
+    execution_sequence,
+    deltas
+ 
+  WHERE
+ 
+    plan_table.id = execution_sequence.id
+    AND plan_table.id = deltas.id
+ 
+  -- Order the results for cosmetic purposes
+  ORDER BY plan_table.id
+ 
+)
+ 
+--------------------------------------------------------------------------------
+ 
+-- Begin THE Graphviz program
+ 
+SELECT
+ 
+  'digraph EnhancedPlan {'
+  || 'graph[ordering=&quot;out&quot;];'
+  || 'node[fontname=Arial fontsize=8];' AS command
+ 
+FROM DUAL
+ 
+--------------------------------------------------------------------------------
+ 
+-- Label the nodes
+ 
+UNION ALL SELECT
+ 
+  '&quot;' || id || '&quot; [label=&quot;'
+ 
+  -- Line 1: Execution Sequence # and Id
+ 
+  || 'Step ' || execution_sequence#
+  || ' (Id ' || id || ')'
+  || '\n'
+ 
+  -- Line 2: Operations, options, object name, and starts
+ 
+  || operation
+ 
+  || CASE
+       WHEN (options IS NULL)
+       THEN ('')
+       ELSE (' ' || options)
+     END
+ 
+  || CASE
+       WHEN (object_name IS NULL)
+       THEN ('')
+       ELSE (' ' || object_name)
+     END
+ 
+  || CASE
+       WHEN (last_starts &amp;gt; 1)
+       THEN (' (Starts = ' || last_starts || ')')
+       ELSE ('')
+     END
+ 
+  || '\n'
+ 
+  -- Line 3: Delta elapsed time and cumulative elapsed time
+ 
+  || 'Delta Elapsed = '
+  || CASE
+       WHEN (delta_elapsed_time IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(delta_elapsed_time, '999,999,990.00')) || 's')
+     END
+ 
+  || ' ('
+  || CASE
+       WHEN (delta_percentage_elapsed_time IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(delta_percentage_elapsed_time, '990')) || '%')
+     END
+  || ')'
+ 
+  || ' Cum Elapsed = '
+  || CASE
+       WHEN (last_elapsed_time IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(last_elapsed_time, '999,999,990.00')) || 's')
+     END
+ 
+  || ' ('
+  || CASE
+       WHEN (last_percentage_elapsed_time IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(last_percentage_elapsed_time, '990')) || '%')
+     END
+  || ')'
+ 
+  || '\n'
+ 
+  -- Line 4: Delta buffer gets and cumulative buffer gets
+ 
+  || 'Delta Buffer Gets = '
+  || CASE
+       WHEN (delta_buffer_gets IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(delta_buffer_gets, '999,999,999,999,990')))
+     END
+ 
+  || ' ('
+  || CASE
+       WHEN (delta_percentage_buffer_gets IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(delta_percentage_buffer_gets, '990')) || '%')
+     END
+  || ')'
+ 
+  || ' Cum Buffer Gets = '
+  || CASE
+       WHEN (last_buffer_gets IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(last_buffer_gets, '999,999,999,999,990')))
+     END
+ 
+  || ' ('
+  || CASE
+       WHEN (last_percentage_buffer_gets IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(last_percentage_buffer_gets, '990')) || '%')
+     END
+  || ')'
+ 
+  || '\n'
+ 
+  -- Line 5: Delta disk reads and cumulative disk reads
+ 
+  || 'Delta Disk Reads = '
+  || CASE
+       WHEN (delta_disk_reads IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(delta_disk_reads, '999,999,999,999,990')))
+     END
+ 
+  || ' ('
+  || CASE
+       WHEN (delta_percentage_disk_reads IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(delta_percentage_disk_reads, '990')) || '%')
+     END
+  || ')'
+ 
+  || ' Cum Disk Reads = '
+  || CASE
+       WHEN (last_disk_reads IS NULL)
+       THEN ('?')
+       ELSE (TRIM(TO_CHAR(last_disk_reads, '999,999,999,999,990')))
+      END
+ 
+  || ' ('
+  || CASE
+       WHEN (last_percentage_disk_reads IS NULL)
+        THEN ('?')
+       ELSE (TRIM(TO_CHAR(last_percentage_disk_reads, '990')) || '%')
+     END
+  || ')'
+ 
+  || '\n'
+ 
+  -- Line 6: Estimated rows and actual rows
+ 
+  || 'Estimated Rows = '
+  || CASE
+       WHEN (cardinality IS NULL)
+       THEN '?'
+       ELSE (TRIM(TO_CHAR(cardinality, '999,999,999,999,990')))
+     END
+ 
+  || ' Actual Rows = '
+  || CASE
+       WHEN (last_output_rows IS NULL)
+       THEN '?'
+       ELSE (TRIM(TO_CHAR(last_output_rows, '999,999,999,999,990')))
+     END
+ 
+  || '\n'
+ 
+  || '&quot;, shape=plaintext];' AS command
+ 
+FROM enhanced_plan_table
+ 
+--------------------------------------------------------------------------------
+ 
+-- Connect the nodes
+ 
+UNION ALL SELECT '&quot;' || parent_id || '&quot;-&amp;gt;&quot;' || id || '&quot; [dir=back];' AS command
+FROM plan_table
+START WITH parent_id = 0
+CONNECT BY parent_id = PRIOR id
+ 
+--------------------------------------------------------------------------------
+ 
+-- End THE Graphviz program
+ 
+UNION ALL SELECT '}' AS command
+FROM DUAL;
+ 
+--------------------------------------------------------------------------------
+ 
+SPOOL off
+&lt;/pre&gt;</description>
+<category>hive EXPLAIN plan</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bgraphviz%20execution%20plans%5D%5D</link>
+<pubDate>Thu, 26 Jul 2018 06:17:41 GMT</pubDate>
+
+</item>
+<item>
+<title>DBMS_ADVANCED_REWRITE</title>
+<description>&lt;br&gt;Master Note for Query Rewrite (Doc ID 1215173.1)&lt;br&gt;Using &lt;a tiddlylink=&quot;DBMS_ADVANCED_REWRITE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; class=&quot;externalLink null&quot;&gt;DBMS_ADVANCED_REWRITE&lt;/a&gt; When Binds Are Present (Avoiding &lt;a tiddlylink=&quot;ORA-30353&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA-30353&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA-30353&quot; class=&quot;externalLink null&quot;&gt;ORA-30353&lt;/a&gt;) (Doc ID 392214.1)&lt;br&gt;Master Note for Materialized View (MVIEW) (Doc ID 1353040.1)&lt;br&gt;Using Execution Plan to Verify Materialized View Query Rewrite (Doc ID 245635.1)&lt;br&gt;Advanced Query Rewrite &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/B28359_01/server.111/b28313/qradv.htm&quot; href=&quot;https://docs.oracle.com/cd/B28359_01/server.111/b28313/qradv.htm&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/B28359_01/server.111/b28313/qradv.htm&lt;/a&gt;  , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://pages.di.unipi.it/ghelli/didattica/bdldoc/B19306_01/server.102/b14223/qradv.htm&quot; href=&quot;http://pages.di.unipi.it/ghelli/didattica/bdldoc/B19306_01/server.102/b14223/qradv.htm&quot; class=&quot;externalLink&quot;&gt;http://pages.di.unipi.it/ghelli/didattica/bdldoc/B19306_01/server.102/b14223/qradv.htm&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;DBMS_ADVANCED_REWRITE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; class=&quot;externalLink null&quot;&gt;DBMS_ADVANCED_REWRITE&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/ARPLS/d_advrwr.htm#BEGIN&quot; href=&quot;https://docs.oracle.com/database/121/ARPLS/d_advrwr.htm#BEGIN&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/ARPLS/d_advrwr.htm#BEGIN&lt;/a&gt;&lt;br&gt;Oracle OLAP 11g and 12c: How to ensure use of Cube Materialized Views/Query Rewrite (Doc ID 577293.1)&lt;br&gt;Improving Performance using Query Rewrite in Oracle D atabase 10g &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/middleware/bi-foundation/twp-bi-dw-improve-perf-using-query--133436.pdf&quot; href=&quot;http://www.oracle.com/technetwork/middleware/bi-foundation/twp-bi-dw-improve-perf-using-query--133436.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/middleware/bi-foundation/twp-bi-dw-improve-perf-using-query--133436.pdf&lt;/a&gt;&lt;br&gt;How To Use &lt;a tiddlylink=&quot;DBMS_MVIEW&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_MVIEW&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_MVIEW&quot; class=&quot;externalLink null&quot;&gt;DBMS_MVIEW&lt;/a&gt;.&lt;a tiddlylink=&quot;EXPLAIN_REWRITE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EXPLAIN_REWRITE&quot; href=&quot;http://karlarao.tiddlyspot.com#EXPLAIN_REWRITE&quot; class=&quot;externalLink null&quot;&gt;EXPLAIN_REWRITE&lt;/a&gt; and &lt;a tiddlylink=&quot;EXPLAIN_MVIEW&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EXPLAIN_MVIEW&quot; href=&quot;http://karlarao.tiddlyspot.com#EXPLAIN_MVIEW&quot; class=&quot;externalLink null&quot;&gt;EXPLAIN_MVIEW&lt;/a&gt; To Diagnose Query Rewrite and Fast Refresh Problems (Doc ID 149815.1)&lt;br&gt;Manual Diagnosis &amp;amp; Troubleshooting for Query Rewrite Problems (Doc ID 236486.1)    &amp;lt;- good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gavinsoorma.com/2011/06/using-dbms_advanced_rewrite-with-an-hint-to-change-the-execution-plan/&quot; href=&quot;https://gavinsoorma.com/2011/06/using-dbms_advanced_rewrite-with-an-hint-to-change-the-execution-plan/&quot; class=&quot;externalLink&quot;&gt;https://gavinsoorma.com/2011/06/using-dbms_advanced_rewrite-with-an-hint-to-change-the-execution-plan/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Oracle by example &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/10g/r2/prod/bidw/mv/mv_otn.htm&quot; href=&quot;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/10g/r2/prod/bidw/mv/mv_otn.htm&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/10g/r2/prod/bidw/mv/mv_otn.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gerardnico.com/db/oracle/query_rewriting&quot; href=&quot;https://gerardnico.com/db/oracle/query_rewriting&quot; class=&quot;externalLink&quot;&gt;https://gerardnico.com/db/oracle/query_rewriting&lt;/a&gt;</description>
+<category>SQL Rewrite/Refactoring</category>
+<link>http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE</link>
+<pubDate>Thu, 26 Jul 2018 06:03:02 GMT</pubDate>
+
+</item>
+<item>
+<title>docker on aix</title>
+<description>&lt;br&gt;From the following materials you need to be on ubuntu installed on the power machine&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/developerworks/library/d-docker-on-power-linux-platform/&quot; href=&quot;https://www.ibm.com/developerworks/library/d-docker-on-power-linux-platform/&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/developerworks/library/d-docker-on-power-linux-platform/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/cmacielatl/docker-on-power-systems&quot; href=&quot;https://www.slideshare.net/cmacielatl/docker-on-power-systems&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/cmacielatl/docker-on-power-systems&lt;/a&gt;&lt;br&gt; &lt;br&gt;and stalking the engineers listed on the article I found the developerworks link &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linux-on-ibm-z&quot; href=&quot;https://github.com/linux-on-ibm-z&quot; class=&quot;externalLink&quot;&gt;https://github.com/linux-on-ibm-z&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/seelam?tab=repositories&quot; href=&quot;https://github.com/seelam?tab=repositories&quot; class=&quot;externalLink&quot;&gt;https://github.com/seelam?tab=repositories&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/inatatsu?tab=stars&quot; href=&quot;https://github.com/inatatsu?tab=stars&quot; class=&quot;externalLink&quot;&gt;https://github.com/inatatsu?tab=stars&lt;/a&gt; -&amp;gt; starred &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linux-on-ibm-z/docs&quot; href=&quot;https://github.com/linux-on-ibm-z/docs&quot; class=&quot;externalLink&quot;&gt;https://github.com/linux-on-ibm-z/docs&lt;/a&gt;&lt;br&gt; &lt;br&gt;that contains example dockerfiles here&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linux-on-ibm-z/dockerfile-examples&quot; href=&quot;https://github.com/linux-on-ibm-z/dockerfile-examples&quot; class=&quot;externalLink&quot;&gt;https://github.com/linux-on-ibm-z/dockerfile-examples&lt;/a&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; other&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/29466954/creating-docker-container-with-hp-ux-and-ibm-aix&quot; href=&quot;https://stackoverflow.com/questions/29466954/creating-docker-container-with-hp-ux-and-ibm-aix&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/29466954/creating-docker-container-with-hp-ux-and-ibm-aix&lt;/a&gt;</description>
+<category>Docker</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bdocker%20on%20aix%5D%5D</link>
+<pubDate>Thu, 26 Jul 2018 05:36:46 GMT</pubDate>
+
+</item>
+<item>
+<title>..bash to python, bash2py</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/capital-one-developers/bashing-the-bash-replacing-shell-scripts-with-python-d8d201bc0989&quot; href=&quot;https://medium.com/capital-one-developers/bashing-the-bash-replacing-shell-scripts-with-python-d8d201bc0989&quot; class=&quot;externalLink&quot;&gt;https://medium.com/capital-one-developers/bashing-the-bash-replacing-shell-scripts-with-python-d8d201bc0989&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxjournal.com/content/python-scripts-replacement-bash-utility-scripts&quot; href=&quot;https://www.linuxjournal.com/content/python-scripts-replacement-bash-utility-scripts&quot; class=&quot;externalLink&quot;&gt;https://www.linuxjournal.com/content/python-scripts-replacement-bash-utility-scripts&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.educba.com/bash-shell-programming-with-python/&quot; href=&quot;https://www.educba.com/bash-shell-programming-with-python/&quot; class=&quot;externalLink&quot;&gt;https://www.educba.com/bash-shell-programming-with-python/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxquestions.org/questions/linux-software-2/need-help-converting-bash-script-to-python-4175605267/&quot; href=&quot;https://www.linuxquestions.org/questions/linux-software-2/need-help-converting-bash-script-to-python-4175605267/&quot; class=&quot;externalLink&quot;&gt;https://www.linuxquestions.org/questions/linux-software-2/need-help-converting-bash-script-to-python-4175605267/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/2839810/converting-a-bash-script-to-python-small-script&quot; href=&quot;https://stackoverflow.com/questions/2839810/converting-a-bash-script-to-python-small-script&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/2839810/converting-a-bash-script-to-python-small-script&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://tails.boum.org/blueprint/Port_shell_scripts_to_Python/&quot; href=&quot;https://tails.boum.org/blueprint/Port_shell_scripts_to_Python/&quot; class=&quot;externalLink&quot;&gt;https://tails.boum.org/blueprint/Port_shell_scripts_to_Python/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.dreamincode.net/forums/topic/399713-convert-a-shell-script-to-python/&quot; href=&quot;https://www.dreamincode.net/forums/topic/399713-convert-a-shell-script-to-python/&quot; class=&quot;externalLink&quot;&gt;https://www.dreamincode.net/forums/topic/399713-convert-a-shell-script-to-python/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://grasswiki.osgeo.org/wiki/Converting_Bash_scripts_to_Python&quot; href=&quot;https://grasswiki.osgeo.org/wiki/Converting_Bash_scripts_to_Python&quot; class=&quot;externalLink&quot;&gt;https://grasswiki.osgeo.org/wiki/Converting_Bash_scripts_to_Python&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; tools &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://zwischenzugs.com/2016/08/29/bash-to-python-converter/&quot; href=&quot;https://zwischenzugs.com/2016/08/29/bash-to-python-converter/&quot; class=&quot;externalLink&quot;&gt;https://zwischenzugs.com/2016/08/29/bash-to-python-converter/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/tomerfiliba/plumbum&quot; href=&quot;https://github.com/tomerfiliba/plumbum&quot; class=&quot;externalLink&quot;&gt;https://github.com/tomerfiliba/plumbum&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hub.docker.com/r/imiell/bash2py/&quot; href=&quot;https://hub.docker.com/r/imiell/bash2py/&quot; class=&quot;externalLink&quot;&gt;https://hub.docker.com/r/imiell/bash2py/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/ianmiell/bash2py&quot; href=&quot;https://github.com/ianmiell/bash2py&quot; class=&quot;externalLink&quot;&gt;https://github.com/ianmiell/bash2py&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.swag.uwaterloo.ca/bash2py/index.html&quot; href=&quot;http://www.swag.uwaterloo.ca/bash2py/index.html&quot; class=&quot;externalLink&quot;&gt;http://www.swag.uwaterloo.ca/bash2py/index.html&lt;/a&gt;  , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://ieeexplore.ieee.org/document/7081866/?reload=true&quot; href=&quot;https://ieeexplore.ieee.org/document/7081866/?reload=true&quot; class=&quot;externalLink&quot;&gt;https://ieeexplore.ieee.org/document/7081866/?reload=true&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Python</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B..bash%20to%20python%2C%20bash2py%5D%5D</link>
+<pubDate>Thu, 26 Jul 2018 05:34:46 GMT</pubDate>
+
+</item>
+<item>
+<title>Arq Backup</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://levels.io/korea-4g/&quot; href=&quot;https://levels.io/korea-4g/&quot; class=&quot;externalLink&quot;&gt;https://levels.io/korea-4g/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.arqbackup.com/features/&quot; href=&quot;https://www.arqbackup.com/features/&quot; class=&quot;externalLink&quot;&gt;https://www.arqbackup.com/features/&lt;/a&gt;&lt;br&gt;Amazon Glacier &lt;a target=&quot;_blank&quot; title=&quot;External link to https://aws.amazon.com/glacier/&quot; href=&quot;https://aws.amazon.com/glacier/&quot; class=&quot;externalLink&quot;&gt;https://aws.amazon.com/glacier/&lt;/a&gt;</description>
+<category>LinuxBackup</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BArq%20Backup%5D%5D</link>
+<pubDate>Tue, 24 Jul 2018 06:48:00 GMT</pubDate>
+
+</item>
+<item>
+<title>..bash for ops</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/DingGuodong/LinuxBashShellScriptForOps&quot; href=&quot;https://github.com/DingGuodong/LinuxBashShellScriptForOps&quot; class=&quot;externalLink&quot;&gt;https://github.com/DingGuodong/LinuxBashShellScriptForOps&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.bashoneliners.com/&quot; href=&quot;http://www.bashoneliners.com/&quot; class=&quot;externalLink&quot;&gt;http://www.bashoneliners.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/learnbyexample/scripting_course&quot; href=&quot;https://github.com/learnbyexample/scripting_course&quot; class=&quot;externalLink&quot;&gt;https://github.com/learnbyexample/scripting_course&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/learnbyexample/Linux_command_line/blob/master/Shell_Scripting.md&quot; href=&quot;https://github.com/learnbyexample/Linux_command_line/blob/master/Shell_Scripting.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/learnbyexample/Linux_command_line/blob/master/Shell_Scripting.md&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/learnbyexample/Linux_command_line/blob/master/Text_Processing.md&quot; href=&quot;https://github.com/learnbyexample/Linux_command_line/blob/master/Text_Processing.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/learnbyexample/Linux_command_line/blob/master/Text_Processing.md&lt;/a&gt;</description>
+<category>coderepo bash</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B..bash%20for%20ops%5D%5D</link>
+<pubDate>Tue, 24 Jul 2018 06:26:00 GMT</pubDate>
+
+</item>
+<item>
+<title>coderepo bash</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tldp.org/LDP/abs/html/abs-guide.html&quot; href=&quot;http://www.tldp.org/LDP/abs/html/abs-guide.html&quot; class=&quot;externalLink&quot;&gt;http://www.tldp.org/LDP/abs/html/abs-guide.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/DingGuodong/bashstyle&quot; href=&quot;https://github.com/DingGuodong/bashstyle&quot; class=&quot;externalLink&quot;&gt;https://github.com/DingGuodong/bashstyle&lt;/a&gt;   &amp;lt;- some style guide&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mywiki.wooledge.org/BashWeaknesses&quot; href=&quot;http://mywiki.wooledge.org/BashWeaknesses&quot; class=&quot;externalLink&quot;&gt;http://mywiki.wooledge.org/BashWeaknesses&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/bash-shell-scripting&quot; href=&quot;https://www.pluralsight.com/courses/bash-shell-scripting&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/bash-shell-scripting&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/red-hat-enterprise-linux-shell-scripting-fundamentals&quot; href=&quot;https://www.pluralsight.com/courses/red-hat-enterprise-linux-shell-scripting-fundamentals&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/red-hat-enterprise-linux-shell-scripting-fundamentals&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/bash-scripting-fundamentals/9780134541730/&quot; href=&quot;https://www.safaribooksonline.com/library/view/bash-scripting-fundamentals/9780134541730/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/bash-scripting-fundamentals/9780134541730/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/advanced-bash-scripting/9780134586229/&quot; href=&quot;https://www.safaribooksonline.com/library/view/advanced-bash-scripting/9780134586229/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/advanced-bash-scripting/9780134586229/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://superuser.com/questions/414965/when-to-use-bash-and-when-to-use-perl-python-ruby/415134&quot; href=&quot;http://superuser.com/questions/414965/when-to-use-bash-and-when-to-use-perl-python-ruby/415134&quot; class=&quot;externalLink&quot;&gt;http://superuser.com/questions/414965/when-to-use-bash-and-when-to-use-perl-python-ruby/415134&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Coderepo</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bcoderepo%20bash%5D%5D</link>
+<pubDate>Tue, 24 Jul 2018 06:02:00 GMT</pubDate>
+
+</item>
+<item>
+<title>cx_Oracle</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle.github.io/python-cx_Oracle/&quot; href=&quot;https://oracle.github.io/python-cx_Oracle/&quot; class=&quot;externalLink&quot;&gt;https://oracle.github.io/python-cx_Oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; href=&quot;https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/python-cx_Oracle/tree/master/samples&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://ba6.us/?q=cx_Oracle_easy_windows_install&quot; href=&quot;http://ba6.us/?q=cx_Oracle_easy_windows_install&quot; class=&quot;externalLink&quot;&gt;http://ba6.us/?q=cx_Oracle_easy_windows_install&lt;/a&gt;</description>
+<category>Python</category>
+<link>http://karlarao.tiddlyspot.com#cx_Oracle</link>
+<pubDate>Tue, 24 Jul 2018 05:41:00 GMT</pubDate>
+
+</item>
 <item>
 <title>jupyter notebooks</title>
 <description>Notebook Gallery - Links to the best &lt;a tiddlylink=&quot;IPython&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IPython&quot; href=&quot;http://karlarao.tiddlyspot.com#IPython&quot; class=&quot;externalLink null&quot;&gt;IPython&lt;/a&gt; and Jupyter Notebooks - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://nb.bianp.net/&quot; href=&quot;http://nb.bianp.net/&quot; class=&quot;externalLink&quot;&gt;http://nb.bianp.net/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; install and howto &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://app.pluralsight.com/library/courses/jupyter-notebook-python/table-of-contents&quot; href=&quot;https://app.pluralsight.com/library/courses/jupyter-notebook-python/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://app.pluralsight.com/library/courses/jupyter-notebook-python/table-of-contents&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; href=&quot;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/videos/using-jupyter-notebooks/9780135174296/9780135174296-ujnp_00_00_00_00&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running R &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/videos/learning-path-jupyter/9781788394918&quot; href=&quot;https://www.safaribooksonline.com/videos/learning-path-jupyter/9781788394918&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/videos/learning-path-jupyter/9781788394918&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>data science notebooks</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bjupyter%20notebooks%5D%5D</link>
-<pubDate>Tue, 17 Jul 2018 04:08:54 GMT</pubDate>
+<pubDate>Tue, 17 Jul 2018 04:08:00 GMT</pubDate>
 
 </item>
 <item>
@@ -230,14 +796,6 @@ http://download.fedora.redhat.com/pub/epel
 <category>texteditors</category>
 <link>http://karlarao.tiddlyspot.com#vscode</link>
 <pubDate>Thu, 05 Jul 2018 17:24:00 GMT</pubDate>
-
-</item>
-<item>
-<title>cx_Oracle</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle.github.io/python-cx_Oracle/&quot; href=&quot;https://oracle.github.io/python-cx_Oracle/&quot; class=&quot;externalLink&quot;&gt;https://oracle.github.io/python-cx_Oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; href=&quot;https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/python-cx_Oracle/tree/master/samples&lt;/a&gt;&lt;br&gt;</description>
-<category>Python</category>
-<link>http://karlarao.tiddlyspot.com#cx_Oracle</link>
-<pubDate>Mon, 02 Jul 2018 05:17:00 GMT</pubDate>
 
 </item>
 <item>
@@ -510,225 +1068,6 @@ FROM
 <category>“Object Name”, “Access Predicates”, “Filter Predicates”, “Projection”</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bwhat%20is%20parsing%20schema%3F%5D%5D</link>
 <pubDate>Tue, 05 Jun 2018 21:33:00 GMT</pubDate>
-
-</item>
-<item>
-<title>SQL*Loader</title>
-<description>&lt;span&gt;—&lt;/span&gt; SQL*LOADER&lt;br&gt;&lt;br&gt;Doc ID 1012594.6 Useful unix utilities to be used with SQL*Loader&lt;br&gt;Doc ID 1012726.6 Converting load file from delimited to fixed format&lt;br&gt;Doc ID 77337.1 How to add blank line to a SQL*Plus spooled output file&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; SQL*Loader will show as INSERT SQL with module SQL Loader conventional path. So if you are qualifying sqls make sure to look at &lt;a tiddlylink=&quot;SQL_TEXT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_TEXT&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_TEXT&quot; class=&quot;externalLink null&quot;&gt;SQL_TEXT&lt;/a&gt; and MODULE &lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/7kG293E.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://steve-lyon.blogspot.com/2013/07/sql-loader-step-by-step-basics-example-1.html&quot; href=&quot;http://steve-lyon.blogspot.com/2013/07/sql-loader-step-by-step-basics-example-1.html&quot; class=&quot;externalLink&quot;&gt;http://steve-lyon.blogspot.com/2013/07/sql-loader-step-by-step-basics-example-1.html&lt;/a&gt;&lt;br&gt;&lt;pre&gt;NAME, BALANCE, START_DT
-&quot;Jones, Joe&quot; ,     14 , &quot;Jan-12-2012 09:25:37 AM&quot;
-&quot;Loyd, Lizy&quot; , 187.26 , &quot;Aug-03-2004 03:13:00 PM&quot;
-&quot;Smith, Sam&quot; ,  298.5 , &quot;Mar-27-1997 11:58:04 AM&quot;
-&quot;Doyle, Deb&quot; ,   5.95 , &quot;Nov-30-2010 08:42:21 PM&quot;
-
-
-create table hr.sql_loader_demo_simple
-  ( customer_full_name   varchar2(50)
-  , account_balance_amt  number
-  , account_start_date   date
-  ) ;
-
-
-------------------------------------------------------------
--- SQL-Loader Basic Control File
-------------------------------------------------------------
-options  ( skip=1 )
-load data
-  infile               'data.csv'           
-  truncate into table   scott.sql_loader_demo_simple
-fields terminated by &quot;,&quot;       
-optionally enclosed by '&quot;' 
-  ( customer_full_name
-  , account_balance_amt
-  , account_start_date   DATE &quot;Mon-DD-YYYY HH:MI:SS am&quot;
-  ) 
-
-
-
-sqlldr 'scott/tiger@my_database' control='control.txt' log='results.log
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>.MOSNotes</category>
-<link>http://karlarao.tiddlyspot.com#SQL*Loader</link>
-<pubDate>Tue, 05 Jun 2018 20:54:00 GMT</pubDate>
-
-</item>
-<item>
-<title>GitHub</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' watch this first ', event)&quot;&gt; watch this first &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' read this first', event)&quot;&gt; read this first&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test accounts', event)&quot;&gt; test accounts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' official documentation, videos, and help', event)&quot;&gt; official documentation, videos, and help&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' version control format', event)&quot;&gt; version control format&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO - general workflow', event)&quot;&gt; HOWTO - general workflow&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Basic commands and getting started', event)&quot;&gt; Basic commands and getting started&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Integration with Github.com', event)&quot;&gt; Integration with Github.com&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github pages', event)&quot;&gt; github pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' render HTML file in github without git pages', event)&quot;&gt; render HTML file in github without git pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' track a zipfile based script repo, useful for blogs or sites', event)&quot;&gt; track a zipfile based script repo, useful for blogs or sites&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Branch, Merge, Clone, Fork', event)&quot;&gt; Branch, Merge, Clone, Fork&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Delete files on git permanently', event)&quot;&gt; Delete files on git permanently&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' delete history ', event)&quot;&gt; delete history &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Deleting a repository', event)&quot;&gt; Deleting a repository&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' rebase ', event)&quot;&gt; rebase &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' forking ', event)&quot;&gt; forking &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' pull request ', event)&quot;&gt; pull request &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' team collaboration ', event)&quot;&gt; team collaboration &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git on dropbox conflicts', event)&quot;&gt; git on dropbox conflicts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references', event)&quot;&gt; other references&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git merge upstream ', event)&quot;&gt; git merge upstream &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git - contributing to a repo or project', event)&quot;&gt; git - contributing to a repo or project&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' fork and pull model (ideal for large projects)', event)&quot;&gt; fork and pull model (ideal for large projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' direct clone model / collaboration model (ideal for small projects)', event)&quot;&gt; direct clone model / collaboration model (ideal for small projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git revert / fix a damaging commit ', event)&quot;&gt; git revert / fix a damaging commit &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Equivalent of “svn checkout” for git', event)&quot;&gt; Equivalent of “svn checkout” for git&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO rename a repo ', event)&quot;&gt; HOWTO rename a repo &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github acquisition ', event)&quot;&gt; github acquisition &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; watch this first &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.git-tower.com/learn/git/videos&quot; href=&quot;http://www.git-tower.com/learn/git/videos&quot; class=&quot;externalLink&quot;&gt;http://www.git-tower.com/learn/git/videos&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; read this first&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://nvie.com/posts/a-successful-git-branching-model/&quot; href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot; class=&quot;externalLink&quot;&gt;http://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test accounts&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;emberdev1&lt;br&gt;emberdev2&lt;br&gt;emberdevgroup&lt;br&gt;&lt;br&gt;&lt;h1&gt; official documentation, videos, and help&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/activities/hello-world/&quot; href=&quot;https://guides.github.com/activities/hello-world/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/activities/hello-world/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/&quot; href=&quot;https://guides.github.com/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/setting-up-teams/&quot; href=&quot;https://help.github.com/articles/setting-up-teams/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/setting-up-teams/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/githubguides&quot; href=&quot;https://www.youtube.com/githubguides&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/githubguides&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/&quot; href=&quot;https://help.github.com/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/features/mastering-markdown/&quot; href=&quot;https://guides.github.com/features/mastering-markdown/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/features/mastering-markdown/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; version control format&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; href=&quot;http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/book/en/v2/Git-Basics-Tagging&lt;/a&gt;&lt;br&gt;Semantic Versioning 2.0.0 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://semver.org/&quot; href=&quot;http://semver.org/&quot; class=&quot;externalLink&quot;&gt;http://semver.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Awesome github walkthrough - video series&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://308tube.com/youtube/github/&quot; href=&quot;http://308tube.com/youtube/github/&quot; class=&quot;externalLink&quot;&gt;http://308tube.com/youtube/github/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/karlarao&quot; href=&quot;https://github.com/karlarao&quot; class=&quot;externalLink&quot;&gt;https://github.com/karlarao&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/download/win&quot; href=&quot;http://git-scm.com/download/win&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/download/win&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; href=&quot;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; class=&quot;externalLink&quot;&gt;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&lt;/a&gt;		&lt;br&gt;&lt;br&gt;&lt;h1&gt; HOWTO - general workflow&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;https://lh5.googleusercontent.com/-9Sx7XCA7jQ8/UyKDQRA3ngI/AAAAAAAACJA/fzmAgpCi6xU/w2048-h2048-no/github_basic_workflow.png&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Basic commands and getting started&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;strong&gt;Git Data Flow&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;1) Current Working Directory	&amp;lt;-- git init &amp;lt;project&amp;gt;
-2) Index (cache)				&amp;lt;-- git add .
-3) Local Repository				&amp;lt;-- git commit -m &quot;&amp;lt;comment&amp;gt;&quot;
-4) Remote Repository	
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;&lt;strong&gt;Client side setup&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;http://git-scm.com/downloads   &amp;lt;-- download here 
-
-git config --global user.name &quot;karlarao&quot;
-git config --global user.email &quot;karlarao@gmail.com&quot;
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;&lt;strong&gt;Common commands&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;git init awrscripts				&amp;lt;-- or you can just cd on &quot;awrscripts&quot; folder and execute &quot;git init&quot;
-git status
-git add . 						&amp;lt;-- add all the files under the master folder to the staging area
-git &amp;lt;filename&amp;gt;					&amp;lt;-- add just a file
-git rm --cached &amp;lt;filename&amp;gt;		&amp;lt;-- remote a file
-git commit -m &quot;initial commit&quot;	&amp;lt;-- to commit changes (w/ comment), and save a snapshot of the local repository 
-                                             * note that when you modify, you have to do a &quot;git add .&quot; first..else it will say no changes added to commit
-git log							&amp;lt;-- show summary of commits
-vi README.md        &amp;lt;-- markdown format readme file, header should start with #
-
-git diff
-git add .				
-git diff --cached				&amp;lt;-- get the differences in the staging area, because you've already executed the &quot;add&quot;..
-
-## shortcuts
-git commit -a -m &quot;short commit&quot;		&amp;lt;-- combination of add and commit
-git log --oneline					&amp;lt;-- shorter summary
-git status -s						&amp;lt;-- shorter show changes
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Exclude file&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://coderwall.com/p/n1d-na/excluding-files-from-git-locally&quot; href=&quot;https://coderwall.com/p/n1d-na/excluding-files-from-git-locally&quot; class=&quot;externalLink&quot;&gt;https://coderwall.com/p/n1d-na/excluding-files-from-git-locally&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; Integration with Github.com&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;strong&gt;Github.com setup&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;go to github.com and create a new repository
-on your PC go to C:\Users\Karl
-open git bash and type in ssh-keygen below
-ssh-keygen.exe -t rsa -C &quot;karlarao@gmail.com&quot;		&amp;lt;-- this will create RSA on C:\Users\Karl directory
-copy the contents of id_rsa.pub under C:\Users\karl\.ssh directory
-go to github.com -&amp;gt; Account Settings -&amp;gt; SSH Keys -&amp;gt; Add SSH Key
-ssh -T git@github.com								&amp;lt;-- to test the authentication
-&lt;/pre&gt;&lt;strong&gt;Github.com integrate and push&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;go to repositories folder -&amp;gt; on SSH tab -&amp;gt; copy the key
-git remote add origin &amp;lt;repo ssh key from website&amp;gt;
-git remote add origin git@github.com:karlarao/awrscripts.git
-git push origin master
-&lt;/pre&gt;&lt;strong&gt;Github.com integrate with GUI&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;download the GUI here http://windows.github.com/
-login and configure, at the end just hit skip
-go to tools -&amp;gt; options -&amp;gt; change the default storage directory to the local git directory C:\Dropbox\CodeNinja\GitHub
-click Scan For Repositories -&amp;gt; click Add -&amp;gt; click Update
-click Publish -&amp;gt; click Sync
-&lt;/pre&gt;&lt;strong&gt;for existing repos, you can do a clone&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;git clone git@github.com:&amp;lt;name&amp;gt;/&amp;lt;repo&amp;gt;
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; github pages&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;sync the repo to github pages&lt;br&gt;&lt;pre&gt;cd ~ubuntu/telegram/
-git config --global user.name &quot;karlarao&quot;
-git config --global user.email &quot;karlarao@gmail.com&quot;
-git add .
-git status # to see what changes are going to be commited
-git commit -m &quot;.&quot;
-git remote add origin git@github.com:karlarao/telegram.git
-git push origin master
-# git branch gh-pages # this is one time
-git checkout gh-pages # go to the gh-pages branch
-git rebase master # bring gh-pages up to date with master
-git push origin gh-pages # commit the changes
-git checkout master # return to the master branch
-	
-access the page at http://karlarao.github.io/&amp;lt;repo&amp;gt;/
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3&quot; href=&quot;https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3&quot; class=&quot;externalLink&quot;&gt;https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; render HTML file in github without git pages&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview&quot; href=&quot;http://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; track a zipfile based script repo, useful for blogs or sites&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;add this on your crontab 
-# refresh git with the &amp;lt;script&amp;gt; scripts
-0 4 * * * /home/karl/bin/git_&amp;lt;script&amp;gt;.sh
-
-$ cat /home/karl/bin/git_&amp;lt;script&amp;gt;.sh
-cd ~/github/&amp;lt;script directory&amp;gt;
-rm &amp;lt;script&amp;gt;.zip
-wget http://&amp;lt;site&amp;gt;.com/files/&amp;lt;script&amp;gt;.zip
-unzip -o &amp;lt;script&amp;gt;.zip -d ~/github/&amp;lt;script directory&amp;gt;
-git config --global user.name &quot;karlarao&quot;
-git config --global user.email &quot;karlarao@gmail.com&quot;
-git add .
-git commit -m &quot;.&quot;
-#git remote add origin git@github.com:karlarao/&amp;lt;script&amp;gt;.git
-git push origin master
-
-then make sure to favorite the repo to get emails!
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Branch, Merge, Clone, Fork&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;Branching	&amp;lt;-- allows you to create a separate working copy of your code 
-Merging		&amp;lt;-- merge branches together
-Cloning		&amp;lt;-- other developers can get a copy of your code from a remote repo
-Forking		&amp;lt;-- make use of someone's code as starting point of a new project
-
-
--- 1st developer created a branch r2_index
-git branch								&amp;lt;-- show branches
-git branch r2_index						&amp;lt;-- create a branch name &quot;r2_index&quot;
-git checkout r2_index					&amp;lt;-- to switch to the &quot;r2_index&quot; branch
-git checkout &amp;lt;the branch you want to go&amp;gt;	* make sure to close all files before switching to another branch
-
--- 2nd developer on another machine created r2_misc
-git clone &amp;lt;ssh link&amp;gt;					&amp;lt;-- to clone a project
-git branch r2_misc
-git checkout r2_misc
-git push origin &amp;lt;branch name&amp;gt;	&amp;lt;-- to update the remote repo
-
--- bug fix on master
-git checkout master
-git push origin master
-
--- merge to combine the changes from 1st developer to the master project
-	* conflict may happen due to changes at the same spot for both branches
-git branch r2_index
-git merge master
-
-	* conflict looks like the following:
-		&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
-		1)
-		=======
-		TOC:
-		1) one
-		2) two
-		3) three
-		&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; master
-git push origin r2_index
-
--- pull, synchronizes the local repo with the remote repo
-	* remember, PUSH to send up GitHub, PULL to sync with GitHub
-git pull origin master
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Delete files on git permanently&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/1983346/deleting-files-using-git-github&quot; href=&quot;http://stackoverflow.com/questions/1983346/deleting-files-using-git-github&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/1983346/deleting-files-using-git-github&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dalibornasevic.com/posts/2-permanently-remove-files-and-folders-from-a-git-repository&quot; href=&quot;http://dalibornasevic.com/posts/2-permanently-remove-files-and-folders-from-a-git-repository&quot; class=&quot;externalLink&quot;&gt;http://dalibornasevic.com/posts/2-permanently-remove-files-and-folders-from-a-git-repository&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html&quot; href=&quot;https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html&quot; class=&quot;externalLink&quot;&gt;https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html&lt;/a&gt;&lt;br&gt;&lt;pre&gt;cd /Users/karl/Dropbox/CodeNinja/GitHub/tmp
-git init
-git status
-git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch *' --prune-empty --tag-name-filter cat -- --all
-git commit -m &quot;.&quot;
-git push origin master --force
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; delete history &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://rtyley.github.io/bfg-repo-cleaner/&quot; href=&quot;https://rtyley.github.io/bfg-repo-cleaner/&quot; class=&quot;externalLink&quot;&gt;https://rtyley.github.io/bfg-repo-cleaner/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/remove-sensitive-data/&quot; href=&quot;https://help.github.com/articles/remove-sensitive-data/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/remove-sensitive-data/&lt;/a&gt;&lt;br&gt;stackoverflow.com/questions/37219/how-do-you-remove-a-specific-revision-in-the-git-history&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hellocoding.wordpress.com/2015/01/19/delete-all-commit-history-github/&quot; href=&quot;https://hellocoding.wordpress.com/2015/01/19/delete-all-commit-history-github/&quot; class=&quot;externalLink&quot;&gt;https://hellocoding.wordpress.com/2015/01/19/delete-all-commit-history-github/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://samwize.com/2014/01/15/how-to-remove-a-commit-that-is-already-pushed-to-github/&quot; href=&quot;http://samwize.com/2014/01/15/how-to-remove-a-commit-that-is-already-pushed-to-github/&quot; class=&quot;externalLink&quot;&gt;http://samwize.com/2014/01/15/how-to-remove-a-commit-that-is-already-pushed-to-github/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Deleting a repository&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/deleting-a-repository&quot; href=&quot;https://help.github.com/articles/deleting-a-repository&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/deleting-a-repository&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; rebase &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;rebase &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=SxzjZtJwOgo&quot; href=&quot;https://www.youtube.com/watch?v=SxzjZtJwOgo&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=SxzjZtJwOgo&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; forking &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;forking &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=5oJHRbqEofs&quot; href=&quot;https://www.youtube.com/watch?v=5oJHRbqEofs&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=5oJHRbqEofs&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;Some notes on forking: &lt;br&gt;&lt;ul&gt;&lt;li&gt; Let's say you get assigned as a collaborator on a private repo called &lt;a tiddlylink=&quot;REPO1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO1&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO1&quot; class=&quot;externalLink null&quot;&gt;REPO1&lt;/a&gt;&lt;/li&gt;&lt;li&gt; If &lt;a tiddlylink=&quot;REPO1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO1&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO1&quot; class=&quot;externalLink null&quot;&gt;REPO1&lt;/a&gt; gets forked as a private &lt;a tiddlylink=&quot;REPO2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO2&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO2&quot; class=&quot;externalLink null&quot;&gt;REPO2&lt;/a&gt; by another guy, instantly you'll also be part of that &lt;a tiddlylink=&quot;REPO2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO2&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO2&quot; class=&quot;externalLink null&quot;&gt;REPO2&lt;/a&gt;&lt;/li&gt;&lt;li&gt; When the original creator delete you as a collaborator on &lt;a tiddlylink=&quot;REPO1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO1&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO1&quot; class=&quot;externalLink null&quot;&gt;REPO1&lt;/a&gt; you will no longer see anything from that but you will still get access to &lt;a tiddlylink=&quot;REPO2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO2&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO2&quot; class=&quot;externalLink null&quot;&gt;REPO2&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; pull request &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;pull request (contributing to the fork) &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=d5wpJ5VimSU&quot; href=&quot;https://www.youtube.com/watch?v=d5wpJ5VimSU&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=d5wpJ5VimSU&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; team collaboration &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;team &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=61WbzS9XMwk&quot; href=&quot;https://www.youtube.com/watch?v=61WbzS9XMwk&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=61WbzS9XMwk&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git on dropbox conflicts&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://edinburghhacklab.com/2012/11/when-git-on-dropbox-conflicts-no-problem/&quot; href=&quot;http://edinburghhacklab.com/2012/11/when-git-on-dropbox-conflicts-no-problem/&quot; class=&quot;externalLink&quot;&gt;http://edinburghhacklab.com/2012/11/when-git-on-dropbox-conflicts-no-problem/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master&quot; href=&quot;http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other references&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;gitflow &lt;a target=&quot;_blank&quot; title=&quot;External link to http://nvie.com/posts/a-successful-git-branching-model/&quot; href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot; class=&quot;externalLink&quot;&gt;http://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;master zip&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/8808164/set-the-name-of-a-zip-downloadable-from-github-or-other-ways-to-enroll-google-tr&quot; href=&quot;http://stackoverflow.com/questions/8808164/set-the-name-of-a-zip-downloadable-from-github-or-other-ways-to-enroll-google-tr&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/8808164/set-the-name-of-a-zip-downloadable-from-github-or-other-ways-to-enroll-google-tr&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/7106012/download-a-single-folder-or-directory-from-a-github-repo&quot; href=&quot;http://stackoverflow.com/questions/7106012/download-a-single-folder-or-directory-from-a-github-repo&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/7106012/download-a-single-folder-or-directory-from-a-github-repo&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://alblue.bandlem.com/2011/09/git-tip-of-week-git-archive.html&quot; href=&quot;http://alblue.bandlem.com/2011/09/git-tip-of-week-git-archive.html&quot; class=&quot;externalLink&quot;&gt;http://alblue.bandlem.com/2011/09/git-tip-of-week-git-archive.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html&quot; href=&quot;http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html&quot; class=&quot;externalLink&quot;&gt;http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://manpages.ubuntu.com/manpages/intrepid/man1/git-archive.1.html&quot; href=&quot;http://manpages.ubuntu.com/manpages/intrepid/man1/git-archive.1.html&quot; class=&quot;externalLink&quot;&gt;http://manpages.ubuntu.com/manpages/intrepid/man1/git-archive.1.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/8377081/github-api-download-zip-or-tarball-link&quot; href=&quot;http://stackoverflow.com/questions/8377081/github-api-download-zip-or-tarball-link&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/8377081/github-api-download-zip-or-tarball-link&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;uploading binary files (zip)&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/distributing-large-binaries/&quot; href=&quot;https://help.github.com/articles/distributing-large-binaries/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/distributing-large-binaries/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/about-releases/&quot; href=&quot;https://help.github.com/articles/about-releases/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/about-releases/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/creating-releases/&quot; href=&quot;https://help.github.com/articles/creating-releases/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/creating-releases/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gigaom.com/2013/07/09/oops-github-did-it-again-relaunches-binary-uploads-after-scuttling-them/&quot; href=&quot;https://gigaom.com/2013/07/09/oops-github-did-it-again-relaunches-binary-uploads-after-scuttling-them/&quot; class=&quot;externalLink&quot;&gt;https://gigaom.com/2013/07/09/oops-github-did-it-again-relaunches-binary-uploads-after-scuttling-them/&lt;/a&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/blog/1547-release-your-software&quot; href=&quot;https://github.com/blog/1547-release-your-software&quot; class=&quot;externalLink&quot;&gt;https://github.com/blog/1547-release-your-software&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;live demos&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://solutionoptimist.com/2013/12/28/awesome-github-tricks/&quot; href=&quot;http://solutionoptimist.com/2013/12/28/awesome-github-tricks/&quot; class=&quot;externalLink&quot;&gt;http://solutionoptimist.com/2013/12/28/awesome-github-tricks/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Git hook to send email notification on repo changes&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/552360/git-hook-to-send-email-notification-on-repo-changes&quot; href=&quot;http://stackoverflow.com/questions/552360/git-hook-to-send-email-notification-on-repo-changes&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/552360/git-hook-to-send-email-notification-on-repo-changes&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;git rebase&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/docs/git-rebase&quot; href=&quot;http://git-scm.com/docs/git-rebase&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/docs/git-rebase&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;git gist&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/&quot; href=&quot;https://gist.github.com/&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;gitignore.io&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.gitignore.io/&quot; href=&quot;https://www.gitignore.io/&quot; class=&quot;externalLink&quot;&gt;https://www.gitignore.io/&lt;/a&gt; &amp;lt;- Create useful .gitignore files for your project, there's also a webstorm plugin for this&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git merge upstream &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=git+merge+upstream+tower+2&amp;amp;oq=git+merge+upstream+tower+2&amp;amp;aqs=chrome..69i57j69i64.9674j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=git+merge+upstream+tower+2&amp;amp;oq=git+merge+upstream+tower+2&amp;amp;aqs=chrome..69i57j69i64.9674j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=git+merge+upstream+tower+2&amp;amp;oq=git+merge+upstream+tower+2&amp;amp;aqs=chrome..69i57j69i64.9674j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git - contributing to a repo or project&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; fork and pull model (ideal for large projects)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;here you create a branch&lt;br&gt;&lt;br&gt;&lt;h2&gt; direct clone model / collaboration model (ideal for small projects)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;here you work on master branch&lt;br&gt;cb&lt;br&gt;pb&lt;br&gt;pbg&lt;br&gt;pull&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git revert / fix a damaging commit &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;create branch&lt;br&gt;head&lt;br&gt;revert &lt;br&gt;commit &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Equivalent of “svn checkout” for git&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/18900774/equivalent-of-svn-checkout-for-git&quot; href=&quot;http://stackoverflow.com/questions/18900774/equivalent-of-svn-checkout-for-git&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/18900774/equivalent-of-svn-checkout-for-git&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/15595778/github-what-does-checkout-do&quot; href=&quot;http://stackoverflow.com/questions/15595778/github-what-does-checkout-do&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/15595778/github-what-does-checkout-do&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; HOWTO rename a repo &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;what happens when I rename a git repo? do you have any advice on properly renaming a git repo?&lt;br&gt;&lt;/blockquote&gt;&lt;blockquote&gt;I have pretty good news for you &lt;span&gt;—&lt;/span&gt; since 2013, &lt;a tiddlylink=&quot;GitHub&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GitHub&quot; href=&quot;http://karlarao.tiddlyspot.com#GitHub&quot; class=&quot;externalLink null&quot;&gt;GitHub&lt;/a&gt; automatically redirects people from the old repo to the new repo. (There are some caveats, so read on.) Please read the Stack Overflow answer that starts with &quot;since May 2013&quot; on this page: &lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/5751585/how-do-i-rename-a-repository-on-github&quot; href=&quot;http://stackoverflow.com/questions/5751585/how-do-i-rename-a-repository-on-github&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/5751585/how-do-i-rename-a-repository-on-github&lt;/a&gt;&lt;br&gt;&lt;br&gt;Here is the &lt;a tiddlylink=&quot;GitHub&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GitHub&quot; href=&quot;http://karlarao.tiddlyspot.com#GitHub&quot; class=&quot;externalLink null&quot;&gt;GitHub&lt;/a&gt; announcement of the redirect feature: &lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/blog/1508-repository-redirects-are-here&quot; href=&quot;https://github.com/blog/1508-repository-redirects-are-here&quot; class=&quot;externalLink&quot;&gt;https://github.com/blog/1508-repository-redirects-are-here&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/renaming-a-repository/&quot; href=&quot;https://help.github.com/articles/renaming-a-repository/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/renaming-a-repository/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Note, it is still recommended that you update your local repository to specifically point at the new repository. You can do that with a simple: &lt;br&gt;&lt;br&gt;git remote set-url origin &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/YourGitHubUserName/NewRepositoryName.git&quot; href=&quot;https://github.com/YourGitHubUserName/NewRepositoryName.git&quot; class=&quot;externalLink&quot;&gt;https://github.com/YourGitHubUserName/NewRepositoryName.git&lt;/a&gt;&lt;br&gt;&lt;br&gt;(where you replace &lt;a tiddlylink=&quot;YourGitHubUserName&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#YourGitHubUserName&quot; href=&quot;http://karlarao.tiddlyspot.com#YourGitHubUserName&quot; class=&quot;externalLink null&quot;&gt;YourGitHubUserName&lt;/a&gt; and &lt;a tiddlylink=&quot;NewRepositoryName&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NewRepositoryName&quot; href=&quot;http://karlarao.tiddlyspot.com#NewRepositoryName&quot; class=&quot;externalLink null&quot;&gt;NewRepositoryName&lt;/a&gt; with the appropriate information)&lt;br&gt;&lt;br&gt;Ideally, your collaborators will also update their local repositories, but it's not an immediate requirement unless you are going to re-use the old repository name (which will break redirects and I don't recommend doing that). &lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; github acquisition &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.github.com/2018-06-04-github-microsoft/&quot; href=&quot;https://blog.github.com/2018-06-04-github-microsoft/&quot; class=&quot;externalLink&quot;&gt;https://blog.github.com/2018-06-04-github-microsoft/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/&quot; href=&quot;https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/&quot; class=&quot;externalLink&quot;&gt;https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/&quot; href=&quot;https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/&quot; class=&quot;externalLink&quot;&gt;https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://thenextweb.com/dd/2018/06/04/microsoft-buying-github-doesnt-scare-me/&quot; href=&quot;https://thenextweb.com/dd/2018/06/04/microsoft-buying-github-doesnt-scare-me/&quot; class=&quot;externalLink&quot;&gt;https://thenextweb.com/dd/2018/06/04/microsoft-buying-github-doesnt-scare-me/&lt;/a&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Version Control Software - VCS</category>
-<link>http://karlarao.tiddlyspot.com#GitHub</link>
-<pubDate>Mon, 04 Jun 2018 22:46:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hive CBO, cost based optimizer</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; href=&quot;http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; class=&quot;externalLink&quot;&gt;http://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; spark and hive cbo&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/download/attachments/73636892/%E7%8E%8B%E6%8C%AF%E5%8D%8E.pdf?version=1&amp;amp;modificationDate=1504755749000&amp;amp;api=v2&quot; href=&quot;https://cwiki.apache.org/confluence/download/attachments/73636892/%E7%8E%8B%E6%8C%AF%E5%8D%8E.pdf?version=1&amp;amp;modificationDate=1504755749000&amp;amp;api=v2&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/download/attachments/73636892/%E7%8E%8B%E6%8C%AF%E5%8D%8E.pdf?version=1&amp;amp;modificationDate=1504755749000&amp;amp;api=v2&lt;/a&gt;   &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=spark.sql.cbo.enabled&amp;amp;oq=spark.sql.cbo.enabled&amp;amp;aqs=chrome..69i57.463j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=spark.sql.cbo.enabled&amp;amp;oq=spark.sql.cbo.enabled&amp;amp;aqs=chrome..69i57.463j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=spark.sql.cbo.enabled&amp;amp;oq=spark.sql.cbo.enabled&amp;amp;aqs=chrome..69i57.463j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/bk_hive-performance-tuning/content/ch_cost-based-optimizer.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/bk_hive-performance-tuning/content/ch_cost-based-optimizer.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/bk_hive-performance-tuning/content/ch_cost-based-optimizer.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; href=&quot;https://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final&quot; href=&quot;https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.facebook.com/posts/229861827208629/scaling-the-facebook-data-warehouse-to-300-pb/&quot; href=&quot;https://code.facebook.com/posts/229861827208629/scaling-the-facebook-data-warehouse-to-300-pb/&quot; class=&quot;externalLink&quot;&gt;https://code.facebook.com/posts/229861827208629/scaling-the-facebook-data-warehouse-to-300-pb/&lt;/a&gt;&lt;br&gt;Illustrating Spark SQL 2.2.0 &lt;a tiddlylink=&quot;Cost-Based&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Cost-Based&quot; href=&quot;http://karlarao.tiddlyspot.com#Cost-Based&quot; class=&quot;externalLink null&quot;&gt;Cost-Based&lt;/a&gt; Optimization in example of Hive and &lt;a tiddlylink=&quot;MySQL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#MySQL&quot; href=&quot;http://karlarao.tiddlyspot.com#MySQL&quot; class=&quot;externalLink null&quot;&gt;MySQL&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=RYIwBfqJZ34&quot; href=&quot;https://www.youtube.com/watch?v=RYIwBfqJZ34&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=RYIwBfqJZ34&lt;/a&gt;&lt;br&gt;</description>
-<category>hive performance tuning, courses</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20CBO%2C%20cost%20based%20optimizer%5D%5D</link>
-<pubDate>Thu, 24 May 2018 17:54:00 GMT</pubDate>
-
-</item>
-<item>
-<title>R, python, ruby text processing 2</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python data cleaning ', event)&quot;&gt; python data cleaning &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and text', event)&quot;&gt; python and text&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and ML ', event)&quot;&gt; python and ML &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and R', event)&quot;&gt; python and R&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' visualization ', event)&quot;&gt; visualization &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python - definitive guides', event)&quot;&gt; python - definitive guides&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and databases', event)&quot;&gt; python and databases&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and hadoop', event)&quot;&gt; python and hadoop&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and network', event)&quot;&gt; python and network&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and sysad ', event)&quot;&gt; python and sysad &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and cloud ', event)&quot;&gt; python and cloud &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python and PL/SQL', event)&quot;&gt; python and PL/SQL&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bash and sysad ', event)&quot;&gt; bash and sysad &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python data cleaning &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Practical Data Cleaning with Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/live-training/courses/practical-data-cleaning-with-python/0636920152798/#schedule&quot; href=&quot;https://www.safaribooksonline.com/live-training/courses/practical-data-cleaning-with-python/0636920152798/#schedule&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/live-training/courses/practical-data-cleaning-with-python/0636920152798/#schedule&lt;/a&gt;&lt;ul&gt;&lt;li&gt; code repo: &lt;a target=&quot;_blank&quot; title=&quot;External link to https://resources.oreilly.com/live-training/practical-data-cleaning-with-python&quot; href=&quot;https://resources.oreilly.com/live-training/practical-data-cleaning-with-python&quot; class=&quot;externalLink&quot;&gt;https://resources.oreilly.com/live-training/practical-data-cleaning-with-python&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt; Data Wrangling with Python: Tips and Tools to Make Your Life Easier - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Data-Wrangling-Python-Tools-Easier/dp/1491948817/ref=pd_sim_14_6?_encoding=UTF8&amp;amp;pd_rd_i=1491948817&amp;amp;pd_rd_r=KEAW97J3NQEXG21CKWBY&amp;amp;pd_rd_w=QIwyC&amp;amp;pd_rd_wg=pzB4O&amp;amp;psc=1&amp;amp;refRID=KEAW97J3NQEXG21CKWBY&quot; href=&quot;https://www.amazon.com/Data-Wrangling-Python-Tools-Easier/dp/1491948817/ref=pd_sim_14_6?_encoding=UTF8&amp;amp;pd_rd_i=1491948817&amp;amp;pd_rd_r=KEAW97J3NQEXG21CKWBY&amp;amp;pd_rd_w=QIwyC&amp;amp;pd_rd_wg=pzB4O&amp;amp;psc=1&amp;amp;refRID=KEAW97J3NQEXG21CKWBY&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Data-Wrangling-Python-Tools-Easier/dp/1491948817/ref=pd_sim_14_6?_encoding=UTF8&amp;amp;pd_rd_i=1491948817&amp;amp;pd_rd_r=KEAW97J3NQEXG21CKWBY&amp;amp;pd_rd_w=QIwyC&amp;amp;pd_rd_wg=pzB4O&amp;amp;psc=1&amp;amp;refRID=KEAW97J3NQEXG21CKWBY&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and text&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; video: Natural Language Text Processing with Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/natural-language-text/9781491976487/&quot; href=&quot;https://www.safaribooksonline.com/library/view/natural-language-text/9781491976487/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/natural-language-text/9781491976487/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; NLP applied - Applied Text Analysis with Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/applied-text-analysis/9781491963036/&quot; href=&quot;https://www.safaribooksonline.com/library/view/applied-text-analysis/9781491963036/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/applied-text-analysis/9781491963036/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Python for Secret Agents vol1 - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/python-for-secret/9781783980420/&quot; href=&quot;https://www.safaribooksonline.com/library/view/python-for-secret/9781783980420/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/python-for-secret/9781783980420/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Python-Secret-Agents-Steven-Lott-ebook/dp/B00N2RWMMW/ref=asap_bc?ie=UTF8&quot; href=&quot;https://www.amazon.com/Python-Secret-Agents-Steven-Lott-ebook/dp/B00N2RWMMW/ref=asap_bc?ie=UTF8&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Python-Secret-Agents-Steven-Lott-ebook/dp/B00N2RWMMW/ref=asap_bc?ie=UTF8&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Python for Secret Agents vol2 - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/python-for-secret/9781785283406/&quot; href=&quot;https://www.safaribooksonline.com/library/view/python-for-secret/9781785283406/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/python-for-secret/9781785283406/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/gp/product/B017XSFKHY/ref=dbs_a_def_rwt_bibl_vppi_i3&quot; href=&quot;https://www.amazon.com/gp/product/B017XSFKHY/ref=dbs_a_def_rwt_bibl_vppi_i3&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/gp/product/B017XSFKHY/ref=dbs_a_def_rwt_bibl_vppi_i3&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Text Processing in Python - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/text-processing-in/0321112547/&quot; href=&quot;https://www.safaribooksonline.com/library/view/text-processing-in/0321112547/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/text-processing-in/0321112547/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Text-Processing-Python-David-Mertz/dp/0321112547/ref=sr_1_fkmr2_3?ie=UTF8&amp;amp;qid=1486829301&amp;amp;sr=8-3-fkmr2&amp;amp;keywords=python+text+processing+tricks&quot; href=&quot;https://www.amazon.com/Text-Processing-Python-David-Mertz/dp/0321112547/ref=sr_1_fkmr2_3?ie=UTF8&amp;amp;qid=1486829301&amp;amp;sr=8-3-fkmr2&amp;amp;keywords=python+text+processing+tricks&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Text-Processing-Python-David-Mertz/dp/0321112547/ref=sr_1_fkmr2_3?ie=UTF8&amp;amp;qid=1486829301&amp;amp;sr=8-3-fkmr2&amp;amp;keywords=python+text+processing+tricks&lt;/a&gt;&lt;/li&gt;&lt;li&gt; NLP - Text Analytics with Python: A Practical &lt;a tiddlylink=&quot;Real-World&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Real-World&quot; href=&quot;http://karlarao.tiddlyspot.com#Real-World&quot; class=&quot;externalLink null&quot;&gt;Real-World&lt;/a&gt; Approach to Gaining Actionable Insights from your Data &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/text-analytics-with/9781484223871/&quot; href=&quot;https://www.safaribooksonline.com/library/view/text-analytics-with/9781484223871/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/text-analytics-with/9781484223871/&lt;/a&gt; ,  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Text-Analytics-Python-Real-World-Actionable/dp/148422387X/ref=pd_rhf_se_s_cp_1?_encoding=UTF8&amp;amp;pd_rd_i=148422387X&amp;amp;pd_rd_r=BQ961BNXXCRJC8FF1M0T&amp;amp;pd_rd_w=nXtOu&amp;amp;pd_rd_wg=f3MpB&amp;amp;psc=1&amp;amp;refRID=BQ961BNXXCRJC8FF1M0T&quot; href=&quot;https://www.amazon.com/Text-Analytics-Python-Real-World-Actionable/dp/148422387X/ref=pd_rhf_se_s_cp_1?_encoding=UTF8&amp;amp;pd_rd_i=148422387X&amp;amp;pd_rd_r=BQ961BNXXCRJC8FF1M0T&amp;amp;pd_rd_w=nXtOu&amp;amp;pd_rd_wg=f3MpB&amp;amp;psc=1&amp;amp;refRID=BQ961BNXXCRJC8FF1M0T&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Text-Analytics-Python-Real-World-Actionable/dp/148422387X/ref=pd_rhf_se_s_cp_1?_encoding=UTF8&amp;amp;pd_rd_i=148422387X&amp;amp;pd_rd_r=BQ961BNXXCRJC8FF1M0T&amp;amp;pd_rd_w=nXtOu&amp;amp;pd_rd_wg=f3MpB&amp;amp;psc=1&amp;amp;refRID=BQ961BNXXCRJC8FF1M0T&lt;/a&gt;&lt;/li&gt;&lt;li&gt; NLP - Taming Text: How to Find, Organize, and Manipulate It - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/taming-text-how/9781933988382/&quot; href=&quot;https://www.safaribooksonline.com/library/view/taming-text-how/9781933988382/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/taming-text-how/9781933988382/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and ML &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Data Mining for Business Analytics: Concepts, Techniques, and Applications in R &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Data-Mining-Business-Analytics-Applications/dp/1118879368/ref=asap_bc?ie=UTF8&quot; href=&quot;https://www.amazon.com/Data-Mining-Business-Analytics-Applications/dp/1118879368/ref=asap_bc?ie=UTF8&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Data-Mining-Business-Analytics-Applications/dp/1118879368/ref=asap_bc?ie=UTF8&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Introduction to Machine Learning with Python: A Guide for Data Scientists &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Introduction-Machine-Learning-Python-Scientists/dp/1449369413/ref=sr_1_3?ie=UTF8&amp;amp;qid=1526456824&amp;amp;sr=8-3&amp;amp;keywords=Introduction+to+Machine+Learning+with+Python&amp;amp;dpID=51ZPksI0E9L&amp;amp;preST=_SX218_BO1,204,203,200_QL40_&amp;amp;dpSrc=srch&quot; href=&quot;https://www.amazon.com/Introduction-Machine-Learning-Python-Scientists/dp/1449369413/ref=sr_1_3?ie=UTF8&amp;amp;qid=1526456824&amp;amp;sr=8-3&amp;amp;keywords=Introduction+to+Machine+Learning+with+Python&amp;amp;dpID=51ZPksI0E9L&amp;amp;preST=_SX218_BO1,204,203,200_QL40_&amp;amp;dpSrc=srch&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Introduction-Machine-Learning-Python-Scientists/dp/1449369413/ref=sr_1_3?ie=UTF8&amp;amp;qid=1526456824&amp;amp;sr=8-3&amp;amp;keywords=Introduction+to+Machine+Learning+with+Python&amp;amp;dpID=51ZPksI0E9L&amp;amp;preST=_SX218_BO1,204,203,200_QL40_&amp;amp;dpSrc=srch&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Mastering Machine Learning with Python in Six Steps: A Practical Implementation Guide to Predictive Data Analytics Using Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/mastering-machine-learning/9781484228661/&quot; href=&quot;https://www.safaribooksonline.com/library/view/mastering-machine-learning/9781484228661/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/mastering-machine-learning/9781484228661/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and R&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Python for R Users: A Data Science Approach 1st Edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Python-Users-Data-Science-Approach/dp/1119126762/ref=sr_1_10?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-10&amp;amp;keywords=python+cloud+computing&quot; href=&quot;https://www.amazon.com/Python-Users-Data-Science-Approach/dp/1119126762/ref=sr_1_10?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-10&amp;amp;keywords=python+cloud+computing&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Python-Users-Data-Science-Approach/dp/1119126762/ref=sr_1_10?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-10&amp;amp;keywords=python+cloud+computing&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; visualization &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Making data visual &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/making-data-visual/9781491960493/ch08.html#casestudies_fruitfly&quot; href=&quot;https://www.safaribooksonline.com/library/view/making-data-visual/9781491960493/ch08.html#casestudies_fruitfly&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/making-data-visual/9781491960493/ch08.html#casestudies_fruitfly&lt;/a&gt;&lt;ul&gt;&lt;li&gt; code repo and examples: &lt;a target=&quot;_blank&quot; title=&quot;External link to https://makingdatavisual.github.io/figurelist.html#fourviews&quot; href=&quot;https://makingdatavisual.github.io/figurelist.html#fourviews&quot; class=&quot;externalLink&quot;&gt;https://makingdatavisual.github.io/figurelist.html#fourviews&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/MakingDataVisual/makingdatavisual.github.io&quot; href=&quot;https://github.com/MakingDataVisual/makingdatavisual.github.io&quot; class=&quot;externalLink&quot;&gt;https://github.com/MakingDataVisual/makingdatavisual.github.io&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://resources.oreilly.com/examples/0636920041320&quot; href=&quot;https://resources.oreilly.com/examples/0636920041320&quot; class=&quot;externalLink&quot;&gt;https://resources.oreilly.com/examples/0636920041320&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python - definitive guides&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/python/&quot; href=&quot;https://learnxinyminutes.com/docs/python/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/python/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/python3/&quot; href=&quot;https://learnxinyminutes.com/docs/python3/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/python3/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/pythonstatcomp/&quot; href=&quot;https://learnxinyminutes.com/docs/pythonstatcomp/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/pythonstatcomp/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/r/&quot; href=&quot;https://learnxinyminutes.com/docs/r/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/r/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/ruby/&quot; href=&quot;https://learnxinyminutes.com/docs/ruby/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/ruby/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/javascript/&quot; href=&quot;https://learnxinyminutes.com/docs/javascript/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/javascript/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/json/&quot; href=&quot;https://learnxinyminutes.com/docs/json/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/json/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learnxinyminutes.com/docs/bash/&quot; href=&quot;https://learnxinyminutes.com/docs/bash/&quot; class=&quot;externalLink&quot;&gt;https://learnxinyminutes.com/docs/bash/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Programming Python, 3rd Edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/programming-python-3rd/0596009259/&quot; href=&quot;https://www.safaribooksonline.com/library/view/programming-python-3rd/0596009259/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/programming-python-3rd/0596009259/&lt;/a&gt;&lt;ul&gt;&lt;li&gt; code repo: &lt;a target=&quot;_blank&quot; title=&quot;External link to https://resources.oreilly.com/examples/9780596009250&quot; href=&quot;https://resources.oreilly.com/examples/9780596009250&quot; class=&quot;externalLink&quot;&gt;https://resources.oreilly.com/examples/9780596009250&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt; Fluent Python: Clear, Concise, and Effective Programming - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008/ref=pd_bxgy_14_img_3?_encoding=UTF8&amp;amp;pd_rd_i=1491946008&amp;amp;pd_rd_r=7FEQ86HMR2M56ZD7ANWF&amp;amp;pd_rd_w=xkHOG&amp;amp;pd_rd_wg=uUBgD&amp;amp;psc=1&amp;amp;refRID=7FEQ86HMR2M56ZD7ANWF&quot; href=&quot;https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008/ref=pd_bxgy_14_img_3?_encoding=UTF8&amp;amp;pd_rd_i=1491946008&amp;amp;pd_rd_r=7FEQ86HMR2M56ZD7ANWF&amp;amp;pd_rd_w=xkHOG&amp;amp;pd_rd_wg=uUBgD&amp;amp;psc=1&amp;amp;refRID=7FEQ86HMR2M56ZD7ANWF&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008/ref=pd_bxgy_14_img_3?_encoding=UTF8&amp;amp;pd_rd_i=1491946008&amp;amp;pd_rd_r=7FEQ86HMR2M56ZD7ANWF&amp;amp;pd_rd_w=xkHOG&amp;amp;pd_rd_wg=uUBgD&amp;amp;psc=1&amp;amp;refRID=7FEQ86HMR2M56ZD7ANWF&lt;/a&gt;&lt;/li&gt;&lt;li&gt; The Hitchhiker's Guide to Python: Best Practices for Development - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Hitchhikers-Guide-Python-Practices-Development/dp/1491933178/ref=pd_sim_14_12?_encoding=UTF8&amp;amp;pd_rd_i=1491933178&amp;amp;pd_rd_r=KEAW97J3NQEXG21CKWBY&amp;amp;pd_rd_w=QIwyC&amp;amp;pd_rd_wg=pzB4O&amp;amp;psc=1&amp;amp;refRID=KEAW97J3NQEXG21CKWBY&quot; href=&quot;https://www.amazon.com/Hitchhikers-Guide-Python-Practices-Development/dp/1491933178/ref=pd_sim_14_12?_encoding=UTF8&amp;amp;pd_rd_i=1491933178&amp;amp;pd_rd_r=KEAW97J3NQEXG21CKWBY&amp;amp;pd_rd_w=QIwyC&amp;amp;pd_rd_wg=pzB4O&amp;amp;psc=1&amp;amp;refRID=KEAW97J3NQEXG21CKWBY&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Hitchhikers-Guide-Python-Practices-Development/dp/1491933178/ref=pd_sim_14_12?_encoding=UTF8&amp;amp;pd_rd_i=1491933178&amp;amp;pd_rd_r=KEAW97J3NQEXG21CKWBY&amp;amp;pd_rd_w=QIwyC&amp;amp;pd_rd_wg=pzB4O&amp;amp;psc=1&amp;amp;refRID=KEAW97J3NQEXG21CKWBY&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Mastering Object-oriented Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Mastering-Object-oriented-Python-Steven-Lott/dp/1783280972/ref=pd_bxgy_14_img_2?_encoding=UTF8&amp;amp;pd_rd_i=1783280972&amp;amp;pd_rd_r=7FEQ86HMR2M56ZD7ANWF&amp;amp;pd_rd_w=xkHOG&amp;amp;pd_rd_wg=uUBgD&amp;amp;psc=1&amp;amp;refRID=7FEQ86HMR2M56ZD7ANWF&quot; href=&quot;https://www.amazon.com/Mastering-Object-oriented-Python-Steven-Lott/dp/1783280972/ref=pd_bxgy_14_img_2?_encoding=UTF8&amp;amp;pd_rd_i=1783280972&amp;amp;pd_rd_r=7FEQ86HMR2M56ZD7ANWF&amp;amp;pd_rd_w=xkHOG&amp;amp;pd_rd_wg=uUBgD&amp;amp;psc=1&amp;amp;refRID=7FEQ86HMR2M56ZD7ANWF&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Mastering-Object-oriented-Python-Steven-Lott/dp/1783280972/ref=pd_bxgy_14_img_2?_encoding=UTF8&amp;amp;pd_rd_i=1783280972&amp;amp;pd_rd_r=7FEQ86HMR2M56ZD7ANWF&amp;amp;pd_rd_w=xkHOG&amp;amp;pd_rd_wg=uUBgD&amp;amp;psc=1&amp;amp;refRID=7FEQ86HMR2M56ZD7ANWF&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Python Pocket Reference: Python In Your Pocket &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Python-Pocket-Reference-Your-OReilly/dp/1449357016/ref=pd_sbs_14_3?_encoding=UTF8&amp;amp;pd_rd_i=1449357016&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; href=&quot;https://www.amazon.com/Python-Pocket-Reference-Your-OReilly/dp/1449357016/ref=pd_sbs_14_3?_encoding=UTF8&amp;amp;pd_rd_i=1449357016&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Python-Pocket-Reference-Your-OReilly/dp/1449357016/ref=pd_sbs_14_3?_encoding=UTF8&amp;amp;pd_rd_i=1449357016&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Python Crash Course: A &lt;a tiddlylink=&quot;Hands-On&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Hands-On&quot; href=&quot;http://karlarao.tiddlyspot.com#Hands-On&quot; class=&quot;externalLink null&quot;&gt;Hands-On&lt;/a&gt;, &lt;a tiddlylink=&quot;Project-Based&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Project-Based&quot; href=&quot;http://karlarao.tiddlyspot.com#Project-Based&quot; class=&quot;externalLink null&quot;&gt;Project-Based&lt;/a&gt; Introduction to Programming &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Python-Crash-Course-Hands-Project-Based/dp/1593276036/ref=pd_sbs_14_1?_encoding=UTF8&amp;amp;pd_rd_i=1593276036&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; href=&quot;https://www.amazon.com/Python-Crash-Course-Hands-Project-Based/dp/1593276036/ref=pd_sbs_14_1?_encoding=UTF8&amp;amp;pd_rd_i=1593276036&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Python-Crash-Course-Hands-Project-Based/dp/1593276036/ref=pd_sbs_14_1?_encoding=UTF8&amp;amp;pd_rd_i=1593276036&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&lt;/a&gt;&lt;/li&gt;&lt;li&gt; A Smarter Way to Learn Python: Learn it faster. Remember it longer &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Smarter-Way-Learn-Python-Remember-ebook/dp/B077Z55G3B/ref=tmm_kin_swatch_0?_encoding=UTF8&amp;amp;qid=&amp;amp;sr&quot; href=&quot;https://www.amazon.com/Smarter-Way-Learn-Python-Remember-ebook/dp/B077Z55G3B/ref=tmm_kin_swatch_0?_encoding=UTF8&amp;amp;qid=&amp;amp;sr&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Smarter-Way-Learn-Python-Remember-ebook/dp/B077Z55G3B/ref=tmm_kin_swatch_0?_encoding=UTF8&amp;amp;qid=&amp;amp;sr&lt;/a&gt;=&lt;/li&gt;&lt;li&gt; Python Playground: Geeky Projects for the Curious Programmer &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Python-Playground-Projects-Curious-Programmer/dp/1593276044/ref=pd_sbs_14_5?_encoding=UTF8&amp;amp;pd_rd_i=1593276044&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; href=&quot;https://www.amazon.com/Python-Playground-Projects-Curious-Programmer/dp/1593276044/ref=pd_sbs_14_5?_encoding=UTF8&amp;amp;pd_rd_i=1593276044&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Python-Playground-Projects-Curious-Programmer/dp/1593276044/ref=pd_sbs_14_5?_encoding=UTF8&amp;amp;pd_rd_i=1593276044&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Learn Python 3 the Hard Way: A Very Simple Introduction to the Terrifyingly Beautiful World of Computers and Code &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0134692888/ref=pd_sbs_14_12?_encoding=UTF8&amp;amp;pd_rd_i=0134692888&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; href=&quot;https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0134692888/ref=pd_sbs_14_12?_encoding=UTF8&amp;amp;pd_rd_i=0134692888&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Learn-Python-Hard-Way-Introduction/dp/0134692888/ref=pd_sbs_14_12?_encoding=UTF8&amp;amp;pd_rd_i=0134692888&amp;amp;pd_rd_r=FPF805WNWTGN2YRE8GND&amp;amp;pd_rd_w=513QW&amp;amp;pd_rd_wg=QCK4v&amp;amp;psc=1&amp;amp;refRID=FPF805WNWTGN2YRE8GND&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and databases&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; python flyby randy johnson &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/dallasdba/dbascripts&quot; href=&quot;https://github.com/dallasdba/dbascripts&quot; class=&quot;externalLink&quot;&gt;https://github.com/dallasdba/dbascripts&lt;/a&gt;&lt;/li&gt;&lt;li&gt; python for pl/sql developers &lt;a target=&quot;_blank&quot; title=&quot;External link to http://arup.blogspot.com/2017/01/python-for-plsql-developers-series.html&quot; href=&quot;http://arup.blogspot.com/2017/01/python-for-plsql-developers-series.html&quot; class=&quot;externalLink&quot;&gt;http://arup.blogspot.com/2017/01/python-for-plsql-developers-series.html&lt;/a&gt;&lt;/li&gt;&lt;li&gt; mysql for python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/mysql-for-python/9781849510189/&quot; href=&quot;https://www.safaribooksonline.com/library/view/mysql-for-python/9781849510189/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/mysql-for-python/9781849510189/&lt;/a&gt;&lt;ul&gt;&lt;li&gt; code repo: &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mythstack/MySQL-for-Python-Example-Code&quot; href=&quot;https://github.com/mythstack/MySQL-for-Python-Example-Code&quot; class=&quot;externalLink&quot;&gt;https://github.com/mythstack/MySQL-for-Python-Example-Code&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://resources.oreilly.com/examples/9781849510189/tree/master&quot; href=&quot;https://resources.oreilly.com/examples/9781849510189/tree/master&quot; class=&quot;externalLink&quot;&gt;https://resources.oreilly.com/examples/9781849510189/tree/master&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and hadoop&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Hadoop-Python-Donald-Miner-ebook/dp/B07D1MP4HS/ref=sr_1_7?ie=UTF8&amp;amp;qid=1526432174&amp;amp;sr=8-7&amp;amp;keywords=python+hadoop&amp;amp;dpID=512eUcTjkTL&amp;amp;preST=_SY445_QL70_&amp;amp;dpSrc=srch&quot; href=&quot;https://www.amazon.com/Hadoop-Python-Donald-Miner-ebook/dp/B07D1MP4HS/ref=sr_1_7?ie=UTF8&amp;amp;qid=1526432174&amp;amp;sr=8-7&amp;amp;keywords=python+hadoop&amp;amp;dpID=512eUcTjkTL&amp;amp;preST=_SY445_QL70_&amp;amp;dpSrc=srch&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Hadoop-Python-Donald-Miner-ebook/dp/B07D1MP4HS/ref=sr_1_7?ie=UTF8&amp;amp;qid=1526432174&amp;amp;sr=8-7&amp;amp;keywords=python+hadoop&amp;amp;dpID=512eUcTjkTL&amp;amp;preST=_SY445_QL70_&amp;amp;dpSrc=srch&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and network&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Foundations of Python Network Programming &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Foundations-Python-Network-Programming-Brandon/dp/1430258543/ref=pd_bxgy_14_img_2?_encoding=UTF8&amp;amp;pd_rd_i=1430258543&amp;amp;pd_rd_r=MGTKMKGFA3SGN0Z8XW2T&amp;amp;pd_rd_w=ppXt3&amp;amp;pd_rd_wg=gKBwL&amp;amp;psc=1&amp;amp;refRID=MGTKMKGFA3SGN0Z8XW2T&quot; href=&quot;https://www.amazon.com/Foundations-Python-Network-Programming-Brandon/dp/1430258543/ref=pd_bxgy_14_img_2?_encoding=UTF8&amp;amp;pd_rd_i=1430258543&amp;amp;pd_rd_r=MGTKMKGFA3SGN0Z8XW2T&amp;amp;pd_rd_w=ppXt3&amp;amp;pd_rd_wg=gKBwL&amp;amp;psc=1&amp;amp;refRID=MGTKMKGFA3SGN0Z8XW2T&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Foundations-Python-Network-Programming-Brandon/dp/1430258543/ref=pd_bxgy_14_img_2?_encoding=UTF8&amp;amp;pd_rd_i=1430258543&amp;amp;pd_rd_r=MGTKMKGFA3SGN0Z8XW2T&amp;amp;pd_rd_w=ppXt3&amp;amp;pd_rd_wg=gKBwL&amp;amp;psc=1&amp;amp;refRID=MGTKMKGFA3SGN0Z8XW2T&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and sysad &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; video: Python Quick Start for Linux System Administrators&lt;/li&gt;&lt;li&gt; Pro Python System Administration 2nd ed. Edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Python-System-Administration-Rytis-Sileika/dp/148420218X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1487708727&amp;amp;sr=8-1&amp;amp;keywords=python+system+administration&quot; href=&quot;https://www.amazon.com/Python-System-Administration-Rytis-Sileika/dp/148420218X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1487708727&amp;amp;sr=8-1&amp;amp;keywords=python+system+administration&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Python-System-Administration-Rytis-Sileika/dp/148420218X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1487708727&amp;amp;sr=8-1&amp;amp;keywords=python+system+administration&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Python for Unix and Linux System Administration 1st Edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Python-Unix-Linux-System-Administration/dp/0596515820/ref=sr_1_4?ie=UTF8&amp;amp;qid=1487708727&amp;amp;sr=8-4&amp;amp;keywords=python+system+administration&quot; href=&quot;https://www.amazon.com/Python-Unix-Linux-System-Administration/dp/0596515820/ref=sr_1_4?ie=UTF8&amp;amp;qid=1487708727&amp;amp;sr=8-4&amp;amp;keywords=python+system+administration&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Python-Unix-Linux-System-Administration/dp/0596515820/ref=sr_1_4?ie=UTF8&amp;amp;qid=1487708727&amp;amp;sr=8-4&amp;amp;keywords=python+system+administration&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and cloud &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Network Programmability and Automation: Skills for the &lt;a tiddlylink=&quot;Next-Generation&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Next-Generation&quot; href=&quot;http://karlarao.tiddlyspot.com#Next-Generation&quot; class=&quot;externalLink null&quot;&gt;Next-Generation&lt;/a&gt; Network Engineer &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Network-Programmability-Automation-Next-Generation-Engineer/dp/1491931256/ref=pd_cp_14_1?_encoding=UTF8&amp;amp;pd_rd_i=1491931256&amp;amp;pd_rd_r=2c30dcee-5ea3-11e8-895a-49ce3940778b&amp;amp;pd_rd_w=agUgD&amp;amp;pd_rd_wg=5rhXw&amp;amp;pf_rd_i=desktop-dp-sims&amp;amp;pf_rd_m=ATVPDKIKX0DER&amp;amp;pf_rd_p=80460301815383741&amp;amp;pf_rd_r=PPAFW1MPB01E7178K92N&amp;amp;pf_rd_s=desktop-dp-sims&amp;amp;pf_rd_t=40701&amp;amp;psc=1&amp;amp;refRID=PPAFW1MPB01E7178K92N&quot; href=&quot;https://www.amazon.com/Network-Programmability-Automation-Next-Generation-Engineer/dp/1491931256/ref=pd_cp_14_1?_encoding=UTF8&amp;amp;pd_rd_i=1491931256&amp;amp;pd_rd_r=2c30dcee-5ea3-11e8-895a-49ce3940778b&amp;amp;pd_rd_w=agUgD&amp;amp;pd_rd_wg=5rhXw&amp;amp;pf_rd_i=desktop-dp-sims&amp;amp;pf_rd_m=ATVPDKIKX0DER&amp;amp;pf_rd_p=80460301815383741&amp;amp;pf_rd_r=PPAFW1MPB01E7178K92N&amp;amp;pf_rd_s=desktop-dp-sims&amp;amp;pf_rd_t=40701&amp;amp;psc=1&amp;amp;refRID=PPAFW1MPB01E7178K92N&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Network-Programmability-Automation-Next-Generation-Engineer/dp/1491931256/ref=pd_cp_14_1?_encoding=UTF8&amp;amp;pd_rd_i=1491931256&amp;amp;pd_rd_r=2c30dcee-5ea3-11e8-895a-49ce3940778b&amp;amp;pd_rd_w=agUgD&amp;amp;pd_rd_wg=5rhXw&amp;amp;pf_rd_i=desktop-dp-sims&amp;amp;pf_rd_m=ATVPDKIKX0DER&amp;amp;pf_rd_p=80460301815383741&amp;amp;pf_rd_r=PPAFW1MPB01E7178K92N&amp;amp;pf_rd_s=desktop-dp-sims&amp;amp;pf_rd_t=40701&amp;amp;psc=1&amp;amp;refRID=PPAFW1MPB01E7178K92N&lt;/a&gt;  &lt;/li&gt;&lt;li&gt; Practical Network Automation: Leverage the power of Python and Ansible to optimize your network &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Practical-Network-Automation-Leverage-optimize/dp/1788299469/ref=pd_bxgy_14_img_3?_encoding=UTF8&amp;amp;pd_rd_i=1788299469&amp;amp;pd_rd_r=2c30dcee-5ea3-11e8-895a-49ce3940778b&amp;amp;pd_rd_w=D611W&amp;amp;pd_rd_wg=5rhXw&amp;amp;pf_rd_i=desktop-dp-sims&amp;amp;pf_rd_m=ATVPDKIKX0DER&amp;amp;pf_rd_p=3914568618330124508&amp;amp;pf_rd_r=PPAFW1MPB01E7178K92N&amp;amp;pf_rd_s=desktop-dp-sims&amp;amp;pf_rd_t=40701&amp;amp;psc=1&amp;amp;refRID=PPAFW1MPB01E7178K92N&quot; href=&quot;https://www.amazon.com/Practical-Network-Automation-Leverage-optimize/dp/1788299469/ref=pd_bxgy_14_img_3?_encoding=UTF8&amp;amp;pd_rd_i=1788299469&amp;amp;pd_rd_r=2c30dcee-5ea3-11e8-895a-49ce3940778b&amp;amp;pd_rd_w=D611W&amp;amp;pd_rd_wg=5rhXw&amp;amp;pf_rd_i=desktop-dp-sims&amp;amp;pf_rd_m=ATVPDKIKX0DER&amp;amp;pf_rd_p=3914568618330124508&amp;amp;pf_rd_r=PPAFW1MPB01E7178K92N&amp;amp;pf_rd_s=desktop-dp-sims&amp;amp;pf_rd_t=40701&amp;amp;psc=1&amp;amp;refRID=PPAFW1MPB01E7178K92N&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Practical-Network-Automation-Leverage-optimize/dp/1788299469/ref=pd_bxgy_14_img_3?_encoding=UTF8&amp;amp;pd_rd_i=1788299469&amp;amp;pd_rd_r=2c30dcee-5ea3-11e8-895a-49ce3940778b&amp;amp;pd_rd_w=D611W&amp;amp;pd_rd_wg=5rhXw&amp;amp;pf_rd_i=desktop-dp-sims&amp;amp;pf_rd_m=ATVPDKIKX0DER&amp;amp;pf_rd_p=3914568618330124508&amp;amp;pf_rd_r=PPAFW1MPB01E7178K92N&amp;amp;pf_rd_s=desktop-dp-sims&amp;amp;pf_rd_t=40701&amp;amp;psc=1&amp;amp;refRID=PPAFW1MPB01E7178K92N&lt;/a&gt;&lt;ul&gt;&lt;li&gt; Extending Ansible &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Extending-Ansible-Rishabh-Das-ebook/dp/B01BSTEDL8/ref=sr_1_4?ie=UTF8&amp;amp;qid=1527091700&amp;amp;sr=8-4&amp;amp;keywords=python+ansible&amp;amp;dpID=515EZNRMhZL&amp;amp;preST=_SX342_QL70_&amp;amp;dpSrc=srch&quot; href=&quot;https://www.amazon.com/Extending-Ansible-Rishabh-Das-ebook/dp/B01BSTEDL8/ref=sr_1_4?ie=UTF8&amp;amp;qid=1527091700&amp;amp;sr=8-4&amp;amp;keywords=python+ansible&amp;amp;dpID=515EZNRMhZL&amp;amp;preST=_SX342_QL70_&amp;amp;dpSrc=srch&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Extending-Ansible-Rishabh-Das-ebook/dp/B01BSTEDL8/ref=sr_1_4?ie=UTF8&amp;amp;qid=1527091700&amp;amp;sr=8-4&amp;amp;keywords=python+ansible&amp;amp;dpID=515EZNRMhZL&amp;amp;preST=_SX342_QL70_&amp;amp;dpSrc=srch&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt; Mastering Python Networking: Your one stop solution to using Python for network automation, &lt;a tiddlylink=&quot;DevOps&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DevOps&quot; href=&quot;http://karlarao.tiddlyspot.com#DevOps&quot; class=&quot;externalLink null&quot;&gt;DevOps&lt;/a&gt;, and SDN &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Mastering-Python-Networking-solution-automation/dp/1784397008/ref=sr_1_5_sspa?ie=UTF8&amp;amp;qid=1527091545&amp;amp;sr=8-5-spons&amp;amp;keywords=cloud+automation+python&amp;amp;psc=1&quot; href=&quot;https://www.amazon.com/Mastering-Python-Networking-solution-automation/dp/1784397008/ref=sr_1_5_sspa?ie=UTF8&amp;amp;qid=1527091545&amp;amp;sr=8-5-spons&amp;amp;keywords=cloud+automation+python&amp;amp;psc=1&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Mastering-Python-Networking-solution-automation/dp/1784397008/ref=sr_1_5_sspa?ie=UTF8&amp;amp;qid=1527091545&amp;amp;sr=8-5-spons&amp;amp;keywords=cloud+automation+python&amp;amp;psc=1&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Programming Google App Engine with Python: Build and Run Scalable Python Apps on Google's Infrastructure &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Programming-Google-Engine-Python-Infrastructure/dp/1491900253/ref=sr_1_7?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-7&amp;amp;keywords=python+cloud+computing&quot; href=&quot;https://www.amazon.com/Programming-Google-Engine-Python-Infrastructure/dp/1491900253/ref=sr_1_7?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-7&amp;amp;keywords=python+cloud+computing&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Programming-Google-Engine-Python-Infrastructure/dp/1491900253/ref=sr_1_7?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-7&amp;amp;keywords=python+cloud+computing&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Cloud Native Python: Build and deploy resilent applications on the cloud using microservices, AWS, Azure and more &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Cloud-Native-Python-applications-microservices/dp/1787129314/ref=sr_1_1_sspa?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-1-spons&amp;amp;keywords=python+cloud+computing&amp;amp;psc=1&quot; href=&quot;https://www.amazon.com/Cloud-Native-Python-applications-microservices/dp/1787129314/ref=sr_1_1_sspa?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-1-spons&amp;amp;keywords=python+cloud+computing&amp;amp;psc=1&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Cloud-Native-Python-applications-microservices/dp/1787129314/ref=sr_1_1_sspa?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090532&amp;amp;sr=1-1-spons&amp;amp;keywords=python+cloud+computing&amp;amp;psc=1&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python and PL/SQL&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Introduction to Python for PL/SQL Developers - Full Series &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/docs/DOC-1005069&quot; href=&quot;https://community.oracle.com/docs/DOC-1005069&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/docs/DOC-1005069&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Learning PYTHON for PLSQL Developers &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=FbssyLrfkzo&quot; href=&quot;https://www.youtube.com/watch?v=FbssyLrfkzo&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=FbssyLrfkzo&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bash and sysad &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Command Line Kung Fu: Bash Scripting Tricks, Linux Shell Programming Tips, and Bash One-liners  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Command-Line-Kung-Programming-One-liners-ebook/dp/B00JRGCFLA/ref=sr_1_4?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090482&amp;amp;sr=1-4&amp;amp;keywords=bash+system+administration&amp;amp;dpID=41PVsjWk4OL&amp;amp;preST=_SY445_QL70_&amp;amp;dpSrc=srch&quot; href=&quot;https://www.amazon.com/Command-Line-Kung-Programming-One-liners-ebook/dp/B00JRGCFLA/ref=sr_1_4?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090482&amp;amp;sr=1-4&amp;amp;keywords=bash+system+administration&amp;amp;dpID=41PVsjWk4OL&amp;amp;preST=_SY445_QL70_&amp;amp;dpSrc=srch&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Command-Line-Kung-Programming-One-liners-ebook/dp/B00JRGCFLA/ref=sr_1_4?s=books&amp;amp;ie=UTF8&amp;amp;qid=1527090482&amp;amp;sr=1-4&amp;amp;keywords=bash+system+administration&amp;amp;dpID=41PVsjWk4OL&amp;amp;preST=_SY445_QL70_&amp;amp;dpSrc=srch&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>R, python, ruby text processing</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BR%2C%20python%2C%20ruby%20text%20processing%202%5D%5D</link>
-<pubDate>Wed, 23 May 2018 19:00:00 GMT</pubDate>
-
-</item>
-<item>
-<title>DatabaseHardening</title>
-<description>Securing Linux Servers - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/securing-linux-servers&quot; href=&quot;https://www.pluralsight.com/courses/securing-linux-servers&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/securing-linux-servers&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Series: Project Lockdown - A phased approach to securing your database infrastructure&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/articles/index-087388.html&quot; href=&quot;http://www.oracle.com/technetwork/articles/index-087388.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/articles/index-087388.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.red-database-security.com/2010/09/10/update-of-project-lockdown-released/&quot; href=&quot;http://blog.red-database-security.com/2010/09/10/update-of-project-lockdown-released/&quot; class=&quot;externalLink&quot;&gt;http://blog.red-database-security.com/2010/09/10/update-of-project-lockdown-released/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cyberciti.biz/tips/tips-to-protect-linux-servers-physical-console-access.html&quot; href=&quot;http://www.cyberciti.biz/tips/tips-to-protect-linux-servers-physical-console-access.html&quot; class=&quot;externalLink&quot;&gt;http://www.cyberciti.biz/tips/tips-to-protect-linux-servers-physical-console-access.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; &lt;a tiddlylink=&quot;DoD&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DoD&quot; href=&quot;http://karlarao.tiddlyspot.com#DoD&quot; class=&quot;externalLink null&quot;&gt;DoD&lt;/a&gt; files&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.disa.mil/About/Search-Results?q=oracle&amp;amp;col=iase&amp;amp;s=Search&quot; href=&quot;http://www.disa.mil/About/Search-Results?q=oracle&amp;amp;col=iase&amp;amp;s=Search&quot; class=&quot;externalLink&quot;&gt;http://www.disa.mil/About/Search-Results?q=oracle&amp;amp;col=iase&amp;amp;s=Search&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://iase.disa.mil/stigs/app_security/database/oracle.html&quot; href=&quot;http://iase.disa.mil/stigs/app_security/database/oracle.html&quot; class=&quot;externalLink&quot;&gt;http://iase.disa.mil/stigs/app_security/database/oracle.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://iase.disa.mil/stigs/app_security/database/general.html&quot; href=&quot;http://iase.disa.mil/stigs/app_security/database/general.html&quot; class=&quot;externalLink&quot;&gt;http://iase.disa.mil/stigs/app_security/database/general.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cvedetails.com/vulnerability-list/vendor_id-93/product_id-13824/Oracle-Database-11g.html&quot; href=&quot;http://www.cvedetails.com/vulnerability-list/vendor_id-93/product_id-13824/Oracle-Database-11g.html&quot; class=&quot;externalLink&quot;&gt;http://www.cvedetails.com/vulnerability-list/vendor_id-93/product_id-13824/Oracle-Database-11g.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cisecurity.org/&quot; href=&quot;http://www.cisecurity.org/&quot; class=&quot;externalLink&quot;&gt;http://www.cisecurity.org/&lt;/a&gt;&lt;br&gt;</description>
-<category>Security</category>
-<link>http://karlarao.tiddlyspot.com#DatabaseHardening</link>
-<pubDate>Wed, 23 May 2018 16:28:00 GMT</pubDate>
-
-</item>
-<item>
-<title>functional programming</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' start here ', event)&quot;&gt; start here &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' javascript ', event)&quot;&gt; javascript &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' python', event)&quot;&gt; python&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' R ', event)&quot;&gt; R &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' c', event)&quot;&gt; c&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; start here &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Introduction to Functional Programming &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/introduction-to-functional/9781491962756/&quot; href=&quot;https://www.safaribooksonline.com/library/view/introduction-to-functional/9781491962756/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/introduction-to-functional/9781491962756/&lt;/a&gt;&lt;br&gt;hadley &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/courses/writing-functions-in-r&quot; href=&quot;https://www.datacamp.com/courses/writing-functions-in-r&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/courses/writing-functions-in-r&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; javascript &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;span class=&quot;marked&quot;&gt;functional programming in JS &lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.tutsplus.com/courses/functional-programming-in-javascript&quot; href=&quot;https://code.tutsplus.com/courses/functional-programming-in-javascript&quot; class=&quot;externalLink&quot;&gt;https://code.tutsplus.com/courses/functional-programming-in-javascript&lt;/a&gt;&lt;/span&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.tutsplus.com/courses/node-for-the-front-end-developer&quot; href=&quot;https://code.tutsplus.com/courses/node-for-the-front-end-developer&quot; class=&quot;externalLink&quot;&gt;https://code.tutsplus.com/courses/node-for-the-front-end-developer&lt;/a&gt;&lt;br&gt;functional programming in JS &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84&quot; href=&quot;https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-lite-javascript/9781491967508/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-lite-javascript/9781491967508/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-lite-javascript/9781491967508/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/publisher/frontend-masters/&quot; href=&quot;https://www.safaribooksonline.com/library/publisher/frontend-masters/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/publisher/frontend-masters/&lt;/a&gt;	&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/search?q=functional-programming&amp;amp;categories=course&quot; href=&quot;https://www.pluralsight.com/search?q=functional-programming&amp;amp;categories=course&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/search?q=functional-programming&amp;amp;categories=course&lt;/a&gt;&lt;br&gt;Hardcore Functional Programming in &lt;a tiddlylink=&quot;JavaScript&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#JavaScript&quot; href=&quot;http://karlarao.tiddlyspot.com#JavaScript&quot; class=&quot;externalLink null&quot;&gt;JavaScript&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/hardcore-functional-programming-javascript&quot; href=&quot;https://www.pluralsight.com/courses/hardcore-functional-programming-javascript&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/hardcore-functional-programming-javascript&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;JavaScript&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#JavaScript&quot; href=&quot;http://karlarao.tiddlyspot.com#JavaScript&quot; class=&quot;externalLink null&quot;&gt;JavaScript&lt;/a&gt;: From Fundamentals to Functional JS &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/javascript-from-fundamentals-to-functional-js&quot; href=&quot;https://www.pluralsight.com/courses/javascript-from-fundamentals-to-functional-js&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/javascript-from-fundamentals-to-functional-js&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;JavaScript&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#JavaScript&quot; href=&quot;http://karlarao.tiddlyspot.com#JavaScript&quot; class=&quot;externalLink null&quot;&gt;JavaScript&lt;/a&gt;: The Good Parts &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/javascript-good-parts&quot; href=&quot;https://www.pluralsight.com/courses/javascript-good-parts&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/javascript-good-parts&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/javascript-from-fundamentals-to-functional-js&quot; href=&quot;https://www.pluralsight.com/courses/javascript-from-fundamentals-to-functional-js&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/javascript-from-fundamentals-to-functional-js&lt;/a&gt;&lt;br&gt;JS refactoring techniques &lt;a target=&quot;_blank&quot; title=&quot;External link to https://code.tutsplus.com/courses/javascript-refactoring-techniques&quot; href=&quot;https://code.tutsplus.com/courses/javascript-refactoring-techniques&quot; class=&quot;externalLink&quot;&gt;https://code.tutsplus.com/courses/javascript-refactoring-techniques&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/getify/Functional-Light-JS&quot; href=&quot;https://github.com/getify/Functional-Light-JS&quot; class=&quot;externalLink&quot;&gt;https://github.com/getify/Functional-Light-JS&lt;/a&gt; book &lt;br&gt;&lt;strong&gt;most adequate guide to functional programming&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.gitbook.com/book/drboolean/mostly-adequate-guide/details&quot; href=&quot;https://www.gitbook.com/book/drboolean/mostly-adequate-guide/details&quot; class=&quot;externalLink&quot;&gt;https://www.gitbook.com/book/drboolean/mostly-adequate-guide/details&lt;/a&gt; , read online &lt;a target=&quot;_blank&quot; title=&quot;External link to https://drboolean.gitbooks.io/mostly-adequate-guide/content/&quot; href=&quot;https://drboolean.gitbooks.io/mostly-adequate-guide/content/&quot; class=&quot;externalLink&quot;&gt;https://drboolean.gitbooks.io/mostly-adequate-guide/content/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; python&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;video: Functional Programming in Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-programming-in/9781788292450/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-programming-in/9781788292450/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-programming-in/9781788292450/&lt;/a&gt;&lt;br&gt;video: Functional Programming &amp;amp; Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-programming/9781491939802/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-programming/9781491939802/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-programming/9781491939802/&lt;/a&gt;&lt;br&gt;video: LEARNING PATH: Python: Functional Programming with Python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/learning-paths/learning-path-python/9781788996396/&quot; href=&quot;https://www.safaribooksonline.com/learning-paths/learning-path-python/9781788996396/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/learning-paths/learning-path-python/9781788996396/&lt;/a&gt;&lt;br&gt;&lt;br&gt;book: Functional Python Programming &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/dp/1784396990/ref=sspa_dk_detail_2?psc=1&quot; href=&quot;https://www.amazon.com/dp/1784396990/ref=sspa_dk_detail_2?psc=1&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/dp/1784396990/ref=sspa_dk_detail_2?psc=1&lt;/a&gt;&lt;br&gt;book: Functional Python Programming 1st ed - &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-python-programming/9781784396992/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-python-programming/9781784396992/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-python-programming/9781784396992/&lt;/a&gt;&lt;br&gt;book: Functional Python Programming - Second Edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-python-programming/9781788627061/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-python-programming/9781788627061/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-python-programming/9781788627061/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Learning Path: Python: Programming for Python Users &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/learning-path-python/9781788297042/&quot; href=&quot;https://www.safaribooksonline.com/library/view/learning-path-python/9781788297042/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/learning-path-python/9781788297042/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-programming-with/9781771374651/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-programming-with/9781771374651/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-programming-with/9781771374651/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-programming/9781491939802/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-programming/9781491939802/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-programming/9781491939802/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; R &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Functional Programming in R: Advanced Statistical Programming for Data Science, Analysis and Finance &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/functional-programming-in/9781484227466/&quot; href=&quot;https://www.safaribooksonline.com/library/view/functional-programming-in/9781484227466/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/functional-programming-in/9781484227466/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; c&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Understanding functional programming &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.lynda.com/C-tutorials/Understanding-functional-programming/164457/180372-4.html&quot; href=&quot;https://www.lynda.com/C-tutorials/Understanding-functional-programming/164457/180372-4.html&quot; class=&quot;externalLink&quot;&gt;https://www.lynda.com/C-tutorials/Understanding-functional-programming/164457/180372-4.html&lt;/a&gt;	</description>
-<category>CodeNinja methods</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bfunctional%20programming%5D%5D</link>
-<pubDate>Wed, 23 May 2018 15:41:00 GMT</pubDate>
-
-</item>
-<item>
-<title>11gR2 - ACFS</title>
-<description>Creating an Oracle ACFS File System &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/OSTMG/GUID-4C98CF06-8CCC-45F1-9316-C40FB3EFF268.htm#OSTMG94787&quot; href=&quot;https://docs.oracle.com/database/121/OSTMG/GUID-4C98CF06-8CCC-45F1-9316-C40FB3EFF268.htm#OSTMG94787&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/OSTMG/GUID-4C98CF06-8CCC-45F1-9316-C40FB3EFF268.htm#OSTMG94787&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-base.com/articles/11g/ACFS_11gR2.php&quot; href=&quot;http://www.oracle-base.com/articles/11g/ACFS_11gR2.php&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-base.com/articles/11g/ACFS_11gR2.php&lt;/a&gt;&lt;br&gt;&lt;br&gt;ACFS Technical Overview and Deployment Guide [ID 948187.1]  &lt;strong&gt;&amp;lt;&lt;span&gt;—&lt;/span&gt; ACFS now supports RMAN, &lt;a tiddlylink=&quot;DataPump&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataPump&quot; href=&quot;http://karlarao.tiddlyspot.com#DataPump&quot; class=&quot;externalLink null&quot;&gt;DataPump&lt;/a&gt; on 11.2.0.3 above... BTW, it does not support archivelogs… You still have to have the FRA diskgroup to put your archivelogs/redo. At least you can have the ACFS as container of backupsets and data pump files&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;update&lt;/strong&gt;&lt;br&gt;11.2.0.3 now supports almost everything&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.oracle.com/cd/E11882_01/server.112/e18951/asmfilesystem.htm#CACJFGCD&quot; href=&quot;http://docs.oracle.com/cd/E11882_01/server.112/e18951/asmfilesystem.htm#CACJFGCD&quot; class=&quot;externalLink&quot;&gt;http://docs.oracle.com/cd/E11882_01/server.112/e18951/asmfilesystem.htm#CACJFGCD&lt;/a&gt;&lt;br&gt;Starting with Oracle Automatic Storage Management 11g Release 2 (11.2.0.3), Oracle ACFS supports RMAN backups (BACKUPSET file type), archive logs (ARCHIVELOG file type), and Data Pump dumpsets (DUMPSET file type). Note that Oracle ACFS snapshots are not supported with these files.&lt;br&gt;&lt;br&gt;&lt;strong&gt;update 08/2014&lt;/strong&gt;&lt;br&gt;ACFS supported on Exadata&lt;br&gt;&lt;blockquote&gt;Creating AFCS file systems on Exadata storage requires the following:&lt;br&gt;&lt;br&gt;Oracle Linux&lt;br&gt;Grid Infrastructure 12.1.0.2&lt;br&gt;Database files stored in ACFS on Exadata storage are subject to the following guidelines and restrictions:&lt;br&gt;&lt;br&gt;Supported database versions are 10.2.0.4, 10.2.0.5, 11.2.0.4, and 12.1.&lt;br&gt;Hybrid Columnar Compression (HCC) support (for 11.2 and 12.1) requires fix for bug 19136936.&lt;br&gt;Exadata-offload features such as Smart Scan, Storage Indexes, IORM, Network RM, etc. are not supported.&lt;br&gt;Exadata Smart Flash Cache will cache read operations. Caching of write operations is expected in a later release.&lt;br&gt;No specialized cache hints are passed from the Database to the Exadata Storage layer, which means the Smart Flash Cache heuristics are based on I/O size, similar to any other block storage caching technology.&lt;br&gt;Exadata Smart Flash Logging is not supported.&lt;br&gt;Hardware Assisted Resilient Data (HARD) checks are not performed.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;How To Install/Reinstall Or Deinstall ACFS Modules/Installation Manually? [ID 1371067.1]&lt;br&gt;&lt;br&gt;</description>
-<category>OracleStorage</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B11gR2%20-%20ACFS%5D%5D</link>
-<pubDate>Wed, 23 May 2018 15:15:00 GMT</pubDate>
-
-</item>
-<item>
-<title>data structures and algorithms</title>
-<description>&lt;h1&gt; programming&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/learning-program-better-programmer&quot; href=&quot;http://www.pluralsight.com/courses/learning-program-better-programmer&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/learning-program-better-programmer&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/learning-programming-javascript&quot; href=&quot;http://www.pluralsight.com/courses/learning-programming-javascript&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/learning-programming-javascript&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/learning-programming-abstractions-python&quot; href=&quot;http://www.pluralsight.com/courses/learning-programming-abstractions-python&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/learning-programming-abstractions-python&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; logic and algorithms&lt;/h1&gt;Algorithms and Data Structures - Part 1 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/ads-part1&quot; href=&quot;http://www.pluralsight.com/courses/ads-part1&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/ads-part1&lt;/a&gt;&lt;br&gt;Algorithms and Data Structures - Part 2 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/ads2&quot; href=&quot;http://www.pluralsight.com/courses/ads2&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/ads2&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/math-for-programmers&quot; href=&quot;http://www.pluralsight.com/courses/math-for-programmers&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/math-for-programmers&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/refactoring-fundamentals&quot; href=&quot;http://www.pluralsight.com/courses/refactoring-fundamentals&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/refactoring-fundamentals&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/provable-code&quot; href=&quot;http://www.pluralsight.com/courses/provable-code&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/provable-code&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/writing-clean-code-humans&quot; href=&quot;http://www.pluralsight.com/courses/writing-clean-code-humans&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/writing-clean-code-humans&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pluralsight.com/courses/better-software-through-measurement&quot; href=&quot;http://www.pluralsight.com/courses/better-software-through-measurement&quot; class=&quot;externalLink&quot;&gt;http://www.pluralsight.com/courses/better-software-through-measurement&lt;/a&gt;&lt;br&gt;&lt;br&gt;Functional Data Structures in R &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.amazon.com/Functional-Data-Structures-Statistical-Programming-ebook/dp/B077KPFDXX/ref=pd_sim_351_8?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=GQYFW66FG2H28WN6BTVW&quot; href=&quot;https://www.amazon.com/Functional-Data-Structures-Statistical-Programming-ebook/dp/B077KPFDXX/ref=pd_sim_351_8?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=GQYFW66FG2H28WN6BTVW&quot; class=&quot;externalLink&quot;&gt;https://www.amazon.com/Functional-Data-Structures-Statistical-Programming-ebook/dp/B077KPFDXX/ref=pd_sim_351_8?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=GQYFW66FG2H28WN6BTVW&lt;/a&gt;</description>
-<category>CodeNinja</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20structures%20and%20algorithms%5D%5D</link>
-<pubDate>Tue, 22 May 2018 17:59:00 GMT</pubDate>
 
 </item>
 </channel>
