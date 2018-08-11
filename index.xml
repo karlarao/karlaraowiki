@@ -6,16 +6,141 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 KarlArao</copyright>
-<pubDate>Tue, 31 Jul 2018 14:10:18 GMT</pubDate>
-<lastBuildDate>Tue, 31 Jul 2018 14:10:18 GMT</lastBuildDate>
+<pubDate>Thu, 09 Aug 2018 17:51:10 GMT</pubDate>
+<lastBuildDate>Thu, 09 Aug 2018 17:51:10 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>REGEXP_SUBSTR, SUBSTR INSTR</title>
+<description>&lt;br&gt;&lt;h1&gt; my examples here &lt;/h1&gt;oracle regexp output left hand side &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/4a456e9865247b07d1c7654116801214&quot; href=&quot;https://gist.github.com/karlarao/4a456e9865247b07d1c7654116801214&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/4a456e9865247b07d1c7654116801214&lt;/a&gt;&lt;br&gt;oracle one column to rows &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/9eb0d05fdb680db4bb6153e4a23c9bac&quot; href=&quot;https://gist.github.com/karlarao/9eb0d05fdb680db4bb6153e4a23c9bac&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/9eb0d05fdb680db4bb6153e4a23c9bac&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references&lt;/h1&gt;oracle split string after keyword &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?biw=1436&amp;amp;bih=796&amp;amp;ei=T0dqW8-ACozt5gKztqyABw&amp;amp;q=oracle+split+string+after+keyword&amp;amp;oq=oracle+split+string+after+keyword&amp;amp;gs_l=psy-ab.3...1867.1867.0.2171.1.1.0.0.0.0.74.74.1.1.0....0...1.1.64.psy-ab..0.0.0....0.8DSEO_Qp9-0&quot; href=&quot;https://www.google.com/search?biw=1436&amp;amp;bih=796&amp;amp;ei=T0dqW8-ACozt5gKztqyABw&amp;amp;q=oracle+split+string+after+keyword&amp;amp;oq=oracle+split+string+after+keyword&amp;amp;gs_l=psy-ab.3...1867.1867.0.2171.1.1.0.0.0.0.74.74.1.1.0....0...1.1.64.psy-ab..0.0.0....0.8DSEO_Qp9-0&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?biw=1436&amp;amp;bih=796&amp;amp;ei=T0dqW8-ACozt5gKztqyABw&amp;amp;q=oracle+split+string+after+keyword&amp;amp;oq=oracle+split+string+after+keyword&amp;amp;gs_l=psy-ab.3...1867.1867.0.2171.1.1.0.0.0.0.74.74.1.1.0....0...1.1.64.psy-ab..0.0.0....0.8DSEO_Qp9-0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/36015847/extract-string-after-character-and-before-final-full-stop-period-in-sql&quot; href=&quot;https://stackoverflow.com/questions/36015847/extract-string-after-character-and-before-final-full-stop-period-in-sql&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/36015847/extract-string-after-character-and-before-final-full-stop-period-in-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/45165587/how-to-get-string-after-character-oracle&quot; href=&quot;https://stackoverflow.com/questions/45165587/how-to-get-string-after-character-oracle&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/45165587/how-to-get-string-after-character-oracle&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/28674778/oracle-need-to-extract-text-between-given-strings&quot; href=&quot;https://stackoverflow.com/questions/28674778/oracle-need-to-extract-text-between-given-strings&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/28674778/oracle-need-to-extract-text-between-given-strings&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.experts-exchange.com/questions/28349313/Oracle-SQL-Extract-rightmost-word-in-string.html&quot; href=&quot;https://www.experts-exchange.com/questions/28349313/Oracle-SQL-Extract-rightmost-word-in-string.html&quot; class=&quot;externalLink&quot;&gt;https://www.experts-exchange.com/questions/28349313/Oracle-SQL-Extract-rightmost-word-in-string.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://lalitkumarb.wordpress.com/2017/02/17/regexp_substr-extract-everything-after-specific-character/&quot; href=&quot;https://lalitkumarb.wordpress.com/2017/02/17/regexp_substr-extract-everything-after-specific-character/&quot; class=&quot;externalLink&quot;&gt;https://lalitkumarb.wordpress.com/2017/02/17/regexp_substr-extract-everything-after-specific-character/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://lalitkumarb.wordpress.com/2018/07/20/regexp_substr-extract-everything-before-specific-character/&quot; href=&quot;https://lalitkumarb.wordpress.com/2018/07/20/regexp_substr-extract-everything-before-specific-character/&quot; class=&quot;externalLink&quot;&gt;https://lalitkumarb.wordpress.com/2018/07/20/regexp_substr-extract-everything-before-specific-character/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/4389571/how-to-select-a-substring-in-oracle-sql-up-to-a-specific-character&quot; href=&quot;https://stackoverflow.com/questions/4389571/how-to-select-a-substring-in-oracle-sql-up-to-a-specific-character&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/4389571/how-to-select-a-substring-in-oracle-sql-up-to-a-specific-character&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://basitaalishan.com/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions/&quot; href=&quot;https://basitaalishan.com/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions/&quot; class=&quot;externalLink&quot;&gt;https://basitaalishan.com/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.toadworld.com/platforms/sql-server/b/weblog/archive/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions&quot; href=&quot;https://community.toadworld.com/platforms/sql-server/b/weblog/archive/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions&quot; class=&quot;externalLink&quot;&gt;https://community.toadworld.com/platforms/sql-server/b/weblog/archive/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=substr+and+instr+in+oracle&amp;amp;oq=substr+and+instr&amp;amp;aqs=chrome.1.69i57j0l5.3768j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=substr+and+instr+in+oracle&amp;amp;oq=substr+and+instr&amp;amp;aqs=chrome.1.69i57j0l5.3768j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=substr+and+instr+in+oracle&amp;amp;oq=substr+and+instr&amp;amp;aqs=chrome.1.69i57j0l5.3768j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/39405528/using-substr-and-instr-in-sql&quot; href=&quot;https://stackoverflow.com/questions/39405528/using-substr-and-instr-in-sql&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/39405528/using-substr-and-instr-in-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oraclemine.com/substr-and-instr-in-oracle/&quot; href=&quot;http://oraclemine.com/substr-and-instr-in-oracle/&quot; class=&quot;externalLink&quot;&gt;http://oraclemine.com/substr-and-instr-in-oracle/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.java2s.com/Code/Oracle/Char-Functions/CombineINSTRandSUBSTRtogether.htm&quot; href=&quot;http://www.java2s.com/Code/Oracle/Char-Functions/CombineINSTRandSUBSTRtogether.htm&quot; class=&quot;externalLink&quot;&gt;http://www.java2s.com/Code/Oracle/Char-Functions/CombineINSTRandSUBSTRtogether.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=oracle+substr+instr+on+keyword&amp;amp;ei=Y0tqW_OaPOmO0gKK64-4BQ&amp;amp;start=10&amp;amp;sa=N&amp;amp;biw=1436&amp;amp;bih=796&quot; href=&quot;https://www.google.com/search?q=oracle+substr+instr+on+keyword&amp;amp;ei=Y0tqW_OaPOmO0gKK64-4BQ&amp;amp;start=10&amp;amp;sa=N&amp;amp;biw=1436&amp;amp;bih=796&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=oracle+substr+instr+on+keyword&amp;amp;ei=Y0tqW_OaPOmO0gKK64-4BQ&amp;amp;start=10&amp;amp;sa=N&amp;amp;biw=1436&amp;amp;bih=796&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=oracle+substr+instr+until+the+end+of+string&amp;amp;oq=oracle+substr+instr+until+the+end+of+string&amp;amp;aqs=chrome..69i57j69i64l3.12272j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=oracle+substr+instr+until+the+end+of+string&amp;amp;oq=oracle+substr+instr+until+the+end+of+string&amp;amp;aqs=chrome..69i57j69i64l3.12272j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=oracle+substr+instr+until+the+end+of+string&amp;amp;oq=oracle+substr+instr+until+the+end+of+string&amp;amp;aqs=chrome..69i57j69i64l3.12272j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/30820143/using-substr-and-instr-find-end-of-string&quot; href=&quot;https://stackoverflow.com/questions/30820143/using-substr-and-instr-find-end-of-string&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/30820143/using-substr-and-instr-find-end-of-string&lt;/a&gt;   &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/14621357/oracle-get-substring-before-a-space&quot; href=&quot;https://stackoverflow.com/questions/14621357/oracle-get-substring-before-a-space&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/14621357/oracle-get-substring-before-a-space&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/15614751/if-statement-in-select-oracle&quot; href=&quot;https://stackoverflow.com/questions/15614751/if-statement-in-select-oracle&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/15614751/if-statement-in-select-oracle&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL Rewrite/Refactoring</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BREGEXP_SUBSTR%2C%20SUBSTR%20INSTR%5D%5D</link>
+<pubDate>Thu, 09 Aug 2018 17:51:10 GMT</pubDate>
+
+</item>
+<item>
+<title>SQL Rewrite/Refactoring</title>
+<description>&lt;br&gt;&lt;pre&gt;Issues arise from:
+* coding
+* data mapping / model
+* logic 
+
+Delays come from: 
+* poor requirements gathering
+* technical debt 
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQL Tuning</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20Rewrite%2FRefactoring%5D%5D</link>
+<pubDate>Thu, 09 Aug 2018 16:16:20 GMT</pubDate>
+
+</item>
+<item>
+<title>rewriting MAX on WHERE</title>
+<description>&lt;br&gt;&lt;pre&gt;# BEFORE 
+
+VAR BAN VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+
+EXEC :BAN := '302034860';
+EXEC :CHG_ACTV_KEY := '';
+EXEC :CHG_ACTV_KEY := '4937';
+
+
+   select /*+ monitor */
+    b.ban,
+    b.cycle_run_month,
+    b.cycle_run_year
+   from dim.delta_bill_pull_tbl_glt b,
+        ( select
+           ban,
+           actv_bill_seq_no
+          from dim.delta_charge_pull_tbl_glt
+          where ban = (select to_ban
+                       from ( select ban, max(ent_seq_no) ent_seq_no
+                              from dim.delta_charge_pull_tbl_glt
+                              where ban = :ban and to_ent_seq_no = :chg_actv_key
+                              group by ban ) a,
+                            dim.delta_charge_pull_tbl_glt d
+                       where a.ban = d.ban
+                         and a.ent_seq_no = d.ent_seq_no)
+             and ent_seq_no = :chg_actv_key ) c
+    where
+          b.ban = c.ban
+      and b.bill_seq_no = c.actv_bill_seq_no
+      and rownum=1
+/
+
+
+# AFTER 
+VAR BAN VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+
+EXEC :BAN := '302034860';
+EXEC :CHG_ACTV_KEY := '';
+EXEC :CHG_ACTV_KEY := '4937';
+
+
+   select /*+ monitor */
+    b.ban,
+    b.cycle_run_month,
+    b.cycle_run_year
+   from dim.delta_bill_pull_tbl_glt b,
+        ( select
+           ban,
+           actv_bill_seq_no
+          from dim.delta_charge_pull_tbl_glt
+          where ban = (select d.to_ban
+                      from dim.delta_charge_pull_tbl_glt d
+                      where d.ban = :ban
+                      and   d.ent_seq_no = (select max(ent_seq_no)
+                                            from   dim.delta_charge_pull_tbl_glt
+                                            where  ban = :ban
+                                            and    to_ent_seq_no = :chg_actv_key))
+             and ent_seq_no = :chg_actv_key ) c
+    where
+          b.ban = c.ban
+      and b.bill_seq_no = c.actv_bill_seq_no
+      and rownum=1
+/
+
+
+
+# another example is split this into two SQLs 
+
+
+
+&lt;/pre&gt;</description>
+<category>my rewrite examples</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Brewriting%20MAX%20on%20WHERE%5D%5D</link>
+<pubDate>Thu, 09 Aug 2018 16:01:06 GMT</pubDate>
+
+</item>
+<item>
+<title>Security</title>
+<description>&lt;ul&gt;&lt;li&gt; HIPAA&lt;/li&gt;&lt;li&gt; FIPPS &lt;/li&gt;&lt;li&gt; COPPA&lt;/li&gt;&lt;li&gt; GDPR&lt;/li&gt;&lt;li&gt; CPNI &lt;/li&gt;&lt;li&gt; Data Breaches &lt;/li&gt;&lt;li&gt; Reporting &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Oracle</category>
+<link>http://karlarao.tiddlyspot.com#Security</link>
+<pubDate>Mon, 06 Aug 2018 15:58:00 GMT</pubDate>
+
+</item>
+<item>
+<title>PerformanceTools-OS</title>
+<description>&lt;h1&gt; System level OS perf monitoring&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; kSar - a SAR grapher - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://sourceforge.net/projects/ksar/&quot; href=&quot;http://sourceforge.net/projects/ksar/&quot; class=&quot;externalLink&quot;&gt;http://sourceforge.net/projects/ksar/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;OSWatcher&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OSWatcher&quot; href=&quot;http://karlarao.tiddlyspot.com#OSWatcher&quot; class=&quot;externalLink null&quot;&gt;OSWatcher&lt;/a&gt; (Oracle OS Watcher) - Reports CPU, RAM and Network stress, and is a new alternative for monitoring Oracle servers (includes session level ps)&lt;/li&gt;&lt;li&gt; Oracle Cluster Health Monitor - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/UZqS5&quot; href=&quot;http://goo.gl/UZqS5&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/UZqS5&lt;/a&gt; (includes session level ps)&lt;/li&gt;&lt;li&gt; nmon&lt;/li&gt;&lt;li&gt; Dynamic Tracing Tools - &lt;strong&gt;&lt;a tiddlylink=&quot;DTrace&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DTrace&quot; href=&quot;http://karlarao.tiddlyspot.com#DTrace&quot; class=&quot;externalLink null&quot;&gt;DTrace&lt;/a&gt;&lt;/strong&gt; - Solaris,Linux   &lt;strong&gt;&lt;a tiddlylink=&quot;ProbeVue&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ProbeVue&quot; href=&quot;http://karlarao.tiddlyspot.com#ProbeVue&quot; class=&quot;externalLink null&quot;&gt;ProbeVue&lt;/a&gt;&lt;/strong&gt; - AIX&lt;/li&gt;&lt;li&gt; top, vmstat, mpstat - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://smartos.org/2011/05/04/video-the-gregg-performance-series/&quot; href=&quot;http://smartos.org/2011/05/04/video-the-gregg-performance-series/&quot; class=&quot;externalLink&quot;&gt;http://smartos.org/2011/05/04/video-the-gregg-performance-series/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; turbostat.c &lt;a target=&quot;_blank&quot; title=&quot;External link to http://developer.amd.com/Assets/51803A_OpteronLinuxTuningGuide_SCREEN.pdf&quot; href=&quot;http://developer.amd.com/Assets/51803A_OpteronLinuxTuningGuide_SCREEN.pdf&quot; class=&quot;externalLink&quot;&gt;http://developer.amd.com/Assets/51803A_OpteronLinuxTuningGuide_SCREEN.pdf&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://manpages.ubuntu.com/manpages/precise/man8/turbostat.8.html&quot; href=&quot;http://manpages.ubuntu.com/manpages/precise/man8/turbostat.8.html&quot; class=&quot;externalLink&quot;&gt;http://manpages.ubuntu.com/manpages/precise/man8/turbostat.8.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://lxr.free-electrons.com/source/tools/power/x86/turbostat/&quot; href=&quot;http://lxr.free-electrons.com/source/tools/power/x86/turbostat/&quot; class=&quot;externalLink&quot;&gt;http://lxr.free-electrons.com/source/tools/power/x86/turbostat/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://stuff.mit.edu/afs/sipb/contrib/linux/tools/power/x86/turbostat/turbostat.c&quot; href=&quot;http://stuff.mit.edu/afs/sipb/contrib/linux/tools/power/x86/turbostat/turbostat.c&quot; class=&quot;externalLink&quot;&gt;http://stuff.mit.edu/afs/sipb/contrib/linux/tools/power/x86/turbostat/turbostat.c&lt;/a&gt;&lt;/li&gt;&lt;li&gt; vm performance and CPU contention &lt;a tiddlylink=&quot;esxtop, vmstat, top, mpstat steal&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#esxtop, vmstat, top, mpstat steal&quot; href=&quot;http://karlarao.tiddlyspot.com#esxtop,%20vmstat,%20top,%20mpstat%20steal&quot; class=&quot;externalLink null&quot;&gt;esxtop, vmstat, top, mpstat steal&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; Session level OS perf monitoring&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; iotop &lt;a target=&quot;_blank&quot; title=&quot;External link to http://guichaz.free.fr/iotop/&quot; href=&quot;http://guichaz.free.fr/iotop/&quot; class=&quot;externalLink&quot;&gt;http://guichaz.free.fr/iotop/&lt;/a&gt; , for RHEL &lt;a target=&quot;_blank&quot; title=&quot;External link to http://people.redhat.com/jolsa/iotop/&quot; href=&quot;http://people.redhat.com/jolsa/iotop/&quot; class=&quot;externalLink&quot;&gt;http://people.redhat.com/jolsa/iotop/&lt;/a&gt; , topio Solaris &lt;a target=&quot;_blank&quot; title=&quot;External link to http://yong321.freeshell.org/freeware/pio.html&quot; href=&quot;http://yong321.freeshell.org/freeware/pio.html&quot; class=&quot;externalLink&quot;&gt;http://yong321.freeshell.org/freeware/pio.html&lt;/a&gt;&lt;/li&gt;&lt;li&gt; atop alternative to iotop on &lt;a tiddlylink=&quot;RHEL4&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#RHEL4&quot; href=&quot;http://karlarao.tiddlyspot.com#RHEL4&quot; class=&quot;externalLink null&quot;&gt;RHEL4&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.atoptool.nl/index.php&quot; href=&quot;http://www.atoptool.nl/index.php&quot; class=&quot;externalLink&quot;&gt;http://www.atoptool.nl/index.php&lt;/a&gt;&lt;/li&gt;&lt;li&gt; collectl &lt;a target=&quot;_blank&quot; title=&quot;External link to http://collectl.sourceforge.net/&quot; href=&quot;http://collectl.sourceforge.net/&quot; class=&quot;externalLink&quot;&gt;http://collectl.sourceforge.net/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://collectl-utils.sourceforge.net/&quot; href=&quot;http://collectl-utils.sourceforge.net/&quot; class=&quot;externalLink&quot;&gt;http://collectl-utils.sourceforge.net/&lt;/a&gt; , detailed process accounting (you can also do ala &lt;strong&gt;iotop&lt;/strong&gt;) &lt;a target=&quot;_blank&quot; title=&quot;External link to http://collectl.sourceforge.net/Process.html&quot; href=&quot;http://collectl.sourceforge.net/Process.html&quot; class=&quot;externalLink&quot;&gt;http://collectl.sourceforge.net/Process.html&lt;/a&gt;&lt;/li&gt;&lt;li&gt; prstat Solaris&lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;Memory per process accounting: collectl -sZ -i:1 --procopts m
+IO per process accounting: collectl -sZ -i:1
+&lt;/pre&gt;&lt;ul&gt;&lt;li&gt; iodump &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.xaprb.com/blog/2009/08/23/how-to-find-per-process-io-statistics-on-linux/&quot; href=&quot;http://www.xaprb.com/blog/2009/08/23/how-to-find-per-process-io-statistics-on-linux/&quot; class=&quot;externalLink&quot;&gt;http://www.xaprb.com/blog/2009/08/23/how-to-find-per-process-io-statistics-on-linux/&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; I'm a bit dubious about this..done a test case comparing to collectl.. it can't get the top processes doing the io.. related links: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/NwUcs&quot; href=&quot;http://goo.gl/NwUcs&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/NwUcs&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/zVEFE&quot; href=&quot;http://goo.gl/zVEFE&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/zVEFE&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/eQg3d&quot; href=&quot;http://goo.gl/eQg3d&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/eQg3d&lt;/a&gt;&lt;/li&gt;&lt;li&gt; perf top &lt;a target=&quot;_blank&quot; title=&quot;External link to http://anton.ozlabs.org/blog/2009/09/04/using-performance-counters-for-linux/&quot; href=&quot;http://anton.ozlabs.org/blog/2009/09/04/using-performance-counters-for-linux/&quot; class=&quot;externalLink&quot;&gt;http://anton.ozlabs.org/blog/2009/09/04/using-performance-counters-for-linux/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; kernel profiling tool for linux, much like dtrace probe on syscall, &lt;strong&gt;wiki&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://perf.wiki.kernel.org/index.php/Tutorial#Live_analysis_with_perf_top&quot; href=&quot;https://perf.wiki.kernel.org/index.php/Tutorial#Live_analysis_with_perf_top&quot; class=&quot;externalLink&quot;&gt;https://perf.wiki.kernel.org/index.php/Tutorial#Live_analysis_with_perf_top&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Digger - the tool for tracing of unix processes &lt;a target=&quot;_blank&quot; title=&quot;External link to http://alexanderanokhin.wordpress.com/tools/digger/&quot; href=&quot;http://alexanderanokhin.wordpress.com/tools/digger/&quot; class=&quot;externalLink&quot;&gt;http://alexanderanokhin.wordpress.com/tools/digger/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; per-process level cpu scheduling - latency.c &lt;a target=&quot;_blank&quot; title=&quot;External link to http://eaglet.rain.com/rick/linux/schedstat/&quot; href=&quot;http://eaglet.rain.com/rick/linux/schedstat/&quot; class=&quot;externalLink&quot;&gt;http://eaglet.rain.com/rick/linux/schedstat/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; vtune &lt;a target=&quot;_blank&quot; title=&quot;External link to http://software.intel.com/en-us/intel-vtune-amplifier-xe&quot; href=&quot;http://software.intel.com/en-us/intel-vtune-amplifier-xe&quot; class=&quot;externalLink&quot;&gt;http://software.intel.com/en-us/intel-vtune-amplifier-xe&lt;/a&gt;&lt;/li&gt;&lt;li&gt; BPF &lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.memsql.com/bpf-linux-performance/&quot; href=&quot;https://blog.memsql.com/bpf-linux-performance/&quot; class=&quot;externalLink&quot;&gt;https://blog.memsql.com/bpf-linux-performance/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; perf Basic usage of perf command ( tracing tool ) (Doc ID 2174289.1)&lt;/li&gt;&lt;li&gt; cputrack (solaris) - process level CPU counters	- starting solaris 8 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.scalingbits.com/performance/tracing&quot; href=&quot;http://www.scalingbits.com/performance/tracing&quot; class=&quot;externalLink&quot;&gt;http://www.scalingbits.com/performance/tracing&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; Network &lt;/h1&gt;&lt;ul&gt;&lt;li&gt; uperf &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.uperf.org/&quot; href=&quot;http://www.uperf.org/&quot; class=&quot;externalLink&quot;&gt;http://www.uperf.org/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.uperf.org/manual.html&quot; href=&quot;http://www.uperf.org/manual.html&quot; class=&quot;externalLink&quot;&gt;http://www.uperf.org/manual.html&lt;/a&gt;&lt;/li&gt;&lt;li&gt; rds-stress   &lt;a target=&quot;_blank&quot; title=&quot;External link to http://oss.oracle.com/pipermail/rds-devel/2007-November/000237.html&quot; href=&quot;http://oss.oracle.com/pipermail/rds-devel/2007-November/000237.html&quot; class=&quot;externalLink&quot;&gt;http://oss.oracle.com/pipermail/rds-devel/2007-November/000237.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://oss.oracle.com/~okir/rds/2008-Feb-29/scalability/&quot; href=&quot;http://oss.oracle.com/%7Eokir/rds/2008-Feb-29/scalability/&quot; class=&quot;externalLink&quot;&gt;http://oss.oracle.com/~okir/rds/2008-Feb-29/scalability/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; pingplotter &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pingplotter.com/&quot; href=&quot;http://www.pingplotter.com/&quot; class=&quot;externalLink&quot;&gt;http://www.pingplotter.com/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; netem WAN performance simulator &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.linuxfoundation.org/collaborate/workgroups/networking/netem&quot; href=&quot;http://www.linuxfoundation.org/collaborate/workgroups/networking/netem&quot; class=&quot;externalLink&quot;&gt;http://www.linuxfoundation.org/collaborate/workgroups/networking/netem&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/articles/wartak-rac-vm-3-096492.html#9a&quot; href=&quot;http://www.oracle.com/technetwork/articles/wartak-rac-vm-3-096492.html#9a&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/articles/wartak-rac-vm-3-096492.html#9a&lt;/a&gt;&lt;/li&gt;&lt;li&gt; network speed test without flash &lt;a target=&quot;_blank&quot; title=&quot;External link to http://openspeedtest.com/results/5244312&quot; href=&quot;http://openspeedtest.com/results/5244312&quot; class=&quot;externalLink&quot;&gt;http://openspeedtest.com/results/5244312&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; Storage/IO&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; EMC &lt;a tiddlylink=&quot;ControlCenter&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ControlCenter&quot; href=&quot;http://karlarao.tiddlyspot.com#ControlCenter&quot; class=&quot;externalLink null&quot;&gt;ControlCenter&lt;/a&gt; (ECC)&lt;/li&gt;&lt;li&gt; asm_metric.pl &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>PerformanceTools</category>
+<link>http://karlarao.tiddlyspot.com#PerformanceTools-OS</link>
+<pubDate>Thu, 02 Aug 2018 01:34:00 GMT</pubDate>
+
+</item>
 <item>
 <title>Oracle Management Cloud ML, OMCML</title>
 <description>&lt;blockquote&gt;Oracle Management Cloud uses a&lt;br&gt;broad array of machine learning&lt;br&gt;techniques, including the following:&lt;br&gt;» Anomaly detection. Flags&lt;br&gt;unusual resource usage and&lt;br&gt;identifies configuration changes.&lt;br&gt;» Clustering. Filters out signal&lt;br&gt;from noise; aggregates topologybased&lt;br&gt;data.&lt;br&gt;» Correlation. Groups and alerts&lt;br&gt;on related symptoms; discovers&lt;br&gt;dependencies.&lt;br&gt;» Prediction. Forecasts outages&lt;br&gt;before they happen; plans&lt;br&gt;capacity and resources.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/us/solutions/cloud/oracle-management-cloud-brief-2714883.pdf&quot; href=&quot;http://www.oracle.com/us/solutions/cloud/oracle-management-cloud-brief-2714883.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/us/solutions/cloud/oracle-management-cloud-brief-2714883.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.forbes.com/sites/oracle/2018/07/23/machine-learning-and-it-jobs-early-lessons-learned-from-system-monitoring/#6ac97dc85ef3&quot; href=&quot;https://www.forbes.com/sites/oracle/2018/07/23/machine-learning-and-it-jobs-early-lessons-learned-from-system-monitoring/#6ac97dc85ef3&quot; class=&quot;externalLink&quot;&gt;https://www.forbes.com/sites/oracle/2018/07/23/machine-learning-and-it-jobs-early-lessons-learned-from-system-monitoring/#6ac97dc85ef3&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/DheerajHiremath1/oracle-management-cloud-65816440&quot; href=&quot;https://www.slideshare.net/DheerajHiremath1/oracle-management-cloud-65816440&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/DheerajHiremath1/oracle-management-cloud-65816440&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://courtneyllamas.com/category/oracle-management-cloud/&quot; href=&quot;http://courtneyllamas.com/category/oracle-management-cloud/&quot; class=&quot;externalLink&quot;&gt;http://courtneyllamas.com/category/oracle-management-cloud/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.oracle.com/_downloads/eBook_OMC/Oracle_Management_Cloud_eBook.pdf&quot; href=&quot;https://cloud.oracle.com/_downloads/eBook_OMC/Oracle_Management_Cloud_eBook.pdf&quot; class=&quot;externalLink&quot;&gt;https://cloud.oracle.com/_downloads/eBook_OMC/Oracle_Management_Cloud_eBook.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>EnterpriseManager</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Management%20Cloud%20ML%2C%20OMCML%5D%5D</link>
-<pubDate>Tue, 31 Jul 2018 14:10:15 GMT</pubDate>
+<pubDate>Tue, 31 Jul 2018 14:10:00 GMT</pubDate>
 
 </item>
 <item>
@@ -804,262 +929,6 @@ http://download.fedora.redhat.com/pub/epel
 <category>texteditors</category>
 <link>http://karlarao.tiddlyspot.com#vscode</link>
 <pubDate>Thu, 05 Jul 2018 17:24:00 GMT</pubDate>
-
-</item>
-<item>
-<title>camtasia</title>
-<description>camtasia9&lt;br&gt;camtasia recorder9  </description>
-<category>video authoring tools</category>
-<link>http://karlarao.tiddlyspot.com#camtasia</link>
-<pubDate>Mon, 02 Jul 2018 01:05:00 GMT</pubDate>
-
-</item>
-<item>
-<title>coderepo PL/SQL</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' PL/SQL User's Guide and Reference Release - Sample PL/SQL Programs', event)&quot;&gt; PL/SQL User's Guide and Reference Release - Sample PL/SQL Programs&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' steve's videos - the plsql channel', event)&quot;&gt; steve's videos - the plsql channel&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' style guide ', event)&quot;&gt; style guide &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bulk collect and forall ', event)&quot;&gt; bulk collect and forall &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' mvc pl/sq/', event)&quot;&gt; mvc pl/sq/&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' references/books', event)&quot;&gt; references/books&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' wiki', event)&quot;&gt; wiki&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' implicit cursor attribute	', event)&quot;&gt; implicit cursor attribute	&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' end', event)&quot;&gt; end&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; PL/SQL User's Guide and Reference Release - Sample PL/SQL Programs&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/A97630_01/appdev.920/a96624/a_samps.htm&quot; href=&quot;https://docs.oracle.com/cd/A97630_01/appdev.920/a96624/a_samps.htm&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/A97630_01/appdev.920/a96624/a_samps.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; steve's videos - the plsql channel&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tutorials.plsqlchannel.com/public/index.php&quot; href=&quot;http://tutorials.plsqlchannel.com/public/index.php&quot; class=&quot;externalLink&quot;&gt;http://tutorials.plsqlchannel.com/public/index.php&lt;/a&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; style guide &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle.readthedocs.org/en/latest/sql/basics/style-guide.html&quot; href=&quot;http://oracle.readthedocs.org/en/latest/sql/basics/style-guide.html&quot; class=&quot;externalLink&quot;&gt;http://oracle.readthedocs.org/en/latest/sql/basics/style-guide.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.williamrobertson.net/documents/plsqlcodingstandards.htlm&quot; href=&quot;http://www.williamrobertson.net/documents/plsqlcodingstandards.htlm&quot; class=&quot;externalLink&quot;&gt;http://www.williamrobertson.net/documents/plsqlcodingstandards.htlm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bulk collect and forall &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://venzi.wordpress.com/2007/09/27/bulk-collect-forall-vs-cursor-for-loop/&quot; href=&quot;https://venzi.wordpress.com/2007/09/27/bulk-collect-forall-vs-cursor-for-loop/&quot; class=&quot;externalLink&quot;&gt;https://venzi.wordpress.com/2007/09/27/bulk-collect-forall-vs-cursor-for-loop/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; mvc pl/sq/&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dba-oracle.com/oracle_news/2004_10_27_MVC_development_using_plsql.htm&quot; href=&quot;http://www.dba-oracle.com/oracle_news/2004_10_27_MVC_development_using_plsql.htm&quot; class=&quot;externalLink&quot;&gt;http://www.dba-oracle.com/oracle_news/2004_10_27_MVC_development_using_plsql.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/osalvador/dbax&quot; href=&quot;https://github.com/osalvador/dbax&quot; class=&quot;externalLink&quot;&gt;https://github.com/osalvador/dbax&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://it.toolbox.com/blogs/jjflash-oracle-journal/mvc-for-plsql-and-the-apex-listener-42688&quot; href=&quot;http://it.toolbox.com/blogs/jjflash-oracle-journal/mvc-for-plsql-and-the-apex-listener-42688&quot; class=&quot;externalLink&quot;&gt;http://it.toolbox.com/blogs/jjflash-oracle-journal/mvc-for-plsql-and-the-apex-listener-42688&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jj-blogger.blogspot.com/2006/05/plsql-and-faces.html&quot; href=&quot;http://jj-blogger.blogspot.com/2006/05/plsql-and-faces.html&quot; class=&quot;externalLink&quot;&gt;http://jj-blogger.blogspot.com/2006/05/plsql-and-faces.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.rittmanmead.com/blog/2004/09/john-flack-on-mvc-development-using-plsql/&quot; href=&quot;https://www.rittmanmead.com/blog/2004/09/john-flack-on-mvc-development-using-plsql/&quot; class=&quot;externalLink&quot;&gt;https://www.rittmanmead.com/blog/2004/09/john-flack-on-mvc-development-using-plsql/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.liberidu.com/blog/2016/11/02/how-you-should-or-shouldnt-design-program-for-a-performing-database-environment/&quot; href=&quot;http://www.liberidu.com/blog/2016/11/02/how-you-should-or-shouldnt-design-program-for-a-performing-database-environment/&quot; class=&quot;externalLink&quot;&gt;http://www.liberidu.com/blog/2016/11/02/how-you-should-or-shouldnt-design-program-for-a-performing-database-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references/books&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stevenfeuersteinonplsql.blogspot.com/2014/05/resources-for-new-plsql-developers.html&quot; href=&quot;http://stevenfeuersteinonplsql.blogspot.com/2014/05/resources-for-new-plsql-developers.html&quot; class=&quot;externalLink&quot;&gt;http://stevenfeuersteinonplsql.blogspot.com/2014/05/resources-for-new-plsql-developers.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/&quot; href=&quot;https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/beginning-plsql-from/9781590598825/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/beginning-oracle-plsql/9781484207376/&quot; href=&quot;https://www.safaribooksonline.com/library/view/beginning-oracle-plsql/9781484207376/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/beginning-oracle-plsql/9781484207376/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-and-plsql/9781430232070/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-plsql-for/9780764599576/&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-plsql-for/9780764599576/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-plsql-for/9780764599576/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/&quot; href=&quot;https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/oracle-plsql-for/0596005873/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; wiki&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.java2s.com/Tutorials/Database/Oracle_PL_SQL_Tutorial/index.htm&quot; href=&quot;http://www.java2s.com/Tutorials/Database/Oracle_PL_SQL_Tutorial/index.htm&quot; class=&quot;externalLink&quot;&gt;http://www.java2s.com/Tutorials/Database/Oracle_PL_SQL_Tutorial/index.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gerardnico.com/wiki/plsql/plsql&quot; href=&quot;https://gerardnico.com/wiki/plsql/plsql&quot; class=&quot;externalLink&quot;&gt;https://gerardnico.com/wiki/plsql/plsql&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; implicit cursor attribute	&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/en/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053881.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/en/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053881.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/en/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053881.html&lt;/a&gt;&lt;br&gt;    &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053879.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053879.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053879.html&lt;/a&gt;&lt;br&gt;    &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053878.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053878.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053878.html&lt;/a&gt;&lt;br&gt;    &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053607.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053607.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS6NHC/com.ibm.swg.im.dashdb.apdv.plsql.doc/doc/c0053607.html&lt;/a&gt;&lt;br&gt;PL/SQL Language Elements &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/B28359_01/appdev.111/b28370/langelems.htm#LNPLS013&quot; href=&quot;https://docs.oracle.com/cd/B28359_01/appdev.111/b28370/langelems.htm#LNPLS013&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/B28359_01/appdev.111/b28370/langelems.htm#LNPLS013&lt;/a&gt; &lt;br&gt;Cursor Attribute &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/B28359_01/appdev.111/b28370/cursor_attribute.htm#LNPLS01311&quot; href=&quot;https://docs.oracle.com/cd/B28359_01/appdev.111/b28370/cursor_attribute.htm#LNPLS01311&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/B28359_01/appdev.111/b28370/cursor_attribute.htm#LNPLS01311&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://markhoxey.wordpress.com/2012/12/11/referencing-implicit-cursor-attributes-sql/&quot; href=&quot;https://markhoxey.wordpress.com/2012/12/11/referencing-implicit-cursor-attributes-sql/&quot; class=&quot;externalLink&quot;&gt;https://markhoxey.wordpress.com/2012/12/11/referencing-implicit-cursor-attributes-sql/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; end&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Coderepo</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bcoderepo%20PL%2FSQL%5D%5D</link>
-<pubDate>Sun, 24 Jun 2018 06:17:00 GMT</pubDate>
-
-</item>
-<item>
-<title>GDPR and database</title>
-<description>6 THINGS DATABASE ADMINISTRATORS SHOULD KNOW ABOUT GDPR&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://info.enterprisedb.com/rs/069-ALB-339/images/GDPR%20for%20DBA_EDB%20Tech%20Guide.pdf?aliId=93035477&quot; href=&quot;http://info.enterprisedb.com/rs/069-ALB-339/images/GDPR%20for%20DBA_EDB%20Tech%20Guide.pdf?aliId=93035477&quot; class=&quot;externalLink&quot;&gt;http://info.enterprisedb.com/rs/069-ALB-339/images/GDPR%20for%20DBA_EDB%20Tech%20Guide.pdf?aliId=93035477&lt;/a&gt;</description>
-<category>Security</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BGDPR%20and%20database%5D%5D</link>
-<pubDate>Fri, 22 Jun 2018 21:47:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Intel BigDL</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/intel-analytics/BigDL&quot; href=&quot;https://github.com/intel-analytics/BigDL&quot; class=&quot;externalLink&quot;&gt;https://github.com/intel-analytics/BigDL&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://bigdl-project.github.io/0.5.0/#presentations/&quot; href=&quot;https://bigdl-project.github.io/0.5.0/#presentations/&quot; class=&quot;externalLink&quot;&gt;https://bigdl-project.github.io/0.5.0/#presentations/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://bigdl-project.github.io/0.5.0/#ScalaUserGuide/examples/&quot; href=&quot;https://bigdl-project.github.io/0.5.0/#ScalaUserGuide/examples/&quot; class=&quot;externalLink&quot;&gt;https://bigdl-project.github.io/0.5.0/#ScalaUserGuide/examples/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/intel-analytics/BigDL-Tutorials&quot; href=&quot;https://github.com/intel-analytics/BigDL-Tutorials&quot; class=&quot;externalLink&quot;&gt;https://github.com/intel-analytics/BigDL-Tutorials&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/neural_networks/linear_regression.ipynb&quot; href=&quot;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/neural_networks/linear_regression.ipynb&quot; class=&quot;externalLink&quot;&gt;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/neural_networks/linear_regression.ipynb&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/neural_networks/lstm.ipynb&quot; href=&quot;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/neural_networks/lstm.ipynb&quot; class=&quot;externalLink&quot;&gt;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/neural_networks/lstm.ipynb&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/spark_basics/DataFrame.ipynb&quot; href=&quot;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/spark_basics/DataFrame.ipynb&quot; class=&quot;externalLink&quot;&gt;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/spark_basics/DataFrame.ipynb&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/spark_basics/spark_sql.ipynb&quot; href=&quot;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/spark_basics/spark_sql.ipynb&quot; class=&quot;externalLink&quot;&gt;https://github.com/intel-analytics/BigDL-Tutorials/blob/master/notebooks/spark_basics/spark_sql.ipynb&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/intel-analytics/BigDL/blob/branch-0.1/pyspark/example/tutorial/simple_text_classification/text_classfication.ipynb&quot; href=&quot;https://github.com/intel-analytics/BigDL/blob/branch-0.1/pyspark/example/tutorial/simple_text_classification/text_classfication.ipynb&quot; class=&quot;externalLink&quot;&gt;https://github.com/intel-analytics/BigDL/blob/branch-0.1/pyspark/example/tutorial/simple_text_classification/text_classfication.ipynb&lt;/a&gt;&lt;br&gt;bigdl vs h2o &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?ei=0PgjW_XcHsHH5gLQnaDAAw&amp;amp;q=bigdl+vs+h2o&amp;amp;oq=bigdl+vs+h2o&amp;amp;gs_l=psy-ab.3..33i22i29i30k1.110827.111412.0.112312.3.3.0.0.0.0.77.216.3.3.0....0...1.1.64.psy-ab..0.2.139...33i160k1.0.lK5AeityuH8&quot; href=&quot;https://www.google.com/search?ei=0PgjW_XcHsHH5gLQnaDAAw&amp;amp;q=bigdl+vs+h2o&amp;amp;oq=bigdl+vs+h2o&amp;amp;gs_l=psy-ab.3..33i22i29i30k1.110827.111412.0.112312.3.3.0.0.0.0.77.216.3.3.0....0...1.1.64.psy-ab..0.2.139...33i160k1.0.lK5AeityuH8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?ei=0PgjW_XcHsHH5gLQnaDAAw&amp;amp;q=bigdl+vs+h2o&amp;amp;oq=bigdl+vs+h2o&amp;amp;gs_l=psy-ab.3..33i22i29i30k1.110827.111412.0.112312.3.3.0.0.0.0.77.216.3.3.0....0...1.1.64.psy-ab..0.2.139...33i160k1.0.lK5AeityuH8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.infoworld.com/article/3158162/artificial-intelligence/intels-bigdl-deep-learning-framework-snubs-gpus-for-cpus.html&quot; href=&quot;https://www.infoworld.com/article/3158162/artificial-intelligence/intels-bigdl-deep-learning-framework-snubs-gpus-for-cpus.html&quot; class=&quot;externalLink&quot;&gt;https://www.infoworld.com/article/3158162/artificial-intelligence/intels-bigdl-deep-learning-framework-snubs-gpus-for-cpus.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://mapr.com/blog/tensorflow-mxnet-caffe-h2o-which-ml-best/&quot; href=&quot;https://mapr.com/blog/tensorflow-mxnet-caffe-h2o-which-ml-best/&quot; class=&quot;externalLink&quot;&gt;https://mapr.com/blog/tensorflow-mxnet-caffe-h2o-which-ml-best/&lt;/a&gt;&lt;br&gt;</description>
-<category>Machine Learning</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BIntel%20BigDL%5D%5D</link>
-<pubDate>Wed, 20 Jun 2018 19:41:00 GMT</pubDate>
-
-</item>
-<item>
-<title>format SQL_TEXT to one line</title>
-<description>&lt;h1&gt; from this &lt;/h1&gt;&lt;pre&gt;
-20:02:59 SYS@dw1&amp;gt; select sql_id, dbms_lob.substr(sql_text,30,1) sqltext from dba_hist_sqltext where rownum &amp;lt; 100;
-
-SQL_ID        SQLTEXT
-------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-bnznj24yxuzah insert into  WRH$_IOSTAT_FILET
-467ppfu9jp8ch UPDATE SYS.ILM_RESULTS$ SET JO
-357cru8xpxh55 SELECT A.EXECUTION_ID, A.JOBNA
-9ctt1scmwbmbg begin dbsnmp.bsln_internal.mai
-bb926a5dcb8kr merge into sys.mon_mods$ m
-7g29na8v736ns /* SQL Analyze(67,1) */ /* SQL
-bk8jk9nzd38uc SELECT count(*) FROM sys.wri$_
-7umy6juhzw766 select /*+ connect_by_filterin
-60w0bzjajtgmz /* SQL Analyze(1157,1) */ /* S
-dgkf7m4g44zz0 /* SQL Analyze(1157,1) */ /* S
-cbdfcfcp1pgtp select intcol#, col# , type#,
-0avmvd8qaj1md SELECT count(*) FROM sys.wri$_
-2wsp95jbfzqts SELECT count(*) FROM sys.wri$_
-gx9vnbwq7vu3t /* SQL Analyze(1157,1) */ /* S
-4whka0nxtk36f /* SQL Analyze(1157,1) */ /* S
-7wv5ruk5nshs0 /* SQL Analyze(1157,1) */ /* S
-77wa3wxc661vz SELECT count(*) FROM sys.wri$_
-cwb5hrbyu11sm SELECT count(*) FROM sys.wri$_
-7qjcqf2q2tw9q SELECT count(*) FROM sys.wri$_
-4fxr27su1wn38 /* SQL Analyze(1091,1) */ /* S
-496zvdwr6nfnh /* SQL Analyze(1091,1) */ /* S
-6y5st0zfb4f93 /* SQL Analyze(1091,1) */ DELE
-6ja0rtch4744d SELECT /* DS_SVC */ /*+ dynami
-c9umxngkc3byq select sql_id, sql_exec_id, db
-7cyaxjygv2cpt /* SQL Analyze(1091,1) */ /* S
-c4cr75ud9ujvg SELECT PAR_JOBNAME FROM SYS.IL
-96mjb0z08nmp3 /* SQL Analyze(1091,1) */ /* S
-adtrr100ucu11 /* SQL Analyze(1091,1) */ /* S
-9wqup20cvk9yu SELECT /* DS_SVC */ /*+ dynami
-bfbu3kz982s2n /* SQL Analyze(1091,1) */ /* S
-6qd7w013bx5bj /* SQL Analyze(1091,1) */ /* S
-fuws5bqghb2qh SELECT D.COLUMN_VALUE , NVL(A.
-fhz9cq8mw2rh9 SELECT A.OBJ#, A.POLICY#, B.SC
-cgtc5gb7c4g07 select dbid, status_flag from
-6ajkhukk78nsr begin prvt_hdm.auto_execute( :
-7mhq1834c9nza SELECT COUNT(*) FROM SYS.ILM_C
-49s332uhbnsma       declare
-                       vsn  va
-
-a1xgxtssv5rrp select sum(used_blocks), ts.ts
-gwg69nz9j8vvb insert into  wrh$_latch  (dbid
-84zqd7a3ap5ud insert into  WRH$_SYSSTAT  (db
-f26kbut9pahja SELECT LAST_EXEC_TIME FROM SYS
-gdtyuqcyk8x1c SELECT B.EXECUTION_ID, NVL(A.N
-6q9zvynq8f0h0 insert into sys.wri$_optstat_h
-89nx1vrqtn1q7 SELECT /*+ no_monitor */  CON_
-8qn2s8n8ayxvr SELECT /*+ no_monitor */ CON_I
-3kywng531fcxu delete from tab_stats$ where o
-38243c4tqrkxm select u.name, o.name, o.names
-3cd2hy7yx0u2k UPDATE WRI$_OPTSTAT_OPR_TASKS
-3wrrjm9qtr2my SELECT T.CLIENT_ID,         T.
-0n0000qphr1d2 select /*+ no_monitor */  CON_
-6atd17x59rdus SELECT TABOWNER, TABNAME, PART
-afcswub17n34t SELECT AO.ATTR1 OBJD, SUM(AR.B
-13ys8ux8xvrbm insert into sys.wri$_optstat_o
-381t19fqhxdgp MERGE /*+ dynamic_sampling(ST
-3axxxnjp5jjwj delete from ind_stats$ where o
-cnphq355f5rah DECLARE job BINARY_INTEGER :=
-37g281wz56rv3 insert into sys.wri$_optstat_h
-4y1y43113gv8f delete from histgrm$ where obj
-6wrwqq7jkmv3w INSERT INTO WRI$_HEATMAP_TOPN_
-7sx5p1ug5ag12 SELECT SPARE4 FROM SYS.OPTSTAT
-f47hz4fd4yyx8  SELECT sqlset_row(sql_id, for
-7hu2k3a31b6j7 insert into histgrm$(obj#,intc
-3qkhfbf2kyvhk SELECT POS+1 POS, VAL, NONNULL
-gsfnqdfcvy33q delete from superobj$ where su
-6qg99cfg26kwb SELECT COUNT(UNQ) UNQ, COUNT(P
-adzjh275fvvx4 call WWV_FLOW_WORKSHEET_API.DO
-97dmg1kjd04rc UPDATE STATS_TARGET$ ST SET ST
-axq73su80h4wq select sql_id, plan_hash_value
-07n9yv8rac2qq UPDATE ILM_RESULTS$ SET JOB_ST
-b6usrg82hwsa3 call dbms_stats.gather_databas
-6q42j0018w7t8 insert into sys.wri$_optstat_i
-3xjw1ncw5vh27 SELECT OWNER, SEGMENT_NAME, PA
-28bgqbzpa87xf       declare
-                       policy
-
-74cpnuu24wmx7 SELECT TABLESPACE_ID, HEADER_F
-6mcpb06rctk0x call dbms_space.auto_space_adv
-14qzpax8518uk SELECT /*+ ordered use_nl(o c
-130dvvr5s8bgn select obj#, dataobj#, part#,
-7mgr3uwydqq8j       select decode(open_mode,
-5t7dh3thzzrfh       begin
-                       dbms_rcvm
-
-ba3m1hr5zy5q0 /* SQL Analyze(1) */ select /*
-3y9bat7nwcjy5 SELECT ELAPSED_TIME FROM DBA_S
-84cdm4tn4qk66 BEGIN    dbms_stats_internal.p
-7zfqkasu7cgvy select /*+  no_parallel_index(
-231cqwr9u57s0 insert into  WRH$_IOSTAT_DETAI
-1qag8bk39f2um /* SQL Analyze(198,1) */ /* SQ
-5183s2x0hj4zs /* SQL Analyze(1157,1) */ /* S
-2xn8yx0uz75fm SELECT S.SNAP_ID, S.BEGIN_INTE
-26wdmuqwqmmpa SELECT count(*) FROM sys.wri$_
-8y75j6mh081jh delete /*+ dynamic_sampling(4)
-8zc85a8249x81 update obj$ set obj#=:4, type#
-a51991cqqyak6 /* SQL Analyze(1) */ select /*
-dzxp4mguxfmzr SELECT count(*) FROM sys.wri$_
-9sa4fhxz32vtp SELECT count(*) FROM sys.wri$_
-1sjp86r761x4b SELECT COUNT(*) FROM (SELECT *
-4xa0fqp84dda2 SELECT count(*) FROM sys.wri$_
-8wjzcrb6p6tkq SELECT count(*) FROM sys.wri$_
-a1zm097zca8qg /* SQL Analyze(1) */ select /*
-45h233mys5n3s   UPDATE  wrh$_seg_stat_obj  o
-bf7tbka73w96a /* SQL Analyze(1) */ select /*
-
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; to this &lt;/h1&gt;&lt;pre&gt; select sql_id, REPLACE(REPLACE( dbms_lob.substr(sql_text,30,1), CHR(10) ), CHR(13) ) sqltext from dba_hist_sqltext where rownum &amp;lt; 100
-
-SQL_ID        SQLTEXT
-------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-bnznj24yxuzah insert into  WRH$_IOSTAT_FILET
-467ppfu9jp8ch UPDATE SYS.ILM_RESULTS$ SET JO
-357cru8xpxh55 SELECT A.EXECUTION_ID, A.JOBNA
-9ctt1scmwbmbg begin dbsnmp.bsln_internal.mai
-bb926a5dcb8kr merge into sys.mon_mods$ m
-7g29na8v736ns /* SQL Analyze(67,1) */ /* SQL
-bk8jk9nzd38uc SELECT count(*) FROM sys.wri$_
-7umy6juhzw766 select /*+ connect_by_filterin
-60w0bzjajtgmz /* SQL Analyze(1157,1) */ /* S
-dgkf7m4g44zz0 /* SQL Analyze(1157,1) */ /* S
-cbdfcfcp1pgtp select intcol#, col# , type#,
-0avmvd8qaj1md SELECT count(*) FROM sys.wri$_
-2wsp95jbfzqts SELECT count(*) FROM sys.wri$_
-gx9vnbwq7vu3t /* SQL Analyze(1157,1) */ /* S
-4whka0nxtk36f /* SQL Analyze(1157,1) */ /* S
-7wv5ruk5nshs0 /* SQL Analyze(1157,1) */ /* S
-77wa3wxc661vz SELECT count(*) FROM sys.wri$_
-cwb5hrbyu11sm SELECT count(*) FROM sys.wri$_
-7qjcqf2q2tw9q SELECT count(*) FROM sys.wri$_
-4fxr27su1wn38 /* SQL Analyze(1091,1) */ /* S
-496zvdwr6nfnh /* SQL Analyze(1091,1) */ /* S
-6y5st0zfb4f93 /* SQL Analyze(1091,1) */ DELE
-6ja0rtch4744d SELECT /* DS_SVC */ /*+ dynami
-c9umxngkc3byq select sql_id, sql_exec_id, db
-7cyaxjygv2cpt /* SQL Analyze(1091,1) */ /* S
-c4cr75ud9ujvg SELECT PAR_JOBNAME FROM SYS.IL
-96mjb0z08nmp3 /* SQL Analyze(1091,1) */ /* S
-adtrr100ucu11 /* SQL Analyze(1091,1) */ /* S
-9wqup20cvk9yu SELECT /* DS_SVC */ /*+ dynami
-bfbu3kz982s2n /* SQL Analyze(1091,1) */ /* S
-6qd7w013bx5bj /* SQL Analyze(1091,1) */ /* S
-fuws5bqghb2qh SELECT D.COLUMN_VALUE , NVL(A.
-fhz9cq8mw2rh9 SELECT A.OBJ#, A.POLICY#, B.SC
-cgtc5gb7c4g07 select dbid, status_flag from
-6ajkhukk78nsr begin prvt_hdm.auto_execute( :
-7mhq1834c9nza SELECT COUNT(*) FROM SYS.ILM_C
-49s332uhbnsma       declare         vsn  va
-a1xgxtssv5rrp select sum(used_blocks), ts.ts
-gwg69nz9j8vvb insert into  wrh$_latch  (dbid
-84zqd7a3ap5ud insert into  WRH$_SYSSTAT  (db
-f26kbut9pahja SELECT LAST_EXEC_TIME FROM SYS
-gdtyuqcyk8x1c SELECT B.EXECUTION_ID, NVL(A.N
-6q9zvynq8f0h0 insert into sys.wri$_optstat_h
-89nx1vrqtn1q7 SELECT /*+ no_monitor */  CON_
-8qn2s8n8ayxvr SELECT /*+ no_monitor */ CON_I
-3kywng531fcxu delete from tab_stats$ where o
-38243c4tqrkxm select u.name, o.name, o.names
-3cd2hy7yx0u2k UPDATE WRI$_OPTSTAT_OPR_TASKS
-3wrrjm9qtr2my SELECT T.CLIENT_ID,         T.
-0n0000qphr1d2 select /*+ no_monitor */  CON_
-6atd17x59rdus SELECT TABOWNER, TABNAME, PART
-afcswub17n34t SELECT AO.ATTR1 OBJD, SUM(AR.B
-13ys8ux8xvrbm insert into sys.wri$_optstat_o
-381t19fqhxdgp MERGE /*+ dynamic_sampling(ST
-3axxxnjp5jjwj delete from ind_stats$ where o
-cnphq355f5rah DECLARE job BINARY_INTEGER :=
-37g281wz56rv3 insert into sys.wri$_optstat_h
-4y1y43113gv8f delete from histgrm$ where obj
-6wrwqq7jkmv3w INSERT INTO WRI$_HEATMAP_TOPN_
-7sx5p1ug5ag12 SELECT SPARE4 FROM SYS.OPTSTAT
-f47hz4fd4yyx8  SELECT sqlset_row(sql_id, for
-7hu2k3a31b6j7 insert into histgrm$(obj#,intc
-3qkhfbf2kyvhk SELECT POS+1 POS, VAL, NONNULL
-gsfnqdfcvy33q delete from superobj$ where su
-6qg99cfg26kwb SELECT COUNT(UNQ) UNQ, COUNT(P
-adzjh275fvvx4 call WWV_FLOW_WORKSHEET_API.DO
-97dmg1kjd04rc UPDATE STATS_TARGET$ ST SET ST
-axq73su80h4wq select sql_id, plan_hash_value
-07n9yv8rac2qq UPDATE ILM_RESULTS$ SET JOB_ST
-b6usrg82hwsa3 call dbms_stats.gather_databas
-6q42j0018w7t8 insert into sys.wri$_optstat_i
-3xjw1ncw5vh27 SELECT OWNER, SEGMENT_NAME, PA
-28bgqbzpa87xf       declare         policy
-74cpnuu24wmx7 SELECT TABLESPACE_ID, HEADER_F
-6mcpb06rctk0x call dbms_space.auto_space_adv
-14qzpax8518uk SELECT /*+ ordered use_nl(o c
-130dvvr5s8bgn select obj#, dataobj#, part#,
-7mgr3uwydqq8j       select decode(open_mode,
-5t7dh3thzzrfh       begin         dbms_rcvm
-ba3m1hr5zy5q0 /* SQL Analyze(1) */ select /*
-3y9bat7nwcjy5 SELECT ELAPSED_TIME FROM DBA_S
-84cdm4tn4qk66 BEGIN    dbms_stats_internal.p
-7zfqkasu7cgvy select /*+  no_parallel_index(
-231cqwr9u57s0 insert into  WRH$_IOSTAT_DETAI
-1qag8bk39f2um /* SQL Analyze(198,1) */ /* SQ
-5183s2x0hj4zs /* SQL Analyze(1157,1) */ /* S
-2xn8yx0uz75fm SELECT S.SNAP_ID, S.BEGIN_INTE
-26wdmuqwqmmpa SELECT count(*) FROM sys.wri$_
-8y75j6mh081jh delete /*+ dynamic_sampling(4)
-8zc85a8249x81 update obj$ set obj#=:4, type#
-a51991cqqyak6 /* SQL Analyze(1) */ select /*
-dzxp4mguxfmzr SELECT count(*) FROM sys.wri$_
-9sa4fhxz32vtp SELECT count(*) FROM sys.wri$_
-1sjp86r761x4b SELECT COUNT(*) FROM (SELECT *
-4xa0fqp84dda2 SELECT count(*) FROM sys.wri$_
-8wjzcrb6p6tkq SELECT count(*) FROM sys.wri$_
-a1zm097zca8qg /* SQL Analyze(1) */ select /*
-45h233mys5n3s   UPDATE  wrh$_seg_stat_obj  o
-bf7tbka73w96a /* SQL Analyze(1) */ select /*
-
-99 rows selected.
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/407027/oracle-replace-function-isnt-handling-carriage-returns-line-feeds&quot; href=&quot;https://stackoverflow.com/questions/407027/oracle-replace-function-isnt-handling-carriage-returns-line-feeds&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/407027/oracle-replace-function-isnt-handling-carriage-returns-line-feeds&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQL Fundamentals</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bformat%20SQL_TEXT%20to%20one%20line%5D%5D</link>
-<pubDate>Wed, 06 Jun 2018 01:53:00 GMT</pubDate>
 
 </item>
 </channel>
