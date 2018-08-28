@@ -6,45 +6,329 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 YourName</copyright>
-<pubDate>Tue, 21 Aug 2018 18:36:09 GMT</pubDate>
-<lastBuildDate>Tue, 21 Aug 2018 18:36:09 GMT</lastBuildDate>
+<pubDate>Tue, 28 Aug 2018 16:22:47 GMT</pubDate>
+<lastBuildDate>Tue, 28 Aug 2018 16:22:47 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
-<title>stats CONCURRENT, concurrent + auto degree</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&quot; href=&quot;http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&quot; href=&quot;https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&quot; href=&quot;https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&lt;/a&gt;&lt;br&gt;FAQ: Gathering Concurrent Statistics Using &lt;a tiddlylink=&quot;DBMS_STATS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_STATS&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_STATS&quot; class=&quot;externalLink null&quot;&gt;DBMS_STATS&lt;/a&gt; Frequently Asked Questions [ID 1555451.1]&lt;br&gt;&lt;br&gt;concurrent + auto degree &lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&quot; href=&quot;https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&lt;/a&gt;</description>
-<category>stats gathering</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bstats%20CONCURRENT%2C%20concurrent%20%2B%20auto%20degree%5D%5D</link>
-<pubDate>Tue, 21 Aug 2018 18:36:07 GMT</pubDate>
+<title>sqoop benchmarking</title>
+<description>&lt;br&gt;&lt;h1&gt; my notes on sqoop benchmarking&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; href=&quot;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;test cases&lt;br&gt;40 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;40 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;&lt;/blockquote&gt;</description>
+<category>sqoop</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20benchmarking%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 16:22:45 GMT</pubDate>
 
 </item>
 <item>
-<title>parallel execution of pl/sql function</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&quot; href=&quot;http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&quot; class=&quot;externalLink&quot;&gt;http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&lt;/a&gt;</description>
-<category>SQL Rewrite/Refactoring</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bparallel%20execution%20of%20pl%2Fsql%20function%5D%5D</link>
-<pubDate>Tue, 21 Aug 2018 18:34:00 GMT</pubDate>
+<title>sqoop performance tuning</title>
+<description>&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; href=&quot;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&lt;/a&gt;</description>
+<category>sqoop</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20performance%20tuning%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 16:21:00 GMT</pubDate>
 
 </item>
 <item>
-<title>Manic Time</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&quot; href=&quot;http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&quot; class=&quot;externalLink&quot;&gt;http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; manic time on mac&lt;/h1&gt;&lt;h2&gt; install the server &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.manictime.com/Teams/How-To-Install-linux-mac&quot; href=&quot;https://www.manictime.com/Teams/How-To-Install-linux-mac&quot; class=&quot;externalLink&quot;&gt;https://www.manictime.com/Teams/How-To-Install-linux-mac&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&quot; href=&quot;http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&quot; class=&quot;externalLink&quot;&gt;http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&lt;/a&gt;&lt;br&gt;&lt;h2&gt; then install the mac client &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.manictime.com/mac/download&quot; href=&quot;https://www.manictime.com/mac/download&quot; class=&quot;externalLink&quot;&gt;https://www.manictime.com/mac/download&lt;/a&gt;</description>
-<category>GTD Tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BManic%20Time%5D%5D</link>
-<pubDate>Tue, 21 Aug 2018 04:12:00 GMT</pubDate>
+<title>sqoop with oraoop, linkedin DataBus</title>
+<description>sqoop 1.4.5 with oraoop integrated: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; href=&quot;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; class=&quot;externalLink&quot;&gt;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&lt;/a&gt;&lt;br&gt;&lt;br&gt;As per Tanel (&lt;a tiddlylink=&quot;CCd&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CCd&quot; href=&quot;http://karlarao.tiddlyspot.com#CCd&quot; class=&quot;externalLink null&quot;&gt;CCd&lt;/a&gt;)&lt;br&gt;The &lt;a tiddlylink=&quot;LinkedIn&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#LinkedIn&quot; href=&quot;http://karlarao.tiddlyspot.com#LinkedIn&quot; class=&quot;externalLink null&quot;&gt;LinkedIn&lt;/a&gt; project name is &lt;a tiddlylink=&quot;DataBus&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataBus&quot; href=&quot;http://karlarao.tiddlyspot.com#DataBus&quot; class=&quot;externalLink null&quot;&gt;DataBus&lt;/a&gt;&lt;br&gt;Uses &lt;a tiddlylink=&quot;ORA_ROWSCN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; class=&quot;externalLink null&quot;&gt;ORA_ROWSCN&lt;/a&gt; for incremental extraction&lt;br&gt;Among other stuff that it does&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; href=&quot;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; class=&quot;externalLink&quot;&gt;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>sqoop</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20with%20oraoop%2C%20linkedin%20DataBus%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 16:20:40 GMT</pubDate>
 
 </item>
 <item>
-<title>Oracle ACE</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apex.oracle.com/odc_activity&quot; href=&quot;https://apex.oracle.com/odc_activity&quot; class=&quot;externalLink&quot;&gt;https://apex.oracle.com/odc_activity&lt;/a&gt;  &lt;br&gt;.&lt;br&gt;..&lt;br&gt;...&lt;br&gt;....</description>
-<category>OracleCommunity</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20ACE%5D%5D</link>
-<pubDate>Mon, 20 Aug 2018 22:28:00 GMT</pubDate>
+<title>sqoop</title>
+<description></description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#sqoop</link>
+<pubDate>Tue, 28 Aug 2018 16:20:29 GMT</pubDate>
+
+</item>
+<item>
+<title>python installation</title>
+<description>&lt;h1&gt; current &lt;/h1&gt;&lt;br&gt;&lt;h2&gt; mac &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/donnemartin/gitsome&quot; href=&quot;https://github.com/donnemartin/gitsome&quot; class=&quot;externalLink&quot;&gt;https://github.com/donnemartin/gitsome&lt;/a&gt;&lt;br&gt;see pyenv to install different versions of python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&quot; href=&quot;https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&quot; class=&quot;externalLink&quot;&gt;https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;  417  xcode-select --install
+  418  pyenv install 3.5.0
+  419  pyenv versions
+  420  pyenv local 3.5.0
+  421  python -v
+  422  python --version
+  423  cd 
+  424  cat .bash_profile
+  425  cat .bash_profile.bak 
+  426  which python3
+  427  pyenv version
+  428  pyenv local 3.5.0
+  429  python
+  430  PATH=&quot;~/.pyenv/versions/2.7.10/bin:${PATH}&quot;
+  431  which python
+  432  python
+  433  PATH=&quot;~/.pyenv/versions/3.5.0/bin:${PATH}&quot;
+  434  python
+  435  pip3
+  436  pip3 install gitsome
+  437  gh configure
+  438  gh feed
+  439  gh feed karlarao -p
+  440  gh notifications
+  441  gh starred &quot;oracle&quot;
+  442  gh search-repos &quot;created:&amp;gt;=2017-01-01 user:karlarao&quot; 
+  456  echo -e 'if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n  eval &quot;$(pyenv init -)&quot;\nfi' &amp;gt;&amp;gt; ~/.bash_profile
+  457  cat .bash_profile
+&lt;/pre&gt;&lt;br&gt;then fix the matplotlibrc&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/21784641/installation-issue-with-matplotlib-python&quot; href=&quot;https://stackoverflow.com/questions/21784641/installation-issue-with-matplotlib-python&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/21784641/installation-issue-with-matplotlib-python&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://markhneedham.com/blog/2018/05/04/python-runtime-error-osx-matplotlib-not-installed-as-framework-mac/&quot; href=&quot;https://markhneedham.com/blog/2018/05/04/python-runtime-error-osx-matplotlib-not-installed-as-framework-mac/&quot; class=&quot;externalLink&quot;&gt;https://markhneedham.com/blog/2018/05/04/python-runtime-error-osx-matplotlib-not-installed-as-framework-mac/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;  466  cat ~/.matplotlib/matplotlibrc
+  467  vi cat ~/.matplotlib/matplotlibrc
+  468  vi ~/.matplotlib/matplotlibrc
+  469  cat ~/.matplotlib/matplotlibrc
+  470  rm ~/.matplotlib/matplotlibrc
+
+# create this file 
+cat ~/.matplotlib/matplotlibrc
+backend: TkAgg
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; windows &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://winpython.github.io&quot; href=&quot;https://winpython.github.io&quot; class=&quot;externalLink&quot;&gt;https://winpython.github.io&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; previous &lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://python.org/download/releases/3.1.2/&quot; href=&quot;http://python.org/download/releases/3.1.2/&quot; class=&quot;externalLink&quot;&gt;http://python.org/download/releases/3.1.2/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;on linux&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://love-python.blogspot.com/2008/03/install-idle-in-linux.html&quot; href=&quot;http://love-python.blogspot.com/2008/03/install-idle-in-linux.html&quot; class=&quot;externalLink&quot;&gt;http://love-python.blogspot.com/2008/03/install-idle-in-linux.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.velocityreviews.com/forums/t359686-configuring-idle-on-linux.html&quot; href=&quot;http://www.velocityreviews.com/forums/t359686-configuring-idle-on-linux.html&quot; class=&quot;externalLink&quot;&gt;http://www.velocityreviews.com/forums/t359686-configuring-idle-on-linux.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;on windows&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.stuartellis.eu/articles/python-development-windows/&quot; href=&quot;http://www.stuartellis.eu/articles/python-development-windows/&quot; class=&quot;externalLink&quot;&gt;http://www.stuartellis.eu/articles/python-development-windows/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.rose-hulman.edu/Class/csse/resources/Eclipse/eclipse-python-configuration.htm&quot; href=&quot;http://www.rose-hulman.edu/Class/csse/resources/Eclipse/eclipse-python-configuration.htm&quot; class=&quot;externalLink&quot;&gt;http://www.rose-hulman.edu/Class/csse/resources/Eclipse/eclipse-python-configuration.htm&lt;/a&gt;&lt;br&gt;1) install setuptools&lt;br&gt;&lt;pre&gt;http://www.python.org/download/releases/3.3.2/#id4
+https://pypi.python.org/pypi/distribute  &amp;lt;-- Distribute is a deprecated fork of the Setuptools project.
+http://pythonhosted.org/distribute/
+https://bitbucket.org/pypa/setuptools
+https://pypi.python.org/pypi/setuptools/1.1.6#windows
+https://pythonhosted.org/setuptools/easy_install.html
+&lt;/pre&gt;2) setup venv &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.python.org/dev/library/venv.html&quot; href=&quot;http://docs.python.org/dev/library/venv.html&quot; class=&quot;externalLink&quot;&gt;http://docs.python.org/dev/library/venv.html&lt;/a&gt;&lt;br&gt;3) download &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.eclipse.org/&quot; href=&quot;http://www.eclipse.org/&quot; class=&quot;externalLink&quot;&gt;http://www.eclipse.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;on mac&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.python-guide.org/en/latest/starting/install/osx/&quot; href=&quot;http://docs.python-guide.org/en/latest/starting/install/osx/&quot; class=&quot;externalLink&quot;&gt;http://docs.python-guide.org/en/latest/starting/install/osx/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jakevdp.github.io/blog/2013/02/02/setting-up-a-mac-for-python-development/&quot; href=&quot;http://jakevdp.github.io/blog/2013/02/02/setting-up-a-mac-for-python-development/&quot; class=&quot;externalLink&quot;&gt;http://jakevdp.github.io/blog/2013/02/02/setting-up-a-mac-for-python-development/&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Python</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bpython%20installation%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 15:59:00 GMT</pubDate>
+
+</item>
+<item>
+<title>R studio install mac</title>
+<description>&lt;pre&gt;  594  brew cask install 'xquartz'
+  595  brew cask install 'r-app'
+  596  r
+  597  brew cask install 'rstudio'
+&lt;/pre&gt;</description>
+<category>R studio</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BR%20studio%20install%20mac%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 15:12:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Terminator</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://software.jessies.org/terminator/#downloads&quot; href=&quot;http://software.jessies.org/terminator/#downloads&quot; class=&quot;externalLink&quot;&gt;http://software.jessies.org/terminator/#downloads&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&quot; href=&quot;http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&quot; class=&quot;externalLink&quot;&gt;http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; usage &lt;/h1&gt;&lt;blockquote&gt;&lt;br&gt;terminator - CMD+F searches text on screen&lt;br&gt;Supports regular expressions!&lt;br&gt;&lt;br&gt;When you select text with mouse, hold the option or cmd key down (don’t remember which) when you move the mouse - it switches to rectangular/block selection&lt;br&gt;&lt;br&gt;Very useful for copying pieces of output or highlighting stuff like branches in exec plans when demoing&lt;br&gt;&lt;br&gt;Also full terminal output logs are stored in .terminator/logs ...&lt;br&gt;&lt;br&gt;This has been useful a few times&lt;br&gt;&lt;br&gt;the logs don’t age out... but I’ve removed them once per year&lt;br&gt;&lt;br&gt;You can disable that too in the settings&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
+<category>LinuxBits</category>
+<link>http://karlarao.tiddlyspot.com#Terminator</link>
+<pubDate>Tue, 28 Aug 2018 14:56:00 GMT</pubDate>
+
+</item>
+<item>
+<title>not null on view</title>
+<description>&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/apex/asktom.search?tag=named-not-null-constraint&quot; href=&quot;https://asktom.oracle.com/pls/apex/asktom.search?tag=named-not-null-constraint&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/apex/asktom.search?tag=named-not-null-constraint&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dba.stackexchange.com/questions/19484/oracle-how-to-create-a-not-null-column-in-a-view&quot; href=&quot;https://dba.stackexchange.com/questions/19484/oracle-how-to-create-a-not-null-column-in-a-view&quot; class=&quot;externalLink&quot;&gt;https://dba.stackexchange.com/questions/19484/oracle-how-to-create-a-not-null-column-in-a-view&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/11097839/how-to-create-a-not-null-column-in-a-view&quot; href=&quot;https://stackoverflow.com/questions/11097839/how-to-create-a-not-null-column-in-a-view&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/11097839/how-to-create-a-not-null-column-in-a-view&lt;/a&gt;&lt;br&gt;&lt;br&gt;It's the unfortunate side effect of UNION &lt;a tiddlylink=&quot;ALLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ALLs&quot; href=&quot;http://karlarao.tiddlyspot.com#ALLs&quot; class=&quot;externalLink null&quot;&gt;ALLs&lt;/a&gt; in Oracle... complex views lose the NOT NULL flag even if underlying tables have it. Here are 2 regular tables (not even external tables) that both have a NOT NULL column:&lt;br&gt;&lt;br&gt;If I create a view on a single table only, withotu UNION ALL, the NOT NULL constraint is propagated to the view too:&lt;br&gt;&lt;br&gt;&lt;pre&gt;SQL&amp;gt; create or replace view v as select * from t1;
+
+View created.
+
+SQL&amp;gt; @desc v
+           Name                            Null?    Type
+           ------------------------------- -------- ----------------------------
+    1      A                               NOT NULL NUMBER(38)```
+&lt;/pre&gt;&lt;br&gt;the problem is on their &quot;model&quot; layer of their reports&lt;br&gt;with this behavior the cognos sees that the underlying &quot;model&quot; changed and so the reports are now failing&lt;br&gt;so if they can workaround this behavior on the cognos side that would be good&lt;br&gt;&lt;br&gt;ah, gotcha. so Cognos sees that the &quot;fingerprint&quot; of the schema/table structure has changed and doesn't let existing reports to run against the &quot;changed&quot; tables?&lt;br&gt;so would it be possible to just &quot;recompile&quot; teh cognos model or queries?&lt;br&gt;or are they cognos'es &quot;internal&quot; tables ... not just some other tables that cognos happens to query?&lt;br&gt;&lt;br&gt;yes, i don't know if there's a recompile or they need to regenerate the framework to workaround this&lt;br&gt;we can gather more info, screenshots on how this is affecting them&lt;br&gt;we can focus the troubleshooting on one table/view then let's see&lt;br&gt;yes this i suspect is cognos internal medata that points to the real oracle tables/views&lt;br&gt;i know in OBIEE you can override the model with a customer query&lt;br&gt;but i think they are looking for something with minimal change&lt;br&gt;&lt;br&gt;As we can't make the view columns NOT NULL (even external tables only started supporting not null constraints starting from Oracle 12.2), we need an alternative approach.&lt;br&gt;&lt;br&gt;I'm not a Cognos expert, but can we ask from a friendly Cognos guy if there's a way to &quot;regenerate the queries&quot; or &quot;sync the model with the schema&quot; in Cognos? I googled, found this, but not sure if this is what we'd want: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www-01.ibm.com/support/docview.wss?uid=swg21340868&quot; href=&quot;http://www-01.ibm.com/support/docview.wss?uid=swg21340868&quot; class=&quot;externalLink&quot;&gt;http://www-01.ibm.com/support/docview.wss?uid=swg21340868&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Not proposing them to manually modify all queries one by one, but whether there's a cognos Sync tool ... or perhaps some Cognos metadata export/import would generate correct queries against the &quot;new&quot; data model.&lt;br&gt;&lt;br&gt;we can check with the guy we are working with about the possible options&lt;br&gt;&lt;br&gt;If Cognos only checked constraints using SQL queries against `dba_tab_columns` or `all_tab_columns`, we could in theory create alternative ~dba_constraints~ views (in the cognos user schema) that would show `NOT NULL` in appropriate locations even for views ... But this would fall apart if Cognos actually describes a table/view and checks the nullability from there. Somewhat hacky too, but we wouldn't replace anything in the SYS schema of course, just a local `all_tab_columns` view that overrides the public synonym view that only the cognos user would see (assuming that Cognos doesn't use `SYS.` prefix).&lt;br&gt;&lt;br&gt;Still worth checking if there's a Cognos app level &quot;recompile&quot; or &quot;resync&quot; option first! (edited)&lt;br&gt;&lt;br&gt;(ignore the &quot;dba_constraints&quot; word above)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;-- the trick but this one is not going to work to trick the model 
+alter table t2 add col2nn as (CAST(col1 AS number)) NOT NULL;
+
+create view v5 as select col2nn from t2;
+create view v6 as select col1 from t2;
+
+
+create view v7 as select col1 from t1 union all select col2nn from t2;
+create view v8 as select col1 from t1 union select col2nn from t2;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;
+$ s1
+
+SQL*Plus: Release 12.1.0.2.0 Production on Mon Aug 27 17:18:43 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
+17:18:43 SYS@cdb1&amp;gt; 
+17:18:43 SYS@cdb1&amp;gt; 
+17:18:43 SYS@cdb1&amp;gt; 
+17:18:43 SYS@cdb1&amp;gt; 
+17:18:44 SYS@cdb1&amp;gt; create table t1 col1 not null;
+create table t1 col1 not null
+                *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+17:18:58 SYS@cdb1&amp;gt; create table t1 (col1 not null);
+create table t1 (col1 not null)
+                 *
+ERROR at line 1:
+ORA-02263: need to specify the datatype for this column
+
+
+17:19:12 SYS@cdb1&amp;gt; create table t1 (col1 number not null);
+
+Table created.
+
+17:19:26 SYS@cdb1&amp;gt; 
+17:19:26 SYS@cdb1&amp;gt; create table t2 (col1 number);     
+
+Table created.
+
+17:19:48 SYS@cdb1&amp;gt; desc t1
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                  NOT NULL NUMBER
+
+17:19:50 SYS@cdb1&amp;gt; desc t2
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:19:53 SYS@cdb1&amp;gt; 
+17:19:56 SYS@cdb1&amp;gt; create view v1 as select col1 from t1 union all select col1 from t2;
+
+View created.
+
+17:20:18 SYS@cdb1&amp;gt; desc v1
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:20:21 SYS@cdb1&amp;gt; create view v2 as select col1 from t1 union select col1 from t2;
+
+View created.
+
+17:20:43 SYS@cdb1&amp;gt; desc v2 
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:20:46 SYS@cdb1&amp;gt; create table t3 (col 1 number not null);
+create table t3 (col 1 number not null)
+                     *
+ERROR at line 1:
+ORA-00902: invalid datatype
+
+
+17:21:11 SYS@cdb1&amp;gt; create table t3 (col1 number not null);
+
+Table created.
+
+17:21:26 SYS@cdb1&amp;gt; create view v3 as select col1 from t1 union all from select col1 from t3;
+create view v3 as select col1 from t1 union all from select col1 from t3
+                                                *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+17:21:56 SYS@cdb1&amp;gt; create view v3 as select col1 from t1 union all select col1 from t3;
+
+View created.
+
+17:22:23 SYS@cdb1&amp;gt; desc v3
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:22:29 SYS@cdb1&amp;gt; create view v3 as select col1 from t1 union select col1 from t3;
+create view v3 as select col1 from t1 union select col1 from t3
+            *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+17:22:41 SYS@cdb1&amp;gt; create view v4 as select col1 from t1 union select col1 from t3;
+
+View created.
+
+17:22:57 SYS@cdb1&amp;gt; desc v4
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:22:59 SYS@cdb1&amp;gt; alter table t2 add col2nn as (CAST(&quot;col1&quot; AS number)) NOT NULL;
+alter table t2 add col2nn as (CAST(&quot;col1&quot; AS number)) NOT NULL
+                                   *
+ERROR at line 1:
+ORA-00904: &quot;col1&quot;: invalid identifier
+
+
+17:29:56 SYS@cdb1&amp;gt; alter table t2 add col2nn as (CAST(col1 AS number)) NOT NULL;
+
+Table altered.
+
+17:30:13 SYS@cdb1&amp;gt; create view v5 as select col2nn from t2;
+
+View created.
+
+17:30:20 SYS@cdb1&amp;gt; desc v5   
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL2NN                                                                                                                                                NOT NULL NUMBER
+
+17:30:24 SYS@cdb1&amp;gt; create view v6 as select col1 from t2;
+
+View created.
+
+17:30:40 SYS@cdb1&amp;gt; desc v6
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:30:42 SYS@cdb1&amp;gt; create view v7 as select col1 from t1 union all select col2nn from t2;
+
+View created.
+
+17:31:21 SYS@cdb1&amp;gt; desc v7
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:31:27 SYS@cdb1&amp;gt; 
+17:31:28 SYS@cdb1&amp;gt; create view v8 as select col1 from t1 union all select col2nn from t2;
+
+View created.
+
+17:32:05 SYS@cdb1&amp;gt; desc v8
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+17:32:09 SYS@cdb1&amp;gt; drop view v8;
+
+View dropped.
+
+17:32:41 SYS@cdb1&amp;gt; create view v8 as select col1 from t1 union select col2nn from t2;
+
+View created.
+
+17:32:41 SYS@cdb1&amp;gt; desc v8
+ Name                                                                                                                                                  Null?   Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
+ COL1                                                                                                                                                          NUMBER
+
+&lt;/pre&gt;</description>
+<category>null and zero</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bnot%20null%20on%20view%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 14:56:00 GMT</pubDate>
+
+</item>
+<item>
+<title>virtualenv vs pyenv</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/29950300/what-is-the-relationship-between-virtualenv-and-pyenv&quot; href=&quot;https://stackoverflow.com/questions/29950300/what-is-the-relationship-between-virtualenv-and-pyenv&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/29950300/what-is-the-relationship-between-virtualenv-and-pyenv&lt;/a&gt;</description>
+<category>python installation</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bvirtualenv%20vs%20pyenv%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 14:51:00 GMT</pubDate>
+
+</item>
+<item>
+<title>data science notebooks</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datanami.com/2016/05/04/rise-data-science-notebooks/&quot; href=&quot;https://www.datanami.com/2016/05/04/rise-data-science-notebooks/&quot; class=&quot;externalLink&quot;&gt;https://www.datanami.com/2016/05/04/rise-data-science-notebooks/&lt;/a&gt;&lt;br&gt;&lt;br&gt;notebook innovation at netflix &lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/netflix-techblog/notebook-innovation-591ee3221233&quot; href=&quot;https://medium.com/netflix-techblog/notebook-innovation-591ee3221233&quot; class=&quot;externalLink&quot;&gt;https://medium.com/netflix-techblog/notebook-innovation-591ee3221233&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;</description>
+<category>Data Science</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20science%20notebooks%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 01:48:00 GMT</pubDate>
 
 </item>
 <item>
 <title>GitHub</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' watch this first ', event)&quot;&gt; watch this first &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' read this first', event)&quot;&gt; read this first&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test accounts', event)&quot;&gt; test accounts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' official documentation, videos, and help', event)&quot;&gt; official documentation, videos, and help&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' version control format', event)&quot;&gt; version control format&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO - general workflow', event)&quot;&gt; HOWTO - general workflow&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Basic commands and getting started', event)&quot;&gt; Basic commands and getting started&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Integration with Github.com', event)&quot;&gt; Integration with Github.com&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github pages', event)&quot;&gt; github pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' render HTML file in github without git pages', event)&quot;&gt; render HTML file in github without git pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' track a zipfile based script repo, useful for blogs or sites', event)&quot;&gt; track a zipfile based script repo, useful for blogs or sites&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Branch, Merge, Clone, Fork', event)&quot;&gt; Branch, Merge, Clone, Fork&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Delete files on git permanently', event)&quot;&gt; Delete files on git permanently&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' delete history ', event)&quot;&gt; delete history &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Deleting a repository', event)&quot;&gt; Deleting a repository&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' rebase ', event)&quot;&gt; rebase &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' forking ', event)&quot;&gt; forking &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' pull request ', event)&quot;&gt; pull request &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' team collaboration ', event)&quot;&gt; team collaboration &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git on dropbox conflicts', event)&quot;&gt; git on dropbox conflicts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references', event)&quot;&gt; other references&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git merge upstream ', event)&quot;&gt; git merge upstream &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git - contributing to a repo or project', event)&quot;&gt; git - contributing to a repo or project&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' fork and pull model (ideal for large projects)', event)&quot;&gt; fork and pull model (ideal for large projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' direct clone model / collaboration model (ideal for small projects)', event)&quot;&gt; direct clone model / collaboration model (ideal for small projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git revert / fix a damaging commit ', event)&quot;&gt; git revert / fix a damaging commit &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Equivalent of “svn checkout” for git', event)&quot;&gt; Equivalent of “svn checkout” for git&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO rename a repo ', event)&quot;&gt; HOWTO rename a repo &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github acquisition ', event)&quot;&gt; github acquisition &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' awesome github clients ', event)&quot;&gt; awesome github clients &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gitsome', event)&quot;&gt; gitsome&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gist', event)&quot;&gt; gist&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; watch this first &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.git-tower.com/learn/git/videos&quot; href=&quot;http://www.git-tower.com/learn/git/videos&quot; class=&quot;externalLink&quot;&gt;http://www.git-tower.com/learn/git/videos&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; read this first&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://nvie.com/posts/a-successful-git-branching-model/&quot; href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot; class=&quot;externalLink&quot;&gt;http://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test accounts&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;emberdev1&lt;br&gt;emberdev2&lt;br&gt;emberdevgroup&lt;br&gt;&lt;br&gt;&lt;h1&gt; official documentation, videos, and help&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/activities/hello-world/&quot; href=&quot;https://guides.github.com/activities/hello-world/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/activities/hello-world/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/&quot; href=&quot;https://guides.github.com/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/setting-up-teams/&quot; href=&quot;https://help.github.com/articles/setting-up-teams/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/setting-up-teams/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/githubguides&quot; href=&quot;https://www.youtube.com/githubguides&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/githubguides&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/&quot; href=&quot;https://help.github.com/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/features/mastering-markdown/&quot; href=&quot;https://guides.github.com/features/mastering-markdown/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/features/mastering-markdown/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; version control format&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; href=&quot;http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/book/en/v2/Git-Basics-Tagging&lt;/a&gt;&lt;br&gt;Semantic Versioning 2.0.0 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://semver.org/&quot; href=&quot;http://semver.org/&quot; class=&quot;externalLink&quot;&gt;http://semver.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Awesome github walkthrough - video series&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://308tube.com/youtube/github/&quot; href=&quot;http://308tube.com/youtube/github/&quot; class=&quot;externalLink&quot;&gt;http://308tube.com/youtube/github/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/karlarao&quot; href=&quot;https://github.com/karlarao&quot; class=&quot;externalLink&quot;&gt;https://github.com/karlarao&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/download/win&quot; href=&quot;http://git-scm.com/download/win&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/download/win&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; href=&quot;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; class=&quot;externalLink&quot;&gt;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&lt;/a&gt;		&lt;br&gt;&lt;br&gt;&lt;h1&gt; HOWTO - general workflow&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;https://lh5.googleusercontent.com/-9Sx7XCA7jQ8/UyKDQRA3ngI/AAAAAAAACJA/fzmAgpCi6xU/w2048-h2048-no/github_basic_workflow.png&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Basic commands and getting started&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;strong&gt;Git Data Flow&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;1) Current Working Directory	&amp;lt;-- git init &amp;lt;project&amp;gt;
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' watch this first ', event)&quot;&gt; watch this first &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' read this first', event)&quot;&gt; read this first&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test accounts', event)&quot;&gt; test accounts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' official documentation, videos, and help', event)&quot;&gt; official documentation, videos, and help&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' version control format', event)&quot;&gt; version control format&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO - general workflow', event)&quot;&gt; HOWTO - general workflow&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Basic commands and getting started', event)&quot;&gt; Basic commands and getting started&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Integration with Github.com', event)&quot;&gt; Integration with Github.com&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github pages', event)&quot;&gt; github pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' render HTML file in github without git pages', event)&quot;&gt; render HTML file in github without git pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' track a zipfile based script repo, useful for blogs or sites', event)&quot;&gt; track a zipfile based script repo, useful for blogs or sites&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Branch, Merge, Clone, Fork', event)&quot;&gt; Branch, Merge, Clone, Fork&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Delete files on git permanently', event)&quot;&gt; Delete files on git permanently&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' delete history ', event)&quot;&gt; delete history &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Deleting a repository', event)&quot;&gt; Deleting a repository&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' rebase ', event)&quot;&gt; rebase &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' forking ', event)&quot;&gt; forking &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' pull request ', event)&quot;&gt; pull request &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' team collaboration ', event)&quot;&gt; team collaboration &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git on dropbox conflicts', event)&quot;&gt; git on dropbox conflicts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references', event)&quot;&gt; other references&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git merge upstream ', event)&quot;&gt; git merge upstream &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git - contributing to a repo or project', event)&quot;&gt; git - contributing to a repo or project&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' fork and pull model (ideal for large projects)', event)&quot;&gt; fork and pull model (ideal for large projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' direct clone model / collaboration model (ideal for small projects)', event)&quot;&gt; direct clone model / collaboration model (ideal for small projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git revert / fix a damaging commit ', event)&quot;&gt; git revert / fix a damaging commit &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Equivalent of “svn checkout” for git', event)&quot;&gt; Equivalent of “svn checkout” for git&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO rename a repo ', event)&quot;&gt; HOWTO rename a repo &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github acquisition ', event)&quot;&gt; github acquisition &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' awesome github clients ', event)&quot;&gt; awesome github clients &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gitsome', event)&quot;&gt; gitsome&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gist', event)&quot;&gt; gist&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github flagged account', event)&quot;&gt; github flagged account&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; watch this first &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.git-tower.com/learn/git/videos&quot; href=&quot;http://www.git-tower.com/learn/git/videos&quot; class=&quot;externalLink&quot;&gt;http://www.git-tower.com/learn/git/videos&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; read this first&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://nvie.com/posts/a-successful-git-branching-model/&quot; href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot; class=&quot;externalLink&quot;&gt;http://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test accounts&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;emberdev1&lt;br&gt;emberdev2&lt;br&gt;emberdevgroup&lt;br&gt;&lt;br&gt;&lt;h1&gt; official documentation, videos, and help&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/activities/hello-world/&quot; href=&quot;https://guides.github.com/activities/hello-world/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/activities/hello-world/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/&quot; href=&quot;https://guides.github.com/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/setting-up-teams/&quot; href=&quot;https://help.github.com/articles/setting-up-teams/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/setting-up-teams/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/githubguides&quot; href=&quot;https://www.youtube.com/githubguides&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/githubguides&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/&quot; href=&quot;https://help.github.com/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/features/mastering-markdown/&quot; href=&quot;https://guides.github.com/features/mastering-markdown/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/features/mastering-markdown/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; version control format&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; href=&quot;http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/book/en/v2/Git-Basics-Tagging&lt;/a&gt;&lt;br&gt;Semantic Versioning 2.0.0 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://semver.org/&quot; href=&quot;http://semver.org/&quot; class=&quot;externalLink&quot;&gt;http://semver.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Awesome github walkthrough - video series&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://308tube.com/youtube/github/&quot; href=&quot;http://308tube.com/youtube/github/&quot; class=&quot;externalLink&quot;&gt;http://308tube.com/youtube/github/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/karlarao&quot; href=&quot;https://github.com/karlarao&quot; class=&quot;externalLink&quot;&gt;https://github.com/karlarao&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/download/win&quot; href=&quot;http://git-scm.com/download/win&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/download/win&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; href=&quot;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; class=&quot;externalLink&quot;&gt;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&lt;/a&gt;		&lt;br&gt;&lt;br&gt;&lt;h1&gt; HOWTO - general workflow&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;%20https://lh5.googleusercontent.com/-9Sx7XCA7jQ8/UyKDQRA3ngI/AAAAAAAACJA/fzmAgpCi6xU/w2048-h2048-no/github_basic_workflow.png%20&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Basic commands and getting started&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;strong&gt;Git Data Flow&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;1) Current Working Directory	&amp;lt;-- git init &amp;lt;project&amp;gt;
 2) Index (cache)				&amp;lt;-- git add .
 3) Local Repository				&amp;lt;-- git commit -m &quot;&amp;lt;comment&amp;gt;&quot;
 4) Remote Repository	
@@ -193,10 +477,42 @@ for row in $(echo &quot;${sample}&quot; | jq -r '.[] | @base64'); do
 done
 foo
 bar
-&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&quot; href=&quot;https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&quot; href=&quot;https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; github flagged account&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://webapps.stackexchange.com/questions/105956/my-github-account-has-been-suddenly-flagged-and-hidden-from-public-view-how&quot; href=&quot;https://webapps.stackexchange.com/questions/105956/my-github-account-has-been-suddenly-flagged-and-hidden-from-public-view-how&quot; class=&quot;externalLink&quot;&gt;https://webapps.stackexchange.com/questions/105956/my-github-account-has-been-suddenly-flagged-and-hidden-from-public-view-how&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.community/t5/How-to-use-Git-and-GitHub/My-account-is-flagged/td-p/221&quot; href=&quot;https://github.community/t5/How-to-use-Git-and-GitHub/My-account-is-flagged/td-p/221&quot; class=&quot;externalLink&quot;&gt;https://github.community/t5/How-to-use-Git-and-GitHub/My-account-is-flagged/td-p/221&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/41344476/github-account-disabled-for-posting-gists&quot; href=&quot;https://stackoverflow.com/questions/41344476/github-account-disabled-for-posting-gists&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/41344476/github-account-disabled-for-posting-gists&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://a-habakiri.hateblo.jp/entry/20161208accountflagged&quot; href=&quot;http://a-habakiri.hateblo.jp/entry/20161208accountflagged&quot; class=&quot;externalLink&quot;&gt;http://a-habakiri.hateblo.jp/entry/20161208accountflagged&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>Version Control Software - VCS</category>
 <link>http://karlarao.tiddlyspot.com#GitHub</link>
-<pubDate>Mon, 20 Aug 2018 21:54:00 GMT</pubDate>
+<pubDate>Wed, 22 Aug 2018 14:42:00 GMT</pubDate>
+
+</item>
+<item>
+<title>stats CONCURRENT, concurrent + auto degree</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&quot; href=&quot;http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&quot; href=&quot;https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&quot; href=&quot;https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&lt;/a&gt;&lt;br&gt;FAQ: Gathering Concurrent Statistics Using &lt;a tiddlylink=&quot;DBMS_STATS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_STATS&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_STATS&quot; class=&quot;externalLink null&quot;&gt;DBMS_STATS&lt;/a&gt; Frequently Asked Questions [ID 1555451.1]&lt;br&gt;&lt;br&gt;concurrent + auto degree &lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&quot; href=&quot;https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&lt;/a&gt;</description>
+<category>stats gathering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bstats%20CONCURRENT%2C%20concurrent%20%2B%20auto%20degree%5D%5D</link>
+<pubDate>Tue, 21 Aug 2018 18:36:00 GMT</pubDate>
+
+</item>
+<item>
+<title>parallel execution of pl/sql function</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&quot; href=&quot;http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&quot; class=&quot;externalLink&quot;&gt;http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&lt;/a&gt;</description>
+<category>SQL Rewrite/Refactoring</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bparallel%20execution%20of%20pl%2Fsql%20function%5D%5D</link>
+<pubDate>Tue, 21 Aug 2018 18:34:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Manic Time</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&quot; href=&quot;http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&quot; class=&quot;externalLink&quot;&gt;http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; manic time on mac&lt;/h1&gt;&lt;h2&gt; install the server &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.manictime.com/Teams/How-To-Install-linux-mac&quot; href=&quot;https://www.manictime.com/Teams/How-To-Install-linux-mac&quot; class=&quot;externalLink&quot;&gt;https://www.manictime.com/Teams/How-To-Install-linux-mac&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&quot; href=&quot;http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&quot; class=&quot;externalLink&quot;&gt;http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&lt;/a&gt;&lt;br&gt;&lt;h2&gt; then install the mac client &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.manictime.com/mac/download&quot; href=&quot;https://www.manictime.com/mac/download&quot; class=&quot;externalLink&quot;&gt;https://www.manictime.com/mac/download&lt;/a&gt;</description>
+<category>GTD Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BManic%20Time%5D%5D</link>
+<pubDate>Tue, 21 Aug 2018 04:12:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Oracle ACE</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apex.oracle.com/odc_activity&quot; href=&quot;https://apex.oracle.com/odc_activity&quot; class=&quot;externalLink&quot;&gt;https://apex.oracle.com/odc_activity&lt;/a&gt;  &lt;br&gt;.&lt;br&gt;..&lt;br&gt;...&lt;br&gt;....</description>
+<category>OracleCommunity</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20ACE%5D%5D</link>
+<pubDate>Mon, 20 Aug 2018 22:28:00 GMT</pubDate>
 
 </item>
 <item>
@@ -277,657 +593,6 @@ Delays come from:
 <category>SQL Tuning</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20Rewrite%2FRefactoring%5D%5D</link>
 <pubDate>Thu, 09 Aug 2018 16:16:00 GMT</pubDate>
-
-</item>
-<item>
-<title>rewriting MAX on WHERE</title>
-<description>&lt;pre&gt;# BEFORE 
-
-VAR BAN VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-
-EXEC :BAN := '302034860';
-EXEC :CHG_ACTV_KEY := '';
-EXEC :CHG_ACTV_KEY := '4937';
-
-
-   select /*+ monitor */
-    b.ban,
-    b.cycle_run_month,
-    b.cycle_run_year
-   from dim.delta_bill_pull_tbl_glt b,
-        ( select
-           ban,
-           actv_bill_seq_no
-          from dim.delta_charge_pull_tbl_glt
-          where ban = (select to_ban
-                       from ( select ban, max(ent_seq_no) ent_seq_no
-                              from dim.delta_charge_pull_tbl_glt
-                              where ban = :ban and to_ent_seq_no = :chg_actv_key
-                              group by ban ) a,
-                            dim.delta_charge_pull_tbl_glt d
-                       where a.ban = d.ban
-                         and a.ent_seq_no = d.ent_seq_no)
-             and ent_seq_no = :chg_actv_key ) c
-    where
-          b.ban = c.ban
-      and b.bill_seq_no = c.actv_bill_seq_no
-      and rownum=1
-/
-
-
-# AFTER 
-VAR BAN VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-
-EXEC :BAN := '302034860';
-EXEC :CHG_ACTV_KEY := '';
-EXEC :CHG_ACTV_KEY := '4937';
-
-
-   select /*+ monitor */
-    b.ban,
-    b.cycle_run_month,
-    b.cycle_run_year
-   from dim.delta_bill_pull_tbl_glt b,
-        ( select
-           ban,
-           actv_bill_seq_no
-          from dim.delta_charge_pull_tbl_glt
-          where ban = (select d.to_ban
-                      from dim.delta_charge_pull_tbl_glt d
-                      where d.ban = :ban
-                      and   d.ent_seq_no = (select max(ent_seq_no)
-                                            from   dim.delta_charge_pull_tbl_glt
-                                            where  ban = :ban
-                                            and    to_ent_seq_no = :chg_actv_key))
-             and ent_seq_no = :chg_actv_key ) c
-    where
-          b.ban = c.ban
-      and b.bill_seq_no = c.actv_bill_seq_no
-      and rownum=1
-/
-
-
-
-# another example is split this into two SQLs 
-
-
-
-&lt;/pre&gt;</description>
-<category>my rewrite examples</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Brewriting%20MAX%20on%20WHERE%5D%5D</link>
-<pubDate>Thu, 09 Aug 2018 16:01:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Security</title>
-<description>&lt;ul&gt;&lt;li&gt; HIPAA&lt;/li&gt;&lt;li&gt; FIPPS &lt;/li&gt;&lt;li&gt; COPPA&lt;/li&gt;&lt;li&gt; GDPR&lt;/li&gt;&lt;li&gt; CPNI &lt;/li&gt;&lt;li&gt; Data Breaches &lt;/li&gt;&lt;li&gt; Reporting &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Oracle</category>
-<link>http://karlarao.tiddlyspot.com#Security</link>
-<pubDate>Mon, 06 Aug 2018 15:58:00 GMT</pubDate>
-
-</item>
-<item>
-<title>PerformanceTools-OS</title>
-<description>&lt;h1&gt; System level OS perf monitoring&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; kSar - a SAR grapher - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://sourceforge.net/projects/ksar/&quot; href=&quot;http://sourceforge.net/projects/ksar/&quot; class=&quot;externalLink&quot;&gt;http://sourceforge.net/projects/ksar/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;OSWatcher&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OSWatcher&quot; href=&quot;http://karlarao.tiddlyspot.com#OSWatcher&quot; class=&quot;externalLink null&quot;&gt;OSWatcher&lt;/a&gt; (Oracle OS Watcher) - Reports CPU, RAM and Network stress, and is a new alternative for monitoring Oracle servers (includes session level ps)&lt;/li&gt;&lt;li&gt; Oracle Cluster Health Monitor - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/UZqS5&quot; href=&quot;http://goo.gl/UZqS5&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/UZqS5&lt;/a&gt; (includes session level ps)&lt;/li&gt;&lt;li&gt; nmon&lt;/li&gt;&lt;li&gt; Dynamic Tracing Tools - &lt;strong&gt;&lt;a tiddlylink=&quot;DTrace&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DTrace&quot; href=&quot;http://karlarao.tiddlyspot.com#DTrace&quot; class=&quot;externalLink null&quot;&gt;DTrace&lt;/a&gt;&lt;/strong&gt; - Solaris,Linux   &lt;strong&gt;&lt;a tiddlylink=&quot;ProbeVue&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ProbeVue&quot; href=&quot;http://karlarao.tiddlyspot.com#ProbeVue&quot; class=&quot;externalLink null&quot;&gt;ProbeVue&lt;/a&gt;&lt;/strong&gt; - AIX&lt;/li&gt;&lt;li&gt; top, vmstat, mpstat - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://smartos.org/2011/05/04/video-the-gregg-performance-series/&quot; href=&quot;http://smartos.org/2011/05/04/video-the-gregg-performance-series/&quot; class=&quot;externalLink&quot;&gt;http://smartos.org/2011/05/04/video-the-gregg-performance-series/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; turbostat.c &lt;a target=&quot;_blank&quot; title=&quot;External link to http://developer.amd.com/Assets/51803A_OpteronLinuxTuningGuide_SCREEN.pdf&quot; href=&quot;http://developer.amd.com/Assets/51803A_OpteronLinuxTuningGuide_SCREEN.pdf&quot; class=&quot;externalLink&quot;&gt;http://developer.amd.com/Assets/51803A_OpteronLinuxTuningGuide_SCREEN.pdf&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://manpages.ubuntu.com/manpages/precise/man8/turbostat.8.html&quot; href=&quot;http://manpages.ubuntu.com/manpages/precise/man8/turbostat.8.html&quot; class=&quot;externalLink&quot;&gt;http://manpages.ubuntu.com/manpages/precise/man8/turbostat.8.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://lxr.free-electrons.com/source/tools/power/x86/turbostat/&quot; href=&quot;http://lxr.free-electrons.com/source/tools/power/x86/turbostat/&quot; class=&quot;externalLink&quot;&gt;http://lxr.free-electrons.com/source/tools/power/x86/turbostat/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://stuff.mit.edu/afs/sipb/contrib/linux/tools/power/x86/turbostat/turbostat.c&quot; href=&quot;http://stuff.mit.edu/afs/sipb/contrib/linux/tools/power/x86/turbostat/turbostat.c&quot; class=&quot;externalLink&quot;&gt;http://stuff.mit.edu/afs/sipb/contrib/linux/tools/power/x86/turbostat/turbostat.c&lt;/a&gt;&lt;/li&gt;&lt;li&gt; vm performance and CPU contention &lt;a tiddlylink=&quot;esxtop, vmstat, top, mpstat steal&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#esxtop, vmstat, top, mpstat steal&quot; href=&quot;http://karlarao.tiddlyspot.com#esxtop,%20vmstat,%20top,%20mpstat%20steal&quot; class=&quot;externalLink null&quot;&gt;esxtop, vmstat, top, mpstat steal&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; Session level OS perf monitoring&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; iotop &lt;a target=&quot;_blank&quot; title=&quot;External link to http://guichaz.free.fr/iotop/&quot; href=&quot;http://guichaz.free.fr/iotop/&quot; class=&quot;externalLink&quot;&gt;http://guichaz.free.fr/iotop/&lt;/a&gt; , for RHEL &lt;a target=&quot;_blank&quot; title=&quot;External link to http://people.redhat.com/jolsa/iotop/&quot; href=&quot;http://people.redhat.com/jolsa/iotop/&quot; class=&quot;externalLink&quot;&gt;http://people.redhat.com/jolsa/iotop/&lt;/a&gt; , topio Solaris &lt;a target=&quot;_blank&quot; title=&quot;External link to http://yong321.freeshell.org/freeware/pio.html&quot; href=&quot;http://yong321.freeshell.org/freeware/pio.html&quot; class=&quot;externalLink&quot;&gt;http://yong321.freeshell.org/freeware/pio.html&lt;/a&gt;&lt;/li&gt;&lt;li&gt; atop alternative to iotop on &lt;a tiddlylink=&quot;RHEL4&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#RHEL4&quot; href=&quot;http://karlarao.tiddlyspot.com#RHEL4&quot; class=&quot;externalLink null&quot;&gt;RHEL4&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.atoptool.nl/index.php&quot; href=&quot;http://www.atoptool.nl/index.php&quot; class=&quot;externalLink&quot;&gt;http://www.atoptool.nl/index.php&lt;/a&gt;&lt;/li&gt;&lt;li&gt; collectl &lt;a target=&quot;_blank&quot; title=&quot;External link to http://collectl.sourceforge.net/&quot; href=&quot;http://collectl.sourceforge.net/&quot; class=&quot;externalLink&quot;&gt;http://collectl.sourceforge.net/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://collectl-utils.sourceforge.net/&quot; href=&quot;http://collectl-utils.sourceforge.net/&quot; class=&quot;externalLink&quot;&gt;http://collectl-utils.sourceforge.net/&lt;/a&gt; , detailed process accounting (you can also do ala &lt;strong&gt;iotop&lt;/strong&gt;) &lt;a target=&quot;_blank&quot; title=&quot;External link to http://collectl.sourceforge.net/Process.html&quot; href=&quot;http://collectl.sourceforge.net/Process.html&quot; class=&quot;externalLink&quot;&gt;http://collectl.sourceforge.net/Process.html&lt;/a&gt;&lt;/li&gt;&lt;li&gt; prstat Solaris&lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;Memory per process accounting: collectl -sZ -i:1 --procopts m
-IO per process accounting: collectl -sZ -i:1
-&lt;/pre&gt;&lt;ul&gt;&lt;li&gt; iodump &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.xaprb.com/blog/2009/08/23/how-to-find-per-process-io-statistics-on-linux/&quot; href=&quot;http://www.xaprb.com/blog/2009/08/23/how-to-find-per-process-io-statistics-on-linux/&quot; class=&quot;externalLink&quot;&gt;http://www.xaprb.com/blog/2009/08/23/how-to-find-per-process-io-statistics-on-linux/&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; I'm a bit dubious about this..done a test case comparing to collectl.. it can't get the top processes doing the io.. related links: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/NwUcs&quot; href=&quot;http://goo.gl/NwUcs&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/NwUcs&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/zVEFE&quot; href=&quot;http://goo.gl/zVEFE&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/zVEFE&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://goo.gl/eQg3d&quot; href=&quot;http://goo.gl/eQg3d&quot; class=&quot;externalLink&quot;&gt;http://goo.gl/eQg3d&lt;/a&gt;&lt;/li&gt;&lt;li&gt; perf top &lt;a target=&quot;_blank&quot; title=&quot;External link to http://anton.ozlabs.org/blog/2009/09/04/using-performance-counters-for-linux/&quot; href=&quot;http://anton.ozlabs.org/blog/2009/09/04/using-performance-counters-for-linux/&quot; class=&quot;externalLink&quot;&gt;http://anton.ozlabs.org/blog/2009/09/04/using-performance-counters-for-linux/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; kernel profiling tool for linux, much like dtrace probe on syscall, &lt;strong&gt;wiki&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://perf.wiki.kernel.org/index.php/Tutorial#Live_analysis_with_perf_top&quot; href=&quot;https://perf.wiki.kernel.org/index.php/Tutorial#Live_analysis_with_perf_top&quot; class=&quot;externalLink&quot;&gt;https://perf.wiki.kernel.org/index.php/Tutorial#Live_analysis_with_perf_top&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Digger - the tool for tracing of unix processes &lt;a target=&quot;_blank&quot; title=&quot;External link to http://alexanderanokhin.wordpress.com/tools/digger/&quot; href=&quot;http://alexanderanokhin.wordpress.com/tools/digger/&quot; class=&quot;externalLink&quot;&gt;http://alexanderanokhin.wordpress.com/tools/digger/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; per-process level cpu scheduling - latency.c &lt;a target=&quot;_blank&quot; title=&quot;External link to http://eaglet.rain.com/rick/linux/schedstat/&quot; href=&quot;http://eaglet.rain.com/rick/linux/schedstat/&quot; class=&quot;externalLink&quot;&gt;http://eaglet.rain.com/rick/linux/schedstat/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; vtune &lt;a target=&quot;_blank&quot; title=&quot;External link to http://software.intel.com/en-us/intel-vtune-amplifier-xe&quot; href=&quot;http://software.intel.com/en-us/intel-vtune-amplifier-xe&quot; class=&quot;externalLink&quot;&gt;http://software.intel.com/en-us/intel-vtune-amplifier-xe&lt;/a&gt;&lt;/li&gt;&lt;li&gt; BPF &lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.memsql.com/bpf-linux-performance/&quot; href=&quot;https://blog.memsql.com/bpf-linux-performance/&quot; class=&quot;externalLink&quot;&gt;https://blog.memsql.com/bpf-linux-performance/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; perf Basic usage of perf command ( tracing tool ) (Doc ID 2174289.1)&lt;/li&gt;&lt;li&gt; cputrack (solaris) - process level CPU counters	- starting solaris 8 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.scalingbits.com/performance/tracing&quot; href=&quot;http://www.scalingbits.com/performance/tracing&quot; class=&quot;externalLink&quot;&gt;http://www.scalingbits.com/performance/tracing&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; Network &lt;/h1&gt;&lt;ul&gt;&lt;li&gt; uperf &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.uperf.org/&quot; href=&quot;http://www.uperf.org/&quot; class=&quot;externalLink&quot;&gt;http://www.uperf.org/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.uperf.org/manual.html&quot; href=&quot;http://www.uperf.org/manual.html&quot; class=&quot;externalLink&quot;&gt;http://www.uperf.org/manual.html&lt;/a&gt;&lt;/li&gt;&lt;li&gt; rds-stress   &lt;a target=&quot;_blank&quot; title=&quot;External link to http://oss.oracle.com/pipermail/rds-devel/2007-November/000237.html&quot; href=&quot;http://oss.oracle.com/pipermail/rds-devel/2007-November/000237.html&quot; class=&quot;externalLink&quot;&gt;http://oss.oracle.com/pipermail/rds-devel/2007-November/000237.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://oss.oracle.com/~okir/rds/2008-Feb-29/scalability/&quot; href=&quot;http://oss.oracle.com/%7Eokir/rds/2008-Feb-29/scalability/&quot; class=&quot;externalLink&quot;&gt;http://oss.oracle.com/~okir/rds/2008-Feb-29/scalability/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; pingplotter &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pingplotter.com/&quot; href=&quot;http://www.pingplotter.com/&quot; class=&quot;externalLink&quot;&gt;http://www.pingplotter.com/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; netem WAN performance simulator &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.linuxfoundation.org/collaborate/workgroups/networking/netem&quot; href=&quot;http://www.linuxfoundation.org/collaborate/workgroups/networking/netem&quot; class=&quot;externalLink&quot;&gt;http://www.linuxfoundation.org/collaborate/workgroups/networking/netem&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/articles/wartak-rac-vm-3-096492.html#9a&quot; href=&quot;http://www.oracle.com/technetwork/articles/wartak-rac-vm-3-096492.html#9a&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/articles/wartak-rac-vm-3-096492.html#9a&lt;/a&gt;&lt;/li&gt;&lt;li&gt; network speed test without flash &lt;a target=&quot;_blank&quot; title=&quot;External link to http://openspeedtest.com/results/5244312&quot; href=&quot;http://openspeedtest.com/results/5244312&quot; class=&quot;externalLink&quot;&gt;http://openspeedtest.com/results/5244312&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; Storage/IO&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; EMC &lt;a tiddlylink=&quot;ControlCenter&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ControlCenter&quot; href=&quot;http://karlarao.tiddlyspot.com#ControlCenter&quot; class=&quot;externalLink null&quot;&gt;ControlCenter&lt;/a&gt; (ECC)&lt;/li&gt;&lt;li&gt; asm_metric.pl &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>PerformanceTools</category>
-<link>http://karlarao.tiddlyspot.com#PerformanceTools-OS</link>
-<pubDate>Thu, 02 Aug 2018 01:34:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Oracle Management Cloud ML, OMCML</title>
-<description>&lt;blockquote&gt;Oracle Management Cloud uses a&lt;br&gt;broad array of machine learning&lt;br&gt;techniques, including the following:&lt;br&gt;» Anomaly detection. Flags&lt;br&gt;unusual resource usage and&lt;br&gt;identifies configuration changes.&lt;br&gt;» Clustering. Filters out signal&lt;br&gt;from noise; aggregates topologybased&lt;br&gt;data.&lt;br&gt;» Correlation. Groups and alerts&lt;br&gt;on related symptoms; discovers&lt;br&gt;dependencies.&lt;br&gt;» Prediction. Forecasts outages&lt;br&gt;before they happen; plans&lt;br&gt;capacity and resources.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/us/solutions/cloud/oracle-management-cloud-brief-2714883.pdf&quot; href=&quot;http://www.oracle.com/us/solutions/cloud/oracle-management-cloud-brief-2714883.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/us/solutions/cloud/oracle-management-cloud-brief-2714883.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.forbes.com/sites/oracle/2018/07/23/machine-learning-and-it-jobs-early-lessons-learned-from-system-monitoring/#6ac97dc85ef3&quot; href=&quot;https://www.forbes.com/sites/oracle/2018/07/23/machine-learning-and-it-jobs-early-lessons-learned-from-system-monitoring/#6ac97dc85ef3&quot; class=&quot;externalLink&quot;&gt;https://www.forbes.com/sites/oracle/2018/07/23/machine-learning-and-it-jobs-early-lessons-learned-from-system-monitoring/#6ac97dc85ef3&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/DheerajHiremath1/oracle-management-cloud-65816440&quot; href=&quot;https://www.slideshare.net/DheerajHiremath1/oracle-management-cloud-65816440&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/DheerajHiremath1/oracle-management-cloud-65816440&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://courtneyllamas.com/category/oracle-management-cloud/&quot; href=&quot;http://courtneyllamas.com/category/oracle-management-cloud/&quot; class=&quot;externalLink&quot;&gt;http://courtneyllamas.com/category/oracle-management-cloud/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.oracle.com/_downloads/eBook_OMC/Oracle_Management_Cloud_eBook.pdf&quot; href=&quot;https://cloud.oracle.com/_downloads/eBook_OMC/Oracle_Management_Cloud_eBook.pdf&quot; class=&quot;externalLink&quot;&gt;https://cloud.oracle.com/_downloads/eBook_OMC/Oracle_Management_Cloud_eBook.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>EnterpriseManager</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Management%20Cloud%20ML%2C%20OMCML%5D%5D</link>
-<pubDate>Tue, 31 Jul 2018 14:10:00 GMT</pubDate>
-
-</item>
-<item>
-<title>columns to rows</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://alexzeng.wordpress.com/2009/06/29/how-to-conver-column-to-row-and-convert-row-to-column/&quot; href=&quot;https://alexzeng.wordpress.com/2009/06/29/how-to-conver-column-to-row-and-convert-row-to-column/&quot; class=&quot;externalLink&quot;&gt;https://alexzeng.wordpress.com/2009/06/29/how-to-conver-column-to-row-and-convert-row-to-column/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.club-oracle.com/forums/pivoting-row-to-column-conversion-techniques-sql-t144/&quot; href=&quot;http://www.club-oracle.com/forums/pivoting-row-to-column-conversion-techniques-sql-t144/&quot; class=&quot;externalLink&quot;&gt;http://www.club-oracle.com/forums/pivoting-row-to-column-conversion-techniques-sql-t144/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/9319997/oracle-sql-convert-n-rows-column-values-to-n-columns-in-1-row&quot; href=&quot;http://stackoverflow.com/questions/9319997/oracle-sql-convert-n-rows-column-values-to-n-columns-in-1-row&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/9319997/oracle-sql-convert-n-rows-column-values-to-n-columns-in-1-row&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/19812930/transpose-rows-to-columns-in-oracle-10g&quot; href=&quot;http://stackoverflow.com/questions/19812930/transpose-rows-to-columns-in-oracle-10g&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/19812930/transpose-rows-to-columns-in-oracle-10g&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hearingtheoracle.com/2013/01/11/more-about-pivot-queries/&quot; href=&quot;http://hearingtheoracle.com/2013/01/11/more-about-pivot-queries/&quot; class=&quot;externalLink&quot;&gt;http://hearingtheoracle.com/2013/01/11/more-about-pivot-queries/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle-developer.net/display.php?id=506&quot; href=&quot;http://www.oracle-developer.net/display.php?id=506&quot; class=&quot;externalLink&quot;&gt;http://www.oracle-developer.net/display.php?id=506&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.modeanalytics.com/sql/tutorial/sql-pivot-table/&quot; href=&quot;https://community.modeanalytics.com/sql/tutorial/sql-pivot-table/&quot; class=&quot;externalLink&quot;&gt;https://community.modeanalytics.com/sql/tutorial/sql-pivot-table/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQL*Plus</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bcolumns%20to%20rows%5D%5D</link>
-<pubDate>Thu, 26 Jul 2018 06:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>graphviz execution plans</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=graphviz&quot; href=&quot;https://www.youtube.com/results?search_query=graphviz&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=graphviz&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://iggyfernandez.wordpress.com/2010/11/26/explaining-the-explain-plan-using-pictures/&quot; href=&quot;https://iggyfernandez.wordpress.com/2010/11/26/explaining-the-explain-plan-using-pictures/&quot; class=&quot;externalLink&quot;&gt;https://iggyfernandez.wordpress.com/2010/11/26/explaining-the-explain-plan-using-pictures/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.toadworld.com/platforms/oracle/w/wiki/11002.explaining-the-explain-plan-using-pictures&quot; href=&quot;https://community.toadworld.com/platforms/oracle/w/wiki/11002.explaining-the-explain-plan-using-pictures&quot; class=&quot;externalLink&quot;&gt;https://community.toadworld.com/platforms/oracle/w/wiki/11002.explaining-the-explain-plan-using-pictures&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;/*
- 
-Copyright 2010 Iggy Fernandez
- 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
- 
-The purpose of this SQL*Plus script is to generate a Graphviz
-program that can draw a tree-structure graphical version of a query
-plan. It prompts for a SQL_ID and CHILD_NUMBER. The following basic
-data items are first obtained from V$SQL_PLAN_STATISTICS_ALL:
- 
-  id
-  parent_id
-  object_name
-  operation
-  options
-  last_starts
-  last_elapsed_time / 1000000 AS last_elapsed_time
-  cardinality
-  last_output_rows
-  last_cr_buffer_gets + last_cu_buffer_gets AS last_buffer_gets
-  last_disk_reads
- 
-The following items are then computed from the basic data:
- 
-  execution_sequence#
-  delta_elapsed_time
-  delta_buffer_gets
-  delta_disk_reads
-  delta_percentage_elapsed_time
-  delta_percentage_buffer_gets
-  delta_percentage_disk_reads
-  last_percentage_elapsed_time
-  last_percentage_buffer_gets
-  last_percentage_disk_reads
- 
-Graphviz commands are then spooled to plan.dot. If Graphviz has been
-installed, the following command can be used to produce graphical
-output.
- 
-  dot -Tjpg -oplan.jpg plan.dot
- 
-As an example, the following query generates a list of employees
-whose salaries are higher than their respective managers.
- 
-SELECT
-  emp.employee_id AS emp_id,
-  emp.salary AS emp_salary
-FROM
-  employees emp
-WHERE EXISTS (
-  SELECT
-    *
-  FROM
-    employees mgr
-  WHERE
-    emp.manager_id = mgr.employee_id
-  AND
-    emp.salary &amp;gt; mgr.salary
-);
- 
-Here is an abbreviated version of the traditional tabular query
-plan.
- 
-----------------------------------------
-| Id  | Operation          | Name      |
-----------------------------------------
-|   0 | SELECT STATEMENT   |           |
-|   1 |  HASH JOIN SEMI    |           |
-|   2 |   TABLE ACCESS FULL| EMPLOYEES |
-|   3 |   TABLE ACCESS FULL| EMPLOYEES |
-----------------------------------------
- 
-And here is an abbreviated version of the Graphviz program produced
-by this script.
- 
-digraph EnhancedPlan {graph[ordering=&quot;out&quot;];node[fontname=Arial fontsize=8];
-&quot;0&quot; [label=&quot;Step 4 (Id 0)\nSELECT STATEMENT&quot;, shape=plaintext];
-&quot;1&quot; [label=&quot;Step 3 (Id 1)\nHASH JOIN SEMI&quot;, shape=plaintext];
-&quot;2&quot; [label=&quot;Step 1 (Id 2)\nTABLE ACCESS FULL EMPLOYEES&quot;, shape=plaintext];
-&quot;3&quot; [label=&quot;Step 2 (Id 3)\nTABLE ACCESS FULL EMPLOYEES&quot;, shape=plaintext];
-&quot;0&quot;-&amp;gt;&quot;1&quot; [dir=back];
-&quot;1&quot;-&amp;gt;&quot;2&quot; [dir=back];
-&quot;1&quot;-&amp;gt;&quot;3&quot; [dir=back];
-}
- 
-*/
---------------------------------------------------------------------------------
- 
--- SQL*Plus settings
- 
-SET linesize 1000
-SET trimspool on
-SET pagesize 0
-SET echo off
-SET heading off
-SET feedback off
-SET verify off
-SET time off
-SET timing off
-SET sqlblanklines on
- 
-SPOOL plan.dot
- 
---------------------------------------------------------------------------------
- 
--- First retrieve the basic data from V$SQL_PLAN_STATISTICS_ALL.
--- Modify this subquery if you want data from a different source.
- 
-WITH plan_table AS
- 
-(
- 
-  SELECT
- 
-    id,
-    parent_id,
-    object_name,
-    operation,
-    options,
-    last_starts,
-    last_elapsed_time / 1000000 AS last_elapsed_time,
-    cardinality,
-    last_output_rows,
-    last_cr_buffer_gets + last_cu_buffer_gets AS last_buffer_gets,
-    last_disk_reads
- 
-  FROM
- 
-    v$sql_plan_statistics_all
- 
-  WHERE
- 
-    sql_id = '&amp;amp;sql_id'
-    AND child_number = &amp;amp;child_number
- 
-),
- 
---------------------------------------------------------------------------------
- 
--- Determine the order in which steps are actually executed
- 
-execution_sequence AS
- 
-(
- 
-  SELECT
- 
-    id,
-    ROWNUM AS execution_sequence#
- 
-  FROM
- 
-    plan_table pt1
- 
-  START WITH
- 
-    -- Start with the leaf nodes
-    NOT EXISTS (
-      SELECT *
-      FROM plan_table pt2
-      WHERE pt2.parent_id = pt1.id
-    )
- 
-  CONNECT BY
- 
-    -- Connect to the parent node
-    pt1.id = PRIOR pt1.parent_id
-    -- if the prior node was the oldest sibling
-    AND PRIOR pt1.id &amp;gt;= ALL(
-      SELECT pt2.id
-      FROM plan_table pt2
-      WHERE pt2.parent_id = pt1.id
-    )
- 
-  -- Process the leaf nodes from left to right
-  ORDER SIBLINGS BY pt1.id
- 
-),
- 
---------------------------------------------------------------------------------
- 
--- Calculate deltas for elapsed time, buffer gets, and disk reads
- 
-deltas AS
- 
-(
- 
-  SELECT
- 
-    t1.id,
-    t1.last_elapsed_time - NVL(SUM(t2.last_elapsed_time),0) AS delta_elapsed_time,
-    t1.last_buffer_gets - NVL(SUM(t2.last_buffer_gets),0) AS delta_buffer_gets,
-    t1.last_disk_reads - NVL(SUM(t2.last_disk_reads),0) AS delta_disk_reads
- 
-  FROM
- 
-    plan_table t1
-    LEFT OUTER JOIN plan_table t2
-    ON t1.id = t2.parent_id
- 
-  GROUP BY
- 
-    t1.id,
-    t1.last_elapsed_time,
-    t1.last_buffer_gets,
-    t1.last_disk_reads
- 
-),
- 
---------------------------------------------------------------------------------
- 
--- Join the results of the previous subqueries
- 
-enhanced_plan_table AS
- 
-(
- 
-  SELECT
- 
-    -- Items from the plan_table subquery
- 
-    plan_table.id,
-    plan_table.parent_id,
-    plan_table.object_name,
-    plan_table.operation,
-    plan_table.options,
-    plan_table.last_starts,
-    plan_table.last_elapsed_time,
-    plan_table.cardinality,
-    plan_table.last_output_rows,
-    plan_table.last_buffer_gets,
-    plan_table.last_disk_reads,
- 
-    -- Items from the execution_sequence subquery
- 
-    execution_sequence.execution_sequence#,
- 
-    -- Items from the deltas subquery
- 
-    deltas.delta_elapsed_time,
-    deltas.delta_buffer_gets,
-    deltas.delta_disk_reads,
- 
-    -- Computed percentages
- 
-    CASE
-      WHEN (SUM(deltas.delta_elapsed_time) OVER () = 0)
-      THEN (100)
-      ELSE (100 * deltas.delta_elapsed_time / SUM(deltas.delta_elapsed_time) OVER ())
-    END AS delta_percentage_elapsed_time,
- 
-    CASE
-      WHEN (SUM(deltas.delta_buffer_gets) OVER () = 0)
-      THEN (100)
-      ELSE (100 * deltas.delta_buffer_gets / SUM(deltas.delta_buffer_gets) OVER ())
-    END AS delta_percentage_buffer_gets,
- 
-    CASE
-      WHEN (SUM(deltas.delta_disk_reads) OVER () = 0)
-      THEN (100)
-      ELSE (100 * deltas.delta_disk_reads / SUM(deltas.delta_disk_reads) OVER ())
-    END AS delta_percentage_disk_reads,
- 
-    CASE
-      WHEN (SUM(deltas.delta_elapsed_time) OVER () = 0)
-      THEN (100)
-      ELSE (100 * plan_table.last_elapsed_time / SUM(deltas.delta_elapsed_time) OVER ())
-    END AS last_percentage_elapsed_time,
- 
-    CASE
-      WHEN (SUM(deltas.delta_buffer_gets) OVER () = 0)
-      THEN (100)
-      ELSE (100 * plan_table.last_buffer_gets / SUM(deltas.delta_buffer_gets) OVER ())
-    END AS last_percentage_buffer_gets,
- 
-    CASE
-      WHEN (SUM(deltas.delta_disk_reads) OVER () = 0)
-      THEN (100)
-      ELSE (100 * plan_table.last_disk_reads / SUM(deltas.delta_disk_reads) OVER ())
-    END AS last_percentage_disk_reads
- 
-  FROM
- 
-    plan_table,
-    execution_sequence,
-    deltas
- 
-  WHERE
- 
-    plan_table.id = execution_sequence.id
-    AND plan_table.id = deltas.id
- 
-  -- Order the results for cosmetic purposes
-  ORDER BY plan_table.id
- 
-)
- 
---------------------------------------------------------------------------------
- 
--- Begin THE Graphviz program
- 
-SELECT
- 
-  'digraph EnhancedPlan {'
-  || 'graph[ordering=&quot;out&quot;];'
-  || 'node[fontname=Arial fontsize=8];' AS command
- 
-FROM DUAL
- 
---------------------------------------------------------------------------------
- 
--- Label the nodes
- 
-UNION ALL SELECT
- 
-  '&quot;' || id || '&quot; [label=&quot;'
- 
-  -- Line 1: Execution Sequence # and Id
- 
-  || 'Step ' || execution_sequence#
-  || ' (Id ' || id || ')'
-  || '\n'
- 
-  -- Line 2: Operations, options, object name, and starts
- 
-  || operation
- 
-  || CASE
-       WHEN (options IS NULL)
-       THEN ('')
-       ELSE (' ' || options)
-     END
- 
-  || CASE
-       WHEN (object_name IS NULL)
-       THEN ('')
-       ELSE (' ' || object_name)
-     END
- 
-  || CASE
-       WHEN (last_starts &amp;gt; 1)
-       THEN (' (Starts = ' || last_starts || ')')
-       ELSE ('')
-     END
- 
-  || '\n'
- 
-  -- Line 3: Delta elapsed time and cumulative elapsed time
- 
-  || 'Delta Elapsed = '
-  || CASE
-       WHEN (delta_elapsed_time IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(delta_elapsed_time, '999,999,990.00')) || 's')
-     END
- 
-  || ' ('
-  || CASE
-       WHEN (delta_percentage_elapsed_time IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(delta_percentage_elapsed_time, '990')) || '%')
-     END
-  || ')'
- 
-  || ' Cum Elapsed = '
-  || CASE
-       WHEN (last_elapsed_time IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(last_elapsed_time, '999,999,990.00')) || 's')
-     END
- 
-  || ' ('
-  || CASE
-       WHEN (last_percentage_elapsed_time IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(last_percentage_elapsed_time, '990')) || '%')
-     END
-  || ')'
- 
-  || '\n'
- 
-  -- Line 4: Delta buffer gets and cumulative buffer gets
- 
-  || 'Delta Buffer Gets = '
-  || CASE
-       WHEN (delta_buffer_gets IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(delta_buffer_gets, '999,999,999,999,990')))
-     END
- 
-  || ' ('
-  || CASE
-       WHEN (delta_percentage_buffer_gets IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(delta_percentage_buffer_gets, '990')) || '%')
-     END
-  || ')'
- 
-  || ' Cum Buffer Gets = '
-  || CASE
-       WHEN (last_buffer_gets IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(last_buffer_gets, '999,999,999,999,990')))
-     END
- 
-  || ' ('
-  || CASE
-       WHEN (last_percentage_buffer_gets IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(last_percentage_buffer_gets, '990')) || '%')
-     END
-  || ')'
- 
-  || '\n'
- 
-  -- Line 5: Delta disk reads and cumulative disk reads
- 
-  || 'Delta Disk Reads = '
-  || CASE
-       WHEN (delta_disk_reads IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(delta_disk_reads, '999,999,999,999,990')))
-     END
- 
-  || ' ('
-  || CASE
-       WHEN (delta_percentage_disk_reads IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(delta_percentage_disk_reads, '990')) || '%')
-     END
-  || ')'
- 
-  || ' Cum Disk Reads = '
-  || CASE
-       WHEN (last_disk_reads IS NULL)
-       THEN ('?')
-       ELSE (TRIM(TO_CHAR(last_disk_reads, '999,999,999,999,990')))
-      END
- 
-  || ' ('
-  || CASE
-       WHEN (last_percentage_disk_reads IS NULL)
-        THEN ('?')
-       ELSE (TRIM(TO_CHAR(last_percentage_disk_reads, '990')) || '%')
-     END
-  || ')'
- 
-  || '\n'
- 
-  -- Line 6: Estimated rows and actual rows
- 
-  || 'Estimated Rows = '
-  || CASE
-       WHEN (cardinality IS NULL)
-       THEN '?'
-       ELSE (TRIM(TO_CHAR(cardinality, '999,999,999,999,990')))
-     END
- 
-  || ' Actual Rows = '
-  || CASE
-       WHEN (last_output_rows IS NULL)
-       THEN '?'
-       ELSE (TRIM(TO_CHAR(last_output_rows, '999,999,999,999,990')))
-     END
- 
-  || '\n'
- 
-  || '&quot;, shape=plaintext];' AS command
- 
-FROM enhanced_plan_table
- 
---------------------------------------------------------------------------------
- 
--- Connect the nodes
- 
-UNION ALL SELECT '&quot;' || parent_id || '&quot;-&amp;gt;&quot;' || id || '&quot; [dir=back];' AS command
-FROM plan_table
-START WITH parent_id = 0
-CONNECT BY parent_id = PRIOR id
- 
---------------------------------------------------------------------------------
- 
--- End THE Graphviz program
- 
-UNION ALL SELECT '}' AS command
-FROM DUAL;
- 
---------------------------------------------------------------------------------
- 
-SPOOL off
-&lt;/pre&gt;</description>
-<category>hive EXPLAIN plan</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgraphviz%20execution%20plans%5D%5D</link>
-<pubDate>Thu, 26 Jul 2018 06:17:00 GMT</pubDate>
-
-</item>
-<item>
-<title>DBMS_ADVANCED_REWRITE</title>
-<description>Master Note for Query Rewrite (Doc ID 1215173.1)&lt;br&gt;Using &lt;a tiddlylink=&quot;DBMS_ADVANCED_REWRITE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; class=&quot;externalLink null&quot;&gt;DBMS_ADVANCED_REWRITE&lt;/a&gt; When Binds Are Present (Avoiding &lt;a tiddlylink=&quot;ORA-30353&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA-30353&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA-30353&quot; class=&quot;externalLink null&quot;&gt;ORA-30353&lt;/a&gt;) (Doc ID 392214.1)&lt;br&gt;Master Note for Materialized View (MVIEW) (Doc ID 1353040.1)&lt;br&gt;Using Execution Plan to Verify Materialized View Query Rewrite (Doc ID 245635.1)&lt;br&gt;Advanced Query Rewrite &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/B28359_01/server.111/b28313/qradv.htm&quot; href=&quot;https://docs.oracle.com/cd/B28359_01/server.111/b28313/qradv.htm&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/B28359_01/server.111/b28313/qradv.htm&lt;/a&gt;  , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://pages.di.unipi.it/ghelli/didattica/bdldoc/B19306_01/server.102/b14223/qradv.htm&quot; href=&quot;http://pages.di.unipi.it/ghelli/didattica/bdldoc/B19306_01/server.102/b14223/qradv.htm&quot; class=&quot;externalLink&quot;&gt;http://pages.di.unipi.it/ghelli/didattica/bdldoc/B19306_01/server.102/b14223/qradv.htm&lt;/a&gt;&lt;br&gt;&lt;a tiddlylink=&quot;DBMS_ADVANCED_REWRITE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE&quot; class=&quot;externalLink null&quot;&gt;DBMS_ADVANCED_REWRITE&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/ARPLS/d_advrwr.htm#BEGIN&quot; href=&quot;https://docs.oracle.com/database/121/ARPLS/d_advrwr.htm#BEGIN&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/ARPLS/d_advrwr.htm#BEGIN&lt;/a&gt;&lt;br&gt;Oracle OLAP 11g and 12c: How to ensure use of Cube Materialized Views/Query Rewrite (Doc ID 577293.1)&lt;br&gt;Improving Performance using Query Rewrite in Oracle D atabase 10g &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/middleware/bi-foundation/twp-bi-dw-improve-perf-using-query--133436.pdf&quot; href=&quot;http://www.oracle.com/technetwork/middleware/bi-foundation/twp-bi-dw-improve-perf-using-query--133436.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/middleware/bi-foundation/twp-bi-dw-improve-perf-using-query--133436.pdf&lt;/a&gt;&lt;br&gt;How To Use &lt;a tiddlylink=&quot;DBMS_MVIEW&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_MVIEW&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_MVIEW&quot; class=&quot;externalLink null&quot;&gt;DBMS_MVIEW&lt;/a&gt;.&lt;a tiddlylink=&quot;EXPLAIN_REWRITE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EXPLAIN_REWRITE&quot; href=&quot;http://karlarao.tiddlyspot.com#EXPLAIN_REWRITE&quot; class=&quot;externalLink null&quot;&gt;EXPLAIN_REWRITE&lt;/a&gt; and &lt;a tiddlylink=&quot;EXPLAIN_MVIEW&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EXPLAIN_MVIEW&quot; href=&quot;http://karlarao.tiddlyspot.com#EXPLAIN_MVIEW&quot; class=&quot;externalLink null&quot;&gt;EXPLAIN_MVIEW&lt;/a&gt; To Diagnose Query Rewrite and Fast Refresh Problems (Doc ID 149815.1)&lt;br&gt;Manual Diagnosis &amp;amp; Troubleshooting for Query Rewrite Problems (Doc ID 236486.1)    &amp;lt;- good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gavinsoorma.com/2011/06/using-dbms_advanced_rewrite-with-an-hint-to-change-the-execution-plan/&quot; href=&quot;https://gavinsoorma.com/2011/06/using-dbms_advanced_rewrite-with-an-hint-to-change-the-execution-plan/&quot; class=&quot;externalLink&quot;&gt;https://gavinsoorma.com/2011/06/using-dbms_advanced_rewrite-with-an-hint-to-change-the-execution-plan/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Oracle by example &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/10g/r2/prod/bidw/mv/mv_otn.htm&quot; href=&quot;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/10g/r2/prod/bidw/mv/mv_otn.htm&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/10g/r2/prod/bidw/mv/mv_otn.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gerardnico.com/db/oracle/query_rewriting&quot; href=&quot;https://gerardnico.com/db/oracle/query_rewriting&quot; class=&quot;externalLink&quot;&gt;https://gerardnico.com/db/oracle/query_rewriting&lt;/a&gt;</description>
-<category>SQL Rewrite/Refactoring</category>
-<link>http://karlarao.tiddlyspot.com#DBMS_ADVANCED_REWRITE</link>
-<pubDate>Thu, 26 Jul 2018 06:03:00 GMT</pubDate>
-
-</item>
-<item>
-<title>docker on aix</title>
-<description>From the following materials you need to be on ubuntu installed on the power machine&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/developerworks/library/d-docker-on-power-linux-platform/&quot; href=&quot;https://www.ibm.com/developerworks/library/d-docker-on-power-linux-platform/&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/developerworks/library/d-docker-on-power-linux-platform/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/cmacielatl/docker-on-power-systems&quot; href=&quot;https://www.slideshare.net/cmacielatl/docker-on-power-systems&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/cmacielatl/docker-on-power-systems&lt;/a&gt;&lt;br&gt; &lt;br&gt;and stalking the engineers listed on the article I found the developerworks link &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linux-on-ibm-z&quot; href=&quot;https://github.com/linux-on-ibm-z&quot; class=&quot;externalLink&quot;&gt;https://github.com/linux-on-ibm-z&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/seelam?tab=repositories&quot; href=&quot;https://github.com/seelam?tab=repositories&quot; class=&quot;externalLink&quot;&gt;https://github.com/seelam?tab=repositories&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/inatatsu?tab=stars&quot; href=&quot;https://github.com/inatatsu?tab=stars&quot; class=&quot;externalLink&quot;&gt;https://github.com/inatatsu?tab=stars&lt;/a&gt; -&amp;gt; starred &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linux-on-ibm-z/docs&quot; href=&quot;https://github.com/linux-on-ibm-z/docs&quot; class=&quot;externalLink&quot;&gt;https://github.com/linux-on-ibm-z/docs&lt;/a&gt;&lt;br&gt; &lt;br&gt;that contains example dockerfiles here&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linux-on-ibm-z/dockerfile-examples&quot; href=&quot;https://github.com/linux-on-ibm-z/dockerfile-examples&quot; class=&quot;externalLink&quot;&gt;https://github.com/linux-on-ibm-z/dockerfile-examples&lt;/a&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; other&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/29466954/creating-docker-container-with-hp-ux-and-ibm-aix&quot; href=&quot;https://stackoverflow.com/questions/29466954/creating-docker-container-with-hp-ux-and-ibm-aix&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/29466954/creating-docker-container-with-hp-ux-and-ibm-aix&lt;/a&gt;</description>
-<category>Docker</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bdocker%20on%20aix%5D%5D</link>
-<pubDate>Thu, 26 Jul 2018 05:36:00 GMT</pubDate>
-
-</item>
-<item>
-<title>..bash to python, bash2py</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/capital-one-developers/bashing-the-bash-replacing-shell-scripts-with-python-d8d201bc0989&quot; href=&quot;https://medium.com/capital-one-developers/bashing-the-bash-replacing-shell-scripts-with-python-d8d201bc0989&quot; class=&quot;externalLink&quot;&gt;https://medium.com/capital-one-developers/bashing-the-bash-replacing-shell-scripts-with-python-d8d201bc0989&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxjournal.com/content/python-scripts-replacement-bash-utility-scripts&quot; href=&quot;https://www.linuxjournal.com/content/python-scripts-replacement-bash-utility-scripts&quot; class=&quot;externalLink&quot;&gt;https://www.linuxjournal.com/content/python-scripts-replacement-bash-utility-scripts&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.educba.com/bash-shell-programming-with-python/&quot; href=&quot;https://www.educba.com/bash-shell-programming-with-python/&quot; class=&quot;externalLink&quot;&gt;https://www.educba.com/bash-shell-programming-with-python/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxquestions.org/questions/linux-software-2/need-help-converting-bash-script-to-python-4175605267/&quot; href=&quot;https://www.linuxquestions.org/questions/linux-software-2/need-help-converting-bash-script-to-python-4175605267/&quot; class=&quot;externalLink&quot;&gt;https://www.linuxquestions.org/questions/linux-software-2/need-help-converting-bash-script-to-python-4175605267/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/2839810/converting-a-bash-script-to-python-small-script&quot; href=&quot;https://stackoverflow.com/questions/2839810/converting-a-bash-script-to-python-small-script&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/2839810/converting-a-bash-script-to-python-small-script&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://tails.boum.org/blueprint/Port_shell_scripts_to_Python/&quot; href=&quot;https://tails.boum.org/blueprint/Port_shell_scripts_to_Python/&quot; class=&quot;externalLink&quot;&gt;https://tails.boum.org/blueprint/Port_shell_scripts_to_Python/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.dreamincode.net/forums/topic/399713-convert-a-shell-script-to-python/&quot; href=&quot;https://www.dreamincode.net/forums/topic/399713-convert-a-shell-script-to-python/&quot; class=&quot;externalLink&quot;&gt;https://www.dreamincode.net/forums/topic/399713-convert-a-shell-script-to-python/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://grasswiki.osgeo.org/wiki/Converting_Bash_scripts_to_Python&quot; href=&quot;https://grasswiki.osgeo.org/wiki/Converting_Bash_scripts_to_Python&quot; class=&quot;externalLink&quot;&gt;https://grasswiki.osgeo.org/wiki/Converting_Bash_scripts_to_Python&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; tools &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://zwischenzugs.com/2016/08/29/bash-to-python-converter/&quot; href=&quot;https://zwischenzugs.com/2016/08/29/bash-to-python-converter/&quot; class=&quot;externalLink&quot;&gt;https://zwischenzugs.com/2016/08/29/bash-to-python-converter/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/tomerfiliba/plumbum&quot; href=&quot;https://github.com/tomerfiliba/plumbum&quot; class=&quot;externalLink&quot;&gt;https://github.com/tomerfiliba/plumbum&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hub.docker.com/r/imiell/bash2py/&quot; href=&quot;https://hub.docker.com/r/imiell/bash2py/&quot; class=&quot;externalLink&quot;&gt;https://hub.docker.com/r/imiell/bash2py/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/ianmiell/bash2py&quot; href=&quot;https://github.com/ianmiell/bash2py&quot; class=&quot;externalLink&quot;&gt;https://github.com/ianmiell/bash2py&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.swag.uwaterloo.ca/bash2py/index.html&quot; href=&quot;http://www.swag.uwaterloo.ca/bash2py/index.html&quot; class=&quot;externalLink&quot;&gt;http://www.swag.uwaterloo.ca/bash2py/index.html&lt;/a&gt;  , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://ieeexplore.ieee.org/document/7081866/?reload=true&quot; href=&quot;https://ieeexplore.ieee.org/document/7081866/?reload=true&quot; class=&quot;externalLink&quot;&gt;https://ieeexplore.ieee.org/document/7081866/?reload=true&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Python</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B..bash%20to%20python%2C%20bash2py%5D%5D</link>
-<pubDate>Thu, 26 Jul 2018 05:34:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Arq Backup</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://levels.io/korea-4g/&quot; href=&quot;https://levels.io/korea-4g/&quot; class=&quot;externalLink&quot;&gt;https://levels.io/korea-4g/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.arqbackup.com/features/&quot; href=&quot;https://www.arqbackup.com/features/&quot; class=&quot;externalLink&quot;&gt;https://www.arqbackup.com/features/&lt;/a&gt;&lt;br&gt;Amazon Glacier &lt;a target=&quot;_blank&quot; title=&quot;External link to https://aws.amazon.com/glacier/&quot; href=&quot;https://aws.amazon.com/glacier/&quot; class=&quot;externalLink&quot;&gt;https://aws.amazon.com/glacier/&lt;/a&gt;</description>
-<category>LinuxBackup</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BArq%20Backup%5D%5D</link>
-<pubDate>Tue, 24 Jul 2018 06:48:00 GMT</pubDate>
 
 </item>
 </channel>
