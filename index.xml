@@ -6,32 +6,39 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 YourName</copyright>
-<pubDate>Tue, 28 Aug 2018 16:22:47 GMT</pubDate>
-<lastBuildDate>Tue, 28 Aug 2018 16:22:47 GMT</lastBuildDate>
+<pubDate>Tue, 04 Sep 2018 03:38:37 GMT</pubDate>
+<lastBuildDate>Tue, 04 Sep 2018 03:38:37 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
 <title>sqoop benchmarking</title>
-<description>&lt;br&gt;&lt;h1&gt; my notes on sqoop benchmarking&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; href=&quot;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;test cases&lt;br&gt;40 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;40 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;&lt;/blockquote&gt;</description>
+<description>&lt;h1&gt; my notes on sqoop benchmarking&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; href=&quot;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;test cases&lt;br&gt;40 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;40 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;What we've noticed on performance are as follows: &lt;br&gt;&lt;ul&gt;&lt;li&gt; each sqoop thread is one sql_id in the oracle database, so 40 threads mean 40 sql_ids but let's say only 3 of those would really fetch data and 37 would be inactive this can be seen from images[1-4] below &lt;/li&gt;&lt;li&gt; increasing threads from what we can see has the most impact - from 40 (doing 116-117MB/sec) to 100 (doing 184-217MB/sec)&lt;/li&gt;&lt;li&gt; more threads doesn't mean linear performance increase (at some point we will hit the elbow :) of the curve), but it drives more active sessions in the database to do the work. see [ashtop on 40 threads](#ashtop-on-40-threads) and [ashtop on 100 threads](#ashtop-on-100-threads) below&lt;/li&gt;&lt;li&gt; the &quot;mapreduce&quot; part of the sqoop is still a mystery because we can't see the breakdown of elapsed time on the mapreduce part. let's say for the 40 threads that spent 93 seconds on mapreduce we'd like to know if oracle or hadoop is the bottleneck &lt;/li&gt;&lt;li&gt; at one point i saw &quot;library cache lock&quot; event when the thread sessions are spawned in the database, because each session is a new sql_id i suppose that time is parsing but then it's just seconds and not really substantial from total elapsed&lt;/li&gt;&lt;li&gt; i was also thinking if we push let's say 200threads then that would probably translate to 16 AAS CPU on db side, and probably more bandwidth. but then the database has to spawn all that 200 session_ids (hard parse) which should be fine i think. the worst case is all those 200 session_ids would be active and would translate to 1:1 AAS CPU and the whole database cluster would be out of CPU&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Some thoughts by gluent peeps: &lt;br&gt;&lt;ul&gt;&lt;li&gt; Sqoop has a fairly long bootstrap time (30s perhaps) so if your Sqoops are over in a minute or two then the startup time is hurting you and bigger chunks might help.&lt;/li&gt;&lt;li&gt; In all of our testing it is the write to Avro that is the bottleneck. We typically see lots of Oracle sessions doing a bit of work and a *lot* of CPU being burned in the Hadoop cluster&lt;/li&gt;&lt;li&gt; You should get a good view of the Hadoop side CPU from Cloudera Manager's charts &lt;/li&gt;&lt;li&gt; Also worth looking in resource manager UI to see if the mappers are queuing or all getting on CPU. Having said that, if your Sqoops are finishing in 1 or 2 minutes then, my guess would be they are not being queued&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
 <category>sqoop</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20benchmarking%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 16:22:45 GMT</pubDate>
+<pubDate>Tue, 04 Sep 2018 03:38:35 GMT</pubDate>
+
+</item>
+<item>
+<title>screen</title>
+<description>&lt;pre&gt;
+screen -S karl   &amp;lt;- to create session
+screen -ls         &amp;lt;- to list
+screen -r karl    &amp;lt;- to resume, won't let you grab one that's already attached 
+screen -x karl   &amp;lt;- to resume 
+CTRL-A d        &amp;lt;- to safely disconnect
+
+&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; href=&quot;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; class=&quot;externalLink&quot;&gt;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&quot; href=&quot;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_%28Never_have_your_scripts_die_because_you_lost_your_connection&quot; class=&quot;externalLink&quot;&gt;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&lt;/a&gt;)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>LinuxNetworking</category>
+<link>http://karlarao.tiddlyspot.com#screen</link>
+<pubDate>Thu, 30 Aug 2018 22:46:06 GMT</pubDate>
 
 </item>
 <item>
 <title>sqoop performance tuning</title>
-<description>&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; href=&quot;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&lt;/a&gt;</description>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; href=&quot;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&lt;/a&gt;</description>
 <category>sqoop</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20performance%20tuning%5D%5D</link>
 <pubDate>Tue, 28 Aug 2018 16:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>sqoop with oraoop, linkedin DataBus</title>
-<description>sqoop 1.4.5 with oraoop integrated: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; href=&quot;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; class=&quot;externalLink&quot;&gt;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&lt;/a&gt;&lt;br&gt;&lt;br&gt;As per Tanel (&lt;a tiddlylink=&quot;CCd&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CCd&quot; href=&quot;http://karlarao.tiddlyspot.com#CCd&quot; class=&quot;externalLink null&quot;&gt;CCd&lt;/a&gt;)&lt;br&gt;The &lt;a tiddlylink=&quot;LinkedIn&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#LinkedIn&quot; href=&quot;http://karlarao.tiddlyspot.com#LinkedIn&quot; class=&quot;externalLink null&quot;&gt;LinkedIn&lt;/a&gt; project name is &lt;a tiddlylink=&quot;DataBus&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataBus&quot; href=&quot;http://karlarao.tiddlyspot.com#DataBus&quot; class=&quot;externalLink null&quot;&gt;DataBus&lt;/a&gt;&lt;br&gt;Uses &lt;a tiddlylink=&quot;ORA_ROWSCN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; class=&quot;externalLink null&quot;&gt;ORA_ROWSCN&lt;/a&gt; for incremental extraction&lt;br&gt;Among other stuff that it does&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; href=&quot;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; class=&quot;externalLink&quot;&gt;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>sqoop</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20with%20oraoop%2C%20linkedin%20DataBus%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 16:20:40 GMT</pubDate>
 
 </item>
 <item>
@@ -39,7 +46,15 @@
 <description></description>
 <category>Data Engineering</category>
 <link>http://karlarao.tiddlyspot.com#sqoop</link>
-<pubDate>Tue, 28 Aug 2018 16:20:29 GMT</pubDate>
+<pubDate>Tue, 28 Aug 2018 16:20:00 GMT</pubDate>
+
+</item>
+<item>
+<title>sqoop with oraoop, linkedin DataBus</title>
+<description>sqoop 1.4.5 with oraoop integrated: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; href=&quot;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; class=&quot;externalLink&quot;&gt;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&lt;/a&gt;&lt;br&gt;&lt;br&gt;As per Tanel (&lt;a tiddlylink=&quot;CCd&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CCd&quot; href=&quot;http://karlarao.tiddlyspot.com#CCd&quot; class=&quot;externalLink null&quot;&gt;CCd&lt;/a&gt;)&lt;br&gt;The &lt;a tiddlylink=&quot;LinkedIn&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#LinkedIn&quot; href=&quot;http://karlarao.tiddlyspot.com#LinkedIn&quot; class=&quot;externalLink null&quot;&gt;LinkedIn&lt;/a&gt; project name is &lt;a tiddlylink=&quot;DataBus&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataBus&quot; href=&quot;http://karlarao.tiddlyspot.com#DataBus&quot; class=&quot;externalLink null&quot;&gt;DataBus&lt;/a&gt;&lt;br&gt;Uses &lt;a tiddlylink=&quot;ORA_ROWSCN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; class=&quot;externalLink null&quot;&gt;ORA_ROWSCN&lt;/a&gt; for incremental extraction&lt;br&gt;Among other stuff that it does&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; href=&quot;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; class=&quot;externalLink&quot;&gt;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>sqoop</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20with%20oraoop%2C%20linkedin%20DataBus%5D%5D</link>
+<pubDate>Tue, 28 Aug 2018 16:20:00 GMT</pubDate>
 
 </item>
 <item>
@@ -577,22 +592,6 @@ sql.bat karlarao/&amp;lt;password&amp;gt;@//&amp;lt;host&amp;gt;:1521/dbwh
 <category>SQL Rewrite/Refactoring</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BREGEXP_SUBSTR%2C%20SUBSTR%20INSTR%5D%5D</link>
 <pubDate>Thu, 09 Aug 2018 17:51:00 GMT</pubDate>
-
-</item>
-<item>
-<title>SQL Rewrite/Refactoring</title>
-<description>&lt;pre&gt;Issues arise from:
-* coding
-* data mapping / model
-* logic 
-
-Delays come from: 
-* poor requirements gathering
-* technical debt 
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQL Tuning</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BSQL%20Rewrite%2FRefactoring%5D%5D</link>
-<pubDate>Thu, 09 Aug 2018 16:16:00 GMT</pubDate>
 
 </item>
 </channel>
