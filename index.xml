@@ -6,16 +6,24 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 YourName</copyright>
-<pubDate>Fri, 14 Sep 2018 18:12:28 GMT</pubDate>
-<lastBuildDate>Fri, 14 Sep 2018 18:12:28 GMT</lastBuildDate>
+<pubDate>Fri, 14 Sep 2018 20:21:25 GMT</pubDate>
+<lastBuildDate>Fri, 14 Sep 2018 20:21:25 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>.disable sql profile and baselines</title>
+<description>&lt;br&gt;&lt;blockquote&gt;&lt;a tiddlylink=&quot;IGNORE_OPTIM_EMBEDDED_HINTS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; href=&quot;http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; class=&quot;externalLink null&quot;&gt;IGNORE_OPTIM_EMBEDDED_HINTS&lt;/a&gt; &amp;lt;- disables hints at session level through profile &lt;br&gt;optimizer_ignore_hints &amp;lt;- database wide or session level through trigger&lt;br&gt;&lt;br&gt;but is there a way to ignore hints AND profiles through 1 single parameter?&lt;br&gt;like **** you all hints and profiles i hate you!&lt;br&gt; or is the only way to do this is set _optimizer_ignore_hints and disable/drop all profiles ?&lt;br&gt;&lt;br&gt;ANSWER: &lt;br&gt;For profiles: ALTER SESSION SET &lt;a tiddlylink=&quot;SQLTUNE_CATEGORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; class=&quot;externalLink null&quot;&gt;SQLTUNE_CATEGORY&lt;/a&gt; = 'IGNOREMENOW';&lt;br&gt;For baselines: ALTER SYSTEM SET &lt;a tiddlylink=&quot;OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; href=&quot;http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; class=&quot;externalLink null&quot;&gt;OPTIMIZER_USE_SQL_PLAN_BASELINES&lt;/a&gt;=false&lt;br&gt;&lt;br&gt;just everything off, these are the knobs :)  because gluent doesn't like having &lt;a tiddlylink=&quot;USE_NL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#USE_NL&quot; href=&quot;http://karlarao.tiddlyspot.com#USE_NL&quot; class=&quot;externalLink null&quot;&gt;USE_NL&lt;/a&gt; hint on offloaded tables it errors with &lt;a tiddlylink=&quot;KUP-04108&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#KUP-04108&quot; href=&quot;http://karlarao.tiddlyspot.com#KUP-04108&quot; class=&quot;externalLink null&quot;&gt;KUP-04108&lt;/a&gt;: unable to reread file&lt;br&gt;just in case the developers have to deal with 1000+ &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; we know how to attack this with these knobs&lt;br&gt;&lt;/blockquote&gt;</description>
+<category>SQLProfiles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.disable%20sql%20profile%20and%20baselines%5D%5D</link>
+<pubDate>Fri, 14 Sep 2018 19:40:16 GMT</pubDate>
+
+</item>
 <item>
 <title>copy_plan_hash_value.sql</title>
 <description>copy_plan_hash_value.sql&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&quot; href=&quot;http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&quot; class=&quot;externalLink&quot;&gt;http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&lt;/a&gt;</description>
 <category>.Attach or Copy SQL Profiles</category>
 <link>http://karlarao.tiddlyspot.com#copy_plan_hash_value.sql</link>
-<pubDate>Fri, 14 Sep 2018 18:12:03 GMT</pubDate>
+<pubDate>Fri, 14 Sep 2018 18:12:00 GMT</pubDate>
 
 </item>
 <item>
@@ -32,20 +40,20 @@ PL/SQL procedure successfully completed.
 &lt;/pre&gt;</description>
 <category>SQLProfiles</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B.Attach%20or%20Copy%20SQL%20Profiles%5D%5D</link>
-<pubDate>Fri, 14 Sep 2018 18:11:50 GMT</pubDate>
+<pubDate>Fri, 14 Sep 2018 18:11:00 GMT</pubDate>
 
 </item>
 <item>
 <title>.ManuallyCreatedSQLProfiles</title>
-<description>&lt;br&gt;HOWTO: create a manual SQL Profile &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; href=&quot;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; class=&quot;externalLink&quot;&gt;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; href=&quot;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; class=&quot;externalLink&quot;&gt;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&lt;/a&gt;</description>
+<description>HOWTO: create a manual SQL Profile &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; href=&quot;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; class=&quot;externalLink&quot;&gt;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; href=&quot;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; class=&quot;externalLink&quot;&gt;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&lt;/a&gt;</description>
 <category>SQLProfiles</category>
 <link>http://karlarao.tiddlyspot.com#.ManuallyCreatedSQLProfiles</link>
-<pubDate>Fri, 14 Sep 2018 18:08:34 GMT</pubDate>
+<pubDate>Fri, 14 Sep 2018 18:08:00 GMT</pubDate>
 
 </item>
 <item>
 <title>rewriting MAX on WHERE</title>
-<description>&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' first rewrite avoids the group by', event)&quot;&gt; first rewrite avoids the group by&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' another example is split this into two SQLs ', event)&quot;&gt; another example is split this into two SQLs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using gluent present, push it down to hadoop', event)&quot;&gt; using gluent present, push it down to hadoop&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; first rewrite avoids the group by&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;# BEFORE 
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' first rewrite avoids the group by', event)&quot;&gt; first rewrite avoids the group by&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' another example is split this into two SQLs ', event)&quot;&gt; another example is split this into two SQLs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using gluent present, push it down to hadoop', event)&quot;&gt; using gluent present, push it down to hadoop&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; first rewrite avoids the group by&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;# BEFORE 
 
 VAR BAN VARCHAR2(32)
 VAR CHG_ACTV_KEY VARCHAR2(32)
@@ -152,12 +160,12 @@ AND    ROWNUM = 1;
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>my rewrite examples</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Brewriting%20MAX%20on%20WHERE%5D%5D</link>
-<pubDate>Thu, 13 Sep 2018 16:16:03 GMT</pubDate>
+<pubDate>Thu, 13 Sep 2018 16:16:00 GMT</pubDate>
 
 </item>
 <item>
 <title>prev_sql_id</title>
-<description>&lt;br&gt;&lt;pre&gt;set serveroutput off
+<description>&lt;pre&gt;set serveroutput off
 select * from AGGR.ENS_CUST_PROFILE2_DT_GLT where rownum &amp;lt; 2;
 select prev_sql_id p_sqlid from v$session where sid=sys_context('userenv','sid');
 
@@ -167,55 +175,55 @@ select prev_sql_id p_sqlid from v$session where sid=sys_context('userenv','sid')
 <category>SQL*Plus</category>
 <category>troubleshoot SQL test case</category>
 <link>http://karlarao.tiddlyspot.com#prev_sql_id</link>
-<pubDate>Thu, 13 Sep 2018 15:34:09 GMT</pubDate>
+<pubDate>Thu, 13 Sep 2018 15:34:00 GMT</pubDate>
 
 </item>
 <item>
 <title>Regex</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxjournal.com/content/bash-regular-expressions&quot; href=&quot;https://www.linuxjournal.com/content/bash-regular-expressions&quot; class=&quot;externalLink&quot;&gt;https://www.linuxjournal.com/content/bash-regular-expressions&lt;/a&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxjournal.com/content/bash-regular-expressions&quot; href=&quot;https://www.linuxjournal.com/content/bash-regular-expressions&quot; class=&quot;externalLink&quot;&gt;https://www.linuxjournal.com/content/bash-regular-expressions&lt;/a&gt;</description>
 <category>CodeNinja</category>
 <link>http://karlarao.tiddlyspot.com#Regex</link>
-<pubDate>Thu, 13 Sep 2018 05:58:43 GMT</pubDate>
+<pubDate>Thu, 13 Sep 2018 05:58:00 GMT</pubDate>
 
 </item>
 <item>
 <title>oci - oracle cloud infrastructure</title>
-<description>&lt;br&gt;OCI whitepapers &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.oracle.com/iaas/technical-resources&quot; href=&quot;https://cloud.oracle.com/iaas/technical-resources&quot; class=&quot;externalLink&quot;&gt;https://cloud.oracle.com/iaas/technical-resources&lt;/a&gt;&lt;br&gt;Blocked IP Addresses For &lt;a tiddlylink=&quot;VPNaaS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VPNaaS&quot; href=&quot;http://karlarao.tiddlyspot.com#VPNaaS&quot; class=&quot;externalLink null&quot;&gt;VPNaaS&lt;/a&gt; Tunnelling (Doc ID 2443083.1)</description>
+<description>OCI whitepapers &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.oracle.com/iaas/technical-resources&quot; href=&quot;https://cloud.oracle.com/iaas/technical-resources&quot; class=&quot;externalLink&quot;&gt;https://cloud.oracle.com/iaas/technical-resources&lt;/a&gt;&lt;br&gt;Blocked IP Addresses For &lt;a tiddlylink=&quot;VPNaaS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VPNaaS&quot; href=&quot;http://karlarao.tiddlyspot.com#VPNaaS&quot; class=&quot;externalLink null&quot;&gt;VPNaaS&lt;/a&gt; Tunnelling (Doc ID 2443083.1)</description>
 <category>1 CodeNinja Hosting , cloud computing</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Boci%20-%20oracle%20cloud%20infrastructure%5D%5D</link>
-<pubDate>Wed, 12 Sep 2018 03:35:15 GMT</pubDate>
-
-</item>
-<item>
-<title>pycharm for R</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://holgerbrandl.github.io/r4intellij/&quot; href=&quot;http://holgerbrandl.github.io/r4intellij/&quot; class=&quot;externalLink&quot;&gt;http://holgerbrandl.github.io/r4intellij/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/holgerbrandl/r4intellij&quot; href=&quot;https://github.com/holgerbrandl/r4intellij&quot; class=&quot;externalLink&quot;&gt;https://github.com/holgerbrandl/r4intellij&lt;/a&gt;</description>
-<category>pycharm</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20R%5D%5D</link>
-<pubDate>Tue, 11 Sep 2018 15:22:55 GMT</pubDate>
+<pubDate>Wed, 12 Sep 2018 03:35:00 GMT</pubDate>
 
 </item>
 <item>
 <title>pycharm</title>
-<description>&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; href=&quot;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; class=&quot;externalLink&quot;&gt;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; href=&quot;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; class=&quot;externalLink&quot;&gt;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>jetbrains</category>
 <link>http://karlarao.tiddlyspot.com#pycharm</link>
-<pubDate>Tue, 11 Sep 2018 15:22:40 GMT</pubDate>
+<pubDate>Tue, 11 Sep 2018 15:22:00 GMT</pubDate>
+
+</item>
+<item>
+<title>pycharm for R</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://holgerbrandl.github.io/r4intellij/&quot; href=&quot;http://holgerbrandl.github.io/r4intellij/&quot; class=&quot;externalLink&quot;&gt;http://holgerbrandl.github.io/r4intellij/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/holgerbrandl/r4intellij&quot; href=&quot;https://github.com/holgerbrandl/r4intellij&quot; class=&quot;externalLink&quot;&gt;https://github.com/holgerbrandl/r4intellij&lt;/a&gt;</description>
+<category>pycharm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20R%5D%5D</link>
+<pubDate>Tue, 11 Sep 2018 15:22:00 GMT</pubDate>
 
 </item>
 <item>
 <title>pycharm for docker</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; href=&quot;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; class=&quot;externalLink&quot;&gt;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&lt;/a&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; href=&quot;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; class=&quot;externalLink&quot;&gt;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&lt;/a&gt;</description>
 <category>pycharm</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20docker%5D%5D</link>
-<pubDate>Tue, 11 Sep 2018 15:22:21 GMT</pubDate>
+<pubDate>Tue, 11 Sep 2018 15:22:00 GMT</pubDate>
 
 </item>
 <item>
 <title>pycharm for vagrant</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; href=&quot;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; class=&quot;externalLink&quot;&gt;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&lt;/a&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; href=&quot;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; class=&quot;externalLink&quot;&gt;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&lt;/a&gt;</description>
 <category>pycharm</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20vagrant%5D%5D</link>
-<pubDate>Tue, 11 Sep 2018 15:21:31 GMT</pubDate>
+<pubDate>Tue, 11 Sep 2018 15:21:00 GMT</pubDate>
 
 </item>
 <item>
@@ -380,18 +388,6 @@ trace_directory_server = &amp;lt;any directory on a volume with enough freespace
 <category>R studio</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BR%20studio%20install%20mac%5D%5D</link>
 <pubDate>Thu, 06 Sep 2018 19:41:00 GMT</pubDate>
-
-</item>
-<item>
-<title>cygwin</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://forums.oracle.com/forums/thread.jspa?messageID=9273406&quot; href=&quot;http://forums.oracle.com/forums/thread.jspa?messageID=9273406&quot; class=&quot;externalLink&quot;&gt;http://forums.oracle.com/forums/thread.jspa?messageID=9273406&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bderzhavets.blogspot.com/2007/11/cygwinx-install-oracle-10.html&quot; href=&quot;http://bderzhavets.blogspot.com/2007/11/cygwinx-install-oracle-10.html&quot; class=&quot;externalLink&quot;&gt;http://bderzhavets.blogspot.com/2007/11/cygwinx-install-oracle-10.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://solaris.reys.net/how-to-x11-forwarding-using-ssh-putty-and-xming/&quot; href=&quot;http://solaris.reys.net/how-to-x11-forwarding-using-ssh-putty-and-xming/&quot; class=&quot;externalLink&quot;&gt;http://solaris.reys.net/how-to-x11-forwarding-using-ssh-putty-and-xming/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; XMING&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blogs.oracle.com/muralins/2007/09/cygwin_as_display_server.html&quot; href=&quot;http://blogs.oracle.com/muralins/2007/09/cygwin_as_display_server.html&quot; class=&quot;externalLink&quot;&gt;http://blogs.oracle.com/muralins/2007/09/cygwin_as_display_server.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; FOR A UNIX LIKE ENVIRONMENT	&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cs.nyu.edu/~yap/prog/cygwin/FAQs.html&quot; href=&quot;http://www.cs.nyu.edu/%7Eyap/prog/cygwin/FAQs.html&quot; class=&quot;externalLink&quot;&gt;http://www.cs.nyu.edu/~yap/prog/cygwin/FAQs.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cygwin.com/faq/faq.using.html&quot; href=&quot;http://www.cygwin.com/faq/faq.using.html&quot; class=&quot;externalLink&quot;&gt;http://www.cygwin.com/faq/faq.using.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/4334467/cygwin-using-a-path-variable-containing-a-windows-path-with-a-space-in-it&quot; href=&quot;http://stackoverflow.com/questions/4334467/cygwin-using-a-path-variable-containing-a-windows-path-with-a-space-in-it&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/4334467/cygwin-using-a-path-variable-containing-a-windows-path-with-a-space-in-it&lt;/a&gt;    &amp;lt;&lt;span&gt;—&lt;/span&gt; on windows path with space&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/2641391/how-to-format-a-dos-path-to-a-unix-path-on-cygwin-command-line&quot; href=&quot;http://stackoverflow.com/questions/2641391/how-to-format-a-dos-path-to-a-unix-path-on-cygwin-command-line&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/2641391/how-to-format-a-dos-path-to-a-unix-path-on-cygwin-command-line&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; dos path to a unix path&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cygwin.com/problems.html&quot; href=&quot;http://cygwin.com/problems.html&quot; class=&quot;externalLink&quot;&gt;http://cygwin.com/problems.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cygwin.com/ml/cygwin/2005-02/msg00232.html&quot; href=&quot;http://cygwin.com/ml/cygwin/2005-02/msg00232.html&quot; class=&quot;externalLink&quot;&gt;http://cygwin.com/ml/cygwin/2005-02/msg00232.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.catb.org/~esr/faqs/smart-questions.html&quot; href=&quot;http://www.catb.org/%7Eesr/faqs/smart-questions.html&quot; class=&quot;externalLink&quot;&gt;http://www.catb.org/~esr/faqs/smart-questions.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; How To Ask Questions The Smart Way&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/299504/connecting-to-remote-oracle-via-cygwin-sqlplus&quot; href=&quot;http://stackoverflow.com/questions/299504/connecting-to-remote-oracle-via-cygwin-sqlplus&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/299504/connecting-to-remote-oracle-via-cygwin-sqlplus&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; connecting to sqlplus&lt;br&gt;&lt;br&gt;&lt;h3&gt; cygwin package path&lt;/h3&gt;&lt;pre&gt;C:\cygwin64
-
-# list installed packages
-cygcheck --check-setup
-&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/46626455/how-to-configure-cygwin-local-package-directory&quot; href=&quot;https://stackoverflow.com/questions/46626455/how-to-configure-cygwin-local-package-directory&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/46626455/how-to-configure-cygwin-local-package-directory&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=get+packages+installed+in+cygwin&amp;amp;oq=get+packages+installed+in+cygwin&amp;amp;aqs=chrome..69i57j0.7750j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=get+packages+installed+in+cygwin&amp;amp;oq=get+packages+installed+in+cygwin&amp;amp;aqs=chrome..69i57j0.7750j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=get+packages+installed+in+cygwin&amp;amp;oq=get+packages+installed+in+cygwin&amp;amp;aqs=chrome..69i57j0.7750j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://codeyarns.com/2013/07/26/how-to-list-installed-packages-in-cygwin/&quot; href=&quot;https://codeyarns.com/2013/07/26/how-to-list-installed-packages-in-cygwin/&quot; class=&quot;externalLink&quot;&gt;https://codeyarns.com/2013/07/26/how-to-list-installed-packages-in-cygwin/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>LinuxBits</category>
-<link>http://karlarao.tiddlyspot.com#cygwin</link>
-<pubDate>Thu, 06 Sep 2018 19:39:00 GMT</pubDate>
 
 </item>
 </channel>
