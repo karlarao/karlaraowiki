@@ -6,592 +6,392 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 YourName</copyright>
-<pubDate>Tue, 04 Sep 2018 03:38:37 GMT</pubDate>
-<lastBuildDate>Tue, 04 Sep 2018 03:38:37 GMT</lastBuildDate>
+<pubDate>Fri, 14 Sep 2018 18:12:28 GMT</pubDate>
+<lastBuildDate>Fri, 14 Sep 2018 18:12:28 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
-<title>sqoop benchmarking</title>
-<description>&lt;h1&gt; my notes on sqoop benchmarking&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; href=&quot;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/856815e1cae7f5496dcb50359b7c8485&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;test cases&lt;br&gt;40 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;40 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 16GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 1000 fetch size hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;20 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size no hcc&lt;br&gt;100 threads 64GB chunk 5000 fetch size hcc&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;What we've noticed on performance are as follows: &lt;br&gt;&lt;ul&gt;&lt;li&gt; each sqoop thread is one sql_id in the oracle database, so 40 threads mean 40 sql_ids but let's say only 3 of those would really fetch data and 37 would be inactive this can be seen from images[1-4] below &lt;/li&gt;&lt;li&gt; increasing threads from what we can see has the most impact - from 40 (doing 116-117MB/sec) to 100 (doing 184-217MB/sec)&lt;/li&gt;&lt;li&gt; more threads doesn't mean linear performance increase (at some point we will hit the elbow :) of the curve), but it drives more active sessions in the database to do the work. see [ashtop on 40 threads](#ashtop-on-40-threads) and [ashtop on 100 threads](#ashtop-on-100-threads) below&lt;/li&gt;&lt;li&gt; the &quot;mapreduce&quot; part of the sqoop is still a mystery because we can't see the breakdown of elapsed time on the mapreduce part. let's say for the 40 threads that spent 93 seconds on mapreduce we'd like to know if oracle or hadoop is the bottleneck &lt;/li&gt;&lt;li&gt; at one point i saw &quot;library cache lock&quot; event when the thread sessions are spawned in the database, because each session is a new sql_id i suppose that time is parsing but then it's just seconds and not really substantial from total elapsed&lt;/li&gt;&lt;li&gt; i was also thinking if we push let's say 200threads then that would probably translate to 16 AAS CPU on db side, and probably more bandwidth. but then the database has to spawn all that 200 session_ids (hard parse) which should be fine i think. the worst case is all those 200 session_ids would be active and would translate to 1:1 AAS CPU and the whole database cluster would be out of CPU&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Some thoughts by gluent peeps: &lt;br&gt;&lt;ul&gt;&lt;li&gt; Sqoop has a fairly long bootstrap time (30s perhaps) so if your Sqoops are over in a minute or two then the startup time is hurting you and bigger chunks might help.&lt;/li&gt;&lt;li&gt; In all of our testing it is the write to Avro that is the bottleneck. We typically see lots of Oracle sessions doing a bit of work and a *lot* of CPU being burned in the Hadoop cluster&lt;/li&gt;&lt;li&gt; You should get a good view of the Hadoop side CPU from Cloudera Manager's charts &lt;/li&gt;&lt;li&gt; Also worth looking in resource manager UI to see if the mappers are queuing or all getting on CPU. Having said that, if your Sqoops are finishing in 1 or 2 minutes then, my guess would be they are not being queued&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
-<category>sqoop</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20benchmarking%5D%5D</link>
-<pubDate>Tue, 04 Sep 2018 03:38:35 GMT</pubDate>
+<title>copy_plan_hash_value.sql</title>
+<description>copy_plan_hash_value.sql&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&quot; href=&quot;http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&quot; class=&quot;externalLink&quot;&gt;http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&lt;/a&gt;</description>
+<category>.Attach or Copy SQL Profiles</category>
+<link>http://karlarao.tiddlyspot.com#copy_plan_hash_value.sql</link>
+<pubDate>Fri, 14 Sep 2018 18:12:03 GMT</pubDate>
 
 </item>
 <item>
-<title>screen</title>
-<description>&lt;pre&gt;
-screen -S karl   &amp;lt;- to create session
-screen -ls         &amp;lt;- to list
-screen -r karl    &amp;lt;- to resume, won't let you grab one that's already attached 
-screen -x karl   &amp;lt;- to resume 
-CTRL-A d        &amp;lt;- to safely disconnect
+<title>.Attach or Copy SQL Profiles</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2009/07/how-to-attach-a-sql-profile-to-a-different-statement/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2009/07/how-to-attach-a-sql-profile-to-a-different-statement/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2009/07/how-to-attach-a-sql-profile-to-a-different-statement/&lt;/a&gt;&lt;br&gt;&lt;br&gt;HOWTO: bad plan to good plan switch &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evernote.com/shard/s48/sh/308af73e-47bc-4598-ab31-77ab74cbbed9/7acc32b91ebb64639116d3931a4e9935&quot; href=&quot;http://www.evernote.com/shard/s48/sh/308af73e-47bc-4598-ab31-77ab74cbbed9/7acc32b91ebb64639116d3931a4e9935&quot; class=&quot;externalLink&quot;&gt;http://www.evernote.com/shard/s48/sh/308af73e-47bc-4598-ab31-77ab74cbbed9/7acc32b91ebb64639116d3931a4e9935&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;15:07:41 HCMPRD1&amp;gt; @copy_plan_hash_value.sql
+Enter value for plan_hash_value to generate profile from (X0X0X0X0): 3609883731  &amp;lt;-- this is the good plan
+Enter value for sql_id to attach profile to (X0X0X0X0): c7tadymffd34z
+Enter value for child_no to attach profile to (0):
+Enter value for category (DEFAULT):
+Enter value for force_matching (false):
 
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; href=&quot;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; class=&quot;externalLink&quot;&gt;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&quot; href=&quot;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_%28Never_have_your_scripts_die_because_you_lost_your_connection&quot; class=&quot;externalLink&quot;&gt;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&lt;/a&gt;)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>LinuxNetworking</category>
-<link>http://karlarao.tiddlyspot.com#screen</link>
-<pubDate>Thu, 30 Aug 2018 22:46:06 GMT</pubDate>
+PL/SQL procedure successfully completed.
 
-</item>
-<item>
-<title>sqoop performance tuning</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; href=&quot;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/70258/sqoop-performance-tuning.html&lt;/a&gt;</description>
-<category>sqoop</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20performance%20tuning%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 16:21:00 GMT</pubDate>
+&lt;/pre&gt;</description>
+<category>SQLProfiles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.Attach%20or%20Copy%20SQL%20Profiles%5D%5D</link>
+<pubDate>Fri, 14 Sep 2018 18:11:50 GMT</pubDate>
 
 </item>
 <item>
-<title>sqoop</title>
-<description></description>
-<category>Data Engineering</category>
-<link>http://karlarao.tiddlyspot.com#sqoop</link>
-<pubDate>Tue, 28 Aug 2018 16:20:00 GMT</pubDate>
+<title>.ManuallyCreatedSQLProfiles</title>
+<description>&lt;br&gt;HOWTO: create a manual SQL Profile &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; href=&quot;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; class=&quot;externalLink&quot;&gt;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; href=&quot;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; class=&quot;externalLink&quot;&gt;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&lt;/a&gt;</description>
+<category>SQLProfiles</category>
+<link>http://karlarao.tiddlyspot.com#.ManuallyCreatedSQLProfiles</link>
+<pubDate>Fri, 14 Sep 2018 18:08:34 GMT</pubDate>
 
 </item>
 <item>
-<title>sqoop with oraoop, linkedin DataBus</title>
-<description>sqoop 1.4.5 with oraoop integrated: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; href=&quot;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&quot; class=&quot;externalLink&quot;&gt;http://blog.cloudera.com/blog/2014/11/how-apache-sqoop-1-4-5-improves-oracle-databaseapache-hadoop-integration/&lt;/a&gt;&lt;br&gt;&lt;br&gt;As per Tanel (&lt;a tiddlylink=&quot;CCd&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CCd&quot; href=&quot;http://karlarao.tiddlyspot.com#CCd&quot; class=&quot;externalLink null&quot;&gt;CCd&lt;/a&gt;)&lt;br&gt;The &lt;a tiddlylink=&quot;LinkedIn&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#LinkedIn&quot; href=&quot;http://karlarao.tiddlyspot.com#LinkedIn&quot; class=&quot;externalLink null&quot;&gt;LinkedIn&lt;/a&gt; project name is &lt;a tiddlylink=&quot;DataBus&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataBus&quot; href=&quot;http://karlarao.tiddlyspot.com#DataBus&quot; class=&quot;externalLink null&quot;&gt;DataBus&lt;/a&gt;&lt;br&gt;Uses &lt;a tiddlylink=&quot;ORA_ROWSCN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA_ROWSCN&quot; class=&quot;externalLink null&quot;&gt;ORA_ROWSCN&lt;/a&gt; for incremental extraction&lt;br&gt;Among other stuff that it does&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; href=&quot;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&quot; class=&quot;externalLink&quot;&gt;https://github.com/linkedin/databus/wiki/Connecting-Databus-to-an-Oracle-Database&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>sqoop</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsqoop%20with%20oraoop%2C%20linkedin%20DataBus%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 16:20:00 GMT</pubDate>
+<title>rewriting MAX on WHERE</title>
+<description>&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' first rewrite avoids the group by', event)&quot;&gt; first rewrite avoids the group by&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' another example is split this into two SQLs ', event)&quot;&gt; another example is split this into two SQLs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using gluent present, push it down to hadoop', event)&quot;&gt; using gluent present, push it down to hadoop&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; first rewrite avoids the group by&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;# BEFORE 
+
+VAR BAN VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+
+EXEC :BAN := '302034860';
+EXEC :CHG_ACTV_KEY := '';
+EXEC :CHG_ACTV_KEY := '4937';
+
+
+   select /*+ monitor */
+    b.ban,
+    b.cycle_run_month,
+    b.cycle_run_year
+   from dim.delta_bill_pull_tbl_glt b,
+        ( select
+           ban,
+           actv_bill_seq_no
+          from dim.delta_charge_pull_tbl_glt
+          where ban = (select to_ban
+                       from ( select ban, max(ent_seq_no) ent_seq_no
+                              from dim.delta_charge_pull_tbl_glt
+                              where ban = :ban and to_ent_seq_no = :chg_actv_key
+                              group by ban ) a,
+                            dim.delta_charge_pull_tbl_glt d
+                       where a.ban = d.ban
+                         and a.ent_seq_no = d.ent_seq_no)
+             and ent_seq_no = :chg_actv_key ) c
+    where
+          b.ban = c.ban
+      and b.bill_seq_no = c.actv_bill_seq_no
+      and rownum=1
+/
+
+
+# AFTER 
+VAR BAN VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+VAR CHG_ACTV_KEY VARCHAR2(32)
+
+EXEC :BAN := '302034860';
+EXEC :CHG_ACTV_KEY := '';
+EXEC :CHG_ACTV_KEY := '4937';
+
+
+   select /*+ monitor */
+    b.ban,
+    b.cycle_run_month,
+    b.cycle_run_year
+   from dim.delta_bill_pull_tbl_glt b,
+        ( select
+           ban,
+           actv_bill_seq_no
+          from dim.delta_charge_pull_tbl_glt
+          where ban = (select d.to_ban
+                      from dim.delta_charge_pull_tbl_glt d
+                      where d.ban = :ban
+                      and   d.ent_seq_no = (select max(ent_seq_no)
+                                            from   dim.delta_charge_pull_tbl_glt
+                                            where  ban = :ban
+                                            and    to_ent_seq_no = :chg_actv_key))
+             and ent_seq_no = :chg_actv_key ) c
+    where
+          b.ban = c.ban
+      and b.bill_seq_no = c.actv_bill_seq_no
+      and rownum=1
+/
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; another example is split this into two &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;VARIABLE to_ban NUMBER
+
+BEGIN
+    SELECT  to_ban
+    INTO    :to_ban
+    FROM    dim_h.delta_charge_pull_tbl_glt d
+    WHERE   d.ban = :ban
+    AND     d.ent_seq_no = (SELECT MAX(ent_seq_no)
+                            FROM   dim_h.delta_charge_pull_tbl_glt
+                            WHERE  ban = :ban
+                            AND    to_ent_seq_no = :chg_actv_key);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        :to_ban := NULL;
+END;
+/
+
+SELECT /*+ monitor */
+       b.ban,
+       b.cycle_run_month,
+       b.cycle_run_year
+FROM   dim_h.delta_bill_pull_tbl_glt b
+,      dim_h.delta_charge_pull_tbl_glt c
+WHERE  b.ban = c.ban
+AND    b.bill_seq_no = c.actv_bill_seq_no
+AND    c.ban = :to_ban
+AND    c.ent_seq_no = :chg_actv_key
+AND    ROWNUM = 1;
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; using gluent present, push it down to hadoop&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;./present -t dim.gl_delta_bill_charge_pull_join -xf \
+--present-join=&quot;table(dim.ens_bill_gl_detail_t_glt) alias(gl) \
+--present-join=&quot;table(dim.delta_adjustment_pull_tbl_glt) alias(adj) outer-join(gl) join-clauses(adj.ban = gl.ban, adj.ar_actv_key = gl.ent_seq_no, adj.ar_actv_seq_no = gl.actv_seq_no) project(*)&quot; \
+--present-join=&quot;table(dim.delta_charge_pull_tbl_glt) alias(chg) outer-join(gl) join-clauses(chg.ban = gl.ban, chg.ar_actv_key = gl.ent_seq_no, chg.ar_actv_seq_no = gl.actv_seq_no) project(*)&quot;
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>my rewrite examples</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Brewriting%20MAX%20on%20WHERE%5D%5D</link>
+<pubDate>Thu, 13 Sep 2018 16:16:03 GMT</pubDate>
 
 </item>
 <item>
-<title>python installation</title>
-<description>&lt;h1&gt; current &lt;/h1&gt;&lt;br&gt;&lt;h2&gt; mac &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/donnemartin/gitsome&quot; href=&quot;https://github.com/donnemartin/gitsome&quot; class=&quot;externalLink&quot;&gt;https://github.com/donnemartin/gitsome&lt;/a&gt;&lt;br&gt;see pyenv to install different versions of python &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&quot; href=&quot;https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&quot; class=&quot;externalLink&quot;&gt;https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;  417  xcode-select --install
-  418  pyenv install 3.5.0
-  419  pyenv versions
-  420  pyenv local 3.5.0
-  421  python -v
-  422  python --version
-  423  cd 
-  424  cat .bash_profile
-  425  cat .bash_profile.bak 
-  426  which python3
-  427  pyenv version
-  428  pyenv local 3.5.0
-  429  python
-  430  PATH=&quot;~/.pyenv/versions/2.7.10/bin:${PATH}&quot;
-  431  which python
-  432  python
-  433  PATH=&quot;~/.pyenv/versions/3.5.0/bin:${PATH}&quot;
-  434  python
-  435  pip3
-  436  pip3 install gitsome
-  437  gh configure
-  438  gh feed
-  439  gh feed karlarao -p
-  440  gh notifications
-  441  gh starred &quot;oracle&quot;
-  442  gh search-repos &quot;created:&amp;gt;=2017-01-01 user:karlarao&quot; 
-  456  echo -e 'if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then\n  eval &quot;$(pyenv init -)&quot;\nfi' &amp;gt;&amp;gt; ~/.bash_profile
-  457  cat .bash_profile
-&lt;/pre&gt;&lt;br&gt;then fix the matplotlibrc&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/21784641/installation-issue-with-matplotlib-python&quot; href=&quot;https://stackoverflow.com/questions/21784641/installation-issue-with-matplotlib-python&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/21784641/installation-issue-with-matplotlib-python&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://markhneedham.com/blog/2018/05/04/python-runtime-error-osx-matplotlib-not-installed-as-framework-mac/&quot; href=&quot;https://markhneedham.com/blog/2018/05/04/python-runtime-error-osx-matplotlib-not-installed-as-framework-mac/&quot; class=&quot;externalLink&quot;&gt;https://markhneedham.com/blog/2018/05/04/python-runtime-error-osx-matplotlib-not-installed-as-framework-mac/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;  466  cat ~/.matplotlib/matplotlibrc
-  467  vi cat ~/.matplotlib/matplotlibrc
-  468  vi ~/.matplotlib/matplotlibrc
-  469  cat ~/.matplotlib/matplotlibrc
-  470  rm ~/.matplotlib/matplotlibrc
+<title>prev_sql_id</title>
+<description>&lt;br&gt;&lt;pre&gt;set serveroutput off
+select * from AGGR.ENS_CUST_PROFILE2_DT_GLT where rownum &amp;lt; 2;
+select prev_sql_id p_sqlid from v$session where sid=sys_context('userenv','sid');
 
-# create this file 
-cat ~/.matplotlib/matplotlibrc
-backend: TkAgg
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; windows &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://winpython.github.io&quot; href=&quot;https://winpython.github.io&quot; class=&quot;externalLink&quot;&gt;https://winpython.github.io&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; previous &lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://python.org/download/releases/3.1.2/&quot; href=&quot;http://python.org/download/releases/3.1.2/&quot; class=&quot;externalLink&quot;&gt;http://python.org/download/releases/3.1.2/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;on linux&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://love-python.blogspot.com/2008/03/install-idle-in-linux.html&quot; href=&quot;http://love-python.blogspot.com/2008/03/install-idle-in-linux.html&quot; class=&quot;externalLink&quot;&gt;http://love-python.blogspot.com/2008/03/install-idle-in-linux.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.velocityreviews.com/forums/t359686-configuring-idle-on-linux.html&quot; href=&quot;http://www.velocityreviews.com/forums/t359686-configuring-idle-on-linux.html&quot; class=&quot;externalLink&quot;&gt;http://www.velocityreviews.com/forums/t359686-configuring-idle-on-linux.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;on windows&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.stuartellis.eu/articles/python-development-windows/&quot; href=&quot;http://www.stuartellis.eu/articles/python-development-windows/&quot; class=&quot;externalLink&quot;&gt;http://www.stuartellis.eu/articles/python-development-windows/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.rose-hulman.edu/Class/csse/resources/Eclipse/eclipse-python-configuration.htm&quot; href=&quot;http://www.rose-hulman.edu/Class/csse/resources/Eclipse/eclipse-python-configuration.htm&quot; class=&quot;externalLink&quot;&gt;http://www.rose-hulman.edu/Class/csse/resources/Eclipse/eclipse-python-configuration.htm&lt;/a&gt;&lt;br&gt;1) install setuptools&lt;br&gt;&lt;pre&gt;http://www.python.org/download/releases/3.3.2/#id4
-https://pypi.python.org/pypi/distribute  &amp;lt;-- Distribute is a deprecated fork of the Setuptools project.
-http://pythonhosted.org/distribute/
-https://bitbucket.org/pypa/setuptools
-https://pypi.python.org/pypi/setuptools/1.1.6#windows
-https://pythonhosted.org/setuptools/easy_install.html
-&lt;/pre&gt;2) setup venv &lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.python.org/dev/library/venv.html&quot; href=&quot;http://docs.python.org/dev/library/venv.html&quot; class=&quot;externalLink&quot;&gt;http://docs.python.org/dev/library/venv.html&lt;/a&gt;&lt;br&gt;3) download &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.eclipse.org/&quot; href=&quot;http://www.eclipse.org/&quot; class=&quot;externalLink&quot;&gt;http://www.eclipse.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;on mac&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://docs.python-guide.org/en/latest/starting/install/osx/&quot; href=&quot;http://docs.python-guide.org/en/latest/starting/install/osx/&quot; class=&quot;externalLink&quot;&gt;http://docs.python-guide.org/en/latest/starting/install/osx/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://jakevdp.github.io/blog/2013/02/02/setting-up-a-mac-for-python-development/&quot; href=&quot;http://jakevdp.github.io/blog/2013/02/02/setting-up-a-mac-for-python-development/&quot; class=&quot;externalLink&quot;&gt;http://jakevdp.github.io/blog/2013/02/02/setting-up-a-mac-for-python-development/&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+@dplan
+@planx2 Y &amp;lt;sql_id&amp;gt; 
+&lt;/pre&gt;</description>
+<category>SQL*Plus</category>
+<category>troubleshoot SQL test case</category>
+<link>http://karlarao.tiddlyspot.com#prev_sql_id</link>
+<pubDate>Thu, 13 Sep 2018 15:34:09 GMT</pubDate>
+
+</item>
+<item>
+<title>Regex</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxjournal.com/content/bash-regular-expressions&quot; href=&quot;https://www.linuxjournal.com/content/bash-regular-expressions&quot; class=&quot;externalLink&quot;&gt;https://www.linuxjournal.com/content/bash-regular-expressions&lt;/a&gt;</description>
+<category>CodeNinja</category>
+<link>http://karlarao.tiddlyspot.com#Regex</link>
+<pubDate>Thu, 13 Sep 2018 05:58:43 GMT</pubDate>
+
+</item>
+<item>
+<title>oci - oracle cloud infrastructure</title>
+<description>&lt;br&gt;OCI whitepapers &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.oracle.com/iaas/technical-resources&quot; href=&quot;https://cloud.oracle.com/iaas/technical-resources&quot; class=&quot;externalLink&quot;&gt;https://cloud.oracle.com/iaas/technical-resources&lt;/a&gt;&lt;br&gt;Blocked IP Addresses For &lt;a tiddlylink=&quot;VPNaaS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VPNaaS&quot; href=&quot;http://karlarao.tiddlyspot.com#VPNaaS&quot; class=&quot;externalLink null&quot;&gt;VPNaaS&lt;/a&gt; Tunnelling (Doc ID 2443083.1)</description>
+<category>1 CodeNinja Hosting , cloud computing</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Boci%20-%20oracle%20cloud%20infrastructure%5D%5D</link>
+<pubDate>Wed, 12 Sep 2018 03:35:15 GMT</pubDate>
+
+</item>
+<item>
+<title>pycharm for R</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://holgerbrandl.github.io/r4intellij/&quot; href=&quot;http://holgerbrandl.github.io/r4intellij/&quot; class=&quot;externalLink&quot;&gt;http://holgerbrandl.github.io/r4intellij/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/holgerbrandl/r4intellij&quot; href=&quot;https://github.com/holgerbrandl/r4intellij&quot; class=&quot;externalLink&quot;&gt;https://github.com/holgerbrandl/r4intellij&lt;/a&gt;</description>
+<category>pycharm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20R%5D%5D</link>
+<pubDate>Tue, 11 Sep 2018 15:22:55 GMT</pubDate>
+
+</item>
+<item>
+<title>pycharm</title>
+<description>&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; href=&quot;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; class=&quot;externalLink&quot;&gt;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>jetbrains</category>
+<link>http://karlarao.tiddlyspot.com#pycharm</link>
+<pubDate>Tue, 11 Sep 2018 15:22:40 GMT</pubDate>
+
+</item>
+<item>
+<title>pycharm for docker</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; href=&quot;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; class=&quot;externalLink&quot;&gt;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&lt;/a&gt;</description>
+<category>pycharm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20docker%5D%5D</link>
+<pubDate>Tue, 11 Sep 2018 15:22:21 GMT</pubDate>
+
+</item>
+<item>
+<title>pycharm for vagrant</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; href=&quot;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; class=&quot;externalLink&quot;&gt;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&lt;/a&gt;</description>
+<category>pycharm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20vagrant%5D%5D</link>
+<pubDate>Tue, 11 Sep 2018 15:21:31 GMT</pubDate>
+
+</item>
+<item>
+<title>generator JSON</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.objgen.com/json&quot; href=&quot;http://www.objgen.com/json&quot; class=&quot;externalLink&quot;&gt;http://www.objgen.com/json&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.convertcsv.com/csv-to-json.htm&quot; href=&quot;http://www.convertcsv.com/csv-to-json.htm&quot; class=&quot;externalLink&quot;&gt;http://www.convertcsv.com/csv-to-json.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.convertcsv.com/json-to-csv.htm&quot; href=&quot;http://www.convertcsv.com/json-to-csv.htm&quot; class=&quot;externalLink&quot;&gt;http://www.convertcsv.com/json-to-csv.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/17093180/store-multiple-values-in-single-key-in-json&quot; href=&quot;https://stackoverflow.com/questions/17093180/store-multiple-values-in-single-key-in-json&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/17093180/store-multiple-values-in-single-key-in-json&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://json-csv.com/&quot; href=&quot;https://json-csv.com/&quot; class=&quot;externalLink&quot;&gt;https://json-csv.com/&lt;/a&gt;</description>
+<category>DevTools, Dev Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bgenerator%20JSON%5D%5D</link>
+<pubDate>Thu, 06 Sep 2018 20:39:00 GMT</pubDate>
+
+</item>
+<item>
+<title>generator Bootstrap</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.objgen.com/html&quot; href=&quot;http://www.objgen.com/html&quot; class=&quot;externalLink&quot;&gt;http://www.objgen.com/html&lt;/a&gt;</description>
+<category>DevTools, Dev Tools</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bgenerator%20Bootstrap%5D%5D</link>
+<pubDate>Thu, 06 Sep 2018 20:38:00 GMT</pubDate>
+
+</item>
+<item>
+<title>spark ETL, spark scala ETL</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/databricks/building-robust-etl-pipelines-with-apache-spark&quot; href=&quot;https://www.slideshare.net/databricks/building-robust-etl-pipelines-with-apache-spark&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/databricks/building-robust-etl-pipelines-with-apache-spark&lt;/a&gt;  &amp;lt;- GOOD STUFF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://aws.amazon.com/blogs/big-data/using-spark-sql-for-etl/&quot; href=&quot;https://aws.amazon.com/blogs/big-data/using-spark-sql-for-etl/&quot; class=&quot;externalLink&quot;&gt;https://aws.amazon.com/blogs/big-data/using-spark-sql-for-etl/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/anish749/spark2-etl-examples&quot; href=&quot;https://github.com/anish749/spark2-etl-examples&quot; class=&quot;externalLink&quot;&gt;https://github.com/anish749/spark2-etl-examples&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@mrpowers/how-to-write-spark-etl-processes-df01b0c1bec9&quot; href=&quot;https://medium.com/@mrpowers/how-to-write-spark-etl-processes-df01b0c1bec9&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@mrpowers/how-to-write-spark-etl-processes-df01b0c1bec9&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.red-gate.com/simple-talk/sql/bi/scala-apache-spark-tandem-next-generation-etl-framework/&quot; href=&quot;https://www.red-gate.com/simple-talk/sql/bi/scala-apache-spark-tandem-next-generation-etl-framework/&quot; class=&quot;externalLink&quot;&gt;https://www.red-gate.com/simple-talk/sql/bi/scala-apache-spark-tandem-next-generation-etl-framework/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/holdenk/spark-testing-base&quot; href=&quot;https://github.com/holdenk/spark-testing-base&quot; class=&quot;externalLink&quot;&gt;https://github.com/holdenk/spark-testing-base&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/juanrh/sscheck&quot; href=&quot;https://github.com/juanrh/sscheck&quot; class=&quot;externalLink&quot;&gt;https://github.com/juanrh/sscheck&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.scalatest.org/&quot; href=&quot;http://www.scalatest.org/&quot; class=&quot;externalLink&quot;&gt;http://www.scalatest.org/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://databricks.com/session/get-rid-of-traditional-etl-move-to-spark&quot; href=&quot;https://databricks.com/session/get-rid-of-traditional-etl-move-to-spark&quot; class=&quot;externalLink&quot;&gt;https://databricks.com/session/get-rid-of-traditional-etl-move-to-spark&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Using Spark as an ETL tool &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/scala-guide-for/9781787282858/ch21s03.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/scala-guide-for/9781787282858/ch21s03.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/scala-guide-for/9781787282858/ch21s03.html&lt;/a&gt;&lt;br&gt;Chapter 2. Data Processing Pipeline Using Scala &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/building-a-recommendation/9781785282584/ch02.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/building-a-recommendation/9781785282584/ch02.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/building-a-recommendation/9781785282584/ch02.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=scala+spark+etl&amp;amp;oq=scala+spark+etl&amp;amp;aqs=chrome..69i57j69i60l3j0l2.5253j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=scala+spark+etl&amp;amp;oq=scala+spark+etl&amp;amp;aqs=chrome..69i57j69i60l3j0l2.5253j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=scala+spark+etl&amp;amp;oq=scala+spark+etl&amp;amp;aqs=chrome..69i57j69i60l3j0l2.5253j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h3&gt; spark ETL talend &lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/40371279/talend-and-apache-spark&quot; href=&quot;https://stackoverflow.com/questions/40371279/talend-and-apache-spark&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/40371279/talend-and-apache-spark&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.talend.com/blog/2017/09/15/talend-apache-spark-technical-primer/&quot; href=&quot;https://www.talend.com/blog/2017/09/15/talend-apache-spark-technical-primer/&quot; class=&quot;externalLink&quot;&gt;https://www.talend.com/blog/2017/09/15/talend-apache-spark-technical-primer/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.talend.com/blog/2018/02/21/talend-vs-spark-submit-configuration-whats-the-difference/&quot; href=&quot;https://www.talend.com/blog/2018/02/21/talend-vs-spark-submit-configuration-whats-the-difference/&quot; class=&quot;externalLink&quot;&gt;https://www.talend.com/blog/2018/02/21/talend-vs-spark-submit-configuration-whats-the-difference/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>apache spark</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bspark%20ETL%2C%20spark%20scala%20ETL%5D%5D</link>
+<pubDate>Thu, 06 Sep 2018 20:23:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Failed Logon Delay</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=oracle+Failed+Logon+Delay&amp;amp;ei=O9uJW9OVIKGQggfhl5KwBw&amp;amp;start=0&amp;amp;sa=N&amp;amp;biw=1389&amp;amp;bih=764&quot; href=&quot;https://www.google.com/search?q=oracle+Failed+Logon+Delay&amp;amp;ei=O9uJW9OVIKGQggfhl5KwBw&amp;amp;start=0&amp;amp;sa=N&amp;amp;biw=1389&amp;amp;bih=764&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=oracle+Failed+Logon+Delay&amp;amp;ei=O9uJW9OVIKGQggfhl5KwBw&amp;amp;start=0&amp;amp;sa=N&amp;amp;biw=1389&amp;amp;bih=764&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.dba-resources.com/oracle/finding-the-origin-of-failed-login-attempts/&quot; href=&quot;https://www.dba-resources.com/oracle/finding-the-origin-of-failed-login-attempts/&quot; class=&quot;externalLink&quot;&gt;https://www.dba-resources.com/oracle/finding-the-origin-of-failed-login-attempts/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;1. Using database auditing (if already enabled)
+
+Caveat: This is the simplest method to determine the source of failed login attempts providing that auditing is already enabled on your database as the information has (probably) already been captured. However, if auditing is not enabled then doing so will require that the database be restarted, in which case this option is no longer the simplest!
+
+Firstly, check to see whether auditing is enabled and set to &quot;DB&quot; (meaning the audit trail is written to a database table).
+
+show parameter audit_trail
+
+If not set, then you will need to enable auditing, restart the database and then enable auditing of unsucessful logins as follows:
+
+audit session whenever not successful;
+
+The audit records for unsuccessful logon attempts can then be found as follows:
+
+col ntimestamp# for a30 heading &quot;Timestamp&quot;
+col userid for a20 heading &quot;Username&quot;
+col userhost for a15 heading &quot;Machine&quot;
+col spare1 for a15 heading &quot;OS User&quot;
+col comment$text for a80 heading &quot;Details&quot; wrap
+
+select ntimestamp#, userid, userhost, spare1, comment$text from sys.aud$ where returncode=1017 order by 1;
+
+Sample output:
+
+Timestamp Username Machine OS User
+------------------------------ -------------------- --------------- ---------------
+Details
+--------------------------------------------------------------------------------
+08-DEC-14 12.39.42.945635 PM APPUSER unix_app_001 orafrms
+Authenticated by: DATABASE; Client address: (ADDRESS=(PROTOCOL=tcp)(HOST=10.218.
+64.44)(PORT=42293))
+
+08-DEC-14 12.42.10.170957 PM APPUSER unix_app_001 orafrms
+Authenticated by: DATABASE; Client address: (ADDRESS=(PROTOCOL=tcp)(HOST=10.218.
+64.44)(PORT=48541))
+
+Note: the USERHOST column is only populated with the Client Host machine name as of 10G, in earlier versions this was the Numeric instance ID for the Oracle instance from which the user is accessing the database in a RAC environment.
+2. Use a trigger to capture additional information
+
+The following trigger code can be used to gather additional information about unsuccessful login attempts and write them to the database alert log, it is recommended to integrate this code into an existing trigger if you already have a trigger for this triggering event.
+
+CREATE OR REPLACE TRIGGER logon_denied_write_alertlog AFTER SERVERERROR ON DATABASE
+DECLARE
+ l_message varchar2(2000);
+BEGIN
+ -- ORA-1017: invalid username/password; logon denied
+ IF (IS_SERVERERROR(1017)) THEN
+ select 'Failed login attempt to the &quot;'|| sys_context('USERENV' ,'AUTHENTICATED_IDENTITY') ||'&quot; schema'
+ || ' using ' || sys_context ('USERENV', 'AUTHENTICATION_TYPE') ||' authentication'
+ || ' at ' || to_char(logon_time,'dd-MON-yy hh24:mi:ss' )
+ || ' from ' || osuser ||'@'||machine ||' ['||nvl(sys_context ('USERENV', 'IP_ADDRESS'),'Unknown IP')||']'
+ || ' via the &quot;' ||program||'&quot; program.'
+ into l_message
+ from sys .v_$session
+ where sid = to_number(substr(dbms_session.unique_session_id,1 ,4), 'xxxx')
+ and serial# = to_number(substr(dbms_session.unique_session_id,5 ,4), 'xxxx');
+ 
+ -- write to alert log
+ sys.dbms_system .ksdwrt( 2,l_message );
+ END IF;
+END;
+/
+
+Some sample output from the alert.log looks like:
+
+Tue Jan 06 09:45:36 2015
+Failed login attempt to the &quot;appuser&quot; schema using DATABASE authentication at 06-JAN-15 09:45:35 from orafrms@unix_app_001 [10.218.64.44] via the &quot;frmweb@unix_app_001 (TNS V1-V3)&quot; program.
+
+3. Setting an event to generate trace files on unsuccessful login.
+
+You can instruct the database to write a trace file whenever an unsuccessful login attempt is made by setting the following event (the example below will only set the event until the next time the database is restarted. Update your pfile or spfile accordingly if you want this to be permanent).
+
+alter system set events '1017 trace name errorstack level 10';
+
+Trace files will be generated in user_dump_dest whenever someone attempts to login using an invalid username / password. As the trace is requested at level 10 it will include a section labeled PROCESS STATE that includes trace information such as :
+
+O/S info: user:orafrms, term: pts/15, ospid: 29959, machine:unix_app_001
+program: frmweb@unix_app_001 (TNS V1-V3)
+application name: frmweb@unix_app_001 (TNS V1-V3), hash value=0
+last wait for 'SQL*Net message from client' blocking sess=0x0 seq=2 wait_time=5570 seconds since wait started=0
+
+In this case it was an 'frmweb' client running as OS user 'orafrms' that started the client session. The section &quot;Call Stack Trace&quot; may aid support in further diagnosing the issue.
+
+Note: If the OS user or program is 'oracle' the connection may originate from a Database Link.
+4. Using SQL*Net tracing to gather information
+
+A sqlnet trace can provide you with even more details about the connection attempt but use this only if none of the above are successful in determining the origin of the failed login as it will be hard to find what you are looking for if you enable sqlnet tracing (and it can potentially consume large amounts of disk space).
+
+To enable SQL*Net tracing create or edit the server side sqlnet.ora file and add the following parameters:
+
+# server side sqlnet trace parameters
+trace_level_server = 16
+trace_file_server=server
+trace_directory_server = &amp;lt;any directory on a volume with enough freespace&amp;gt;
+
+
+&lt;/pre&gt;</description>
+<category>Troubleshooting & Internals</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BFailed%20Logon%20Delay%5D%5D</link>
+<pubDate>Thu, 06 Sep 2018 20:20:00 GMT</pubDate>
+
+</item>
+<item>
+<title>linux enterprise security hardening</title>
+<description>SCAP &lt;a target=&quot;_blank&quot; title=&quot;External link to https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sect-practical_examples&quot; href=&quot;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sect-practical_examples&quot; class=&quot;externalLink&quot;&gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sect-practical_examples&lt;/a&gt;</description>
+<category>LinuxSecurity</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Blinux%20enterprise%20security%20hardening%5D%5D</link>
+<pubDate>Thu, 06 Sep 2018 20:18:00 GMT</pubDate>
+
+</item>
+<item>
+<title>cx_Oracle</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle.github.io/python-cx_Oracle/&quot; href=&quot;https://oracle.github.io/python-cx_Oracle/&quot; class=&quot;externalLink&quot;&gt;https://oracle.github.io/python-cx_Oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; href=&quot;https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/python-cx_Oracle/tree/master/samples&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://ba6.us/?q=cx_Oracle_easy_windows_install&quot; href=&quot;http://ba6.us/?q=cx_Oracle_easy_windows_install&quot; class=&quot;externalLink&quot;&gt;http://ba6.us/?q=cx_Oracle_easy_windows_install&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h3&gt; mac &lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jasonstitt.com/cx_oracle_on_os_x&quot; href=&quot;https://jasonstitt.com/cx_oracle_on_os_x&quot; class=&quot;externalLink&quot;&gt;https://jasonstitt.com/cx_oracle_on_os_x&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/thom-nic/6011715&quot; href=&quot;https://gist.github.com/thom-nic/6011715&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/thom-nic/6011715&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html&quot; href=&quot;http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html&lt;/a&gt;</description>
 <category>Python</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpython%20installation%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 15:59:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#cx_Oracle</link>
+<pubDate>Thu, 06 Sep 2018 19:56:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hadoop development env</title>
+<description>mac hadoop development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; href=&quot;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; href=&quot;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; href=&quot;http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; class=&quot;externalLink&quot;&gt;http://hadoopsie.com/mac-setup-for-hadoop-dev/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hadoop Map Reduce Programming 101 - 04 Setup Eclipse For Map Reduce Development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; href=&quot;https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=mRIsLSrHOj4&lt;/a&gt;&lt;br&gt;Setup Spark Development Environment on Windows - Introduction &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; href=&quot;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&lt;/a&gt;&lt;br&gt;Introduction - Setup Python, Pycharm and Spark on Windows &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; href=&quot;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; class=&quot;externalLink&quot;&gt;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; href=&quot;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; href=&quot;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20development%20env%5D%5D</link>
+<pubDate>Thu, 06 Sep 2018 19:55:00 GMT</pubDate>
 
 </item>
 <item>
 <title>R studio install mac</title>
-<description>&lt;pre&gt;  594  brew cask install 'xquartz'
-  595  brew cask install 'r-app'
-  596  r
-  597  brew cask install 'rstudio'
-&lt;/pre&gt;</description>
+<description>&lt;pre&gt;  brew cask install 'xquartz'
+  brew cask install 'r-app'
+  r
+  brew cask install 'rstudio'
+&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=install+rstudio+for+mac&amp;amp;oq=install+rstudio+for+mac&amp;amp;aqs=chrome..69i57j0l5.4464j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=install+rstudio+for+mac&amp;amp;oq=install+rstudio+for+mac&amp;amp;aqs=chrome..69i57j0l5.4464j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=install+rstudio+for+mac&amp;amp;oq=install+rstudio+for+mac&amp;amp;aqs=chrome..69i57j0l5.4464j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/20457290/installing-r-with-homebrew&quot; href=&quot;https://stackoverflow.com/questions/20457290/installing-r-with-homebrew&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/20457290/installing-r-with-homebrew&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://macappstore.org/rstudio/&quot; href=&quot;http://macappstore.org/rstudio/&quot; class=&quot;externalLink&quot;&gt;http://macappstore.org/rstudio/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mdzhang.com/posts/osx-r-rstudio/&quot; href=&quot;http://mdzhang.com/posts/osx-r-rstudio/&quot; class=&quot;externalLink&quot;&gt;http://mdzhang.com/posts/osx-r-rstudio/&lt;/a&gt; &amp;lt;- GOOD STUFF&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>R studio</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BR%20studio%20install%20mac%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 15:12:00 GMT</pubDate>
+<pubDate>Thu, 06 Sep 2018 19:41:00 GMT</pubDate>
 
 </item>
 <item>
-<title>Terminator</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://software.jessies.org/terminator/#downloads&quot; href=&quot;http://software.jessies.org/terminator/#downloads&quot; class=&quot;externalLink&quot;&gt;http://software.jessies.org/terminator/#downloads&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&quot; href=&quot;http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&quot; class=&quot;externalLink&quot;&gt;http://www.legendu.net/misc/blog/install-terminator-on-cygwin/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; usage &lt;/h1&gt;&lt;blockquote&gt;&lt;br&gt;terminator - CMD+F searches text on screen&lt;br&gt;Supports regular expressions!&lt;br&gt;&lt;br&gt;When you select text with mouse, hold the option or cmd key down (don’t remember which) when you move the mouse - it switches to rectangular/block selection&lt;br&gt;&lt;br&gt;Very useful for copying pieces of output or highlighting stuff like branches in exec plans when demoing&lt;br&gt;&lt;br&gt;Also full terminal output logs are stored in .terminator/logs ...&lt;br&gt;&lt;br&gt;This has been useful a few times&lt;br&gt;&lt;br&gt;the logs don’t age out... but I’ve removed them once per year&lt;br&gt;&lt;br&gt;You can disable that too in the settings&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
+<title>cygwin</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://forums.oracle.com/forums/thread.jspa?messageID=9273406&quot; href=&quot;http://forums.oracle.com/forums/thread.jspa?messageID=9273406&quot; class=&quot;externalLink&quot;&gt;http://forums.oracle.com/forums/thread.jspa?messageID=9273406&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bderzhavets.blogspot.com/2007/11/cygwinx-install-oracle-10.html&quot; href=&quot;http://bderzhavets.blogspot.com/2007/11/cygwinx-install-oracle-10.html&quot; class=&quot;externalLink&quot;&gt;http://bderzhavets.blogspot.com/2007/11/cygwinx-install-oracle-10.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://solaris.reys.net/how-to-x11-forwarding-using-ssh-putty-and-xming/&quot; href=&quot;http://solaris.reys.net/how-to-x11-forwarding-using-ssh-putty-and-xming/&quot; class=&quot;externalLink&quot;&gt;http://solaris.reys.net/how-to-x11-forwarding-using-ssh-putty-and-xming/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; XMING&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blogs.oracle.com/muralins/2007/09/cygwin_as_display_server.html&quot; href=&quot;http://blogs.oracle.com/muralins/2007/09/cygwin_as_display_server.html&quot; class=&quot;externalLink&quot;&gt;http://blogs.oracle.com/muralins/2007/09/cygwin_as_display_server.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; FOR A UNIX LIKE ENVIRONMENT	&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cs.nyu.edu/~yap/prog/cygwin/FAQs.html&quot; href=&quot;http://www.cs.nyu.edu/%7Eyap/prog/cygwin/FAQs.html&quot; class=&quot;externalLink&quot;&gt;http://www.cs.nyu.edu/~yap/prog/cygwin/FAQs.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.cygwin.com/faq/faq.using.html&quot; href=&quot;http://www.cygwin.com/faq/faq.using.html&quot; class=&quot;externalLink&quot;&gt;http://www.cygwin.com/faq/faq.using.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/4334467/cygwin-using-a-path-variable-containing-a-windows-path-with-a-space-in-it&quot; href=&quot;http://stackoverflow.com/questions/4334467/cygwin-using-a-path-variable-containing-a-windows-path-with-a-space-in-it&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/4334467/cygwin-using-a-path-variable-containing-a-windows-path-with-a-space-in-it&lt;/a&gt;    &amp;lt;&lt;span&gt;—&lt;/span&gt; on windows path with space&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/2641391/how-to-format-a-dos-path-to-a-unix-path-on-cygwin-command-line&quot; href=&quot;http://stackoverflow.com/questions/2641391/how-to-format-a-dos-path-to-a-unix-path-on-cygwin-command-line&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/2641391/how-to-format-a-dos-path-to-a-unix-path-on-cygwin-command-line&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; dos path to a unix path&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cygwin.com/problems.html&quot; href=&quot;http://cygwin.com/problems.html&quot; class=&quot;externalLink&quot;&gt;http://cygwin.com/problems.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cygwin.com/ml/cygwin/2005-02/msg00232.html&quot; href=&quot;http://cygwin.com/ml/cygwin/2005-02/msg00232.html&quot; class=&quot;externalLink&quot;&gt;http://cygwin.com/ml/cygwin/2005-02/msg00232.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.catb.org/~esr/faqs/smart-questions.html&quot; href=&quot;http://www.catb.org/%7Eesr/faqs/smart-questions.html&quot; class=&quot;externalLink&quot;&gt;http://www.catb.org/~esr/faqs/smart-questions.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; How To Ask Questions The Smart Way&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/299504/connecting-to-remote-oracle-via-cygwin-sqlplus&quot; href=&quot;http://stackoverflow.com/questions/299504/connecting-to-remote-oracle-via-cygwin-sqlplus&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/299504/connecting-to-remote-oracle-via-cygwin-sqlplus&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; connecting to sqlplus&lt;br&gt;&lt;br&gt;&lt;h3&gt; cygwin package path&lt;/h3&gt;&lt;pre&gt;C:\cygwin64
+
+# list installed packages
+cygcheck --check-setup
+&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/46626455/how-to-configure-cygwin-local-package-directory&quot; href=&quot;https://stackoverflow.com/questions/46626455/how-to-configure-cygwin-local-package-directory&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/46626455/how-to-configure-cygwin-local-package-directory&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=get+packages+installed+in+cygwin&amp;amp;oq=get+packages+installed+in+cygwin&amp;amp;aqs=chrome..69i57j0.7750j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=get+packages+installed+in+cygwin&amp;amp;oq=get+packages+installed+in+cygwin&amp;amp;aqs=chrome..69i57j0.7750j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=get+packages+installed+in+cygwin&amp;amp;oq=get+packages+installed+in+cygwin&amp;amp;aqs=chrome..69i57j0.7750j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://codeyarns.com/2013/07/26/how-to-list-installed-packages-in-cygwin/&quot; href=&quot;https://codeyarns.com/2013/07/26/how-to-list-installed-packages-in-cygwin/&quot; class=&quot;externalLink&quot;&gt;https://codeyarns.com/2013/07/26/how-to-list-installed-packages-in-cygwin/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>LinuxBits</category>
-<link>http://karlarao.tiddlyspot.com#Terminator</link>
-<pubDate>Tue, 28 Aug 2018 14:56:00 GMT</pubDate>
-
-</item>
-<item>
-<title>not null on view</title>
-<description>&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/apex/asktom.search?tag=named-not-null-constraint&quot; href=&quot;https://asktom.oracle.com/pls/apex/asktom.search?tag=named-not-null-constraint&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/apex/asktom.search?tag=named-not-null-constraint&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dba.stackexchange.com/questions/19484/oracle-how-to-create-a-not-null-column-in-a-view&quot; href=&quot;https://dba.stackexchange.com/questions/19484/oracle-how-to-create-a-not-null-column-in-a-view&quot; class=&quot;externalLink&quot;&gt;https://dba.stackexchange.com/questions/19484/oracle-how-to-create-a-not-null-column-in-a-view&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/11097839/how-to-create-a-not-null-column-in-a-view&quot; href=&quot;https://stackoverflow.com/questions/11097839/how-to-create-a-not-null-column-in-a-view&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/11097839/how-to-create-a-not-null-column-in-a-view&lt;/a&gt;&lt;br&gt;&lt;br&gt;It's the unfortunate side effect of UNION &lt;a tiddlylink=&quot;ALLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ALLs&quot; href=&quot;http://karlarao.tiddlyspot.com#ALLs&quot; class=&quot;externalLink null&quot;&gt;ALLs&lt;/a&gt; in Oracle... complex views lose the NOT NULL flag even if underlying tables have it. Here are 2 regular tables (not even external tables) that both have a NOT NULL column:&lt;br&gt;&lt;br&gt;If I create a view on a single table only, withotu UNION ALL, the NOT NULL constraint is propagated to the view too:&lt;br&gt;&lt;br&gt;&lt;pre&gt;SQL&amp;gt; create or replace view v as select * from t1;
-
-View created.
-
-SQL&amp;gt; @desc v
-           Name                            Null?    Type
-           ------------------------------- -------- ----------------------------
-    1      A                               NOT NULL NUMBER(38)```
-&lt;/pre&gt;&lt;br&gt;the problem is on their &quot;model&quot; layer of their reports&lt;br&gt;with this behavior the cognos sees that the underlying &quot;model&quot; changed and so the reports are now failing&lt;br&gt;so if they can workaround this behavior on the cognos side that would be good&lt;br&gt;&lt;br&gt;ah, gotcha. so Cognos sees that the &quot;fingerprint&quot; of the schema/table structure has changed and doesn't let existing reports to run against the &quot;changed&quot; tables?&lt;br&gt;so would it be possible to just &quot;recompile&quot; teh cognos model or queries?&lt;br&gt;or are they cognos'es &quot;internal&quot; tables ... not just some other tables that cognos happens to query?&lt;br&gt;&lt;br&gt;yes, i don't know if there's a recompile or they need to regenerate the framework to workaround this&lt;br&gt;we can gather more info, screenshots on how this is affecting them&lt;br&gt;we can focus the troubleshooting on one table/view then let's see&lt;br&gt;yes this i suspect is cognos internal medata that points to the real oracle tables/views&lt;br&gt;i know in OBIEE you can override the model with a customer query&lt;br&gt;but i think they are looking for something with minimal change&lt;br&gt;&lt;br&gt;As we can't make the view columns NOT NULL (even external tables only started supporting not null constraints starting from Oracle 12.2), we need an alternative approach.&lt;br&gt;&lt;br&gt;I'm not a Cognos expert, but can we ask from a friendly Cognos guy if there's a way to &quot;regenerate the queries&quot; or &quot;sync the model with the schema&quot; in Cognos? I googled, found this, but not sure if this is what we'd want: &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www-01.ibm.com/support/docview.wss?uid=swg21340868&quot; href=&quot;http://www-01.ibm.com/support/docview.wss?uid=swg21340868&quot; class=&quot;externalLink&quot;&gt;http://www-01.ibm.com/support/docview.wss?uid=swg21340868&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Not proposing them to manually modify all queries one by one, but whether there's a cognos Sync tool ... or perhaps some Cognos metadata export/import would generate correct queries against the &quot;new&quot; data model.&lt;br&gt;&lt;br&gt;we can check with the guy we are working with about the possible options&lt;br&gt;&lt;br&gt;If Cognos only checked constraints using SQL queries against `dba_tab_columns` or `all_tab_columns`, we could in theory create alternative ~dba_constraints~ views (in the cognos user schema) that would show `NOT NULL` in appropriate locations even for views ... But this would fall apart if Cognos actually describes a table/view and checks the nullability from there. Somewhat hacky too, but we wouldn't replace anything in the SYS schema of course, just a local `all_tab_columns` view that overrides the public synonym view that only the cognos user would see (assuming that Cognos doesn't use `SYS.` prefix).&lt;br&gt;&lt;br&gt;Still worth checking if there's a Cognos app level &quot;recompile&quot; or &quot;resync&quot; option first! (edited)&lt;br&gt;&lt;br&gt;(ignore the &quot;dba_constraints&quot; word above)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;-- the trick but this one is not going to work to trick the model 
-alter table t2 add col2nn as (CAST(col1 AS number)) NOT NULL;
-
-create view v5 as select col2nn from t2;
-create view v6 as select col1 from t2;
-
-
-create view v7 as select col1 from t1 union all select col2nn from t2;
-create view v8 as select col1 from t1 union select col2nn from t2;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;
-$ s1
-
-SQL*Plus: Release 12.1.0.2.0 Production on Mon Aug 27 17:18:43 2018
-
-Copyright (c) 1982, 2014, Oracle.  All rights reserved.
-
-
-Connected to:
-Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
-With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
-
-17:18:43 SYS@cdb1&amp;gt; 
-17:18:43 SYS@cdb1&amp;gt; 
-17:18:43 SYS@cdb1&amp;gt; 
-17:18:43 SYS@cdb1&amp;gt; 
-17:18:44 SYS@cdb1&amp;gt; create table t1 col1 not null;
-create table t1 col1 not null
-                *
-ERROR at line 1:
-ORA-00922: missing or invalid option
-
-
-17:18:58 SYS@cdb1&amp;gt; create table t1 (col1 not null);
-create table t1 (col1 not null)
-                 *
-ERROR at line 1:
-ORA-02263: need to specify the datatype for this column
-
-
-17:19:12 SYS@cdb1&amp;gt; create table t1 (col1 number not null);
-
-Table created.
-
-17:19:26 SYS@cdb1&amp;gt; 
-17:19:26 SYS@cdb1&amp;gt; create table t2 (col1 number);     
-
-Table created.
-
-17:19:48 SYS@cdb1&amp;gt; desc t1
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                  NOT NULL NUMBER
-
-17:19:50 SYS@cdb1&amp;gt; desc t2
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:19:53 SYS@cdb1&amp;gt; 
-17:19:56 SYS@cdb1&amp;gt; create view v1 as select col1 from t1 union all select col1 from t2;
-
-View created.
-
-17:20:18 SYS@cdb1&amp;gt; desc v1
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:20:21 SYS@cdb1&amp;gt; create view v2 as select col1 from t1 union select col1 from t2;
-
-View created.
-
-17:20:43 SYS@cdb1&amp;gt; desc v2 
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:20:46 SYS@cdb1&amp;gt; create table t3 (col 1 number not null);
-create table t3 (col 1 number not null)
-                     *
-ERROR at line 1:
-ORA-00902: invalid datatype
-
-
-17:21:11 SYS@cdb1&amp;gt; create table t3 (col1 number not null);
-
-Table created.
-
-17:21:26 SYS@cdb1&amp;gt; create view v3 as select col1 from t1 union all from select col1 from t3;
-create view v3 as select col1 from t1 union all from select col1 from t3
-                                                *
-ERROR at line 1:
-ORA-00928: missing SELECT keyword
-
-
-17:21:56 SYS@cdb1&amp;gt; create view v3 as select col1 from t1 union all select col1 from t3;
-
-View created.
-
-17:22:23 SYS@cdb1&amp;gt; desc v3
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:22:29 SYS@cdb1&amp;gt; create view v3 as select col1 from t1 union select col1 from t3;
-create view v3 as select col1 from t1 union select col1 from t3
-            *
-ERROR at line 1:
-ORA-00955: name is already used by an existing object
-
-
-17:22:41 SYS@cdb1&amp;gt; create view v4 as select col1 from t1 union select col1 from t3;
-
-View created.
-
-17:22:57 SYS@cdb1&amp;gt; desc v4
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:22:59 SYS@cdb1&amp;gt; alter table t2 add col2nn as (CAST(&quot;col1&quot; AS number)) NOT NULL;
-alter table t2 add col2nn as (CAST(&quot;col1&quot; AS number)) NOT NULL
-                                   *
-ERROR at line 1:
-ORA-00904: &quot;col1&quot;: invalid identifier
-
-
-17:29:56 SYS@cdb1&amp;gt; alter table t2 add col2nn as (CAST(col1 AS number)) NOT NULL;
-
-Table altered.
-
-17:30:13 SYS@cdb1&amp;gt; create view v5 as select col2nn from t2;
-
-View created.
-
-17:30:20 SYS@cdb1&amp;gt; desc v5   
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL2NN                                                                                                                                                NOT NULL NUMBER
-
-17:30:24 SYS@cdb1&amp;gt; create view v6 as select col1 from t2;
-
-View created.
-
-17:30:40 SYS@cdb1&amp;gt; desc v6
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:30:42 SYS@cdb1&amp;gt; create view v7 as select col1 from t1 union all select col2nn from t2;
-
-View created.
-
-17:31:21 SYS@cdb1&amp;gt; desc v7
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:31:27 SYS@cdb1&amp;gt; 
-17:31:28 SYS@cdb1&amp;gt; create view v8 as select col1 from t1 union all select col2nn from t2;
-
-View created.
-
-17:32:05 SYS@cdb1&amp;gt; desc v8
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-17:32:09 SYS@cdb1&amp;gt; drop view v8;
-
-View dropped.
-
-17:32:41 SYS@cdb1&amp;gt; create view v8 as select col1 from t1 union select col2nn from t2;
-
-View created.
-
-17:32:41 SYS@cdb1&amp;gt; desc v8
- Name                                                                                                                                                  Null?   Type
- ----------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------
- COL1                                                                                                                                                          NUMBER
-
-&lt;/pre&gt;</description>
-<category>null and zero</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bnot%20null%20on%20view%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 14:56:00 GMT</pubDate>
-
-</item>
-<item>
-<title>virtualenv vs pyenv</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/29950300/what-is-the-relationship-between-virtualenv-and-pyenv&quot; href=&quot;https://stackoverflow.com/questions/29950300/what-is-the-relationship-between-virtualenv-and-pyenv&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/29950300/what-is-the-relationship-between-virtualenv-and-pyenv&lt;/a&gt;</description>
-<category>python installation</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bvirtualenv%20vs%20pyenv%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 14:51:00 GMT</pubDate>
-
-</item>
-<item>
-<title>data science notebooks</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datanami.com/2016/05/04/rise-data-science-notebooks/&quot; href=&quot;https://www.datanami.com/2016/05/04/rise-data-science-notebooks/&quot; class=&quot;externalLink&quot;&gt;https://www.datanami.com/2016/05/04/rise-data-science-notebooks/&lt;/a&gt;&lt;br&gt;&lt;br&gt;notebook innovation at netflix &lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/netflix-techblog/notebook-innovation-591ee3221233&quot; href=&quot;https://medium.com/netflix-techblog/notebook-innovation-591ee3221233&quot; class=&quot;externalLink&quot;&gt;https://medium.com/netflix-techblog/notebook-innovation-591ee3221233&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;</description>
-<category>Data Science</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20science%20notebooks%5D%5D</link>
-<pubDate>Tue, 28 Aug 2018 01:48:00 GMT</pubDate>
-
-</item>
-<item>
-<title>GitHub</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' watch this first ', event)&quot;&gt; watch this first &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' read this first', event)&quot;&gt; read this first&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test accounts', event)&quot;&gt; test accounts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' official documentation, videos, and help', event)&quot;&gt; official documentation, videos, and help&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' version control format', event)&quot;&gt; version control format&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO - general workflow', event)&quot;&gt; HOWTO - general workflow&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Basic commands and getting started', event)&quot;&gt; Basic commands and getting started&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Integration with Github.com', event)&quot;&gt; Integration with Github.com&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github pages', event)&quot;&gt; github pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' render HTML file in github without git pages', event)&quot;&gt; render HTML file in github without git pages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' track a zipfile based script repo, useful for blogs or sites', event)&quot;&gt; track a zipfile based script repo, useful for blogs or sites&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Branch, Merge, Clone, Fork', event)&quot;&gt; Branch, Merge, Clone, Fork&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Delete files on git permanently', event)&quot;&gt; Delete files on git permanently&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' delete history ', event)&quot;&gt; delete history &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Deleting a repository', event)&quot;&gt; Deleting a repository&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' rebase ', event)&quot;&gt; rebase &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' forking ', event)&quot;&gt; forking &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' pull request ', event)&quot;&gt; pull request &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' team collaboration ', event)&quot;&gt; team collaboration &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git on dropbox conflicts', event)&quot;&gt; git on dropbox conflicts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references', event)&quot;&gt; other references&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git merge upstream ', event)&quot;&gt; git merge upstream &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git - contributing to a repo or project', event)&quot;&gt; git - contributing to a repo or project&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' fork and pull model (ideal for large projects)', event)&quot;&gt; fork and pull model (ideal for large projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' direct clone model / collaboration model (ideal for small projects)', event)&quot;&gt; direct clone model / collaboration model (ideal for small projects)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' git revert / fix a damaging commit ', event)&quot;&gt; git revert / fix a damaging commit &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Equivalent of “svn checkout” for git', event)&quot;&gt; Equivalent of “svn checkout” for git&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTO rename a repo ', event)&quot;&gt; HOWTO rename a repo &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github acquisition ', event)&quot;&gt; github acquisition &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' awesome github clients ', event)&quot;&gt; awesome github clients &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gitsome', event)&quot;&gt; gitsome&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gist', event)&quot;&gt; gist&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' github flagged account', event)&quot;&gt; github flagged account&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; watch this first &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.git-tower.com/learn/git/videos&quot; href=&quot;http://www.git-tower.com/learn/git/videos&quot; class=&quot;externalLink&quot;&gt;http://www.git-tower.com/learn/git/videos&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; read this first&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://nvie.com/posts/a-successful-git-branching-model/&quot; href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot; class=&quot;externalLink&quot;&gt;http://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test accounts&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;emberdev1&lt;br&gt;emberdev2&lt;br&gt;emberdevgroup&lt;br&gt;&lt;br&gt;&lt;h1&gt; official documentation, videos, and help&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/activities/hello-world/&quot; href=&quot;https://guides.github.com/activities/hello-world/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/activities/hello-world/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/&quot; href=&quot;https://guides.github.com/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/setting-up-teams/&quot; href=&quot;https://help.github.com/articles/setting-up-teams/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/setting-up-teams/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/githubguides&quot; href=&quot;https://www.youtube.com/githubguides&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/githubguides&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/&quot; href=&quot;https://help.github.com/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://guides.github.com/features/mastering-markdown/&quot; href=&quot;https://guides.github.com/features/mastering-markdown/&quot; class=&quot;externalLink&quot;&gt;https://guides.github.com/features/mastering-markdown/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; version control format&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; href=&quot;http://git-scm.com/book/en/v2/Git-Basics-Tagging&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/book/en/v2/Git-Basics-Tagging&lt;/a&gt;&lt;br&gt;Semantic Versioning 2.0.0 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://semver.org/&quot; href=&quot;http://semver.org/&quot; class=&quot;externalLink&quot;&gt;http://semver.org/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Awesome github walkthrough - video series&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://308tube.com/youtube/github/&quot; href=&quot;http://308tube.com/youtube/github/&quot; class=&quot;externalLink&quot;&gt;http://308tube.com/youtube/github/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/karlarao&quot; href=&quot;https://github.com/karlarao&quot; class=&quot;externalLink&quot;&gt;https://github.com/karlarao&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/download/win&quot; href=&quot;http://git-scm.com/download/win&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/download/win&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; href=&quot;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&quot; class=&quot;externalLink&quot;&gt;http://www.javaworld.com/javaworld/jw-08-2012/120830-osjp-github.html?page=1&lt;/a&gt;		&lt;br&gt;&lt;br&gt;&lt;h1&gt; HOWTO - general workflow&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;img src=&quot;%20https://lh5.googleusercontent.com/-9Sx7XCA7jQ8/UyKDQRA3ngI/AAAAAAAACJA/fzmAgpCi6xU/w2048-h2048-no/github_basic_workflow.png%20&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Basic commands and getting started&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;strong&gt;Git Data Flow&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;1) Current Working Directory	&amp;lt;-- git init &amp;lt;project&amp;gt;
-2) Index (cache)				&amp;lt;-- git add .
-3) Local Repository				&amp;lt;-- git commit -m &quot;&amp;lt;comment&amp;gt;&quot;
-4) Remote Repository	
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;&lt;strong&gt;Client side setup&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;http://git-scm.com/downloads   &amp;lt;-- download here 
-
-git config --global user.name &quot;karlarao&quot;
-git config --global user.email &quot;karlarao@gmail.com&quot;
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;blockquote&gt;&lt;strong&gt;Common commands&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;git init awrscripts				&amp;lt;-- or you can just cd on &quot;awrscripts&quot; folder and execute &quot;git init&quot;
-git status
-git add . 						&amp;lt;-- add all the files under the master folder to the staging area
-git &amp;lt;filename&amp;gt;					&amp;lt;-- add just a file
-git rm --cached &amp;lt;filename&amp;gt;		&amp;lt;-- remote a file
-git commit -m &quot;initial commit&quot;	&amp;lt;-- to commit changes (w/ comment), and save a snapshot of the local repository 
-                                             * note that when you modify, you have to do a &quot;git add .&quot; first..else it will say no changes added to commit
-git log							&amp;lt;-- show summary of commits
-vi README.md        &amp;lt;-- markdown format readme file, header should start with #
-
-git diff
-git add .				
-git diff --cached				&amp;lt;-- get the differences in the staging area, because you've already executed the &quot;add&quot;..
-
-## shortcuts
-git commit -a -m &quot;short commit&quot;		&amp;lt;-- combination of add and commit
-git log --oneline					&amp;lt;-- shorter summary
-git status -s						&amp;lt;-- shorter show changes
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Exclude file&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://coderwall.com/p/n1d-na/excluding-files-from-git-locally&quot; href=&quot;https://coderwall.com/p/n1d-na/excluding-files-from-git-locally&quot; class=&quot;externalLink&quot;&gt;https://coderwall.com/p/n1d-na/excluding-files-from-git-locally&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; Integration with Github.com&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;strong&gt;Github.com setup&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;go to github.com and create a new repository
-on your PC go to C:\Users\Karl
-open git bash and type in ssh-keygen below
-ssh-keygen.exe -t rsa -C &quot;karlarao@gmail.com&quot;		&amp;lt;-- this will create RSA on C:\Users\Karl directory
-copy the contents of id_rsa.pub under C:\Users\karl\.ssh directory
-go to github.com -&amp;gt; Account Settings -&amp;gt; SSH Keys -&amp;gt; Add SSH Key
-ssh -T git@github.com								&amp;lt;-- to test the authentication
-&lt;/pre&gt;&lt;strong&gt;Github.com integrate and push&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;go to repositories folder -&amp;gt; on SSH tab -&amp;gt; copy the key
-git remote add origin &amp;lt;repo ssh key from website&amp;gt;
-git remote add origin git@github.com:karlarao/awrscripts.git
-git push origin master
-&lt;/pre&gt;&lt;strong&gt;Github.com integrate with GUI&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;download the GUI here http://windows.github.com/
-login and configure, at the end just hit skip
-go to tools -&amp;gt; options -&amp;gt; change the default storage directory to the local git directory C:\Dropbox\CodeNinja\GitHub
-click Scan For Repositories -&amp;gt; click Add -&amp;gt; click Update
-click Publish -&amp;gt; click Sync
-&lt;/pre&gt;&lt;strong&gt;for existing repos, you can do a clone&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;git clone git@github.com:&amp;lt;name&amp;gt;/&amp;lt;repo&amp;gt;
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; github pages&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;sync the repo to github pages&lt;br&gt;&lt;pre&gt;cd ~ubuntu/telegram/
-git config --global user.name &quot;karlarao&quot;
-git config --global user.email &quot;karlarao@gmail.com&quot;
-git add .
-git status # to see what changes are going to be commited
-git commit -m &quot;.&quot;
-git remote add origin git@github.com:karlarao/telegram.git
-git push origin master
-# git branch gh-pages # this is one time
-git checkout gh-pages # go to the gh-pages branch
-git rebase master # bring gh-pages up to date with master
-git push origin gh-pages # commit the changes
-git checkout master # return to the master branch
-	
-access the page at http://karlarao.github.io/&amp;lt;repo&amp;gt;/
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3&quot; href=&quot;https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3&quot; class=&quot;externalLink&quot;&gt;https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; render HTML file in github without git pages&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview&quot; href=&quot;http://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; track a zipfile based script repo, useful for blogs or sites&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;add this on your crontab 
-# refresh git with the &amp;lt;script&amp;gt; scripts
-0 4 * * * /home/karl/bin/git_&amp;lt;script&amp;gt;.sh
-
-$ cat /home/karl/bin/git_&amp;lt;script&amp;gt;.sh
-cd ~/github/&amp;lt;script directory&amp;gt;
-rm &amp;lt;script&amp;gt;.zip
-wget http://&amp;lt;site&amp;gt;.com/files/&amp;lt;script&amp;gt;.zip
-unzip -o &amp;lt;script&amp;gt;.zip -d ~/github/&amp;lt;script directory&amp;gt;
-git config --global user.name &quot;karlarao&quot;
-git config --global user.email &quot;karlarao@gmail.com&quot;
-git add .
-git commit -m &quot;.&quot;
-#git remote add origin git@github.com:karlarao/&amp;lt;script&amp;gt;.git
-git push origin master
-
-then make sure to favorite the repo to get emails!
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Branch, Merge, Clone, Fork&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;Branching	&amp;lt;-- allows you to create a separate working copy of your code 
-Merging		&amp;lt;-- merge branches together
-Cloning		&amp;lt;-- other developers can get a copy of your code from a remote repo
-Forking		&amp;lt;-- make use of someone's code as starting point of a new project
-
-
--- 1st developer created a branch r2_index
-git branch								&amp;lt;-- show branches
-git branch r2_index						&amp;lt;-- create a branch name &quot;r2_index&quot;
-git checkout r2_index					&amp;lt;-- to switch to the &quot;r2_index&quot; branch
-git checkout &amp;lt;the branch you want to go&amp;gt;	* make sure to close all files before switching to another branch
-
--- 2nd developer on another machine created r2_misc
-git clone &amp;lt;ssh link&amp;gt;					&amp;lt;-- to clone a project
-git branch r2_misc
-git checkout r2_misc
-git push origin &amp;lt;branch name&amp;gt;	&amp;lt;-- to update the remote repo
-
--- bug fix on master
-git checkout master
-git push origin master
-
--- merge to combine the changes from 1st developer to the master project
-	* conflict may happen due to changes at the same spot for both branches
-git branch r2_index
-git merge master
-
-	* conflict looks like the following:
-		&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
-		1)
-		=======
-		TOC:
-		1) one
-		2) two
-		3) three
-		&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; master
-git push origin r2_index
-
--- pull, synchronizes the local repo with the remote repo
-	* remember, PUSH to send up GitHub, PULL to sync with GitHub
-git pull origin master
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Delete files on git permanently&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/1983346/deleting-files-using-git-github&quot; href=&quot;http://stackoverflow.com/questions/1983346/deleting-files-using-git-github&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/1983346/deleting-files-using-git-github&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dalibornasevic.com/posts/2-permanently-remove-files-and-folders-from-a-git-repository&quot; href=&quot;http://dalibornasevic.com/posts/2-permanently-remove-files-and-folders-from-a-git-repository&quot; class=&quot;externalLink&quot;&gt;http://dalibornasevic.com/posts/2-permanently-remove-files-and-folders-from-a-git-repository&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html&quot; href=&quot;https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html&quot; class=&quot;externalLink&quot;&gt;https://www.kernel.org/pub/software/scm/git/docs/git-filter-branch.html&lt;/a&gt;&lt;br&gt;&lt;pre&gt;cd /Users/karl/Dropbox/CodeNinja/GitHub/tmp
-git init
-git status
-git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch *' --prune-empty --tag-name-filter cat -- --all
-git commit -m &quot;.&quot;
-git push origin master --force
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; delete history &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://rtyley.github.io/bfg-repo-cleaner/&quot; href=&quot;https://rtyley.github.io/bfg-repo-cleaner/&quot; class=&quot;externalLink&quot;&gt;https://rtyley.github.io/bfg-repo-cleaner/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/remove-sensitive-data/&quot; href=&quot;https://help.github.com/articles/remove-sensitive-data/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/remove-sensitive-data/&lt;/a&gt;&lt;br&gt;stackoverflow.com/questions/37219/how-do-you-remove-a-specific-revision-in-the-git-history&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hellocoding.wordpress.com/2015/01/19/delete-all-commit-history-github/&quot; href=&quot;https://hellocoding.wordpress.com/2015/01/19/delete-all-commit-history-github/&quot; class=&quot;externalLink&quot;&gt;https://hellocoding.wordpress.com/2015/01/19/delete-all-commit-history-github/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://samwize.com/2014/01/15/how-to-remove-a-commit-that-is-already-pushed-to-github/&quot; href=&quot;http://samwize.com/2014/01/15/how-to-remove-a-commit-that-is-already-pushed-to-github/&quot; class=&quot;externalLink&quot;&gt;http://samwize.com/2014/01/15/how-to-remove-a-commit-that-is-already-pushed-to-github/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Deleting a repository&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/deleting-a-repository&quot; href=&quot;https://help.github.com/articles/deleting-a-repository&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/deleting-a-repository&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; rebase &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;rebase &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=SxzjZtJwOgo&quot; href=&quot;https://www.youtube.com/watch?v=SxzjZtJwOgo&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=SxzjZtJwOgo&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; forking &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;forking &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=5oJHRbqEofs&quot; href=&quot;https://www.youtube.com/watch?v=5oJHRbqEofs&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=5oJHRbqEofs&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;Some notes on forking: &lt;br&gt;&lt;ul&gt;&lt;li&gt; Let's say you get assigned as a collaborator on a private repo called &lt;a tiddlylink=&quot;REPO1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO1&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO1&quot; class=&quot;externalLink null&quot;&gt;REPO1&lt;/a&gt;&lt;/li&gt;&lt;li&gt; If &lt;a tiddlylink=&quot;REPO1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO1&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO1&quot; class=&quot;externalLink null&quot;&gt;REPO1&lt;/a&gt; gets forked as a private &lt;a tiddlylink=&quot;REPO2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO2&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO2&quot; class=&quot;externalLink null&quot;&gt;REPO2&lt;/a&gt; by another guy, instantly you'll also be part of that &lt;a tiddlylink=&quot;REPO2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO2&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO2&quot; class=&quot;externalLink null&quot;&gt;REPO2&lt;/a&gt;&lt;/li&gt;&lt;li&gt; When the original creator delete you as a collaborator on &lt;a tiddlylink=&quot;REPO1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO1&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO1&quot; class=&quot;externalLink null&quot;&gt;REPO1&lt;/a&gt; you will no longer see anything from that but you will still get access to &lt;a tiddlylink=&quot;REPO2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#REPO2&quot; href=&quot;http://karlarao.tiddlyspot.com#REPO2&quot; class=&quot;externalLink null&quot;&gt;REPO2&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; pull request &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;pull request (contributing to the fork) &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=d5wpJ5VimSU&quot; href=&quot;https://www.youtube.com/watch?v=d5wpJ5VimSU&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=d5wpJ5VimSU&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; team collaboration &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;team &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=61WbzS9XMwk&quot; href=&quot;https://www.youtube.com/watch?v=61WbzS9XMwk&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=61WbzS9XMwk&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git on dropbox conflicts&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://edinburghhacklab.com/2012/11/when-git-on-dropbox-conflicts-no-problem/&quot; href=&quot;http://edinburghhacklab.com/2012/11/when-git-on-dropbox-conflicts-no-problem/&quot; class=&quot;externalLink&quot;&gt;http://edinburghhacklab.com/2012/11/when-git-on-dropbox-conflicts-no-problem/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master&quot; href=&quot;http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/12773488/git-fatal-reference-has-invalid-format-refs-heads-master&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other references&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;gitflow &lt;a target=&quot;_blank&quot; title=&quot;External link to http://nvie.com/posts/a-successful-git-branching-model/&quot; href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot; class=&quot;externalLink&quot;&gt;http://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;master zip&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/8808164/set-the-name-of-a-zip-downloadable-from-github-or-other-ways-to-enroll-google-tr&quot; href=&quot;http://stackoverflow.com/questions/8808164/set-the-name-of-a-zip-downloadable-from-github-or-other-ways-to-enroll-google-tr&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/8808164/set-the-name-of-a-zip-downloadable-from-github-or-other-ways-to-enroll-google-tr&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/7106012/download-a-single-folder-or-directory-from-a-github-repo&quot; href=&quot;http://stackoverflow.com/questions/7106012/download-a-single-folder-or-directory-from-a-github-repo&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/7106012/download-a-single-folder-or-directory-from-a-github-repo&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://alblue.bandlem.com/2011/09/git-tip-of-week-git-archive.html&quot; href=&quot;http://alblue.bandlem.com/2011/09/git-tip-of-week-git-archive.html&quot; class=&quot;externalLink&quot;&gt;http://alblue.bandlem.com/2011/09/git-tip-of-week-git-archive.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html&quot; href=&quot;http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html&quot; class=&quot;externalLink&quot;&gt;http://gitready.com/intermediate/2009/01/29/exporting-your-repository.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://manpages.ubuntu.com/manpages/intrepid/man1/git-archive.1.html&quot; href=&quot;http://manpages.ubuntu.com/manpages/intrepid/man1/git-archive.1.html&quot; class=&quot;externalLink&quot;&gt;http://manpages.ubuntu.com/manpages/intrepid/man1/git-archive.1.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/8377081/github-api-download-zip-or-tarball-link&quot; href=&quot;http://stackoverflow.com/questions/8377081/github-api-download-zip-or-tarball-link&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/8377081/github-api-download-zip-or-tarball-link&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;uploading binary files (zip)&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/distributing-large-binaries/&quot; href=&quot;https://help.github.com/articles/distributing-large-binaries/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/distributing-large-binaries/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/about-releases/&quot; href=&quot;https://help.github.com/articles/about-releases/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/about-releases/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/creating-releases/&quot; href=&quot;https://help.github.com/articles/creating-releases/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/creating-releases/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gigaom.com/2013/07/09/oops-github-did-it-again-relaunches-binary-uploads-after-scuttling-them/&quot; href=&quot;https://gigaom.com/2013/07/09/oops-github-did-it-again-relaunches-binary-uploads-after-scuttling-them/&quot; class=&quot;externalLink&quot;&gt;https://gigaom.com/2013/07/09/oops-github-did-it-again-relaunches-binary-uploads-after-scuttling-them/&lt;/a&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/blog/1547-release-your-software&quot; href=&quot;https://github.com/blog/1547-release-your-software&quot; class=&quot;externalLink&quot;&gt;https://github.com/blog/1547-release-your-software&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;live demos&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://solutionoptimist.com/2013/12/28/awesome-github-tricks/&quot; href=&quot;http://solutionoptimist.com/2013/12/28/awesome-github-tricks/&quot; class=&quot;externalLink&quot;&gt;http://solutionoptimist.com/2013/12/28/awesome-github-tricks/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Git hook to send email notification on repo changes&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/552360/git-hook-to-send-email-notification-on-repo-changes&quot; href=&quot;http://stackoverflow.com/questions/552360/git-hook-to-send-email-notification-on-repo-changes&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/552360/git-hook-to-send-email-notification-on-repo-changes&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;git rebase&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://git-scm.com/docs/git-rebase&quot; href=&quot;http://git-scm.com/docs/git-rebase&quot; class=&quot;externalLink&quot;&gt;http://git-scm.com/docs/git-rebase&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;git gist&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/&quot; href=&quot;https://gist.github.com/&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;gitignore.io&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.gitignore.io/&quot; href=&quot;https://www.gitignore.io/&quot; class=&quot;externalLink&quot;&gt;https://www.gitignore.io/&lt;/a&gt; &amp;lt;- Create useful .gitignore files for your project, there's also a webstorm plugin for this&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git merge upstream &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=git+merge+upstream+tower+2&amp;amp;oq=git+merge+upstream+tower+2&amp;amp;aqs=chrome..69i57j69i64.9674j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=git+merge+upstream+tower+2&amp;amp;oq=git+merge+upstream+tower+2&amp;amp;aqs=chrome..69i57j69i64.9674j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=git+merge+upstream+tower+2&amp;amp;oq=git+merge+upstream+tower+2&amp;amp;aqs=chrome..69i57j69i64.9674j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git - contributing to a repo or project&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; fork and pull model (ideal for large projects)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;here you create a branch&lt;br&gt;&lt;br&gt;&lt;h2&gt; direct clone model / collaboration model (ideal for small projects)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;here you work on master branch&lt;br&gt;cb&lt;br&gt;pb&lt;br&gt;pbg&lt;br&gt;pull&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; git revert / fix a damaging commit &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;create branch&lt;br&gt;head&lt;br&gt;revert &lt;br&gt;commit &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Equivalent of “svn checkout” for git&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/18900774/equivalent-of-svn-checkout-for-git&quot; href=&quot;http://stackoverflow.com/questions/18900774/equivalent-of-svn-checkout-for-git&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/18900774/equivalent-of-svn-checkout-for-git&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/15595778/github-what-does-checkout-do&quot; href=&quot;http://stackoverflow.com/questions/15595778/github-what-does-checkout-do&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/15595778/github-what-does-checkout-do&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; HOWTO rename a repo &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;what happens when I rename a git repo? do you have any advice on properly renaming a git repo?&lt;br&gt;&lt;/blockquote&gt;&lt;blockquote&gt;I have pretty good news for you &lt;span&gt;—&lt;/span&gt; since 2013, &lt;a tiddlylink=&quot;GitHub&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GitHub&quot; href=&quot;http://karlarao.tiddlyspot.com#GitHub&quot; class=&quot;externalLink null&quot;&gt;GitHub&lt;/a&gt; automatically redirects people from the old repo to the new repo. (There are some caveats, so read on.) Please read the Stack Overflow answer that starts with &quot;since May 2013&quot; on this page: &lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/5751585/how-do-i-rename-a-repository-on-github&quot; href=&quot;http://stackoverflow.com/questions/5751585/how-do-i-rename-a-repository-on-github&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/5751585/how-do-i-rename-a-repository-on-github&lt;/a&gt;&lt;br&gt;&lt;br&gt;Here is the &lt;a tiddlylink=&quot;GitHub&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GitHub&quot; href=&quot;http://karlarao.tiddlyspot.com#GitHub&quot; class=&quot;externalLink null&quot;&gt;GitHub&lt;/a&gt; announcement of the redirect feature: &lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/blog/1508-repository-redirects-are-here&quot; href=&quot;https://github.com/blog/1508-repository-redirects-are-here&quot; class=&quot;externalLink&quot;&gt;https://github.com/blog/1508-repository-redirects-are-here&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://help.github.com/articles/renaming-a-repository/&quot; href=&quot;https://help.github.com/articles/renaming-a-repository/&quot; class=&quot;externalLink&quot;&gt;https://help.github.com/articles/renaming-a-repository/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Note, it is still recommended that you update your local repository to specifically point at the new repository. You can do that with a simple: &lt;br&gt;&lt;br&gt;git remote set-url origin &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/YourGitHubUserName/NewRepositoryName.git&quot; href=&quot;https://github.com/YourGitHubUserName/NewRepositoryName.git&quot; class=&quot;externalLink&quot;&gt;https://github.com/YourGitHubUserName/NewRepositoryName.git&lt;/a&gt;&lt;br&gt;&lt;br&gt;(where you replace &lt;a tiddlylink=&quot;YourGitHubUserName&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#YourGitHubUserName&quot; href=&quot;http://karlarao.tiddlyspot.com#YourGitHubUserName&quot; class=&quot;externalLink null&quot;&gt;YourGitHubUserName&lt;/a&gt; and &lt;a tiddlylink=&quot;NewRepositoryName&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NewRepositoryName&quot; href=&quot;http://karlarao.tiddlyspot.com#NewRepositoryName&quot; class=&quot;externalLink null&quot;&gt;NewRepositoryName&lt;/a&gt; with the appropriate information)&lt;br&gt;&lt;br&gt;Ideally, your collaborators will also update their local repositories, but it's not an immediate requirement unless you are going to re-use the old repository name (which will break redirects and I don't recommend doing that). &lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; github acquisition &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.github.com/2018-06-04-github-microsoft/&quot; href=&quot;https://blog.github.com/2018-06-04-github-microsoft/&quot; class=&quot;externalLink&quot;&gt;https://blog.github.com/2018-06-04-github-microsoft/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/&quot; href=&quot;https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/&quot; class=&quot;externalLink&quot;&gt;https://news.microsoft.com/2018/06/04/microsoft-to-acquire-github-for-7-5-billion/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/&quot; href=&quot;https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/&quot; class=&quot;externalLink&quot;&gt;https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://thenextweb.com/dd/2018/06/04/microsoft-buying-github-doesnt-scare-me/&quot; href=&quot;https://thenextweb.com/dd/2018/06/04/microsoft-buying-github-doesnt-scare-me/&quot; class=&quot;externalLink&quot;&gt;https://thenextweb.com/dd/2018/06/04/microsoft-buying-github-doesnt-scare-me/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; awesome github clients &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; gitsome&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/donnemartin/gitsome&quot; href=&quot;https://github.com/donnemartin/gitsome&quot; class=&quot;externalLink&quot;&gt;https://github.com/donnemartin/gitsome&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt; needs python 3.5.0 &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;example query commands: &lt;br&gt;&lt;pre&gt;gh feed karlarao -p
-gh search-repos &quot;created:&amp;gt;=2017-01-01 user:karlarao&quot;
-&lt;/pre&gt;&lt;br&gt;installation:&lt;br&gt;&lt;pre&gt;brew install pyenv
-xcode-select --install
-pyenv local 3.5.0
-PATH=&quot;~/.pyenv/versions/3.5.0/bin:${PATH}&quot;
-pip3 install gitsome
-
-# then configure 
-gh configure
-
-&lt;/pre&gt;&lt;br&gt;add on .bash_profile &lt;br&gt;&lt;pre&gt;cat .bash_profile
-PATH=&quot;~/.pyenv/versions/3.5.0/bin:${PATH}&quot;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;references &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apple.stackexchange.com/questions/237430/how-to-install-specific-version-of-python-on-os-x&quot; href=&quot;https://apple.stackexchange.com/questions/237430/how-to-install-specific-version-of-python-on-os-x&quot; class=&quot;externalLink&quot;&gt;https://apple.stackexchange.com/questions/237430/how-to-install-specific-version-of-python-on-os-x&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&quot; href=&quot;https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&quot; class=&quot;externalLink&quot;&gt;https://www.chrisjmendez.com/2017/08/03/installing-multiple-versions-of-python-on-your-mac-using-homebrew/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mattseymour.net/blog/2016/03/brew-installing-specific-python-version/&quot; href=&quot;http://mattseymour.net/blog/2016/03/brew-installing-specific-python-version/&quot; class=&quot;externalLink&quot;&gt;http://mattseymour.net/blog/2016/03/brew-installing-specific-python-version/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/pyenv/pyenv&quot; href=&quot;https://github.com/pyenv/pyenv&quot; class=&quot;externalLink&quot;&gt;https://github.com/pyenv/pyenv&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; gist&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/defunkt/gist&quot; href=&quot;https://github.com/defunkt/gist&quot; class=&quot;externalLink&quot;&gt;https://github.com/defunkt/gist&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;br&gt;example query commands:&lt;br&gt;&lt;pre&gt;gist -l
-&lt;/pre&gt;&lt;br&gt;installation: &lt;br&gt;&lt;pre&gt;brew install gist 
-gist --login
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;walking the json tree:&lt;br&gt;example file &lt;a target=&quot;_blank&quot; title=&quot;External link to https://api.github.com/gists/7460546580cc3969547029aca27c5fe6&quot; href=&quot;https://api.github.com/gists/7460546580cc3969547029aca27c5fe6&quot; class=&quot;externalLink&quot;&gt;https://api.github.com/gists/7460546580cc3969547029aca27c5fe6&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/28983131/is-there-any-way-to-retrieve-the-name-for-a-gist-that-github-displays&quot; href=&quot;https://stackoverflow.com/questions/28983131/is-there-any-way-to-retrieve-the-name-for-a-gist-that-github-displays&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/28983131/is-there-any-way-to-retrieve-the-name-for-a-gist-that-github-displays&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dev.to/m1guelpf/3-ways-to-get-data-from-github-gists-9bg&quot; href=&quot;https://dev.to/m1guelpf/3-ways-to-get-data-from-github-gists-9bg&quot; class=&quot;externalLink&quot;&gt;https://dev.to/m1guelpf/3-ways-to-get-data-from-github-gists-9bg&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://sendgrid.com/blog/gist-please/&quot; href=&quot;https://sendgrid.com/blog/gist-please/&quot; class=&quot;externalLink&quot;&gt;https://sendgrid.com/blog/gist-please/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/49382979/how-to-loop-a-json-keys-result-from-bash-script&quot; href=&quot;https://stackoverflow.com/questions/49382979/how-to-loop-a-json-keys-result-from-bash-script&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/49382979/how-to-loop-a-json-keys-result-from-bash-script&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/ingydotnet/json-bash&quot; href=&quot;https://github.com/ingydotnet/json-bash&quot; class=&quot;externalLink&quot;&gt;https://github.com/ingydotnet/json-bash&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/&quot; href=&quot;https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/&quot; class=&quot;externalLink&quot;&gt;https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/stedolan/jq&quot; href=&quot;https://github.com/stedolan/jq&quot; class=&quot;externalLink&quot;&gt;https://github.com/stedolan/jq&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/48384217/get-secret-gists-using-github-graphql&quot; href=&quot;https://stackoverflow.com/questions/48384217/get-secret-gists-using-github-graphql&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/48384217/get-secret-gists-using-github-graphql&lt;/a&gt;&lt;br&gt;&lt;pre&gt;sample='[{&quot;name&quot;:&quot;foo&quot;},{&quot;name&quot;:&quot;bar&quot;}]'
-for row in $(echo &quot;${sample}&quot; | jq -r '.[] | @base64'); do
-    _jq() {
-     echo ${row} | base64 --decode | jq -r ${1}
-    }
-
-   echo $(_jq '.name')
-done
-foo
-bar
-&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&quot; href=&quot;https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/33655700/github-api-fetch-issues-with-exceeds-rate-limit-prematurely&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; github flagged account&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://webapps.stackexchange.com/questions/105956/my-github-account-has-been-suddenly-flagged-and-hidden-from-public-view-how&quot; href=&quot;https://webapps.stackexchange.com/questions/105956/my-github-account-has-been-suddenly-flagged-and-hidden-from-public-view-how&quot; class=&quot;externalLink&quot;&gt;https://webapps.stackexchange.com/questions/105956/my-github-account-has-been-suddenly-flagged-and-hidden-from-public-view-how&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.community/t5/How-to-use-Git-and-GitHub/My-account-is-flagged/td-p/221&quot; href=&quot;https://github.community/t5/How-to-use-Git-and-GitHub/My-account-is-flagged/td-p/221&quot; class=&quot;externalLink&quot;&gt;https://github.community/t5/How-to-use-Git-and-GitHub/My-account-is-flagged/td-p/221&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/41344476/github-account-disabled-for-posting-gists&quot; href=&quot;https://stackoverflow.com/questions/41344476/github-account-disabled-for-posting-gists&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/41344476/github-account-disabled-for-posting-gists&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://a-habakiri.hateblo.jp/entry/20161208accountflagged&quot; href=&quot;http://a-habakiri.hateblo.jp/entry/20161208accountflagged&quot; class=&quot;externalLink&quot;&gt;http://a-habakiri.hateblo.jp/entry/20161208accountflagged&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Version Control Software - VCS</category>
-<link>http://karlarao.tiddlyspot.com#GitHub</link>
-<pubDate>Wed, 22 Aug 2018 14:42:00 GMT</pubDate>
-
-</item>
-<item>
-<title>stats CONCURRENT, concurrent + auto degree</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&quot; href=&quot;http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.nocoug.org/download/2011-11/Maria_Colgan_Optimizer_Statistics.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&quot; href=&quot;https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/entry/gathering_optimizer_statistics_is_one&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&quot; href=&quot;https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/entry/how_do_i_use_concurrent&lt;/a&gt;&lt;br&gt;FAQ: Gathering Concurrent Statistics Using &lt;a tiddlylink=&quot;DBMS_STATS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_STATS&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_STATS&quot; class=&quot;externalLink null&quot;&gt;DBMS_STATS&lt;/a&gt; Frequently Asked Questions [ID 1555451.1]&lt;br&gt;&lt;br&gt;concurrent + auto degree &lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&quot; href=&quot;https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/optimizer/how-to-gather-optimizer-statistics-fast&lt;/a&gt;</description>
-<category>stats gathering</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bstats%20CONCURRENT%2C%20concurrent%20%2B%20auto%20degree%5D%5D</link>
-<pubDate>Tue, 21 Aug 2018 18:36:00 GMT</pubDate>
-
-</item>
-<item>
-<title>parallel execution of pl/sql function</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&quot; href=&quot;http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&quot; class=&quot;externalLink&quot;&gt;http://blog.go-faster.co.uk/2018/08/parallel-execution-of-plsql.html&lt;/a&gt;</description>
-<category>SQL Rewrite/Refactoring</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bparallel%20execution%20of%20pl%2Fsql%20function%5D%5D</link>
-<pubDate>Tue, 21 Aug 2018 18:34:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Manic Time</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&quot; href=&quot;http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&quot; class=&quot;externalLink&quot;&gt;http://www.manictime.com/Support/Help/v15/2/how-do-i-transfer-data-to-another-computer&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; manic time on mac&lt;/h1&gt;&lt;h2&gt; install the server &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.manictime.com/Teams/How-To-Install-linux-mac&quot; href=&quot;https://www.manictime.com/Teams/How-To-Install-linux-mac&quot; class=&quot;externalLink&quot;&gt;https://www.manictime.com/Teams/How-To-Install-linux-mac&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&quot; href=&quot;http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&quot; class=&quot;externalLink&quot;&gt;http://localhost:8080/#/personal/day-view?dayDate=8-21-2018&amp;amp;groupBy=2&amp;amp;userIds=0&lt;/a&gt;&lt;br&gt;&lt;h2&gt; then install the mac client &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.manictime.com/mac/download&quot; href=&quot;https://www.manictime.com/mac/download&quot; class=&quot;externalLink&quot;&gt;https://www.manictime.com/mac/download&lt;/a&gt;</description>
-<category>GTD Tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BManic%20Time%5D%5D</link>
-<pubDate>Tue, 21 Aug 2018 04:12:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Oracle ACE</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apex.oracle.com/odc_activity&quot; href=&quot;https://apex.oracle.com/odc_activity&quot; class=&quot;externalLink&quot;&gt;https://apex.oracle.com/odc_activity&lt;/a&gt;  &lt;br&gt;.&lt;br&gt;..&lt;br&gt;...&lt;br&gt;....</description>
-<category>OracleCommunity</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20ACE%5D%5D</link>
-<pubDate>Mon, 20 Aug 2018 22:28:00 GMT</pubDate>
-
-</item>
-<item>
-<title>sqlcl</title>
-<description>&lt;h1&gt; installation &lt;/h1&gt;&lt;pre&gt;-- first download the sql developer 
--- then set the JAVA_HOME to the sql developer jre
-
-cmd.exe
-set JAVA_HOME=C:\Users\araoka\Documents\k\tools\sqldeveloper-4.1.3.20.78-x64\sqldeveloper\jdk\jre
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; quick usage&lt;/h1&gt;&lt;pre&gt;sql.bat karlarao/&amp;lt;password&amp;gt;@//&amp;lt;host&amp;gt;:1521/&amp;lt;dbname&amp;gt;
-sql.bat karlarao/&amp;lt;password&amp;gt;@//&amp;lt;host&amp;gt;:1521/&amp;lt;dbname&amp;gt; @test.sql
-
-help
-history usage
-history time
-
-set sqlformat csv
-set head off
-set pagesize 50
-
-alias 
-repeat 10 1
-
-info &amp;lt;table_name&amp;gt;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; usage&lt;/h1&gt;&lt;pre&gt;I use oracle sqlcl to access that warehouse from my desktop. It feels like command line too.
- 
-Install and setup
-Download sqlcl here http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html
-Unzip at C:\Users\araoka\Documents\k\tools\
- 
-Connect using
-cd &quot;C:\Users\araoka\Documents\k\tools\sqlcl-4.2.0.16.260.1205-no-jre\sqlcl\bin&quot;
-c:
-set JAVA_HOME=C:\Users\araoka\Documents\k\tools\sqldeveloper-4.1.3.20.78-x64\sqldeveloper\jdk\jre
- 
-sql.bat karlarao/&amp;lt;password&amp;gt;@//&amp;lt;host&amp;gt;:1521/dbwh
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oradoc/sqlcl&quot; href=&quot;https://github.com/oradoc/sqlcl&quot; class=&quot;externalLink&quot;&gt;https://github.com/oradoc/sqlcl&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mpkincai/sqlcl&quot; href=&quot;https://github.com/mpkincai/sqlcl&quot; class=&quot;externalLink&quot;&gt;https://github.com/mpkincai/sqlcl&lt;/a&gt;&lt;br&gt;</description>
-<category>SQL*Plus</category>
-<link>http://karlarao.tiddlyspot.com#sqlcl</link>
-<pubDate>Sun, 19 Aug 2018 17:20:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Kano</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://kano.me/app&quot; href=&quot;https://kano.me/app&quot; class=&quot;externalLink&quot;&gt;https://kano.me/app&lt;/a&gt;&lt;br&gt;help.kano.me&lt;br&gt;kano.me/world&lt;br&gt;kano.me/shop&lt;br&gt;youtube/teamkano</description>
-<category>CodingDevices</category>
-<link>http://karlarao.tiddlyspot.com#Kano</link>
-<pubDate>Fri, 10 Aug 2018 03:29:00 GMT</pubDate>
-
-</item>
-<item>
-<title>CodingDevices</title>
-<description></description>
-<category>CodeNinja</category>
-<link>http://karlarao.tiddlyspot.com#CodingDevices</link>
-<pubDate>Fri, 10 Aug 2018 03:27:00 GMT</pubDate>
-
-</item>
-<item>
-<title>REGEXP_SUBSTR, SUBSTR INSTR</title>
-<description>&lt;h1&gt; my examples here &lt;/h1&gt;oracle regexp output left hand side &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/4a456e9865247b07d1c7654116801214&quot; href=&quot;https://gist.github.com/karlarao/4a456e9865247b07d1c7654116801214&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/4a456e9865247b07d1c7654116801214&lt;/a&gt;&lt;br&gt;oracle one column to rows &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/9eb0d05fdb680db4bb6153e4a23c9bac&quot; href=&quot;https://gist.github.com/karlarao/9eb0d05fdb680db4bb6153e4a23c9bac&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/9eb0d05fdb680db4bb6153e4a23c9bac&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references&lt;/h1&gt;oracle split string after keyword &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?biw=1436&amp;amp;bih=796&amp;amp;ei=T0dqW8-ACozt5gKztqyABw&amp;amp;q=oracle+split+string+after+keyword&amp;amp;oq=oracle+split+string+after+keyword&amp;amp;gs_l=psy-ab.3...1867.1867.0.2171.1.1.0.0.0.0.74.74.1.1.0....0...1.1.64.psy-ab..0.0.0....0.8DSEO_Qp9-0&quot; href=&quot;https://www.google.com/search?biw=1436&amp;amp;bih=796&amp;amp;ei=T0dqW8-ACozt5gKztqyABw&amp;amp;q=oracle+split+string+after+keyword&amp;amp;oq=oracle+split+string+after+keyword&amp;amp;gs_l=psy-ab.3...1867.1867.0.2171.1.1.0.0.0.0.74.74.1.1.0....0...1.1.64.psy-ab..0.0.0....0.8DSEO_Qp9-0&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?biw=1436&amp;amp;bih=796&amp;amp;ei=T0dqW8-ACozt5gKztqyABw&amp;amp;q=oracle+split+string+after+keyword&amp;amp;oq=oracle+split+string+after+keyword&amp;amp;gs_l=psy-ab.3...1867.1867.0.2171.1.1.0.0.0.0.74.74.1.1.0....0...1.1.64.psy-ab..0.0.0....0.8DSEO_Qp9-0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/36015847/extract-string-after-character-and-before-final-full-stop-period-in-sql&quot; href=&quot;https://stackoverflow.com/questions/36015847/extract-string-after-character-and-before-final-full-stop-period-in-sql&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/36015847/extract-string-after-character-and-before-final-full-stop-period-in-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/45165587/how-to-get-string-after-character-oracle&quot; href=&quot;https://stackoverflow.com/questions/45165587/how-to-get-string-after-character-oracle&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/45165587/how-to-get-string-after-character-oracle&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/28674778/oracle-need-to-extract-text-between-given-strings&quot; href=&quot;https://stackoverflow.com/questions/28674778/oracle-need-to-extract-text-between-given-strings&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/28674778/oracle-need-to-extract-text-between-given-strings&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.experts-exchange.com/questions/28349313/Oracle-SQL-Extract-rightmost-word-in-string.html&quot; href=&quot;https://www.experts-exchange.com/questions/28349313/Oracle-SQL-Extract-rightmost-word-in-string.html&quot; class=&quot;externalLink&quot;&gt;https://www.experts-exchange.com/questions/28349313/Oracle-SQL-Extract-rightmost-word-in-string.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://lalitkumarb.wordpress.com/2017/02/17/regexp_substr-extract-everything-after-specific-character/&quot; href=&quot;https://lalitkumarb.wordpress.com/2017/02/17/regexp_substr-extract-everything-after-specific-character/&quot; class=&quot;externalLink&quot;&gt;https://lalitkumarb.wordpress.com/2017/02/17/regexp_substr-extract-everything-after-specific-character/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://lalitkumarb.wordpress.com/2018/07/20/regexp_substr-extract-everything-before-specific-character/&quot; href=&quot;https://lalitkumarb.wordpress.com/2018/07/20/regexp_substr-extract-everything-before-specific-character/&quot; class=&quot;externalLink&quot;&gt;https://lalitkumarb.wordpress.com/2018/07/20/regexp_substr-extract-everything-before-specific-character/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/4389571/how-to-select-a-substring-in-oracle-sql-up-to-a-specific-character&quot; href=&quot;https://stackoverflow.com/questions/4389571/how-to-select-a-substring-in-oracle-sql-up-to-a-specific-character&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/4389571/how-to-select-a-substring-in-oracle-sql-up-to-a-specific-character&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://basitaalishan.com/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions/&quot; href=&quot;https://basitaalishan.com/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions/&quot; class=&quot;externalLink&quot;&gt;https://basitaalishan.com/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.toadworld.com/platforms/sql-server/b/weblog/archive/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions&quot; href=&quot;https://community.toadworld.com/platforms/sql-server/b/weblog/archive/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions&quot; class=&quot;externalLink&quot;&gt;https://community.toadworld.com/platforms/sql-server/b/weblog/archive/2014/02/23/removing-part-of-string-before-and-after-specific-character-using-transact-sql-string-functions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=substr+and+instr+in+oracle&amp;amp;oq=substr+and+instr&amp;amp;aqs=chrome.1.69i57j0l5.3768j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=substr+and+instr+in+oracle&amp;amp;oq=substr+and+instr&amp;amp;aqs=chrome.1.69i57j0l5.3768j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=substr+and+instr+in+oracle&amp;amp;oq=substr+and+instr&amp;amp;aqs=chrome.1.69i57j0l5.3768j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/39405528/using-substr-and-instr-in-sql&quot; href=&quot;https://stackoverflow.com/questions/39405528/using-substr-and-instr-in-sql&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/39405528/using-substr-and-instr-in-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oraclemine.com/substr-and-instr-in-oracle/&quot; href=&quot;http://oraclemine.com/substr-and-instr-in-oracle/&quot; class=&quot;externalLink&quot;&gt;http://oraclemine.com/substr-and-instr-in-oracle/&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.java2s.com/Code/Oracle/Char-Functions/CombineINSTRandSUBSTRtogether.htm&quot; href=&quot;http://www.java2s.com/Code/Oracle/Char-Functions/CombineINSTRandSUBSTRtogether.htm&quot; class=&quot;externalLink&quot;&gt;http://www.java2s.com/Code/Oracle/Char-Functions/CombineINSTRandSUBSTRtogether.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=oracle+substr+instr+on+keyword&amp;amp;ei=Y0tqW_OaPOmO0gKK64-4BQ&amp;amp;start=10&amp;amp;sa=N&amp;amp;biw=1436&amp;amp;bih=796&quot; href=&quot;https://www.google.com/search?q=oracle+substr+instr+on+keyword&amp;amp;ei=Y0tqW_OaPOmO0gKK64-4BQ&amp;amp;start=10&amp;amp;sa=N&amp;amp;biw=1436&amp;amp;bih=796&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=oracle+substr+instr+on+keyword&amp;amp;ei=Y0tqW_OaPOmO0gKK64-4BQ&amp;amp;start=10&amp;amp;sa=N&amp;amp;biw=1436&amp;amp;bih=796&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=oracle+substr+instr+until+the+end+of+string&amp;amp;oq=oracle+substr+instr+until+the+end+of+string&amp;amp;aqs=chrome..69i57j69i64l3.12272j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=oracle+substr+instr+until+the+end+of+string&amp;amp;oq=oracle+substr+instr+until+the+end+of+string&amp;amp;aqs=chrome..69i57j69i64l3.12272j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=oracle+substr+instr+until+the+end+of+string&amp;amp;oq=oracle+substr+instr+until+the+end+of+string&amp;amp;aqs=chrome..69i57j69i64l3.12272j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/30820143/using-substr-and-instr-find-end-of-string&quot; href=&quot;https://stackoverflow.com/questions/30820143/using-substr-and-instr-find-end-of-string&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/30820143/using-substr-and-instr-find-end-of-string&lt;/a&gt;   &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/14621357/oracle-get-substring-before-a-space&quot; href=&quot;https://stackoverflow.com/questions/14621357/oracle-get-substring-before-a-space&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/14621357/oracle-get-substring-before-a-space&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/15614751/if-statement-in-select-oracle&quot; href=&quot;https://stackoverflow.com/questions/15614751/if-statement-in-select-oracle&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/15614751/if-statement-in-select-oracle&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQL Rewrite/Refactoring</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BREGEXP_SUBSTR%2C%20SUBSTR%20INSTR%5D%5D</link>
-<pubDate>Thu, 09 Aug 2018 17:51:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#cygwin</link>
+<pubDate>Thu, 06 Sep 2018 19:39:00 GMT</pubDate>
 
 </item>
 </channel>
