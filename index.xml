@@ -6,16 +6,663 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2018 YourName</copyright>
-<pubDate>Fri, 14 Sep 2018 20:21:25 GMT</pubDate>
-<lastBuildDate>Fri, 14 Sep 2018 20:21:25 GMT</lastBuildDate>
+<pubDate>Fri, 02 Nov 2018 09:32:23 GMT</pubDate>
+<lastBuildDate>Fri, 02 Nov 2018 09:32:23 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>force_matching</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twelvec.com/tag/force-matching-signature/&quot; href=&quot;https://twelvec.com/tag/force-matching-signature/&quot; class=&quot;externalLink&quot;&gt;https://twelvec.com/tag/force-matching-signature/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://karenmorton.blogspot.com/2012/05/force-matching-signature.html&quot; href=&quot;http://karenmorton.blogspot.com/2012/05/force-matching-signature.html&quot; class=&quot;externalLink&quot;&gt;http://karenmorton.blogspot.com/2012/05/force-matching-signature.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/2012/08/02/the-limitations-of-cursor_sharing-force-and-force_matching_signature-for-sql-plan-stability/&quot; href=&quot;http://blog.tanelpoder.com/2012/08/02/the-limitations-of-cursor_sharing-force-and-force_matching_signature-for-sql-plan-stability/&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/2012/08/02/the-limitations-of-cursor_sharing-force-and-force_matching_signature-for-sql-plan-stability/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pythian.com/blog/the-easy-way-of-finding-similar-sql-statements/&quot; href=&quot;http://www.pythian.com/blog/the-easy-way-of-finding-similar-sql-statements/&quot; class=&quot;externalLink&quot;&gt;http://www.pythian.com/blog/the-easy-way-of-finding-similar-sql-statements/&lt;/a&gt;&lt;br&gt;&lt;br&gt;force matching test case&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://forums.oracle.com/forums/thread.jspa?threadID=2214628&quot; href=&quot;https://forums.oracle.com/forums/thread.jspa?threadID=2214628&quot; class=&quot;externalLink&quot;&gt;https://forums.oracle.com/forums/thread.jspa?threadID=2214628&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracleblogging.wordpress.com/2011/02/18/convert-sql_id-to-signature/&quot; href=&quot;http://oracleblogging.wordpress.com/2011/02/18/convert-sql_id-to-signature/&quot; class=&quot;externalLink&quot;&gt;http://oracleblogging.wordpress.com/2011/02/18/convert-sql_id-to-signature/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Query force_matching&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;col force_matching_signature format 999999999999999999999999999
+select force_matching_signature, child_number from v$sql where sql_id = 'axany583awdtk';
+select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk';
+
+col signature format 999999999999999999999999999
+select name, force_matching, signature, created from dba_sql_profiles 
+where signature in (select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk');
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;16:17:11 SYS@fsprd2&amp;gt; col force_matching_signature format 999999999999999999999999999
+select force_matching_signature, child_number from v$sql where sql_id = '6gp26ps7axr36';
+16:17:11 SYS@fsprd2&amp;gt;
+no rows selected
+
+16:17:11 SYS@fsprd2&amp;gt; select force_matching_signature from dba_hist_sqlstat where sql_id = '6gp26ps7axr36';
+
+
+    FORCE_MATCHING_SIGNATURE
+----------------------------
+         9952434253236291351
+         9952434253236291351
+         9952434253236291351
+         9952434253236291351
+         9952434253236291351
+         9952434253236291351
+
+6 rows selected.
+
+16:17:11 SYS@fsprd2&amp;gt; 16:17:11 SYS@fsprd2&amp;gt; col signature format 999999999999999999999999999
+16:17:11 SYS@fsprd2&amp;gt; select name, force_matching, signature, created from dba_sql_profiles
+16:17:11   2  where signature in (select force_matching_signature from dba_hist_sqlstat where sql_id = '6gp26ps7axr36');
+
+
+NAME                           FOR                    SIGNATURE CREATED
+------------------------------ --- ---------------------------- ---------------------------------------------------------------------------
+SP_6gp26ps7axr36_2183398877    YES          9952434253236291351 15-MAY-12 06.14.50.000000 PM
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;16:18:57 SYS@fsprd2&amp;gt; col force_matching_signature format 999999999999999999999999999
+16:19:02 SYS@fsprd2&amp;gt; select force_matching_signature, child_number from v$sql where sql_id = 'axany583awdtk';
+
+no rows selected
+
+16:19:02 SYS@fsprd2&amp;gt; select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk';
+
+
+    FORCE_MATCHING_SIGNATURE
+----------------------------
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+        10520293011312039143
+
+12 rows selected.
+
+16:19:02 SYS@fsprd2&amp;gt; 16:19:02 SYS@fsprd2&amp;gt; col signature format 999999999999999999999999999
+select name, force_matching, signature, created from dba_sql_profiles
+16:19:02 SYS@fsprd2&amp;gt; 16:19:02   2  where signature in (select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk');
+
+NAME                           FOR                    SIGNATURE CREATED
+------------------------------ --- ---------------------------- ---------------------------------------------------------------------------
+SP_axany583awdtk_2183398877    NO          10520293011312039143 15-MAY-12 05.49.33.000000 PM
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>SQLProfiles</category>
+<link>http://karlarao.tiddlyspot.com#force_matching</link>
+<pubDate>Fri, 02 Nov 2018 09:32:20 GMT</pubDate>
+
+</item>
+<item>
+<title>.Tableau</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' download and documentation', event)&quot;&gt; download and documentation&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' license ', event)&quot;&gt; license &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' viz types', event)&quot;&gt; viz types&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' connectors', event)&quot;&gt; connectors&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTOs', event)&quot;&gt; HOWTOs&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' highlight SQL ', event)&quot;&gt; highlight SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' get underlying SQL ', event)&quot;&gt; get underlying SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' automating tableau reports ', event)&quot;&gt; automating tableau reports &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' remove last 2 characters', event)&quot;&gt; remove last 2 characters&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' measure names, measure values ', event)&quot;&gt; measure names, measure values &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' initial SQL filter', event)&quot;&gt; initial SQL filter&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' add total to stacked bar chart ', event)&quot;&gt; add total to stacked bar chart &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Videos', event)&quot;&gt; Videos&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; download and documentation&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Alternate download site across versions &lt;a target=&quot;_blank&quot; title=&quot;External link to https://licensing.tableausoftware.com/esdalt/&quot; href=&quot;https://licensing.tableausoftware.com/esdalt/&quot; class=&quot;externalLink&quot;&gt;https://licensing.tableausoftware.com/esdalt/&lt;/a&gt;&lt;br&gt;Release notes across versions &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&quot; href=&quot;http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&lt;/a&gt;&lt;br&gt;Official doc &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/community/support/documentation-old&quot; href=&quot;http://www.tableausoftware.com/community/support/documentation-old&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/community/support/documentation-old&lt;/a&gt;&lt;br&gt;knowledgebase &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/&quot; href=&quot;http://kb.tableausoftware.com/&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/&lt;/a&gt;&lt;br&gt;manuals &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/manuals&quot; href=&quot;http://www.tableausoftware.com/support/manuals&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/manuals&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/6.0&quot; href=&quot;http://www.tableausoftware.com/new-features/6.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/6.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/7.0&quot; href=&quot;http://www.tableausoftware.com/new-features/7.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/7.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/8.0&quot; href=&quot;http://www.tableausoftware.com/new-features/8.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/8.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/fast-pace-innovation&quot; href=&quot;http://www.tableausoftware.com/fast-pace-innovation&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/fast-pace-innovation&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; timeline across versions&lt;br&gt;&lt;br&gt;&lt;strong&gt;Tableau - Think Data Thursday Video Library&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/community/groups/tdt-video-library&quot; href=&quot;http://community.tableausoftware.com/community/groups/tdt-video-library&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/community/groups/tdt-video-library&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Tableau Style Guide&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&quot; href=&quot;https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Software Development Lifecycle With Tableau&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/russch/tableau-sdlc-sample&quot; href=&quot;https://github.com/russch/tableau-sdlc-sample&quot; class=&quot;externalLink&quot;&gt;https://github.com/russch/tableau-sdlc-sample&lt;/a&gt;&lt;br&gt;&lt;strong&gt;How to share data with a statistician&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/davidski/datasharing&quot; href=&quot;https://github.com/davidski/datasharing&quot; class=&quot;externalLink&quot;&gt;https://github.com/davidski/datasharing&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; license &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;upgrading tableau desktop &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&lt;/a&gt;&lt;br&gt;offline activation &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&lt;/a&gt;&lt;br&gt;renewal cost for desktop and personal &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&quot; href=&quot;http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&lt;/a&gt;&lt;br&gt;renewal FAQ &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/customer-success&quot; href=&quot;http://www.tableausoftware.com/support/customer-success&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/customer-success&lt;/a&gt;&lt;br&gt;eula &lt;a target=&quot;_blank&quot; title=&quot;External link to http://mkt.tableausoftware.com/files/eula.pdf&quot; href=&quot;http://mkt.tableausoftware.com/files/eula.pdf&quot; class=&quot;externalLink&quot;&gt;http://mkt.tableausoftware.com/files/eula.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; viz types&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; treemap &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/new-view-types&quot; href=&quot;http://www.tableausoftware.com/new-features/new-view-types&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/new-view-types&lt;/a&gt;&lt;/li&gt;&lt;li&gt; bubble chart&lt;/li&gt;&lt;li&gt; word cloud&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; connectors&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;strong&gt;Oracle Driver&lt;/strong&gt;&lt;br&gt;there’s an Oracle Driver so you can connect directly to a database &lt;a target=&quot;_blank&quot; title=&quot;External link to http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&quot; href=&quot;http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&quot; class=&quot;externalLink&quot;&gt;http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/drivers&quot; href=&quot;http://www.tableausoftware.com/support/drivers&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/drivers&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;a tiddlylink=&quot;HOWTOs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HOWTOs&quot; href=&quot;http://karlarao.tiddlyspot.com#HOWTOs&quot; class=&quot;externalLink null&quot;&gt;HOWTOs&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/learn/training&quot; href=&quot;http://www.tableausoftware.com/learn/training&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/learn/training&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; LOTS OF GOOD STUFF!!!&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/242749#242749&quot; href=&quot;http://community.tableausoftware.com/message/242749#242749&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/242749#242749&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; Johan's Ideas Collections&lt;br&gt;&lt;br&gt;&lt;strong&gt;parameters&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=wvF7gAV82_c&quot; href=&quot;http://www.youtube.com/watch?v=wvF7gAV82_c&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=wvF7gAV82_c&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;calculated fields&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=FpppiLBdtGc&quot; href=&quot;http://www.youtube.com/watch?v=FpppiLBdtGc&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=FpppiLBdtGc&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/table-calculations&quot; href=&quot;http://www.tableausoftware.com/table-calculations&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/table-calculations&lt;/a&gt;. &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;scatter plots&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=RYMlIY4nT9k&quot; href=&quot;http://www.youtube.com/watch?v=RYMlIY4nT9k&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=RYMlIY4nT9k&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&quot; href=&quot;http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&quot; class=&quot;externalLink&quot;&gt;http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;getting the r2&lt;/strong&gt;,&lt;strong&gt;trendlines&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;forecasting&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&quot; href=&quot;http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&lt;/a&gt;, resolving forecast errors &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;tableau forecast model - &lt;a tiddlylink=&quot;Holt-Winters&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Holt-Winters&quot; href=&quot;http://karlarao.tiddlyspot.com#Holt-Winters&quot; class=&quot;externalLink null&quot;&gt;Holt-Winters&lt;/a&gt; exponential smoothing&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;Method for Creating Multipass Aggregations Using Tableau Server  &amp;lt;&lt;span&gt;—&lt;/span&gt; doing various statistical methods in tableau&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/181143#181143&quot; href=&quot;http://community.tableausoftware.com/message/181143#181143&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/181143#181143&lt;/a&gt;&lt;br&gt;&lt;br&gt;Monte Carlo in Tableau&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&quot; href=&quot;http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&quot; class=&quot;externalLink&quot;&gt;http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboards&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&quot; href=&quot;http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&quot; href=&quot;http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&quot; href=&quot;http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&quot; class=&quot;externalLink&quot;&gt;http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboard size&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboard multiple sources&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference line weekend highlight , reference line weekend in tableau&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/123456&quot; href=&quot;https://community.tableau.com/thread/123456&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/123456&lt;/a&gt; (shading in weekends), &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&quot; href=&quot;http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&quot; class=&quot;externalLink&quot;&gt;http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://discussions.apple.com/thread/1919024?tstart=0&quot; href=&quot;https://discussions.apple.com/thread/1919024?tstart=0&quot; class=&quot;externalLink&quot;&gt;https://discussions.apple.com/thread/1919024?tstart=0&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&quot; href=&quot;https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&quot; class=&quot;externalLink&quot;&gt;https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&lt;/a&gt; , 	&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&quot; href=&quot;http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/120260&quot; href=&quot;https://community.tableau.com/thread/120260&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/120260&lt;/a&gt; (How can I add weekend reference lines) 	&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference line&lt;/strong&gt;, &lt;strong&gt;reference band&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&lt;/a&gt;,  &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&quot; href=&quot;http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/121369&quot; href=&quot;http://community.tableausoftware.com/thread/121369&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/121369&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;custom reference line - based on a measure field&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/275150&quot; href=&quot;http://community.tableausoftware.com/message/275150&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/275150&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; drag calculated field on the marks area&lt;br&gt;&lt;br&gt;&lt;strong&gt;dynamic reference line&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/124998&quot; href=&quot;http://community.tableausoftware.com/thread/124998&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/124998&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/105433&quot; href=&quot;http://community.tableausoftware.com/thread/105433&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/105433&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&quot; href=&quot;http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&quot; class=&quot;externalLink&quot;&gt;http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;percentile on reference line&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/108974&quot; href=&quot;https://community.tableau.com/thread/108974&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/108974&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dynamic parameter&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&quot; href=&quot;http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&quot; class=&quot;externalLink&quot;&gt;http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;thresholds&lt;/strong&gt; Multiple thresholds for different cells on one worksheet &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/122285&quot; href=&quot;http://community.tableausoftware.com/thread/122285&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/122285&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;email and alerting&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&quot; href=&quot;http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&quot; class=&quot;externalLink&quot;&gt;http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/124411&quot; href=&quot;http://community.tableausoftware.com/thread/124411&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/124411&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;templates&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/public/templates/schools&quot; href=&quot;http://www.tableausoftware.com/public/templates/schools&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/public/templates/schools&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&quot; href=&quot;http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&quot; class=&quot;externalLink&quot;&gt;http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&quot; href=&quot;http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&quot; class=&quot;externalLink&quot;&gt;http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;click to filter&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau worksheet actions&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/138785&quot; href=&quot;http://community.tableausoftware.com/thread/138785&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/138785&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;date functions and calculations&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&quot; href=&quot;http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&quot; class=&quot;externalLink&quot;&gt;http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;date dimension&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&quot; href=&quot;http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&quot; class=&quot;externalLink&quot;&gt;http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Date Range filter and Default date filter&lt;/strong&gt;&lt;br&gt;google search &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;Creating a Filter for Start and End Dates Using Parameters &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&quot; href=&quot;http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&lt;/a&gt;&lt;br&gt;Tableau Tip: Showing all dates on a date filter after a Server refresh &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&quot; href=&quot;http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&lt;/a&gt;&lt;br&gt;Tableau Tip: Default a date filter to the last N days &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&quot; href=&quot;http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;hide NULL values&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://reports4u.co.uk/tableau-hide-null-values/&quot; href=&quot;http://reports4u.co.uk/tableau-hide-null-values/&quot; class=&quot;externalLink&quot;&gt;http://reports4u.co.uk/tableau-hide-null-values/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://reports4u.co.uk/tableau-hide-values-quick-filter/&quot; href=&quot;http://reports4u.co.uk/tableau-hide-values-quick-filter/&quot; class=&quot;externalLink&quot;&gt;http://reports4u.co.uk/tableau-hide-values-quick-filter/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/null-values&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/null-values&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/null-values&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;br&gt;&lt;strong&gt;logical functions - if then else, case when then&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau working with sets&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&quot; href=&quot;https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&quot; class=&quot;externalLink&quot;&gt;https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/136845&quot; href=&quot;http://community.tableausoftware.com/thread/136845&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/136845&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good example on filters&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&quot; href=&quot;https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&quot; class=&quot;externalLink&quot;&gt;https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; GOOD STUFF video tutorial &lt;br&gt;IOPS SIORS - Combining several measures in one dimension - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableau-ext.hosted.jivesoftware.com/thread/137680&quot; href=&quot;http://tableau-ext.hosted.jivesoftware.com/thread/137680&quot; class=&quot;externalLink&quot;&gt;http://tableau-ext.hosted.jivesoftware.com/thread/137680&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau groups&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&quot; href=&quot;http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&quot; href=&quot;http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; VIDEO tutorial &lt;br&gt;&lt;br&gt;&lt;strong&gt;Random Number generation in tableau&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/docs/DOC-1474&quot; href=&quot;http://community.tableausoftware.com/docs/DOC-1474&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/docs/DOC-1474&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Calendar view viz&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&quot; href=&quot;http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Custom SQL&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&quot; href=&quot;http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&quot; href=&quot;http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&quot; class=&quot;externalLink&quot;&gt;http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&quot; href=&quot;http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&lt;/a&gt;&lt;br&gt;Using Raw SQL Functions &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/131017&quot; href=&quot;http://community.tableausoftware.com/thread/131017&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/131017&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Geolocation&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&quot; href=&quot;http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&quot; href=&quot;http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&quot; class=&quot;externalLink&quot;&gt;http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://public.tableausoftware.com/profile/timothyvermeiren#!/vizhome/TimothyAllRuns/Dashboard&quot; href=&quot;https://public.tableausoftware.com/profile/timothyvermeiren#%21/vizhome/TimothyAllRuns/Dashboard&quot; class=&quot;externalLink&quot;&gt;https://public.tableausoftware.com/profile/timothyvermeiren#!/vizhome/TimothyAllRuns/Dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau - import custom geocoding data - world map&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/200454&quot; href=&quot;https://community.tableau.com/thread/200454&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/200454&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=nVrCH-PWM10&quot; href=&quot;https://www.youtube.com/watch?v=nVrCH-PWM10&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=nVrCH-PWM10&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=IDyMMPiNVGw&quot; href=&quot;https://www.youtube.com/watch?v=IDyMMPiNVGw&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=IDyMMPiNVGw&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau perf analyzer&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&quot; href=&quot;http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&quot; class=&quot;externalLink&quot;&gt;http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau and python&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&quot; href=&quot;http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&quot; class=&quot;externalLink&quot;&gt;http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Visualize and Understand Tableau Functions&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://public.tableausoftware.com/profile/tyler3281#!/vizhome/EVERYONEWILLUSEME/MainScreen&quot; href=&quot;https://public.tableausoftware.com/profile/tyler3281#%21/vizhome/EVERYONEWILLUSEME/MainScreen&quot; class=&quot;externalLink&quot;&gt;https://public.tableausoftware.com/profile/tyler3281#!/vizhome/EVERYONEWILLUSEME/MainScreen&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau workbook on github&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&quot; href=&quot;http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&quot; class=&quot;externalLink&quot;&gt;http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau radar chart / spider graph&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&quot; href=&quot;https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&quot; class=&quot;externalLink&quot;&gt;https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;maps animation&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&quot; href=&quot;http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;if in list&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/ideas/1870&quot; href=&quot;http://community.tableausoftware.com/ideas/1870&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/ideas/1870&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/ideas/1500&quot; href=&quot;http://community.tableausoftware.com/ideas/1500&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/ideas/1500&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;pre&gt;IF 
+trim([ENV])='x07d' OR 
+trim([ENV])='x07p'  
+THEN 'AML' 
+ELSE 'OTHER' END
+
+
+IF 
+TRIM([ENV]) = 'x07d' THEN 'AML' ELSEIF 
+TRIM([ENV]) = 'x07p' THEN 'AML' 
+ELSE 'OTHER' END
+
+
+IF [Processor AMD] THEN 'AMD'
+ELSEIF [Processor Intel] THEN 'INTEL'
+ELSEIF [Processor IBM Power] THEN 'IBM Power'
+ELSEIF [Processor SPARC] THEN 'SPARC'
+ELSE 'Other' END
+
+
+IF contains('x11p,x08p,x28p',trim([ENV]))=true THEN 'PROD' 
+ELSEIF contains('x29u,x10u,x01u',trim([ENV]))=true THEN 'UAT' 
+ELSEIF contains('x06d,x07d,x12d',trim([ENV]))=true THEN 'DEV' 
+ELSEIF contains('x06t,x14t,x19t',trim([ENV]))=true THEN 'TEST' 
+ELSE 'OTHER' END
+
+[Snap Id] = (150106) or
+[Snap Id] = (150107) or
+[Snap Id] = (150440) or
+[Snap Id] = (150441)
+&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;calculated field filter&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&quot; href=&quot;http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;pre&gt;DRW
+SUM(IF contains('CD_IO_RQ_R_LG_SEC-CD,CD_IO_RQ_R_SM_SEC-CD,CD_IO_RQ_W_LG_SEC-CD,CD_IO_RQ_W_SM_SEC-CD',trim([Metric]))=true THEN 1 END) &amp;gt; 0
+
+CD_IO_RQ_R_LG_SEC-CD,0.21
+CD_IO_RQ_R_SM_SEC-CD,0.62
+CD_IO_RQ_W_LG_SEC-CD,2.14
+CD_IO_RQ_W_SM_SEC-CD,5.69
+&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;What is the difference between Tableau Server and Tableau Server Worker?&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/109121&quot; href=&quot;http://community.tableausoftware.com/thread/109121&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/109121&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau vs spotfire vs qlikview&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/116055&quot; href=&quot;http://community.tableausoftware.com/thread/116055&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/116055&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&quot; href=&quot;https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&quot; class=&quot;externalLink&quot;&gt;https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&quot; href=&quot;http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&quot; class=&quot;externalLink&quot;&gt;http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&quot; href=&quot;https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&quot; class=&quot;externalLink&quot;&gt;https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;twbx for sending workbooks&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;YOY moving average&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&quot; href=&quot;http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&quot; class=&quot;externalLink&quot;&gt;http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;json&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableau.com/ideas/1276&quot; href=&quot;http://community.tableau.com/ideas/1276&quot; class=&quot;externalLink&quot;&gt;http://community.tableau.com/ideas/1276&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau reverse engineering&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&quot; href=&quot;http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&quot; class=&quot;externalLink&quot;&gt;http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;filter partial highlight&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/143761&quot; href=&quot;https://community.tableau.com/thread/143761&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/143761&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&quot; href=&quot;http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Window functions&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/144402&quot; href=&quot;https://community.tableau.com/thread/144402&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/144402&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&quot; href=&quot;http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&quot; href=&quot;http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&quot; class=&quot;externalLink&quot;&gt;http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&quot; href=&quot;https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&quot; class=&quot;externalLink&quot;&gt;https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&lt;/a&gt;&lt;br&gt;&lt;pre&gt;LOOKUP(sum([Net]),-1)
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Count only the numbers that are positive, and get the percentage&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;(COUNT(IF [Diff] &amp;gt;= 0 THEN [Diff] END) / COUNT([Diff]))*100
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Add category for stock Position Type&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;IF contains('Buy,Sell',trim([Type 1]))=true THEN 'Long' 
+ELSEIF contains('Buy to Cover,Sell Short',trim([Type 1]))=true THEN 'Short' 
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;updated processor group filter&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Processor])),'amd')=true THEN 'AMD' 
+ELSEIF contains(lower(trim([Processor])),'intel')=true THEN 'INTEL' 
+ELSEIF contains(lower(trim([Processor])),'power')=true THEN 'IBM' 
+ELSEIF contains(lower(trim([Processor])),'sparc')=true THEN 'SPARC' 
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;storage cell dimension for x2 and x3 cells on the same diskgroup - useful for destage &lt;a tiddlylink=&quot;IOs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IOs&quot; href=&quot;http://karlarao.tiddlyspot.com#IOs&quot; class=&quot;externalLink null&quot;&gt;IOs&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;IF 
+trim([Cellname])='192.168.10.9' OR 
+trim([Cellname])='192.168.10.10' OR
+trim([Cellname])='192.168.10.11' OR
+trim([Cellname])='192.168.10.12' OR
+trim([Cellname])='192.168.10.13' OR
+trim([Cellname])='192.168.10.14' OR
+trim([Cellname])='192.168.10.15' OR
+trim([Cellname])='192.168.10.16' OR
+trim([Cellname])='192.168.10.17' OR
+trim([Cellname])='192.168.10.18' OR
+trim([Cellname])='192.168.10.19' OR
+trim([Cellname])='192.168.10.20' OR
+trim([Cellname])='192.168.10.21' OR
+trim([Cellname])='192.168.10.22' 
+THEN 'x2' 
+elseif 
+trim([Cellname])='192.168.10.38' OR 
+trim([Cellname])='192.168.10.39' OR
+trim([Cellname])='192.168.10.40' OR
+trim([Cellname])='192.168.10.41' OR
+trim([Cellname])='192.168.10.42' OR
+trim([Cellname])='192.168.10.43' OR
+trim([Cellname])='192.168.10.44' OR
+trim([Cellname])='192.168.10.45' OR
+trim([Cellname])='192.168.10.46' OR
+trim([Cellname])='192.168.10.47' OR
+trim([Cellname])='192.168.10.48' OR
+trim([Cellname])='192.168.10.49' OR
+trim([Cellname])='192.168.10.50' OR
+trim([Cellname])='192.168.10.51' 
+THEN 'x3'
+else 
+'other'
+end
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; highlight SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Sql Id])),'069k4ppu1n1nc')=true THEN [Sql Id]
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Sql Id])),'069k4ppu1n1nc')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'0vzyv2wsr2apz')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'0xsz99mn2nuvc')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'0zwcr39tvssxj')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'1d9qrkfvh78bt')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'1zbk54du40dnu')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'2xjwy1jvu31xu')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'2ywv61bm22pw7')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3fn33utt2ptns')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3knptw3bxf1c9')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3qvc497pz6hvp')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'3tpznswf2f7ak')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'4v775zu1p3b3f')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'51u31qah6z8d9')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'59wrat188thgf')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'5f2t4rq7xkfav')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'61r81qmqpt1bs')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'6cwh5bz0d0jkv')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'6fyy4v8c85cmk')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'6k6g6725pwjpw')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'7x0psn00ac54g')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'7xmjvrazhyntv')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'82psz0nhm68wf')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'885mt394synz4')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'af4vzj7jyv5mz')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'azkbmbyxahmh2')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'cws1kfprz7u8f')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'d6h43fh3d9p7g')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'dwgtzzmc509zf')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'f3frkf6tvkjwn')=true THEN [Sql Id]
+ELSEIF contains(lower(trim([Sql Id])),'gd55mjru6w8x')=true THEN [Sql Id]
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; get underlying SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/170370&quot; href=&quot;https://community.tableau.com/thread/170370&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/170370&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&quot; href=&quot;http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&lt;/a&gt;&lt;br&gt;&lt;pre&gt;C:\Users\karl\Documents\My Tableau Repository\Logs
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; automating tableau reports &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Tableau-generated PDF imports to Inkscape with text missing &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/118822&quot; href=&quot;https://community.tableau.com/thread/118822&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/118822&lt;/a&gt;&lt;br&gt;Automate pdf generation using Tableau Desktop &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/137724&quot; href=&quot;https://community.tableau.com/thread/137724&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/137724&lt;/a&gt;&lt;br&gt;Tableau Scripting Engine &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/ideas/1694&quot; href=&quot;https://community.tableau.com/ideas/1694&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/ideas/1694&lt;/a&gt;&lt;br&gt;tableau community &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/message/199249#199249&quot; href=&quot;https://community.tableau.com/message/199249#199249&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/message/199249#199249&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://powertoolsfortableau.com/tools/portals-for-tableau&quot; href=&quot;http://powertoolsfortableau.com/tools/portals-for-tableau&quot; class=&quot;externalLink&quot;&gt;http://powertoolsfortableau.com/tools/portals-for-tableau&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&quot; href=&quot;https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&quot; class=&quot;externalLink&quot;&gt;https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&lt;/a&gt; &amp;lt;- GOOD STUFF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.autoitscript.com/site/autoit/&quot; href=&quot;https://www.autoitscript.com/site/autoit/&quot; class=&quot;externalLink&quot;&gt;https://www.autoitscript.com/site/autoit/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&quot; href=&quot;http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&quot; href=&quot;http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&quot; class=&quot;externalLink&quot;&gt;http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; remove last 2 characters&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/docs/DOC-1391&quot; href=&quot;https://community.tableau.com/docs/DOC-1391&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/docs/DOC-1391&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/message/325328&quot; href=&quot;https://community.tableau.com/message/325328&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/message/325328&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; measure names, measure values &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Combining several measures in one dimension &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/137680&quot; href=&quot;https://community.tableau.com/thread/137680&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/137680&lt;/a&gt;&lt;br&gt;Tableau Tips and Tricks: Measure Names and Measure Values &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=m0DGW_WYKtA&quot; href=&quot;https://www.youtube.com/watch?v=m0DGW_WYKtA&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=m0DGW_WYKtA&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&quot; href=&quot;http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; initial SQL filter&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;When the user opens the workbook there will be parameter1 and parameter2 prompts for date range. And that date range will be in effect for all the sheets on that workbook &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&quot; href=&quot;https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&quot; class=&quot;externalLink&quot;&gt;https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&quot; href=&quot;https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&quot; class=&quot;externalLink&quot;&gt;https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; add total to stacked bar chart &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&quot; href=&quot;https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&quot; class=&quot;externalLink&quot;&gt;https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Videos&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Tableau &lt;a tiddlylink=&quot;TCC12&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TCC12&quot; href=&quot;http://karlarao.tiddlyspot.com#TCC12&quot; class=&quot;externalLink null&quot;&gt;TCC12&lt;/a&gt; Session: Facebook &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.ustream.tv/recorded/26807227&quot; href=&quot;http://www.ustream.tv/recorded/26807227&quot; class=&quot;externalLink&quot;&gt;http://www.ustream.tv/recorded/26807227&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Tableau Server/Desktop videos&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&quot; href=&quot;http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&quot; class=&quot;externalLink&quot;&gt;http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://beta.pluralsight.com/search/?searchTerm=tableau&quot; href=&quot;http://beta.pluralsight.com/search/?searchTerm=tableau&quot; class=&quot;externalLink&quot;&gt;http://beta.pluralsight.com/search/?searchTerm=tableau&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pluralsight.com/training/Authors/Details/ben-sullins&quot; href=&quot;http://pluralsight.com/training/Authors/Details/ben-sullins&quot; class=&quot;externalLink&quot;&gt;http://pluralsight.com/training/Authors/Details/ben-sullins&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.livefyre.com/profile/21361843/&quot; href=&quot;http://www.livefyre.com/profile/21361843/&quot; class=&quot;externalLink&quot;&gt;http://www.livefyre.com/profile/21361843/&lt;/a&gt; ben sullins comments/questions&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Visualization</category>
+<link>http://karlarao.tiddlyspot.com#.Tableau</link>
+<pubDate>Thu, 25 Oct 2018 16:57:00 GMT</pubDate>
+
+</item>
+<item>
+<title>GetFullStorageInfo.sql</title>
+<description>&lt;pre&gt;
+
+
+from MOS 1551288.1
+------ DISK and CELL Failure Diskgroup Space Reserve Requirements  ------
+This procedure determines how much space you need to survive a DISK or CELL failure. It also shows the usable space
+available when reserving space for disk or cell failure.
+Please see MOS note 1551288.1 for more information.
+.  .  .
+Description of Derived Values:
+One Cell Required Mirror Free MB : Required Mirror Free MB to permit successful rebalance after losing largest CELL regardless of redundancy type
+Disk Required Mirror Free MB     : Space needed to rebalance after loss of single or double disk failure (for normal or high redundancy)
+Disk Usable File MB              : Usable space available after reserving space for disk failure and accounting for mirroring
+Cell Usable File MB              : Usable space available after reserving space for SINGLE cell failure and accounting for mirroring
+.  .  .
+ASM Version: 11.2.0.4
+.  .  .
+----------------------------------------------------------------------------------------------------------------------------------------------------
+|          |         |     |          |            |            |            |Cell Req'd  |Disk Req'd  |            |            |    |    |       |
+|          |DG       |Num  |Disk Size |DG Total    |DG Used     |DG Free     |Mirror Free |Mirror Free |Disk Usable |Cell Usable |    |    |PCT    |
+|DG Name   |Type     |Disks|MB        |MB          |MB          |MB          |MB          |MB          |File MB     |File MB     |DFC |CFC |Util   |
+----------------------------------------------------------------------------------------------------------------------------------------------------
+|DATA_SOCPP|NORMAL   |   84| 2,260,992| 189,923,328| 156,156,856|  33,766,472|  29,845,094|   2,370,683|  15,697,895|   1,960,689|PASS|PASS|  82.2%|
+|DBFS_DG   |NORMAL   |   70|    34,608|   2,422,560|      14,692|   2,407,868|     380,688|     184,664|   1,111,602|   1,013,590|PASS|PASS|    .6%|
+|RECO_SOCPP|NORMAL   |   84|   565,360|  47,490,240|  37,766,648|   9,723,592|   7,462,752|     633,084|   4,545,254|   1,130,420|PASS|PASS|  79.5%|
+----------------------------------------------------------------------------------------------------------------------------------------------------
+.  .  .
+Script completed.
+
+
+-- 1e.77. Database Size on Disk (GV$DATABASE)
+WITH
+sizes AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 1e.77 */
+       'Data' file_type,
+       SUM(bytes) bytes
+  FROM v$datafile
+ UNION ALL
+SELECT 'Temp' file_type,
+       SUM(bytes) bytes
+  FROM v$tempfile
+ UNION ALL
+SELECT 'Log' file_type,
+       SUM(bytes) * MAX(members) bytes
+  FROM v$log
+ UNION ALL
+SELECT 'Control' file_type,
+       SUM(block_size * file_size_blks) bytes
+  FROM v$controlfile
+),
+dbsize AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 1e.77 */
+       'Total' file_type,
+       SUM(bytes) bytes
+  FROM sizes
+)
+SELECT d.dbid,
+       d.name db_name,
+       s.file_type,
+       s.bytes,
+       ROUND(s.bytes/POWER(10,9),3) gb,
+       CASE
+       WHEN s.bytes &amp;gt; POWER(10,15) THEN ROUND(s.bytes/POWER(10,15),3)||' P'
+       WHEN s.bytes &amp;gt; POWER(10,12) THEN ROUND(s.bytes/POWER(10,12),3)||' T'
+       WHEN s.bytes &amp;gt; POWER(10,9) THEN ROUND(s.bytes/POWER(10,9),3)||' G'
+       WHEN s.bytes &amp;gt; POWER(10,6) THEN ROUND(s.bytes/POWER(10,6),3)||' M'
+       WHEN s.bytes &amp;gt; POWER(10,3) THEN ROUND(s.bytes/POWER(10,3),3)||' K'
+       WHEN s.bytes &amp;gt; 0 THEN s.bytes||' B' END display
+  FROM v$database d,
+       sizes s
+ UNION ALL
+SELECT d.dbid,
+       d.name db_name,
+       s.file_type,
+       s.bytes,
+       ROUND(s.bytes/POWER(10,9),3) gb,
+       CASE
+       WHEN s.bytes &amp;gt; POWER(10,15) THEN ROUND(s.bytes/POWER(10,15),3)||' P'
+       WHEN s.bytes &amp;gt; POWER(10,12) THEN ROUND(s.bytes/POWER(10,12),3)||' T'
+       WHEN s.bytes &amp;gt; POWER(10,9) THEN ROUND(s.bytes/POWER(10,9),3)||' G'
+       WHEN s.bytes &amp;gt; POWER(10,6) THEN ROUND(s.bytes/POWER(10,6),3)||' M'
+       WHEN s.bytes &amp;gt; POWER(10,3) THEN ROUND(s.bytes/POWER(10,3),3)||' K'
+       WHEN s.bytes &amp;gt; 0 THEN s.bytes||' B' END display
+  FROM v$database d,
+       dbsize s;
+
+
+
+-- 2b.201. Data Files Usage (DBA_DATA_FILES)
+WITH
+alloc AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
+       tablespace_name,
+       COUNT(*) datafiles,
+       ROUND(SUM(bytes)/POWER(10,9)) gb
+  FROM dba_data_files
+ GROUP BY
+       tablespace_name
+),
+free AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
+       tablespace_name,
+       ROUND(SUM(bytes)/POWER(10,9)) gb
+  FROM dba_free_space
+ GROUP BY
+       tablespace_name
+),
+tablespaces AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
+       a.tablespace_name,
+       a.datafiles,
+       a.gb alloc_gb,
+       (a.gb - f.gb) used_gb,
+       f.gb free_gb
+  FROM alloc a, free f
+ WHERE a.tablespace_name = f.tablespace_name
+ ORDER BY
+       a.tablespace_name
+),
+total AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
+       SUM(alloc_gb) alloc_gb,
+       SUM(used_gb) used_gb,
+       SUM(free_gb) free_gb
+  FROM tablespaces
+)
+SELECT v.tablespace_name,
+       v.datafiles,
+       v.alloc_gb,
+       v.used_gb,
+       CASE WHEN v.alloc_gb &amp;gt; 0 THEN
+       LPAD(TRIM(TO_CHAR(ROUND(100 * v.used_gb / v.alloc_gb, 1), '990.0')), 8)
+       END pct_used,
+       v.free_gb,
+       CASE WHEN v.alloc_gb &amp;gt; 0 THEN
+       LPAD(TRIM(TO_CHAR(ROUND(100 * v.free_gb / v.alloc_gb, 1), '990.0')), 8)
+       END pct_free
+  FROM (
+SELECT tablespace_name,
+       datafiles,
+       alloc_gb,
+       used_gb,
+       free_gb
+  FROM tablespaces
+ UNION ALL
+SELECT 'Total' tablespace_name,
+       TO_NUMBER(NULL) datafiles,
+       alloc_gb,
+       used_gb,
+       free_gb
+  FROM total
+) v;
+
+
+
+-- 2b.207. Largest 200 Objects (DBA_SEGMENTS)
+WITH schema_object AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
+       segment_type,
+       owner,
+       segment_name,
+       tablespace_name,
+       COUNT(*) segments,
+       SUM(extents) extents,
+       SUM(blocks) blocks,
+       SUM(bytes) bytes
+  FROM dba_segments
+ WHERE 'Y' = 'Y'
+ GROUP BY
+       segment_type,
+       owner,
+       segment_name,
+       tablespace_name
+), totals AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
+       SUM(segments) segments,
+       SUM(extents) extents,
+       SUM(blocks) blocks,
+       SUM(bytes) bytes
+  FROM schema_object
+), top_200_pre AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
+       ROWNUM rank, v1.*
+       FROM (
+SELECT so.segment_type,
+       so.owner,
+       so.segment_name,
+       so.tablespace_name,
+       so.segments,
+       so.extents,
+       so.blocks,
+       so.bytes,
+       ROUND((so.segments / t.segments) * 100, 3) segments_perc,
+       ROUND((so.extents / t.extents) * 100, 3) extents_perc,
+       ROUND((so.blocks / t.blocks) * 100, 3) blocks_perc,
+       ROUND((so.bytes / t.bytes) * 100, 3) bytes_perc
+  FROM schema_object so,
+       totals t
+ ORDER BY
+       bytes_perc DESC NULLS LAST
+) v1
+ WHERE ROWNUM &amp;lt; 201
+), top_200 AS (
+SELECT p.*,
+       (SELECT object_id
+          FROM dba_objects o
+         WHERE o.object_type = p.segment_type
+           AND o.owner = p.owner
+           AND o.object_name = p.segment_name
+           AND o.object_type NOT LIKE '%PARTITION%') object_id,
+       (SELECT data_object_id
+          FROM dba_objects o
+         WHERE o.object_type = p.segment_type
+           AND o.owner = p.owner
+           AND o.object_name = p.segment_name
+           AND o.object_type NOT LIKE '%PARTITION%') data_object_id,
+       (SELECT SUM(p2.bytes_perc) FROM top_200_pre p2 WHERE p2.rank &amp;lt;= p.rank) bytes_perc_cum
+  FROM top_200_pre p
+), top_200_totals AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
+       SUM(segments) segments,
+       SUM(extents) extents,
+       SUM(blocks) blocks,
+       SUM(bytes) bytes,
+       SUM(segments_perc) segments_perc,
+       SUM(extents_perc) extents_perc,
+       SUM(blocks_perc) blocks_perc,
+       SUM(bytes_perc) bytes_perc
+  FROM top_200
+), top_100_totals AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
+       SUM(segments) segments,
+       SUM(extents) extents,
+       SUM(blocks) blocks,
+       SUM(bytes) bytes,
+       SUM(segments_perc) segments_perc,
+       SUM(extents_perc) extents_perc,
+       SUM(blocks_perc) blocks_perc,
+       SUM(bytes_perc) bytes_perc
+  FROM top_200
+ WHERE rank &amp;lt; 101
+), top_20_totals AS (
+SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
+       SUM(segments) segments,
+       SUM(extents) extents,
+       SUM(blocks) blocks,
+       SUM(bytes) bytes,
+       SUM(segments_perc) segments_perc,
+       SUM(extents_perc) extents_perc,
+       SUM(blocks_perc) blocks_perc,
+       SUM(bytes_perc) bytes_perc
+  FROM top_200
+ WHERE rank &amp;lt; 21
+)
+SELECT v.rank,
+       v.segment_type,
+       v.owner,
+       v.segment_name,
+       v.object_id,
+       v.data_object_id,
+       v.tablespace_name,
+       CASE
+       WHEN v.segment_type LIKE 'INDEX%' THEN
+         (SELECT i.table_name
+            FROM dba_indexes i
+           WHERE i.owner = v.owner AND i.index_name = v.segment_name)
+       WHEN v.segment_type LIKE 'LOB%' THEN
+         (SELECT l.table_name
+            FROM dba_lobs l
+           WHERE l.owner = v.owner AND l.segment_name = v.segment_name)
+       END table_name,
+       v.segments,
+       v.extents,
+       v.blocks,
+       v.bytes,
+       ROUND(v.bytes / POWER(10,9), 3) gb,
+       LPAD(TO_CHAR(v.segments_perc, '990.000'), 7) segments_perc,
+       LPAD(TO_CHAR(v.extents_perc, '990.000'), 7) extents_perc,
+       LPAD(TO_CHAR(v.blocks_perc, '990.000'), 7) blocks_perc,
+       LPAD(TO_CHAR(v.bytes_perc, '990.000'), 7) bytes_perc,
+       LPAD(TO_CHAR(v.bytes_perc_cum, '990.000'), 7) perc_cum
+  FROM (
+SELECT d.rank,
+       d.segment_type,
+       d.owner,
+       d.segment_name,
+       d.object_id,
+       d.data_object_id,
+       d.tablespace_name,
+       d.segments,
+       d.extents,
+       d.blocks,
+       d.bytes,
+       d.segments_perc,
+       d.extents_perc,
+       d.blocks_perc,
+       d.bytes_perc,
+       d.bytes_perc_cum
+  FROM top_200 d
+ UNION ALL
+SELECT TO_NUMBER(NULL) rank,
+       NULL segment_type,
+       NULL owner,
+       NULL segment_name,
+       TO_NUMBER(NULL),
+       TO_NUMBER(NULL),
+       'TOP  20' tablespace_name,
+       st.segments,
+       st.extents,
+       st.blocks,
+       st.bytes,
+       st.segments_perc,
+       st.extents_perc,
+       st.blocks_perc,
+       st.bytes_perc,
+       TO_NUMBER(NULL) bytes_perc_cum
+  FROM top_20_totals st
+ UNION ALL
+SELECT TO_NUMBER(NULL) rank,
+       NULL segment_type,
+       NULL owner,
+       NULL segment_name,
+       TO_NUMBER(NULL),
+       TO_NUMBER(NULL),
+       'TOP 100' tablespace_name,
+       st.segments,
+       st.extents,
+       st.blocks,
+       st.bytes,
+       st.segments_perc,
+       st.extents_perc,
+       st.blocks_perc,
+       st.bytes_perc,
+       TO_NUMBER(NULL) bytes_perc_cum
+  FROM top_100_totals st
+ UNION ALL
+SELECT TO_NUMBER(NULL) rank,
+       NULL segment_type,
+       NULL owner,
+       NULL segment_name,
+       TO_NUMBER(NULL),
+       TO_NUMBER(NULL),
+       'TOP 200' tablespace_name,
+       st.segments,
+       st.extents,
+       st.blocks,
+       st.bytes,
+       st.segments_perc,
+       st.extents_perc,
+       st.blocks_perc,
+       st.bytes_perc,
+       TO_NUMBER(NULL) bytes_perc_cum
+  FROM top_200_totals st
+ UNION ALL
+SELECT TO_NUMBER(NULL) rank,
+       NULL segment_type,
+       NULL owner,
+       NULL segment_name,
+       TO_NUMBER(NULL),
+       TO_NUMBER(NULL),
+       'TOTAL' tablespace_name,
+       t.segments,
+       t.extents,
+       t.blocks,
+       t.bytes,
+       100 segemnts_perc,
+       100 extents_perc,
+       100 blocks_perc,
+       100 bytes_perc,
+       TO_NUMBER(NULL) bytes_perc_cum
+  FROM totals t) v;
+
+&lt;/pre&gt;&lt;br&gt;.</description>
+<category>Exadata Storage Size - ASM-size</category>
+<link>http://karlarao.tiddlyspot.com#GetFullStorageInfo.sql</link>
+<pubDate>Wed, 24 Oct 2018 03:33:00 GMT</pubDate>
+
+</item>
+<item>
+<title>enq: SS - contention</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.freelists.org/post/oracle-l/Enq-SS-Contention,3&quot; href=&quot;https://www.freelists.org/post/oracle-l/Enq-SS-Contention,3&quot; class=&quot;externalLink&quot;&gt;https://www.freelists.org/post/oracle-l/Enq-SS-Contention,3&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://lefterhs.blogspot.com/2009/02/temporary-tablespace-ss-contention-in.html&quot; href=&quot;http://lefterhs.blogspot.com/2009/02/temporary-tablespace-ss-contention-in.html&quot; class=&quot;externalLink&quot;&gt;http://lefterhs.blogspot.com/2009/02/temporary-tablespace-ss-contention-in.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;Configuration &quot;enq: SS - contention&quot;&lt;br&gt;•	SS enqueue is used for protecting extent caching/un-caching operations. &lt;br&gt;If there’s a huge amount of SS enqueue, it is likely that a SQL went crazy with sorting or (hash) joining and used up all the cached extents in &lt;br&gt;its (local) instance. If this happens the other instance(s) are asked&lt;br&gt;to release the soft reservation for a bunch of extents. &lt;br&gt;•	Both &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; (ga3w4k1gnpmmx and 7jh6z1cxav5gy) are also running whenever this happens. Although it only occurred on the database on 09/18. If this happens every time these two &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; are executed, then the following could be done: &lt;br&gt;•	Option 1) &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; must be optimized to do less HASH JOIN&lt;br&gt;•	Option 2) Create a separate &lt;a tiddlylink=&quot;TEMP2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TEMP2&quot; href=&quot;http://karlarao.tiddlyspot.com#TEMP2&quot; class=&quot;externalLink null&quot;&gt;TEMP2&lt;/a&gt; tablespace and assign it to a new user that would only execute the two queries and also bind that SQL to a specific instance (through a service). This eliminates the cross-instance extent caching/un-caching&lt;br&gt;•	Option 3) Create a new &lt;a tiddlylink=&quot;TEMP2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TEMP2&quot; href=&quot;http://karlarao.tiddlyspot.com#TEMP2&quot; class=&quot;externalLink null&quot;&gt;TEMP2&lt;/a&gt; tablespace and set it as the new default temporary tablespace. Then kill all sessions blocked by SS enqueue. &lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
+<category>Troubleshooting & Internals</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Benq%3A%20SS%20-%20contention%5D%5D</link>
+<pubDate>Wed, 10 Oct 2018 05:46:00 GMT</pubDate>
+
+</item>
+<item>
+<title>addm summary</title>
+<description>&lt;pre&gt;cat *addm* | egrep &quot;ADDM Report for|\||AWR snapshot range from|Time period starts at|Time period ends at&quot; | less
+
+          ADDM Report for Task 'ADDM_20180925_151302'
+AWR snapshot range from 76292 to 76294.
+Time period starts at 2018-09-18T15:30:03.
+Time period ends at 2018-09-18T16:30:20.
+1  Top SQL Statements                        923.75 | 83.46       4
+2  Top Segments by &quot;User I/O&quot; and &quot;Cluster&quot;  446.06 | 40.3        5
+3  Temp Space Contention                     359.33 | 32.46       1
+4  Buffer Busy - Hot Objects                 267.97 | 24.21       5
+5  I/O Throughput                            239.97 | 21.68       1
+6  Global Cache Messaging                    172.57 | 15.59       1
+7  Undersized PGA                            107.23 | 9.69        1
+          ADDM Report for Task 'ADDM_20180925_151652'
+AWR snapshot range from 76243 to 76244.
+Time period starts at 2018-09-17T15:00:08.
+Time period ends at 2018-09-17T15:30:10.
+1  Top SQL Statements        991.1 | 98.7         1
+2  Soft Parse                990.82 | 98.68       1
+3  &quot;Concurrency&quot; Wait Class  990.39 | 98.63       0
+4  Shared Pool Latches       990.39 | 98.63       1
+
+ls | grep -i addm | grep &quot;76292&quot; | grep &quot;76294&quot;
+00015_edb360_7a_7z_372308_addmrpt_rac_76292_76294_max5wd2.txt
+00151_edb360_7a_7z_372308_addmrpt_2_76292_76294_max5wd3.txt
+00283_edb360_7a_7z_372308_addmrpt_4_76292_76294_max5wd3.txt
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;$ cat *addm* | grep &quot;Summary of Findings&quot; -A13 -B5 &amp;gt; addm_summary.txt
+&lt;/pre&gt;</description>
+<category>edb360</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Baddm%20summary%5D%5D</link>
+<pubDate>Tue, 09 Oct 2018 07:32:00 GMT</pubDate>
+
+</item>
+<item>
+<title>screen</title>
+<description>&lt;pre&gt;
+screen -S karl   &amp;lt;- to create session
+screen -ls         &amp;lt;- to list
+screen -r karl    &amp;lt;- to resume, won't let you grab one that's already attached 
+screen -d -r karl &amp;lt;- will detach/grab session and attach you to it
+screen -x karl   &amp;lt;- to resume 
+CTRL-A d        &amp;lt;- to safely disconnect
+
+&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; href=&quot;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; class=&quot;externalLink&quot;&gt;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&quot; href=&quot;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_%28Never_have_your_scripts_die_because_you_lost_your_connection&quot; class=&quot;externalLink&quot;&gt;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&lt;/a&gt;)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>LinuxNetworking</category>
+<link>http://karlarao.tiddlyspot.com#screen</link>
+<pubDate>Sun, 07 Oct 2018 21:49:00 GMT</pubDate>
+
+</item>
+<item>
+<title>kaggle</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kaggle.com/c/titanic&quot; href=&quot;https://www.kaggle.com/c/titanic&quot; class=&quot;externalLink&quot;&gt;https://www.kaggle.com/c/titanic&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/community/open-courses/kaggle-tutorial-on-machine-learing-the-sinking-of-the-titanic#gs.EMtaoUM&quot; href=&quot;https://www.datacamp.com/community/open-courses/kaggle-tutorial-on-machine-learing-the-sinking-of-the-titanic#gs.EMtaoUM&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/community/open-courses/kaggle-tutorial-on-machine-learing-the-sinking-of-the-titanic#gs.EMtaoUM&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kaggle.com/wiki/Home&quot; href=&quot;https://www.kaggle.com/wiki/Home&quot; class=&quot;externalLink&quot;&gt;https://www.kaggle.com/wiki/Home&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kaggle.com/competitions&quot; href=&quot;https://www.kaggle.com/competitions&quot; class=&quot;externalLink&quot;&gt;https://www.kaggle.com/competitions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.kdnuggets.com/2015/03/10-steps-success-kaggle-data-science-competitions.html&quot; href=&quot;http://www.kdnuggets.com/2015/03/10-steps-success-kaggle-data-science-competitions.html&quot; class=&quot;externalLink&quot;&gt;http://www.kdnuggets.com/2015/03/10-steps-success-kaggle-data-science-competitions.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; competitions &lt;/h1&gt;getting started &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.kaggle.com/2018/08/22/machine-learning-kaggle-competition-part-one-getting-started/&quot; href=&quot;http://blog.kaggle.com/2018/08/22/machine-learning-kaggle-competition-part-one-getting-started/&quot; class=&quot;externalLink&quot;&gt;http://blog.kaggle.com/2018/08/22/machine-learning-kaggle-competition-part-one-getting-started/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Data Science</category>
+<link>http://karlarao.tiddlyspot.com#kaggle</link>
+<pubDate>Sun, 16 Sep 2018 08:06:00 GMT</pubDate>
+
+</item>
+<item>
 <title>.disable sql profile and baselines</title>
-<description>&lt;br&gt;&lt;blockquote&gt;&lt;a tiddlylink=&quot;IGNORE_OPTIM_EMBEDDED_HINTS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; href=&quot;http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; class=&quot;externalLink null&quot;&gt;IGNORE_OPTIM_EMBEDDED_HINTS&lt;/a&gt; &amp;lt;- disables hints at session level through profile &lt;br&gt;optimizer_ignore_hints &amp;lt;- database wide or session level through trigger&lt;br&gt;&lt;br&gt;but is there a way to ignore hints AND profiles through 1 single parameter?&lt;br&gt;like **** you all hints and profiles i hate you!&lt;br&gt; or is the only way to do this is set _optimizer_ignore_hints and disable/drop all profiles ?&lt;br&gt;&lt;br&gt;ANSWER: &lt;br&gt;For profiles: ALTER SESSION SET &lt;a tiddlylink=&quot;SQLTUNE_CATEGORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; class=&quot;externalLink null&quot;&gt;SQLTUNE_CATEGORY&lt;/a&gt; = 'IGNOREMENOW';&lt;br&gt;For baselines: ALTER SYSTEM SET &lt;a tiddlylink=&quot;OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; href=&quot;http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; class=&quot;externalLink null&quot;&gt;OPTIMIZER_USE_SQL_PLAN_BASELINES&lt;/a&gt;=false&lt;br&gt;&lt;br&gt;just everything off, these are the knobs :)  because gluent doesn't like having &lt;a tiddlylink=&quot;USE_NL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#USE_NL&quot; href=&quot;http://karlarao.tiddlyspot.com#USE_NL&quot; class=&quot;externalLink null&quot;&gt;USE_NL&lt;/a&gt; hint on offloaded tables it errors with &lt;a tiddlylink=&quot;KUP-04108&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#KUP-04108&quot; href=&quot;http://karlarao.tiddlyspot.com#KUP-04108&quot; class=&quot;externalLink null&quot;&gt;KUP-04108&lt;/a&gt;: unable to reread file&lt;br&gt;just in case the developers have to deal with 1000+ &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; we know how to attack this with these knobs&lt;br&gt;&lt;/blockquote&gt;</description>
+<description>&lt;blockquote&gt;&lt;a tiddlylink=&quot;IGNORE_OPTIM_EMBEDDED_HINTS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; href=&quot;http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; class=&quot;externalLink null&quot;&gt;IGNORE_OPTIM_EMBEDDED_HINTS&lt;/a&gt; &amp;lt;- disables hints at session level through profile &lt;br&gt;optimizer_ignore_hints &amp;lt;- database wide or session level through trigger&lt;br&gt;&lt;br&gt;but is there a way to ignore hints AND profiles through 1 single parameter?&lt;br&gt;like **** you all hints and profiles i hate you!&lt;br&gt; or is the only way to do this is set _optimizer_ignore_hints and disable/drop all profiles ?&lt;br&gt;&lt;br&gt;ANSWER: &lt;br&gt;For profiles: ALTER SESSION SET &lt;a tiddlylink=&quot;SQLTUNE_CATEGORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; class=&quot;externalLink null&quot;&gt;SQLTUNE_CATEGORY&lt;/a&gt; = 'IGNOREMENOW';&lt;br&gt;For baselines: ALTER SYSTEM SET &lt;a tiddlylink=&quot;OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; href=&quot;http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; class=&quot;externalLink null&quot;&gt;OPTIMIZER_USE_SQL_PLAN_BASELINES&lt;/a&gt;=false&lt;br&gt;&lt;br&gt;just everything off, these are the knobs :)  because gluent doesn't like having &lt;a tiddlylink=&quot;USE_NL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#USE_NL&quot; href=&quot;http://karlarao.tiddlyspot.com#USE_NL&quot; class=&quot;externalLink null&quot;&gt;USE_NL&lt;/a&gt; hint on offloaded tables it errors with &lt;a tiddlylink=&quot;KUP-04108&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#KUP-04108&quot; href=&quot;http://karlarao.tiddlyspot.com#KUP-04108&quot; class=&quot;externalLink null&quot;&gt;KUP-04108&lt;/a&gt;: unable to reread file&lt;br&gt;just in case the developers have to deal with 1000+ &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; we know how to attack this with these knobs&lt;br&gt;&lt;/blockquote&gt;</description>
 <category>SQLProfiles</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B.disable%20sql%20profile%20and%20baselines%5D%5D</link>
-<pubDate>Fri, 14 Sep 2018 19:40:16 GMT</pubDate>
+<pubDate>Sun, 16 Sep 2018 07:47:00 GMT</pubDate>
 
 </item>
 <item>
@@ -196,7 +843,7 @@ select prev_sql_id p_sqlid from v$session where sid=sys_context('userenv','sid')
 </item>
 <item>
 <title>pycharm</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; href=&quot;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; class=&quot;externalLink&quot;&gt;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; href=&quot;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; class=&quot;externalLink&quot;&gt;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>jetbrains</category>
 <link>http://karlarao.tiddlyspot.com#pycharm</link>
 <pubDate>Tue, 11 Sep 2018 15:22:00 GMT</pubDate>
@@ -232,162 +879,6 @@ select prev_sql_id p_sqlid from v$session where sid=sys_context('userenv','sid')
 <category>DevTools, Dev Tools</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bgenerator%20JSON%5D%5D</link>
 <pubDate>Thu, 06 Sep 2018 20:39:00 GMT</pubDate>
-
-</item>
-<item>
-<title>generator Bootstrap</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.objgen.com/html&quot; href=&quot;http://www.objgen.com/html&quot; class=&quot;externalLink&quot;&gt;http://www.objgen.com/html&lt;/a&gt;</description>
-<category>DevTools, Dev Tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgenerator%20Bootstrap%5D%5D</link>
-<pubDate>Thu, 06 Sep 2018 20:38:00 GMT</pubDate>
-
-</item>
-<item>
-<title>spark ETL, spark scala ETL</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/databricks/building-robust-etl-pipelines-with-apache-spark&quot; href=&quot;https://www.slideshare.net/databricks/building-robust-etl-pipelines-with-apache-spark&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/databricks/building-robust-etl-pipelines-with-apache-spark&lt;/a&gt;  &amp;lt;- GOOD STUFF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://aws.amazon.com/blogs/big-data/using-spark-sql-for-etl/&quot; href=&quot;https://aws.amazon.com/blogs/big-data/using-spark-sql-for-etl/&quot; class=&quot;externalLink&quot;&gt;https://aws.amazon.com/blogs/big-data/using-spark-sql-for-etl/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/anish749/spark2-etl-examples&quot; href=&quot;https://github.com/anish749/spark2-etl-examples&quot; class=&quot;externalLink&quot;&gt;https://github.com/anish749/spark2-etl-examples&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@mrpowers/how-to-write-spark-etl-processes-df01b0c1bec9&quot; href=&quot;https://medium.com/@mrpowers/how-to-write-spark-etl-processes-df01b0c1bec9&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@mrpowers/how-to-write-spark-etl-processes-df01b0c1bec9&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.red-gate.com/simple-talk/sql/bi/scala-apache-spark-tandem-next-generation-etl-framework/&quot; href=&quot;https://www.red-gate.com/simple-talk/sql/bi/scala-apache-spark-tandem-next-generation-etl-framework/&quot; class=&quot;externalLink&quot;&gt;https://www.red-gate.com/simple-talk/sql/bi/scala-apache-spark-tandem-next-generation-etl-framework/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/holdenk/spark-testing-base&quot; href=&quot;https://github.com/holdenk/spark-testing-base&quot; class=&quot;externalLink&quot;&gt;https://github.com/holdenk/spark-testing-base&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/juanrh/sscheck&quot; href=&quot;https://github.com/juanrh/sscheck&quot; class=&quot;externalLink&quot;&gt;https://github.com/juanrh/sscheck&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.scalatest.org/&quot; href=&quot;http://www.scalatest.org/&quot; class=&quot;externalLink&quot;&gt;http://www.scalatest.org/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://databricks.com/session/get-rid-of-traditional-etl-move-to-spark&quot; href=&quot;https://databricks.com/session/get-rid-of-traditional-etl-move-to-spark&quot; class=&quot;externalLink&quot;&gt;https://databricks.com/session/get-rid-of-traditional-etl-move-to-spark&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Using Spark as an ETL tool &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/scala-guide-for/9781787282858/ch21s03.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/scala-guide-for/9781787282858/ch21s03.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/scala-guide-for/9781787282858/ch21s03.html&lt;/a&gt;&lt;br&gt;Chapter 2. Data Processing Pipeline Using Scala &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.safaribooksonline.com/library/view/building-a-recommendation/9781785282584/ch02.html&quot; href=&quot;https://www.safaribooksonline.com/library/view/building-a-recommendation/9781785282584/ch02.html&quot; class=&quot;externalLink&quot;&gt;https://www.safaribooksonline.com/library/view/building-a-recommendation/9781785282584/ch02.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=scala+spark+etl&amp;amp;oq=scala+spark+etl&amp;amp;aqs=chrome..69i57j69i60l3j0l2.5253j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=scala+spark+etl&amp;amp;oq=scala+spark+etl&amp;amp;aqs=chrome..69i57j69i60l3j0l2.5253j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=scala+spark+etl&amp;amp;oq=scala+spark+etl&amp;amp;aqs=chrome..69i57j69i60l3j0l2.5253j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h3&gt; spark ETL talend &lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/40371279/talend-and-apache-spark&quot; href=&quot;https://stackoverflow.com/questions/40371279/talend-and-apache-spark&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/40371279/talend-and-apache-spark&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.talend.com/blog/2017/09/15/talend-apache-spark-technical-primer/&quot; href=&quot;https://www.talend.com/blog/2017/09/15/talend-apache-spark-technical-primer/&quot; class=&quot;externalLink&quot;&gt;https://www.talend.com/blog/2017/09/15/talend-apache-spark-technical-primer/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.talend.com/blog/2018/02/21/talend-vs-spark-submit-configuration-whats-the-difference/&quot; href=&quot;https://www.talend.com/blog/2018/02/21/talend-vs-spark-submit-configuration-whats-the-difference/&quot; class=&quot;externalLink&quot;&gt;https://www.talend.com/blog/2018/02/21/talend-vs-spark-submit-configuration-whats-the-difference/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>apache spark</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bspark%20ETL%2C%20spark%20scala%20ETL%5D%5D</link>
-<pubDate>Thu, 06 Sep 2018 20:23:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Failed Logon Delay</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=oracle+Failed+Logon+Delay&amp;amp;ei=O9uJW9OVIKGQggfhl5KwBw&amp;amp;start=0&amp;amp;sa=N&amp;amp;biw=1389&amp;amp;bih=764&quot; href=&quot;https://www.google.com/search?q=oracle+Failed+Logon+Delay&amp;amp;ei=O9uJW9OVIKGQggfhl5KwBw&amp;amp;start=0&amp;amp;sa=N&amp;amp;biw=1389&amp;amp;bih=764&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=oracle+Failed+Logon+Delay&amp;amp;ei=O9uJW9OVIKGQggfhl5KwBw&amp;amp;start=0&amp;amp;sa=N&amp;amp;biw=1389&amp;amp;bih=764&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.dba-resources.com/oracle/finding-the-origin-of-failed-login-attempts/&quot; href=&quot;https://www.dba-resources.com/oracle/finding-the-origin-of-failed-login-attempts/&quot; class=&quot;externalLink&quot;&gt;https://www.dba-resources.com/oracle/finding-the-origin-of-failed-login-attempts/&lt;/a&gt;&lt;br&gt;&lt;pre&gt;1. Using database auditing (if already enabled)
-
-Caveat: This is the simplest method to determine the source of failed login attempts providing that auditing is already enabled on your database as the information has (probably) already been captured. However, if auditing is not enabled then doing so will require that the database be restarted, in which case this option is no longer the simplest!
-
-Firstly, check to see whether auditing is enabled and set to &quot;DB&quot; (meaning the audit trail is written to a database table).
-
-show parameter audit_trail
-
-If not set, then you will need to enable auditing, restart the database and then enable auditing of unsucessful logins as follows:
-
-audit session whenever not successful;
-
-The audit records for unsuccessful logon attempts can then be found as follows:
-
-col ntimestamp# for a30 heading &quot;Timestamp&quot;
-col userid for a20 heading &quot;Username&quot;
-col userhost for a15 heading &quot;Machine&quot;
-col spare1 for a15 heading &quot;OS User&quot;
-col comment$text for a80 heading &quot;Details&quot; wrap
-
-select ntimestamp#, userid, userhost, spare1, comment$text from sys.aud$ where returncode=1017 order by 1;
-
-Sample output:
-
-Timestamp Username Machine OS User
------------------------------- -------------------- --------------- ---------------
-Details
---------------------------------------------------------------------------------
-08-DEC-14 12.39.42.945635 PM APPUSER unix_app_001 orafrms
-Authenticated by: DATABASE; Client address: (ADDRESS=(PROTOCOL=tcp)(HOST=10.218.
-64.44)(PORT=42293))
-
-08-DEC-14 12.42.10.170957 PM APPUSER unix_app_001 orafrms
-Authenticated by: DATABASE; Client address: (ADDRESS=(PROTOCOL=tcp)(HOST=10.218.
-64.44)(PORT=48541))
-
-Note: the USERHOST column is only populated with the Client Host machine name as of 10G, in earlier versions this was the Numeric instance ID for the Oracle instance from which the user is accessing the database in a RAC environment.
-2. Use a trigger to capture additional information
-
-The following trigger code can be used to gather additional information about unsuccessful login attempts and write them to the database alert log, it is recommended to integrate this code into an existing trigger if you already have a trigger for this triggering event.
-
-CREATE OR REPLACE TRIGGER logon_denied_write_alertlog AFTER SERVERERROR ON DATABASE
-DECLARE
- l_message varchar2(2000);
-BEGIN
- -- ORA-1017: invalid username/password; logon denied
- IF (IS_SERVERERROR(1017)) THEN
- select 'Failed login attempt to the &quot;'|| sys_context('USERENV' ,'AUTHENTICATED_IDENTITY') ||'&quot; schema'
- || ' using ' || sys_context ('USERENV', 'AUTHENTICATION_TYPE') ||' authentication'
- || ' at ' || to_char(logon_time,'dd-MON-yy hh24:mi:ss' )
- || ' from ' || osuser ||'@'||machine ||' ['||nvl(sys_context ('USERENV', 'IP_ADDRESS'),'Unknown IP')||']'
- || ' via the &quot;' ||program||'&quot; program.'
- into l_message
- from sys .v_$session
- where sid = to_number(substr(dbms_session.unique_session_id,1 ,4), 'xxxx')
- and serial# = to_number(substr(dbms_session.unique_session_id,5 ,4), 'xxxx');
- 
- -- write to alert log
- sys.dbms_system .ksdwrt( 2,l_message );
- END IF;
-END;
-/
-
-Some sample output from the alert.log looks like:
-
-Tue Jan 06 09:45:36 2015
-Failed login attempt to the &quot;appuser&quot; schema using DATABASE authentication at 06-JAN-15 09:45:35 from orafrms@unix_app_001 [10.218.64.44] via the &quot;frmweb@unix_app_001 (TNS V1-V3)&quot; program.
-
-3. Setting an event to generate trace files on unsuccessful login.
-
-You can instruct the database to write a trace file whenever an unsuccessful login attempt is made by setting the following event (the example below will only set the event until the next time the database is restarted. Update your pfile or spfile accordingly if you want this to be permanent).
-
-alter system set events '1017 trace name errorstack level 10';
-
-Trace files will be generated in user_dump_dest whenever someone attempts to login using an invalid username / password. As the trace is requested at level 10 it will include a section labeled PROCESS STATE that includes trace information such as :
-
-O/S info: user:orafrms, term: pts/15, ospid: 29959, machine:unix_app_001
-program: frmweb@unix_app_001 (TNS V1-V3)
-application name: frmweb@unix_app_001 (TNS V1-V3), hash value=0
-last wait for 'SQL*Net message from client' blocking sess=0x0 seq=2 wait_time=5570 seconds since wait started=0
-
-In this case it was an 'frmweb' client running as OS user 'orafrms' that started the client session. The section &quot;Call Stack Trace&quot; may aid support in further diagnosing the issue.
-
-Note: If the OS user or program is 'oracle' the connection may originate from a Database Link.
-4. Using SQL*Net tracing to gather information
-
-A sqlnet trace can provide you with even more details about the connection attempt but use this only if none of the above are successful in determining the origin of the failed login as it will be hard to find what you are looking for if you enable sqlnet tracing (and it can potentially consume large amounts of disk space).
-
-To enable SQL*Net tracing create or edit the server side sqlnet.ora file and add the following parameters:
-
-# server side sqlnet trace parameters
-trace_level_server = 16
-trace_file_server=server
-trace_directory_server = &amp;lt;any directory on a volume with enough freespace&amp;gt;
-
-
-&lt;/pre&gt;</description>
-<category>Troubleshooting & Internals</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BFailed%20Logon%20Delay%5D%5D</link>
-<pubDate>Thu, 06 Sep 2018 20:20:00 GMT</pubDate>
-
-</item>
-<item>
-<title>linux enterprise security hardening</title>
-<description>SCAP &lt;a target=&quot;_blank&quot; title=&quot;External link to https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sect-practical_examples&quot; href=&quot;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sect-practical_examples&quot; class=&quot;externalLink&quot;&gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sect-practical_examples&lt;/a&gt;</description>
-<category>LinuxSecurity</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Blinux%20enterprise%20security%20hardening%5D%5D</link>
-<pubDate>Thu, 06 Sep 2018 20:18:00 GMT</pubDate>
-
-</item>
-<item>
-<title>cx_Oracle</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle.github.io/python-cx_Oracle/&quot; href=&quot;https://oracle.github.io/python-cx_Oracle/&quot; class=&quot;externalLink&quot;&gt;https://oracle.github.io/python-cx_Oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; href=&quot;https://github.com/oracle/python-cx_Oracle/tree/master/samples&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/python-cx_Oracle/tree/master/samples&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://ba6.us/?q=cx_Oracle_easy_windows_install&quot; href=&quot;http://ba6.us/?q=cx_Oracle_easy_windows_install&quot; class=&quot;externalLink&quot;&gt;http://ba6.us/?q=cx_Oracle_easy_windows_install&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h3&gt; mac &lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://jasonstitt.com/cx_oracle_on_os_x&quot; href=&quot;https://jasonstitt.com/cx_oracle_on_os_x&quot; class=&quot;externalLink&quot;&gt;https://jasonstitt.com/cx_oracle_on_os_x&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/thom-nic/6011715&quot; href=&quot;https://gist.github.com/thom-nic/6011715&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/thom-nic/6011715&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html&quot; href=&quot;http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html&quot; class=&quot;externalLink&quot;&gt;http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html&lt;/a&gt;</description>
-<category>Python</category>
-<link>http://karlarao.tiddlyspot.com#cx_Oracle</link>
-<pubDate>Thu, 06 Sep 2018 19:56:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hadoop development env</title>
-<description>mac hadoop development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; href=&quot;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; href=&quot;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; href=&quot;http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; class=&quot;externalLink&quot;&gt;http://hadoopsie.com/mac-setup-for-hadoop-dev/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hadoop Map Reduce Programming 101 - 04 Setup Eclipse For Map Reduce Development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; href=&quot;https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=mRIsLSrHOj4&lt;/a&gt;&lt;br&gt;Setup Spark Development Environment on Windows - Introduction &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; href=&quot;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&lt;/a&gt;&lt;br&gt;Introduction - Setup Python, Pycharm and Spark on Windows &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; href=&quot;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; class=&quot;externalLink&quot;&gt;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; href=&quot;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; href=&quot;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Data Engineering</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20development%20env%5D%5D</link>
-<pubDate>Thu, 06 Sep 2018 19:55:00 GMT</pubDate>
-
-</item>
-<item>
-<title>R studio install mac</title>
-<description>&lt;pre&gt;  brew cask install 'xquartz'
-  brew cask install 'r-app'
-  r
-  brew cask install 'rstudio'
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=install+rstudio+for+mac&amp;amp;oq=install+rstudio+for+mac&amp;amp;aqs=chrome..69i57j0l5.4464j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=install+rstudio+for+mac&amp;amp;oq=install+rstudio+for+mac&amp;amp;aqs=chrome..69i57j0l5.4464j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=install+rstudio+for+mac&amp;amp;oq=install+rstudio+for+mac&amp;amp;aqs=chrome..69i57j0l5.4464j1j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/20457290/installing-r-with-homebrew&quot; href=&quot;https://stackoverflow.com/questions/20457290/installing-r-with-homebrew&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/20457290/installing-r-with-homebrew&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://macappstore.org/rstudio/&quot; href=&quot;http://macappstore.org/rstudio/&quot; class=&quot;externalLink&quot;&gt;http://macappstore.org/rstudio/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mdzhang.com/posts/osx-r-rstudio/&quot; href=&quot;http://mdzhang.com/posts/osx-r-rstudio/&quot; class=&quot;externalLink&quot;&gt;http://mdzhang.com/posts/osx-r-rstudio/&lt;/a&gt; &amp;lt;- GOOD STUFF&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>R studio</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BR%20studio%20install%20mac%5D%5D</link>
-<pubDate>Thu, 06 Sep 2018 19:41:00 GMT</pubDate>
 
 </item>
 </channel>
