@@ -5,880 +5,504 @@
 <link>http://karlarao.tiddlyspot.com</link>
 <description></description>
 <language>en</language>
-<copyright>Copyright 2018 YourName</copyright>
-<pubDate>Fri, 02 Nov 2018 09:32:23 GMT</pubDate>
-<lastBuildDate>Fri, 02 Nov 2018 09:32:23 GMT</lastBuildDate>
+<copyright>Copyright 2019 YourName</copyright>
+<pubDate>Sat, 05 Jan 2019 16:56:07 GMT</pubDate>
+<lastBuildDate>Sat, 05 Jan 2019 16:56:07 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
-<title>force_matching</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twelvec.com/tag/force-matching-signature/&quot; href=&quot;https://twelvec.com/tag/force-matching-signature/&quot; class=&quot;externalLink&quot;&gt;https://twelvec.com/tag/force-matching-signature/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://karenmorton.blogspot.com/2012/05/force-matching-signature.html&quot; href=&quot;http://karenmorton.blogspot.com/2012/05/force-matching-signature.html&quot; class=&quot;externalLink&quot;&gt;http://karenmorton.blogspot.com/2012/05/force-matching-signature.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/2012/08/02/the-limitations-of-cursor_sharing-force-and-force_matching_signature-for-sql-plan-stability/&quot; href=&quot;http://blog.tanelpoder.com/2012/08/02/the-limitations-of-cursor_sharing-force-and-force_matching_signature-for-sql-plan-stability/&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/2012/08/02/the-limitations-of-cursor_sharing-force-and-force_matching_signature-for-sql-plan-stability/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.pythian.com/blog/the-easy-way-of-finding-similar-sql-statements/&quot; href=&quot;http://www.pythian.com/blog/the-easy-way-of-finding-similar-sql-statements/&quot; class=&quot;externalLink&quot;&gt;http://www.pythian.com/blog/the-easy-way-of-finding-similar-sql-statements/&lt;/a&gt;&lt;br&gt;&lt;br&gt;force matching test case&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://forums.oracle.com/forums/thread.jspa?threadID=2214628&quot; href=&quot;https://forums.oracle.com/forums/thread.jspa?threadID=2214628&quot; class=&quot;externalLink&quot;&gt;https://forums.oracle.com/forums/thread.jspa?threadID=2214628&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracleblogging.wordpress.com/2011/02/18/convert-sql_id-to-signature/&quot; href=&quot;http://oracleblogging.wordpress.com/2011/02/18/convert-sql_id-to-signature/&quot; class=&quot;externalLink&quot;&gt;http://oracleblogging.wordpress.com/2011/02/18/convert-sql_id-to-signature/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Query force_matching&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;col force_matching_signature format 999999999999999999999999999
-select force_matching_signature, child_number from v$sql where sql_id = 'axany583awdtk';
-select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk';
-
-col signature format 999999999999999999999999999
-select name, force_matching, signature, created from dba_sql_profiles 
-where signature in (select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk');
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;16:17:11 SYS@fsprd2&amp;gt; col force_matching_signature format 999999999999999999999999999
-select force_matching_signature, child_number from v$sql where sql_id = '6gp26ps7axr36';
-16:17:11 SYS@fsprd2&amp;gt;
-no rows selected
-
-16:17:11 SYS@fsprd2&amp;gt; select force_matching_signature from dba_hist_sqlstat where sql_id = '6gp26ps7axr36';
-
-
-    FORCE_MATCHING_SIGNATURE
-----------------------------
-         9952434253236291351
-         9952434253236291351
-         9952434253236291351
-         9952434253236291351
-         9952434253236291351
-         9952434253236291351
-
-6 rows selected.
-
-16:17:11 SYS@fsprd2&amp;gt; 16:17:11 SYS@fsprd2&amp;gt; col signature format 999999999999999999999999999
-16:17:11 SYS@fsprd2&amp;gt; select name, force_matching, signature, created from dba_sql_profiles
-16:17:11   2  where signature in (select force_matching_signature from dba_hist_sqlstat where sql_id = '6gp26ps7axr36');
-
-
-NAME                           FOR                    SIGNATURE CREATED
------------------------------- --- ---------------------------- ---------------------------------------------------------------------------
-SP_6gp26ps7axr36_2183398877    YES          9952434253236291351 15-MAY-12 06.14.50.000000 PM
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;16:18:57 SYS@fsprd2&amp;gt; col force_matching_signature format 999999999999999999999999999
-16:19:02 SYS@fsprd2&amp;gt; select force_matching_signature, child_number from v$sql where sql_id = 'axany583awdtk';
-
-no rows selected
-
-16:19:02 SYS@fsprd2&amp;gt; select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk';
-
-
-    FORCE_MATCHING_SIGNATURE
-----------------------------
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-        10520293011312039143
-
-12 rows selected.
-
-16:19:02 SYS@fsprd2&amp;gt; 16:19:02 SYS@fsprd2&amp;gt; col signature format 999999999999999999999999999
-select name, force_matching, signature, created from dba_sql_profiles
-16:19:02 SYS@fsprd2&amp;gt; 16:19:02   2  where signature in (select force_matching_signature from dba_hist_sqlstat where sql_id = 'axany583awdtk');
-
-NAME                           FOR                    SIGNATURE CREATED
------------------------------- --- ---------------------------- ---------------------------------------------------------------------------
-SP_axany583awdtk_2183398877    NO          10520293011312039143 15-MAY-12 05.49.33.000000 PM
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>SQLProfiles</category>
-<link>http://karlarao.tiddlyspot.com#force_matching</link>
-<pubDate>Fri, 02 Nov 2018 09:32:20 GMT</pubDate>
+<title>system-config-network</title>
+<description>&lt;br&gt;&lt;pre&gt;nmtui
+&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&quot; href=&quot;https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&quot; class=&quot;externalLink&quot;&gt;https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/linux/linux-network-configuration&quot; href=&quot;https://oracle-base.com/articles/linux/linux-network-configuration&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/linux/linux-network-configuration&lt;/a&gt;</description>
+<category>RH131</category>
+<link>http://karlarao.tiddlyspot.com#system-config-network</link>
+<pubDate>Sat, 05 Jan 2019 16:56:03 GMT</pubDate>
 
 </item>
 <item>
-<title>.Tableau</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' download and documentation', event)&quot;&gt; download and documentation&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' license ', event)&quot;&gt; license &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' viz types', event)&quot;&gt; viz types&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' connectors', event)&quot;&gt; connectors&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' HOWTOs', event)&quot;&gt; HOWTOs&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' highlight SQL ', event)&quot;&gt; highlight SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' get underlying SQL ', event)&quot;&gt; get underlying SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' automating tableau reports ', event)&quot;&gt; automating tableau reports &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' remove last 2 characters', event)&quot;&gt; remove last 2 characters&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' measure names, measure values ', event)&quot;&gt; measure names, measure values &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' initial SQL filter', event)&quot;&gt; initial SQL filter&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' add total to stacked bar chart ', event)&quot;&gt; add total to stacked bar chart &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Videos', event)&quot;&gt; Videos&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; download and documentation&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Alternate download site across versions &lt;a target=&quot;_blank&quot; title=&quot;External link to https://licensing.tableausoftware.com/esdalt/&quot; href=&quot;https://licensing.tableausoftware.com/esdalt/&quot; class=&quot;externalLink&quot;&gt;https://licensing.tableausoftware.com/esdalt/&lt;/a&gt;&lt;br&gt;Release notes across versions &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&quot; href=&quot;http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/releases?signin=650fb8c2841d145bc3236999b96fd7ab&lt;/a&gt;&lt;br&gt;Official doc &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/community/support/documentation-old&quot; href=&quot;http://www.tableausoftware.com/community/support/documentation-old&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/community/support/documentation-old&lt;/a&gt;&lt;br&gt;knowledgebase &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/&quot; href=&quot;http://kb.tableausoftware.com/&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/&lt;/a&gt;&lt;br&gt;manuals &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/manuals&quot; href=&quot;http://www.tableausoftware.com/support/manuals&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/manuals&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/6.0&quot; href=&quot;http://www.tableausoftware.com/new-features/6.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/6.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/7.0&quot; href=&quot;http://www.tableausoftware.com/new-features/7.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/7.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/8.0&quot; href=&quot;http://www.tableausoftware.com/new-features/8.0&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/8.0&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/fast-pace-innovation&quot; href=&quot;http://www.tableausoftware.com/fast-pace-innovation&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/fast-pace-innovation&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; timeline across versions&lt;br&gt;&lt;br&gt;&lt;strong&gt;Tableau - Think Data Thursday Video Library&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/community/groups/tdt-video-library&quot; href=&quot;http://community.tableausoftware.com/community/groups/tdt-video-library&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/community/groups/tdt-video-library&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Tableau Style Guide&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&quot; href=&quot;https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/davidski/dataviz/blob/master/Tableau%20Style%20Guide.md&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Software Development Lifecycle With Tableau&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/russch/tableau-sdlc-sample&quot; href=&quot;https://github.com/russch/tableau-sdlc-sample&quot; class=&quot;externalLink&quot;&gt;https://github.com/russch/tableau-sdlc-sample&lt;/a&gt;&lt;br&gt;&lt;strong&gt;How to share data with a statistician&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/davidski/datasharing&quot; href=&quot;https://github.com/davidski/datasharing&quot; class=&quot;externalLink&quot;&gt;https://github.com/davidski/datasharing&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; license &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;upgrading tableau desktop &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/upgrading-tableau-desktop&lt;/a&gt;&lt;br&gt;offline activation &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/offline-activation&lt;/a&gt;&lt;br&gt;renewal cost for desktop and personal &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&quot; href=&quot;http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.triadtechpartners.com/wp-content/uploads/Tableau-GSA-Price-List-April-2013.pdf&lt;/a&gt;&lt;br&gt;renewal FAQ &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/customer-success&quot; href=&quot;http://www.tableausoftware.com/support/customer-success&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/customer-success&lt;/a&gt;&lt;br&gt;eula &lt;a target=&quot;_blank&quot; title=&quot;External link to http://mkt.tableausoftware.com/files/eula.pdf&quot; href=&quot;http://mkt.tableausoftware.com/files/eula.pdf&quot; class=&quot;externalLink&quot;&gt;http://mkt.tableausoftware.com/files/eula.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; viz types&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; treemap &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/new-features/new-view-types&quot; href=&quot;http://www.tableausoftware.com/new-features/new-view-types&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/new-features/new-view-types&lt;/a&gt;&lt;/li&gt;&lt;li&gt; bubble chart&lt;/li&gt;&lt;li&gt; word cloud&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; connectors&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;strong&gt;Oracle Driver&lt;/strong&gt;&lt;br&gt;there’s an Oracle Driver so you can connect directly to a database &lt;a target=&quot;_blank&quot; title=&quot;External link to http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&quot; href=&quot;http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&quot; class=&quot;externalLink&quot;&gt;http://downloads.tableausoftware.com/drivers/oracle/desktop/tableau7.0-oracle-driver.msi&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/support/drivers&quot; href=&quot;http://www.tableausoftware.com/support/drivers&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/support/drivers&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/oracle-connection-errors&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;a tiddlylink=&quot;HOWTOs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HOWTOs&quot; href=&quot;http://karlarao.tiddlyspot.com#HOWTOs&quot; class=&quot;externalLink null&quot;&gt;HOWTOs&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/learn/training&quot; href=&quot;http://www.tableausoftware.com/learn/training&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/learn/training&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; LOTS OF GOOD STUFF!!!&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/242749#242749&quot; href=&quot;http://community.tableausoftware.com/message/242749#242749&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/242749#242749&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; Johan's Ideas Collections&lt;br&gt;&lt;br&gt;&lt;strong&gt;parameters&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=wvF7gAV82_c&quot; href=&quot;http://www.youtube.com/watch?v=wvF7gAV82_c&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=wvF7gAV82_c&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;calculated fields&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=FpppiLBdtGc&quot; href=&quot;http://www.youtube.com/watch?v=FpppiLBdtGc&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=FpppiLBdtGc&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/table-calculations&quot; href=&quot;http://www.tableausoftware.com/table-calculations&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/table-calculations&lt;/a&gt;. &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/combining-date-and-time-single-field&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;scatter plots&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.youtube.com/watch?v=RYMlIY4nT9k&quot; href=&quot;http://www.youtube.com/watch?v=RYMlIY4nT9k&quot; class=&quot;externalLink&quot;&gt;http://www.youtube.com/watch?v=RYMlIY4nT9k&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&quot; href=&quot;http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&quot; class=&quot;externalLink&quot;&gt;http://downloads.tableausoftware.com/quickstart/feature-guides/trend_lines.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;getting the r2&lt;/strong&gt;,&lt;strong&gt;trendlines&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/statistics-finding-correlation&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/trendlines_model.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;forecasting&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&quot; href=&quot;http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://tombrownonbi.blogspot.com/2010/07/simple-forecasting-using-tableau.html&lt;/a&gt;, resolving forecast errors &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/forecast_resolve_errors.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;tableau forecast model - &lt;a tiddlylink=&quot;Holt-Winters&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Holt-Winters&quot; href=&quot;http://karlarao.tiddlyspot.com#Holt-Winters&quot; class=&quot;externalLink null&quot;&gt;Holt-Winters&lt;/a&gt; exponential smoothing&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/help.html#forecast_describe.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;Method for Creating Multipass Aggregations Using Tableau Server  &amp;lt;&lt;span&gt;—&lt;/span&gt; doing various statistical methods in tableau&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/181143#181143&quot; href=&quot;http://community.tableausoftware.com/message/181143#181143&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/181143#181143&lt;/a&gt;&lt;br&gt;&lt;br&gt;Monte Carlo in Tableau&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&quot; href=&quot;http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&quot; class=&quot;externalLink&quot;&gt;http://drawingwithnumbers.artisart.org/basic-monte-carlo-simulations-in-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboards&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&quot; href=&quot;http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/109753?start=0&amp;amp;tstart=0&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&quot; href=&quot;http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/27627548817/another-method-to-update-data-from-inside-tableau&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&quot; href=&quot;http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&quot; class=&quot;externalLink&quot;&gt;http://ryrobes.com/tableau/tableau-phpgrid-an-almost-instant-gratification-data-entry-tool/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboard size&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/fixed-size-dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dashboard multiple sources&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/multiple-sources-one-worksheet&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference line weekend highlight , reference line weekend in tableau&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/123456&quot; href=&quot;https://community.tableau.com/thread/123456&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/123456&lt;/a&gt; (shading in weekends), &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&quot; href=&quot;http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&quot; class=&quot;externalLink&quot;&gt;http://www.evolytics.com/blog/tableau-hack-how-to-highlight-a-dimension/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://discussions.apple.com/thread/1919024?tstart=0&quot; href=&quot;https://discussions.apple.com/thread/1919024?tstart=0&quot; class=&quot;externalLink&quot;&gt;https://discussions.apple.com/thread/1919024?tstart=0&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&quot; href=&quot;https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&quot; class=&quot;externalLink&quot;&gt;https://3danim8.wordpress.com/2013/11/18/using-tableau-buckets-to-compare-weekday-to-weekend-data/&lt;/a&gt; , 	&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&quot; href=&quot;http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableau.com/current/pro/desktop/en-us/actions_highlight_advanced.html&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/120260&quot; href=&quot;https://community.tableau.com/thread/120260&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/120260&lt;/a&gt; (How can I add weekend reference lines) 	&lt;br&gt;&lt;br&gt;&lt;strong&gt;reference line&lt;/strong&gt;, &lt;strong&gt;reference band&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/reflines_addlines.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/09/tableau-tip-adding-moving-reference.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1000860.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/independent-field-reference-line&lt;/a&gt;,  &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&quot; href=&quot;http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/127009?start=0&amp;amp;tstart=0&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/121369&quot; href=&quot;http://community.tableausoftware.com/thread/121369&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/121369&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;custom reference line - based on a measure field&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/message/275150&quot; href=&quot;http://community.tableausoftware.com/message/275150&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/message/275150&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; drag calculated field on the marks area&lt;br&gt;&lt;br&gt;&lt;strong&gt;dynamic reference line&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/124998&quot; href=&quot;http://community.tableausoftware.com/thread/124998&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/124998&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/105433&quot; href=&quot;http://community.tableausoftware.com/thread/105433&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/105433&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&quot; href=&quot;http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&quot; class=&quot;externalLink&quot;&gt;http://www.interworks.com/blogs/iwbiteam/2012/04/09/adding-different-reference-lines-tableau&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;percentile on reference line&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/108974&quot; href=&quot;https://community.tableau.com/thread/108974&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/108974&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;dynamic parameter&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&quot; href=&quot;http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&quot; class=&quot;externalLink&quot;&gt;http://drawingwithnumbers.artisart.org/creating-a-dynamic-parameter-with-a-tableau-data-blend/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;thresholds&lt;/strong&gt; Multiple thresholds for different cells on one worksheet &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/122285&quot; href=&quot;http://community.tableausoftware.com/thread/122285&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/122285&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;email and alerting&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&quot; href=&quot;http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&quot; class=&quot;externalLink&quot;&gt;http://www.metricinsights.com/data-driven-alerting-and-email-notifications-for-tableau/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/124411&quot; href=&quot;http://community.tableausoftware.com/thread/124411&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/124411&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;templates&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/replacing-data-source&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/public/templates/schools&quot; href=&quot;http://www.tableausoftware.com/public/templates/schools&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/public/templates/schools&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&quot; href=&quot;http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&quot; class=&quot;externalLink&quot;&gt;http://wannabedatarockstar.blogspot.com/2013/06/create-default-tableau-template.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&quot; href=&quot;http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&quot; class=&quot;externalLink&quot;&gt;http://wannabedatarockstar.blogspot.co.uk/2013/04/colour-me-right.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;click to filter&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/combining-sheet-links-and-dashboards&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau worksheet actions&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/138785&quot; href=&quot;http://community.tableausoftware.com/thread/138785&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/138785&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;date functions and calculations&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/current/pro/online/en-us/functions_functions_date.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&quot; href=&quot;http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&quot; class=&quot;externalLink&quot;&gt;http://pharma-bi.com/2011/04/fiscal-period-calculations-in-tableau-2/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;date dimension&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&quot; href=&quot;http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&quot; class=&quot;externalLink&quot;&gt;http://blog.inspari.dk/2013/08/27/making-the-date-dimension-ready-for-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Date Range filter and Default date filter&lt;/strong&gt;&lt;br&gt;google search &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=tableau+date+range+filter&amp;amp;oq=tableau+date+range+&amp;amp;aqs=chrome.2.69i57j0l5.9028j0j7&amp;amp;sourceid=chrome&amp;amp;es_sm=119&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;Creating a Filter for Start and End Dates Using Parameters &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&quot; href=&quot;http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/howto/creating-a-filter-for-start-and-end-dates-parameters&lt;/a&gt;&lt;br&gt;Tableau Tip: Showing all dates on a date filter after a Server refresh &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&quot; href=&quot;http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2014/01/tableau-tip-showing-all-dates-on-date.html&lt;/a&gt;&lt;br&gt;Tableau Tip: Default a date filter to the last N days &lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&quot; href=&quot;http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2013/09/tableau-tip-default-date-filter-to-last.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;hide NULL values&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://reports4u.co.uk/tableau-hide-null-values/&quot; href=&quot;http://reports4u.co.uk/tableau-hide-null-values/&quot; class=&quot;externalLink&quot;&gt;http://reports4u.co.uk/tableau-hide-null-values/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://reports4u.co.uk/tableau-hide-values-quick-filter/&quot; href=&quot;http://reports4u.co.uk/tableau-hide-values-quick-filter/&quot; class=&quot;externalLink&quot;&gt;http://reports4u.co.uk/tableau-hide-values-quick-filter/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/replacing-null-literalsclass&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/null-values&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/null-values&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/null-values&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good stuff&lt;br&gt;&lt;br&gt;&lt;strong&gt;logical functions - if then else, case when then&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/functions_functions_logical.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/understanding-logical-calculations&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/id2611b7e2-acb6-467e-9f69-402bba5f9617.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau working with sets&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&quot; href=&quot;https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&quot; class=&quot;externalLink&quot;&gt;https://www.tableausoftware.com/public/blog/2013/03/powerful-new-tools&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v6.1/public/online/en-us/i1201140.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/136845&quot; href=&quot;http://community.tableausoftware.com/thread/136845&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/136845&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; good example on filters&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&quot; href=&quot;https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&quot; class=&quot;externalLink&quot;&gt;https://www.tableausoftware.com/learn/tutorials/on-demand/sets?signin=a8f73d84a4b046aec26bc955854a381b&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; GOOD STUFF video tutorial &lt;br&gt;IOPS SIORS - Combining several measures in one dimension - &lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableau-ext.hosted.jivesoftware.com/thread/137680&quot; href=&quot;http://tableau-ext.hosted.jivesoftware.com/thread/137680&quot; class=&quot;externalLink&quot;&gt;http://tableau-ext.hosted.jivesoftware.com/thread/137680&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau groups&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&quot; href=&quot;http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2013/05/tableau-tip-creating-primary-group-from.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&quot; href=&quot;http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/learn/tutorials/on-demand/grouping?signin=f98f9fd64dcac0e7f2dc574bca03b68c&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; VIDEO tutorial &lt;br&gt;&lt;br&gt;&lt;strong&gt;Random Number generation in tableau&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/docs/DOC-1474&quot; href=&quot;http://community.tableausoftware.com/docs/DOC-1474&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/docs/DOC-1474&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Calendar view viz&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&quot; href=&quot;http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://thevizioneer.blogspot.com/2014/04/day-1-how-to-make-calendar-in-tableau.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/05/creating-interactive-monthly-calendar.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&quot; href=&quot;http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&quot; class=&quot;externalLink&quot;&gt;http://vizwiz.blogspot.com/2012/05/how-common-is-your-birthday-find-out.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Custom SQL&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/customizing-odbc-connections&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&quot; href=&quot;http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/20781994395/tableau-performance-multiple-tables-or-custom-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&quot; href=&quot;http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&quot; class=&quot;externalLink&quot;&gt;http://bensullins.com/leveraging-your-tableau-server-to-create-large-data-extracts/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&quot; href=&quot;http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/18945358848/how-to-publish-an-unpopulated-tableau-extract&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v8.1/pro/online/en-us/customsql.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&quot; href=&quot;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&quot; class=&quot;externalLink&quot;&gt;http://onlinehelp.tableausoftware.com/v7.0/pro/online/en-us/customsql.html&lt;/a&gt;&lt;br&gt;Using Raw SQL Functions &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/raw-sql&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/131017&quot; href=&quot;http://community.tableausoftware.com/thread/131017&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/131017&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Geolocation&lt;/strong&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&quot; href=&quot;http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&quot; class=&quot;externalLink&quot;&gt;http://tableaulove.tumblr.com/post/82299898419/ip-based-geo-location-in-tableau-new-now-with-more&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&quot; href=&quot;http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&quot; class=&quot;externalLink&quot;&gt;http://dataremixed.com/2014/08/from-gps-to-viz-hiking-washingtons-trails/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://public.tableausoftware.com/profile/timothyvermeiren#!/vizhome/TimothyAllRuns/Dashboard&quot; href=&quot;https://public.tableausoftware.com/profile/timothyvermeiren#%21/vizhome/TimothyAllRuns/Dashboard&quot; class=&quot;externalLink&quot;&gt;https://public.tableausoftware.com/profile/timothyvermeiren#!/vizhome/TimothyAllRuns/Dashboard&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau - import custom geocoding data - world map&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/200454&quot; href=&quot;https://community.tableau.com/thread/200454&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/200454&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=nVrCH-PWM10&quot; href=&quot;https://www.youtube.com/watch?v=nVrCH-PWM10&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=nVrCH-PWM10&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=IDyMMPiNVGw&quot; href=&quot;https://www.youtube.com/watch?v=IDyMMPiNVGw&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=IDyMMPiNVGw&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/custom_geocoding.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/online/mac/en-us/maps_customgeocode_importing.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau perf analyzer&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&quot; href=&quot;http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&quot; class=&quot;externalLink&quot;&gt;http://www.interworks.com/services/business-intelligence/tableau-performance-analyzer&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau and python&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&quot; href=&quot;http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&quot; class=&quot;externalLink&quot;&gt;http://bensullins.com/bit-ly-data-to-csv-for-import-to-tableau/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Visualize and Understand Tableau Functions&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://public.tableausoftware.com/profile/tyler3281#!/vizhome/EVERYONEWILLUSEME/MainScreen&quot; href=&quot;https://public.tableausoftware.com/profile/tyler3281#%21/vizhome/EVERYONEWILLUSEME/MainScreen&quot; class=&quot;externalLink&quot;&gt;https://public.tableausoftware.com/profile/tyler3281#!/vizhome/EVERYONEWILLUSEME/MainScreen&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau workbook on github&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&quot; href=&quot;http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&quot; class=&quot;externalLink&quot;&gt;http://blog.pluralsight.com/how-to-store-your-tableau-server-workbooks-on-github&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau radar chart / spider graph&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&quot; href=&quot;https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&quot; class=&quot;externalLink&quot;&gt;https://wikis.utexas.edu/display/tableau/How+to+create+a+Radar+Chart&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;maps animation&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&quot; href=&quot;http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&quot; class=&quot;externalLink&quot;&gt;http://www.tableausoftware.com/public/blog/2014/08/capturing-animation-tableau-maps-2574?elq=d12cbf266b1342e68ea20105369371cf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;if in list&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/ideas/1870&quot; href=&quot;http://community.tableausoftware.com/ideas/1870&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/ideas/1870&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/ideas/1500&quot; href=&quot;http://community.tableausoftware.com/ideas/1500&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/ideas/1500&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;pre&gt;IF 
-trim([ENV])='x07d' OR 
-trim([ENV])='x07p'  
-THEN 'AML' 
-ELSE 'OTHER' END
-
-
-IF 
-TRIM([ENV]) = 'x07d' THEN 'AML' ELSEIF 
-TRIM([ENV]) = 'x07p' THEN 'AML' 
-ELSE 'OTHER' END
-
-
-IF [Processor AMD] THEN 'AMD'
-ELSEIF [Processor Intel] THEN 'INTEL'
-ELSEIF [Processor IBM Power] THEN 'IBM Power'
-ELSEIF [Processor SPARC] THEN 'SPARC'
-ELSE 'Other' END
-
-
-IF contains('x11p,x08p,x28p',trim([ENV]))=true THEN 'PROD' 
-ELSEIF contains('x29u,x10u,x01u',trim([ENV]))=true THEN 'UAT' 
-ELSEIF contains('x06d,x07d,x12d',trim([ENV]))=true THEN 'DEV' 
-ELSEIF contains('x06t,x14t,x19t',trim([ENV]))=true THEN 'TEST' 
-ELSE 'OTHER' END
-
-[Snap Id] = (150106) or
-[Snap Id] = (150107) or
-[Snap Id] = (150440) or
-[Snap Id] = (150441)
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;calculated field filter&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&quot; href=&quot;http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/30753330/tableau-using-calculated-fields-for-filtering-dimensions&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/03/creating-table-calculations-on-values.html&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;pre&gt;DRW
-SUM(IF contains('CD_IO_RQ_R_LG_SEC-CD,CD_IO_RQ_R_SM_SEC-CD,CD_IO_RQ_W_LG_SEC-CD,CD_IO_RQ_W_SM_SEC-CD',trim([Metric]))=true THEN 1 END) &amp;gt; 0
-
-CD_IO_RQ_R_LG_SEC-CD,0.21
-CD_IO_RQ_R_SM_SEC-CD,0.62
-CD_IO_RQ_W_LG_SEC-CD,2.14
-CD_IO_RQ_W_SM_SEC-CD,5.69
-&lt;/pre&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;strong&gt;What is the difference between Tableau Server and Tableau Server Worker?&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/109121&quot; href=&quot;http://community.tableausoftware.com/thread/109121&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/109121&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau vs spotfire vs qlikview&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableausoftware.com/thread/116055&quot; href=&quot;http://community.tableausoftware.com/thread/116055&quot; class=&quot;externalLink&quot;&gt;http://community.tableausoftware.com/thread/116055&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&quot; href=&quot;https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&quot; class=&quot;externalLink&quot;&gt;https://apandre.wordpress.com/2013/09/13/tableau-8-1-vs-qlikview-11-2-vs-spotfire-5-5/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&quot; href=&quot;http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&quot; class=&quot;externalLink&quot;&gt;http://butleranalytics.com/spotfire-tableau-and-qlikview-in-a-nutshell/&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&quot; href=&quot;https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&quot; class=&quot;externalLink&quot;&gt;https://www.trustradius.com/compare-products/tableau-desktop-vs-tibco-spotfire&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;twbx for sending workbooks&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&quot; href=&quot;http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&quot; class=&quot;externalLink&quot;&gt;http://kb.tableausoftware.com/articles/knowledgebase/sending-packaged-workbook&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;YOY moving average&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&quot; href=&quot;http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&quot; class=&quot;externalLink&quot;&gt;http://daveandrade.com/2015/01/25/tableau-table-calcs-how-to-calculate-a-year-over-year-4-week-moving-average/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;json&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://community.tableau.com/ideas/1276&quot; href=&quot;http://community.tableau.com/ideas/1276&quot; class=&quot;externalLink&quot;&gt;http://community.tableau.com/ideas/1276&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;tableau reverse engineering&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&quot; href=&quot;http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&quot; class=&quot;externalLink&quot;&gt;http://www.theinformationlab.co.uk/2015/01/22/learning-tableau-reverse-engineering/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;filter partial highlight&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/143761&quot; href=&quot;https://community.tableau.com/thread/143761&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/143761&lt;/a&gt; , &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&quot; href=&quot;http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2014/03/partial-highlighting-on-charts-in.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Window functions&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/144402&quot; href=&quot;https://community.tableau.com/thread/144402&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/144402&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&quot; href=&quot;http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/knowledgebase/functional-differences-olap-relational&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&quot; href=&quot;http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&quot; class=&quot;externalLink&quot;&gt;http://www.lunametrics.com/blog/2015/09/17/yoy-bar-charts-in-tableau/&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/03/working-with-window-calculations-and.html&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&quot; href=&quot;https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&quot; class=&quot;externalLink&quot;&gt;https://www.interworks.com/blog/tmccullough/2014/09/29/5-tableau-table-calculation-functions-you-need-know&lt;/a&gt;, &lt;a target=&quot;_blank&quot; title=&quot;External link to http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&quot; href=&quot;http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&quot; class=&quot;externalLink&quot;&gt;http://breaking-bi.blogspot.com/2013/04/using-lookup-function-in-tableau.html&lt;/a&gt;&lt;br&gt;&lt;pre&gt;LOOKUP(sum([Net]),-1)
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Count only the numbers that are positive, and get the percentage&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;(COUNT(IF [Diff] &amp;gt;= 0 THEN [Diff] END) / COUNT([Diff]))*100
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;Add category for stock Position Type&lt;/strong&gt; &lt;br&gt;&lt;pre&gt;IF contains('Buy,Sell',trim([Type 1]))=true THEN 'Long' 
-ELSEIF contains('Buy to Cover,Sell Short',trim([Type 1]))=true THEN 'Short' 
-ELSE 'OTHER' END
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;updated processor group filter&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Processor])),'amd')=true THEN 'AMD' 
-ELSEIF contains(lower(trim([Processor])),'intel')=true THEN 'INTEL' 
-ELSEIF contains(lower(trim([Processor])),'power')=true THEN 'IBM' 
-ELSEIF contains(lower(trim([Processor])),'sparc')=true THEN 'SPARC' 
-ELSE 'OTHER' END
-&lt;/pre&gt;&lt;br&gt;&lt;strong&gt;storage cell dimension for x2 and x3 cells on the same diskgroup - useful for destage &lt;a tiddlylink=&quot;IOs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IOs&quot; href=&quot;http://karlarao.tiddlyspot.com#IOs&quot; class=&quot;externalLink null&quot;&gt;IOs&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;IF 
-trim([Cellname])='192.168.10.9' OR 
-trim([Cellname])='192.168.10.10' OR
-trim([Cellname])='192.168.10.11' OR
-trim([Cellname])='192.168.10.12' OR
-trim([Cellname])='192.168.10.13' OR
-trim([Cellname])='192.168.10.14' OR
-trim([Cellname])='192.168.10.15' OR
-trim([Cellname])='192.168.10.16' OR
-trim([Cellname])='192.168.10.17' OR
-trim([Cellname])='192.168.10.18' OR
-trim([Cellname])='192.168.10.19' OR
-trim([Cellname])='192.168.10.20' OR
-trim([Cellname])='192.168.10.21' OR
-trim([Cellname])='192.168.10.22' 
-THEN 'x2' 
-elseif 
-trim([Cellname])='192.168.10.38' OR 
-trim([Cellname])='192.168.10.39' OR
-trim([Cellname])='192.168.10.40' OR
-trim([Cellname])='192.168.10.41' OR
-trim([Cellname])='192.168.10.42' OR
-trim([Cellname])='192.168.10.43' OR
-trim([Cellname])='192.168.10.44' OR
-trim([Cellname])='192.168.10.45' OR
-trim([Cellname])='192.168.10.46' OR
-trim([Cellname])='192.168.10.47' OR
-trim([Cellname])='192.168.10.48' OR
-trim([Cellname])='192.168.10.49' OR
-trim([Cellname])='192.168.10.50' OR
-trim([Cellname])='192.168.10.51' 
-THEN 'x3'
-else 
-'other'
-end
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; highlight SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Sql Id])),'069k4ppu1n1nc')=true THEN [Sql Id]
-ELSE 'OTHER' END
-&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Sql Id])),'069k4ppu1n1nc')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'0vzyv2wsr2apz')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'0xsz99mn2nuvc')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'0zwcr39tvssxj')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'1d9qrkfvh78bt')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'1zbk54du40dnu')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'2xjwy1jvu31xu')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'2ywv61bm22pw7')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'3fn33utt2ptns')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'3knptw3bxf1c9')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'3qvc497pz6hvp')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'3tpznswf2f7ak')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'4v775zu1p3b3f')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'51u31qah6z8d9')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'59wrat188thgf')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'5f2t4rq7xkfav')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'61r81qmqpt1bs')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'6cwh5bz0d0jkv')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'6fyy4v8c85cmk')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'6k6g6725pwjpw')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'7x0psn00ac54g')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'7xmjvrazhyntv')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'82psz0nhm68wf')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'885mt394synz4')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'af4vzj7jyv5mz')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'azkbmbyxahmh2')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'cws1kfprz7u8f')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'d6h43fh3d9p7g')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'dwgtzzmc509zf')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'f3frkf6tvkjwn')=true THEN [Sql Id]
-ELSEIF contains(lower(trim([Sql Id])),'gd55mjru6w8x')=true THEN [Sql Id]
-ELSE 'OTHER' END
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; get underlying SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/170370&quot; href=&quot;https://community.tableau.com/thread/170370&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/170370&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&quot; href=&quot;http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/howto/viewing-underlying-sql-queries-desktop&lt;/a&gt;&lt;br&gt;&lt;pre&gt;C:\Users\karl\Documents\My Tableau Repository\Logs
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; automating tableau reports &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Tableau-generated PDF imports to Inkscape with text missing &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/118822&quot; href=&quot;https://community.tableau.com/thread/118822&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/118822&lt;/a&gt;&lt;br&gt;Automate pdf generation using Tableau Desktop &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/137724&quot; href=&quot;https://community.tableau.com/thread/137724&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/137724&lt;/a&gt;&lt;br&gt;Tableau Scripting Engine &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/ideas/1694&quot; href=&quot;https://community.tableau.com/ideas/1694&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/ideas/1694&lt;/a&gt;&lt;br&gt;tableau community &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/message/199249#199249&quot; href=&quot;https://community.tableau.com/message/199249#199249&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/message/199249#199249&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://powertoolsfortableau.com/tools/portals-for-tableau&quot; href=&quot;http://powertoolsfortableau.com/tools/portals-for-tableau&quot; class=&quot;externalLink&quot;&gt;http://powertoolsfortableau.com/tools/portals-for-tableau&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&quot; href=&quot;https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&quot; class=&quot;externalLink&quot;&gt;https://dwuconsulting.com/tools/software-videos/automating-tableau-pdf&lt;/a&gt; &amp;lt;- GOOD STUFF&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.autoitscript.com/site/autoit/&quot; href=&quot;https://www.autoitscript.com/site/autoit/&quot; class=&quot;externalLink&quot;&gt;https://www.autoitscript.com/site/autoit/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&quot; href=&quot;http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&quot; class=&quot;externalLink&quot;&gt;http://stackoverflow.com/questions/17212676/vba-automation-of-tableau-workbooks-using-cmd&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&quot; href=&quot;http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&quot; class=&quot;externalLink&quot;&gt;http://www.graphgiraffe.net/blog/tableau-tutorial-automated-pdf-report-creation-with-tableau-desktop&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; remove last 2 characters&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/docs/DOC-1391&quot; href=&quot;https://community.tableau.com/docs/DOC-1391&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/docs/DOC-1391&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/message/325328&quot; href=&quot;https://community.tableau.com/message/325328&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/message/325328&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; measure names, measure values &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Combining several measures in one dimension &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/thread/137680&quot; href=&quot;https://community.tableau.com/thread/137680&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/thread/137680&lt;/a&gt;&lt;br&gt;Tableau Tips and Tricks: Measure Names and Measure Values &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=m0DGW_WYKtA&quot; href=&quot;https://www.youtube.com/watch?v=m0DGW_WYKtA&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=m0DGW_WYKtA&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&quot; href=&quot;http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&quot; class=&quot;externalLink&quot;&gt;http://kb.tableau.com/articles/knowledgebase/measure-names-and-measure-values-explained&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; initial SQL filter&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;When the user opens the workbook there will be parameter1 and parameter2 prompts for date range. And that date range will be in effect for all the sheets on that workbook &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&quot; href=&quot;https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&quot; class=&quot;externalLink&quot;&gt;https://onlinehelp.tableau.com/current/pro/desktop/en-us/connect_basic_initialsql.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&quot; href=&quot;https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&quot; class=&quot;externalLink&quot;&gt;https://www.tableau.com/about/blog/2016/2/introducing-initial-sql-parameters-tableau-93-50213&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&quot; href=&quot;https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&quot; class=&quot;externalLink&quot;&gt;https://tableauandbehold.com/2016/03/09/using-initial-sql-for/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; add total to stacked bar chart &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&quot; href=&quot;https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&quot; class=&quot;externalLink&quot;&gt;https://www.credera.com/blog/business-intelligence/tableau-workaround-part-3-add-total-labels-to-stacked-bar-chart/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Videos&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Tableau &lt;a tiddlylink=&quot;TCC12&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TCC12&quot; href=&quot;http://karlarao.tiddlyspot.com#TCC12&quot; class=&quot;externalLink null&quot;&gt;TCC12&lt;/a&gt; Session: Facebook &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.ustream.tv/recorded/26807227&quot; href=&quot;http://www.ustream.tv/recorded/26807227&quot; class=&quot;externalLink&quot;&gt;http://www.ustream.tv/recorded/26807227&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Tableau Server/Desktop videos&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&quot; href=&quot;http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&quot; class=&quot;externalLink&quot;&gt;http://www.lynda.com/Tableau-tutorials/Up-Running-Tableau/165439-2.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://beta.pluralsight.com/search/?searchTerm=tableau&quot; href=&quot;http://beta.pluralsight.com/search/?searchTerm=tableau&quot; class=&quot;externalLink&quot;&gt;http://beta.pluralsight.com/search/?searchTerm=tableau&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pluralsight.com/training/Authors/Details/ben-sullins&quot; href=&quot;http://pluralsight.com/training/Authors/Details/ben-sullins&quot; class=&quot;externalLink&quot;&gt;http://pluralsight.com/training/Authors/Details/ben-sullins&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.livefyre.com/profile/21361843/&quot; href=&quot;http://www.livefyre.com/profile/21361843/&quot; class=&quot;externalLink&quot;&gt;http://www.livefyre.com/profile/21361843/&lt;/a&gt; ben sullins comments/questions&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Visualization</category>
-<link>http://karlarao.tiddlyspot.com#.Tableau</link>
-<pubDate>Thu, 25 Oct 2018 16:57:00 GMT</pubDate>
+<title>Oracle Docker images</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/docker-images&quot; href=&quot;https://github.com/oracle/docker-images&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/docker-images&lt;/a&gt;</description>
+<category>Vbox Templates, developer vm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Docker%20images%5D%5D</link>
+<pubDate>Sat, 05 Jan 2019 15:19:43 GMT</pubDate>
 
 </item>
 <item>
-<title>GetFullStorageInfo.sql</title>
-<description>&lt;pre&gt;
-
-
-from MOS 1551288.1
------- DISK and CELL Failure Diskgroup Space Reserve Requirements  ------
-This procedure determines how much space you need to survive a DISK or CELL failure. It also shows the usable space
-available when reserving space for disk or cell failure.
-Please see MOS note 1551288.1 for more information.
-.  .  .
-Description of Derived Values:
-One Cell Required Mirror Free MB : Required Mirror Free MB to permit successful rebalance after losing largest CELL regardless of redundancy type
-Disk Required Mirror Free MB     : Space needed to rebalance after loss of single or double disk failure (for normal or high redundancy)
-Disk Usable File MB              : Usable space available after reserving space for disk failure and accounting for mirroring
-Cell Usable File MB              : Usable space available after reserving space for SINGLE cell failure and accounting for mirroring
-.  .  .
-ASM Version: 11.2.0.4
-.  .  .
-----------------------------------------------------------------------------------------------------------------------------------------------------
-|          |         |     |          |            |            |            |Cell Req'd  |Disk Req'd  |            |            |    |    |       |
-|          |DG       |Num  |Disk Size |DG Total    |DG Used     |DG Free     |Mirror Free |Mirror Free |Disk Usable |Cell Usable |    |    |PCT    |
-|DG Name   |Type     |Disks|MB        |MB          |MB          |MB          |MB          |MB          |File MB     |File MB     |DFC |CFC |Util   |
-----------------------------------------------------------------------------------------------------------------------------------------------------
-|DATA_SOCPP|NORMAL   |   84| 2,260,992| 189,923,328| 156,156,856|  33,766,472|  29,845,094|   2,370,683|  15,697,895|   1,960,689|PASS|PASS|  82.2%|
-|DBFS_DG   |NORMAL   |   70|    34,608|   2,422,560|      14,692|   2,407,868|     380,688|     184,664|   1,111,602|   1,013,590|PASS|PASS|    .6%|
-|RECO_SOCPP|NORMAL   |   84|   565,360|  47,490,240|  37,766,648|   9,723,592|   7,462,752|     633,084|   4,545,254|   1,130,420|PASS|PASS|  79.5%|
-----------------------------------------------------------------------------------------------------------------------------------------------------
-.  .  .
-Script completed.
-
-
--- 1e.77. Database Size on Disk (GV$DATABASE)
-WITH
-sizes AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 1e.77 */
-       'Data' file_type,
-       SUM(bytes) bytes
-  FROM v$datafile
- UNION ALL
-SELECT 'Temp' file_type,
-       SUM(bytes) bytes
-  FROM v$tempfile
- UNION ALL
-SELECT 'Log' file_type,
-       SUM(bytes) * MAX(members) bytes
-  FROM v$log
- UNION ALL
-SELECT 'Control' file_type,
-       SUM(block_size * file_size_blks) bytes
-  FROM v$controlfile
-),
-dbsize AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 1e.77 */
-       'Total' file_type,
-       SUM(bytes) bytes
-  FROM sizes
-)
-SELECT d.dbid,
-       d.name db_name,
-       s.file_type,
-       s.bytes,
-       ROUND(s.bytes/POWER(10,9),3) gb,
-       CASE
-       WHEN s.bytes &amp;gt; POWER(10,15) THEN ROUND(s.bytes/POWER(10,15),3)||' P'
-       WHEN s.bytes &amp;gt; POWER(10,12) THEN ROUND(s.bytes/POWER(10,12),3)||' T'
-       WHEN s.bytes &amp;gt; POWER(10,9) THEN ROUND(s.bytes/POWER(10,9),3)||' G'
-       WHEN s.bytes &amp;gt; POWER(10,6) THEN ROUND(s.bytes/POWER(10,6),3)||' M'
-       WHEN s.bytes &amp;gt; POWER(10,3) THEN ROUND(s.bytes/POWER(10,3),3)||' K'
-       WHEN s.bytes &amp;gt; 0 THEN s.bytes||' B' END display
-  FROM v$database d,
-       sizes s
- UNION ALL
-SELECT d.dbid,
-       d.name db_name,
-       s.file_type,
-       s.bytes,
-       ROUND(s.bytes/POWER(10,9),3) gb,
-       CASE
-       WHEN s.bytes &amp;gt; POWER(10,15) THEN ROUND(s.bytes/POWER(10,15),3)||' P'
-       WHEN s.bytes &amp;gt; POWER(10,12) THEN ROUND(s.bytes/POWER(10,12),3)||' T'
-       WHEN s.bytes &amp;gt; POWER(10,9) THEN ROUND(s.bytes/POWER(10,9),3)||' G'
-       WHEN s.bytes &amp;gt; POWER(10,6) THEN ROUND(s.bytes/POWER(10,6),3)||' M'
-       WHEN s.bytes &amp;gt; POWER(10,3) THEN ROUND(s.bytes/POWER(10,3),3)||' K'
-       WHEN s.bytes &amp;gt; 0 THEN s.bytes||' B' END display
-  FROM v$database d,
-       dbsize s;
-
-
-
--- 2b.201. Data Files Usage (DBA_DATA_FILES)
-WITH
-alloc AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
-       tablespace_name,
-       COUNT(*) datafiles,
-       ROUND(SUM(bytes)/POWER(10,9)) gb
-  FROM dba_data_files
- GROUP BY
-       tablespace_name
-),
-free AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
-       tablespace_name,
-       ROUND(SUM(bytes)/POWER(10,9)) gb
-  FROM dba_free_space
- GROUP BY
-       tablespace_name
-),
-tablespaces AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
-       a.tablespace_name,
-       a.datafiles,
-       a.gb alloc_gb,
-       (a.gb - f.gb) used_gb,
-       f.gb free_gb
-  FROM alloc a, free f
- WHERE a.tablespace_name = f.tablespace_name
- ORDER BY
-       a.tablespace_name
-),
-total AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.201 */
-       SUM(alloc_gb) alloc_gb,
-       SUM(used_gb) used_gb,
-       SUM(free_gb) free_gb
-  FROM tablespaces
-)
-SELECT v.tablespace_name,
-       v.datafiles,
-       v.alloc_gb,
-       v.used_gb,
-       CASE WHEN v.alloc_gb &amp;gt; 0 THEN
-       LPAD(TRIM(TO_CHAR(ROUND(100 * v.used_gb / v.alloc_gb, 1), '990.0')), 8)
-       END pct_used,
-       v.free_gb,
-       CASE WHEN v.alloc_gb &amp;gt; 0 THEN
-       LPAD(TRIM(TO_CHAR(ROUND(100 * v.free_gb / v.alloc_gb, 1), '990.0')), 8)
-       END pct_free
-  FROM (
-SELECT tablespace_name,
-       datafiles,
-       alloc_gb,
-       used_gb,
-       free_gb
-  FROM tablespaces
- UNION ALL
-SELECT 'Total' tablespace_name,
-       TO_NUMBER(NULL) datafiles,
-       alloc_gb,
-       used_gb,
-       free_gb
-  FROM total
-) v;
-
-
-
--- 2b.207. Largest 200 Objects (DBA_SEGMENTS)
-WITH schema_object AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
-       segment_type,
-       owner,
-       segment_name,
-       tablespace_name,
-       COUNT(*) segments,
-       SUM(extents) extents,
-       SUM(blocks) blocks,
-       SUM(bytes) bytes
-  FROM dba_segments
- WHERE 'Y' = 'Y'
- GROUP BY
-       segment_type,
-       owner,
-       segment_name,
-       tablespace_name
-), totals AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
-       SUM(segments) segments,
-       SUM(extents) extents,
-       SUM(blocks) blocks,
-       SUM(bytes) bytes
-  FROM schema_object
-), top_200_pre AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
-       ROWNUM rank, v1.*
-       FROM (
-SELECT so.segment_type,
-       so.owner,
-       so.segment_name,
-       so.tablespace_name,
-       so.segments,
-       so.extents,
-       so.blocks,
-       so.bytes,
-       ROUND((so.segments / t.segments) * 100, 3) segments_perc,
-       ROUND((so.extents / t.extents) * 100, 3) extents_perc,
-       ROUND((so.blocks / t.blocks) * 100, 3) blocks_perc,
-       ROUND((so.bytes / t.bytes) * 100, 3) bytes_perc
-  FROM schema_object so,
-       totals t
- ORDER BY
-       bytes_perc DESC NULLS LAST
-) v1
- WHERE ROWNUM &amp;lt; 201
-), top_200 AS (
-SELECT p.*,
-       (SELECT object_id
-          FROM dba_objects o
-         WHERE o.object_type = p.segment_type
-           AND o.owner = p.owner
-           AND o.object_name = p.segment_name
-           AND o.object_type NOT LIKE '%PARTITION%') object_id,
-       (SELECT data_object_id
-          FROM dba_objects o
-         WHERE o.object_type = p.segment_type
-           AND o.owner = p.owner
-           AND o.object_name = p.segment_name
-           AND o.object_type NOT LIKE '%PARTITION%') data_object_id,
-       (SELECT SUM(p2.bytes_perc) FROM top_200_pre p2 WHERE p2.rank &amp;lt;= p.rank) bytes_perc_cum
-  FROM top_200_pre p
-), top_200_totals AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
-       SUM(segments) segments,
-       SUM(extents) extents,
-       SUM(blocks) blocks,
-       SUM(bytes) bytes,
-       SUM(segments_perc) segments_perc,
-       SUM(extents_perc) extents_perc,
-       SUM(blocks_perc) blocks_perc,
-       SUM(bytes_perc) bytes_perc
-  FROM top_200
-), top_100_totals AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
-       SUM(segments) segments,
-       SUM(extents) extents,
-       SUM(blocks) blocks,
-       SUM(bytes) bytes,
-       SUM(segments_perc) segments_perc,
-       SUM(extents_perc) extents_perc,
-       SUM(blocks_perc) blocks_perc,
-       SUM(bytes_perc) bytes_perc
-  FROM top_200
- WHERE rank &amp;lt; 101
-), top_20_totals AS (
-SELECT /*+  MATERIALIZE NO_MERGE  */ /* 2b.207 */
-       SUM(segments) segments,
-       SUM(extents) extents,
-       SUM(blocks) blocks,
-       SUM(bytes) bytes,
-       SUM(segments_perc) segments_perc,
-       SUM(extents_perc) extents_perc,
-       SUM(blocks_perc) blocks_perc,
-       SUM(bytes_perc) bytes_perc
-  FROM top_200
- WHERE rank &amp;lt; 21
-)
-SELECT v.rank,
-       v.segment_type,
-       v.owner,
-       v.segment_name,
-       v.object_id,
-       v.data_object_id,
-       v.tablespace_name,
-       CASE
-       WHEN v.segment_type LIKE 'INDEX%' THEN
-         (SELECT i.table_name
-            FROM dba_indexes i
-           WHERE i.owner = v.owner AND i.index_name = v.segment_name)
-       WHEN v.segment_type LIKE 'LOB%' THEN
-         (SELECT l.table_name
-            FROM dba_lobs l
-           WHERE l.owner = v.owner AND l.segment_name = v.segment_name)
-       END table_name,
-       v.segments,
-       v.extents,
-       v.blocks,
-       v.bytes,
-       ROUND(v.bytes / POWER(10,9), 3) gb,
-       LPAD(TO_CHAR(v.segments_perc, '990.000'), 7) segments_perc,
-       LPAD(TO_CHAR(v.extents_perc, '990.000'), 7) extents_perc,
-       LPAD(TO_CHAR(v.blocks_perc, '990.000'), 7) blocks_perc,
-       LPAD(TO_CHAR(v.bytes_perc, '990.000'), 7) bytes_perc,
-       LPAD(TO_CHAR(v.bytes_perc_cum, '990.000'), 7) perc_cum
-  FROM (
-SELECT d.rank,
-       d.segment_type,
-       d.owner,
-       d.segment_name,
-       d.object_id,
-       d.data_object_id,
-       d.tablespace_name,
-       d.segments,
-       d.extents,
-       d.blocks,
-       d.bytes,
-       d.segments_perc,
-       d.extents_perc,
-       d.blocks_perc,
-       d.bytes_perc,
-       d.bytes_perc_cum
-  FROM top_200 d
- UNION ALL
-SELECT TO_NUMBER(NULL) rank,
-       NULL segment_type,
-       NULL owner,
-       NULL segment_name,
-       TO_NUMBER(NULL),
-       TO_NUMBER(NULL),
-       'TOP  20' tablespace_name,
-       st.segments,
-       st.extents,
-       st.blocks,
-       st.bytes,
-       st.segments_perc,
-       st.extents_perc,
-       st.blocks_perc,
-       st.bytes_perc,
-       TO_NUMBER(NULL) bytes_perc_cum
-  FROM top_20_totals st
- UNION ALL
-SELECT TO_NUMBER(NULL) rank,
-       NULL segment_type,
-       NULL owner,
-       NULL segment_name,
-       TO_NUMBER(NULL),
-       TO_NUMBER(NULL),
-       'TOP 100' tablespace_name,
-       st.segments,
-       st.extents,
-       st.blocks,
-       st.bytes,
-       st.segments_perc,
-       st.extents_perc,
-       st.blocks_perc,
-       st.bytes_perc,
-       TO_NUMBER(NULL) bytes_perc_cum
-  FROM top_100_totals st
- UNION ALL
-SELECT TO_NUMBER(NULL) rank,
-       NULL segment_type,
-       NULL owner,
-       NULL segment_name,
-       TO_NUMBER(NULL),
-       TO_NUMBER(NULL),
-       'TOP 200' tablespace_name,
-       st.segments,
-       st.extents,
-       st.blocks,
-       st.bytes,
-       st.segments_perc,
-       st.extents_perc,
-       st.blocks_perc,
-       st.bytes_perc,
-       TO_NUMBER(NULL) bytes_perc_cum
-  FROM top_200_totals st
- UNION ALL
-SELECT TO_NUMBER(NULL) rank,
-       NULL segment_type,
-       NULL owner,
-       NULL segment_name,
-       TO_NUMBER(NULL),
-       TO_NUMBER(NULL),
-       'TOTAL' tablespace_name,
-       t.segments,
-       t.extents,
-       t.blocks,
-       t.bytes,
-       100 segemnts_perc,
-       100 extents_perc,
-       100 blocks_perc,
-       100 bytes_perc,
-       TO_NUMBER(NULL) bytes_perc_cum
-  FROM totals t) v;
-
-&lt;/pre&gt;&lt;br&gt;.</description>
-<category>Exadata Storage Size - ASM-size</category>
-<link>http://karlarao.tiddlyspot.com#GetFullStorageInfo.sql</link>
-<pubDate>Wed, 24 Oct 2018 03:33:00 GMT</pubDate>
+<title>Oracle Vagrant boxes</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/vagrant-boxes&quot; href=&quot;https://github.com/oracle/vagrant-boxes&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/vagrant-boxes&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.oracle.com/technetwork/community/developer-vm/index.html&quot; href=&quot;https://www.oracle.com/technetwork/community/developer-vm/index.html&quot; class=&quot;externalLink&quot;&gt;https://www.oracle.com/technetwork/community/developer-vm/index.html&lt;/a&gt;</description>
+<category>Vbox Templates, developer vm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Vagrant%20boxes%5D%5D</link>
+<pubDate>Sat, 05 Jan 2019 15:16:51 GMT</pubDate>
 
 </item>
 <item>
-<title>enq: SS - contention</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.freelists.org/post/oracle-l/Enq-SS-Contention,3&quot; href=&quot;https://www.freelists.org/post/oracle-l/Enq-SS-Contention,3&quot; class=&quot;externalLink&quot;&gt;https://www.freelists.org/post/oracle-l/Enq-SS-Contention,3&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://lefterhs.blogspot.com/2009/02/temporary-tablespace-ss-contention-in.html&quot; href=&quot;http://lefterhs.blogspot.com/2009/02/temporary-tablespace-ss-contention-in.html&quot; class=&quot;externalLink&quot;&gt;http://lefterhs.blogspot.com/2009/02/temporary-tablespace-ss-contention-in.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;Configuration &quot;enq: SS - contention&quot;&lt;br&gt;•	SS enqueue is used for protecting extent caching/un-caching operations. &lt;br&gt;If there’s a huge amount of SS enqueue, it is likely that a SQL went crazy with sorting or (hash) joining and used up all the cached extents in &lt;br&gt;its (local) instance. If this happens the other instance(s) are asked&lt;br&gt;to release the soft reservation for a bunch of extents. &lt;br&gt;•	Both &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; (ga3w4k1gnpmmx and 7jh6z1cxav5gy) are also running whenever this happens. Although it only occurred on the database on 09/18. If this happens every time these two &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; are executed, then the following could be done: &lt;br&gt;•	Option 1) &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; must be optimized to do less HASH JOIN&lt;br&gt;•	Option 2) Create a separate &lt;a tiddlylink=&quot;TEMP2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TEMP2&quot; href=&quot;http://karlarao.tiddlyspot.com#TEMP2&quot; class=&quot;externalLink null&quot;&gt;TEMP2&lt;/a&gt; tablespace and assign it to a new user that would only execute the two queries and also bind that SQL to a specific instance (through a service). This eliminates the cross-instance extent caching/un-caching&lt;br&gt;•	Option 3) Create a new &lt;a tiddlylink=&quot;TEMP2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TEMP2&quot; href=&quot;http://karlarao.tiddlyspot.com#TEMP2&quot; class=&quot;externalLink null&quot;&gt;TEMP2&lt;/a&gt; tablespace and set it as the new default temporary tablespace. Then kill all sessions blocked by SS enqueue. &lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
-<category>Troubleshooting & Internals</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Benq%3A%20SS%20-%20contention%5D%5D</link>
-<pubDate>Wed, 10 Oct 2018 05:46:00 GMT</pubDate>
+<title>.hortonworks distribution</title>
+<description>&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' certification matrix', event)&quot;&gt; certification matrix&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ways to install ', event)&quot;&gt; ways to install &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' own machine ', event)&quot;&gt; own machine &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' manual install ', event)&quot;&gt; manual install &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' unattended install using vagrant ', event)&quot;&gt; unattended install using vagrant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' on cloud ', event)&quot;&gt; on cloud &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' manual or unattended install ', event)&quot;&gt; manual or unattended install &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using hortonworks cloudbreak (uses docker to provision to cloud) ', event)&quot;&gt; using hortonworks cloudbreak (uses docker to provision to cloud) &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' installation docs ', event)&quot;&gt; installation docs &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ambari doc ', event)&quot;&gt; ambari doc &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cluster planning ', event)&quot;&gt; cluster planning &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cluster resources ', event)&quot;&gt; cluster resources &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gluent installation ', event)&quot;&gt; gluent installation &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; certification matrix&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://supportmatrix.hortonworks.com/&quot; href=&quot;https://supportmatrix.hortonworks.com/&quot; class=&quot;externalLink&quot;&gt;https://supportmatrix.hortonworks.com/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; ways to install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; own machine &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; manual install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt; using apt-get and yum for ambari-server/ambari-agent&lt;/li&gt;&lt;li&gt; and then manual provisioning of the cluster through ambari UI&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt; unattended install using vagrant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt; using automation tools to install ambari-server/ambari-agent&lt;/li&gt;&lt;li&gt; using blueprints to push a setup and configuration to the cluster&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt; on cloud &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; manual or unattended install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; using hortonworks cloudbreak (uses docker to provision to cloud) &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/open-source/cloudbreak/#section_1&quot; href=&quot;https://hortonworks.com/open-source/cloudbreak/#section_1&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/open-source/cloudbreak/#section_1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&quot; href=&quot;https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; installation docs &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/&quot; href=&quot;https://docs.hortonworks.com/&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/products/data-platforms/hdp/&quot; href=&quot;https://hortonworks.com/products/data-platforms/hdp/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/products/data-platforms/hdp/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; ambari doc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; cluster planning &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; cluster resources &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h3&gt; ambari-server&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; ambari-agent (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;NameNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NameNode&quot; href=&quot;http://karlarao.tiddlyspot.com#NameNode&quot; class=&quot;externalLink null&quot;&gt;NameNode&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;ResourceManager&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ResourceManager&quot; href=&quot;http://karlarao.tiddlyspot.com#ResourceManager&quot; class=&quot;externalLink null&quot;&gt;ResourceManager&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; Zookeeper (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;DataNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataNode&quot; href=&quot;http://karlarao.tiddlyspot.com#DataNode&quot; class=&quot;externalLink null&quot;&gt;DataNode&lt;/a&gt; (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;NodeManager&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NodeManager&quot; href=&quot;http://karlarao.tiddlyspot.com#NodeManager&quot; class=&quot;externalLink null&quot;&gt;NodeManager&lt;/a&gt; (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; gluent installation &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.gluent.com/goe/install_and_upgrade.html&quot; href=&quot;https://docs.gluent.com/goe/install_and_upgrade.html&quot; class=&quot;externalLink&quot;&gt;https://docs.gluent.com/goe/install_and_upgrade.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
+<category>.hadoop sandbox</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.hortonworks%20distribution%5D%5D</link>
+<pubDate>Sat, 05 Jan 2019 15:03:46 GMT</pubDate>
 
 </item>
 <item>
-<title>addm summary</title>
-<description>&lt;pre&gt;cat *addm* | egrep &quot;ADDM Report for|\||AWR snapshot range from|Time period starts at|Time period ends at&quot; | less
-
-          ADDM Report for Task 'ADDM_20180925_151302'
-AWR snapshot range from 76292 to 76294.
-Time period starts at 2018-09-18T15:30:03.
-Time period ends at 2018-09-18T16:30:20.
-1  Top SQL Statements                        923.75 | 83.46       4
-2  Top Segments by &quot;User I/O&quot; and &quot;Cluster&quot;  446.06 | 40.3        5
-3  Temp Space Contention                     359.33 | 32.46       1
-4  Buffer Busy - Hot Objects                 267.97 | 24.21       5
-5  I/O Throughput                            239.97 | 21.68       1
-6  Global Cache Messaging                    172.57 | 15.59       1
-7  Undersized PGA                            107.23 | 9.69        1
-          ADDM Report for Task 'ADDM_20180925_151652'
-AWR snapshot range from 76243 to 76244.
-Time period starts at 2018-09-17T15:00:08.
-Time period ends at 2018-09-17T15:30:10.
-1  Top SQL Statements        991.1 | 98.7         1
-2  Soft Parse                990.82 | 98.68       1
-3  &quot;Concurrency&quot; Wait Class  990.39 | 98.63       0
-4  Shared Pool Latches       990.39 | 98.63       1
-
-ls | grep -i addm | grep &quot;76292&quot; | grep &quot;76294&quot;
-00015_edb360_7a_7z_372308_addmrpt_rac_76292_76294_max5wd2.txt
-00151_edb360_7a_7z_372308_addmrpt_2_76292_76294_max5wd3.txt
-00283_edb360_7a_7z_372308_addmrpt_4_76292_76294_max5wd3.txt
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;$ cat *addm* | grep &quot;Summary of Findings&quot; -A13 -B5 &amp;gt; addm_summary.txt
+<title>1 provisioning - Vagrant</title>
+<description>Vagrant + Docker &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://en.wikipedia.org/wiki/Vagrant_%28software%29&quot; href=&quot;http://en.wikipedia.org/wiki/Vagrant_%28software%29&quot; class=&quot;externalLink&quot;&gt;http://en.wikipedia.org/wiki/Vagrant_%28software%29&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.slideshare.net/3dgiordano/vagrant-docker&quot; href=&quot;http://www.slideshare.net/3dgiordano/vagrant-docker&quot; class=&quot;externalLink&quot;&gt;http://www.slideshare.net/3dgiordano/vagrant-docker&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.quora.com/What-is-the-difference-between-Docker-and-Vagrant-When-should-you-use-each-one&quot; href=&quot;http://www.quora.com/What-is-the-difference-between-Docker-and-Vagrant-When-should-you-use-each-one&quot; class=&quot;externalLink&quot;&gt;http://www.quora.com/What-is-the-difference-between-Docker-and-Vagrant-When-should-you-use-each-one&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.scriptrock.com/articles/docker-vs-vagrant&quot; href=&quot;http://www.scriptrock.com/articles/docker-vs-vagrant&quot; class=&quot;externalLink&quot;&gt;http://www.scriptrock.com/articles/docker-vs-vagrant&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.vagrantup.com/downloads.html&quot; href=&quot;https://www.vagrantup.com/downloads.html&quot; class=&quot;externalLink&quot;&gt;https://www.vagrantup.com/downloads.html&lt;/a&gt;&lt;br&gt;&lt;pre&gt;vagrant up node1 node2 node3
+vagrant suspend 
+vagrant destroy 
 &lt;/pre&gt;</description>
-<category>edb360</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Baddm%20summary%5D%5D</link>
-<pubDate>Tue, 09 Oct 2018 07:32:00 GMT</pubDate>
+<category>2 Infrastructure as code</category>
+<category>VM</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B1%20provisioning%20-%20Vagrant%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 23:38:21 GMT</pubDate>
 
 </item>
 <item>
-<title>screen</title>
-<description>&lt;pre&gt;
-screen -S karl   &amp;lt;- to create session
-screen -ls         &amp;lt;- to list
-screen -r karl    &amp;lt;- to resume, won't let you grab one that's already attached 
-screen -d -r karl &amp;lt;- will detach/grab session and attach you to it
-screen -x karl   &amp;lt;- to resume 
-CTRL-A d        &amp;lt;- to safely disconnect
-
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; href=&quot;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&quot; class=&quot;externalLink&quot;&gt;http://pissedoffadmins.com/os/using-ssh-and-screen-to-create-persistent-terminal-sessions-accessible-from-almost-anywhere.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&quot; href=&quot;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_%28Never_have_your_scripts_die_because_you_lost_your_connection&quot; class=&quot;externalLink&quot;&gt;http://wiki.zimbra.com/wiki/Using_Screen_for_Session_Mgmt_(Never_have_your_scripts_die_because_you_lost_your_connection&lt;/a&gt;)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>LinuxNetworking</category>
-<link>http://karlarao.tiddlyspot.com#screen</link>
-<pubDate>Sun, 07 Oct 2018 21:49:00 GMT</pubDate>
+<title>..Data Engineering Ecosystem</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the ecosystem', event)&quot;&gt; the ecosystem&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v3', event)&quot;&gt; v3&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v2', event)&quot;&gt; v2&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v1', event)&quot;&gt; v1&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' hadoop architecture use case', event)&quot;&gt; hadoop architecture use case&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' others', event)&quot;&gt; others&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&quot; href=&quot;http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&quot; class=&quot;externalLink&quot;&gt;http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&quot; href=&quot;https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&quot; class=&quot;externalLink&quot;&gt;https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&quot; href=&quot;https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&quot; class=&quot;externalLink&quot;&gt;https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/InsightDataScience/data-engineering-ecosystem&quot; href=&quot;https://github.com/InsightDataScience/data-engineering-ecosystem&quot; class=&quot;externalLink&quot;&gt;https://github.com/InsightDataScience/data-engineering-ecosystem&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the ecosystem&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; v3&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map/&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map/&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map/&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;%20https://i.imgur.com/xeo0SP4.png%20&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; v2&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;%20http://i.imgur.com/gn9E7Jf.png%20&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; v1&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;%20https://lh3.googleusercontent.com/-iD9v8Iho_7g/VZVvf0mK1PI/AAAAAAAACmU/VlovJ-JP2cI/s2048/20150702_DataEngineeringEcosystem.png%20&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; hadoop architecture use case&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;%20https://lh3.googleusercontent.com/-QsRM3czDMkg/Vhfg7pTmFrI/AAAAAAAACzU/4BEa8SfK_KU/s800-Ic42/IMG_8542.JPG%20&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; others&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://trello.com/b/rbpEfMld/data-science&quot; href=&quot;https://trello.com/b/rbpEfMld/data-science&quot; class=&quot;externalLink&quot;&gt;https://trello.com/b/rbpEfMld/data-science&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B..Data%20Engineering%20Ecosystem%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 22:46:19 GMT</pubDate>
 
 </item>
 <item>
-<title>kaggle</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kaggle.com/c/titanic&quot; href=&quot;https://www.kaggle.com/c/titanic&quot; class=&quot;externalLink&quot;&gt;https://www.kaggle.com/c/titanic&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datacamp.com/community/open-courses/kaggle-tutorial-on-machine-learing-the-sinking-of-the-titanic#gs.EMtaoUM&quot; href=&quot;https://www.datacamp.com/community/open-courses/kaggle-tutorial-on-machine-learing-the-sinking-of-the-titanic#gs.EMtaoUM&quot; class=&quot;externalLink&quot;&gt;https://www.datacamp.com/community/open-courses/kaggle-tutorial-on-machine-learing-the-sinking-of-the-titanic#gs.EMtaoUM&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kaggle.com/wiki/Home&quot; href=&quot;https://www.kaggle.com/wiki/Home&quot; class=&quot;externalLink&quot;&gt;https://www.kaggle.com/wiki/Home&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kaggle.com/competitions&quot; href=&quot;https://www.kaggle.com/competitions&quot; class=&quot;externalLink&quot;&gt;https://www.kaggle.com/competitions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.kdnuggets.com/2015/03/10-steps-success-kaggle-data-science-competitions.html&quot; href=&quot;http://www.kdnuggets.com/2015/03/10-steps-success-kaggle-data-science-competitions.html&quot; class=&quot;externalLink&quot;&gt;http://www.kdnuggets.com/2015/03/10-steps-success-kaggle-data-science-competitions.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; competitions &lt;/h1&gt;getting started &lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.kaggle.com/2018/08/22/machine-learning-kaggle-competition-part-one-getting-started/&quot; href=&quot;http://blog.kaggle.com/2018/08/22/machine-learning-kaggle-competition-part-one-getting-started/&quot; class=&quot;externalLink&quot;&gt;http://blog.kaggle.com/2018/08/22/machine-learning-kaggle-competition-part-one-getting-started/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Data Science</category>
-<link>http://karlarao.tiddlyspot.com#kaggle</link>
-<pubDate>Sun, 16 Sep 2018 08:06:00 GMT</pubDate>
+<title>.hadoop sandbox</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/58458/installing-docker-version-of-sandbox-on-mac.html&quot; href=&quot;https://community.hortonworks.com/articles/58458/installing-docker-version-of-sandbox-on-mac.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/58458/installing-docker-version-of-sandbox-on-mac.html&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; follow this &lt;span class=&quot;marked&quot;&gt;docker&lt;/span&gt; howto!&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/&quot; href=&quot;https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/&lt;/a&gt;&lt;br&gt;HORTONWORKS SANDBOX SANDBOX DEPLOYMENT AND INSTALL GUIDE Deploying Hortonworks Sandbox on &lt;span class=&quot;marked&quot;&gt;Docker&lt;/span&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#for-mac&quot; href=&quot;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#for-mac&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#for-mac&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/57757/hdp-25-sandbox-not-starting.html&quot; href=&quot;https://community.hortonworks.com/questions/57757/hdp-25-sandbox-not-starting.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/57757/hdp-25-sandbox-not-starting.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; issue on sandbox not starting&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.quora.com/To-start-learning-and-playing-with-Hadoop-which-one-should-I-prefer-Cloudera-QuickStart-VM-Hortonworks-Sandbox-or-MapR-Sandbox&quot; href=&quot;https://www.quora.com/To-start-learning-and-playing-with-Hadoop-which-one-should-I-prefer-Cloudera-QuickStart-VM-Hortonworks-Sandbox-or-MapR-Sandbox&quot; class=&quot;externalLink&quot;&gt;https://www.quora.com/To-start-learning-and-playing-with-Hadoop-which-one-should-I-prefer-Cloudera-QuickStart-VM-Hortonworks-Sandbox-or-MapR-Sandbox&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>..data engineering practice</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.hadoop%20sandbox%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:50:41 GMT</pubDate>
 
 </item>
 <item>
-<title>.disable sql profile and baselines</title>
-<description>&lt;blockquote&gt;&lt;a tiddlylink=&quot;IGNORE_OPTIM_EMBEDDED_HINTS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; href=&quot;http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; class=&quot;externalLink null&quot;&gt;IGNORE_OPTIM_EMBEDDED_HINTS&lt;/a&gt; &amp;lt;- disables hints at session level through profile &lt;br&gt;optimizer_ignore_hints &amp;lt;- database wide or session level through trigger&lt;br&gt;&lt;br&gt;but is there a way to ignore hints AND profiles through 1 single parameter?&lt;br&gt;like **** you all hints and profiles i hate you!&lt;br&gt; or is the only way to do this is set _optimizer_ignore_hints and disable/drop all profiles ?&lt;br&gt;&lt;br&gt;ANSWER: &lt;br&gt;For profiles: ALTER SESSION SET &lt;a tiddlylink=&quot;SQLTUNE_CATEGORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; class=&quot;externalLink null&quot;&gt;SQLTUNE_CATEGORY&lt;/a&gt; = 'IGNOREMENOW';&lt;br&gt;For baselines: ALTER SYSTEM SET &lt;a tiddlylink=&quot;OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; href=&quot;http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; class=&quot;externalLink null&quot;&gt;OPTIMIZER_USE_SQL_PLAN_BASELINES&lt;/a&gt;=false&lt;br&gt;&lt;br&gt;just everything off, these are the knobs :)  because gluent doesn't like having &lt;a tiddlylink=&quot;USE_NL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#USE_NL&quot; href=&quot;http://karlarao.tiddlyspot.com#USE_NL&quot; class=&quot;externalLink null&quot;&gt;USE_NL&lt;/a&gt; hint on offloaded tables it errors with &lt;a tiddlylink=&quot;KUP-04108&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#KUP-04108&quot; href=&quot;http://karlarao.tiddlyspot.com#KUP-04108&quot; class=&quot;externalLink null&quot;&gt;KUP-04108&lt;/a&gt;: unable to reread file&lt;br&gt;just in case the developers have to deal with 1000+ &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; we know how to attack this with these knobs&lt;br&gt;&lt;/blockquote&gt;</description>
-<category>SQLProfiles</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.disable%20sql%20profile%20and%20baselines%5D%5D</link>
-<pubDate>Sun, 16 Sep 2018 07:47:00 GMT</pubDate>
+<title>hadoop distribution matrix</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&quot; href=&quot;https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&quot; class=&quot;externalLink&quot;&gt;https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&quot; href=&quot;http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&quot; class=&quot;externalLink&quot;&gt;http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&lt;/a&gt;</description>
+<category>..Data Engineering Ecosystem</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20distribution%20matrix%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:45:24 GMT</pubDate>
 
 </item>
 <item>
-<title>copy_plan_hash_value.sql</title>
-<description>copy_plan_hash_value.sql&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&quot; href=&quot;http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&quot; class=&quot;externalLink&quot;&gt;http://www.evernote.com/shard/s48/sh/3f253d02-bc13-4ae6-9f2f-fbc7a5b9f944/7997ffa935589baba158177ad98019f8&lt;/a&gt;</description>
-<category>.Attach or Copy SQL Profiles</category>
-<link>http://karlarao.tiddlyspot.com#copy_plan_hash_value.sql</link>
-<pubDate>Fri, 14 Sep 2018 18:12:00 GMT</pubDate>
+<title>hadoop reference architectures</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&quot; href=&quot;http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&quot; class=&quot;externalLink&quot;&gt;http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
+<category>..Data Engineering Ecosystem</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20reference%20architectures%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:44:02 GMT</pubDate>
 
 </item>
 <item>
-<title>.Attach or Copy SQL Profiles</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2009/07/how-to-attach-a-sql-profile-to-a-different-statement/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2009/07/how-to-attach-a-sql-profile-to-a-different-statement/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2009/07/how-to-attach-a-sql-profile-to-a-different-statement/&lt;/a&gt;&lt;br&gt;&lt;br&gt;HOWTO: bad plan to good plan switch &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.evernote.com/shard/s48/sh/308af73e-47bc-4598-ab31-77ab74cbbed9/7acc32b91ebb64639116d3931a4e9935&quot; href=&quot;http://www.evernote.com/shard/s48/sh/308af73e-47bc-4598-ab31-77ab74cbbed9/7acc32b91ebb64639116d3931a4e9935&quot; class=&quot;externalLink&quot;&gt;http://www.evernote.com/shard/s48/sh/308af73e-47bc-4598-ab31-77ab74cbbed9/7acc32b91ebb64639116d3931a4e9935&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;15:07:41 HCMPRD1&amp;gt; @copy_plan_hash_value.sql
-Enter value for plan_hash_value to generate profile from (X0X0X0X0): 3609883731  &amp;lt;-- this is the good plan
-Enter value for sql_id to attach profile to (X0X0X0X0): c7tadymffd34z
-Enter value for child_no to attach profile to (0):
-Enter value for category (DEFAULT):
-Enter value for force_matching (false):
+<title>hadoop architecture use case</title>
+<description>&lt;img src=&quot;%20https://lh3.googleusercontent.com/-QsRM3czDMkg/Vhfg7pTmFrI/AAAAAAAACzU/4BEa8SfK_KU/s800-Ic42/IMG_8542.JPG%20&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twitter.com/karlarao/status/652370648820486144&quot; href=&quot;https://twitter.com/karlarao/status/652370648820486144&quot; class=&quot;externalLink&quot;&gt;https://twitter.com/karlarao/status/652370648820486144&lt;/a&gt;&lt;br&gt;@gwenshap I enjoyed the @hadooparchbook clickstream analytics end-to-end case study,video -&amp;gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://bit.ly/1Opqd4v&quot; href=&quot;http://bit.ly/1Opqd4v&quot; class=&quot;externalLink&quot;&gt;http://bit.ly/1Opqd4v&lt;/a&gt;  &lt;br&gt;</description>
+<category>hadoop reference architectures</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20architecture%20use%20case%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:43:23 GMT</pubDate>
 
-PL/SQL procedure successfully completed.
+</item>
+<item>
+<title>2 Automation and configuration mgt - ansible</title>
+<description>A short video about it, worth watching it whenever you get some time, only 12min:&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ansible.com/quick-start-video&quot; href=&quot;https://www.ansible.com/quick-start-video&quot; class=&quot;externalLink&quot;&gt;https://www.ansible.com/quick-start-video&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&quot; href=&quot;https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&quot; class=&quot;externalLink&quot;&gt;https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&quot; href=&quot;https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&quot; class=&quot;externalLink&quot;&gt;https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&lt;/a&gt;</description>
+<category>2 Infrastructure as code</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B2%20Automation%20and%20configuration%20mgt%20-%20ansible%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:40:14 GMT</pubDate>
 
+</item>
+<item>
+<title>HDP developer</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://2xbbhjxc6wk3v21p62t8n4d4-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/DEV-331_Apache_Hive_Advanced_SQL_DS.pdf&quot; href=&quot;https://2xbbhjxc6wk3v21p62t8n4d4-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/DEV-331_Apache_Hive_Advanced_SQL_DS.pdf&quot; class=&quot;externalLink&quot;&gt;https://2xbbhjxc6wk3v21p62t8n4d4-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/DEV-331_Apache_Hive_Advanced_SQL_DS.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;.</description>
+<category>hadoop certifications</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BHDP%20developer%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:30:00 GMT</pubDate>
+
+</item>
+<item>
+<title>AWS architect</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/aws-certified-solutions-architect-associate/&quot; href=&quot;https://www.udemy.com/aws-certified-solutions-architect-associate/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/aws-certified-solutions-architect-associate/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/aws-certified-developer-associate/&quot; href=&quot;https://www.udemy.com/aws-certified-developer-associate/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/aws-certified-developer-associate/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/aws-certified-sysops-administrator-associate/&quot; href=&quot;https://www.udemy.com/aws-certified-sysops-administrator-associate/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/aws-certified-sysops-administrator-associate/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/aws-codedeploy/&quot; href=&quot;https://www.udemy.com/aws-codedeploy/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/aws-codedeploy/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/get-oracle-flying-in-aws-cloud/&quot; href=&quot;https://www.udemy.com/get-oracle-flying-in-aws-cloud/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/get-oracle-flying-in-aws-cloud/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/architecting-amazon-web-services-an-introduction/&quot; href=&quot;https://www.udemy.com/architecting-amazon-web-services-an-introduction/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/architecting-amazon-web-services-an-introduction/&lt;/a&gt;&lt;br&gt;</description>
+<category>hadoop certifications</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BAWS%20architect%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:18:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hadoop certifications</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/services/training/certification/&quot; href=&quot;https://hortonworks.com/services/training/certification/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/services/training/certification/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.cloudera.com/more/training/certification.html&quot; href=&quot;https://www.cloudera.com/more/training/certification.html&quot; class=&quot;externalLink&quot;&gt;https://www.cloudera.com/more/training/certification.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Hadoop Certification - HDPCA - Introduction &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=R1YohML3Gpw&amp;amp;list=PLf0swTFhTI8rPlPxDnDrYWE8bg2kKs3Q&quot; href=&quot;https://www.youtube.com/watch?v=R1YohML3Gpw&amp;amp;list=PLf0swTFhTI8rPlPxDnDrYWE8bg2kKs3Q&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=R1YohML3Gpw&amp;amp;list=PLf0swTFhTI8rPlPxDnDrYWE8bg2kKs3Q&lt;/a&gt;-&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://labs.itversity.com/learn&quot; href=&quot;https://labs.itversity.com/learn&quot; class=&quot;externalLink&quot;&gt;https://labs.itversity.com/learn&lt;/a&gt;</description>
+<category>..Data Engineering Ecosystem</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20certifications%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>online sandbox - hue</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://demo.gethue.com/&quot; href=&quot;http://demo.gethue.com/&quot; class=&quot;externalLink&quot;&gt;http://demo.gethue.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.cloudera.com/blog/2013/04/demo-analyzing-data-with-hue-and-hive/&quot; href=&quot;http://blog.cloudera.com/blog/2013/04/demo-analyzing-data-with-hue-and-hive/&quot; class=&quot;externalLink&quot;&gt;http://blog.cloudera.com/blog/2013/04/demo-analyzing-data-with-hue-and-hive/&lt;/a&gt;</description>
+<category>.cloudera distribution</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bonline%20sandbox%20-%20hue%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>hdp sandbox installation 2.5</title>
+<description>&lt;h1&gt; on networking &lt;/h1&gt;setup a host only adapter and create a 2nd adapter, then ssh to it&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; to access&lt;/h1&gt;&lt;br&gt;&lt;pre&gt;-- from within the VM 
+docker ps -a 
+ssh -p 2222 root@localhost
+root/xxx1txx$1
+
+-- login as raj_ops
+hive
+
+-- then from ambari
+http://localhost:8888
+http://127.0.0.1:8080/#/main/dashboard/metrics
+admin/hadoop
+
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; hive directory &lt;/h1&gt;to get the directory&lt;br&gt;&lt;pre&gt;find / | grep -i hive-site.xml
+ less /etc/hive2/2.5.0.0-1245/0/hive-site.xml
+ less /etc/hive/2.5.0.0-1245/0/hive-site.xml
+&lt;/pre&gt;another way &lt;br&gt;&lt;pre&gt;describe formatted dbname.tablename
+describe formatted dbname.tablename partition (name=value)
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;[root@sandbox ~]# hadoop fs -ls /apps/hive/warehouse/
+Found 4 items
+drwxrwxrwx   - hive hdfs          0 2016-10-25 08:10 /apps/hive/warehouse/foodmart.db
+drwxrwxrwx   - hive hdfs          0 2016-10-25 08:11 /apps/hive/warehouse/sample_07
+drwxrwxrwx   - hive hdfs          0 2016-10-25 08:11 /apps/hive/warehouse/sample_08
+drwxrwxrwx   - hive hdfs          0 2016-10-25 08:02 /apps/hive/warehouse/xademo.db
 &lt;/pre&gt;</description>
-<category>SQLProfiles</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.Attach%20or%20Copy%20SQL%20Profiles%5D%5D</link>
-<pubDate>Fri, 14 Sep 2018 18:11:00 GMT</pubDate>
+<category>.hortonworks distribution</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.5%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:16:00 GMT</pubDate>
 
 </item>
 <item>
-<title>.ManuallyCreatedSQLProfiles</title>
-<description>HOWTO: create a manual SQL Profile &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; href=&quot;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&quot; class=&quot;externalLink&quot;&gt;https://www.evernote.com/shard/s48/sh/f1bda7e9-2ced-4794-8c5e-32b1beac567b/96cd95cebb8f3cad0329833d7aa4a328&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/07/sqlt-coe_xfr_sql_profilesql/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; href=&quot;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&quot; class=&quot;externalLink&quot;&gt;http://kerryosborne.oracle-guy.com/2010/11/how-to-lock-sql-profiles-generated-by-sql-tuning-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; href=&quot;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&quot; class=&quot;externalLink&quot;&gt;http://bryangrenn.blogspot.com/2010/12/sql-profiles.html&lt;/a&gt;</description>
-<category>SQLProfiles</category>
-<link>http://karlarao.tiddlyspot.com#.ManuallyCreatedSQLProfiles</link>
-<pubDate>Fri, 14 Sep 2018 18:08:00 GMT</pubDate>
+<title>hdp sandbox installation 2.6.3</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1) download the docker sandbox ', event)&quot;&gt; 1) download the docker sandbox &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2) Read - Deploying Hortonworks Sandbox on Docker', event)&quot;&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 3) Create a new directory hdp26-demo-sandbox and load the docker file ', event)&quot;&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 4) Download the script and run ', event)&quot;&gt; 4) Download the script and run &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 5) Change root and ambari admin password ', event)&quot;&gt; 5) Change root and ambari admin password &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 6) Check status of container, login, open the ambari console', event)&quot;&gt; 6) Check status of container, login, open the ambari console&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 7) other commands ', event)&quot;&gt; 7) other commands &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' AFTER INSTALLATION - HOW TO RUN', event)&quot;&gt; AFTER INSTALLATION - HOW TO RUN&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1_docker_load.sh', event)&quot;&gt; 1_docker_load.sh&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2_start_sandbox.sh', event)&quot;&gt; 2_start_sandbox.sh&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 1) download the docker sandbox &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/downloads/#sandbox&quot; href=&quot;https://hortonworks.com/downloads/#sandbox&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/downloads/#sandbox&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; href=&quot;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ls -l ../
+total 24323232
+-rw-r--r--@ 1 kristofferson.a.arao  DIR\Domain Users  12453491200 Jan 18 19:21 HDP_2.6.3_docker_10_11_2017.tar
+drwxr-xr-x  6 kristofferson.a.arao  DIR\Domain Users          204 Jan 22 11:12 hdp26-demo-sandbox
+
+cd hdp26-demo-sandbox
+
+:hdp26-demo-sandbox kristofferson.a.arao$ cat 0_docker_load.sh 
+docker load &amp;lt; ../HDP_2.6.3_docker_10_11_2017.tar
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 4) Download the script and run &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; href=&quot;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; class=&quot;externalLink&quot;&gt;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&lt;/a&gt;&lt;br&gt;I edited the script to mount the current directory&lt;br&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ cat 3_star_sandbox.sh 
+#!/bin/bash
+echo &quot;Waiting for docker daemon to start up:&quot;
+until docker ps 2&amp;gt;&amp;amp;1| grep STATUS&amp;gt;/dev/null; do  sleep 1; done;  &amp;gt;/dev/null
+docker ps -a | grep sandbox-hdp
+if [ $? -eq 0 ]; then
+ docker start sandbox-hdp
+else
+docker run -v `pwd`:`pwd` -v hadoop:/hadoop --name sandbox-hdp --hostname &quot;sandbox-hdp.hortonworks.com&quot; --privileged -d \
+-p 15500:15500 \
+-p 15501:15501 \
+-p 15502:15502 \
+-p 15503:15503 \
+-p 15504:15504 \
+-p 15505:15505 \
+-p 1111:111 \
+-p 4242:4242 \
+-p 50079:50079 \
+-p 6080:6080 \
+-p 16000:16000 \
+-p 16020:16020 \
+-p 10502:10502 \
+-p 33553:33553 \
+-p 39419:39419 \
+-p 15002:15002 \
+-p 18080:18080 \
+-p 10015:10015 \
+-p 10016:10016 \
+-p 2049:2049 \
+-p 9090:9090 \
+-p 3000:3000 \
+-p 9000:9000 \
+-p 8000:8000 \
+-p 8020:8020 \
+-p 2181:2181 \
+-p 42111:42111 \
+-p 10500:10500 \
+-p 16030:16030 \
+-p 8042:8042 \
+-p 8040:8040 \
+-p 2100:2100 \
+-p 4200:4200 \
+-p 4040:4040 \
+-p 8032:8032 \
+-p 9996:9996 \
+-p 9995:9995 \
+-p 8080:8080 \
+-p 8088:8088 \
+-p 8886:8886 \
+-p 8889:8889 \
+-p 8443:8443 \
+-p 8744:8744 \
+-p 8888:8888 \
+-p 8188:8188 \
+-p 8983:8983 \
+-p 1000:1000 \
+-p 1100:1100 \
+-p 11000:11000 \
+-p 10001:10001 \
+-p 15000:15000 \
+-p 10000:10000 \
+-p 8993:8993 \
+-p 1988:1988 \
+-p 5007:5007 \
+-p 50070:50070 \
+-p 19888:19888 \
+-p 16010:16010 \
+-p 50111:50111 \
+-p 50075:50075 \
+-p 50095:50095 \
+-p 18081:18081 \
+-p 60000:60000 \
+-p 8090:8090 \
+-p 8091:8091 \
+-p 8005:8005 \
+-p 8086:8086 \
+-p 8082:8082 \
+-p 60080:60080 \
+-p 8765:8765 \
+-p 5011:5011 \
+-p 6001:6001 \
+-p 6003:6003 \
+-p 6008:6008 \
+-p 1220:1220 \
+-p 21000:21000 \
+-p 6188:6188 \
+-p 2222:22 \
+sandbox-hdp /usr/sbin/sshd -D
+fi
+docker exec -t sandbox-hdp /bin/sh -c 'echo &quot;127.0.0.1 sandbox.hortonworks.com&quot; &amp;gt;&amp;gt; /etc/hosts'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R mysql:mysql /var/lib/mysql'
+docker exec -t sandbox-hdp service mysqld start
+docker exec -t sandbox-hdp service postgresql start
+docker exec -t sandbox-hdp ambari-server start
+docker exec -t sandbox-hdp ambari-agent start
+docker exec -t sandbox-hdp /bin/sh -c 'rm -f /usr/hdp/current/oozie-server/libext/falcon-oozie-el-extension-*'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R hdfs:hadoop /hadoop/hdfs'
+docker exec -t sandbox-hdp /etc/init.d/shellinaboxd start
+
+
+echo &quot;Waiting for ambari agent to connect&quot;
+docker exec -t sandbox-hdp /bin/sh -c ' until curl --silent -u raj_ops:raj_ops -H &quot;X-Requested-By:ambari&quot; -i -X GET  http://localhost:8080/api/v1/clusters/Sandbox/hosts/sandbox-hdp.hortonworks.com/host_components/ZOOKEEPER_SERVER | grep state | grep -v desired | grep INSTALLED; do sleep 5; echo -n .; done;'
+
+echo &quot;Waiting for ambari services to start &quot;
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.HDFS\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;SERVICE\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;,\&quot;service_name\&quot;:\&quot;HDFS\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services/HDFS | grep -i accept &amp;gt;/dev/null; do echo -n .; sleep 5; done;'
+
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.ALL_SERVICES\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;CLUSTER\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services | grep -i accept &amp;gt; /dev/null; do sleep 5; echo -n .; done; '
+
+docker exec -t sandbox-hdp /bin/sh -c 'until /usr/bin/curl --silent --user raj_ops:raj_ops -H &quot;X-Requested-By: ambari&quot; &quot;http://localhost:8080/api/v1/clusters/Sandbox/requests?to=end&amp;amp;page_size=10&amp;amp;fields=Requests&quot; | tail -n 27 | grep COMPLETED | grep COMPLETED &amp;gt; /dev/null; do echo -n .; sleep 1; done;'
+
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/tutorials/tutorials_app/run/run.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/hue/tools/start_scripts/update-tutorials.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp touch /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp chown oozie:hadoop /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp /etc/init.d/tutorials start
+docker exec -t sandbox-hdp /etc/init.d/splash
+echo &quot;&quot;
+echo &quot;Started Hortonworks HDP container&quot;
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 5) Change root and ambari admin password &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ssh -p 2222 root@localhost
+root@localhost's password: 
+You are required to change your password immediately (root enforced)
+Changing password for root.
+(current) UNIX password: 
+New password: 
+Retype new password: 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# 
+[root@sandbox-hdp ~]# ambari-admin-password-reset
+Please set the password for admin: 
+Please retype the password for admin: 
+
+The admin password has been set.
+Restarting ambari-server to make the password change effective...
+
+Using python  /usr/bin/python
+Restarting ambari-server
+Waiting for server stop...
+Ambari Server stopped
+Ambari Server running with administrator privileges.
+Organizing resource files at /var/lib/ambari-server/resources...
+Ambari database consistency check started...
+Server PID at: /var/run/ambari-server/ambari-server.pid
+Server out at: /var/log/ambari-server/ambari-server.out
+Server log at: /var/log/ambari-server/ambari-server.log
+Waiting for server start........................................
+Server started listening on 8080
+
+DB configs consistency check: no errors and warnings were found.
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 6) Check status of container, login, open the ambari console&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;docker ps -a 
+
+ssh -p 2222 root@localhost
+root/welcome1
+
+-- LOGIN
+http://localhost:8888
+http://127.0.0.1:8080/#/main/dashboard/metrics
+
+-- FOLLOW HOWTO
+https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#admin-password-reset
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 7) other commands &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
+docker start &amp;lt;container id&amp;gt; 
+docker stop &amp;lt;container id&amp;gt; 
+
+-- remove container 
+docker rm &amp;lt;container id&amp;gt;
+
+-- remove container image
+docker rmi &amp;lt;container name&amp;gt;
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; AFTER INSTALLATION - HOW TO RUN&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; two scripts are created after installation, you DON'T have to run the 1_docker_load.sh unless you want to refresh your image. &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;cd /Users/kristofferson.a.arao/docker/hdp26-demo-sandbox
+ls
+1_docker_load.sh	2_start_sandbox.sh
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; 1_docker_load.sh&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;docker load &amp;lt; ../HDP_2.6.3_docker_10_11_2017.tar
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; 2_start_sandbox.sh&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;#!/bin/bash
+echo &quot;Waiting for docker daemon to start up:&quot;
+until docker ps 2&amp;gt;&amp;amp;1| grep STATUS&amp;gt;/dev/null; do  sleep 1; done;  &amp;gt;/dev/null
+docker ps -a | grep sandbox-hdp
+if [ $? -eq 0 ]; then
+ docker start sandbox-hdp
+else
+docker run -v `pwd`:`pwd` -v hadoop:/hadoop --name sandbox-hdp --hostname &quot;sandbox-hdp.hortonworks.com&quot; --privileged -d \
+-p 15500:15500 \
+-p 15501:15501 \
+-p 15502:15502 \
+-p 15503:15503 \
+-p 15504:15504 \
+-p 15505:15505 \
+-p 1111:111 \
+-p 4242:4242 \
+-p 50079:50079 \
+-p 6080:6080 \
+-p 16000:16000 \
+-p 16020:16020 \
+-p 10502:10502 \
+-p 33553:33553 \
+-p 39419:39419 \
+-p 15002:15002 \
+-p 18080:18080 \
+-p 10015:10015 \
+-p 10016:10016 \
+-p 2049:2049 \
+-p 9090:9090 \
+-p 3000:3000 \
+-p 9000:9000 \
+-p 8000:8000 \
+-p 8020:8020 \
+-p 2181:2181 \
+-p 42111:42111 \
+-p 10500:10500 \
+-p 16030:16030 \
+-p 8042:8042 \
+-p 8040:8040 \
+-p 2100:2100 \
+-p 4200:4200 \
+-p 4040:4040 \
+-p 8032:8032 \
+-p 9996:9996 \
+-p 9995:9995 \
+-p 8080:8080 \
+-p 8088:8088 \
+-p 8886:8886 \
+-p 8889:8889 \
+-p 8443:8443 \
+-p 8744:8744 \
+-p 8888:8888 \
+-p 8188:8188 \
+-p 8983:8983 \
+-p 1000:1000 \
+-p 1100:1100 \
+-p 11000:11000 \
+-p 10001:10001 \
+-p 15000:15000 \
+-p 10000:10000 \
+-p 8993:8993 \
+-p 1988:1988 \
+-p 5007:5007 \
+-p 50070:50070 \
+-p 19888:19888 \
+-p 16010:16010 \
+-p 50111:50111 \
+-p 50075:50075 \
+-p 50095:50095 \
+-p 18081:18081 \
+-p 60000:60000 \
+-p 8090:8090 \
+-p 8091:8091 \
+-p 8005:8005 \
+-p 8086:8086 \
+-p 8082:8082 \
+-p 60080:60080 \
+-p 8765:8765 \
+-p 5011:5011 \
+-p 6001:6001 \
+-p 6003:6003 \
+-p 6008:6008 \
+-p 1220:1220 \
+-p 21000:21000 \
+-p 6188:6188 \
+-p 2222:22 \
+sandbox-hdp /usr/sbin/sshd -D
+fi
+docker exec -t sandbox-hdp /bin/sh -c 'echo &quot;127.0.0.1 sandbox.hortonworks.com&quot; &amp;gt;&amp;gt; /etc/hosts'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R mysql:mysql /var/lib/mysql'
+docker exec -t sandbox-hdp service mysqld start
+docker exec -t sandbox-hdp service postgresql start
+docker exec -t sandbox-hdp ambari-server start
+docker exec -t sandbox-hdp ambari-agent start
+docker exec -t sandbox-hdp /bin/sh -c 'rm -f /usr/hdp/current/oozie-server/libext/falcon-oozie-el-extension-*'
+docker exec -t sandbox-hdp /bin/sh -c 'chown -R hdfs:hadoop /hadoop/hdfs'
+docker exec -t sandbox-hdp /etc/init.d/shellinaboxd start
+
+
+echo &quot;Waiting for ambari agent to connect&quot;
+docker exec -t sandbox-hdp /bin/sh -c ' until curl --silent -u raj_ops:raj_ops -H &quot;X-Requested-By:ambari&quot; -i -X GET  http://localhost:8080/api/v1/clusters/Sandbox/hosts/sandbox-hdp.hortonworks.com/host_components/ZOOKEEPER_SERVER | grep state | grep -v desired | grep INSTALLED; do sleep 5; echo -n .; done;'
+
+echo &quot;Waiting for ambari services to start &quot;
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.HDFS\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;SERVICE\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;,\&quot;service_name\&quot;:\&quot;HDFS\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services/HDFS | grep -i accept &amp;gt;/dev/null; do echo -n .; sleep 5; done;'
+
+docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.ALL_SERVICES\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;CLUSTER\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services | grep -i accept &amp;gt; /dev/null; do sleep 5; echo -n .; done; '
+
+docker exec -t sandbox-hdp /bin/sh -c 'until /usr/bin/curl --silent --user raj_ops:raj_ops -H &quot;X-Requested-By: ambari&quot; &quot;http://localhost:8080/api/v1/clusters/Sandbox/requests?to=end&amp;amp;page_size=10&amp;amp;fields=Requests&quot; | tail -n 27 | grep COMPLETED | grep COMPLETED &amp;gt; /dev/null; do echo -n .; sleep 1; done;'
+
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/tutorials/tutorials_app/run/run.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/hue/tools/start_scripts/update-tutorials.sh &amp;amp;&amp;gt;/dev/null'
+docker exec -t sandbox-hdp touch /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp chown oozie:hadoop /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
+docker exec -t sandbox-hdp /etc/init.d/tutorials start
+docker exec -t sandbox-hdp /etc/init.d/splash
+echo &quot;&quot;
+echo &quot;Started Hortonworks HDP container&quot;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>.hortonworks distribution</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.6.3%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:16:00 GMT</pubDate>
 
 </item>
 <item>
-<title>rewriting MAX on WHERE</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' first rewrite avoids the group by', event)&quot;&gt; first rewrite avoids the group by&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' another example is split this into two SQLs ', event)&quot;&gt; another example is split this into two SQLs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using gluent present, push it down to hadoop', event)&quot;&gt; using gluent present, push it down to hadoop&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; first rewrite avoids the group by&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;# BEFORE 
-
-VAR BAN VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-
-EXEC :BAN := '302034860';
-EXEC :CHG_ACTV_KEY := '';
-EXEC :CHG_ACTV_KEY := '4937';
-
-
-   select /*+ monitor */
-    b.ban,
-    b.cycle_run_month,
-    b.cycle_run_year
-   from dim.delta_bill_pull_tbl_glt b,
-        ( select
-           ban,
-           actv_bill_seq_no
-          from dim.delta_charge_pull_tbl_glt
-          where ban = (select to_ban
-                       from ( select ban, max(ent_seq_no) ent_seq_no
-                              from dim.delta_charge_pull_tbl_glt
-                              where ban = :ban and to_ent_seq_no = :chg_actv_key
-                              group by ban ) a,
-                            dim.delta_charge_pull_tbl_glt d
-                       where a.ban = d.ban
-                         and a.ent_seq_no = d.ent_seq_no)
-             and ent_seq_no = :chg_actv_key ) c
-    where
-          b.ban = c.ban
-      and b.bill_seq_no = c.actv_bill_seq_no
-      and rownum=1
-/
-
-
-# AFTER 
-VAR BAN VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-VAR CHG_ACTV_KEY VARCHAR2(32)
-
-EXEC :BAN := '302034860';
-EXEC :CHG_ACTV_KEY := '';
-EXEC :CHG_ACTV_KEY := '4937';
-
-
-   select /*+ monitor */
-    b.ban,
-    b.cycle_run_month,
-    b.cycle_run_year
-   from dim.delta_bill_pull_tbl_glt b,
-        ( select
-           ban,
-           actv_bill_seq_no
-          from dim.delta_charge_pull_tbl_glt
-          where ban = (select d.to_ban
-                      from dim.delta_charge_pull_tbl_glt d
-                      where d.ban = :ban
-                      and   d.ent_seq_no = (select max(ent_seq_no)
-                                            from   dim.delta_charge_pull_tbl_glt
-                                            where  ban = :ban
-                                            and    to_ent_seq_no = :chg_actv_key))
-             and ent_seq_no = :chg_actv_key ) c
-    where
-          b.ban = c.ban
-      and b.bill_seq_no = c.actv_bill_seq_no
-      and rownum=1
-/
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; another example is split this into two &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;VARIABLE to_ban NUMBER
-
-BEGIN
-    SELECT  to_ban
-    INTO    :to_ban
-    FROM    dim_h.delta_charge_pull_tbl_glt d
-    WHERE   d.ban = :ban
-    AND     d.ent_seq_no = (SELECT MAX(ent_seq_no)
-                            FROM   dim_h.delta_charge_pull_tbl_glt
-                            WHERE  ban = :ban
-                            AND    to_ent_seq_no = :chg_actv_key);
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-        :to_ban := NULL;
-END;
-/
-
-SELECT /*+ monitor */
-       b.ban,
-       b.cycle_run_month,
-       b.cycle_run_year
-FROM   dim_h.delta_bill_pull_tbl_glt b
-,      dim_h.delta_charge_pull_tbl_glt c
-WHERE  b.ban = c.ban
-AND    b.bill_seq_no = c.actv_bill_seq_no
-AND    c.ban = :to_ban
-AND    c.ent_seq_no = :chg_actv_key
-AND    ROWNUM = 1;
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; using gluent present, push it down to hadoop&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;./present -t dim.gl_delta_bill_charge_pull_join -xf \
---present-join=&quot;table(dim.ens_bill_gl_detail_t_glt) alias(gl) \
---present-join=&quot;table(dim.delta_adjustment_pull_tbl_glt) alias(adj) outer-join(gl) join-clauses(adj.ban = gl.ban, adj.ar_actv_key = gl.ent_seq_no, adj.ar_actv_seq_no = gl.actv_seq_no) project(*)&quot; \
---present-join=&quot;table(dim.delta_charge_pull_tbl_glt) alias(chg) outer-join(gl) join-clauses(chg.ban = gl.ban, chg.ar_actv_key = gl.ent_seq_no, chg.ar_actv_seq_no = gl.actv_seq_no) project(*)&quot;
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>my rewrite examples</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Brewriting%20MAX%20on%20WHERE%5D%5D</link>
-<pubDate>Thu, 13 Sep 2018 16:16:00 GMT</pubDate>
+<title>hdp on cloud install</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&quot; href=&quot;https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hadoop Series - Part1 Multinode Hadoop Cluster Installation using Ambari &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=wHaVBoLwzwU&quot; href=&quot;https://www.youtube.com/watch?v=wHaVBoLwzwU&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=wHaVBoLwzwU&lt;/a&gt;&lt;br&gt;Hadoop Series - Part2 How to Add Node To Existing Hadoop Cluster &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=jiCI4yIkUlc&quot; href=&quot;https://www.youtube.com/watch?v=jiCI4yIkUlc&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=jiCI4yIkUlc&lt;/a&gt;&lt;br&gt;Hadoop Series - Part3 Adding a node to existing hadoop cluster &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=kpZ8tzqzJmg&quot; href=&quot;https://www.youtube.com/watch?v=kpZ8tzqzJmg&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=kpZ8tzqzJmg&lt;/a&gt;&lt;br&gt;Hadoop Series - Part4 HDP upgrade &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=GRgZurCvmMY&quot; href=&quot;https://www.youtube.com/watch?v=GRgZurCvmMY&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=GRgZurCvmMY&lt;/a&gt;</description>
+<category>.hortonworks distribution</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20on%20cloud%20install%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:14:00 GMT</pubDate>
 
 </item>
 <item>
-<title>prev_sql_id</title>
-<description>&lt;pre&gt;set serveroutput off
-select * from AGGR.ENS_CUST_PROFILE2_DT_GLT where rownum &amp;lt; 2;
-select prev_sql_id p_sqlid from v$session where sid=sys_context('userenv','sid');
-
-@dplan
-@planx2 Y &amp;lt;sql_id&amp;gt; 
-&lt;/pre&gt;</description>
-<category>SQL*Plus</category>
-<category>troubleshoot SQL test case</category>
-<link>http://karlarao.tiddlyspot.com#prev_sql_id</link>
-<pubDate>Thu, 13 Sep 2018 15:34:00 GMT</pubDate>
+<title>hadoop azure</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&quot; href=&quot;https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&lt;/a&gt;</description>
+<category>.hortonworks distribution</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20azure%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:13:00 GMT</pubDate>
 
 </item>
 <item>
-<title>Regex</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linuxjournal.com/content/bash-regular-expressions&quot; href=&quot;https://www.linuxjournal.com/content/bash-regular-expressions&quot; class=&quot;externalLink&quot;&gt;https://www.linuxjournal.com/content/bash-regular-expressions&lt;/a&gt;</description>
-<category>CodeNinja</category>
-<link>http://karlarao.tiddlyspot.com#Regex</link>
-<pubDate>Thu, 13 Sep 2018 05:58:00 GMT</pubDate>
-
-</item>
-<item>
-<title>oci - oracle cloud infrastructure</title>
-<description>OCI whitepapers &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.oracle.com/iaas/technical-resources&quot; href=&quot;https://cloud.oracle.com/iaas/technical-resources&quot; class=&quot;externalLink&quot;&gt;https://cloud.oracle.com/iaas/technical-resources&lt;/a&gt;&lt;br&gt;Blocked IP Addresses For &lt;a tiddlylink=&quot;VPNaaS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VPNaaS&quot; href=&quot;http://karlarao.tiddlyspot.com#VPNaaS&quot; class=&quot;externalLink null&quot;&gt;VPNaaS&lt;/a&gt; Tunnelling (Doc ID 2443083.1)</description>
-<category>1 CodeNinja Hosting , cloud computing</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Boci%20-%20oracle%20cloud%20infrastructure%5D%5D</link>
-<pubDate>Wed, 12 Sep 2018 03:35:00 GMT</pubDate>
-
-</item>
-<item>
-<title>pycharm</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; href=&quot;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&quot; class=&quot;externalLink&quot;&gt;https://chriswarrick.com/blog/2017/07/03/setting-up-a-python-development-environment/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>jetbrains</category>
-<link>http://karlarao.tiddlyspot.com#pycharm</link>
-<pubDate>Tue, 11 Sep 2018 15:22:00 GMT</pubDate>
-
-</item>
-<item>
-<title>pycharm for R</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://holgerbrandl.github.io/r4intellij/&quot; href=&quot;http://holgerbrandl.github.io/r4intellij/&quot; class=&quot;externalLink&quot;&gt;http://holgerbrandl.github.io/r4intellij/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/holgerbrandl/r4intellij&quot; href=&quot;https://github.com/holgerbrandl/r4intellij&quot; class=&quot;externalLink&quot;&gt;https://github.com/holgerbrandl/r4intellij&lt;/a&gt;</description>
-<category>pycharm</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20R%5D%5D</link>
-<pubDate>Tue, 11 Sep 2018 15:22:00 GMT</pubDate>
-
-</item>
-<item>
-<title>pycharm for docker</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; href=&quot;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&quot; class=&quot;externalLink&quot;&gt;http://support.divio.com/local-development/setup/set-up-the-local-development-environment-with-pycharm-and-docker-for-macdocker-for-windows&lt;/a&gt;</description>
-<category>pycharm</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20docker%5D%5D</link>
-<pubDate>Tue, 11 Sep 2018 15:22:00 GMT</pubDate>
-
-</item>
-<item>
-<title>pycharm for vagrant</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; href=&quot;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&quot; class=&quot;externalLink&quot;&gt;https://developer.rackspace.com/blog/a-tutorial-on-application-development-using-vagrant-with-the-pycharm-ide/&lt;/a&gt;</description>
-<category>pycharm</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bpycharm%20for%20vagrant%5D%5D</link>
-<pubDate>Tue, 11 Sep 2018 15:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>generator JSON</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.objgen.com/json&quot; href=&quot;http://www.objgen.com/json&quot; class=&quot;externalLink&quot;&gt;http://www.objgen.com/json&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.convertcsv.com/csv-to-json.htm&quot; href=&quot;http://www.convertcsv.com/csv-to-json.htm&quot; class=&quot;externalLink&quot;&gt;http://www.convertcsv.com/csv-to-json.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.convertcsv.com/json-to-csv.htm&quot; href=&quot;http://www.convertcsv.com/json-to-csv.htm&quot; class=&quot;externalLink&quot;&gt;http://www.convertcsv.com/json-to-csv.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/17093180/store-multiple-values-in-single-key-in-json&quot; href=&quot;https://stackoverflow.com/questions/17093180/store-multiple-values-in-single-key-in-json&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/17093180/store-multiple-values-in-single-key-in-json&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://json-csv.com/&quot; href=&quot;https://json-csv.com/&quot; class=&quot;externalLink&quot;&gt;https://json-csv.com/&lt;/a&gt;</description>
-<category>DevTools, Dev Tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgenerator%20JSON%5D%5D</link>
-<pubDate>Thu, 06 Sep 2018 20:39:00 GMT</pubDate>
+<title>spark hadoop development env</title>
+<description>mac hadoop development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; href=&quot;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; href=&quot;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; href=&quot;http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; class=&quot;externalLink&quot;&gt;http://hadoopsie.com/mac-setup-for-hadoop-dev/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hadoop Map Reduce Programming 101 - 04 Setup Eclipse For Map Reduce Development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; href=&quot;https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=mRIsLSrHOj4&lt;/a&gt;&lt;br&gt;Setup Spark Development Environment on Windows - Introduction &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; href=&quot;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&lt;/a&gt;&lt;br&gt;Introduction - Setup Python, Pycharm and Spark on Windows &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; href=&quot;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; class=&quot;externalLink&quot;&gt;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; href=&quot;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; href=&quot;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>.hortonworks distribution</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bspark%20hadoop%20development%20env%5D%5D</link>
+<pubDate>Thu, 03 Jan 2019 21:11:00 GMT</pubDate>
 
 </item>
 </channel>
