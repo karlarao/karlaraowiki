@@ -6,41 +6,286 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2019 YourName</copyright>
-<pubDate>Sat, 05 Jan 2019 16:56:07 GMT</pubDate>
-<lastBuildDate>Sat, 05 Jan 2019 16:56:07 GMT</lastBuildDate>
+<pubDate>Tue, 08 Jan 2019 07:04:02 GMT</pubDate>
+<lastBuildDate>Tue, 08 Jan 2019 07:04:02 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>.hdfs commands</title>
+<description>&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cat files ', event)&quot;&gt; cat files &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' create home directory ', event)&quot;&gt; create home directory &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' copy file ', event)&quot;&gt; copy file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' copy file with different block size', event)&quot;&gt; copy file with different block size&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' check file status ', event)&quot;&gt; check file status &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' get file locations and blocks', event)&quot;&gt; get file locations and blocks&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' read raw file in data node filesystem ', event)&quot;&gt; read raw file in data node filesystem &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' explore files using ambari files view and NameNode UI', event)&quot;&gt; explore files using ambari files view and NameNode UI&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; cat files &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/19778137/why-is-there-no-hadoop-fs-head-shell-command&quot; href=&quot;https://stackoverflow.com/questions/19778137/why-is-there-no-hadoop-fs-head-shell-command&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/19778137/why-is-there-no-hadoop-fs-head-shell-command&lt;/a&gt;&lt;br&gt;&lt;pre&gt;hadoop fs -cat /path/to/file | head
+hadoop fs -cat /path/to/file | tail
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; create home directory &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[root@node1 ~]# su - hdfs
+[hdfs@node1 ~]$ hadoop fs -mkdir /user/vagrant
+
+[hdfs@node1 ~]$ hadoop fs -chown vagrant:vagrant /user/vagrant
+
+[hdfs@node1 ~]$ hadoop fs -ls /user
+Found 5 items
+drwxr-xr-x   - admin     hdfs             0 2019-01-06 02:11 /user/admin
+drwxrwx---   - ambari-qa hdfs             0 2019-01-06 01:31 /user/ambari-qa
+drwxr-xr-x   - hcat      hdfs             0 2019-01-06 01:44 /user/hcat
+drwxr-xr-x   - hive      hdfs             0 2019-01-06 02:06 /user/hive
+drwxr-xr-x   - vagrant   vagrant          0 2019-01-08 06:26 /user/vagrant
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; copy file &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[vagrant@node1 data]$ du -sm salaries.csv 
+16	salaries.csv
+
+[vagrant@node1 data]$ hadoop fs -put salaries.csv 
+
+[vagrant@node1 data]$ hadoop fs -ls
+Found 1 items
+-rw-r--r--   3 vagrant vagrant   16257213 2019-01-08 06:27 salaries.csv
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; copy file with different block size&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; this spreads the 16MB file to 1MB across data nodes and replicated 3x&lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;[vagrant@node1 data]$ hadoop fs -D dfs.blocksize=1m -put salaries.csv salaries2.csv 
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; check file status &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[vagrant@node1 data]$ hdfs fsck /user/vagrant/salaries.csv
+Connecting to namenode via http://node1.example.com:50070/fsck?ugi=vagrant&amp;amp;path=%2Fuser%2Fvagrant%2Fsalaries.csv
+FSCK started by vagrant (auth:SIMPLE) from /192.168.199.2 for path /user/vagrant/salaries.csv at Tue Jan 08 06:29:06 UTC 2019
+.
+/user/vagrant/salaries.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741876_1056. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+Status: HEALTHY
+ Total size:	16257213 B
+ Total dirs:	0
+ Total files:	1
+ Total symlinks:		0
+ Total blocks (validated):	1 (avg. block size 16257213 B)
+ Minimally replicated blocks:	1 (100.0 %)
+ Over-replicated blocks:	0 (0.0 %)
+ Under-replicated blocks:	1 (100.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Default replication factor:	3
+ Average block replication:	2.0
+ Corrupt blocks:		0
+ Missing replicas:		1 (33.333332 %)
+ Number of data-nodes:		2
+ Number of racks:		1
+FSCK ended at Tue Jan 08 06:29:06 UTC 2019 in 4 milliseconds
+
+
+The filesystem under path '/user/vagrant/salaries.csv' is HEALTHY
+
+
+
+-- FILE WITH DIFFERENT BLOCK SIZE 
+[vagrant@node1 data]$ hdfs fsck /user/vagrant/salaries2.csv
+Connecting to namenode via http://node1.example.com:50070/fsck?ugi=vagrant&amp;amp;path=%2Fuser%2Fvagrant%2Fsalaries2.csv
+FSCK started by vagrant (auth:SIMPLE) from /192.168.199.2 for path /user/vagrant/salaries2.csv at Tue Jan 08 06:31:11 UTC 2019
+.
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741877_1057. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741878_1058. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741879_1059. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741880_1060. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741881_1061. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741882_1062. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741883_1063. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741884_1064. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741885_1065. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741886_1066. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741887_1067. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741888_1068. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741889_1069. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741890_1070. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741891_1071. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+
+/user/vagrant/salaries2.csv:  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741892_1072. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+Status: HEALTHY
+ Total size:	16257213 B
+ Total dirs:	0
+ Total files:	1
+ Total symlinks:		0
+ Total blocks (validated):	16 (avg. block size 1016075 B)
+ Minimally replicated blocks:	16 (100.0 %)
+ Over-replicated blocks:	0 (0.0 %)
+ Under-replicated blocks:	16 (100.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Default replication factor:	3
+ Average block replication:	2.0
+ Corrupt blocks:		0
+ Missing replicas:		16 (33.333332 %)
+ Number of data-nodes:		2
+ Number of racks:		1
+FSCK ended at Tue Jan 08 06:31:11 UTC 2019 in 1 milliseconds
+
+
+The filesystem under path '/user/vagrant/salaries2.csv' is HEALTHY
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; get file locations and blocks&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[vagrant@node1 data]$ hdfs fsck /user/vagrant/salaries.csv -files -locations -blocks
+Connecting to namenode via http://node1.example.com:50070/fsck?ugi=vagrant&amp;amp;files=1&amp;amp;locations=1&amp;amp;blocks=1&amp;amp;path=%2Fuser%2Fvagrant%2Fsalaries.csv
+FSCK started by vagrant (auth:SIMPLE) from /192.168.199.2 for path /user/vagrant/salaries.csv at Tue Jan 08 06:33:18 UTC 2019
+/user/vagrant/salaries.csv 16257213 bytes, 1 block(s):  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741876_1056. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+0. BP-534825236-192.168.199.2-1546738263299:blk_1073741876_1056 len=16257213 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+
+Status: HEALTHY
+ Total size:	16257213 B
+ Total dirs:	0
+ Total files:	1
+ Total symlinks:		0
+ Total blocks (validated):	1 (avg. block size 16257213 B)
+ Minimally replicated blocks:	1 (100.0 %)
+ Over-replicated blocks:	0 (0.0 %)
+ Under-replicated blocks:	1 (100.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Default replication factor:	3
+ Average block replication:	2.0
+ Corrupt blocks:		0
+ Missing replicas:		1 (33.333332 %)
+ Number of data-nodes:		2
+ Number of racks:		1
+FSCK ended at Tue Jan 08 06:33:18 UTC 2019 in 1 milliseconds
+
+
+The filesystem under path '/user/vagrant/salaries.csv' is HEALTHY
+[vagrant@node1 data]$ 
+[vagrant@node1 data]$ 
+[vagrant@node1 data]$ 
+[vagrant@node1 data]$ 
+[vagrant@node1 data]$ 
+[vagrant@node1 data]$ 
+[vagrant@node1 data]$ hdfs fsck /user/vagrant/salaries2.csv -files -locations -blocks
+Connecting to namenode via http://node1.example.com:50070/fsck?ugi=vagrant&amp;amp;files=1&amp;amp;locations=1&amp;amp;blocks=1&amp;amp;path=%2Fuser%2Fvagrant%2Fsalaries2.csv
+FSCK started by vagrant (auth:SIMPLE) from /192.168.199.2 for path /user/vagrant/salaries2.csv at Tue Jan 08 06:36:04 UTC 2019
+/user/vagrant/salaries2.csv 16257213 bytes, 16 block(s):  Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741877_1057. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741878_1058. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741879_1059. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741880_1060. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741881_1061. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741882_1062. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741883_1063. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741884_1064. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741885_1065. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741886_1066. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741887_1067. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741888_1068. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741889_1069. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741890_1070. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741891_1071. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+ Under replicated BP-534825236-192.168.199.2-1546738263299:blk_1073741892_1072. Target Replicas is 3 but found 2 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
+0. BP-534825236-192.168.199.2-1546738263299:blk_1073741877_1057 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+1. BP-534825236-192.168.199.2-1546738263299:blk_1073741878_1058 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+2. BP-534825236-192.168.199.2-1546738263299:blk_1073741879_1059 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+3. BP-534825236-192.168.199.2-1546738263299:blk_1073741880_1060 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK], DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK]]
+4. BP-534825236-192.168.199.2-1546738263299:blk_1073741881_1061 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+5. BP-534825236-192.168.199.2-1546738263299:blk_1073741882_1062 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK], DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK]]
+6. BP-534825236-192.168.199.2-1546738263299:blk_1073741883_1063 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+7. BP-534825236-192.168.199.2-1546738263299:blk_1073741884_1064 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+8. BP-534825236-192.168.199.2-1546738263299:blk_1073741885_1065 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+9. BP-534825236-192.168.199.2-1546738263299:blk_1073741886_1066 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+10. BP-534825236-192.168.199.2-1546738263299:blk_1073741887_1067 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+11. BP-534825236-192.168.199.2-1546738263299:blk_1073741888_1068 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+12. BP-534825236-192.168.199.2-1546738263299:blk_1073741889_1069 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+13. BP-534825236-192.168.199.2-1546738263299:blk_1073741890_1070 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+14. BP-534825236-192.168.199.2-1546738263299:blk_1073741891_1071 len=1048576 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+15. BP-534825236-192.168.199.2-1546738263299:blk_1073741892_1072 len=528573 repl=2 [DatanodeInfoWithStorage[192.168.199.2:50010,DS-f7935053-711f-4558-9c30-57a0fe071bde,DISK], DatanodeInfoWithStorage[192.168.199.3:50010,DS-3390c406-9c65-467c-88b7-d2bdc6b7330b,DISK]]
+
+Status: HEALTHY
+ Total size:	16257213 B
+ Total dirs:	0
+ Total files:	1
+ Total symlinks:		0
+ Total blocks (validated):	16 (avg. block size 1016075 B)
+ Minimally replicated blocks:	16 (100.0 %)
+ Over-replicated blocks:	0 (0.0 %)
+ Under-replicated blocks:	16 (100.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Default replication factor:	3
+ Average block replication:	2.0
+ Corrupt blocks:		0
+ Missing replicas:		16 (33.333332 %)
+ Number of data-nodes:		2
+ Number of racks:		1
+FSCK ended at Tue Jan 08 06:36:04 UTC 2019 in 1 milliseconds
+
+
+The filesystem under path '/user/vagrant/salaries2.csv' is HEALTHY
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; read raw file in data node filesystem &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; check for the blk_&amp;lt;id&amp;gt;&lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;[root@node1 ~]# find /hadoop/hdfs/ -name &quot;blk_1073741876&quot; -print
+/hadoop/hdfs/data/current/BP-534825236-192.168.199.2-1546738263299/current/finalized/subdir0/subdir0/blk_1073741876
+
+[root@node1 ~]# find /hadoop/hdfs/ -name &quot;blk_1073741878&quot; -print
+/hadoop/hdfs/data/current/BP-534825236-192.168.199.2-1546738263299/current/finalized/subdir0/subdir0/blk_1073741878
+
+[root@node1 ~]# less /hadoop/hdfs/data/current/BP-534825236-192.168.199.2-1546738263299/current/finalized/subdir0/subdir0/blk_1073741878
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; explore files using ambari files view and &lt;a tiddlylink=&quot;NameNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NameNode&quot; href=&quot;http://karlarao.tiddlyspot.com#NameNode&quot; class=&quot;externalLink null&quot;&gt;NameNode&lt;/a&gt; UI&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Ambari files view &lt;a target=&quot;_blank&quot; title=&quot;External link to http://127.0.0.1:8080/#/main/view/FILES/auto_files_instance&quot; href=&quot;http://127.0.0.1:8080/#/main/view/FILES/auto_files_instance&quot; class=&quot;externalLink&quot;&gt;http://127.0.0.1:8080/#/main/view/FILES/auto_files_instance&lt;/a&gt;&lt;br&gt;Quicklinks &lt;a tiddlylink=&quot;NameNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NameNode&quot; href=&quot;http://karlarao.tiddlyspot.com#NameNode&quot; class=&quot;externalLink null&quot;&gt;NameNode&lt;/a&gt; UI &lt;a target=&quot;_blank&quot; title=&quot;External link to http://192.168.199.2:50070/explorer.html#/&quot; href=&quot;http://192.168.199.2:50070/explorer.html#/&quot; class=&quot;externalLink&quot;&gt;http://192.168.199.2:50070/explorer.html#/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
+<category>hdfs</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.hdfs%20commands%5D%5D</link>
+<pubDate>Tue, 08 Jan 2019 07:03:58 GMT</pubDate>
+
+</item>
+<item>
+<title>spark thrift server</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/33715/why-do-we-need-to-setup-spark-thrift-server.html&quot; href=&quot;https://community.hortonworks.com/questions/33715/why-do-we-need-to-setup-spark-thrift-server.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/33715/why-do-we-need-to-setup-spark-thrift-server.html&lt;/a&gt;</description>
+<category>apache spark</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bspark%20thrift%20server%5D%5D</link>
+<pubDate>Tue, 08 Jan 2019 05:10:36 GMT</pubDate>
+
+</item>
+<item>
+<title>livy server - rest interface</title>
+<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/livy-a-rest-interface-for-apache-spark/&quot; href=&quot;https://hortonworks.com/blog/livy-a-rest-interface-for-apache-spark/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/livy-a-rest-interface-for-apache-spark/&lt;/a&gt;</description>
+<category>apache spark</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Blivy%20server%20-%20rest%20interface%5D%5D</link>
+<pubDate>Tue, 08 Jan 2019 05:09:46 GMT</pubDate>
+
+</item>
+<item>
 <title>system-config-network</title>
-<description>&lt;br&gt;&lt;pre&gt;nmtui
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&quot; href=&quot;https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&quot; class=&quot;externalLink&quot;&gt;https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/linux/linux-network-configuration&quot; href=&quot;https://oracle-base.com/articles/linux/linux-network-configuration&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/linux/linux-network-configuration&lt;/a&gt;</description>
+<description>&lt;pre&gt;-- to configure
+nmtui
+
+-- to show
+ip addr 
+nmcli d show
+
+-- to get ifconfig working 
+yum install net-tools
+&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&quot; href=&quot;https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&quot; class=&quot;externalLink&quot;&gt;https://unix.stackexchange.com/questions/188750/unable-to-configure-the-network-settings-in-centos-7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/linux/linux-network-configuration&quot; href=&quot;https://oracle-base.com/articles/linux/linux-network-configuration&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/linux/linux-network-configuration&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.thegeekdiary.com/centos-rhel-7-troubleshooting-ifconfig-command-not-found/&quot; href=&quot;https://www.thegeekdiary.com/centos-rhel-7-troubleshooting-ifconfig-command-not-found/&quot; class=&quot;externalLink&quot;&gt;https://www.thegeekdiary.com/centos-rhel-7-troubleshooting-ifconfig-command-not-found/&lt;/a&gt;&lt;br&gt;&lt;br&gt;.</description>
 <category>RH131</category>
 <link>http://karlarao.tiddlyspot.com#system-config-network</link>
-<pubDate>Sat, 05 Jan 2019 16:56:03 GMT</pubDate>
+<pubDate>Tue, 08 Jan 2019 05:00:49 GMT</pubDate>
 
 </item>
 <item>
-<title>Oracle Docker images</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/docker-images&quot; href=&quot;https://github.com/oracle/docker-images&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/docker-images&lt;/a&gt;</description>
+<title>developer VM can't run DBCA</title>
+<description>&lt;br&gt;explanation here &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/thread/4080860&quot; href=&quot;https://community.oracle.com/thread/4080860&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/thread/4080860&lt;/a&gt;&lt;br&gt;&lt;br&gt;the fix is to download a new software, install to a new home and create a new database. then kill or delete the old database </description>
 <category>Vbox Templates, developer vm</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Docker%20images%5D%5D</link>
-<pubDate>Sat, 05 Jan 2019 15:19:43 GMT</pubDate>
-
-</item>
-<item>
-<title>Oracle Vagrant boxes</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/vagrant-boxes&quot; href=&quot;https://github.com/oracle/vagrant-boxes&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/vagrant-boxes&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.oracle.com/technetwork/community/developer-vm/index.html&quot; href=&quot;https://www.oracle.com/technetwork/community/developer-vm/index.html&quot; class=&quot;externalLink&quot;&gt;https://www.oracle.com/technetwork/community/developer-vm/index.html&lt;/a&gt;</description>
-<category>Vbox Templates, developer vm</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Vagrant%20boxes%5D%5D</link>
-<pubDate>Sat, 05 Jan 2019 15:16:51 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bdeveloper%20VM%20can't%20run%20DBCA%5D%5D</link>
+<pubDate>Tue, 08 Jan 2019 04:55:26 GMT</pubDate>
 
 </item>
 <item>
 <title>.hortonworks distribution</title>
-<description>&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' certification matrix', event)&quot;&gt; certification matrix&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ways to install ', event)&quot;&gt; ways to install &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' own machine ', event)&quot;&gt; own machine &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' manual install ', event)&quot;&gt; manual install &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' unattended install using vagrant ', event)&quot;&gt; unattended install using vagrant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' on cloud ', event)&quot;&gt; on cloud &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' manual or unattended install ', event)&quot;&gt; manual or unattended install &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using hortonworks cloudbreak (uses docker to provision to cloud) ', event)&quot;&gt; using hortonworks cloudbreak (uses docker to provision to cloud) &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' installation docs ', event)&quot;&gt; installation docs &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ambari doc ', event)&quot;&gt; ambari doc &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cluster planning ', event)&quot;&gt; cluster planning &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cluster resources ', event)&quot;&gt; cluster resources &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gluent installation ', event)&quot;&gt; gluent installation &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; certification matrix&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://supportmatrix.hortonworks.com/&quot; href=&quot;https://supportmatrix.hortonworks.com/&quot; class=&quot;externalLink&quot;&gt;https://supportmatrix.hortonworks.com/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; ways to install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; own machine &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; manual install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt; using apt-get and yum for ambari-server/ambari-agent&lt;/li&gt;&lt;li&gt; and then manual provisioning of the cluster through ambari UI&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt; unattended install using vagrant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt; using automation tools to install ambari-server/ambari-agent&lt;/li&gt;&lt;li&gt; using blueprints to push a setup and configuration to the cluster&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt; on cloud &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; manual or unattended install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; using hortonworks cloudbreak (uses docker to provision to cloud) &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/open-source/cloudbreak/#section_1&quot; href=&quot;https://hortonworks.com/open-source/cloudbreak/#section_1&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/open-source/cloudbreak/#section_1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&quot; href=&quot;https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; installation docs &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/&quot; href=&quot;https://docs.hortonworks.com/&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/products/data-platforms/hdp/&quot; href=&quot;https://hortonworks.com/products/data-platforms/hdp/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/products/data-platforms/hdp/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; ambari doc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; cluster planning &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; cluster resources &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h3&gt; ambari-server&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; ambari-agent (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;NameNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NameNode&quot; href=&quot;http://karlarao.tiddlyspot.com#NameNode&quot; class=&quot;externalLink null&quot;&gt;NameNode&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;ResourceManager&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ResourceManager&quot; href=&quot;http://karlarao.tiddlyspot.com#ResourceManager&quot; class=&quot;externalLink null&quot;&gt;ResourceManager&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; Zookeeper (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;DataNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataNode&quot; href=&quot;http://karlarao.tiddlyspot.com#DataNode&quot; class=&quot;externalLink null&quot;&gt;DataNode&lt;/a&gt; (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;NodeManager&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NodeManager&quot; href=&quot;http://karlarao.tiddlyspot.com#NodeManager&quot; class=&quot;externalLink null&quot;&gt;NodeManager&lt;/a&gt; (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; gluent installation &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.gluent.com/goe/install_and_upgrade.html&quot; href=&quot;https://docs.gluent.com/goe/install_and_upgrade.html&quot; class=&quot;externalLink&quot;&gt;https://docs.gluent.com/goe/install_and_upgrade.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
+<description>&lt;br&gt;&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' certification matrix', event)&quot;&gt; certification matrix&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ambari and hdp versions ', event)&quot;&gt; ambari and hdp versions &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ways to install ', event)&quot;&gt; ways to install &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' own machine ', event)&quot;&gt; own machine &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' manual install ', event)&quot;&gt; manual install &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' unattended install using vagrant ', event)&quot;&gt; unattended install using vagrant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' on cloud ', event)&quot;&gt; on cloud &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' manual or unattended install ', event)&quot;&gt; manual or unattended install &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using hortonworks cloudbreak (uses docker to provision to cloud) ', event)&quot;&gt; using hortonworks cloudbreak (uses docker to provision to cloud) &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' installation docs ', event)&quot;&gt; installation docs &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ambari doc ', event)&quot;&gt; ambari doc &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cluster planning ', event)&quot;&gt; cluster planning &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cluster resources ', event)&quot;&gt; cluster resources &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gluent installation ', event)&quot;&gt; gluent installation &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; certification matrix&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://supportmatrix.hortonworks.com/&quot; href=&quot;https://supportmatrix.hortonworks.com/&quot; class=&quot;externalLink&quot;&gt;https://supportmatrix.hortonworks.com/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; ambari and hdp versions &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;ambari_and_hdp_versions.md &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gist.github.com/karlarao/ba6bbc1c0049de1fc1404b5d8dc56c4d&quot; href=&quot;https://gist.github.com/karlarao/ba6bbc1c0049de1fc1404b5d8dc56c4d&quot; class=&quot;externalLink&quot;&gt;https://gist.github.com/karlarao/ba6bbc1c0049de1fc1404b5d8dc56c4d&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt; ambari 2.4.3.0&lt;/li&gt;&lt;li&gt; hdp 2.2 to 2.5.3.0 &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; ambari 2.5.2.0&lt;/li&gt;&lt;li&gt; hdp 2.3 to 2.6.3.0 &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;hr&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; ambari 2.6.2.2&lt;/li&gt;&lt;li&gt; hdp 2.4 to 2.6.5 &lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; ways to install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; own machine &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; manual install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt; using apt-get and yum for ambari-server/ambari-agent&lt;/li&gt;&lt;li&gt; and then manual provisioning of the cluster through ambari UI&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt; unattended install using vagrant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt; using automation tools to install ambari-server/ambari-agent&lt;/li&gt;&lt;li&gt; using blueprints to push a setup and configuration to the cluster&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt; on cloud &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;h3&gt; manual or unattended install &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; using hortonworks cloudbreak (uses docker to provision to cloud) &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/open-source/cloudbreak/#section_1&quot; href=&quot;https://hortonworks.com/open-source/cloudbreak/#section_1&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/open-source/cloudbreak/#section_1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&quot; href=&quot;https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/AMBARI/Blueprints&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; installation docs &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/&quot; href=&quot;https://docs.hortonworks.com/&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/products/data-platforms/hdp/&quot; href=&quot;https://hortonworks.com/products/data-platforms/hdp/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/products/data-platforms/hdp/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; ambari doc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/Ambari/Ambari-2.7.3.0/index.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; cluster planning &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&quot; href=&quot;https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&quot; class=&quot;externalLink&quot;&gt;https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.1.0/cluster-planning/content/partitioning.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; cluster resources &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h3&gt; ambari-server&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; ambari-agent (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;NameNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NameNode&quot; href=&quot;http://karlarao.tiddlyspot.com#NameNode&quot; class=&quot;externalLink null&quot;&gt;NameNode&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;ResourceManager&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ResourceManager&quot; href=&quot;http://karlarao.tiddlyspot.com#ResourceManager&quot; class=&quot;externalLink null&quot;&gt;ResourceManager&lt;/a&gt; &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; Zookeeper (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;DataNode&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DataNode&quot; href=&quot;http://karlarao.tiddlyspot.com#DataNode&quot; class=&quot;externalLink null&quot;&gt;DataNode&lt;/a&gt; (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;h3&gt; &lt;a tiddlylink=&quot;NodeManager&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NodeManager&quot; href=&quot;http://karlarao.tiddlyspot.com#NodeManager&quot; class=&quot;externalLink null&quot;&gt;NodeManager&lt;/a&gt; (node 2-3)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; gluent installation &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.gluent.com/goe/install_and_upgrade.html&quot; href=&quot;https://docs.gluent.com/goe/install_and_upgrade.html&quot; class=&quot;externalLink&quot;&gt;https://docs.gluent.com/goe/install_and_upgrade.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
 <category>.hadoop sandbox</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B.hortonworks%20distribution%5D%5D</link>
-<pubDate>Sat, 05 Jan 2019 15:03:46 GMT</pubDate>
+<pubDate>Tue, 08 Jan 2019 01:44:51 GMT</pubDate>
+
+</item>
+<item>
+<title>Oracle Docker images</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/docker-images&quot; href=&quot;https://github.com/oracle/docker-images&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/docker-images&lt;/a&gt;</description>
+<category>Vbox Templates, developer vm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Docker%20images%5D%5D</link>
+<pubDate>Sat, 05 Jan 2019 15:19:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Oracle Vagrant boxes</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/oracle/vagrant-boxes&quot; href=&quot;https://github.com/oracle/vagrant-boxes&quot; class=&quot;externalLink&quot;&gt;https://github.com/oracle/vagrant-boxes&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.oracle.com/technetwork/community/developer-vm/index.html&quot; href=&quot;https://www.oracle.com/technetwork/community/developer-vm/index.html&quot; class=&quot;externalLink&quot;&gt;https://www.oracle.com/technetwork/community/developer-vm/index.html&lt;/a&gt;</description>
+<category>Vbox Templates, developer vm</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Vagrant%20boxes%5D%5D</link>
+<pubDate>Sat, 05 Jan 2019 15:16:00 GMT</pubDate>
 
 </item>
 <item>
@@ -52,15 +297,15 @@ vagrant destroy
 <category>2 Infrastructure as code</category>
 <category>VM</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B1%20provisioning%20-%20Vagrant%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 23:38:21 GMT</pubDate>
+<pubDate>Thu, 03 Jan 2019 23:38:00 GMT</pubDate>
 
 </item>
 <item>
 <title>..Data Engineering Ecosystem</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the ecosystem', event)&quot;&gt; the ecosystem&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v3', event)&quot;&gt; v3&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v2', event)&quot;&gt; v2&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v1', event)&quot;&gt; v1&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' hadoop architecture use case', event)&quot;&gt; hadoop architecture use case&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' others', event)&quot;&gt; others&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&quot; href=&quot;http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&quot; class=&quot;externalLink&quot;&gt;http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&quot; href=&quot;https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&quot; class=&quot;externalLink&quot;&gt;https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&quot; href=&quot;https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&quot; class=&quot;externalLink&quot;&gt;https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/InsightDataScience/data-engineering-ecosystem&quot; href=&quot;https://github.com/InsightDataScience/data-engineering-ecosystem&quot; class=&quot;externalLink&quot;&gt;https://github.com/InsightDataScience/data-engineering-ecosystem&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the ecosystem&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; v3&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map/&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map/&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map/&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;%20https://i.imgur.com/xeo0SP4.png%20&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; v2&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;%20http://i.imgur.com/gn9E7Jf.png%20&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; v1&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;%20https://lh3.googleusercontent.com/-iD9v8Iho_7g/VZVvf0mK1PI/AAAAAAAACmU/VlovJ-JP2cI/s2048/20150702_DataEngineeringEcosystem.png%20&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; hadoop architecture use case&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;%20https://lh3.googleusercontent.com/-QsRM3czDMkg/Vhfg7pTmFrI/AAAAAAAACzU/4BEa8SfK_KU/s800-Ic42/IMG_8542.JPG%20&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; others&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://trello.com/b/rbpEfMld/data-science&quot; href=&quot;https://trello.com/b/rbpEfMld/data-science&quot; class=&quot;externalLink&quot;&gt;https://trello.com/b/rbpEfMld/data-science&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the ecosystem', event)&quot;&gt; the ecosystem&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v3', event)&quot;&gt; v3&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v2', event)&quot;&gt; v2&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' v1', event)&quot;&gt; v1&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' hadoop architecture use case', event)&quot;&gt; hadoop architecture use case&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' others', event)&quot;&gt; others&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&quot; href=&quot;http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&quot; class=&quot;externalLink&quot;&gt;http://insightdataengineering.com/blog/The-Data-Engineering-Ecosystem-An-Interactive-Map.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&quot; href=&quot;https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&quot; class=&quot;externalLink&quot;&gt;https://blog.insightdatascience.com/the-new-data-engineering-ecosystem-trends-and-rising-stars-414a1609d4a0#.c03g5b1nc&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&quot; href=&quot;https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&quot; class=&quot;externalLink&quot;&gt;https://github.com/InsightDataScience/data-engineering-ecosystem/wiki/Data-Engineering-Ecosystem&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/InsightDataScience/data-engineering-ecosystem&quot; href=&quot;https://github.com/InsightDataScience/data-engineering-ecosystem&quot; class=&quot;externalLink&quot;&gt;https://github.com/InsightDataScience/data-engineering-ecosystem&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the ecosystem&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; v3&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map/&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map/&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map/&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/xeo0SP4.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; v2&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map_v2.html&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/gn9E7Jf.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; v1&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&quot; href=&quot;http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&quot; class=&quot;externalLink&quot;&gt;http://xyz.insightdataengineering.com/blog/pipeline_map_v1.html&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;https://lh3.googleusercontent.com/-iD9v8Iho_7g/VZVvf0mK1PI/AAAAAAAACmU/VlovJ-JP2cI/s2048/20150702_DataEngineeringEcosystem.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; hadoop architecture use case&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;https://lh3.googleusercontent.com/-QsRM3czDMkg/Vhfg7pTmFrI/AAAAAAAACzU/4BEa8SfK_KU/s800-Ic42/IMG_8542.JPG&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; others&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://trello.com/b/rbpEfMld/data-science&quot; href=&quot;https://trello.com/b/rbpEfMld/data-science&quot; class=&quot;externalLink&quot;&gt;https://trello.com/b/rbpEfMld/data-science&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>Data Engineering</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B..Data%20Engineering%20Ecosystem%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 22:46:19 GMT</pubDate>
+<pubDate>Thu, 03 Jan 2019 22:46:00 GMT</pubDate>
 
 </item>
 <item>
@@ -68,31 +313,31 @@ vagrant destroy
 <description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/58458/installing-docker-version-of-sandbox-on-mac.html&quot; href=&quot;https://community.hortonworks.com/articles/58458/installing-docker-version-of-sandbox-on-mac.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/58458/installing-docker-version-of-sandbox-on-mac.html&lt;/a&gt;  &amp;lt;&lt;span&gt;—&lt;/span&gt; follow this &lt;span class=&quot;marked&quot;&gt;docker&lt;/span&gt; howto!&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/&quot; href=&quot;https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/&lt;/a&gt;&lt;br&gt;HORTONWORKS SANDBOX SANDBOX DEPLOYMENT AND INSTALL GUIDE Deploying Hortonworks Sandbox on &lt;span class=&quot;marked&quot;&gt;Docker&lt;/span&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#for-mac&quot; href=&quot;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#for-mac&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#for-mac&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/57757/hdp-25-sandbox-not-starting.html&quot; href=&quot;https://community.hortonworks.com/questions/57757/hdp-25-sandbox-not-starting.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/57757/hdp-25-sandbox-not-starting.html&lt;/a&gt; &amp;lt;&lt;span&gt;—&lt;/span&gt; issue on sandbox not starting&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.quora.com/To-start-learning-and-playing-with-Hadoop-which-one-should-I-prefer-Cloudera-QuickStart-VM-Hortonworks-Sandbox-or-MapR-Sandbox&quot; href=&quot;https://www.quora.com/To-start-learning-and-playing-with-Hadoop-which-one-should-I-prefer-Cloudera-QuickStart-VM-Hortonworks-Sandbox-or-MapR-Sandbox&quot; class=&quot;externalLink&quot;&gt;https://www.quora.com/To-start-learning-and-playing-with-Hadoop-which-one-should-I-prefer-Cloudera-QuickStart-VM-Hortonworks-Sandbox-or-MapR-Sandbox&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>..data engineering practice</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B.hadoop%20sandbox%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:50:41 GMT</pubDate>
+<pubDate>Thu, 03 Jan 2019 21:50:00 GMT</pubDate>
 
 </item>
 <item>
 <title>hadoop distribution matrix</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&quot; href=&quot;https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&quot; class=&quot;externalLink&quot;&gt;https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&quot; href=&quot;http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&quot; class=&quot;externalLink&quot;&gt;http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&lt;/a&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&quot; href=&quot;https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&quot; class=&quot;externalLink&quot;&gt;https://analyticstraining.com/a-two-minute-guide-to-the-top-three-hadoop-distributions/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&quot; href=&quot;http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&quot; class=&quot;externalLink&quot;&gt;http://mabblerabble.blogspot.com/2016/09/mapr-vs-cloudera-vs-hortonworks.html&lt;/a&gt;</description>
 <category>..Data Engineering Ecosystem</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20distribution%20matrix%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:45:24 GMT</pubDate>
+<pubDate>Thu, 03 Jan 2019 21:45:00 GMT</pubDate>
 
 </item>
 <item>
 <title>hadoop reference architectures</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&quot; href=&quot;http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&quot; class=&quot;externalLink&quot;&gt;http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&quot; href=&quot;http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&quot; class=&quot;externalLink&quot;&gt;http://cloud-dba-journey.blogspot.com/2013/08/hadoop-reference-architectures.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
 <category>..Data Engineering Ecosystem</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20reference%20architectures%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:44:02 GMT</pubDate>
+<pubDate>Thu, 03 Jan 2019 21:44:00 GMT</pubDate>
 
 </item>
 <item>
 <title>hadoop architecture use case</title>
-<description>&lt;img src=&quot;%20https://lh3.googleusercontent.com/-QsRM3czDMkg/Vhfg7pTmFrI/AAAAAAAACzU/4BEa8SfK_KU/s800-Ic42/IMG_8542.JPG%20&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twitter.com/karlarao/status/652370648820486144&quot; href=&quot;https://twitter.com/karlarao/status/652370648820486144&quot; class=&quot;externalLink&quot;&gt;https://twitter.com/karlarao/status/652370648820486144&lt;/a&gt;&lt;br&gt;@gwenshap I enjoyed the @hadooparchbook clickstream analytics end-to-end case study,video -&amp;gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://bit.ly/1Opqd4v&quot; href=&quot;http://bit.ly/1Opqd4v&quot; class=&quot;externalLink&quot;&gt;http://bit.ly/1Opqd4v&lt;/a&gt;  &lt;br&gt;</description>
+<description>&lt;img src=&quot;https://lh3.googleusercontent.com/-QsRM3czDMkg/Vhfg7pTmFrI/AAAAAAAACzU/4BEa8SfK_KU/s800-Ic42/IMG_8542.JPG&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twitter.com/karlarao/status/652370648820486144&quot; href=&quot;https://twitter.com/karlarao/status/652370648820486144&quot; class=&quot;externalLink&quot;&gt;https://twitter.com/karlarao/status/652370648820486144&lt;/a&gt;&lt;br&gt;@gwenshap I enjoyed the @hadooparchbook clickstream analytics end-to-end case study,video -&amp;gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://bit.ly/1Opqd4v&quot; href=&quot;http://bit.ly/1Opqd4v&quot; class=&quot;externalLink&quot;&gt;http://bit.ly/1Opqd4v&lt;/a&gt;  &lt;br&gt;</description>
 <category>hadoop reference architectures</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20architecture%20use%20case%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:43:23 GMT</pubDate>
+<pubDate>Thu, 03 Jan 2019 21:43:00 GMT</pubDate>
 
 </item>
 <item>
@@ -100,7 +345,7 @@ vagrant destroy
 <description>A short video about it, worth watching it whenever you get some time, only 12min:&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ansible.com/quick-start-video&quot; href=&quot;https://www.ansible.com/quick-start-video&quot; class=&quot;externalLink&quot;&gt;https://www.ansible.com/quick-start-video&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&quot; href=&quot;https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&quot; class=&quot;externalLink&quot;&gt;https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&quot; href=&quot;https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&quot; class=&quot;externalLink&quot;&gt;https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&lt;/a&gt;</description>
 <category>2 Infrastructure as code</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B2%20Automation%20and%20configuration%20mgt%20-%20ansible%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:40:14 GMT</pubDate>
+<pubDate>Thu, 03 Jan 2019 21:40:00 GMT</pubDate>
 
 </item>
 <item>
@@ -165,344 +410,6 @@ drwxrwxrwx   - hive hdfs          0 2016-10-25 08:02 /apps/hive/warehouse/xademo
 <category>.hortonworks distribution</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.5%5D%5D</link>
 <pubDate>Thu, 03 Jan 2019 21:16:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hdp sandbox installation 2.6.3</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1) download the docker sandbox ', event)&quot;&gt; 1) download the docker sandbox &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2) Read - Deploying Hortonworks Sandbox on Docker', event)&quot;&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 3) Create a new directory hdp26-demo-sandbox and load the docker file ', event)&quot;&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 4) Download the script and run ', event)&quot;&gt; 4) Download the script and run &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 5) Change root and ambari admin password ', event)&quot;&gt; 5) Change root and ambari admin password &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 6) Check status of container, login, open the ambari console', event)&quot;&gt; 6) Check status of container, login, open the ambari console&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 7) other commands ', event)&quot;&gt; 7) other commands &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' AFTER INSTALLATION - HOW TO RUN', event)&quot;&gt; AFTER INSTALLATION - HOW TO RUN&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1_docker_load.sh', event)&quot;&gt; 1_docker_load.sh&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2_start_sandbox.sh', event)&quot;&gt; 2_start_sandbox.sh&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 1) download the docker sandbox &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/downloads/#sandbox&quot; href=&quot;https://hortonworks.com/downloads/#sandbox&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/downloads/#sandbox&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 2) Read - Deploying Hortonworks Sandbox on Docker&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; href=&quot;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 3) Create a new directory hdp26-demo-sandbox and load the docker file &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ls -l ../
-total 24323232
--rw-r--r--@ 1 kristofferson.a.arao  DIR\Domain Users  12453491200 Jan 18 19:21 HDP_2.6.3_docker_10_11_2017.tar
-drwxr-xr-x  6 kristofferson.a.arao  DIR\Domain Users          204 Jan 22 11:12 hdp26-demo-sandbox
-
-cd hdp26-demo-sandbox
-
-:hdp26-demo-sandbox kristofferson.a.arao$ cat 0_docker_load.sh 
-docker load &amp;lt; ../HDP_2.6.3_docker_10_11_2017.tar
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 4) Download the script and run &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; href=&quot;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&quot; class=&quot;externalLink&quot;&gt;https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sandbox-deployment-and-install-guide/assets/start_sandbox-hdp.sh&lt;/a&gt;&lt;br&gt;I edited the script to mount the current directory&lt;br&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ cat 3_star_sandbox.sh 
-#!/bin/bash
-echo &quot;Waiting for docker daemon to start up:&quot;
-until docker ps 2&amp;gt;&amp;amp;1| grep STATUS&amp;gt;/dev/null; do  sleep 1; done;  &amp;gt;/dev/null
-docker ps -a | grep sandbox-hdp
-if [ $? -eq 0 ]; then
- docker start sandbox-hdp
-else
-docker run -v `pwd`:`pwd` -v hadoop:/hadoop --name sandbox-hdp --hostname &quot;sandbox-hdp.hortonworks.com&quot; --privileged -d \
--p 15500:15500 \
--p 15501:15501 \
--p 15502:15502 \
--p 15503:15503 \
--p 15504:15504 \
--p 15505:15505 \
--p 1111:111 \
--p 4242:4242 \
--p 50079:50079 \
--p 6080:6080 \
--p 16000:16000 \
--p 16020:16020 \
--p 10502:10502 \
--p 33553:33553 \
--p 39419:39419 \
--p 15002:15002 \
--p 18080:18080 \
--p 10015:10015 \
--p 10016:10016 \
--p 2049:2049 \
--p 9090:9090 \
--p 3000:3000 \
--p 9000:9000 \
--p 8000:8000 \
--p 8020:8020 \
--p 2181:2181 \
--p 42111:42111 \
--p 10500:10500 \
--p 16030:16030 \
--p 8042:8042 \
--p 8040:8040 \
--p 2100:2100 \
--p 4200:4200 \
--p 4040:4040 \
--p 8032:8032 \
--p 9996:9996 \
--p 9995:9995 \
--p 8080:8080 \
--p 8088:8088 \
--p 8886:8886 \
--p 8889:8889 \
--p 8443:8443 \
--p 8744:8744 \
--p 8888:8888 \
--p 8188:8188 \
--p 8983:8983 \
--p 1000:1000 \
--p 1100:1100 \
--p 11000:11000 \
--p 10001:10001 \
--p 15000:15000 \
--p 10000:10000 \
--p 8993:8993 \
--p 1988:1988 \
--p 5007:5007 \
--p 50070:50070 \
--p 19888:19888 \
--p 16010:16010 \
--p 50111:50111 \
--p 50075:50075 \
--p 50095:50095 \
--p 18081:18081 \
--p 60000:60000 \
--p 8090:8090 \
--p 8091:8091 \
--p 8005:8005 \
--p 8086:8086 \
--p 8082:8082 \
--p 60080:60080 \
--p 8765:8765 \
--p 5011:5011 \
--p 6001:6001 \
--p 6003:6003 \
--p 6008:6008 \
--p 1220:1220 \
--p 21000:21000 \
--p 6188:6188 \
--p 2222:22 \
-sandbox-hdp /usr/sbin/sshd -D
-fi
-docker exec -t sandbox-hdp /bin/sh -c 'echo &quot;127.0.0.1 sandbox.hortonworks.com&quot; &amp;gt;&amp;gt; /etc/hosts'
-docker exec -t sandbox-hdp /bin/sh -c 'chown -R mysql:mysql /var/lib/mysql'
-docker exec -t sandbox-hdp service mysqld start
-docker exec -t sandbox-hdp service postgresql start
-docker exec -t sandbox-hdp ambari-server start
-docker exec -t sandbox-hdp ambari-agent start
-docker exec -t sandbox-hdp /bin/sh -c 'rm -f /usr/hdp/current/oozie-server/libext/falcon-oozie-el-extension-*'
-docker exec -t sandbox-hdp /bin/sh -c 'chown -R hdfs:hadoop /hadoop/hdfs'
-docker exec -t sandbox-hdp /etc/init.d/shellinaboxd start
-
-
-echo &quot;Waiting for ambari agent to connect&quot;
-docker exec -t sandbox-hdp /bin/sh -c ' until curl --silent -u raj_ops:raj_ops -H &quot;X-Requested-By:ambari&quot; -i -X GET  http://localhost:8080/api/v1/clusters/Sandbox/hosts/sandbox-hdp.hortonworks.com/host_components/ZOOKEEPER_SERVER | grep state | grep -v desired | grep INSTALLED; do sleep 5; echo -n .; done;'
-
-echo &quot;Waiting for ambari services to start &quot;
-docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.HDFS\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;SERVICE\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;,\&quot;service_name\&quot;:\&quot;HDFS\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services/HDFS | grep -i accept &amp;gt;/dev/null; do echo -n .; sleep 5; done;'
-
-docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.ALL_SERVICES\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;CLUSTER\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services | grep -i accept &amp;gt; /dev/null; do sleep 5; echo -n .; done; '
-
-docker exec -t sandbox-hdp /bin/sh -c 'until /usr/bin/curl --silent --user raj_ops:raj_ops -H &quot;X-Requested-By: ambari&quot; &quot;http://localhost:8080/api/v1/clusters/Sandbox/requests?to=end&amp;amp;page_size=10&amp;amp;fields=Requests&quot; | tail -n 27 | grep COMPLETED | grep COMPLETED &amp;gt; /dev/null; do echo -n .; sleep 1; done;'
-
-docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/tutorials/tutorials_app/run/run.sh &amp;amp;&amp;gt;/dev/null'
-docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/hue/tools/start_scripts/update-tutorials.sh &amp;amp;&amp;gt;/dev/null'
-docker exec -t sandbox-hdp touch /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
-docker exec -t sandbox-hdp chown oozie:hadoop /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
-docker exec -t sandbox-hdp /etc/init.d/tutorials start
-docker exec -t sandbox-hdp /etc/init.d/splash
-echo &quot;&quot;
-echo &quot;Started Hortonworks HDP container&quot;
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 5) Change root and ambari admin password &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;:hdp26-demo-sandbox kristofferson.a.arao$ ssh -p 2222 root@localhost
-root@localhost's password: 
-You are required to change your password immediately (root enforced)
-Changing password for root.
-(current) UNIX password: 
-New password: 
-Retype new password: 
-[root@sandbox-hdp ~]# 
-[root@sandbox-hdp ~]# 
-[root@sandbox-hdp ~]# 
-[root@sandbox-hdp ~]# 
-[root@sandbox-hdp ~]# ambari-admin-password-reset
-Please set the password for admin: 
-Please retype the password for admin: 
-
-The admin password has been set.
-Restarting ambari-server to make the password change effective...
-
-Using python  /usr/bin/python
-Restarting ambari-server
-Waiting for server stop...
-Ambari Server stopped
-Ambari Server running with administrator privileges.
-Organizing resource files at /var/lib/ambari-server/resources...
-Ambari database consistency check started...
-Server PID at: /var/run/ambari-server/ambari-server.pid
-Server out at: /var/log/ambari-server/ambari-server.out
-Server log at: /var/log/ambari-server/ambari-server.log
-Waiting for server start........................................
-Server started listening on 8080
-
-DB configs consistency check: no errors and warnings were found.
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 6) Check status of container, login, open the ambari console&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;docker ps -a 
-
-ssh -p 2222 root@localhost
-root/welcome1
-
--- LOGIN
-http://localhost:8888
-http://127.0.0.1:8080/#/main/dashboard/metrics
-
--- FOLLOW HOWTO
-https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#admin-password-reset
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; 7) other commands &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
-docker start &amp;lt;container id&amp;gt; 
-docker stop &amp;lt;container id&amp;gt; 
-
--- remove container 
-docker rm &amp;lt;container id&amp;gt;
-
--- remove container image
-docker rmi &amp;lt;container name&amp;gt;
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; AFTER INSTALLATION - HOW TO RUN&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; two scripts are created after installation, you DON'T have to run the 1_docker_load.sh unless you want to refresh your image. &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;cd /Users/kristofferson.a.arao/docker/hdp26-demo-sandbox
-ls
-1_docker_load.sh	2_start_sandbox.sh
-&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; 1_docker_load.sh&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;docker load &amp;lt; ../HDP_2.6.3_docker_10_11_2017.tar
-&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; 2_start_sandbox.sh&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;#!/bin/bash
-echo &quot;Waiting for docker daemon to start up:&quot;
-until docker ps 2&amp;gt;&amp;amp;1| grep STATUS&amp;gt;/dev/null; do  sleep 1; done;  &amp;gt;/dev/null
-docker ps -a | grep sandbox-hdp
-if [ $? -eq 0 ]; then
- docker start sandbox-hdp
-else
-docker run -v `pwd`:`pwd` -v hadoop:/hadoop --name sandbox-hdp --hostname &quot;sandbox-hdp.hortonworks.com&quot; --privileged -d \
--p 15500:15500 \
--p 15501:15501 \
--p 15502:15502 \
--p 15503:15503 \
--p 15504:15504 \
--p 15505:15505 \
--p 1111:111 \
--p 4242:4242 \
--p 50079:50079 \
--p 6080:6080 \
--p 16000:16000 \
--p 16020:16020 \
--p 10502:10502 \
--p 33553:33553 \
--p 39419:39419 \
--p 15002:15002 \
--p 18080:18080 \
--p 10015:10015 \
--p 10016:10016 \
--p 2049:2049 \
--p 9090:9090 \
--p 3000:3000 \
--p 9000:9000 \
--p 8000:8000 \
--p 8020:8020 \
--p 2181:2181 \
--p 42111:42111 \
--p 10500:10500 \
--p 16030:16030 \
--p 8042:8042 \
--p 8040:8040 \
--p 2100:2100 \
--p 4200:4200 \
--p 4040:4040 \
--p 8032:8032 \
--p 9996:9996 \
--p 9995:9995 \
--p 8080:8080 \
--p 8088:8088 \
--p 8886:8886 \
--p 8889:8889 \
--p 8443:8443 \
--p 8744:8744 \
--p 8888:8888 \
--p 8188:8188 \
--p 8983:8983 \
--p 1000:1000 \
--p 1100:1100 \
--p 11000:11000 \
--p 10001:10001 \
--p 15000:15000 \
--p 10000:10000 \
--p 8993:8993 \
--p 1988:1988 \
--p 5007:5007 \
--p 50070:50070 \
--p 19888:19888 \
--p 16010:16010 \
--p 50111:50111 \
--p 50075:50075 \
--p 50095:50095 \
--p 18081:18081 \
--p 60000:60000 \
--p 8090:8090 \
--p 8091:8091 \
--p 8005:8005 \
--p 8086:8086 \
--p 8082:8082 \
--p 60080:60080 \
--p 8765:8765 \
--p 5011:5011 \
--p 6001:6001 \
--p 6003:6003 \
--p 6008:6008 \
--p 1220:1220 \
--p 21000:21000 \
--p 6188:6188 \
--p 2222:22 \
-sandbox-hdp /usr/sbin/sshd -D
-fi
-docker exec -t sandbox-hdp /bin/sh -c 'echo &quot;127.0.0.1 sandbox.hortonworks.com&quot; &amp;gt;&amp;gt; /etc/hosts'
-docker exec -t sandbox-hdp /bin/sh -c 'chown -R mysql:mysql /var/lib/mysql'
-docker exec -t sandbox-hdp service mysqld start
-docker exec -t sandbox-hdp service postgresql start
-docker exec -t sandbox-hdp ambari-server start
-docker exec -t sandbox-hdp ambari-agent start
-docker exec -t sandbox-hdp /bin/sh -c 'rm -f /usr/hdp/current/oozie-server/libext/falcon-oozie-el-extension-*'
-docker exec -t sandbox-hdp /bin/sh -c 'chown -R hdfs:hadoop /hadoop/hdfs'
-docker exec -t sandbox-hdp /etc/init.d/shellinaboxd start
-
-
-echo &quot;Waiting for ambari agent to connect&quot;
-docker exec -t sandbox-hdp /bin/sh -c ' until curl --silent -u raj_ops:raj_ops -H &quot;X-Requested-By:ambari&quot; -i -X GET  http://localhost:8080/api/v1/clusters/Sandbox/hosts/sandbox-hdp.hortonworks.com/host_components/ZOOKEEPER_SERVER | grep state | grep -v desired | grep INSTALLED; do sleep 5; echo -n .; done;'
-
-echo &quot;Waiting for ambari services to start &quot;
-docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.HDFS\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;SERVICE\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;,\&quot;service_name\&quot;:\&quot;HDFS\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services/HDFS | grep -i accept &amp;gt;/dev/null; do echo -n .; sleep 5; done;'
-
-docker exec -t sandbox-hdp /bin/sh -c 'until curl --silent --user raj_ops:raj_ops -X PUT -H &quot;X-Requested-By: ambari&quot;  -d &quot;{\&quot;RequestInfo\&quot;:{\&quot;context\&quot;:\&quot;_PARSE_.START.ALL_SERVICES\&quot;,\&quot;operation_level\&quot;:{\&quot;level\&quot;:\&quot;CLUSTER\&quot;,\&quot;cluster_name\&quot;:\&quot;Sandbox\&quot;}},\&quot;Body\&quot;:{\&quot;ServiceInfo\&quot;:{\&quot;state\&quot;:\&quot;STARTED\&quot;}}}&quot; http://localhost:8080/api/v1/clusters/Sandbox/services | grep -i accept &amp;gt; /dev/null; do sleep 5; echo -n .; done; '
-
-docker exec -t sandbox-hdp /bin/sh -c 'until /usr/bin/curl --silent --user raj_ops:raj_ops -H &quot;X-Requested-By: ambari&quot; &quot;http://localhost:8080/api/v1/clusters/Sandbox/requests?to=end&amp;amp;page_size=10&amp;amp;fields=Requests&quot; | tail -n 27 | grep COMPLETED | grep COMPLETED &amp;gt; /dev/null; do echo -n .; sleep 1; done;'
-
-docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/tutorials/tutorials_app/run/run.sh &amp;amp;&amp;gt;/dev/null'
-docker exec -t sandbox-hdp su - hue -c '/bin/bash /usr/lib/hue/tools/start_scripts/update-tutorials.sh &amp;amp;&amp;gt;/dev/null'
-docker exec -t sandbox-hdp touch /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
-docker exec -t sandbox-hdp chown oozie:hadoop /usr/hdp/current/oozie-server/oozie-server/work/Catalina/localhost/oozie/SESSIONS.ser
-docker exec -t sandbox-hdp /etc/init.d/tutorials start
-docker exec -t sandbox-hdp /etc/init.d/splash
-echo &quot;&quot;
-echo &quot;Started Hortonworks HDP container&quot;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>.hortonworks distribution</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20sandbox%20installation%202.6.3%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:16:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hdp on cloud install</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&quot; href=&quot;https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=install+hortonworks+digitalocean&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hadoop Series - Part1 Multinode Hadoop Cluster Installation using Ambari &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=wHaVBoLwzwU&quot; href=&quot;https://www.youtube.com/watch?v=wHaVBoLwzwU&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=wHaVBoLwzwU&lt;/a&gt;&lt;br&gt;Hadoop Series - Part2 How to Add Node To Existing Hadoop Cluster &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=jiCI4yIkUlc&quot; href=&quot;https://www.youtube.com/watch?v=jiCI4yIkUlc&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=jiCI4yIkUlc&lt;/a&gt;&lt;br&gt;Hadoop Series - Part3 Adding a node to existing hadoop cluster &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=kpZ8tzqzJmg&quot; href=&quot;https://www.youtube.com/watch?v=kpZ8tzqzJmg&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=kpZ8tzqzJmg&lt;/a&gt;&lt;br&gt;Hadoop Series - Part4 HDP upgrade &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=GRgZurCvmMY&quot; href=&quot;https://www.youtube.com/watch?v=GRgZurCvmMY&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=GRgZurCvmMY&lt;/a&gt;</description>
-<category>.hortonworks distribution</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20on%20cloud%20install%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:14:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hadoop azure</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&quot; href=&quot;https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/blog/easy-steps-to-create-hadoop-cluster-on-microsoft-azure/&lt;/a&gt;</description>
-<category>.hortonworks distribution</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20azure%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:13:00 GMT</pubDate>
-
-</item>
-<item>
-<title>spark hadoop development env</title>
-<description>mac hadoop development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=mac+hadoop+development&amp;amp;oq=mac+hadoop+development&amp;amp;aqs=chrome..69i57.3868j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; href=&quot;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@jeremytarling/apache-spark-and-hadoop-on-a-macbook-air-running-osx-sierra-66bfbdb0b6f7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; href=&quot;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/articles/36832/setting-hadoop-development-environment-on-mac-os-x.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; href=&quot;http://hadoopsie.com/mac-setup-for-hadoop-dev/&quot; class=&quot;externalLink&quot;&gt;http://hadoopsie.com/mac-setup-for-hadoop-dev/&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hadoop Map Reduce Programming 101 - 04 Setup Eclipse For Map Reduce Development &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; href=&quot;https://www.youtube.com/watch?v=mRIsLSrHOj4&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=mRIsLSrHOj4&lt;/a&gt;&lt;br&gt;Setup Spark Development Environment on Windows - Introduction &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=Z7JXDg5jltQ&amp;amp;list=PLf0swTFhTI8oy5U0C5GwWR88zb8WKgqK2&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; href=&quot;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=development&lt;/a&gt;&lt;br&gt;Introduction - Setup Python, Pycharm and Spark on Windows &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; href=&quot;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=aUN5xnkmcmY&amp;amp;list=PLf0swTFhTI8pYbd8mr36LiYIOOY2xw5Iu&amp;amp;index=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; href=&quot;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&quot; class=&quot;externalLink&quot;&gt;https://www.supergloo.com/fieldnotes/intellij-scala-spark/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; href=&quot;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&quot; class=&quot;externalLink&quot;&gt;https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; href=&quot;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&quot; class=&quot;externalLink&quot;&gt;https://medium.com/@mrpowers/creating-a-spark-project-with-sbt-intellij-sbt-spark-package-and-friends-cc9108751c28&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>.hortonworks distribution</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bspark%20hadoop%20development%20env%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:11:00 GMT</pubDate>
 
 </item>
 </channel>
