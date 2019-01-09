@@ -6,13 +6,360 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2019 YourName</copyright>
-<pubDate>Wed, 09 Jan 2019 08:09:20 GMT</pubDate>
-<lastBuildDate>Wed, 09 Jan 2019 08:09:20 GMT</lastBuildDate>
+<pubDate>Wed, 09 Jan 2019 18:23:04 GMT</pubDate>
+<lastBuildDate>Wed, 09 Jan 2019 18:23:04 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>hive on ranger</title>
+<description>&lt;br&gt;&lt;br&gt;&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' enable &quot; run=&quot;&quot; as=&quot;&quot; end=&quot;&quot; user&quot;,=&quot;&quot; restart=&quot;&quot; affected=&quot;&quot; services=&quot;&quot; ',=&quot;&quot; event)&quot;=&quot;&quot;&gt; enable &quot;run as end user&quot;, restart affected services &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' default hive behavior on ranger', event)&quot;&gt; default hive behavior on ranger&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' to get hive user to access hive, it must be added to principal ', event)&quot;&gt; to get hive user to access hive, it must be added to principal &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' root will not have hive access ', event)&quot;&gt; root will not have hive access &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other users will not have hive resources access even if they can manage to login ', event)&quot;&gt; other users will not have hive resources access even if they can manage to login &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' login on ranger admin and create new policy for vagrant user ', event)&quot;&gt; login on ranger admin and create new policy for vagrant user &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' vagrant user can only access the vagrant database and not others ', event)&quot;&gt; vagrant user can only access the vagrant database and not others &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' but hive user will have access to vagrant database, because it has more privileges but you can lockout the hive user through policies and kerberos', event)&quot;&gt; but hive user will have access to vagrant database, because it has more privileges but you can lockout the hive user through policies and kerberos&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; enable &quot;run as end user&quot;, restart affected services &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;https://i.imgur.com/Rjl9fR2.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/nfIOikx.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; default hive behavior on ranger&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; to get hive user to access hive, it must be added to principal &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;[root@node2 ~]# kadmin.local -q &quot;addprinc hive&quot;
+Authenticating as principal admin/admin@EXAMPLE.COM with password.
+WARNING: no policy specified for hive@EXAMPLE.COM; defaulting to no policy
+Enter password for principal &quot;hive@EXAMPLE.COM&quot;: 
+Re-enter password for principal &quot;hive@EXAMPLE.COM&quot;: 
+Principal &quot;hive@EXAMPLE.COM&quot; created.
+[root@node2 ~]# 
+[root@node2 ~]# 
+[root@node2 ~]# sudo su - hive
+Last login: Wed Jan  9 17:35:14 UTC 2019 on pts/0
+[hive@node2 ~]$ 
+[hive@node2 ~]$ 
+[hive@node2 ~]$ kinit
+Password for hive@EXAMPLE.COM: 
+[hive@node2 ~]$ 
+[hive@node2 ~]$ 
+[hive@node2 ~]$ 
+[hive@node2 ~]$ hive
+log4j:WARN No such property [maxFileSize] in org.apache.log4j.DailyRollingFileAppender.
+
+Logging initialized using configuration in file:/etc/hive/2.6.5.1050-37/0/hive-log4j.properties
+hive&amp;gt; 
+    &amp;gt; 
+    &amp;gt; show databases;
+OK
+default
+hr
+Time taken: 2.279 seconds, Fetched: 2 row(s)
+hive&amp;gt; 
+    &amp;gt; 
+    &amp;gt; create table test (id int);
+OK
+Time taken: 2.852 seconds
+hive&amp;gt; 
+    &amp;gt; select * from test;
+OK
+Time taken: 0.814 seconds
+hive&amp;gt; 
+
+
+[hive@node2 scripts]$ cat beeline_withkrb2.sh 
+#!/bin/bash
+# beeline with kerberos
+HADOOP_OPTS=&quot;-Djavax.security.auth.useSubjectCredsOnly=false&quot; beeline -u 'jdbc:hive2://localhost:10000/default;principal=hive/node2.example.com@EXAMPLE.COM;auth=kerberos'
+[hive@node2 scripts]$ 
+[hive@node2 scripts]$ ./beeline_withkrb2.sh 
+Connecting to jdbc:hive2://localhost:10000/default;principal=hive/node2.example.com@EXAMPLE.COM;auth=kerberos
+Connected to: Apache Hive (version 1.2.1000.2.6.5.1050-37)
+Driver: Hive JDBC (version 1.2.1000.2.6.5.1050-37)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 1.2.1000.2.6.5.1050-37 by Apache Hive
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; show databases;
++----------------+--+
+| database_name  |
++----------------+--+
+| default        |
+| hr             |
++----------------+--+
+2 rows selected (1.413 seconds)
+0: jdbc:hive2://localhost:10000/default&amp;gt; ^C^C[hive@node2 scripts]$ 
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; root will not have hive access &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;[root@node2 ~]# hive
+log4j:WARN No such property [maxFileSize] in org.apache.log4j.DailyRollingFileAppender.
+
+Logging initialized using configuration in file:/etc/hive/2.6.5.1050-37/0/hive-log4j.properties
+Exception in thread &quot;main&quot; java.lang.RuntimeException: org.apache.tez.dag.api.SessionNotRunning: TezSession has already shutdown. Application application_1547023808827_0003 failed 2 times due to AM Container for appattempt_1547023808827_0003_000002 exited with  exitCode: -1000
+For more detailed output, check the application tracking page: http://node2.example.com:8088/cluster/app/application_1547023808827_0003 Then click on links to logs of each attempt.
+Diagnostics: Application application_1547023808827_0003 initialization failed (exitCode=255) with output: main : command provided 0
+main : run as user is admin
+main : requested yarn user is admin
+User admin not found
+
+Failing this attempt. Failing the application.
+	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:582)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:681)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:625)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:233)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:148)
+Caused by: org.apache.tez.dag.api.SessionNotRunning: TezSession has already shutdown. Application application_1547023808827_0003 failed 2 times due to AM Container for appattempt_1547023808827_0003_000002 exited with  exitCode: -1000
+For more detailed output, check the application tracking page: http://node2.example.com:8088/cluster/app/application_1547023808827_0003 Then click on links to logs of each attempt.
+Diagnostics: Application application_1547023808827_0003 initialization failed (exitCode=255) with output: main : command provided 0
+main : run as user is admin
+main : requested yarn user is admin
+User admin not found
+
+Failing this attempt. Failing the application.
+	at org.apache.tez.client.TezClient.waitTillReady(TezClient.java:699)
+	at org.apache.hadoop.hive.ql.exec.tez.TezSessionState.open(TezSessionState.java:218)
+	at org.apache.hadoop.hive.ql.exec.tez.TezSessionState.open(TezSessionState.java:116)
+	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:579)
+	... 8 more
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; other users will not have hive resources access even if they can manage to login &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;[root@node2 scripts]# cat beeline_withkrb.sh 
+#!/bin/bash
+# beeline with kerberos
+HADOOP_OPTS=&quot;-Djavax.security.auth.useSubjectCredsOnly=false&quot; beeline -u 'jdbc:hive2://localhost:10000/default;principal=hive/node2.example.com@EXAMPLE.COM;auth=kerberos vagrant dummy'
+
+
+[vagrant@node2 scripts]$ ./beeline_withkrb.sh 
+Connecting to jdbc:hive2://localhost:10000/default;principal=hive/node2.example.com@EXAMPLE.COM;auth=kerberos
+Connected to: Apache Hive (version 1.2.1000.2.6.5.1050-37)
+Driver: Hive JDBC (version 1.2.1000.2.6.5.1050-37)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 1.2.1000.2.6.5.1050-37 by Apache Hive
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; show databases;
+Error: Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [vagrant] does not have [USE] privilege on [Unknown resource!!] (state=42000,code=40000)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; create table test (id int);
+Error: Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [vagrant] does not have [CREATE] privilege on [default/test] (state=42000,code=40000)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; [vagrant@node2 scripts]$ ^C
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; login on ranger admin and create new policy for vagrant user &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; above show that vagrant can't access any hive resources&lt;/li&gt;&lt;li&gt; below creates a policy so that the vagrant user can have access only on vagrant database &lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/ILAy3K1.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/0dJMRVs.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/o7ZBgPb.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/kMGyFjY.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; vagrant user can only access the vagrant database and not others &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;
+[vagrant@node2 ~]$ klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: vagrant@EXAMPLE.COM
+
+Valid starting       Expires              Service principal
+01/09/2019 01:43:51  01/10/2019 01:43:51  krbtgt/EXAMPLE.COM@EXAMPLE.COM
+[vagrant@node2 ~]$ 
+[vagrant@node2 ~]$ 
+[vagrant@node2 ~]$ 
+[vagrant@node2 ~]$ cd /vagrant/scripts/
+[vagrant@node2 scripts]$ ./beeline_withkrb.sh 
+Connecting to jdbc:hive2://localhost:10000/default;principal=hive/node2.example.com@EXAMPLE.COM;auth=kerberos
+Connected to: Apache Hive (version 1.2.1000.2.6.5.1050-37)
+Driver: Hive JDBC (version 1.2.1000.2.6.5.1050-37)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Beeline version 1.2.1000.2.6.5.1050-37 by Apache Hive
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; show databases;
++----------------+--+
+| database_name  |
++----------------+--+
++----------------+--+
+No rows selected (0.615 seconds)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; use hr;
+Error: Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [vagrant] does not have [USE] privilege on [hr] (state=42000,code=40000)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; create database vagrant;
+No rows affected (1.756 seconds)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; show databases;
++----------------+--+
+| database_name  |
++----------------+--+
+| vagrant        |
++----------------+--+
+1 row selected (1.185 seconds)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; use vagrant;
+No rows affected (1.537 seconds)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; create table test (id int);
+No rows affected (1.028 seconds)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; select * from test;
++----------+--+
+| test.id  |
++----------+--+
++----------+--+
+No rows selected (0.804 seconds)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+0: jdbc:hive2://localhost:10000/default&amp;gt; create database vagrant2;
+Error: Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [vagrant] does not have [CREATE] privilege on [vagrant2] (state=42000,code=40000)
+0: jdbc:hive2://localhost:10000/default&amp;gt; 
+
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; but hive user will have access to vagrant database, because it has more privileges but you can lockout the hive user through policies and kerberos&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;[hive@node1 ~]$ kinit
+Password for hive@EXAMPLE.COM: 
+[hive@node1 ~]$ 
+[hive@node1 ~]$ 
+[hive@node1 ~]$ hive
+log4j:WARN No such property [maxFileSize] in org.apache.log4j.DailyRollingFileAppender.
+
+Logging initialized using configuration in file:/etc/hive/2.6.5.1050-37/0/hive-log4j.properties
+hive&amp;gt; 
+    &amp;gt; 
+    &amp;gt; 
+    &amp;gt; show databases;
+OK
+default
+hr
+vagrant
+Time taken: 2.56 seconds, Fetched: 3 row(s)
+hive&amp;gt; 
+    &amp;gt; 
+    &amp;gt; 
+    &amp;gt; use vagrant;
+OK
+Time taken: 1.876 seconds
+hive&amp;gt; 
+    &amp;gt; 
+    &amp;gt; 
+    &amp;gt; show tables;
+OK
+test
+Time taken: 0.492 seconds, Fetched: 1 row(s)
+hive&amp;gt; 
+    &amp;gt; 
+    &amp;gt; select * from test;
+OK
+Time taken: 1.141 seconds
+hive&amp;gt; 
+    &amp;gt; 
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>03 (authorization) hadoop configure ranger</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhive%20on%20ranger%5D%5D</link>
+<pubDate>Wed, 09 Jan 2019 18:22:57 GMT</pubDate>
+
+</item>
+<item>
+<title>01 (authentication) hadoop configure kerberos</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' install software on node2', event)&quot;&gt; install software on node2&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test login ', event)&quot;&gt; test login &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' configure kerberos in ambari ', event)&quot;&gt; configure kerberos in ambari &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test kerberos from hdfs ', event)&quot;&gt; test kerberos from hdfs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' from KDC host, add principal on other users ', event)&quot;&gt; from KDC host, add principal on other users &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test new user principal ', event)&quot;&gt; test new user principal &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' list principals ', event)&quot;&gt; list principals &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references ', event)&quot;&gt; other references &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; install software on node2&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[root@node2 scripts]# ./install_krb5.sh
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; test login &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[root@node2 scripts]# kinit admin/admin
+Password for admin/admin@EXAMPLE.COM: 
+[root@node2 scripts]# 
+[root@node2 scripts]# klist
+Ticket cache: KEYRING:persistent:0:0
+Default principal: admin/admin@EXAMPLE.COM
+
+Valid starting       Expires              Service principal
+01/08/2019 17:47:41  01/09/2019 17:47:41  krbtgt/EXAMPLE.COM@EXAMPLE.COM
+[root@node2 scripts]# 
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; configure kerberos in ambari &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;https://i.imgur.com/GTkXrtL.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/u4opvr0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/VbQmRUQ.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/oHHdXC1.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/MlbhMgw.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/7i7JRTT.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/o7RhsLh.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/yx6ORX2.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; restart ambari server&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/dBtX7my.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; manually restart other services &lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/GiWRr6d.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test kerberos from hdfs &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; it errors because only admin user is configured or have credentials &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;
+[vagrant@node1 data]$ hadoop fs -ls
+19/01/08 18:15:59 WARN ipc.Client: Exception encountered while connecting to the server : javax.security.sasl.SaslException: GSS initiate failed [Caused by GSSException: No valid credentials provided (Mechanism level: Failed to find any Kerberos tgt)]
+ls: Failed on local exception: java.io.IOException: javax.security.sasl.SaslException: GSS initiate failed [Caused by GSSException: No valid credentials provided (Mechanism level: Failed to find any Kerberos tgt)]; Host Details : local host is: &quot;node1.example.com/192.168.199.2&quot;; destination host is: &quot;node1.example.com&quot;:8020; 
+
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; from KDC host, add principal on other users &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; kerberos can be linked to an existing active directory through TRUST (needs to be configured), so users will automatically be recognized &lt;/li&gt;&lt;li&gt; here we are adding the vagrant user to the principal &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;
+-- summary commands 
+sudo su - 
+klist
+kinit admin/admin
+kadmin.local -q &quot;addprinc vagrant&quot;
+
+
+-- detail 
+[root@node2 scripts]# klist
+klist: No credentials cache found (filename: /tmp/krb5cc_0)
+[root@node2 scripts]# 
+[root@node2 scripts]# 
+[root@node2 scripts]# kinit admin/admin
+Password for admin/admin@EXAMPLE.COM: 
+[root@node2 scripts]# 
+[root@node2 scripts]# 
+[root@node2 scripts]# klist
+Ticket cache: FILE:/tmp/krb5cc_0
+Default principal: admin/admin@EXAMPLE.COM
+
+Valid starting       Expires              Service principal
+01/08/2019 18:34:19  01/09/2019 18:34:19  krbtgt/EXAMPLE.COM@EXAMPLE.COM
+[root@node2 scripts]# 
+[root@node2 scripts]# 
+[root@node2 scripts]# kadmin.local -q &quot;addprinc vagrant&quot;
+Authenticating as principal admin/admin@EXAMPLE.COM with password.
+WARNING: no policy specified for vagrant@EXAMPLE.COM; defaulting to no policy
+Enter password for principal &quot;vagrant@EXAMPLE.COM&quot;: &amp;lt;USE THE VAGRANT USER PASSWORD&amp;gt;
+Re-enter password for principal &quot;vagrant@EXAMPLE.COM&quot;: &amp;lt;USE THE VAGRANT USER PASSWORD&amp;gt;
+Principal &quot;vagrant@EXAMPLE.COM&quot; created.
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test new user principal &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[vagrant@node1 ~]$ kinit
+Password for vagrant@EXAMPLE.COM: 
+[vagrant@node1 ~]$ 
+[vagrant@node1 ~]$ klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: vagrant@EXAMPLE.COM
+
+Valid starting       Expires              Service principal
+01/08/2019 18:35:52  01/09/2019 18:35:52  krbtgt/EXAMPLE.COM@EXAMPLE.COM
+[vagrant@node1 ~]$ 
+[vagrant@node1 ~]$ hadoop fs -ls
+Found 3 items
+-rw-r--r--   3 vagrant vagrant   16257213 2019-01-08 06:27 salaries.csv
+-rw-r--r--   3 vagrant vagrant   16257213 2019-01-08 06:31 salaries2.csv
+drwxr-xr-x   - vagrant vagrant          0 2019-01-08 06:58 test
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; list principals &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;kadmin.local -q &quot;list_principals&quot;
+
+[root@node2 scripts]# kadmin.local -q &quot;list_principals&quot;
+Authenticating as principal admin/admin@EXAMPLE.COM with password.
+HTTP/node1.example.com@EXAMPLE.COM
+HTTP/node2.example.com@EXAMPLE.COM
+HTTP/node3.example.com@EXAMPLE.COM
+K/M@EXAMPLE.COM
+activity_analyzer/node1.example.com@EXAMPLE.COM
+activity_explorer/node1.example.com@EXAMPLE.COM
+admin/admin@EXAMPLE.COM
+ambari-qa-hadoop@EXAMPLE.COM
+ambari-server-hadoop@EXAMPLE.COM
+amshbase/node1.example.com@EXAMPLE.COM
+amszk/node1.example.com@EXAMPLE.COM
+dn/node1.example.com@EXAMPLE.COM
+dn/node2.example.com@EXAMPLE.COM
+dn/node3.example.com@EXAMPLE.COM
+hdfs-hadoop@EXAMPLE.COM
+hive/node1.example.com@EXAMPLE.COM
+hive/node2.example.com@EXAMPLE.COM
+hive/node3.example.com@EXAMPLE.COM
+jhs/node2.example.com@EXAMPLE.COM
+kadmin/admin@EXAMPLE.COM
+kadmin/changepw@EXAMPLE.COM
+kadmin/node2.example.com@EXAMPLE.COM
+keyadmin@EXAMPLE.COM
+kiprop/node2.example.com@EXAMPLE.COM
+krbtgt/EXAMPLE.COM@EXAMPLE.COM
+nm/node1.example.com@EXAMPLE.COM
+nm/node2.example.com@EXAMPLE.COM
+nm/node3.example.com@EXAMPLE.COM
+nn/node1.example.com@EXAMPLE.COM
+nn/node2.example.com@EXAMPLE.COM
+nn@EXAMPLE.COM
+ranger@EXAMPLE.COM
+rangeradmin/node2.example.com@EXAMPLE.COM
+rangerlookup/node2.example.com@EXAMPLE.COM
+rangertagsync/node1.example.com@EXAMPLE.COM
+rangertagsync/node2.example.com@EXAMPLE.COM
+rangerusersync/node2.example.com@EXAMPLE.COM
+rm/node2.example.com@EXAMPLE.COM
+vagrant@EXAMPLE.COM
+yarn/node2.example.com@EXAMPLE.COM
+zookeeper/node1.example.com@EXAMPLE.COM
+zookeeper/node2.example.com@EXAMPLE.COM
+zookeeper/node3.example.com@EXAMPLE.COM
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other references &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.pivotal.io/s/article/Kerberos-Cheat-Sheet&quot; href=&quot;https://community.pivotal.io/s/article/Kerberos-Cheat-Sheet&quot; class=&quot;externalLink&quot;&gt;https://community.pivotal.io/s/article/Kerberos-Cheat-Sheet&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>hdp security</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B01%20(authentication)%20hadoop%20configure%20kerberos%5D%5D</link>
+<pubDate>Wed, 09 Jan 2019 17:04:56 GMT</pubDate>
+
+</item>
+<item>
+<title>04 (encryption) hadoop configure encryption, Ranger KMS</title>
+<description>Ranger KMS (Key Management System)</description>
+<category>hdp security</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B04%20(encryption)%20hadoop%20configure%20encryption%2C%20Ranger%20KMS%5D%5D</link>
+<pubDate>Wed, 09 Jan 2019 16:30:38 GMT</pubDate>
+
+</item>
+<item>
 <title>03 (authorization) hadoop configure ranger</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' architecture ', event)&quot;&gt; architecture &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' installation ', event)&quot;&gt; installation &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' errors ', event)&quot;&gt; errors &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ranger admin process is failing with connection failed ', event)&quot;&gt; ranger admin process is failing with connection failed &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' troubleshooting and fix', event)&quot;&gt; troubleshooting and fix&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references ', event)&quot;&gt; other references &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; architecture &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;https://i.imgur.com/W50LYmu.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/vmGmoYO.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; installation &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; On node1 ambari server, configure the connector &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;yum -y install mysql-connector-java
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' architecture ', event)&quot;&gt; architecture &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' installation ', event)&quot;&gt; installation &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' install plugins ', event)&quot;&gt; install plugins &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' errors ', event)&quot;&gt; errors &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ranger admin process is failing with connection failed ', event)&quot;&gt; ranger admin process is failing with connection failed &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' troubleshooting and fix', event)&quot;&gt; troubleshooting and fix&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references ', event)&quot;&gt; other references &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; architecture &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;https://i.imgur.com/W50LYmu.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/vmGmoYO.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; installation &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; On node1 ambari server, configure the connector &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;yum -y install mysql-connector-java
 ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
 &lt;/pre&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; On ambari, add service &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/VAyNRPj.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; On node2, Configure mysql root account /usr/bin/mysql_secure_installation&lt;/li&gt;&lt;li&gt; Keep in mind the Disallow root login remotely (answer should be n)&lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;[root@node2 scripts]# /usr/bin/mysql_secure_installation 
 
@@ -129,7 +476,7 @@ WARNING: no policy specified for ranger@EXAMPLE.COM; defaulting to no policy
 Enter password for principal &quot;ranger@EXAMPLE.COM&quot;: 
 Re-enter password for principal &quot;ranger@EXAMPLE.COM&quot;: 
 Principal &quot;ranger@EXAMPLE.COM&quot; created.
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/KOWWdq0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; All Ranger components, KDC host, and mysql are on node2. The ambari-server is on node1&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/K4q5JGG.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/ZS98uJV.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/1vaHE8X.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/Ft6otqX.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Plugins will be installed after Ranger installation&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/qYZBkZX.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Uncheck previously configured properties, Click OK&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/9WX7NtI.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/94XHb8O.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/gvlLrPg.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/TEL3NTo.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/anjL7Pb.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/eW8REAC.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Go to &lt;a target=&quot;_blank&quot; title=&quot;External link to http://192.168.199.3:6080&quot; href=&quot;http://192.168.199.3:6080&quot; class=&quot;externalLink&quot;&gt;http://192.168.199.3:6080&lt;/a&gt; , then login as admin/admin&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/5dp5nUb.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/ycJQYPL.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; errors &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; ranger admin process is failing with connection failed &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/KOWWdq0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; All Ranger components, KDC host, and mysql are on node2. The ambari-server is on node1&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/K4q5JGG.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/ZS98uJV.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/1vaHE8X.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/Ft6otqX.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Plugins will be installed after Ranger installation&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/qYZBkZX.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Uncheck previously configured properties, Click OK&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/9WX7NtI.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/94XHb8O.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/gvlLrPg.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/TEL3NTo.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/anjL7Pb.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/eW8REAC.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Go to &lt;a target=&quot;_blank&quot; title=&quot;External link to http://192.168.199.3:6080&quot; href=&quot;http://192.168.199.3:6080&quot; class=&quot;externalLink&quot;&gt;http://192.168.199.3:6080&lt;/a&gt; , then login as admin/admin&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/5dp5nUb.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 50%; height: 50%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/ycJQYPL.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; install plugins &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Go to Ranger - Configs - Ranger Plugin, Select HDFS and Hive plugins and click Save&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/8n22vUY.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Click OK&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/DoR5lOF.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/spaodiJ.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Stop and Start all services&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/ccTY5GM.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/cY2AKHn.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 40%; height: 40%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/WINcwWk.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; errors &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; ranger admin process is failing with connection failed &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;
         Connection failed to http://node2.example.com:6080/login.jsp 
         (Execution of 'curl --location-trusted -k --negotiate -u : -b /var/lib/ambari-agent/tmp/cookies/70a1480a-b71c-4152-815d-8a171bd0b85e 
         -c /var/lib/ambari-agent/tmp/cookies/70a1480a-b71c-4152-815d-8a171bd0b85e -w '%{http_code}' http://node2.example.com:6080/login.jsp 
@@ -170,25 +517,9 @@ swapon -a
 Mem:           3.7G        3.3G        222M        9.9M        215M        190M
 Swap:          5.0G        2.0G        3.0G
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other references &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Hadoop Certification - HDPCA - Install and Configure Ranger &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=2zeVvnw_bZs&amp;amp;t=1s&quot; href=&quot;https://www.youtube.com/watch?v=2zeVvnw_bZs&amp;amp;t=1s&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=2zeVvnw_bZs&amp;amp;t=1s&lt;/a&gt; &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
-<category>hadoop security</category>
+<category>hdp security</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B03%20(authorization)%20hadoop%20configure%20ranger%5D%5D</link>
-<pubDate>Wed, 09 Jan 2019 08:09:15 GMT</pubDate>
-
-</item>
-<item>
-<title>04 (encryption) hadoop configure encryption, Ranger KMS</title>
-<description>&lt;br&gt;Ranger KMS (Key Management System)</description>
-<category>hadoop security</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B04%20(encryption)%20hadoop%20configure%20encryption%2C%20Ranger%20KMS%5D%5D</link>
-<pubDate>Tue, 08 Jan 2019 21:38:00 GMT</pubDate>
-
-</item>
-<item>
-<title>apache sentry vs ranger vs knox</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=apache+sentry+vs+ranger+vs+knox&amp;amp;oq=apache+sentry+vs&amp;amp;aqs=chrome.2.69i57j0l4.4925j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=apache+sentry+vs+ranger+vs+knox&amp;amp;oq=apache+sentry+vs&amp;amp;aqs=chrome.2.69i57j0l4.4925j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=apache+sentry+vs+ranger+vs+knox&amp;amp;oq=apache+sentry+vs&amp;amp;aqs=chrome.2.69i57j0l4.4925j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.xplenty.com/blog/5-hadoop-security-projects/&quot; href=&quot;https://www.xplenty.com/blog/5-hadoop-security-projects/&quot; class=&quot;externalLink&quot;&gt;https://www.xplenty.com/blog/5-hadoop-security-projects/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/72341/whats-the-difference-between-ranger-and-knox.html&quot; href=&quot;https://community.hortonworks.com/questions/72341/whats-the-difference-between-ranger-and-knox.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/72341/whats-the-difference-between-ranger-and-knox.html&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;Keeping the jargon aside -&lt;br&gt;&lt;br&gt;&lt;strong&gt;Ranger&lt;/strong&gt; is used for deciding who can access what resources on a Hadoop cluster with the help of policies (there is more to this but this is in the most basic terms).&lt;br&gt;&lt;br&gt;&lt;strong&gt;Knox&lt;/strong&gt; can be imagined as the gatekeeper which decides whether to allow user access to Hadoop cluster or not.&lt;br&gt;More complete definitions:&lt;br&gt;&lt;br&gt;Ranger is an authorization system which allows / denies access to Hadoop cluster resources (HDFS files, Hive tables etc.) based on pre-defined Ranger policies. When user request comes to Ranger, it is assumed to be authenticated already.&lt;br&gt;&lt;br&gt;Knox is a REST API based perimeter security gateway system which 'authenticates' user credentials (mostly against AD/LDAP). Only the successfully authenticated user are allowed access to Hadoop cluster. Knox also provides a layer of abstraction to the underneath Hadoop services i.e. all endpoints are accessed via Knox gateway URL.&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/39326456/how-to-choose-between-apache-ranger-and-sentry&quot; href=&quot;https://stackoverflow.com/questions/39326456/how-to-choose-between-apache-ranger-and-sentry&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/39326456/how-to-choose-between-apache-ranger-and-sentry&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/105721/is-ranger-is-the-right-approach-for-hive-securityw.html&quot; href=&quot;https://community.hortonworks.com/questions/105721/is-ranger-is-the-right-approach-for-hive-securityw.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/105721/is-ranger-is-the-right-approach-for-hive-securityw.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://ranger.apache.org/faq.html#How_does_Apache_Ranger_authorization_compare_to_SQL_standard_authorization&quot; href=&quot;http://ranger.apache.org/faq.html#How_does_Apache_Ranger_authorization_compare_to_SQL_standard_authorization&quot; class=&quot;externalLink&quot;&gt;http://ranger.apache.org/faq.html#How_does_Apache_Ranger_authorization_compare_to_SQL_standard_authorization&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;You can use Sentry or Ranger depends upon what hadoop distribution tool that you are using like Cloudera or Hortonworks.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Apache Sentry&lt;/strong&gt; - Owned by Cloudera. Supports HDFS, Hive, Solr and Impala. (Ranger will not support Impala)&lt;br&gt;&lt;br&gt;&lt;strong&gt;Apache Ranger&lt;/strong&gt; - Owned by Hortonworks. Apache Ranger offers a centralized security framework to manage fine-grained access control across: HDFS, Hive, &lt;a tiddlylink=&quot;HBase&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HBase&quot; href=&quot;http://karlarao.tiddlyspot.com#HBase&quot; class=&quot;externalLink null&quot;&gt;HBase&lt;/a&gt;, Storm, Knox, Solr, Kafka, and YARN&lt;br&gt;&lt;br&gt;Apache Ranger overlaps with Apache Sentry since it also deals with authorization and permissions. It adds an authorization layer to Hive, &lt;a tiddlylink=&quot;HBase&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HBase&quot; href=&quot;http://karlarao.tiddlyspot.com#HBase&quot; class=&quot;externalLink null&quot;&gt;HBase&lt;/a&gt;, and Knox. Both Sentry and Ranger support column-level permissions in Hive (startig from 1.5 release).&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; howto configure &lt;/h1&gt;ranger, knox &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=ranger&quot; href=&quot;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=ranger&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=ranger&lt;/a&gt;&lt;br&gt;Hadoop Day To Day Operations - Manage Ambari - Groups, users and permissions &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=v3LiS2tJXE4&quot; href=&quot;https://www.youtube.com/watch?v=v3LiS2tJXE4&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=v3LiS2tJXE4&lt;/a&gt;&lt;br&gt;</description>
-<category>hadoop security</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bapache%20sentry%20vs%20ranger%20vs%20knox%5D%5D</link>
-<pubDate>Tue, 08 Jan 2019 20:23:00 GMT</pubDate>
+<pubDate>Wed, 09 Jan 2019 16:29:42 GMT</pubDate>
 
 </item>
 <item>
@@ -363,81 +694,25 @@ Swap:          5.0G        2.0G        3.0G
 * Closing connection 0
 
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Knox &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; another way of securing authentication is through knox to act as a gateway, see &lt;a tiddlylink=&quot;apache sentry vs ranger vs knox&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#apache sentry vs ranger vs knox&quot; href=&quot;http://karlarao.tiddlyspot.com#apache%20sentry%20vs%20ranger%20vs%20knox&quot; class=&quot;externalLink null&quot;&gt;apache sentry vs ranger vs knox&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/5TdfGUh.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/BPUJVlB.jpg&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>hadoop security</category>
+<category>hdp security</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B02%20(secure%20REST%20APIs%20%2F%20Web%20UIs)%20hadoop%20configure%20SPNEGO%2C%20Knox%5D%5D</link>
-<pubDate>Tue, 08 Jan 2019 20:10:00 GMT</pubDate>
+<pubDate>Wed, 09 Jan 2019 16:29:14 GMT</pubDate>
 
 </item>
 <item>
-<title>01 (authentication) hadoop configure kerberos</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' install software on node2', event)&quot;&gt; install software on node2&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test login ', event)&quot;&gt; test login &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' configure kerberos in ambari ', event)&quot;&gt; configure kerberos in ambari &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test kerberos from hdfs ', event)&quot;&gt; test kerberos from hdfs &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' from KDC host, add principal on other users ', event)&quot;&gt; from KDC host, add principal on other users &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' test new user principal ', event)&quot;&gt; test new user principal &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; install software on node2&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[root@node2 scripts]# ./install_krb5.sh
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; test login &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[root@node2 scripts]# kinit admin/admin
-Password for admin/admin@EXAMPLE.COM: 
-[root@node2 scripts]# 
-[root@node2 scripts]# klist
-Ticket cache: KEYRING:persistent:0:0
-Default principal: admin/admin@EXAMPLE.COM
-
-Valid starting       Expires              Service principal
-01/08/2019 17:47:41  01/09/2019 17:47:41  krbtgt/EXAMPLE.COM@EXAMPLE.COM
-[root@node2 scripts]# 
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; configure kerberos in ambari &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;https://i.imgur.com/GTkXrtL.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/u4opvr0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/VbQmRUQ.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/oHHdXC1.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/MlbhMgw.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/7i7JRTT.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/o7RhsLh.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/yx6ORX2.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; restart ambari server&lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/dBtX7my.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; manually restart other services &lt;/li&gt;&lt;/ul&gt;&lt;img src=&quot;https://i.imgur.com/GiWRr6d.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test kerberos from hdfs &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; it errors because only admin user is configured or have credentials &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;
-[vagrant@node1 data]$ hadoop fs -ls
-19/01/08 18:15:59 WARN ipc.Client: Exception encountered while connecting to the server : javax.security.sasl.SaslException: GSS initiate failed [Caused by GSSException: No valid credentials provided (Mechanism level: Failed to find any Kerberos tgt)]
-ls: Failed on local exception: java.io.IOException: javax.security.sasl.SaslException: GSS initiate failed [Caused by GSSException: No valid credentials provided (Mechanism level: Failed to find any Kerberos tgt)]; Host Details : local host is: &quot;node1.example.com/192.168.199.2&quot;; destination host is: &quot;node1.example.com&quot;:8020; 
-
-&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; from KDC host, add principal on other users &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; kerberos can be linked to an existing active directory through TRUST (needs to be configured), so users will automatically be recognized &lt;/li&gt;&lt;li&gt; here we are adding the vagrant user to the principal &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;
--- summary commands 
-sudo su - 
-klist
-kinit admin/admin
-kadmin.local -q &quot;addprinc vagrant&quot;
-
-
--- detail 
-[root@node2 scripts]# klist
-klist: No credentials cache found (filename: /tmp/krb5cc_0)
-[root@node2 scripts]# 
-[root@node2 scripts]# 
-[root@node2 scripts]# kinit admin/admin
-Password for admin/admin@EXAMPLE.COM: 
-[root@node2 scripts]# 
-[root@node2 scripts]# 
-[root@node2 scripts]# klist
-Ticket cache: FILE:/tmp/krb5cc_0
-Default principal: admin/admin@EXAMPLE.COM
-
-Valid starting       Expires              Service principal
-01/08/2019 18:34:19  01/09/2019 18:34:19  krbtgt/EXAMPLE.COM@EXAMPLE.COM
-[root@node2 scripts]# 
-[root@node2 scripts]# 
-[root@node2 scripts]# kadmin.local -q &quot;addprinc vagrant&quot;
-Authenticating as principal admin/admin@EXAMPLE.COM with password.
-WARNING: no policy specified for vagrant@EXAMPLE.COM; defaulting to no policy
-Enter password for principal &quot;vagrant@EXAMPLE.COM&quot;: &amp;lt;USE THE VAGRANT USER PASSWORD&amp;gt;
-Re-enter password for principal &quot;vagrant@EXAMPLE.COM&quot;: &amp;lt;USE THE VAGRANT USER PASSWORD&amp;gt;
-Principal &quot;vagrant@EXAMPLE.COM&quot; created.
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; test new user principal &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;[vagrant@node1 ~]$ kinit
-Password for vagrant@EXAMPLE.COM: 
-[vagrant@node1 ~]$ 
-[vagrant@node1 ~]$ klist
-Ticket cache: FILE:/tmp/krb5cc_1000
-Default principal: vagrant@EXAMPLE.COM
-
-Valid starting       Expires              Service principal
-01/08/2019 18:35:52  01/09/2019 18:35:52  krbtgt/EXAMPLE.COM@EXAMPLE.COM
-[vagrant@node1 ~]$ 
-[vagrant@node1 ~]$ hadoop fs -ls
-Found 3 items
--rw-r--r--   3 vagrant vagrant   16257213 2019-01-08 06:27 salaries.csv
--rw-r--r--   3 vagrant vagrant   16257213 2019-01-08 06:31 salaries2.csv
-drwxr-xr-x   - vagrant vagrant          0 2019-01-08 06:58 test
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<title>hdp security</title>
+<description></description>
 <category>hadoop security</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B01%20(authentication)%20hadoop%20configure%20kerberos%5D%5D</link>
-<pubDate>Tue, 08 Jan 2019 18:41:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhdp%20security%5D%5D</link>
+<pubDate>Wed, 09 Jan 2019 16:28:06 GMT</pubDate>
+
+</item>
+<item>
+<title>apache sentry vs ranger vs knox</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?q=apache+sentry+vs+ranger+vs+knox&amp;amp;oq=apache+sentry+vs&amp;amp;aqs=chrome.2.69i57j0l4.4925j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; href=&quot;https://www.google.com/search?q=apache+sentry+vs+ranger+vs+knox&amp;amp;oq=apache+sentry+vs&amp;amp;aqs=chrome.2.69i57j0l4.4925j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?q=apache+sentry+vs+ranger+vs+knox&amp;amp;oq=apache+sentry+vs&amp;amp;aqs=chrome.2.69i57j0l4.4925j0j1&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.xplenty.com/blog/5-hadoop-security-projects/&quot; href=&quot;https://www.xplenty.com/blog/5-hadoop-security-projects/&quot; class=&quot;externalLink&quot;&gt;https://www.xplenty.com/blog/5-hadoop-security-projects/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/72341/whats-the-difference-between-ranger-and-knox.html&quot; href=&quot;https://community.hortonworks.com/questions/72341/whats-the-difference-between-ranger-and-knox.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/72341/whats-the-difference-between-ranger-and-knox.html&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;Keeping the jargon aside -&lt;br&gt;&lt;br&gt;&lt;strong&gt;Ranger&lt;/strong&gt; is used for deciding who can access what resources on a Hadoop cluster with the help of policies (there is more to this but this is in the most basic terms).&lt;br&gt;&lt;br&gt;&lt;strong&gt;Knox&lt;/strong&gt; can be imagined as the gatekeeper which decides whether to allow user access to Hadoop cluster or not.&lt;br&gt;More complete definitions:&lt;br&gt;&lt;br&gt;Ranger is an authorization system which allows / denies access to Hadoop cluster resources (HDFS files, Hive tables etc.) based on pre-defined Ranger policies. When user request comes to Ranger, it is assumed to be authenticated already.&lt;br&gt;&lt;br&gt;Knox is a REST API based perimeter security gateway system which 'authenticates' user credentials (mostly against AD/LDAP). Only the successfully authenticated user are allowed access to Hadoop cluster. Knox also provides a layer of abstraction to the underneath Hadoop services i.e. all endpoints are accessed via Knox gateway URL.&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/39326456/how-to-choose-between-apache-ranger-and-sentry&quot; href=&quot;https://stackoverflow.com/questions/39326456/how-to-choose-between-apache-ranger-and-sentry&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/39326456/how-to-choose-between-apache-ranger-and-sentry&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.hortonworks.com/questions/105721/is-ranger-is-the-right-approach-for-hive-securityw.html&quot; href=&quot;https://community.hortonworks.com/questions/105721/is-ranger-is-the-right-approach-for-hive-securityw.html&quot; class=&quot;externalLink&quot;&gt;https://community.hortonworks.com/questions/105721/is-ranger-is-the-right-approach-for-hive-securityw.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://ranger.apache.org/faq.html#How_does_Apache_Ranger_authorization_compare_to_SQL_standard_authorization&quot; href=&quot;http://ranger.apache.org/faq.html#How_does_Apache_Ranger_authorization_compare_to_SQL_standard_authorization&quot; class=&quot;externalLink&quot;&gt;http://ranger.apache.org/faq.html#How_does_Apache_Ranger_authorization_compare_to_SQL_standard_authorization&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;You can use Sentry or Ranger depends upon what hadoop distribution tool that you are using like Cloudera or Hortonworks.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Apache Sentry&lt;/strong&gt; - Owned by Cloudera. Supports HDFS, Hive, Solr and Impala. (Ranger will not support Impala)&lt;br&gt;&lt;br&gt;&lt;strong&gt;Apache Ranger&lt;/strong&gt; - Owned by Hortonworks. Apache Ranger offers a centralized security framework to manage fine-grained access control across: HDFS, Hive, &lt;a tiddlylink=&quot;HBase&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HBase&quot; href=&quot;http://karlarao.tiddlyspot.com#HBase&quot; class=&quot;externalLink null&quot;&gt;HBase&lt;/a&gt;, Storm, Knox, Solr, Kafka, and YARN&lt;br&gt;&lt;br&gt;Apache Ranger overlaps with Apache Sentry since it also deals with authorization and permissions. It adds an authorization layer to Hive, &lt;a tiddlylink=&quot;HBase&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HBase&quot; href=&quot;http://karlarao.tiddlyspot.com#HBase&quot; class=&quot;externalLink null&quot;&gt;HBase&lt;/a&gt;, and Knox. Both Sentry and Ranger support column-level permissions in Hive (startig from 1.5 release).&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; howto configure &lt;/h1&gt;ranger, knox &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=ranger&quot; href=&quot;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=ranger&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/channel/UCakdSIPsJqiOLqylgoYmwQg/search?query=ranger&lt;/a&gt;&lt;br&gt;Hadoop Day To Day Operations - Manage Ambari - Groups, users and permissions &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=v3LiS2tJXE4&quot; href=&quot;https://www.youtube.com/watch?v=v3LiS2tJXE4&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=v3LiS2tJXE4&lt;/a&gt;&lt;br&gt;</description>
+<category>hadoop security</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bapache%20sentry%20vs%20ranger%20vs%20knox%5D%5D</link>
+<pubDate>Tue, 08 Jan 2019 20:23:00 GMT</pubDate>
 
 </item>
 <item>
@@ -760,22 +1035,6 @@ vagrant destroy
 <category>..Data Engineering Ecosystem</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20reference%20architectures%5D%5D</link>
 <pubDate>Thu, 03 Jan 2019 21:44:00 GMT</pubDate>
-
-</item>
-<item>
-<title>hadoop architecture use case</title>
-<description>&lt;img src=&quot;https://lh3.googleusercontent.com/-QsRM3czDMkg/Vhfg7pTmFrI/AAAAAAAACzU/4BEa8SfK_KU/s800-Ic42/IMG_8542.JPG&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twitter.com/karlarao/status/652370648820486144&quot; href=&quot;https://twitter.com/karlarao/status/652370648820486144&quot; class=&quot;externalLink&quot;&gt;https://twitter.com/karlarao/status/652370648820486144&lt;/a&gt;&lt;br&gt;@gwenshap I enjoyed the @hadooparchbook clickstream analytics end-to-end case study,video -&amp;gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to http://bit.ly/1Opqd4v&quot; href=&quot;http://bit.ly/1Opqd4v&quot; class=&quot;externalLink&quot;&gt;http://bit.ly/1Opqd4v&lt;/a&gt;  &lt;br&gt;</description>
-<category>hadoop reference architectures</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bhadoop%20architecture%20use%20case%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:43:00 GMT</pubDate>
-
-</item>
-<item>
-<title>2 Automation and configuration mgt - ansible</title>
-<description>A short video about it, worth watching it whenever you get some time, only 12min:&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ansible.com/quick-start-video&quot; href=&quot;https://www.ansible.com/quick-start-video&quot; class=&quot;externalLink&quot;&gt;https://www.ansible.com/quick-start-video&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&quot; href=&quot;https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&quot; class=&quot;externalLink&quot;&gt;https://www.doag.org/formes/pubfiles/7375105/2015-K-INF-Frits_Hoogland-Automating__DBA__tasks_with_Ansible-Praesentation.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&quot; href=&quot;https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&quot; class=&quot;externalLink&quot;&gt;https://fritshoogland.wordpress.com/2014/09/14/using-ansible-for-executing-oracle-dba-tasks/&lt;/a&gt;</description>
-<category>2 Infrastructure as code</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B2%20Automation%20and%20configuration%20mgt%20-%20ansible%5D%5D</link>
-<pubDate>Thu, 03 Jan 2019 21:40:00 GMT</pubDate>
 
 </item>
 </channel>
