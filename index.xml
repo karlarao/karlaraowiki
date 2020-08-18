@@ -6,14 +6,80 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2020 YourName</copyright>
-<pubDate>Tue, 28 Jul 2020 19:48:53 GMT</pubDate>
-<lastBuildDate>Tue, 28 Jul 2020 19:48:53 GMT</lastBuildDate>
+<pubDate>Tue, 18 Aug 2020 18:31:18 GMT</pubDate>
+<lastBuildDate>Tue, 18 Aug 2020 18:31:18 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>.Looker</title>
+<description></description>
+<category>Visualization</category>
+<category>GCP essentials hands-on</category>
+<link>http://karlarao.tiddlyspot.com#.Looker</link>
+<pubDate>Tue, 18 Aug 2020 12:40:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq CDC</title>
+<description>Sync Oracle to &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; With Golden Gate &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; Adapter &lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/searce/sync-oracle-to-bigquery-with-golden-gate-bigquery-adapter-59991bbdb5e3&quot; href=&quot;https://medium.com/searce/sync-oracle-to-bigquery-with-golden-gate-bigquery-adapter-59991bbdb5e3&quot; class=&quot;externalLink&quot;&gt;https://medium.com/searce/sync-oracle-to-bigquery-with-golden-gate-bigquery-adapter-59991bbdb5e3&lt;/a&gt;&lt;br&gt;</description>
+<category>bq migration</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20CDC%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 17:11:00 GMT</pubDate>
+
+</item>
+<item>
 <title>gcp bq commandline</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' READ THIS ', event)&quot;&gt; READ THIS &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' create directory ', event)&quot;&gt; create directory &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load file to table ', event)&quot;&gt; load file to table &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' auto schema detection ', event)&quot;&gt; auto schema detection &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' file limit on local laptop upload 100MB ', event)&quot;&gt; file limit on local laptop upload 100MB &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - fixing null values', event)&quot;&gt; load - fixing null values&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - replace existing table', event)&quot;&gt; load - replace existing table&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - skip first lines of header', event)&quot;&gt; load - skip first lines of header&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' sed to replace all occurrences of PrivacySuppressed by NULL, compressing the result and writing it to a temporary folder', event)&quot;&gt; sed to replace all occurrences of PrivacySuppressed by NULL, compressing the result and writing it to a temporary folder&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - specify schema metadata file ', event)&quot;&gt; load - specify schema metadata file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - CTAS ', event)&quot;&gt; load - CTAS &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - stage first on GCS then load to bigquery ', event)&quot;&gt; load - stage first on GCS then load to bigquery &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - create EXTERNAL TEMPORARY TABLE, generate METADATA file from CSV on GCS', event)&quot;&gt; load - create EXTERNAL TEMPORARY TABLE, generate METADATA file from CSV on GCS&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - handling NULL', event)&quot;&gt; load - handling NULL&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' loading files BEST PRACTICE', event)&quot;&gt; loading files BEST PRACTICE&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file - get_metadata.sql', event)&quot;&gt; running SQL file - get_metadata.sql&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON', event)&quot;&gt; running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' generate-schema - AUTO GENERATE METADATA', event)&quot;&gt; generate-schema - AUTO GENERATE METADATA&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file, specify number of rows output ', event)&quot;&gt; running SQL file, specify number of rows output &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - get schema of all the tables in the dataset ', event)&quot;&gt; data dictionary - get schema of all the tables in the dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - bq - list tables of dataset ', event)&quot;&gt; data dictionary - bq - list tables of dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - bq - show column data type, rows, and table size ', event)&quot;&gt; data dictionary - bq - show column data type, rows, and table size &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - bq - show ACL of dataset ', event)&quot;&gt; data dictionary - bq - show ACL of dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL - efficient CLONE of a table - bq cp ', event)&quot;&gt; DDL - efficient CLONE of a table - bq cp &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL - delete table , delete dataset ', event)&quot;&gt; DDL - delete table , delete dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL - specify that a table needs to be expired at a certain time in the future', event)&quot;&gt; DDL - specify that a table needs to be expired at a certain time in the future&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DML - delete , insert ', event)&quot;&gt; DML - delete , insert &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; READ THIS &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/bq-command-line-tool&quot; href=&quot;https://cloud.google.com/bigquery/docs/bq-command-line-tool&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/bq-command-line-tool&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; create directory &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq --location=US mk ch04
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; load file to table &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/loading-data-local#loading_data_from_a_local_data_source&quot; href=&quot;https://cloud.google.com/bigquery/docs/loading-data-local#loading_data_from_a_local_data_source&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/loading-data-local#loading_data_from_a_local_data_source&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_new_table&quot; href=&quot;https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_new_table&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_new_table&lt;/a&gt;&lt;br&gt;&lt;pre&gt;                Examples:
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' READ THIS ', event)&quot;&gt; READ THIS &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' show current Cloud SDK config', event)&quot;&gt; show current Cloud SDK config&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' create dataset ', event)&quot;&gt; create dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' create dataset on different project ', event)&quot;&gt; create dataset on different project &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' create table ', event)&quot;&gt; create table &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load file to table ', event)&quot;&gt; load file to table &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' auto schema detection ', event)&quot;&gt; auto schema detection &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' file limit on local laptop upload 100MB ', event)&quot;&gt; file limit on local laptop upload 100MB &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - fixing null values', event)&quot;&gt; load - fixing null values&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - replace existing table', event)&quot;&gt; load - replace existing table&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - skip first lines of header', event)&quot;&gt; load - skip first lines of header&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' sed to replace all occurrences of PrivacySuppressed by NULL, compressing the result and writing it to a temporary folder', event)&quot;&gt; sed to replace all occurrences of PrivacySuppressed by NULL, compressing the result and writing it to a temporary folder&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - specify schema metadata file ', event)&quot;&gt; load - specify schema metadata file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - CTAS ', event)&quot;&gt; load - CTAS &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - stage first on GCS then load to bigquery ', event)&quot;&gt; load - stage first on GCS then load to bigquery &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - create EXTERNAL TEMPORARY TABLE, generate METADATA file from CSV on GCS', event)&quot;&gt; load - create EXTERNAL TEMPORARY TABLE, generate METADATA file from CSV on GCS&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - handling NULL', event)&quot;&gt; load - handling NULL&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' load - jagged rows ', event)&quot;&gt; load - jagged rows &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' loading files BEST PRACTICE', event)&quot;&gt; loading files BEST PRACTICE&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file using FLAGFILE - get_metadata.sql', event)&quot;&gt; running SQL file using FLAGFILE - get_metadata.sql&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON', event)&quot;&gt; running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON - BETTER SIMPLER WAY', event)&quot;&gt; running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON - BETTER SIMPLER WAY&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' generate-schema - AUTO GENERATE METADATA', event)&quot;&gt; generate-schema - AUTO GENERATE METADATA&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file, specify number of rows output ', event)&quot;&gt; running SQL file, specify number of rows output &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL file - run file from GCS bucket', event)&quot;&gt; running SQL file - run file from GCS bucket&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' running SQL - using bash ', event)&quot;&gt; running SQL - using bash &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - get schema of all the tables in the dataset ', event)&quot;&gt; data dictionary - get schema of all the tables in the dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - bq - list tables of dataset ', event)&quot;&gt; data dictionary - bq - list tables of dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - bq - show column data type, rows, and table size ', event)&quot;&gt; data dictionary - bq - show column data type, rows, and table size &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' data dictionary - bq - show ACL of dataset ', event)&quot;&gt; data dictionary - bq - show ACL of dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL - efficient CLONE of a table - bq cp ', event)&quot;&gt; DDL - efficient CLONE of a table - bq cp &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL - delete table , delete dataset ', event)&quot;&gt; DDL - delete table , delete dataset &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DDL - specify that a table needs to be expired at a certain time in the future', event)&quot;&gt; DDL - specify that a table needs to be expired at a certain time in the future&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' DML - delete , insert ', event)&quot;&gt; DML - delete , insert &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SELECT - Switching SQL dialects', event)&quot;&gt; SELECT - Switching SQL dialects&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using bq parameter ', event)&quot;&gt; using bq parameter &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Using a query prefix in the UI', event)&quot;&gt; Using a query prefix in the UI&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' set default in bigqueryrc ', event)&quot;&gt; set default in bigqueryrc &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SQL TUNING - get jobs running on a project ', event)&quot;&gt; SQL TUNING - get jobs running on a project &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SQL TUNING - show job info ', event)&quot;&gt; SQL TUNING - show job info &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SQL TUNING - show job details ', event)&quot;&gt; SQL TUNING - show job details &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SQL TUNING - generate json execution plan ', event)&quot;&gt; SQL TUNING - generate json execution plan &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SQL TUNING - compare two job_ids', event)&quot;&gt; SQL TUNING - compare two job_ids&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' backup and restore dataset and tables ', event)&quot;&gt; backup and restore dataset and tables &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bq insert to table ', event)&quot;&gt; bq insert to table &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bq extract from table ', event)&quot;&gt; bq extract from table &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SCRIPTING - data types', event)&quot;&gt; SCRIPTING - data types&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SCRIPTING - use bq CLI to execute a query with bind parameters', event)&quot;&gt; SCRIPTING - use bq CLI to execute a query with bind parameters&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SCRIPTING - parameterized queries using the Python Cloud Client API', event)&quot;&gt; SCRIPTING - parameterized queries using the Python Cloud Client API&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; READ THIS &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/bq-command-line-tool&quot; href=&quot;https://cloud.google.com/bigquery/docs/bq-command-line-tool&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/bq-command-line-tool&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; show current Cloud SDK config&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;gcloud config list
+bq show
+bq ls -p
+bq ls
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; create dataset &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq --location=US mk ch04
+
+bq show ch04 
+
+bq mk --location=US \
+      --default_table_expiration 3600 \
+      --description &quot;Chapter 5 of BigQuery Book.&quot; \
+      ch05
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; create dataset on different project &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq mk --location=US \
+       --default_table_expiration 3600 \
+       --description &quot;Chapter 5 of BigQuery Book.&quot; \
+       projectname:ch05
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; create table &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;Table Path
+    [[project_name.]dataset_name.]table_name
+
+    project_name is the name of the project where you are creating the table.
+      Defaults to the project that runs this DDL query.
+      If the project name contains special characters such as colons, it should be quoted in backticks ` (example: `google.com:my_project`).
+
+    dataset_name is the name of the dataset where you are creating the table.
+      Defaults to the defaultDataset in the request.
+
+    table_name is the name of the table you're creating.
+      Must be unique per dataset.
+      Can contain up to 1,024 characters (upper or lower case letters), numbers, and underscores
+&lt;/pre&gt;&lt;pre&gt;bq mk --table \
+    --expiration 3600 \
+    --description &quot;One hour of data&quot; \
+     --label persistence:volatile \
+     ch05.rentals_last_hour rental_id:STRING,duration:FLOAT
+
+
+# using a metadata file schema.json  
+bq mk --table \
+    --expiration 3600 \
+    --description &quot;One hour of data&quot; \
+     --label persistence:volatile \
+     ch05.rentals_last_hour schema.json
+
+
+# this shows the pretty output 
+bq show ch04.college_scorecard
+
+# export metadata
+bq show --schema --format=prettyjson ch04.college_scorecard &amp;gt; schema.json
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; load file to table &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/loading-data-local#loading_data_from_a_local_data_source&quot; href=&quot;https://cloud.google.com/bigquery/docs/loading-data-local#loading_data_from_a_local_data_source&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/loading-data-local#loading_data_from_a_local_data_source&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_new_table&quot; href=&quot;https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_new_table&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_new_table&lt;/a&gt;&lt;br&gt;&lt;pre&gt;                Examples:
                 bq load ds.new_tbl ./info.csv ./info_schema.json
                 bq load ds.new_tbl gs://mybucket/info.csv ./info_schema.json
                 bq load ds.small gs://mybucket/small.csv name:integer,value:string
@@ -175,7 +241,7 @@ bq load … gs://BUCKET/some/location/*.csv
 /Users/kristofferson.a.arao/gcp-sdk/google-cloud-sdk/platform/bq/bq.py:45: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
   import imp
 Waiting on bqjob_r263b24173998e9e9_000001739049ffa5_1 ... (49s) Current status: DONE  
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; load - create EXTERNAL TEMPORARY TABLE, generate METADATA file from CSV on GCS&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://codelabs.developers.google.com/codelabs/cpb200-loading-data/#8&quot; href=&quot;https://codelabs.developers.google.com/codelabs/cpb200-loading-data/#8&quot; class=&quot;externalLink&quot;&gt;https://codelabs.developers.google.com/codelabs/cpb200-loading-data/#8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;gsutil ls gs://example_bucket-dev/flights
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; load - create EXTERNAL TEMPORARY TABLE, generate METADATA file from CSV on GCS&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://codelabs.developers.google.com/codelabs/cpb200-loading-data/#8&quot; href=&quot;https://codelabs.developers.google.com/codelabs/cpb200-loading-data/#8&quot; class=&quot;externalLink&quot;&gt;https://codelabs.developers.google.com/codelabs/cpb200-loading-data/#8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stevenlevine.dev/2019/11/querying-externally-partitioned-data-with-bq/&quot; href=&quot;https://stevenlevine.dev/2019/11/querying-externally-partitioned-data-with-bq/&quot; class=&quot;externalLink&quot;&gt;https://stevenlevine.dev/2019/11/querying-externally-partitioned-data-with-bq/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;gsutil ls gs://example_bucket-dev/flights
 gs://example_bucket-dev/flights/
 gs://example_bucket-dev/flights/flights_airports_000000000000
 
@@ -203,7 +269,7 @@ bq mk --external_table_definition=mytable.json cpb200_flight_data.flights_airpor
 Table 'example-dev-284123:cpb200_flight_data.flights_airports' successfully created.
 
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; load - handling NULL&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq load --null_marker=&quot;NULL&quot; 
-&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/46001334/bigquery-load-null-is-treating-as-string-instead-of-empty&quot; href=&quot;https://stackoverflow.com/questions/46001334/bigquery-load-null-is-treating-as-string-instead-of-empty&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/46001334/bigquery-load-null-is-treating-as-string-instead-of-empty&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; loading files BEST PRACTICE&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;On schema metadata &lt;br&gt;&lt;ul&gt;&lt;li&gt; It is therefore best practice to not autodetect the schema of files that you receive in production—you will be at the mercy of whatever data happens to have been sampled. For production workloads, insist on the data type for a column by specifying it at the time of load.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;On file format&lt;br&gt;&lt;ul&gt;&lt;li&gt; CSV files are inefficient and not very expressive (for example, there is no way to represent arrays and structs in CSV&lt;/li&gt;&lt;li&gt; An efficient and expressive format is Avro. Avro uses self-describing binary files that are broken into blocks and can be compressed block by block. Because of this, it is possible to parallelize the loading of data from Avro files and the export of data into Avro files. Because the blocks are compressed, the file sizes will also be smaller than the data size might indicate. In terms of expressiveness, the Avro format is hierarchical and can represent nested and repeated fields, something that &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; supports but CSV files don’t have an easy way to store. Because Avro files are self-describing, you never need to specify a schema.&lt;ul&gt;&lt;li&gt; There are two drawbacks to Avro files. One is that they are not human readable. If readability and expressiveness are important to you, use newline-delimited JSON files to store your data&lt;/li&gt;&lt;li&gt; The second drawback is that Avro files are stored row by row. This makes Avro files not as efficient for federated queries.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt; JSON supports the ability to store hierarchical data but requires that binary columns be base-64 encoded. However, JSON files are larger than even the equivalent CSV files because the name of each field is repeated on every line.&lt;/li&gt;&lt;li&gt; The Parquet file format was inspired by Google’s original Dremel &lt;a tiddlylink=&quot;ColumnIO&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ColumnIO&quot; href=&quot;http://karlarao.tiddlyspot.com#ColumnIO&quot; class=&quot;externalLink null&quot;&gt;ColumnIO&lt;/a&gt; format and like Avro, Parquet is binary, block oriented, compact, and capable of representing hierarchical data. However, whereas Avro files are stored row by row, Parquet files are stored column by column. Columnar files are optimized for reading a subset of the columns; loading data requires reading all columns, and so columnar formats are somewhat less efficient at the loading of data. However, the columnar format makes Parquet a better choice than Avro for federated queries, a topic that we discuss shortly. Optimized Row Columnar (ORC) files are another open source columnar file format. ORC is similar to Parquet in performance and efficiency.&lt;/li&gt;&lt;li&gt; in summary - Therefore, if you have a choice of file formats, we recommend Avro if you plan to load the data into &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; and discard the files. We recommend Parquet if you will be retaining the files for federated queries. Use JSON for small files where human readability is important.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;On compression&lt;br&gt;&lt;ul&gt;&lt;li&gt; CSV and JSON that do not have internal compression, you should consider whether you should compress the files using gzip. Compressed files are faster to transmit and take up less space, but they are slower to load into &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt;. The slower your network, the more you should lean toward compressing the data.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;On staging to GCS before loading to bigquery&lt;br&gt;&lt;ul&gt;&lt;li&gt; Staging the file on Google Cloud Storage involves paying storage costs at least until the &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; load job finishes. However, storage costs are generally quite low and so, on this dataset and this network connection, the best option is to stage compressed data in Cloud Storage and load it from there. Even though it is faster to load uncompressed files into &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt;, the network time to transfer the files dwarfs whatever benefits you’d get from a faster load.&lt;/li&gt;&lt;li&gt; As of this writing, the loading of compressed CSV and JSON files is limited to files less than 4 GB in size because &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; has to uncompress the files on the fly on workers whose memory is finite. If you have larger datasets, split them across multiple CSV or JSON files. Splitting files yourself can allow for some degree of parallelism when doing the loads, but depending on how you size the files, this can lead to suboptimal file sizes in the table until &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; decides to optimize the storage.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;On loading LIMITATIONS and PRICING &lt;br&gt;&lt;ul&gt;&lt;li&gt; &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; does not charge for loading data. Ingestion happens on a set of workers that is distinct from the cluster providing the slots used for querying. Hence, your queries (even on the same table into which you are ingesting data) are not slowed down by the fact that data is being ingested.&lt;/li&gt;&lt;li&gt; Data loads are atomic. Queries on a table will either reflect the presence of all the data that is loaded in through the bq load operation or reflect none of it. You will not get query results on a partial slice of the data.&lt;/li&gt;&lt;li&gt; The drawback of loading data using a “free” cluster is that load times can become unpredictable and bottlenecked by preexisting jobs. As of this writing, load jobs are limited to 1,000 per table and 100,000 per project per day. In the case of CSV and JSON files, cells and rows are limited to 100 MB, whereas in Avro, blocks are limited to 16 MB. Files cannot exceed 5 TB in size. If you have a larger dataset, split it across multiple files, each smaller than 5 TB. However, a single load job can submit a maximum of 15 TB of data split across a maximum of 10 million files. The load job must finish executing in less than six hours or it will be cancelled.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL file - get_metadata.sql&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;  --format: &amp;lt;none|json|prettyjson|csv|sparse|pretty&amp;gt;: Format for command output.
+&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/46001334/bigquery-load-null-is-treating-as-string-instead-of-empty&quot; href=&quot;https://stackoverflow.com/questions/46001334/bigquery-load-null-is-treating-as-string-instead-of-empty&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/46001334/bigquery-load-null-is-treating-as-string-instead-of-empty&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; load - jagged rows &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/27024330/how-to-detect-jagged-rows-in-bigquery&quot; href=&quot;https://stackoverflow.com/questions/27024330/how-to-detect-jagged-rows-in-bigquery&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/27024330/how-to-detect-jagged-rows-in-bigquery&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/43495592/bigquery-csv-import-allow-jagged-rows?rq=1&quot; href=&quot;https://stackoverflow.com/questions/43495592/bigquery-csv-import-allow-jagged-rows?rq=1&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/43495592/bigquery-csv-import-allow-jagged-rows?rq=1&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; loading files BEST PRACTICE&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;On schema metadata &lt;br&gt;&lt;ul&gt;&lt;li&gt; It is therefore best practice to not autodetect the schema of files that you receive in production—you will be at the mercy of whatever data happens to have been sampled. For production workloads, insist on the data type for a column by specifying it at the time of load.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;On file format&lt;br&gt;&lt;ul&gt;&lt;li&gt; CSV files are inefficient and not very expressive (for example, there is no way to represent arrays and structs in CSV&lt;/li&gt;&lt;li&gt; An efficient and expressive format is Avro. Avro uses self-describing binary files that are broken into blocks and can be compressed block by block. Because of this, it is possible to parallelize the loading of data from Avro files and the export of data into Avro files. Because the blocks are compressed, the file sizes will also be smaller than the data size might indicate. In terms of expressiveness, the Avro format is hierarchical and can represent nested and repeated fields, something that &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; supports but CSV files don’t have an easy way to store. Because Avro files are self-describing, you never need to specify a schema.&lt;ul&gt;&lt;li&gt; There are two drawbacks to Avro files. One is that they are not human readable. If readability and expressiveness are important to you, use newline-delimited JSON files to store your data&lt;/li&gt;&lt;li&gt; The second drawback is that Avro files are stored row by row. This makes Avro files not as efficient for federated queries.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt; JSON supports the ability to store hierarchical data but requires that binary columns be base-64 encoded. However, JSON files are larger than even the equivalent CSV files because the name of each field is repeated on every line.&lt;/li&gt;&lt;li&gt; The Parquet file format was inspired by Google’s original Dremel &lt;a tiddlylink=&quot;ColumnIO&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ColumnIO&quot; href=&quot;http://karlarao.tiddlyspot.com#ColumnIO&quot; class=&quot;externalLink null&quot;&gt;ColumnIO&lt;/a&gt; format and like Avro, Parquet is binary, block oriented, compact, and capable of representing hierarchical data. However, whereas Avro files are stored row by row, Parquet files are stored column by column. Columnar files are optimized for reading a subset of the columns; loading data requires reading all columns, and so columnar formats are somewhat less efficient at the loading of data. However, the columnar format makes Parquet a better choice than Avro for federated queries, a topic that we discuss shortly. Optimized Row Columnar (ORC) files are another open source columnar file format. ORC is similar to Parquet in performance and efficiency.&lt;/li&gt;&lt;li&gt; in summary - Therefore, if you have a choice of file formats, we recommend Avro if you plan to load the data into &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; and discard the files. We recommend Parquet if you will be retaining the files for federated queries. Use JSON for small files where human readability is important.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;On compression&lt;br&gt;&lt;ul&gt;&lt;li&gt; CSV and JSON that do not have internal compression, you should consider whether you should compress the files using gzip. Compressed files are faster to transmit and take up less space, but they are slower to load into &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt;. The slower your network, the more you should lean toward compressing the data.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;On staging to GCS before loading to bigquery&lt;br&gt;&lt;ul&gt;&lt;li&gt; Staging the file on Google Cloud Storage involves paying storage costs at least until the &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; load job finishes. However, storage costs are generally quite low and so, on this dataset and this network connection, the best option is to stage compressed data in Cloud Storage and load it from there. Even though it is faster to load uncompressed files into &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt;, the network time to transfer the files dwarfs whatever benefits you’d get from a faster load.&lt;/li&gt;&lt;li&gt; As of this writing, the loading of compressed CSV and JSON files is limited to files less than 4 GB in size because &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; has to uncompress the files on the fly on workers whose memory is finite. If you have larger datasets, split them across multiple CSV or JSON files. Splitting files yourself can allow for some degree of parallelism when doing the loads, but depending on how you size the files, this can lead to suboptimal file sizes in the table until &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; decides to optimize the storage.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;On loading LIMITATIONS and PRICING &lt;br&gt;&lt;ul&gt;&lt;li&gt; &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; does not charge for loading data. Ingestion happens on a set of workers that is distinct from the cluster providing the slots used for querying. Hence, your queries (even on the same table into which you are ingesting data) are not slowed down by the fact that data is being ingested.&lt;/li&gt;&lt;li&gt; Data loads are atomic. Queries on a table will either reflect the presence of all the data that is loaded in through the bq load operation or reflect none of it. You will not get query results on a partial slice of the data.&lt;/li&gt;&lt;li&gt; The drawback of loading data using a “free” cluster is that load times can become unpredictable and bottlenecked by preexisting jobs. As of this writing, load jobs are limited to 1,000 per table and 100,000 per project per day. In the case of CSV and JSON files, cells and rows are limited to 100 MB, whereas in Avro, blocks are limited to 16 MB. Files cannot exceed 5 TB in size. If you have a larger dataset, split it across multiple files, each smaller than 5 TB. However, a single load job can submit a maximum of 15 TB of data split across a maximum of 10 million files. The load job must finish executing in less than six hours or it will be cancelled.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL file using FLAGFILE - get_metadata.sql&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;  --format: &amp;lt;none|json|prettyjson|csv|sparse|pretty&amp;gt;: Format for command output.
     Options include:
     pretty: formatted table output
     sparse: simpler table output
@@ -233,7 +299,7 @@ WHERE
 
 
 bq query --format=sparse --use_legacy_sql=false --flagfile=get_metadata.sql
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq query --format=sparse --use_legacy_sql=false --flagfile=get_metadata.sql | awk 'NR&amp;gt;2' &amp;gt; schema2.json
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/schemas#specify-schema-manual-python&quot; href=&quot;https://cloud.google.com/bigquery/docs/schemas#specify-schema-manual-python&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/schemas#specify-schema-manual-python&lt;/a&gt;&lt;br&gt;&lt;pre&gt;bq query --format=sparse --use_legacy_sql=false --flagfile=get_metadata.sql | awk 'NR&amp;gt;2' &amp;gt; schema2.json
 
 the difference 
                       schema                                  &amp;lt;
@@ -249,7 +315,12 @@ the difference
       &quot;name&quot;: &quot;OPEID&quot;,                                                &quot;name&quot;: &quot;OPEID&quot;,                             
       &quot;type&quot;: &quot;INT64&quot;                                                 &quot;type&quot;: &quot;INT64&quot;                              
     },                                                              },                               
-&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/45415564/remove-header-from-query-result-in-bq-command-line&quot; href=&quot;https://stackoverflow.com/questions/45415564/remove-header-from-query-result-in-bq-command-line&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/45415564/remove-header-from-query-result-in-bq-command-line&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/33426395/google-bigquery-bq-command-line-execute-query-from-a-file&quot; href=&quot;https://stackoverflow.com/questions/33426395/google-bigquery-bq-command-line-execute-query-from-a-file&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/33426395/google-bigquery-bq-command-line-execute-query-from-a-file&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; generate-schema - AUTO GENERATE METADATA&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/bxparks/bigquery-schema-generator&quot; href=&quot;https://github.com/bxparks/bigquery-schema-generator&quot; class=&quot;externalLink&quot;&gt;https://github.com/bxparks/bigquery-schema-generator&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;ul&gt;&lt;li&gt; need to remove header because INT will be evaluated as STRING&lt;/li&gt;&lt;li&gt; only supports CSV, not pipe delimited data. You can sample and replace pipe w/ csv as a workaround &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;pip install bigquery_schema_generator
+&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/45415564/remove-header-from-query-result-in-bq-command-line&quot; href=&quot;https://stackoverflow.com/questions/45415564/remove-header-from-query-result-in-bq-command-line&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/45415564/remove-header-from-query-result-in-bq-command-line&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/33426395/google-bigquery-bq-command-line-execute-query-from-a-file&quot; href=&quot;https://stackoverflow.com/questions/33426395/google-bigquery-bq-command-line-execute-query-from-a-file&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/33426395/google-bigquery-bq-command-line-execute-query-from-a-file&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL file, remove headers, GENERATE METADATA FROM BQ to JSON - BETTER SIMPLER WAY&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;# this shows the pretty output 
+bq show ch04.college_scorecard
+
+# export metadata
+bq show --schema --format=prettyjson ch04.college_scorecard &amp;gt; schema.json
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; generate-schema - AUTO GENERATE METADATA&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/bxparks/bigquery-schema-generator&quot; href=&quot;https://github.com/bxparks/bigquery-schema-generator&quot; class=&quot;externalLink&quot;&gt;https://github.com/bxparks/bigquery-schema-generator&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;ul&gt;&lt;li&gt; need to remove header because INT will be evaluated as STRING&lt;/li&gt;&lt;li&gt; only supports CSV, not pipe delimited data. You can sample and replace pipe w/ csv as a workaround &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;pip install bigquery_schema_generator
 
 
 --# remove 1st line header
@@ -264,6 +335,36 @@ sed -n '10,42p' LOAN_STATUS_SED_OFFER-pipe.csv | generate-schema --input_format 
 sed -n '10,42p' LOAN_STATUS_SED_OFFER-pipefile.csv | sed 's/|/,/g' | generate-schema --input_format csv
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL file, specify number of rows output &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;$ bq query -n=0 --use_legacy_sql=false &quot;SELECT x FROM UNNEST([1, 2, 3]) AS x;&quot;
 Waiting on &amp;lt;job id&amp;gt; ... (0s) Current status: DONE
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL file - run file from GCS bucket&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;gsutil cp get_metadata.sql gs://example_bucket-dev/scripts/
+
+bq query --format=sparse --use_legacy_sql=false &quot;$(gsutil cat gs://example_bucket-dev/scripts/get_metadata.sql)&quot;
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running SQL - using bash &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;cat bq_query.sh 
+#!/bin/bash
+
+read -d '' QUERY_TEXT &amp;lt;&amp;lt; EOF
+SELECT 
+  start_station_name
+  , AVG(duration) as duration
+  , COUNT(duration) as num_trips
+FROM \`bigquery-public-data\`.london_bicycles.cycle_hire
+GROUP BY start_station_name 
+ORDER BY num_trips DESC 
+LIMIT 5
+EOF
+
+bq query --use_legacy_sql=false $QUERY_TEXT
+
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;sh bq_query.sh 
+
++-------------------------------------+--------------------+-----------+
+|         start_station_name          |      duration      | num_trips |
++-------------------------------------+--------------------+-----------+
+| Belgrove Street , King's Cross      | 1011.0766960393734 |    234458 |
+| Hyde Park Corner, Hyde Park         |  2782.730708763667 |    215629 |
+| Waterloo Station 3, Waterloo        |  866.3761345037934 |    201630 |
+| Black Lion Gate, Kensington Gardens | 3588.0120035565997 |    161952 |
+| Albert Gate, Hyde Park              | 2359.4139302395806 |    155647 |
++-------------------------------------+--------------------+-----------+
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; data dictionary - get schema of all the tables in the dataset &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;SELECT
   table_name
   , column_name
@@ -411,365 +512,201 @@ INSERT ch04.college_scorecard
   )
   VALUES ('abc', 0.1, 0.3, 12345, 1234, 23456),
          ('def', 0.2, 0.2, 23451, 1232, 32456);
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SELECT - Switching SQL dialects&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/standard-sql/enabling-standard-sql#sql-prefix&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/standard-sql/enabling-standard-sql#sql-prefix&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/standard-sql/enabling-standard-sql#sql-prefix&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; using bq parameter &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;bq query \
+--use_legacy_sql=false \
+'SELECT
+  word
+FROM
+  `bigquery-public-data.samples.shakespeare`'
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; Using a query prefix in the UI&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;#legacySQL
+SELECT
+  weight_pounds, state, year, gestation_weeks
+FROM
+  [bigquery-public-data:samples.natality]
+ORDER BY weight_pounds DESC
+LIMIT 10;
+
+#legacySQL	Runs the query using legacy SQL
+#standardSQL	Runs the query using standard SQL
+
+&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; set default in bigqueryrc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;pre&gt;set --use_legacy_sql=false in .bigqueryrc 
+
+[query]
+--use_legacy_sql=false
+
+[mk]
+--use_legacy_sql=false
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SQL TUNING - get jobs running on a project &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;# get all projects 
+bq ls -p
+        projectId            friendlyName    
+ ------------------------ ------------------ 
+  example-dev-284123       example-dev       
+  example-prod-284123      example-prod      
+
+
+# show jobs on a specific project 
+bq ls -j example-dev-284123
+bq ls -j example-prod-284123
+
+# MUST USE THIS - list job for all users 
+bq ls -j -a
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SQL TUNING - show job info &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq show -j bquxjob_734bad5c_173d4190298
+
+Job example-dev-284123:bquxjob_734bad5c_173d4190298
+
+  Job Type    State      Start Time         Duration                User Email             Bytes Processed   Bytes Billed   Billing Tier   Labels  
+ ---------- --------- ----------------- ---------------- -------------------------------- ----------------- -------------- -------------- -------- 
+  query      SUCCESS   09 Aug 12:41:22   0:00:03.806000   kristofferson.a.arao@gmail.com   156703034         157286400      1                      
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; SQL TUNING - show job details &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq --format=prettyjson show -j bquxjob_734bad5c_173d4190298 
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; SQL TUNING - generate json execution plan &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq --format=prettyjson show -j example-dev-284123:US.bquxjob_27d580de_17387a47aff &amp;gt; myjob.export.json
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SQL TUNING - compare two job_ids&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq ls -j -a
+  import imp
+                    jobId                      Job Type    State      Start Time         Duration     
+ -------------------------------------------- ---------- --------- ----------------- ---------------- 
+  bqjob_r7cd933076d264387_00000173d45a2ad4_1   query      SUCCESS   09 Aug 13:52:27   0:00:00.112000  
+  bqjob_r44158463afce6211_00000173d456fa48_1   query      SUCCESS   09 Aug 13:48:57   0:00:00.369000  
+  bqjob_r186c01fe8ed94868_00000173d456456d_1   query      SUCCESS   09 Aug 13:48:11   0:00:00.498000  
+  bqjob_r596685d70d42d244_00000173d4562970_1   query      SUCCESS   09 Aug 13:48:03   0:00:00.438000  
+  bqjob_r33a3a095f66b8e5b_00000173d4555421_1   query      SUCCESS   09 Aug 13:47:09   0:00:00.546000  
+  bqjob_r59e6252138b0f835_00000173d455045b_1   query      SUCCESS   09 Aug 13:46:48   0:00:00.503000  
+  bqjob_r42ce7c4106c80940_00000173d454bbe7_1   query      SUCCESS   09 Aug 13:46:30   0:00:00.630000  
+  job_cMB49WraYXFgV1hFl36-3OUo5eVk             query      SUCCESS   09 Aug 13:44:02   0:00:00.277000       &amp;lt;-- query1
+  bqjob_r5cc0550b6f367c57_00000173d450769b_1   query      SUCCESS   09 Aug 13:41:51   0:00:02.041000     &amp;lt;-- query2
+  bqjob_r4ac46e2feef9213a_00000173d41eec48_1   query      FAILURE   09 Aug 12:47:43   0:00:00        
+
+
+bq show -j job_cMB49WraYXFgV1hFl36-3OUo5eVk
+  Job Type    State      Start Time         Duration                              User Email                           Bytes Processed   Bytes Billed   Billing Tier   Labels  
+ ---------- --------- ----------------- ---------------- ------------------------------------------------------------ ----------------- -------------- -------------- -------- 
+  query      SUCCESS   09 Aug 13:44:02   0:00:00.277000   example-dev-svc@example-dev-284123.iam.gserviceaccount.com   0                 0                                     
+
+bq show -j bqjob_r5cc0550b6f367c57_00000173d450769b_1
+  Job Type    State      Start Time         Duration                User Email             Bytes Processed   Bytes Billed   Billing Tier   Labels  
+ ---------- --------- ----------------- ---------------- -------------------------------- ----------------- -------------- -------------- -------- 
+  query      SUCCESS   09 Aug 13:41:51   0:00:02.041000   kristofferson.a.arao@gmail.com   903989528         904921088      1                      
+
+
+
+bq --format=prettyjson show -j job_cMB49WraYXFgV1hFl36-3OUo5eVk | grep query 
+    &quot;query&quot;: {
+      &quot;query&quot;: &quot;SELECT    start_station_name   , AVG(duration) as duration   , COUNT(duration) as num_trips FROM `bigquery-public-data`.london_bicycles.cycle_hire GROUP BY start_station_name  ORDER BY num_trips DESC  LIMIT 5&quot;,
+
+
+bq --format=prettyjson show -j bqjob_r5cc0550b6f367c57_00000173d450769b_1 | grep query
+    &quot;query&quot;: {
+      &quot;query&quot;: &quot;SELECT start_station_name , AVG(duration) as duration , COUNT(duration) as num_trips FROM `bigquery-public-data`.london_bicycles.cycle_hire GROUP BY start_station_name ORDER BY num_trips DESC LIMIT 5&quot;,
+
+
+
+bq --format=prettyjson show -j job_cMB49WraYXFgV1hFl36-3OUo5eVk &amp;gt; query1.sql
+bq --format=prettyjson show -j bqjob_r5cc0550b6f367c57_00000173d450769b_1 &amp;gt; query2.sql
+diff -y query1.sql query2.sql | less
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; backup and restore dataset and tables &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/GoogleCloudPlatform/bigquery-oreilly-book/tree/master/blogs/bigquery_backup&quot; href=&quot;https://github.com/GoogleCloudPlatform/bigquery-oreilly-book/tree/master/blogs/bigquery_backup&quot; class=&quot;externalLink&quot;&gt;https://github.com/GoogleCloudPlatform/bigquery-oreilly-book/tree/master/blogs/bigquery_backup&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;# backup one table 
+# This saves a schema.json, a tabledef.json, and extracted data in AVRO format to GCS
+./bq_backup.py --input dataset.tablename --output gs://BUCKET/backup
+
+
+# backup all the tables in a data set
+python bigquery_backup.py --input ch04 --output gs://example_bucket-dev/backup
+
+
+# restore per table 
+gsutil ls gs://example_bucket-dev/backup/ch04
+gs://example_bucket-dev/backup/ch04/LOAN_STATUS_SED_OFFER/
+gs://example_bucket-dev/backup/ch04/college_scorecard/
+gs://example_bucket-dev/backup/ch04/college_scorecard3/
+gs://example_bucket-dev/backup/ch04/college_scorecard3a/
+gs://example_bucket-dev/backup/ch04/college_scorecard_etl/
+
+python bigquery_restore.py --input gs://example_bucket-dev/backup/ch04/college_scorecard/ --output ch05
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bq insert to table &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;bq insert ch05.rentals_last_hour data.json
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bq extract from table &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/exporting-data#exporting_data_stored_in&quot; href=&quot;https://cloud.google.com/bigquery/docs/exporting-data#exporting_data_stored_in&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/exporting-data#exporting_data_stored_in&lt;/a&gt;&lt;br&gt;&lt;pre&gt;bq extract --format=json ch05.bad_bikes gs://bad_bikes.json
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SCRIPTING - data types&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;  BigQuery Data Types
+  Data Type     Description
+  ============= =======================================
+  INT64         range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+  NUMERIC       range: -99999999999999999999999999999.999999999 to 99999999999999999999999999999.999999999
+  FLOAT64       Double precision (approximate) decimal values
+  BOOL          Represented by the keywords TRUE and FALSE (case insensitive)
+  STRING        Variable-length character (Unicode) values must be UTF-8 encoded  no way to set per column max length
+  BYTES         Variable-length binary data
+  DATE          range: 0001-01-01 to 9999-12-31  No time part
+  DATETIME      range: 0001-01-01 00:00:00 to 9999-12-31 23:59:59.999999  Date and time parts to the microsecond
+  TIME          range: 00:00:00 to 23:59:59.99999  No date part
+  TIMESTAMP     range: 0001-01-01 00:00:00 to 9999-12-31 23:59:59.999999 UTC  Date and time parts to the microsecond and timezone
+
+  Data Type     Size
+  ============= =======================================
+  INT64         8 bytes
+  FLOAT64       8 bytes
+  NUMERIC       16 bytes
+  BBOOLEAN      1 byte
+  STRING        2 bytes + the UTF-8 encoded string size
+  BYTES         2 bytes + the number of bytes in the value
+  DATE          8 bytes
+  DATETIME      8 bytes
+  TIME          8 bytes
+  TIMESTAMP     8 bytes
+  STRUCT/RECORD 0 bytes + the size of the contained fields
+    Notes:
+      https://cloud.google.com/bigquery/pricing#data
+      Null values for any data type are use 0 bytes
+=====================================================================
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SCRIPTING - use bq CLI to execute a query with bind parameters&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;echo &quot;select @bv_1 as col1, @bv_2 as col2;&quot; &amp;gt; test.sql
+bq query --use_legacy_sql=False --nodry_run --parameter=bv_1::USA --parameter=bv_2::PH  &amp;lt; test.sql
+
+Waiting on bqjob_r5bea3ffac049a315_00000173d6fabb8b_1 ... (0s) Current status: DONE   
++------+------+
+| col1 | col2 |
++------+------+
+| USA  | PH   |
++------+------+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SCRIPTING - parameterized queries using the Python Cloud Client API&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;..&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>gcp dev tools</category>
 <category>gcp bigquery</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20bq%20commandline%5D%5D</link>
-<pubDate>Tue, 28 Jul 2020 19:48:50 GMT</pubDate>
+<pubDate>Fri, 14 Aug 2020 17:05:00 GMT</pubDate>
 
 </item>
 <item>
-<title>gcp bigquery pricing billing limitations quotas</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' docs', event)&quot;&gt; docs&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' how ', event)&quot;&gt; how &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' limitations', event)&quot;&gt; limitations&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' quotas', event)&quot;&gt; quotas&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; docs&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/slots&quot; href=&quot;https://cloud.google.com/bigquery/docs/slots&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/slots&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; how &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; it is to this project that storage costs for tables in this dataset will be billed (queries are charged to the project of the querier)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; limitations&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Be careful when choosing a region for loading data: as of this writing, queries cannot join tables held in different regions&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; quotas&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/quotas&quot; href=&quot;https://cloud.google.com/bigquery/quotas&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/quotas&lt;/a&gt;&lt;br&gt;&lt;br&gt;..</description>
-<category>GCP essentials hands-on</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20bigquery%20pricing%20billing%20limitations%20quotas%5D%5D</link>
-<pubDate>Tue, 28 Jul 2020 14:27:00 GMT</pubDate>
+<title>sql converter - teradata to bigquery / snowflake</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.sqlines.com/online&quot; href=&quot;http://www.sqlines.com/online&quot; class=&quot;externalLink&quot;&gt;http://www.sqlines.com/online&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://roboquery.com/&quot; href=&quot;https://roboquery.com/&quot; class=&quot;externalLink&quot;&gt;https://roboquery.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.compilerworks.com/&quot; href=&quot;https://www.compilerworks.com/&quot; class=&quot;externalLink&quot;&gt;https://www.compilerworks.com/&lt;/a&gt;</description>
+<category>bq performance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsql%20converter%20-%20teradata%20to%20bigquery%20%2F%20snowflake%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:45:00 GMT</pubDate>
 
 </item>
 <item>
-<title>bigquery AWR</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://codelabs.developers.google.com/codelabs/bigquery-pricing-workshop/#4&quot; href=&quot;https://codelabs.developers.google.com/codelabs/bigquery-pricing-workshop/#4&quot; class=&quot;externalLink&quot;&gt;https://codelabs.developers.google.com/codelabs/bigquery-pricing-workshop/#4&lt;/a&gt;&lt;br&gt;</description>
-<category>bigquery performance</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bbigquery%20AWR%5D%5D</link>
-<pubDate>Tue, 28 Jul 2020 14:26:00 GMT</pubDate>
-
-</item>
-<item>
-<title>bigquery performance</title>
-<description></description>
-<category>gcp bigquery</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bbigquery%20performance%5D%5D</link>
-<pubDate>Tue, 28 Jul 2020 14:25:00 GMT</pubDate>
-
-</item>
-<item>
-<title>convert UPDATE to MERGE</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://databricks.com/blog/2019/03/19/efficient-upserts-into-data-lakes-databricks-delta.html&quot; href=&quot;https://databricks.com/blog/2019/03/19/efficient-upserts-into-data-lakes-databricks-delta.html&quot; class=&quot;externalLink&quot;&gt;https://databricks.com/blog/2019/03/19/efficient-upserts-into-data-lakes-databricks-delta.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/58341437/convert-merge-statement-to-update-statement&quot; href=&quot;https://stackoverflow.com/questions/58341437/convert-merge-statement-to-update-statement&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/58341437/convert-merge-statement-to-update-statement&lt;/a&gt;</description>
-<category>12 SQL rewrite scenarios</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bconvert%20UPDATE%20to%20MERGE%5D%5D</link>
-<pubDate>Tue, 28 Jul 2020 14:24:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp gsutil - gcs storage bucket</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' READ THIS https://cloud.google.com/storage/docs/gsutil/commands/ls', event)&quot;&gt; READ THIS https://cloud.google.com/storage/docs/gsutil/commands/ls&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' list files in bucket ', event)&quot;&gt; list files in bucket &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' copy files to bucket ', event)&quot;&gt; copy files to bucket &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' read first few lines of a file ', event)&quot;&gt; read first few lines of a file &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; READ THIS &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/storage/docs/gsutil/commands/ls&quot; href=&quot;https://cloud.google.com/storage/docs/gsutil/commands/ls&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/storage/docs/gsutil/commands/ls&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/storage/docs/quickstart-gsutil&quot; href=&quot;https://cloud.google.com/storage/docs/quickstart-gsutil&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/storage/docs/quickstart-gsutil&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; list files in bucket &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;(py385) AMAC02T60SJH03Y:04_load kristofferson.a.arao$ gsutil ls gs://cloud-training/CPB200/BQ/lab4/
-gs://cloud-training/CPB200/BQ/lab4/airports.csv
-gs://cloud-training/CPB200/BQ/lab4/carrier.json
-gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000000.json
-gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000001.json
-gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000002.json
-gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000003.json
-gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000004.json
-gs://cloud-training/CPB200/BQ/lab4/schema_flight_performance.json
-gs://cloud-training/CPB200/BQ/lab4/campaign-finance/
-
-(py385) AMAC02T60SJH03Y:04_load kristofferson.a.arao$ gsutil ls -l gs://cloud-training/CPB200/BQ/lab4/
-     22687  2015-12-19T01:55:23Z  gs://cloud-training/CPB200/BQ/lab4/airports.csv
-      6840  2015-12-19T01:55:23Z  gs://cloud-training/CPB200/BQ/lab4/carrier.json
- 822645519  2015-12-19T01:55:24Z  gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000000.json
- 839342140  2015-12-19T01:55:24Z  gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000001.json
- 834139371  2015-12-19T01:55:25Z  gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000002.json
- 786923198  2015-12-19T01:55:25Z  gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000003.json
- 272399448  2015-12-19T01:55:26Z  gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000004.json
-      2360  2015-12-19T01:55:26Z  gs://cloud-training/CPB200/BQ/lab4/schema_flight_performance.json
-                                 gs://cloud-training/CPB200/BQ/lab4/campaign-finance/
-TOTAL: 8 objects, 3555481563 bytes (3.31 GiB)
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; copy files to bucket &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;gsutil cp *.txt gs://my-bucket
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; read first few lines of a file &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;gsutil cat -r 0-1000 gs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000000.json 
-{&quot;YEAR&quot;:&quot;2014&quot;,&quot;QUARTER&quot;:&quot;3&quot;,&quot;MONTH&quot;:&quot;9&quot;,&quot;DAY_OF_MONTH&quot;:&quot;1&quot;,&quot;DAY_OF_WEEK&quot;:&quot;1&quot;,&quot;FULL_DATE&quot;:&quot;2014-09-01&quot;,&quot;CARRIER&quot;:&quot;AA&quot;,&quot;TAIL_NUMBER&quot;:&quot;N794AA&quot;,&quot;FLIGHT_NUMBER&quot;:&quot;1&quot;,&quot;ORIGIN&quot;:&quot;JFK&quot;,&quot;DESTINATION&quot;:&quot;LAX&quot;,&quot;SCHEDULED_DEPART_TIME&quot;:&quot;900&quot;,&quot;ACTUAL_DEPART_TIME&quot;:&quot;851&quot;,&quot;DEPARTURE_DELAY&quot;:&quot;-9&quot;,&quot;TAKE_OFF_TIME&quot;:&quot;910&quot;,&quot;LANDING_TIME&quot;:&quot;1135&quot;,&quot;SCHEDULED_ARRIVAL_TIME&quot;:&quot;1210&quot;,&quot;ACTUAL_ARRIVAL_TIME&quot;:&quot;1144&quot;,&quot;ARRIVAL_DELAY&quot;:&quot;-26&quot;,&quot;FLIGHT_CANCELLED&quot;:&quot;0&quot;,&quot;CANCELLATION_CODE&quot;:&quot;&quot;,&quot;SCHEDULED_ELAPSED_TIME&quot;:&quot;370&quot;,&quot;ACTUAL_ELAPSED_TIME&quot;:&quot;353&quot;,&quot;AIR_TIME&quot;:&quot;325&quot;,&quot;DISTANCE&quot;:&quot;2475&quot;}
-{&quot;YEAR&quot;:&quot;2014&quot;,&quot;QUARTER&quot;:&quot;3&quot;,&quot;MONTH&quot;:&quot;9&quot;,&quot;DAY_OF_MONTH&quot;:&quot;2&quot;,&quot;DAY_OF_WEEK&quot;:&quot;2&quot;,&quot;FULL_DATE&quot;:&quot;2014-09-02&quot;,&quot;CARRIER&quot;:&quot;AA&quot;,&quot;TAIL_NUMBER&quot;:&quot;N797AA&quot;,&quot;FLIGHT_NUMBER&quot;:&quot;1&quot;,&quot;ORIGIN&quot;:&quot;JFK&quot;,&quot;DESTINATION&quot;:&quot;LAX&quot;,&quot;SCHEDULED_DEPART_TIME&quot;:&quot;900&quot;,&quot;ACTUAL_DEPART_TIME&quot;:&quot;902&quot;,&quot;DEPARTURE_DELAY&quot;:&quot;2&quot;,&quot;TAKE_OFF_TIME&quot;:&quot;922&quot;,&quot;LANDING_TIME&quot;:&quot;1134&quot;,&quot;SCHEDULED_ARRIVAL_TIME&quot;:&quot;1210&quot;,&quot;ACTUAL_ARRIVAL_TIME&quot;:&quot;1210&quot;,&quot;ARRIVAL_DELAY&quot;:&quot;0&quot;,&quot;FLIGHT_CANCELLED&quot;:&quot;0&quot;,&quot;CANCELLATION_CODE&quot;:&quot;&quot;,&quot;SCHEDULED_(py385) AMAC02T60SJH03Y:04_load 
+<title>bq query labeles - DBMS_APPLICATION_INFO</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/51133540/how-do-i-use-labels-in-big-query-queries-to-track-cost&quot; href=&quot;https://stackoverflow.com/questions/51133540/how-do-i-use-labels-in-big-query-queries-to-track-cost&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/51133540/how-do-i-use-labels-in-big-query-queries-to-track-cost&lt;/a&gt;&lt;br&gt;&lt;pre&gt;bq query \
+--nouse_legacy_sql \
+--label foo:bar \
+'SELECT COUNT(*) FROM `bigquery-public-data`.samples.shakespeare'
 
 
-kristofferson.a.arao$ gsutil cat -r 0-1000 gs://cloud-training/CPgs://cloud-training/CPB200/BQ/lab4/domestic_2014_flights_000000000000.json | less
+Then, you can issue below filter in Cloud logging
 
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>gcp dev tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20gsutil%20-%20gcs%20storage%20bucket%5D%5D</link>
-<pubDate>Tue, 28 Jul 2020 08:44:00 GMT</pubDate>
+resource.type=&quot;bigquery_resource&quot;
+protoPayload.serviceData.jobCompletedEvent.job.jobConfiguration.labels.foo=&quot;bar&quot;
 
-</item>
-<item>
-<title>bigquery errors</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' No matching signature for operator &gt; for argument types: STRING, INT64.', event)&quot;&gt; No matching signature for operator &amp;gt; for argument types: STRING, INT64.&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; No matching signature for operator &amp;gt; for argument types: STRING, &lt;a tiddlylink=&quot;INT64&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#INT64&quot; href=&quot;http://karlarao.tiddlyspot.com#INT64&quot; class=&quot;externalLink null&quot;&gt;INT64&lt;/a&gt;.&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;fix&lt;br&gt;&lt;pre&gt;SAFE_CAST(ADM_RATE_ALL AS FLOAT64)
-
-
-Had we not included the cast, we would have received an error:
-
-No matching signature for operator &amp;gt; for argument types: STRING, INT64.
-
-Had we simply cast as a float, it would have failed on a row where the value was a string (PrivacySuppressed) that cannot be cast as a float:
-
-Bad double value: PrivacySuppressed; while executing the filter ...
-
-This is because the automatic schema detection did not identify the admission rate column as numeric. Instead, that column is being treated as a string because, in some of the rows, the value is suppressed for privacy reasons (e.g., if the number of applications is very small) and replaced by the text PrivacySuppressed. Indeed, even the median family income is a string (it happens to always be numeric for colleges that meet the criteria we outlined), and so we need to cast it before ordering
+https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration
 &lt;/pre&gt;</description>
-<category>gcp bigquery</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bbigquery%20errors%5D%5D</link>
-<pubDate>Mon, 27 Jul 2020 08:26:00 GMT</pubDate>
+<category>bq performance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20query%20labeles%20-%20DBMS_APPLICATION_INFO%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:24:00 GMT</pubDate>
 
 </item>
 <item>
-<title>gcp cloudshell</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://console.cloud.google.com/cloudshell&quot; href=&quot;https://console.cloud.google.com/cloudshell&quot; class=&quot;externalLink&quot;&gt;https://console.cloud.google.com/cloudshell&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;Welcome to Google Cloud Shell, a tool for managing resources hosted on Google Cloud Platform!&lt;br&gt;The machine comes pre-installed with the Google Cloud SDK and other popular developer tools.&lt;br&gt;&lt;br&gt;Your 5GB home directory will persist across sessions, but the VM is ephemeral and will be reset&lt;br&gt;approximately 20 minutes after your session ends. No system-wide change will persist beyond that.&lt;br&gt;&lt;br&gt;Type &quot;gcloud help&quot; to get help on using Cloud SDK. For more examples, visit&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/shell/docs/quickstart&quot; href=&quot;https://cloud.google.com/shell/docs/quickstart&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/shell/docs/quickstart&lt;/a&gt; and &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/shell/docs/examples&quot; href=&quot;https://cloud.google.com/shell/docs/examples&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/shell/docs/examples&lt;/a&gt;&lt;br&gt;&lt;br&gt;Type &quot;cloudshell help&quot; to get help on using the &quot;cloudshell&quot; utility.  Common functionality is&lt;br&gt;aliased to short commands in your shell, for example, you can type &quot;dl &amp;lt;filename&amp;gt;&quot; at Bash prompt to&lt;br&gt;download a file. Type &quot;cloudshell aliases&quot; to see these commands.&lt;br&gt;&lt;br&gt;Type &quot;help&quot; to see this message any time. Type &quot;builtin help&quot; to see Bash interpreter help.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;you need to initialize 
-
-gcloud init
-&lt;/pre&gt;</description>
-<category>gcp dev tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20cloudshell%5D%5D</link>
-<pubDate>Sun, 26 Jul 2020 22:18:00 GMT</pubDate>
+<title>.bq database engine - dremel</title>
+<description>Dremel: Interactive Analysis of &lt;a tiddlylink=&quot;Web-Scale&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Web-Scale&quot; href=&quot;http://karlarao.tiddlyspot.com#Web-Scale&quot; class=&quot;externalLink null&quot;&gt;Web-Scale&lt;/a&gt; Datasets (with cost based optimizer)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36632.pdf&quot; href=&quot;https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36632.pdf&quot; class=&quot;externalLink&quot;&gt;https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36632.pdf&lt;/a&gt;</description>
+<category>bq performance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.bq%20database%20engine%20-%20dremel%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:21:00 GMT</pubDate>
 
 </item>
 <item>
-<title>gcp bigquery public datasets</title>
-<description>&lt;pre&gt;
--- covid data 
-SELECT
-  date, SUM(confirmed) num_reports
-FROM `bigquery-public-data.covid19_open_data.compatibility_view`
-WHERE ST_Distance(ST_GeogPoint(longitude, latitude),  
-                  ST_GeogPoint(103.8, 1.4)) &amp;lt; 200*1000     -- 200km
-GROUP BY date
-HAVING num_reports IS NOT NULL AND num_reports &amp;gt; 0
-ORDER BY date ASC
-;
-
-
--- nyc bike data 
--- one-way rentals by year, month
-SELECT 
-  EXTRACT(YEAR FROM starttime) AS year,
-  EXTRACT(MONTH FROM starttime) AS month,
-  COUNT(starttime) AS number_one_way
-FROM
-  `bigquery-public-data`.new_york_citibike.citibike_trips
-WHERE
-  start_station_name != end_station_name
-GROUP BY year, month
-ORDER BY year ASC, month ASC
-;
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
-<category>gcp bigquery</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20bigquery%20public%20datasets%5D%5D</link>
-<pubDate>Sun, 26 Jul 2020 14:20:00 GMT</pubDate>
-
-</item>
-<item>
-<title>bigquery sql testcase</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' one SQL ', event)&quot;&gt; one SQL &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' two SQLs - SELECT and DDL', event)&quot;&gt; two SQLs - SELECT and DDL&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; one SQL &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;vi test.py &lt;br&gt;&lt;pre&gt;from google.cloud import bigquery
-
-# Construct a BigQuery client object.
-client = bigquery.Client()
-
-query = &quot;&quot;&quot;
-with cte as (
-SELECT /* cte_query */ b.* 
-FROM `example-prod-284123.dataset01.table01` a
-inner join `example-dev-284123.dataset01.table01` b
-on a.col1 = b.col1
-)
-SELECT /* now3 main_query */ b.* 
-FROM `example-prod-284123.dataset01.table01` a
-inner join `example-dev-284123.dataset01.table01` b
-on a.col1 = b.col1
-inner join cte
-on a.col1 = cte.col1
-inner join (SELECT /* subquery */ b.* 
-FROM `example-prod-284123.dataset01.table01` a
-inner join `example-dev-284123.dataset01.table01` b
-on a.col1 = b.col1) sq
-on a.col1 = sq.col1
-&quot;&quot;&quot;
-query_job = client.query(query)  # Make an API request.
-
-print(&quot;done&quot;)
-#for row in query_job:
-#    print(','.join(row))
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; two &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; - SELECT and DDL&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;cat test3-createtbl.py 
-
-from google.cloud import bigquery
-
-# Construct a BigQuery client object.
-client = bigquery.Client()
-
-query = &quot;&quot;&quot;
-with cte as (
-SELECT /* cte_query */ b.* 
-FROM `example-prod-284123.dataset01.table01` a
-inner join `example-dev-284123.dataset01.table01` b
-on a.col1 = b.col1
-)
-SELECT /* now3 main_query */ b.* 
-FROM `example-prod-284123.dataset01.table01` a
-inner join `example-dev-284123.dataset01.table01` b
-on a.col1 = b.col1
-inner join cte
-on a.col1 = cte.col1
-inner join (SELECT /* subquery */ b.* 
-FROM `example-prod-284123.dataset01.table01` a
-inner join `example-dev-284123.dataset01.table01` b
-on a.col1 = b.col1) sq
-on a.col1 = sq.col1
-;
-
-create table `example-dev-284123.dataset01.table03`
-as select * from `example-dev-284123.dataset01.table01`;
-&quot;&quot;&quot;
-query_job = client.query(query)  # Make an API request.
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>bigquery sql tuning</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bbigquery%20sql%20testcase%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 22:33:00 GMT</pubDate>
-
-</item>
-<item>
-<title>bigquery sql tuning</title>
-<description></description>
-<category>gcp bigquery</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bbigquery%20sql%20tuning%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 20:16:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp bigquery security, grants, roles</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cross dataset access ', event)&quot;&gt; cross dataset access &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' limit access to datasets ', event)&quot;&gt; limit access to datasets &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt; &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; cross dataset access &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/dataset-access-controls#controlling_access_to_a_dataset&quot; href=&quot;https://cloud.google.com/bigquery/docs/dataset-access-controls#controlling_access_to_a_dataset&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/dataset-access-controls#controlling_access_to_a_dataset&lt;/a&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; on the dataset , click SHARE and add the service account ID &quot;client_email&quot;: &quot;example-dev-svc@iam.gserviceaccount.com&quot;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; limit access to datasets &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Is it possible to limit a Google service account to specific &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; datasets within a project&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/59736056/is-it-possible-to-limit-a-google-service-account-to-specific-bigquery-datasets-w&quot; href=&quot;https://stackoverflow.com/questions/59736056/is-it-possible-to-limit-a-google-service-account-to-specific-bigquery-datasets-w&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/59736056/is-it-possible-to-limit-a-google-service-account-to-specific-bigquery-datasets-w&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>gcp bigquery</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20bigquery%20security%2C%20grants%2C%20roles%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 19:56:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp bigquery</title>
-<description></description>
-<category>GCP essentials hands-on</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20bigquery%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 18:51:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp sdk install</title>
-<description>&lt;h1&gt; commands summary&lt;/h1&gt;&lt;pre&gt;gcloud init
-gcloud auth list
-gcloud config list
-gcloud info
-&lt;/pre&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/sdk/docs/quickstart-macos&quot; href=&quot;https://cloud.google.com/sdk/docs/quickstart-macos&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/sdk/docs/quickstart-macos&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/sdk/auth_success&quot; href=&quot;https://cloud.google.com/sdk/auth_success&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/sdk/auth_success&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/sdk/gcloud&quot; href=&quot;https://cloud.google.com/sdk/gcloud&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/sdk/gcloud&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/sdk/docs/initializing&quot; href=&quot;https://cloud.google.com/sdk/docs/initializing&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/sdk/docs/initializing&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/compute/docs/storing-retrieving-metadata&quot; href=&quot;https://cloud.google.com/compute/docs/storing-retrieving-metadata&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/compute/docs/storing-retrieving-metadata&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://developers.google.com/api-client-library&quot; href=&quot;https://developers.google.com/api-client-library&quot; class=&quot;externalLink&quot;&gt;https://developers.google.com/api-client-library&lt;/a&gt;&lt;br&gt;&lt;br&gt;gcloud command-line tool overview &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/sdk/gcloud&quot; href=&quot;https://cloud.google.com/sdk/gcloud&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/sdk/gcloud&lt;/a&gt;&lt;br&gt;&lt;br&gt;    Developer Tools&lt;br&gt;    Cloud SDK: Command Line Interface&lt;br&gt;    Documentation&lt;br&gt;    Reference&lt;br&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/sdk/gcloud/reference&quot; href=&quot;https://cloud.google.com/sdk/gcloud/reference&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/sdk/gcloud/reference&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;gcloud init
-Welcome! This command will take you through the configuration of gcloud.
-
-Settings from your current configuration [default] are:
-core:
-  account: kristofferson.a.arao@gmail.com
-  disable_usage_reporting: 'True'
-  project: example-dev-284123
-
-Pick configuration to use:
- [1] Re-initialize this configuration [default] with new settings 
- [2] Create a new configuration
-Please enter your numeric choice:  1
-
-Your current configuration has been set to: [default]
-
-You can skip diagnostics next time by using the following flag:
-  gcloud init --skip-diagnostics
-
-Network diagnostic detects and fixes local network connection issues.
-Checking network connection...done.                                                                                                                                                            
-Reachability Check passed.
-Network diagnostic passed (1/1 checks passed).
-
-Choose the account you would like to use to perform operations for 
-this configuration:
- [1] kristofferson.a.arao@gmail.com
- [2] Log in with a new account
-Please enter your numeric choice:  1
-
-You are logged in as: [kristofferson.a.arao@gmail.com].
-
-Pick cloud project to use: 
- [1] example-dev-284123
- [2] example-prod-284123
- [3] genuine-footing-275704
- [4] karlarao
- [5] Create a new project
-Please enter numeric choice or text value (must exactly match list 
-item):  1
-
-Your current project has been set to: [example-dev-284123].
-
-Not setting default zone/region (this feature makes it easier to use
-[gcloud compute] by setting an appropriate default value for the
---zone and --region flag).
-See https://cloud.google.com/compute/docs/gcloud-compute section on how to set
-default compute region and zone manually. If you would like [gcloud init] to be
-able to do this for you the next time you run it, make sure the
-Compute Engine API is enabled for your project on the
-https://console.developers.google.com/apis page.
-
-Your Google Cloud SDK is configured and ready to use!
-
-* Commands that require authentication will use kristofferson.a.arao@gmail.com by default
-* Commands will reference project `example-dev-284123` by default
-Run `gcloud help config` to learn how to change individual settings
-
-This gcloud configuration is called [default]. You can create additional configurations if you work with multiple accounts and/or projects.
-Run `gcloud topic configurations` to learn more.
-
-Some things to try next:
-
-* Run `gcloud --help` to see the Cloud Platform services you can interact with. And run `gcloud help COMMAND` to get help on any gcloud command.
-* Run `gcloud topic --help` to learn about advanced features of the SDK like arg files and output formatting
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;(py385) AMAC02T60SJH03Y:google-cloud-sdk kristofferson.a.arao$ gcloud auth list
-        Credentialed Accounts
-ACTIVE  ACCOUNT
-*       kristofferson.a.arao@gmail.com
-
-To set the active account, run:
-    $ gcloud config set account `ACCOUNT`
-
-(py385) AMAC02T60SJH03Y:google-cloud-sdk kristofferson.a.arao$ 
-(py385) AMAC02T60SJH03Y:google-cloud-sdk kristofferson.a.arao$ 
-(py385) AMAC02T60SJH03Y:google-cloud-sdk kristofferson.a.arao$ gcloud config list
-[core]
-account = kristofferson.a.arao@gmail.com
-disable_usage_reporting = True
-project = example-dev-284123
-
-Your active configuration is: [default]
-(py385) AMAC02T60SJH03Y:google-cloud-sdk kristofferson.a.arao$ gcloud info
-Google Cloud SDK [302.0.0]
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>gcp authentication</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20sdk%20install%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 18:37:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp python api , bigquery apis</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bigquery related apis ', event)&quot;&gt; bigquery related apis &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bigquery api - GENERIC ', event)&quot;&gt; bigquery api - GENERIC &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Third-party BigQuery API client libraries', event)&quot;&gt; Third-party BigQuery API client libraries&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' pandas-gbq (migration guide)', event)&quot;&gt; pandas-gbq (migration guide)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 	bigrquery', event)&quot;&gt; 	bigrquery&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', '  	spark-bigquery', event)&quot;&gt;  	spark-bigquery&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt; &lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/googleapis/google-cloud-python&quot; href=&quot;https://github.com/googleapis/google-cloud-python&quot; class=&quot;externalLink&quot;&gt;https://github.com/googleapis/google-cloud-python&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bigquery related apis &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;Google BigQuery (BigQuery README, BigQuery Documentation)
-Google BigQuery Data Transfer (BigQuery Data Transfer README, BigQuery Data Transfer Documentation)
-Google BigQuery Storage (BigQuery Storage README, BigQuery Storage Documentation)
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; bigquery api - GENERIC &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/rest&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/rest&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/rest&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/bq-cli-reference&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/bq-cli-reference&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/bq-cli-reference&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas&quot; href=&quot;https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Third-party &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; API client libraries&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/libraries#third-party_client_libraries&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/libraries#third-party_client_libraries&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/libraries#third-party_client_libraries&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; pandas-gbq (migration guide)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://pandas-gbq.readthedocs.io/en/latest/intro.html&quot; href=&quot;https://pandas-gbq.readthedocs.io/en/latest/intro.html&quot; class=&quot;externalLink&quot;&gt;https://pandas-gbq.readthedocs.io/en/latest/intro.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://pandas-gbq.readthedocs.io/en/latest/writing.html&quot; href=&quot;https://pandas-gbq.readthedocs.io/en/latest/writing.html&quot; class=&quot;externalLink&quot;&gt;https://pandas-gbq.readthedocs.io/en/latest/writing.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 	bigrquery&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/r-dbi/bigrquery&quot; href=&quot;https://github.com/r-dbi/bigrquery&quot; class=&quot;externalLink&quot;&gt;https://github.com/r-dbi/bigrquery&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt;  	spark-bigquery&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/spotify/spark-bigquery&quot; href=&quot;https://github.com/spotify/spark-bigquery&quot; class=&quot;externalLink&quot;&gt;https://github.com/spotify/spark-bigquery&lt;/a&gt;&lt;br&gt;</description>
-<category>gcp apis, google apis</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20python%20api%20%2C%20bigquery%20apis%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 18:28:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp apis, google apis</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/googleapis/&quot; href=&quot;https://github.com/googleapis/&quot; class=&quot;externalLink&quot;&gt;https://github.com/googleapis/&lt;/a&gt;</description>
-<category>gcp dev tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20apis%2C%20google%20apis%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 17:44:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp bigquery client install</title>
+<title>bigquery client install</title>
 <description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' install packages', event)&quot;&gt; install packages&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', '  configure credentials ', event)&quot;&gt;  configure credentials &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; install packages&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
  pip install google-cloud-bigquery
   pip install google-cloud-bigquery-datatransfer
@@ -805,100 +742,140 @@ Traceback (most recent call last):
 google.auth.exceptions.DefaultCredentialsError: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://cloud.google.com/docs/authentication/getting-started
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/libraries&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/libraries&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/libraries&lt;/a&gt;&lt;br&gt;</description>
 <category>gcp authentication</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20bigquery%20client%20install%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 17:43:00 GMT</pubDate>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbigquery%20client%20install%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:19:00 GMT</pubDate>
 
 </item>
 <item>
-<title>gcp authentication</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' error ', event)&quot;&gt; error &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' create service account ', event)&quot;&gt; create service account &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bash_profile ', event)&quot;&gt; bash_profile &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' run sql ', event)&quot;&gt; run sql &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other urls ', event)&quot;&gt; other urls &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; error &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;  File &quot;/Users/kristofferson.a.arao/.pyenv/versions/py385/lib/python3.8/site-packages/google/auth/_default.py&quot;, line 338, in default
-    raise exceptions.DefaultCredentialsError(_HELP_MESSAGE)
-google.auth.exceptions.DefaultCredentialsError: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://cloud.google.com/docs/authentication/getting-started
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/docs/authentication/getting-started&quot; href=&quot;https://cloud.google.com/docs/authentication/getting-started&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/docs/authentication/getting-started&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/docs/authentication/getting-started#cloud-console&quot; href=&quot;https://cloud.google.com/docs/authentication/getting-started#cloud-console&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/docs/authentication/getting-started#cloud-console&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;Before proceeding, we recommend that all Google Cloud developers first read the Authentication overview topic to understand how authentication works in Google Cloud, including common scenarios and strategies. Additionally, before deploying an application to a production environment, ensure that you've read Authenticating as a service account.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/docs/authentication&quot; href=&quot;https://cloud.google.com/docs/authentication&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/docs/authentication&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/docs/authentication#strategies&quot; href=&quot;https://cloud.google.com/docs/authentication#strategies&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/docs/authentication#strategies&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/docs/authentication/production&quot; href=&quot;https://cloud.google.com/docs/authentication/production&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/docs/authentication/production&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; create service account &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; go to &lt;a target=&quot;_blank&quot; title=&quot;External link to https://console.cloud.google.com/iam-admin/serviceaccounts?folder=&amp;amp;project=example-dev-284123&amp;amp;supportedpurview=project&quot; href=&quot;https://console.cloud.google.com/iam-admin/serviceaccounts?folder=&amp;amp;project=example-dev-284123&amp;amp;supportedpurview=project&quot; class=&quot;externalLink&quot;&gt;https://console.cloud.google.com/iam-admin/serviceaccounts?folder=&amp;amp;project=example-dev-284123&amp;amp;supportedpurview=project&lt;/a&gt;&lt;/li&gt;&lt;li&gt; create service account &lt;/li&gt;&lt;li&gt; name account as  &amp;lt;projectname&amp;gt;-svc&lt;/li&gt;&lt;li&gt; create key here &lt;a target=&quot;_blank&quot; title=&quot;External link to https://console.cloud.google.com/iam-admin/serviceaccounts?project=example-dev-284123&amp;amp;supportedpurview=project&quot; href=&quot;https://console.cloud.google.com/iam-admin/serviceaccounts?project=example-dev-284123&amp;amp;supportedpurview=project&quot; class=&quot;externalLink&quot;&gt;https://console.cloud.google.com/iam-admin/serviceaccounts?project=example-dev-284123&amp;amp;supportedpurview=project&lt;/a&gt;&lt;/li&gt;&lt;li&gt; read up on other resources &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/iam/docs/granting-changing-revoking-access&quot; href=&quot;https://cloud.google.com/iam/docs/granting-changing-revoking-access&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/iam/docs/granting-changing-revoking-access&lt;/a&gt;&lt;/li&gt;&lt;li&gt; add/edit roles here -&amp;gt; IAM -&amp;gt; ROLES -&amp;gt; MANAGE ROLES &lt;a target=&quot;_blank&quot; title=&quot;External link to https://console.cloud.google.com/cloud-resource-manager?_ga=2.101500549.582125405.1595696552-548387713.1595458168&quot; href=&quot;https://console.cloud.google.com/cloud-resource-manager?_ga=2.101500549.582125405.1595696552-548387713.1595458168&quot; class=&quot;externalLink&quot;&gt;https://console.cloud.google.com/cloud-resource-manager?_ga=2.101500549.582125405.1595696552-548387713.1595458168&lt;/a&gt;&lt;/li&gt;&lt;li&gt; add the bigquery admin role to service account &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bash_profile &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;cat ~/.bash_profile
+<title>bq public datasets</title>
+<description>&lt;pre&gt;
+-- covid data 
+SELECT
+  date, SUM(confirmed) num_reports
+FROM `bigquery-public-data.covid19_open_data.compatibility_view`
+WHERE ST_Distance(ST_GeogPoint(longitude, latitude),  
+                  ST_GeogPoint(103.8, 1.4)) &amp;lt; 200*1000     -- 200km
+GROUP BY date
+HAVING num_reports IS NOT NULL AND num_reports &amp;gt; 0
+ORDER BY date ASC
+;
 
 
-#export JAVA_HOME=/Library/Java/Home
-# Set JAVA_HOME so rJava package can find it
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)/jre
+-- nyc bike data 
+-- one-way rentals by year, month
+SELECT 
+  EXTRACT(YEAR FROM starttime) AS year,
+  EXTRACT(MONTH FROM starttime) AS month,
+  COUNT(starttime) AS number_one_way
+FROM
+  `bigquery-public-data`.new_york_citibike.citibike_trips
+WHERE
+  start_station_name != end_station_name
+GROUP BY year, month
+ORDER BY year ASC, month ASC
+;
 
 
-# pyenv
-export PATH=&quot;~/.pyenv/versions/3.5.0/bin:${PATH}&quot;
-if command -v pyenv 1&amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then
-  eval &quot;$(pyenv init -)&quot;
-fi
-
-
-# oracle client
-export PATH=~/instantclient_12_2:$PATH
-export ORACLE_HOME=~/instantclient_12_2
-export DYLD_LIBRARY_PATH=$ORACLE_HOME
-export LD_LIBRARY_PATH=$ORACLE_HOME
-export FORCE_RPATH=1
-
-
-# DBngin exports
-export PATH=/Users/Shared/DBngin/mysql/5.7.23/bin:$PATH
-
-# bazel 
-export PATH=&quot;$PATH:$HOME/bin&quot;
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/kristofferson.a.arao/gcp-sdk/google-cloud-sdk/path.bash.inc' ]; then . '/Users/kristofferson.a.arao/gcp-sdk/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/kristofferson.a.arao/gcp-sdk/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/kristofferson.a.arao/gcp-sdk/google-cloud-sdk/completion.bash.inc'; fi
-
-# gcp service account - example-dev
-export GOOGLE_APPLICATION_CREDENTIALS=&quot;/Users/kristofferson.a.arao/gcp-sdk/example-dev-284123-1c4cf8cf3f8c.json&quot;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; run sql &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
-# this script runs as the service account while logged in as kristofferson.a.arao on cloud init 
-(py385) AMAC02T60SJH03Y:gcp-bigquery kristofferson.a.arao$ ls -ltr /Users/kristofferson.a.arao/gcp-sdk/example-dev-284123-1c4cf8cf3f8c.json 
--rw-rw-rw-@ 1 kristofferson.a.arao  562225435  2339 Jul 25 13:06 /Users/kristofferson.a.arao/gcp-sdk/example-dev-284123-1c4cf8cf3f8c.json
-(py385) AMAC02T60SJH03Y:gcp-bigquery kristofferson.a.arao$ 
-(py385) AMAC02T60SJH03Y:gcp-bigquery kristofferson.a.arao$ python test.py 
-The query data:
-name=James, count=272793
-name=John, count=235139
-name=Michael, count=225320
-name=Robert, count=220399
-name=David, count=219028
-name=Mary, count=209893
-name=William, count=173092
-name=Jose, count=157362
-name=Christopher, count=144196
-name=Maria, count=131056
-name=Charles, count=126509
-name=Daniel, count=117470
-name=Richard, count=109888
-name=Juan, count=109808
-name=Jennifer, count=98696
-name=Joshua, count=90679
-name=Elizabeth, count=90465
-name=Joseph, count=89097
-name=Matthew, count=88464
-name=Joe, count=87977
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other urls &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/51366870/xxxxgmail-com-does-not-have-bigquery-jobs-create-permission-in-project-yyyy&quot; href=&quot;https://stackoverflow.com/questions/51366870/xxxxgmail-com-does-not-have-bigquery-jobs-create-permission-in-project-yyyy&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/51366870/xxxxgmail-com-does-not-have-bigquery-jobs-create-permission-in-project-yyyy&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>gcp dev tools</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20authentication%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 17:42:00 GMT</pubDate>
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
+<category>bigquery SQL, bq sql</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20public%20datasets%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:18:00 GMT</pubDate>
 
 </item>
 <item>
-<title>gcp dev tools</title>
+<title>bq pricing billing limitations quotas</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' docs', event)&quot;&gt; docs&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' how ', event)&quot;&gt; how &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' limitations', event)&quot;&gt; limitations&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' quotas and limits', event)&quot;&gt; quotas and limits&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; docs&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/slots&quot; href=&quot;https://cloud.google.com/bigquery/docs/slots&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/slots&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; how &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; it is to this project that storage costs for tables in this dataset will be billed (queries are charged to the project of the querier)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; limitations&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Be careful when choosing a region for loading data: as of this writing, queries cannot join tables held in different regions&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; quotas and limits&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/quotas&quot; href=&quot;https://cloud.google.com/bigquery/quotas&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/quotas&lt;/a&gt;&lt;br&gt;&lt;br&gt;..</description>
+<category>bq pricing</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20pricing%20billing%20limitations%20quotas%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq security - security, grants, roles</title>
 <description></description>
-<category>GCP essentials hands-on</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20dev%20tools%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 17:42:00 GMT</pubDate>
+<category>gcp bigquery</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20security%20-%20security%2C%20grants%2C%20roles%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:17:00 GMT</pubDate>
 
 </item>
 <item>
-<title>GCP essentials hands-on</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' dev tools ', event)&quot;&gt; dev tools &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' setup and iam', event)&quot;&gt; setup and iam&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' storage', event)&quot;&gt; storage&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' compute ', event)&quot;&gt; compute &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' networking', event)&quot;&gt; networking&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' big data pipelines', event)&quot;&gt; big data pipelines&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ci/cd tools', event)&quot;&gt; ci/cd tools&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ai and ml', event)&quot;&gt; ai and ml&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' sample data', event)&quot;&gt; sample data&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gcp essential urls', event)&quot;&gt; gcp essential urls&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;also see &lt;a tiddlylink=&quot;GCP exercices&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GCP exercices&quot; href=&quot;http://karlarao.tiddlyspot.com#GCP%20exercices&quot; class=&quot;externalLink null&quot;&gt;GCP exercices&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; dev tools &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; setup and iam&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; storage&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; compute &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; networking&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; big data pipelines&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; ci/cd tools&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; ai and ml&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; sample data&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h1&gt; gcp essential urls&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>GCP data engineer</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BGCP%20essentials%20hands-on%5D%5D</link>
-<pubDate>Sat, 25 Jul 2020 15:26:00 GMT</pubDate>
+<title>bq encryption</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' doc ', event)&quot;&gt; doc &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' AEAD encryption', event)&quot;&gt; AEAD encryption&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' crypto shredding ', event)&quot;&gt; crypto shredding &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Customer-Managed Encryption Keys for BigQuery', event)&quot;&gt; Customer-Managed Encryption Keys for BigQuery&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' other references', event)&quot;&gt; other references&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; doc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/encryption-at-rest&quot; href=&quot;https://cloud.google.com/bigquery/docs/encryption-at-rest&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/encryption-at-rest&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; AEAD encryption&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/google/tink&quot; href=&quot;https://github.com/google/tink&quot; class=&quot;externalLink&quot;&gt;https://github.com/google/tink&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/standard-sql/aead-encryption-concepts&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/standard-sql/aead-encryption-concepts&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/standard-sql/aead-encryption-concepts&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; crypto shredding &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/google-cloud/bigquery-encryption-functions-part-i-data-deletion-retention-with-crypto-shredding-7085ecf6e53f&quot; href=&quot;https://medium.com/google-cloud/bigquery-encryption-functions-part-i-data-deletion-retention-with-crypto-shredding-7085ecf6e53f&quot; class=&quot;externalLink&quot;&gt;https://medium.com/google-cloud/bigquery-encryption-functions-part-i-data-deletion-retention-with-crypto-shredding-7085ecf6e53f&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/google-cloud/end-to-end-crypto-shredding-part-ii-data-deletion-retention-with-crypto-shredding-a67f5300a8c8&quot; href=&quot;https://medium.com/google-cloud/end-to-end-crypto-shredding-part-ii-data-deletion-retention-with-crypto-shredding-a67f5300a8c8&quot; class=&quot;externalLink&quot;&gt;https://medium.com/google-cloud/end-to-end-crypto-shredding-part-ii-data-deletion-retention-with-crypto-shredding-a67f5300a8c8&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;a tiddlylink=&quot;Customer-Managed&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Customer-Managed&quot; href=&quot;http://karlarao.tiddlyspot.com#Customer-Managed&quot; class=&quot;externalLink null&quot;&gt;Customer-Managed&lt;/a&gt; Encryption Keys for &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt;&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a tiddlylink=&quot;Customer-Managed&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Customer-Managed&quot; href=&quot;http://karlarao.tiddlyspot.com#Customer-Managed&quot; class=&quot;externalLink null&quot;&gt;Customer-Managed&lt;/a&gt; Encryption Keys for &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=-dlv9wJheF8&quot; href=&quot;https://www.youtube.com/watch?v=-dlv9wJheF8&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=-dlv9wJheF8&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/customer-managed-encryption&quot; href=&quot;https://cloud.google.com/bigquery/docs/customer-managed-encryption&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/customer-managed-encryption&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other references&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/google/encrypted-bigquery-client/blob/master/tutorial.md&quot; href=&quot;https://github.com/google/encrypted-bigquery-client/blob/master/tutorial.md&quot; class=&quot;externalLink&quot;&gt;https://github.com/google/encrypted-bigquery-client/blob/master/tutorial.md&lt;/a&gt;    &amp;lt;- EBQ (old stuff)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/53274323/field-level-encryption-in-big-query?rq=1&quot; href=&quot;https://stackoverflow.com/questions/53274323/field-level-encryption-in-big-query?rq=1&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/53274323/field-level-encryption-in-big-query?rq=1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/57723775/how-can-i-decrypt-columns-in-bigquery&quot; href=&quot;https://stackoverflow.com/questions/57723775/how-can-i-decrypt-columns-in-bigquery&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/57723775/how-can-i-decrypt-columns-in-bigquery&lt;/a&gt;&lt;br&gt;</description>
+<category>bq security - security, grants, roles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20encryption%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:15:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq performance</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://rittmananalytics.com/blog/tag/Bigquery&quot; href=&quot;https://rittmananalytics.com/blog/tag/Bigquery&quot; class=&quot;externalLink&quot;&gt;https://rittmananalytics.com/blog/tag/Bigquery&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Drill to Detail Ep.64 ‘Google &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt;, BI Engine and the Future of Data Warehousing’ with Special Guest Jordan Tigani &lt;a target=&quot;_blank&quot; title=&quot;External link to https://rittmananalytics.com/drilltodetail/2019/4/29/drill-to-detail-ep64-google-bigquery-bi-engine-and-the-future-of-data-warehousing-with-special-guest-jordan-tigani&quot; href=&quot;https://rittmananalytics.com/drilltodetail/2019/4/29/drill-to-detail-ep64-google-bigquery-bi-engine-and-the-future-of-data-warehousing-with-special-guest-jordan-tigani&quot; class=&quot;externalLink&quot;&gt;https://rittmananalytics.com/drilltodetail/2019/4/29/drill-to-detail-ep64-google-bigquery-bi-engine-and-the-future-of-data-warehousing-with-special-guest-jordan-tigani&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>gcp bigquery</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20performance%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:14:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq data partitioning and clustering</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://rittmananalytics.com/blog/2018/08/27/date-partitioning-and-table-clustering-in-google-bigquery-and-looker-pdts&quot; href=&quot;https://rittmananalytics.com/blog/2018/08/27/date-partitioning-and-table-clustering-in-google-bigquery-and-looker-pdts&quot; class=&quot;externalLink&quot;&gt;https://rittmananalytics.com/blog/2018/08/27/date-partitioning-and-table-clustering-in-google-bigquery-and-looker-pdts&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://rittmananalytics.com/blog/tag/Big+Data&quot; href=&quot;https://rittmananalytics.com/blog/tag/Big+Data&quot; class=&quot;externalLink&quot;&gt;https://rittmananalytics.com/blog/tag/Big+Data&lt;/a&gt;</description>
+<category>bq performance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20data%20partitioning%20and%20clustering%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:10:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bigquery teradata migration</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' teradata official doc ', event)&quot;&gt; teradata official doc &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' SET and MULTISET', event)&quot;&gt; SET and MULTISET&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' sql converter ', event)&quot;&gt; sql converter &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' bigquery datatypes teradata', event)&quot;&gt; bigquery datatypes teradata&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' query band - for sql tracking ', event)&quot;&gt; query band - for sql tracking &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; teradata official doc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; SET and MULTISET&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.teradata.com/reader/rgAb27O_xRmMVc_aQq2VGw/ZAb34NX2bdG0HpkqUsmUmQ&quot; href=&quot;https://docs.teradata.com/reader/rgAb27O_xRmMVc_aQq2VGw/ZAb34NX2bdG0HpkqUsmUmQ&quot; class=&quot;externalLink&quot;&gt;https://docs.teradata.com/reader/rgAb27O_xRmMVc_aQq2VGw/ZAb34NX2bdG0HpkqUsmUmQ&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; sql converter &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://roboquery.com/app/&quot; href=&quot;https://roboquery.com/app/&quot; class=&quot;externalLink&quot;&gt;https://roboquery.com/app/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://roboquery.com/&quot; href=&quot;https://roboquery.com/&quot; class=&quot;externalLink&quot;&gt;https://roboquery.com/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; bigquery datatypes teradata&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/solutions/migration/dw2bq/td2bq/td-bq-sql-translation-reference-tables&quot; href=&quot;https://cloud.google.com/solutions/migration/dw2bq/td2bq/td-bq-sql-translation-reference-tables&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/solutions/migration/dw2bq/td2bq/td-bq-sql-translation-reference-tables&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types&quot; href=&quot;https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; query band - for sql tracking &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Using the BLOCKCOMPRESSION Reserved Query Band &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.teradata.com/reader/scPHvjfglIlB8F70YliLAw/~iM4rfkST9SWmEwqW4jXPQ&quot; href=&quot;https://docs.teradata.com/reader/scPHvjfglIlB8F70YliLAw/%7EiM4rfkST9SWmEwqW4jXPQ&quot; class=&quot;externalLink&quot;&gt;https://docs.teradata.com/reader/scPHvjfglIlB8F70YliLAw/~iM4rfkST9SWmEwqW4jXPQ&lt;/a&gt;</description>
+<category>bq migration</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbigquery%20teradata%20migration%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 16:03:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq data generator</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/GoogleCloudPlatform/professional-services/tree/master/examples/dataflow-data-generator&quot; href=&quot;https://github.com/GoogleCloudPlatform/professional-services/tree/master/examples/dataflow-data-generator&quot; class=&quot;externalLink&quot;&gt;https://github.com/GoogleCloudPlatform/professional-services/tree/master/examples/dataflow-data-generator&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/google-cloud/yet-another-way-to-generate-fake-datasets-in-bigquery-93ee87c1008f&quot; href=&quot;https://medium.com/google-cloud/yet-another-way-to-generate-fake-datasets-in-bigquery-93ee87c1008f&quot; class=&quot;externalLink&quot;&gt;https://medium.com/google-cloud/yet-another-way-to-generate-fake-datasets-in-bigquery-93ee87c1008f&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://datarunsdeep.com.au/blog/flying-beagle/how-consistently-select-randomly-distributed-sample-rows-bigquery-table&quot; href=&quot;https://datarunsdeep.com.au/blog/flying-beagle/how-consistently-select-randomly-distributed-sample-rows-bigquery-table&quot; class=&quot;externalLink&quot;&gt;https://datarunsdeep.com.au/blog/flying-beagle/how-consistently-select-randomly-distributed-sample-rows-bigquery-table&lt;/a&gt;</description>
+<category>bq performance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20data%20generator%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 15:59:00 GMT</pubDate>
+
+</item>
+<item>
+<title>gcp DLP scan - Cloud Data Loss Prevention</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' doc', event)&quot;&gt; doc&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; doc&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/scan-with-dlp&quot; href=&quot;https://cloud.google.com/bigquery/docs/scan-with-dlp&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/scan-with-dlp&lt;/a&gt;&lt;br&gt;</description>
+<category>bq security - security, grants, roles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20DLP%20scan%20-%20Cloud%20Data%20Loss%20Prevention%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 15:55:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq column level security</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' doc ', event)&quot;&gt; doc &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt; &lt;br&gt;&lt;br&gt;&lt;h1&gt; doc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/column-level-security-intro&quot; href=&quot;https://cloud.google.com/bigquery/docs/column-level-security-intro&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/column-level-security-intro&lt;/a&gt;</description>
+<category>bq security - security, grants, roles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20column%20level%20security%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 15:53:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq access controls</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' doc ', event)&quot;&gt; doc &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' cross dataset access', event)&quot;&gt; cross dataset access&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' limit access to datasets', event)&quot;&gt; limit access to datasets&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; doc &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/access-control-examples&quot; href=&quot;https://cloud.google.com/bigquery/docs/access-control-examples&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/access-control-examples&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; cross dataset access&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/dataset-access-controls#controlling_access_to_a_dataset&quot; href=&quot;https://cloud.google.com/bigquery/docs/dataset-access-controls#controlling_access_to_a_dataset&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/dataset-access-controls#controlling_access_to_a_dataset&lt;/a&gt;&lt;br&gt;&lt;br&gt;    on the dataset , click SHARE and add the service account ID &quot;client_email&quot;: &quot;example-dev-svc@iam.gserviceaccount.com&quot;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; limit access to datasets&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;Is it possible to limit a Google service account to specific &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; datasets within a project&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/59736056/is-it-possible-to-limit-a-google-service-account-to-specific-bigquery-datasets-w&quot; href=&quot;https://stackoverflow.com/questions/59736056/is-it-possible-to-limit-a-google-service-account-to-specific-bigquery-datasets-w&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/59736056/is-it-possible-to-limit-a-google-service-account-to-specific-bigquery-datasets-w&lt;/a&gt;&lt;br&gt;</description>
+<category>bq security - security, grants, roles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20access%20controls%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 15:52:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq authorized views - limit access to users</title>
+<description>authorized views - limit access to users&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/share-access-views&quot; href=&quot;https://cloud.google.com/bigquery/docs/share-access-views&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/share-access-views&lt;/a&gt;</description>
+<category>bq security - security, grants, roles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20authorized%20views%20-%20limit%20access%20to%20users%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 14:30:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq federated query</title>
+<description></description>
+<category>gcp bigquery</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20federated%20query%5D%5D</link>
+<pubDate>Fri, 14 Aug 2020 14:17:00 GMT</pubDate>
 
 </item>
 </channel>
