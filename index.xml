@@ -5,660 +5,409 @@
 <link>http://karlarao.tiddlyspot.com</link>
 <description></description>
 <language>en</language>
-<copyright>Copyright 2020 YourName</copyright>
-<pubDate>Thu, 29 Oct 2020 05:29:00 GMT</pubDate>
-<lastBuildDate>Thu, 29 Oct 2020 05:29:00 GMT</lastBuildDate>
+<copyright>Copyright 2021 YourName</copyright>
+<pubDate>Wed, 13 Jan 2021 23:54:53 GMT</pubDate>
+<lastBuildDate>Wed, 13 Jan 2021 23:54:53 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
-<title>asmdu.sh</title>
-<description>&lt;br&gt;&lt;pre&gt;#!/bin/bash
-#
-# du of each subdirectory in a directory for ASM
-#
-D=$1
-if [[ -z $D ]]
-then
- echo &quot;Please provide a directory !&quot;
- exit 1
-fi
-(for DIR in `asmcmd ls ${{ds{29/10/20}}}`
- do
-     echo ${DIR} `asmcmd du ${{ds{29/10/20}}}/${DIR} | tail -1`
- done) | awk -v D=&quot;$D&quot; ' BEGIN {  printf(&quot;\n\t\t%40s\n\n&quot;, D &quot; subdirectories size&quot;)           ;
-                                  printf(&quot;%25s%16s%16s\n&quot;, &quot;Subdir&quot;, &quot;Used MB&quot;, &quot;Mirror MB&quot;)   ;
-                                  printf(&quot;%25s%16s%16s\n&quot;, &quot;------&quot;, &quot;-------&quot;, &quot;---------&quot;)   ;}
-                               {
-                                  printf(&quot;%25s%16s%16s\n&quot;, $1, $2, $3)                         ;
-                                  use += $2                                                    ;
-                                  mir += $3                                                    ;
-                               }
-                         END   { printf(&quot;\n\n%25s%16s%16s\n&quot;, &quot;------&quot;, &quot;-------&quot;, &quot;---------&quot;);
-                                 printf(&quot;%25s%16s%16s\n\n&quot;, &quot;Total&quot;, use, mir)                 ;} '
+<title>OracleLicensing</title>
+<description>oracle prices 2007-2016&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.evernote.com/l/ADC4YXJG_DFL96bzb1ZXNHrZ5bJpmuZw4Mo&quot; href=&quot;https://www.evernote.com/l/ADC4YXJG_DFL96bzb1ZXNHrZ5bJpmuZw4Mo&quot; class=&quot;externalLink&quot;&gt;https://www.evernote.com/l/ADC4YXJG_DFL96bzb1ZXNHrZ5bJpmuZw4Mo&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.oraclelicensestore.com/ar/licensing/tutorial/licensing-tutorial&quot; href=&quot;http://www.oraclelicensestore.com/ar/licensing/tutorial/licensing-tutorial&quot; class=&quot;externalLink&quot;&gt;http://www.oraclelicensestore.com/ar/licensing/tutorial/licensing-tutorial&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.enkitec.com/wp-content/uploads/2010/06/Randy-Hardee-Oracle-Licensing-Guide.pdf&quot; href=&quot;http://blog.enkitec.com/wp-content/uploads/2010/06/Randy-Hardee-Oracle-Licensing-Guide.pdf&quot; class=&quot;externalLink&quot;&gt;http://blog.enkitec.com/wp-content/uploads/2010/06/Randy-Hardee-Oracle-Licensing-Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://benchmarkingblog.wordpress.com/category/power7/&quot; href=&quot;http://benchmarkingblog.wordpress.com/category/power7/&quot; class=&quot;externalLink&quot;&gt;http://benchmarkingblog.wordpress.com/category/power7/&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;(1) An 8-core IBM Power 780 (2 chips, 32 threads) with IBM &lt;a tiddlylink=&quot;DB2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DB2&quot; href=&quot;http://karlarao.tiddlyspot.com#DB2&quot; class=&quot;externalLink null&quot;&gt;DB2&lt;/a&gt; 9.5 is the best 8-core system (1,200,011 tpmC, $.69/tpmC, configuration available 10/13/10) vs. Oracle Database 11g Release 2 Standard Edition One and Oracle Linux on Cisco UCS c250 M2 &lt;a tiddlylink=&quot;Extended-Memory&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Extended-Memory&quot; href=&quot;http://karlarao.tiddlyspot.com#Extended-Memory&quot; class=&quot;externalLink null&quot;&gt;Extended-Memory&lt;/a&gt; Server, 1,053,100 tpmC, $0.58/tpmC, available 12/7/2011.&lt;br&gt;Source: www.tpc.org. Results current as of 12/16/11.&lt;br&gt;&lt;a tiddlylink=&quot;TPC-C&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TPC-C&quot; href=&quot;http://karlarao.tiddlyspot.com#TPC-C&quot; class=&quot;externalLink null&quot;&gt;TPC-C&lt;/a&gt; ,&lt;a tiddlylink=&quot;TPC-H&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TPC-H&quot; href=&quot;http://karlarao.tiddlyspot.com#TPC-H&quot; class=&quot;externalLink null&quot;&gt;TPC-H&lt;/a&gt;, and &lt;a tiddlylink=&quot;TPC-E&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TPC-E&quot; href=&quot;http://karlarao.tiddlyspot.com#TPC-E&quot; class=&quot;externalLink null&quot;&gt;TPC-E&lt;/a&gt; are trademarks of the Transaction Performance Processing Council (TPPC).&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blogs.flexerasoftware.com/elo/oracle-software-licensing/&quot; href=&quot;http://blogs.flexerasoftware.com/elo/oracle-software-licensing/&quot; class=&quot;externalLink&quot;&gt;http://blogs.flexerasoftware.com/elo/oracle-software-licensing/&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;The cost of the Enterprise edition is currently $47,500 per processor (core) and the Standard Edition $17,500 per processor (socket). If a server or a cluster is equipped with Intel Xeon E7-8870 Processors, supporting up to 10 cores, the calculation for a 4 socket server or cluster is:&lt;br&gt;&lt;br&gt;Standard Edition: 4 (sockets) x $17,500 = $70,000&lt;br&gt;Enterprise Edition: 4 (processors) x 10 (cores/processor) x 0.5 (core factor) x $47,500 = $950,000&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oraclestorageguy.typepad.com/oraclestorageguy/2011/11/oracle-licensing-on-vmware-no-magic.html&quot; href=&quot;http://oraclestorageguy.typepad.com/oraclestorageguy/2011/11/oracle-licensing-on-vmware-no-magic.html&quot; class=&quot;externalLink&quot;&gt;http://oraclestorageguy.typepad.com/oraclestorageguy/2011/11/oracle-licensing-on-vmware-no-magic.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.licenseconsulting.eu/2012/08/29/vmworld-richard-garsthagen-oracle-on-licensing-vmware-virtualized-environments/&quot; href=&quot;http://www.licenseconsulting.eu/2012/08/29/vmworld-richard-garsthagen-oracle-on-licensing-vmware-virtualized-environments/&quot; class=&quot;externalLink&quot;&gt;http://www.licenseconsulting.eu/2012/08/29/vmworld-richard-garsthagen-oracle-on-licensing-vmware-virtualized-environments/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oraclestorageguy.typepad.com/oraclestorageguy/2012/09/oracle-throws-in-the-towel-on-vmware-licensing-reprise.html&quot; href=&quot;http://oraclestorageguy.typepad.com/oraclestorageguy/2012/09/oracle-throws-in-the-towel-on-vmware-licensing-reprise.html&quot; class=&quot;externalLink&quot;&gt;http://oraclestorageguy.typepad.com/oraclestorageguy/2012/09/oracle-throws-in-the-towel-on-vmware-licensing-reprise.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.vmware.com/files/pdf/techpaper/vmw-understanding-oracle-certification-supportlicensing-environments.pdf&quot; href=&quot;http://www.vmware.com/files/pdf/techpaper/vmw-understanding-oracle-certification-supportlicensing-environments.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.vmware.com/files/pdf/techpaper/vmw-understanding-oracle-certification-supportlicensing-environments.pdf&lt;/a&gt;  &lt;strong&gt;Understanding Oracle Certification, Support and Licensing for &lt;a tiddlylink=&quot;VMware&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VMware&quot; href=&quot;http://karlarao.tiddlyspot.com#VMware&quot; class=&quot;externalLink null&quot;&gt;VMware&lt;/a&gt; Environments&lt;/strong&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 2021 &lt;/h1&gt;&lt;blockquote&gt;&lt;br&gt;Bug 27213224 - Deploying Exadata Software Fails At - Step 12 (Initializing Cluster Software) (Doc ID 2391108.1)&lt;br&gt;&lt;br&gt;Apply following patches in orderly manner on top of BOTH GI Home and Oracle RDBMS Home:&lt;br&gt;&lt;br&gt;a) 27213224&lt;br&gt;b) 27309269&lt;br&gt;&lt;br&gt;OR&lt;br&gt;&lt;br&gt;You can use the below Workaround.&lt;br&gt;&lt;br&gt;a) Shutdown CRS on both the nodes.&lt;br&gt;&lt;br&gt;b) Add the following route on both the nodes :-&lt;br&gt;&lt;br&gt;   # route add -host 169.254.169.254 reject&lt;br&gt;&lt;br&gt;c) Bring CRS online on node 1.&lt;br&gt;&lt;br&gt;d) On node 2 run the root.sh.&lt;br&gt;&lt;br&gt;Above steps mentioned in the workaround, of adding route does not make the route static.&lt;br&gt;Every time before starting CRS, route need to be added.&lt;br&gt;&lt;br&gt;BUG:27213224 - NODES ARE NOT ABLE JOIN TO GRID INFRASTRCTURE CSSD FAILING WITH NO NETWORK HB&lt;br&gt;BUG:27424049 - REJECTING CONNECTION FROM NODE X AS MULTINODE RAC IS NOT SUPPORTED OR CERTIFIED&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 2021 oracle and non-oracle public cloud &lt;/h1&gt;&lt;blockquote&gt;Oracle Database Support for &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environments (Doc ID 2688277.1)&lt;br&gt;&lt;br&gt;For the purposes of this document, &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environments are defined as:&lt;br&gt;&lt;br&gt;    (a) &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Clouds. Examples: Google Cloud Platform, Amazon AWS, Microsoft Azure, IBM Cloud, Alibaba Cloud, etc.&lt;br&gt;    or&lt;br&gt;    (b) Environments that are in any way considered an extension of &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Clouds including but not limited to running &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; cloud management software, cloud billing, cloud support, cloud automation, cloud images, or cloud monitoring. Examples: Google Bare Metal Solution, Amazon AWS Outpost, Microsoft Azure Stack, IBM Bluemix Local, Alibaba Hybrid Cloud, etc.&lt;br&gt;&lt;br&gt;Support Policy for &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environments&lt;br&gt;&lt;br&gt;Oracle has not certified any of its products on &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environments. Oracle Support will assist customers running Oracle products on &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environments in the following manner: Oracle will only provide support for issues that either are known to occur on an Oracle Certified Platform outside of a non-Oracle Cloud Environment (Oracle Certification Home), or can be demonstrated not to be as a result of running on a &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environment.&lt;br&gt;&lt;br&gt;If a problem is a known Oracle issue, Oracle support will recommend the appropriate solution on an Oracle Certified Platform outside of a non-Oracle Cloud Environment. If that solution does not work in the &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environment, the customer will be referred to the &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud vendor for support. When the customer can demonstrate that the Oracle solution does not work when running on an Oracle Certified Platform outside of a non-Oracle Cloud Environment, Oracle will resume support, including logging a bug with Oracle Development for investigation if required.&lt;br&gt;&lt;br&gt;If the problem is determined not to be a known Oracle issue, we will refer the customer to the &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud vendor for support. When the customer can demonstrate that the issue occurs when running on an Oracle Certified Platform outside of a non-Oracle Cloud Environment, Oracle will resume support, including logging a bug with Oracle Development for investigation if required.&lt;br&gt;Support Policy for Oracle Real Application Clusters (RAC)&lt;br&gt;&lt;br&gt;Oracle does not support Oracle RAC or Oracle RAC One Node running on &lt;a tiddlylink=&quot;Non-Oracle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Non-Oracle&quot; href=&quot;http://karlarao.tiddlyspot.com#Non-Oracle&quot; class=&quot;externalLink null&quot;&gt;Non-Oracle&lt;/a&gt; Public Cloud Environments.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;I worked with Andy Klock a bit on the AWS environment in question, and the installation was being done via some &lt;a tiddlylink=&quot;AWS-provided&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#AWS-provided&quot; href=&quot;http://karlarao.tiddlyspot.com#AWS-provided&quot; class=&quot;externalLink null&quot;&gt;AWS-provided&lt;/a&gt; automation code.  The issue that they were seeing was with either performing new installations of 19.9 or patching existing clusters up to 19.9 in the AWS environment.  They could get one node up and running, but as soon as a second node with 19.9 tried to come up, ocssd would spin and eventually time out.  Based on this, I would think that a single node Oracle restart environment would not be affected by this.&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;Now that Frits has found the specific functions, this makes the behavior a little more clear to me. &lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;Since I didn't have the budget to try this out in AWS, I wanted to recreate this and see if I could get the same outcomes.  I built a 3-node RAC environment first, using 19.9.  I'd expect this to be classified by Oracle as the kgcs_is_on_premise.  Here's the entry we see in the ocssd.trc file:&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;[     INFO] clssscGetCloudProvider: Value from OSD ctx: 1, value in global ctx: 1&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;That &quot;1&quot; value matches to the first entry Frits mentioned.  Here, the cluster behaves as expected.&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;Now, to get it to act like AWS.  I found an AWS metadata service simulator (&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/aws/amazon-ec2-metadata-mock&quot; href=&quot;https://github.com/aws/amazon-ec2-metadata-mock&quot; class=&quot;externalLink&quot;&gt;https://github.com/aws/amazon-ec2-metadata-mock&lt;/a&gt;) and fired it up using the AWS 169.254.169.254 address.  What I found was that if the metadata service was running and accessible, the ocssd process at cluster startup (on the first node) would be successful and log a return value of 3.  If I tried to start additional nodes, they would fail to start ocssd.  Here's what was reported in the ocssd.trc file on all of the nodes:&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;[     INFO] clssscGetCloudProvider: Value from OSD ctx: 3, value in global ctx: 3&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;The first node would run just fine…I just couldn't start CRS on additional nodes.  Blocking the URL or shutting down the simulator wouldn't change anything at this point, because the cluster recognized that it was on a non-Oracle cloud.  This behavior would continue until I ran a full shutdown on the cluster, then restarted after blocking access to the AWS metadata simulator.  At that point, the cluster reverted back to kgcs_is_on_premise mode, which allowed multiple nodes to start successfully.  I believe that what AWS has done to get around this by implementing an iptables rule blocking access to 169.254.169.254, but Klock would have to be the one to shed light on that. &lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;The big takeaway on my side is that I'd be really apprehensive about pursuing a solution that includes running RAC in AWS.  You're running an unsupported platform in the end.  It looks like a cat and mouse game where Oracle will continue to create ways to block certain functionality from running in other clouds, and you're one new patch away from having a completely broken environment.  The Amazon team did come up with a solution, but it was 2+ months after the 19.9 patch release, which could be a massive issue for clients that have security or regulatory requirements to patch within a certain timeframe.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>LicensingAndSupport</category>
+<link>http://karlarao.tiddlyspot.com#OracleLicensing</link>
+<pubDate>Wed, 13 Jan 2021 23:54:49 GMT</pubDate>
 
+</item>
+<item>
+<title>cloud data warehouse benchmark</title>
+<description>&lt;br&gt;&lt;h1&gt; Cloud Data Warehouse Benchmark: Redshift, Snowflake, Azure, Presto and &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://fivetran.com/blog/warehouse-benchmark&quot; href=&quot;https://fivetran.com/blog/warehouse-benchmark&quot; class=&quot;externalLink&quot;&gt;https://fivetran.com/blog/warehouse-benchmark&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/AlexanderTokarev4/cloud-dwh-deep-dive&quot; href=&quot;https://www.slideshare.net/AlexanderTokarev4/cloud-dwh-deep-dive&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/AlexanderTokarev4/cloud-dwh-deep-dive&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://indico.cern.ch/event/757894/attachments/1720580/2777513/8b_AutonomousIsDataWarehouse_AntogniniSchnider.pdf&quot; href=&quot;https://indico.cern.ch/event/757894/attachments/1720580/2777513/8b_AutonomousIsDataWarehouse_AntogniniSchnider.pdf&quot; class=&quot;externalLink&quot;&gt;https://indico.cern.ch/event/757894/attachments/1720580/2777513/8b_AutonomousIsDataWarehouse_AntogniniSchnider.pdf&lt;/a&gt;\&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://antognini.ch/2018/07/observations-about-the-scalability-of-data-loads-in-adwc/&quot; href=&quot;https://antognini.ch/2018/07/observations-about-the-scalability-of-data-loads-in-adwc/&quot; class=&quot;externalLink&quot;&gt;https://antognini.ch/2018/07/observations-about-the-scalability-of-data-loads-in-adwc/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/fivetran/benchmark&quot; href=&quot;https://github.com/fivetran/benchmark&quot; class=&quot;externalLink&quot;&gt;https://github.com/fivetran/benchmark&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/gregrahn/tpcds-kit&quot; href=&quot;https://github.com/gregrahn/tpcds-kit&quot; class=&quot;externalLink&quot;&gt;https://github.com/gregrahn/tpcds-kit&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>cloud data warehouse</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bcloud%20data%20warehouse%20benchmark%5D%5D</link>
+<pubDate>Wed, 13 Jan 2021 05:34:44 GMT</pubDate>
+
+</item>
+<item>
+<title>Alexander Tokarev - fulltext search , cloud comparison, cloud benchmark</title>
+<description>&lt;ul&gt;&lt;li&gt; Tagging search solution design Advanced edition &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/AlexanderTokarev4/tagging-search-solution-design-advanced-edition&quot; href=&quot;https://www.slideshare.net/AlexanderTokarev4/tagging-search-solution-design-advanced-edition&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/AlexanderTokarev4/tagging-search-solution-design-advanced-edition&lt;/a&gt;   &amp;lt;- GOOD STUFF&lt;/li&gt;&lt;li&gt; Faceted search with Oracle &lt;a tiddlylink=&quot;InMemory&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#InMemory&quot; href=&quot;http://karlarao.tiddlyspot.com#InMemory&quot; class=&quot;externalLink null&quot;&gt;InMemory&lt;/a&gt; option &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/AlexanderTokarev4/faceted-search-with-oracle-inmemory-option&quot; href=&quot;https://www.slideshare.net/AlexanderTokarev4/faceted-search-with-oracle-inmemory-option&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/AlexanderTokarev4/faceted-search-with-oracle-inmemory-option&lt;/a&gt;&lt;/li&gt;&lt;li&gt; P9 speed of-light faceted search via oracle in-memory option by alexander tokarev &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/AlexanderTokarev4/p9-speed-oflight-faceted-search-via-oracle-inmemory-option-by-alexander-tokarev&quot; href=&quot;https://www.slideshare.net/AlexanderTokarev4/p9-speed-oflight-faceted-search-via-oracle-inmemory-option-by-alexander-tokarev&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/AlexanderTokarev4/p9-speed-oflight-faceted-search-via-oracle-inmemory-option-by-alexander-tokarev&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;Oracle json caveats &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/AlexanderTokarev4/oracle-json-caveats&quot; href=&quot;https://www.slideshare.net/AlexanderTokarev4/oracle-json-caveats&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/AlexanderTokarev4/oracle-json-caveats&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;...</description>
+<category>full text search , fulltext search</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BAlexander%20Tokarev%20-%20fulltext%20search%20%2C%20cloud%20comparison%2C%20cloud%20benchmark%5D%5D</link>
+<pubDate>Tue, 12 Jan 2021 16:33:26 GMT</pubDate>
+
+</item>
+<item>
+<title>NLP, text processing</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/search/?query=natural%20language%20processing&amp;amp;extended_publisher_data=true&amp;amp;highlight=true&amp;amp;include_assessments=false&amp;amp;include_case_studies=true&amp;amp;include_courses=true&amp;amp;include_playlists=true&amp;amp;include_collections=true&amp;amp;include_notebooks=true&amp;amp;is_academic_institution_account=false&amp;amp;source=user&amp;amp;sort=relevance&amp;amp;facet_json=true&amp;amp;page=0&amp;amp;include_facets=false&amp;amp;include_scenarios=true&amp;amp;include_sandboxes=true&amp;amp;json_facets=true&quot; href=&quot;https://learning.oreilly.com/search/?query=natural%20language%20processing&amp;amp;extended_publisher_data=true&amp;amp;highlight=true&amp;amp;include_assessments=false&amp;amp;include_case_studies=true&amp;amp;include_courses=true&amp;amp;include_playlists=true&amp;amp;include_collections=true&amp;amp;include_notebooks=true&amp;amp;is_academic_institution_account=false&amp;amp;source=user&amp;amp;sort=relevance&amp;amp;facet_json=true&amp;amp;page=0&amp;amp;include_facets=false&amp;amp;include_scenarios=true&amp;amp;include_sandboxes=true&amp;amp;json_facets=true&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/search/?query=natural%20language%20processing&amp;amp;extended_publisher_data=true&amp;amp;highlight=true&amp;amp;include_assessments=false&amp;amp;include_case_studies=true&amp;amp;include_courses=true&amp;amp;include_playlists=true&amp;amp;include_collections=true&amp;amp;include_notebooks=true&amp;amp;is_academic_institution_account=false&amp;amp;source=user&amp;amp;sort=relevance&amp;amp;facet_json=true&amp;amp;page=0&amp;amp;include_facets=false&amp;amp;include_scenarios=true&amp;amp;include_sandboxes=true&amp;amp;json_facets=true&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Applied Natural Language Processing with Python : Implementing Machine Learning and Deep Learning Algorithms for Natural Language Processing &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/applied-natural-language/9781484237335/&quot; href=&quot;https://learning.oreilly.com/library/view/applied-natural-language/9781484237335/&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/applied-natural-language/9781484237335/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Practical Natural Language Processing &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/practical-natural-language/9781492054047/&quot; href=&quot;https://learning.oreilly.com/library/view/practical-natural-language/9781492054047/&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/practical-natural-language/9781492054047/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Natural Language Processing with Spark NLP &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/natural-language-processing/9781492047759/&quot; href=&quot;https://learning.oreilly.com/library/view/natural-language-processing/9781492047759/&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/natural-language-processing/9781492047759/&lt;/a&gt;&lt;/li&gt;&lt;li&gt; Chapter 19. Productionizing NLP Applications &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/natural-language-processing/9781492047759/ch19.html#productionizing_nlp_applications&quot; href=&quot;https://learning.oreilly.com/library/view/natural-language-processing/9781492047759/ch19.html#productionizing_nlp_applications&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/natural-language-processing/9781492047759/ch19.html#productionizing_nlp_applications&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://towardsdatascience.com/deploying-a-machine-learning-model-as-a-rest-api-4a03b865c166&quot; href=&quot;https://towardsdatascience.com/deploying-a-machine-learning-model-as-a-rest-api-4a03b865c166&quot; class=&quot;externalLink&quot;&gt;https://towardsdatascience.com/deploying-a-machine-learning-model-as-a-rest-api-4a03b865c166&lt;/a&gt;</description>
+<category>R, python, ruby text processing</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BNLP%2C%20text%20processing%5D%5D</link>
+<pubDate>Mon, 11 Jan 2021 05:58:00 GMT</pubDate>
+
+</item>
+<item>
+<title>row hash on SCD</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dataintegration.ninja/loading-star-schema-dimensions-facts-in-parallel/&quot; href=&quot;http://www.dataintegration.ninja/loading-star-schema-dimensions-facts-in-parallel/&quot; class=&quot;externalLink&quot;&gt;http://www.dataintegration.ninja/loading-star-schema-dimensions-facts-in-parallel/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;&lt;a tiddlylink=&quot;MD5&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#MD5&quot; href=&quot;http://karlarao.tiddlyspot.com#MD5&quot; class=&quot;externalLink null&quot;&gt;MD5&lt;/a&gt; are columns outside primary key &lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;a tiddlylink=&quot;ORA_HASH&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ORA_HASH&quot; href=&quot;http://karlarao.tiddlyspot.com#ORA_HASH&quot; class=&quot;externalLink null&quot;&gt;ORA_HASH&lt;/a&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gerardnico.com/db/oracle/ora_hash&quot; href=&quot;https://gerardnico.com/db/oracle/ora_hash&quot; class=&quot;externalLink&quot;&gt;https://gerardnico.com/db/oracle/ora_hash&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/19226040/how-to-generate-hashkey-using-multiple-columns-in-oracle-could-you-please-give&quot; href=&quot;https://stackoverflow.com/questions/19226040/how-to-generate-hashkey-using-multiple-columns-in-oracle-could-you-please-give&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/19226040/how-to-generate-hashkey-using-multiple-columns-in-oracle-could-you-please-give&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://danischnider.wordpress.com/2017/01/24/how-to-build-hash-keys-in-oracle/&quot; href=&quot;https://danischnider.wordpress.com/2017/01/24/how-to-build-hash-keys-in-oracle/&quot; class=&quot;externalLink&quot;&gt;https://danischnider.wordpress.com/2017/01/24/how-to-build-hash-keys-in-oracle/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/&quot; href=&quot;https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/&quot; class=&quot;externalLink&quot;&gt;https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; dbms_random.string&lt;/h1&gt;&lt;br&gt;&lt;blockquote&gt;I added dbms_random.string('X',15)  on the columns of ASH to get rid of duplicate rows on metric extension  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/karlarao/gvash_to_csv/blob/master/Metric.Extension.-.gvash.to.pdf&quot; href=&quot;https://github.com/karlarao/gvash_to_csv/blob/master/Metric.Extension.-.gvash.to.pdf&quot; class=&quot;externalLink&quot;&gt;https://github.com/karlarao/gvash_to_csv/blob/master/Metric.Extension.-.gvash.to.pdf&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
+<category>time series papers, discussions, books, SCD, temporal, outlier, pattern recognition</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Brow%20hash%20on%20SCD%5D%5D</link>
+<pubDate>Sun, 10 Jan 2021 18:52:00 GMT</pubDate>
+
+</item>
+<item>
+<title>...System Design Ecosystem , Data Architecture</title>
+<description>&lt;h1&gt; 2021&lt;/h1&gt;&lt;br&gt;&lt;blockquote&gt;Kumaran's courses are the best out there to get you up to speed w/ design patterns and technology components for modern data architecture. Love the format, short, sweet, practical, and direct to the point.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/architecting-big-data-applications-real-time-application-engineering/sm-analyze-the-problem&quot; href=&quot;https://www.linkedin.com/learning/architecting-big-data-applications-real-time-application-engineering/sm-analyze-the-problem&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/architecting-big-data-applications-real-time-application-engineering/sm-analyze-the-problem&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/architecting-big-data-applications-batch-mode-application-engineering/welcome&quot; href=&quot;https://www.linkedin.com/learning/architecting-big-data-applications-batch-mode-application-engineering/welcome&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/architecting-big-data-applications-batch-mode-application-engineering/welcome&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/stream-processing-design-patterns-with-kafka-streams/stream-processing-with-kafka&quot; href=&quot;https://www.linkedin.com/learning/stream-processing-design-patterns-with-kafka-streams/stream-processing-with-kafka&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/stream-processing-design-patterns-with-kafka-streams/stream-processing-with-kafka&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/stream-processing-design-patterns-with-spark/streaming-with-spark&quot; href=&quot;https://www.linkedin.com/learning/stream-processing-design-patterns-with-spark/streaming-with-spark&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/stream-processing-design-patterns-with-spark/streaming-with-spark&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/applied-ai-for-it-operations/artificial-intelligence-and-its-many-uses&quot; href=&quot;https://www.linkedin.com/learning/applied-ai-for-it-operations/artificial-intelligence-and-its-many-uses&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/applied-ai-for-it-operations/artificial-intelligence-and-its-many-uses&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/applied-ai-for-human-resources/artificial-intelligence-and-human-resources&quot; href=&quot;https://www.linkedin.com/learning/applied-ai-for-human-resources/artificial-intelligence-and-human-resources&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/applied-ai-for-human-resources/artificial-intelligence-and-human-resources&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/in/kumaran-ponnambalam-961a344/?trk=lil_instructor&quot; href=&quot;https://www.linkedin.com/in/kumaran-ponnambalam-961a344/?trk=lil_instructor&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/in/kumaran-ponnambalam-961a344/?trk=lil_instructor&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;design and architecture&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/google-dataflow-architecting-serverless-big-data-solutions&quot; href=&quot;https://www.pluralsight.com/courses/google-dataflow-architecting-serverless-big-data-solutions&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/google-dataflow-architecting-serverless-big-data-solutions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/google-cloud-platform-leveraging-architectural-design-patterns&quot; href=&quot;https://www.pluralsight.com/courses/google-cloud-platform-leveraging-architectural-design-patterns&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/google-cloud-platform-leveraging-architectural-design-patterns&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/google-cloud-functions-architecting-event-driven-serverless-solutions&quot; href=&quot;https://www.pluralsight.com/courses/google-cloud-functions-architecting-event-driven-serverless-solutions&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/google-cloud-functions-architecting-event-driven-serverless-solutions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/google-dataproc-architecting-big-data-solutions&quot; href=&quot;https://www.pluralsight.com/courses/google-dataproc-architecting-big-data-solutions&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/google-dataproc-architecting-big-data-solutions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/google-machine-learning-apis-designing-implementing-solutions&quot; href=&quot;https://www.pluralsight.com/courses/google-machine-learning-apis-designing-implementing-solutions&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/google-machine-learning-apis-designing-implementing-solutions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/google-bigquery-architecting-data-warehousing-solutions&quot; href=&quot;https://www.pluralsight.com/courses/google-bigquery-architecting-data-warehousing-solutions&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/google-bigquery-architecting-data-warehousing-solutions&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/google-cloud-automl-designing-implementing-solutions&quot; href=&quot;https://www.pluralsight.com/courses/google-cloud-automl-designing-implementing-solutions&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/google-cloud-automl-designing-implementing-solutions&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/search?keywords=apache%20beam&quot; href=&quot;https://www.linkedin.com/learning/search?keywords=apache%20beam&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/search?keywords=apache%20beam&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/data-science-on-google-cloud-platform-building-data-pipelines/what-goes-into-a-data-pipeline&quot; href=&quot;https://www.linkedin.com/learning/data-science-on-google-cloud-platform-building-data-pipelines/what-goes-into-a-data-pipeline&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/data-science-on-google-cloud-platform-building-data-pipelines/what-goes-into-a-data-pipeline&lt;/a&gt; &amp;lt;— good summary&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/google-cloud-platform-for-enterprise-essential-training/enterprise-ready-gcp&quot; href=&quot;https://www.linkedin.com/learning/google-cloud-platform-for-enterprise-essential-training/enterprise-ready-gcp&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/google-cloud-platform-for-enterprise-essential-training/enterprise-ready-gcp&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/architecting-big-data-applications-batch-mode-application-engineering/dw-lay-out-the-architecture&quot; href=&quot;https://www.linkedin.com/learning/architecting-big-data-applications-batch-mode-application-engineering/dw-lay-out-the-architecture&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/architecting-big-data-applications-batch-mode-application-engineering/dw-lay-out-the-architecture&lt;/a&gt; &amp;lt;— good 5 use cases&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/data-science-on-google-cloud-platform-architecting-solutions/architecting-data-science&quot; href=&quot;https://www.linkedin.com/learning/data-science-on-google-cloud-platform-architecting-solutions/architecting-data-science&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/data-science-on-google-cloud-platform-architecting-solutions/architecting-data-science&lt;/a&gt; &amp;lt;— good 4 use cases&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/data-science-on-google-cloud-platform-designing-data-warehouses/why-data-warehouses-are-important&quot; href=&quot;https://www.linkedin.com/learning/data-science-on-google-cloud-platform-designing-data-warehouses/why-data-warehouses-are-important&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/data-science-on-google-cloud-platform-designing-data-warehouses/why-data-warehouses-are-important&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.linkedin.com/learning/architecting-big-data-applications-real-time-application-engineering/sm-analyze-the-problem&quot; href=&quot;https://www.linkedin.com/learning/architecting-big-data-applications-real-time-application-engineering/sm-analyze-the-problem&quot; class=&quot;externalLink&quot;&gt;https://www.linkedin.com/learning/architecting-big-data-applications-real-time-application-engineering/sm-analyze-the-problem&lt;/a&gt; &amp;lt;— good 4 use cases &lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; Distributed systems in one lesson &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/videos/distributed-systems-in/9781491924914?autoplay=false&quot; href=&quot;https://learning.oreilly.com/videos/distributed-systems-in/9781491924914?autoplay=false&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/videos/distributed-systems-in/9781491924914?autoplay=false&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; ML system&lt;/h2&gt;ML system design &lt;a target=&quot;_blank&quot; title=&quot;External link to https://us.teamblind.com/s/5HGmH4Wd&quot; href=&quot;https://us.teamblind.com/s/5HGmH4Wd&quot; class=&quot;externalLink&quot;&gt;https://us.teamblind.com/s/5HGmH4Wd&lt;/a&gt;&lt;br&gt;Machine Learning Systems: Designs that scale &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/machine-learning-systems/9781617293337/kindle_split_024.html&quot; href=&quot;https://learning.oreilly.com/library/view/machine-learning-systems/9781617293337/kindle_split_024.html&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/machine-learning-systems/9781617293337/kindle_split_024.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; kafka &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=kafka+system+design&quot; href=&quot;https://www.youtube.com/results?search_query=kafka+system+design&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=kafka+system+design&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; messaging service &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.datanami.com/2019/05/28/assessing-your-options-for-real-time-message-buses/&quot; href=&quot;https://www.datanami.com/2019/05/28/assessing-your-options-for-real-time-message-buses/&quot; class=&quot;externalLink&quot;&gt;https://www.datanami.com/2019/05/28/assessing-your-options-for-real-time-message-buses/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/courses/search/?src=ukw&amp;amp;q=message+queueing&quot; href=&quot;https://www.udemy.com/courses/search/?src=ukw&amp;amp;q=message+queueing&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/courses/search/?src=ukw&amp;amp;q=message+queueing&lt;/a&gt;+&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/rabbitmq-messaging-with-java-spring-boot-and-spring-mvc/&quot; href=&quot;https://www.udemy.com/rabbitmq-messaging-with-java-spring-boot-and-spring-mvc/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/rabbitmq-messaging-with-java-spring-boot-and-spring-mvc/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://bytes.com/topic/python/answers/437385-queueing-python-ala-jms&quot; href=&quot;https://bytes.com/topic/python/answers/437385-queueing-python-ala-jms&quot; class=&quot;externalLink&quot;&gt;https://bytes.com/topic/python/answers/437385-queueing-python-ala-jms&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; instagram&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html&quot; href=&quot;http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html&quot; class=&quot;externalLink&quot;&gt;http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B...System%20Design%20Ecosystem%20%2C%20Data%20Architecture%5D%5D</link>
+<pubDate>Tue, 05 Jan 2021 18:30:00 GMT</pubDate>
+
+</item>
+<item>
+<title>XML table, xquery performance</title>
+<description>Oracle XML DB: Best Practices to Get Optimal Performance out of XML Queries&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.oracle.com/technetwork/database-features/xmldb/overview/xmldb-bpwp-12cr1-1964809.pdf&quot; href=&quot;https://www.oracle.com/technetwork/database-features/xmldb/overview/xmldb-bpwp-12cr1-1964809.pdf&quot; class=&quot;externalLink&quot;&gt;https://www.oracle.com/technetwork/database-features/xmldb/overview/xmldb-bpwp-12cr1-1964809.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/103587974-4d21b080-4eb6-11eb-8ac2-d20ffb748206.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/103587982-51e66480-4eb6-11eb-8611-baefc84389cf.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/103587998-56128200-4eb6-11eb-917f-4bddbeae36ea.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/103588007-5a3e9f80-4eb6-11eb-8295-021bef26742e.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/103588014-5e6abd00-4eb6-11eb-84b8-eaf4cee90c0a.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 90%; height: 90%; cursor: move;&quot;&gt;</description>
+<category>Extract XML in Oracle</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BXML%20table%2C%20xquery%20performance%5D%5D</link>
+<pubDate>Tue, 05 Jan 2021 02:17:00 GMT</pubDate>
+
+</item>
+<item>
+<title>insert into mview</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?client=firefox-b-1-d&amp;amp;q=oracle+insert+to+materialized+view&quot; href=&quot;https://www.google.com/search?client=firefox-b-1-d&amp;amp;q=oracle+insert+to+materialized+view&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?client=firefox-b-1-d&amp;amp;q=oracle+insert+to+materialized+view&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://connor-mcdonald.com/2018/09/10/modifying-tables-without-losing-materialized-views/&quot; href=&quot;https://connor-mcdonald.com/2018/09/10/modifying-tables-without-losing-materialized-views/&quot; class=&quot;externalLink&quot;&gt;https://connor-mcdonald.com/2018/09/10/modifying-tables-without-losing-materialized-views/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://danischnider.wordpress.com/2019/02/18/materialized-view-refresh-for-dummies/&quot; href=&quot;https://danischnider.wordpress.com/2019/02/18/materialized-view-refresh-for-dummies/&quot; class=&quot;externalLink&quot;&gt;https://danischnider.wordpress.com/2019/02/18/materialized-view-refresh-for-dummies/&lt;/a&gt;&lt;br&gt;How to update a materialized view directly &lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9535464000346456349&quot; href=&quot;https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9535464000346456349&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9535464000346456349&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/17021094/oracle-insert-only-materialized-view&quot; href=&quot;https://stackoverflow.com/questions/17021094/oracle-insert-only-materialized-view&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/17021094/oracle-insert-only-materialized-view&lt;/a&gt;&lt;br&gt;</description>
+<category>mview recursive index creation</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Binsert%20into%20mview%5D%5D</link>
+<pubDate>Tue, 05 Jan 2021 02:14:00 GMT</pubDate>
+
+</item>
+<item>
+<title>resource manager - DBRM limit session and user profiles</title>
+<description>&lt;ul&gt;&lt;li&gt; you can combine user profiles (sessions per user) and DBRM to limit PX or ELAPSED and kill that session or throttle &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://askdba.org/weblog/2012/09/limiting-io-and-cpu-resources-using-11g-oracle-resource-manager/&quot; href=&quot;https://askdba.org/weblog/2012/09/limiting-io-and-cpu-resources-using-11g-oracle-resource-manager/&quot; class=&quot;externalLink&quot;&gt;https://askdba.org/weblog/2012/09/limiting-io-and-cpu-resources-using-11g-oracle-resource-manager/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.yannickjaquier.com/oracle/oracle-database-resource-manager.html&quot; href=&quot;https://blog.yannickjaquier.com/oracle/oracle-database-resource-manager.html&quot; class=&quot;externalLink&quot;&gt;https://blog.yannickjaquier.com/oracle/oracle-database-resource-manager.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/expert-oracle-exadata/9781430262428/9781430262411_Ch07.xhtml&quot; href=&quot;https://learning.oreilly.com/library/view/expert-oracle-exadata/9781430262428/9781430262411_Ch07.xhtml&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/expert-oracle-exadata/9781430262428/9781430262411_Ch07.xhtml&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/expert-oracle-exadata/9781430233923/Chapter07.html#ch7&quot; href=&quot;https://learning.oreilly.com/library/view/expert-oracle-exadata/9781430233923/Chapter07.html#ch7&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/expert-oracle-exadata/9781430233923/Chapter07.html#ch7&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/managing-resources-with-oracle-database-resource-manager.html#GUID-1D62EF37-F2E2-4595-BA47-DECDE899E62E&quot; href=&quot;https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/managing-resources-with-oracle-database-resource-manager.html#GUID-1D62EF37-F2E2-4595-BA47-DECDE899E62E&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/managing-resources-with-oracle-database-resource-manager.html#GUID-1D62EF37-F2E2-4595-BA47-DECDE899E62E&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/SQLRF/statements_6012.htm#SQLRF01310&quot; href=&quot;https://docs.oracle.com/database/121/SQLRF/statements_6012.htm#SQLRF01310&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/SQLRF/statements_6012.htm#SQLRF01310&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>ResourceManager</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bresource%20manager%20-%20DBRM%20limit%20session%20and%20user%20profiles%5D%5D</link>
+<pubDate>Tue, 05 Jan 2021 02:13:00 GMT</pubDate>
+
+</item>
+<item>
+<title>XML table flatten , xquery flatten pga_aggregate_limit error</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://oracle-base.com/articles/misc/xmltable-convert-xml-data-into-rows-and-columns-using-sql&quot; href=&quot;https://oracle-base.com/articles/misc/xmltable-convert-xml-data-into-rows-and-columns-using-sql&quot; class=&quot;externalLink&quot;&gt;https://oracle-base.com/articles/misc/xmltable-convert-xml-data-into-rows-and-columns-using-sql&lt;/a&gt;&lt;br&gt;official doc &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/SQLRF/functions269.htm#SQLRF06232&quot; href=&quot;https://docs.oracle.com/database/121/SQLRF/functions269.htm#SQLRF06232&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/SQLRF/functions269.htm#SQLRF06232&lt;/a&gt;&lt;br&gt;Flatten nested xml structure using xmltable &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/tech/apps-infra/discussion/3672618/flatten-nested-xml-structure-using-xmltable&quot; href=&quot;https://community.oracle.com/tech/apps-infra/discussion/3672618/flatten-nested-xml-structure-using-xmltable&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/tech/apps-infra/discussion/3672618/flatten-nested-xml-structure-using-xmltable&lt;/a&gt; &lt;br&gt;Index not used in Outer Join with &lt;a tiddlylink=&quot;XMLTable&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XMLTable&quot; href=&quot;http://karlarao.tiddlyspot.com#XMLTable&quot; class=&quot;externalLink null&quot;&gt;XMLTable&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/tech/apps-infra/discussion/4048191/index-not-used-in-outer-join-with-xmltable&quot; href=&quot;https://community.oracle.com/tech/apps-infra/discussion/4048191/index-not-used-in-outer-join-with-xmltable&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/tech/apps-infra/discussion/4048191/index-not-used-in-outer-join-with-xmltable&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/45591606/oracle-outer-join-with-xmltable&quot; href=&quot;https://stackoverflow.com/questions/45591606/oracle-outer-join-with-xmltable&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/45591606/oracle-outer-join-with-xmltable&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/46918090/read-nested-xml-in-oracle-sql&quot; href=&quot;https://stackoverflow.com/questions/46918090/read-nested-xml-in-oracle-sql&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/46918090/read-nested-xml-in-oracle-sql&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://odieweblog.wordpress.com/2016/05/20/how-to-using-outer-join-with-xmltable-or-xquery/&quot; href=&quot;https://odieweblog.wordpress.com/2016/05/20/how-to-using-outer-join-with-xmltable-or-xquery/&quot; class=&quot;externalLink&quot;&gt;https://odieweblog.wordpress.com/2016/05/20/how-to-using-outer-join-with-xmltable-or-xquery/&lt;/a&gt;    &amp;lt;&lt;span&gt;—&lt;/span&gt; GOOD STUFF &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; issues&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; flatten of rows using multiple chained &lt;a tiddlylink=&quot;XMLTABLEs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XMLTABLEs&quot; href=&quot;http://karlarao.tiddlyspot.com#XMLTABLEs&quot; class=&quot;externalLink null&quot;&gt;XMLTABLEs&lt;/a&gt; with OUTER &lt;a tiddlylink=&quot;JOINs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#JOINs&quot; href=&quot;http://karlarao.tiddlyspot.com#JOINs&quot; class=&quot;externalLink null&quot;&gt;JOINs&lt;/a&gt; is hitting pga_aggregate_limit &lt;/li&gt;&lt;li&gt; also the read is serial &quot;XMLTABLE EVALUATION&quot;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;oracle xmltable pga_aggregate_limit&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?sxsrf=ALeKk03432QQYtgh2__tmLwT5a6ZgEnANQ%3A1609179426488&amp;amp;source=hp&amp;amp;ei=IiHqX7CoG-jF_QbD5qaACQ&amp;amp;iflsig=AINFCbYAAAAAX-ovMsoiOEVrBAmxM2wFKAoYt3mX5eCq&amp;amp;q=oracle+xmltable+pga_aggregate_limit&amp;amp;oq=oracle+xmltable+pga_aggregate_limit&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCCEQoAE6BAgjECc6BAgAEEM6BwgjEMkDECc6AggAOgcIABAUEIcCOgUIABDJAzoGCAAQFhAeOgUIIRCrAjoICCEQFhAdEB46BwghEAoQoAFQggZYtk1g5k5oBHAAeACAAfYCiAGBH5IBCDIwLjcuMy4ymAEAoAEBoAECqgEHZ3dzLXdpeg&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwiwwd_ApPHtAhXoYt8KHUOzCZAQ4dUDCAk&amp;amp;uact=5&quot; href=&quot;https://www.google.com/search?sxsrf=ALeKk03432QQYtgh2__tmLwT5a6ZgEnANQ%3A1609179426488&amp;amp;source=hp&amp;amp;ei=IiHqX7CoG-jF_QbD5qaACQ&amp;amp;iflsig=AINFCbYAAAAAX-ovMsoiOEVrBAmxM2wFKAoYt3mX5eCq&amp;amp;q=oracle+xmltable+pga_aggregate_limit&amp;amp;oq=oracle+xmltable+pga_aggregate_limit&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCCEQoAE6BAgjECc6BAgAEEM6BwgjEMkDECc6AggAOgcIABAUEIcCOgUIABDJAzoGCAAQFhAeOgUIIRCrAjoICCEQFhAdEB46BwghEAoQoAFQggZYtk1g5k5oBHAAeACAAfYCiAGBH5IBCDIwLjcuMy4ymAEAoAEBoAECqgEHZ3dzLXdpeg&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwiwwd_ApPHtAhXoYt8KHUOzCZAQ4dUDCAk&amp;amp;uact=5&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?sxsrf=ALeKk03432QQYtgh2__tmLwT5a6ZgEnANQ%3A1609179426488&amp;amp;source=hp&amp;amp;ei=IiHqX7CoG-jF_QbD5qaACQ&amp;amp;iflsig=AINFCbYAAAAAX-ovMsoiOEVrBAmxM2wFKAoYt3mX5eCq&amp;amp;q=oracle+xmltable+pga_aggregate_limit&amp;amp;oq=oracle+xmltable+pga_aggregate_limit&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCCEQoAE6BAgjECc6BAgAEEM6BwgjEMkDECc6AggAOgcIABAUEIcCOgUIABDJAzoGCAAQFhAeOgUIIRCrAjoICCEQFhAdEB46BwghEAoQoAFQggZYtk1g5k5oBHAAeACAAfYCiAGBH5IBCDIwLjcuMy4ymAEAoAEBoAECqgEHZ3dzLXdpeg&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwiwwd_ApPHtAhXoYt8KHUOzCZAQ4dUDCAk&amp;amp;uact=5&lt;/a&gt;&lt;br&gt;&lt;br&gt;oracle parallel XMLTABLE EVALUATION nested loops outer&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?sxsrf=ALeKk03LYwKuGCUQo8TfONHoNWKVyjJWLw%3A1609181994932&amp;amp;source=hp&amp;amp;ei=KivqX8j9NZCf_Qbznp7oDA&amp;amp;iflsig=AINFCbYAAAAAX-o5OpPk4GAR8WlNFvSCsqPeyGqmEvYz&amp;amp;q=oracle+parallel+XMLTABLE+EVALUATION&amp;amp;oq=oracle+parallel+XMLTABLE+EVALUATION&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCAAQzQIyBQgAEM0CMgUIABDNAjoECCMQJzoKCC4QxwEQowIQJzoICC4QsQMQgwE6BQgAELEDOg4ILhCxAxCDARDHARCjAjoLCC4QsQMQxwEQowI6BQguELEDOgUIABCRAjoKCAAQsQMQFBCHAjoNCC4QsQMQgwEQFBCHAjoCCAA6CAgAEMkDEJECOgcIABAUEIcCOggIABCxAxCDAVBMWLgWYNsXaABwAHgAgAF3iAHrC5IBBDEwLjaYAQCgAQGgAQKqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwjIuryJrvHtAhWQT98KHXOPB80Q4dUDCAk&amp;amp;uact=5&quot; href=&quot;https://www.google.com/search?sxsrf=ALeKk03LYwKuGCUQo8TfONHoNWKVyjJWLw%3A1609181994932&amp;amp;source=hp&amp;amp;ei=KivqX8j9NZCf_Qbznp7oDA&amp;amp;iflsig=AINFCbYAAAAAX-o5OpPk4GAR8WlNFvSCsqPeyGqmEvYz&amp;amp;q=oracle+parallel+XMLTABLE+EVALUATION&amp;amp;oq=oracle+parallel+XMLTABLE+EVALUATION&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCAAQzQIyBQgAEM0CMgUIABDNAjoECCMQJzoKCC4QxwEQowIQJzoICC4QsQMQgwE6BQgAELEDOg4ILhCxAxCDARDHARCjAjoLCC4QsQMQxwEQowI6BQguELEDOgUIABCRAjoKCAAQsQMQFBCHAjoNCC4QsQMQgwEQFBCHAjoCCAA6CAgAEMkDEJECOgcIABAUEIcCOggIABCxAxCDAVBMWLgWYNsXaABwAHgAgAF3iAHrC5IBBDEwLjaYAQCgAQGgAQKqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwjIuryJrvHtAhWQT98KHXOPB80Q4dUDCAk&amp;amp;uact=5&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?sxsrf=ALeKk03LYwKuGCUQo8TfONHoNWKVyjJWLw%3A1609181994932&amp;amp;source=hp&amp;amp;ei=KivqX8j9NZCf_Qbznp7oDA&amp;amp;iflsig=AINFCbYAAAAAX-o5OpPk4GAR8WlNFvSCsqPeyGqmEvYz&amp;amp;q=oracle+parallel+XMLTABLE+EVALUATION&amp;amp;oq=oracle+parallel+XMLTABLE+EVALUATION&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCAAQzQIyBQgAEM0CMgUIABDNAjoECCMQJzoKCC4QxwEQowIQJzoICC4QsQMQgwE6BQgAELEDOg4ILhCxAxCDARDHARCjAjoLCC4QsQMQxwEQowI6BQguELEDOgUIABCRAjoKCAAQsQMQFBCHAjoNCC4QsQMQgwEQFBCHAjoCCAA6CAgAEMkDEJECOgcIABAUEIcCOggIABCxAxCDAVBMWLgWYNsXaABwAHgAgAF3iAHrC5IBBDEwLjaYAQCgAQGgAQKqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwjIuryJrvHtAhWQT98KHXOPB80Q4dUDCAk&amp;amp;uact=5&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?sxsrf=ALeKk02vf4gxVxgWJOCiQfQPbfLHfH0I2g%3A1609183360787&amp;amp;source=hp&amp;amp;ei=gDDqX96aLYKKggeLvaDwCA&amp;amp;iflsig=AINFCbYAAAAAX-o-kEvuuVNqJaGXxNVUIE1WhIrMJDW8&amp;amp;q=XMLTABLE+EVALUATION+nested+loops+outer&amp;amp;oq=XMLTABLE+EVALUATION+nested+loops+outer&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCCEQoAEyBQghEKABMgUIIRCgATIFCCEQqwIyBQghEKsCMgUIIRCrAjoHCCEQChCgAVD7Alj1GmD4G2gAcAB4AYABsgKIAfsQkgEIMTMuNi4wLjGYAQCgAQKgAQGqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwje2uGUs_HtAhUCheAKHYseCI4Q4dUDCAk&amp;amp;uact=5&quot; href=&quot;https://www.google.com/search?sxsrf=ALeKk02vf4gxVxgWJOCiQfQPbfLHfH0I2g%3A1609183360787&amp;amp;source=hp&amp;amp;ei=gDDqX96aLYKKggeLvaDwCA&amp;amp;iflsig=AINFCbYAAAAAX-o-kEvuuVNqJaGXxNVUIE1WhIrMJDW8&amp;amp;q=XMLTABLE+EVALUATION+nested+loops+outer&amp;amp;oq=XMLTABLE+EVALUATION+nested+loops+outer&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCCEQoAEyBQghEKABMgUIIRCgATIFCCEQqwIyBQghEKsCMgUIIRCrAjoHCCEQChCgAVD7Alj1GmD4G2gAcAB4AYABsgKIAfsQkgEIMTMuNi4wLjGYAQCgAQKgAQGqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwje2uGUs_HtAhUCheAKHYseCI4Q4dUDCAk&amp;amp;uact=5&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?sxsrf=ALeKk02vf4gxVxgWJOCiQfQPbfLHfH0I2g%3A1609183360787&amp;amp;source=hp&amp;amp;ei=gDDqX96aLYKKggeLvaDwCA&amp;amp;iflsig=AINFCbYAAAAAX-o-kEvuuVNqJaGXxNVUIE1WhIrMJDW8&amp;amp;q=XMLTABLE+EVALUATION+nested+loops+outer&amp;amp;oq=XMLTABLE+EVALUATION+nested+loops+outer&amp;amp;gs_lcp=CgZwc3ktYWIQAzIFCCEQoAEyBQghEKABMgUIIRCgATIFCCEQqwIyBQghEKsCMgUIIRCrAjoHCCEQChCgAVD7Alj1GmD4G2gAcAB4AYABsgKIAfsQkgEIMTMuNi4wLjGYAQCgAQKgAQGqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwje2uGUs_HtAhUCheAKHYseCI4Q4dUDCAk&amp;amp;uact=5&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;XMLTable&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XMLTable&quot; href=&quot;http://karlarao.tiddlyspot.com#XMLTable&quot; class=&quot;externalLink null&quot;&gt;XMLTable&lt;/a&gt; join causes parallel query not to work&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/tech/apps-infra/discussion/2531687/xmltable-join-causes-parallel-query-not-to-work&quot; href=&quot;https://community.oracle.com/tech/apps-infra/discussion/2531687/xmltable-join-causes-parallel-query-not-to-work&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/tech/apps-infra/discussion/2531687/xmltable-join-causes-parallel-query-not-to-work&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; related MOS &lt;/h1&gt;hint &lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=132000920381083&amp;amp;id=13452852.8&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_170#REF&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=132000920381083&amp;amp;id=13452852.8&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_170#REF&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=132000920381083&amp;amp;id=13452852.8&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_170#REF&lt;/a&gt;&lt;br&gt;hidden parameters &lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=301091721411779&amp;amp;id=1667557.1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=wah6m4iul_4&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=301091721411779&amp;amp;id=1667557.1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=wah6m4iul_4&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=301091721411779&amp;amp;id=1667557.1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=wah6m4iul_4&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;bugs&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=131986757664227&amp;amp;id=2490886.1&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_72&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=131986757664227&amp;amp;id=2490886.1&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_72&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=131986757664227&amp;amp;id=2490886.1&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_72&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=131986990955620&amp;amp;id=2010525.1&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_113&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=131986990955620&amp;amp;id=2010525.1&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_113&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=131986990955620&amp;amp;id=2010525.1&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=6swcy1brg_113&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141408834866494&amp;amp;id=8849734.8&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_589#aref_section16&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141408834866494&amp;amp;id=8849734.8&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_589#aref_section16&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141408834866494&amp;amp;id=8849734.8&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_589#aref_section16&lt;/a&gt;&lt;br&gt;memory leak CTAS &lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141410541921334&amp;amp;id=2095124.1&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_630#SYMPTOM&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141410541921334&amp;amp;id=2095124.1&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_630#SYMPTOM&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141410541921334&amp;amp;id=2095124.1&amp;amp;displayIndex=2&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_630#SYMPTOM&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141140949373346&amp;amp;id=1470452.1&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_452#SYMPTOM&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141140949373346&amp;amp;id=1470452.1&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_452#SYMPTOM&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=141140949373346&amp;amp;id=1470452.1&amp;amp;displayIndex=1&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_452#SYMPTOM&lt;/a&gt;&lt;br&gt;memory w/ testcase &lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=140490567262596&amp;amp;id=1512845.1&amp;amp;displayIndex=4&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_301#SYMPTOM&quot; href=&quot;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=140490567262596&amp;amp;id=1512845.1&amp;amp;displayIndex=4&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_301#SYMPTOM&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=140490567262596&amp;amp;id=1512845.1&amp;amp;displayIndex=4&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=h8mqnx9qi_301#SYMPTOM&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; other articles &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.databasedevelop.com/article/12562357/Performance+problem+with+XMLTABLE&quot; href=&quot;https://www.databasedevelop.com/article/12562357/Performance+problem+with+XMLTABLE&quot; class=&quot;externalLink&quot;&gt;https://www.databasedevelop.com/article/12562357/Performance+problem+with+XMLTABLE&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; example output &lt;/h1&gt;&lt;pre&gt;SQL&amp;gt; select x1.customer_name
+  2       , x2.contract_id
+  3       , x3.product_name
+  4       , x3.product_price
+  5       , x4.property
+  6  from t_xml_test_1 t
+  7     , xmltable('/customer' passing t.xml_data
+  8         columns customer_name varchar2(30) path 'name'
+  9               , contracts     xmltype      path 'contract'
+10       ) x1
+11     , xmltable('/contract' passing x1.contracts
+12         columns contract_id   varchar2(30) path 'contract_id'
+13               , products      xmltype      path 'products/product'
+14       ) x2
+15     , xmltable('/product' passing x2.products
+16         columns product_name   varchar2(30) path 'name'
+17               , product_price  number       path 'price'
+18               , properties     xmltype      path 'properties/property'
+19       ) (+) x3
+20     , xmltable('/property' passing x3.properties
+21         columns property       varchar2(30) path '.'
+22       ) (+) x4
+23  ;
+
+CUSTOMER_NAME                  CONTRACT_ID                    PRODUCT_NAME                   PRODUCT_PRICE PROPERTY
+------------------------------ ------------------------------ ------------------------------ ------------- ------------------------------
+Mustermann                     C1                             Product C1.P1                          23,12 Property C1.P1.A
+Mustermann                     C1                             Product C1.P1                          23,12 Property C1.P1.B
+Mustermann                     C1                             Product C1.P2                           2,32
+Mustermann                     C2                             Product C2.P1                         143,33
+Mustermann                     C2                             Product C2.P2                         231,76 Property C2.P2.A
+Mustermann                     C2                             Product C2.P2                         231,76 Property C2.P2.B
+Mustermann                     C3                                                                         
+
+7 rows selected.
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;</description>
+<category>Extract XML in Oracle</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BXML%20table%20flatten%20%2C%20xquery%20flatten%20pga_aggregate_limit%20error%5D%5D</link>
+<pubDate>Tue, 05 Jan 2021 02:06:00 GMT</pubDate>
+
+</item>
+<item>
+<title>housing mortgage data model</title>
+<description>&lt;h1&gt; sch_mnth_p mortgage&lt;/h1&gt;&lt;br&gt;look for the keyword &quot;sch_mnth_p&quot;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwiDmaKpme3tAhWxuVkKHbn9AEYQFjACegQIAxAC&amp;amp;url=http%3A%2F%2Fwww200.kdsglobal.com%2F~kdsprod%2FCoreLogic_DataDictionary.xls&amp;amp;usg=AOvVaw3dOWC9_dgfRcu5QfzWXiax&quot; href=&quot;https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwiDmaKpme3tAhWxuVkKHbn9AEYQFjACegQIAxAC&amp;amp;url=http%3A%2F%2Fwww200.kdsglobal.com%2F%7Ekdsprod%2FCoreLogic_DataDictionary.xls&amp;amp;usg=AOvVaw3dOWC9_dgfRcu5QfzWXiax&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwiDmaKpme3tAhWxuVkKHbn9AEYQFjACegQIAxAC&amp;amp;url=http%3A%2F%2Fwww200.kdsglobal.com%2F~kdsprod%2FCoreLogic_DataDictionary.xls&amp;amp;usg=AOvVaw3dOWC9_dgfRcu5QfzWXiax&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mortgagepayofftaigai.blogspot.com/2017/08/&quot; href=&quot;http://mortgagepayofftaigai.blogspot.com/2017/08/&quot; class=&quot;externalLink&quot;&gt;http://mortgagepayofftaigai.blogspot.com/2017/08/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwiDmaKpme3tAhWxuVkKHbn9AEYQFjABegQIBBAC&amp;amp;url=http%3A%2F%2Fwww200.kdsglobal.com%2F~kdsprod%2FAgencySFLL_DataDictionary.xls&amp;amp;usg=AOvVaw3Zu8atG9swoxM9NnugcPY4&quot; href=&quot;https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwiDmaKpme3tAhWxuVkKHbn9AEYQFjABegQIBBAC&amp;amp;url=http%3A%2F%2Fwww200.kdsglobal.com%2F%7Ekdsprod%2FAgencySFLL_DataDictionary.xls&amp;amp;usg=AOvVaw3Zu8atG9swoxM9NnugcPY4&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwiDmaKpme3tAhWxuVkKHbn9AEYQFjABegQIBBAC&amp;amp;url=http%3A%2F%2Fwww200.kdsglobal.com%2F~kdsprod%2FAgencySFLL_DataDictionary.xls&amp;amp;usg=AOvVaw3Zu8atG9swoxM9NnugcPY4&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kdsglobal.com/kds/home/techfin.html&quot; href=&quot;https://www.kdsglobal.com/kds/home/techfin.html&quot; class=&quot;externalLink&quot;&gt;https://www.kdsglobal.com/kds/home/techfin.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.kdsglobal.com/kds/share/downloadWeback.jsp?t=xlsx&amp;amp;f=Fed_holding_Summary_kds_ymd&amp;amp;dir=POD-homedoc&quot; href=&quot;https://www.kdsglobal.com/kds/share/downloadWeback.jsp?t=xlsx&amp;amp;f=Fed_holding_Summary_kds_ymd&amp;amp;dir=POD-homedoc&quot; class=&quot;externalLink&quot;&gt;https://www.kdsglobal.com/kds/share/downloadWeback.jsp?t=xlsx&amp;amp;f=Fed_holding_Summary_kds_ymd&amp;amp;dir=POD-homedoc&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www200.kdsglobal.com/~kdsprod/&quot; href=&quot;http://www200.kdsglobal.com/%7Ekdsprod/&quot; class=&quot;externalLink&quot;&gt;http://www200.kdsglobal.com/~kdsprod/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Jiaqi Yan github&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/jgraeb/AutoValetParking&quot; href=&quot;https://github.com/jgraeb/AutoValetParking&quot; class=&quot;externalLink&quot;&gt;https://github.com/jgraeb/AutoValetParking&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/tungminhphan/traffic-intersection&quot; href=&quot;https://github.com/tungminhphan/traffic-intersection&quot; class=&quot;externalLink&quot;&gt;https://github.com/tungminhphan/traffic-intersection&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/Yanjiaqi0328/traffic_intersection_observer&quot; href=&quot;https://github.com/Yanjiaqi0328/traffic_intersection_observer&quot; class=&quot;externalLink&quot;&gt;https://github.com/Yanjiaqi0328/traffic_intersection_observer&lt;/a&gt;&lt;br&gt;</description>
+<category>Data Model, Design</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bhousing%20mortgage%20data%20model%5D%5D</link>
+<pubDate>Mon, 04 Jan 2021 22:22:00 GMT</pubDate>
+
+</item>
+<item>
+<title>snow scripting, snow procedures</title>
+<description></description>
+<category>.snowflake essentials hands-on</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20scripting%2C%20snow%20procedures%5D%5D</link>
+<pubDate>Mon, 04 Jan 2021 19:21:00 GMT</pubDate>
+
+</item>
+<item>
+<title>snowsql</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.snowflake.com/en/user-guide/snowsql-use.html&quot; href=&quot;https://docs.snowflake.com/en/user-guide/snowsql-use.html&quot; class=&quot;externalLink&quot;&gt;https://docs.snowflake.com/en/user-guide/snowsql-use.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hevodata.com/learn/snowflake-sql/&quot; href=&quot;https://hevodata.com/learn/snowflake-sql/&quot; class=&quot;externalLink&quot;&gt;https://hevodata.com/learn/snowflake-sql/&lt;/a&gt;&lt;br&gt;</description>
+<category>snow scripting, snow procedures</category>
+<link>http://karlarao.tiddlyspot.com#snowsql</link>
+<pubDate>Mon, 04 Jan 2021 19:21:00 GMT</pubDate>
+
+</item>
+<item>
+<title>snow dynamic slots</title>
+<description>&lt;h1&gt; dynamic upscale is determined by the virtual warehouse used&lt;/h1&gt;&lt;br&gt;the hierarchy is table -&amp;gt; database -&amp;gt; warehouse (engine) &lt;br&gt;&lt;pre&gt;[user]#[warehouse]@[database].[schema]&amp;gt;
+
+Return the 25 most recent queries that ran in the specified warehouse:
+!queries warehouse=mywh
+
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; auto scaling and concurrency &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/61346996/snowflake-auto-scaling-and-concurrency&quot; href=&quot;https://stackoverflow.com/questions/61346996/snowflake-auto-scaling-and-concurrency&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/61346996/snowflake-auto-scaling-and-concurrency&lt;/a&gt;</description>
+<category>snow perf</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20dynamic%20slots%5D%5D</link>
+<pubDate>Mon, 04 Jan 2021 17:31:00 GMT</pubDate>
+
+</item>
+<item>
+<title>bq dynamic slots, bq flex slots</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/google-cloud/using-bigquery-flex-slots-to-run-machine-learning-workloads-more-efficiently-7fc7f400f7a7&quot; href=&quot;https://medium.com/google-cloud/using-bigquery-flex-slots-to-run-machine-learning-workloads-more-efficiently-7fc7f400f7a7&quot; class=&quot;externalLink&quot;&gt;https://medium.com/google-cloud/using-bigquery-flex-slots-to-run-machine-learning-workloads-more-efficiently-7fc7f400f7a7&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/GoogleCloudPlatform/bigquery-oreilly-book/blob/master/blogs/flex_slots/run_query_on_flex_slots.sh&quot; href=&quot;https://github.com/GoogleCloudPlatform/bigquery-oreilly-book/blob/master/blogs/flex_slots/run_query_on_flex_slots.sh&quot; class=&quot;externalLink&quot;&gt;https://github.com/GoogleCloudPlatform/bigquery-oreilly-book/blob/master/blogs/flex_slots/run_query_on_flex_slots.sh&lt;/a&gt;</description>
+<category>bq performance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20dynamic%20slots%2C%20bq%20flex%20slots%5D%5D</link>
+<pubDate>Mon, 04 Jan 2021 17:29:00 GMT</pubDate>
+
+</item>
+<item>
+<title>snow sql tuning</title>
+<description>&lt;h1&gt; Query Optimization at Snowflake (Jiaqi Yan, &lt;a tiddlylink=&quot;SnowflakeDB&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SnowflakeDB&quot; href=&quot;http://karlarao.tiddlyspot.com#SnowflakeDB&quot; class=&quot;externalLink null&quot;&gt;SnowflakeDB&lt;/a&gt;)&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=CPWn1SZUZqE&quot; href=&quot;https://www.youtube.com/watch?v=CPWn1SZUZqE&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=CPWn1SZUZqE&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; spark pushdown&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.snowflake.com/blog/snowflake-spark-part-2-pushing-query-processing/&quot; href=&quot;https://www.snowflake.com/blog/snowflake-spark-part-2-pushing-query-processing/&quot; class=&quot;externalLink&quot;&gt;https://www.snowflake.com/blog/snowflake-spark-part-2-pushing-query-processing/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; control join order &lt;/h1&gt;you can't control the join order, you need to create temp tables &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.snowflake.com/s/article/Controlling-Join-Order&quot; href=&quot;https://community.snowflake.com/s/article/Controlling-Join-Order&quot; class=&quot;externalLink&quot;&gt;https://community.snowflake.com/s/article/Controlling-Join-Order&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Join Order Benchmark on Snowflake and Postgres&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://courses.cs.washington.edu/courses/csed516/20au/projects/p05.pdf&quot; href=&quot;https://courses.cs.washington.edu/courses/csed516/20au/projects/p05.pdf&quot; class=&quot;externalLink&quot;&gt;https://courses.cs.washington.edu/courses/csed516/20au/projects/p05.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; CTE &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.snowflake.com/en/user-guide/queries-cte.html&quot; href=&quot;https://docs.snowflake.com/en/user-guide/queries-cte.html&quot; class=&quot;externalLink&quot;&gt;https://docs.snowflake.com/en/user-guide/queries-cte.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>snow perf</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20sql%20tuning%5D%5D</link>
+<pubDate>Mon, 04 Jan 2021 17:26:00 GMT</pubDate>
+
+</item>
+<item>
+<title>join order benchmark</title>
+<description>How Good Are Query Optimizers, Really&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.vldb.org/pvldb/vol9/p204-leis.pdf&quot; href=&quot;http://www.vldb.org/pvldb/vol9/p204-leis.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.vldb.org/pvldb/vol9/p204-leis.pdf&lt;/a&gt;</description>
+<category>Joins</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bjoin%20order%20benchmark%5D%5D</link>
+<pubDate>Mon, 04 Jan 2021 17:05:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Out of memory in Hive tez with LATERAL VIEW EXPLODE json_tuple</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/48462896/out-of-memory-in-hive-tez-with-lateral-view-json-tuple&quot; href=&quot;https://stackoverflow.com/questions/48462896/out-of-memory-in-hive-tez-with-lateral-view-json-tuple&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/48462896/out-of-memory-in-hive-tez-with-lateral-view-json-tuple&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/48403972/oom-in-tez-hive/48407044&quot; href=&quot;https://stackoverflow.com/questions/48403972/oom-in-tez-hive/48407044&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/48403972/oom-in-tez-hive/48407044&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.cloudera.com/t5/Support-Questions/Trying-to-use-Hive-EXPLODE-function-to-quot-unfold-quot-an/td-p/103694&quot; href=&quot;https://community.cloudera.com/t5/Support-Questions/Trying-to-use-Hive-EXPLODE-function-to-quot-unfold-quot-an/td-p/103694&quot; class=&quot;externalLink&quot;&gt;https://community.cloudera.com/t5/Support-Questions/Trying-to-use-Hive-EXPLODE-function-to-quot-unfold-quot-an/td-p/103694&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; lateral view examples&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.cloudera.com/t5/Support-Questions/Hive-Explode-Lateral-View-clarification/td-p/167827&quot; href=&quot;https://community.cloudera.com/t5/Support-Questions/Hive-Explode-Lateral-View-clarification/td-p/167827&quot; class=&quot;externalLink&quot;&gt;https://community.cloudera.com/t5/Support-Questions/Hive-Explode-Lateral-View-clarification/td-p/167827&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/42403306/hive-lateral-view-explode&quot; href=&quot;https://stackoverflow.com/questions/42403306/hive-lateral-view-explode&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/42403306/hive-lateral-view-explode&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; documentation &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; similarities with Xquery on DW environments &lt;/h1&gt;&lt;blockquote&gt;troubleshooting the Xquery. The hidden parameter needs to be tested and re-run the process. If that did not work then they need to break that query into multiple smaller Xquery to load into a table then do the join from there.&lt;br&gt;&lt;br&gt;Basically the issue is the flattening of XML to do reporting on top of it.&lt;br&gt;&lt;br&gt;I see this issue on newer data warehouses that uses newer data structures like JSON where they run LATERAL VIEW..EXPLODE function on the marketing data to flatten it &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView&quot; href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView&quot; class=&quot;externalLink&quot;&gt;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView&lt;/a&gt;&lt;br&gt;&lt;br&gt;On LATERAL VIEW..EXPLODE the issues encountered is memory related (java gc issues) when developers try to flatten hunders of json leafs at a time. And the usual fix is tune the java container memory and also lessen the columns to explode or break it into pieces.&lt;br&gt;&lt;br&gt;This is kind of similar to our PGA exhaustion issue.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>.hive issues, vertex error</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOut%20of%20memory%20in%20Hive%20tez%20with%20LATERAL%20VIEW%20EXPLODE%20json_tuple%5D%5D</link>
+<pubDate>Mon, 04 Jan 2021 16:53:00 GMT</pubDate>
+
+</item>
+<item>
+<title>KillSessions</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/2010/02/17/how-to-cancel-a-query-running-in-another-session/&quot; href=&quot;http://blog.tanelpoder.com/2010/02/17/how-to-cancel-a-query-running-in-another-session/&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/2010/02/17/how-to-cancel-a-query-running-in-another-session/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oracle-randolf.blogspot.com/2011/11/how-to-cancel-query-running-in-another.html&quot; href=&quot;http://oracle-randolf.blogspot.com/2011/11/how-to-cancel-query-running-in-another.html&quot; class=&quot;externalLink&quot;&gt;http://oracle-randolf.blogspot.com/2011/11/how-to-cancel-query-running-in-another.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; new &lt;/h1&gt;&lt;pre&gt;set serveroutput on 
+BEGIN
+      FOR c IN (
+          SELECT  username, machine, osuser, sid, serial#, inst_id
+          FROM sys.gv_$session
+          WHERE sql_id = '549wyn38pr0hd'
+          
+      )
+      LOOP
+          EXECUTE IMMEDIATE 'alter system kill session ''' || c.sid || ', ' || c.serial# || ', @' || c.inst_id || ''' immediate';
+          dbms_output.put_line('Kill session : ''' || c.username || ', ' || c.machine || ', ' || c.osuser || ', ' || c.sid || ', ' || c.serial# || ', @' || c.inst_id || ''' ');
+      END LOOP;
+    END;
+    /
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;  spool TERMINATE_SESSIONS.SQL
+
+select /* usercheck */ 'alter system disconnect session '''||s.sid||','||s.serial#||''''||' post_transaction;'
+from v$process p, v$session s, v$sqlarea sa
+where p.addr=s.paddr
+and   s.username is not null
+and   s.sql_address=sa.address(+)
+and   s.sql_hash_value=sa.hash_value(+)
+and   s.sql_id = '158gjtpj0vzkc'
+--and   sa.sql_text NOT LIKE '%usercheck%'
+--and   lower(sa.sql_text) LIKE '%cputoolkit%'
+order by status desc;
+
+  spool off
+  set echo on
+  set feedback on
 &lt;/pre&gt;</description>
-<category>Exadata Storage Size - ASM-size</category>
-<link>http://karlarao.tiddlyspot.com#asmdu.sh</link>
-<pubDate>Thu, 29 Oct 2020 05:28:55 GMT</pubDate>
+<category>Troubleshooting & Internals</category>
+<link>http://karlarao.tiddlyspot.com#KillSessions</link>
+<pubDate>Wed, 30 Dec 2020 17:55:00 GMT</pubDate>
 
 </item>
 <item>
-<title>Exadata Storage Size - ASM-size</title>
-<description>Understanding ASM Capacity and Reservation of Free Space in Exadata (Doc ID 1551288.1) &amp;lt;- contains a cool PL/SQL script&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://prutser.wordpress.com/2013/01/03/demystifying-asm-required_mirror_free_mb-and-usable_file_mb/&quot; href=&quot;http://prutser.wordpress.com/2013/01/03/demystifying-asm-required_mirror_free_mb-and-usable_file_mb/&quot; class=&quot;externalLink&quot;&gt;http://prutser.wordpress.com/2013/01/03/demystifying-asm-required_mirror_free_mb-and-usable_file_mb/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://aprakash.wordpress.com/2014/09/17/asm-diskgroup-shows-usable_file_mb-value-in-negative/&quot; href=&quot;https://aprakash.wordpress.com/2014/09/17/asm-diskgroup-shows-usable_file_mb-value-in-negative/&quot; class=&quot;externalLink&quot;&gt;https://aprakash.wordpress.com/2014/09/17/asm-diskgroup-shows-usable_file_mb-value-in-negative/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;This statement is correct: &lt;br&gt;&quot;If I have 1GB worth of data in my DB I should be using 2GB for Normal Redundancy and 3 GB for High Redundancy.&quot;&lt;br&gt;but then you also have to account for the &quot;required mirror free&quot; which is required in the case of a lost of failure group. &lt;br&gt;&lt;br&gt;So this is the output of the script I sent you, it already accounts for the redundancy level you are on. Just look at the columns with &quot;REAL&quot; on it. On your statement above, the 4869.56 is used and that already accounts for the normal redundancy.. you said you have 4605 GB (incl TEMP) so that's just about right. Now you have to add the 2538 which will total to 7407.56 and if you subtract the total space requirement to the capacity (7614 - 7407.56) you'll get 206.44&lt;br&gt;&lt;pre&gt;                                                               REQUIRED     USABLE
-                       RAW       REAL       REAL       REAL MIRROR_FREE       FILE
-STATE    TYPE     TOTAL_GB   TOTAL_GB    USED_GB    FREE_GB          GB         GB PCT_USED PCT_FREE NAME
--------- ------ ---------- ---------- ---------- ---------- ----------- ---------- -------- -------- ----------
-CONNECTE NORMAL      15228       7614    4869.56    2744.44        2538     206.44       64       36 DATA_AEX1
-CONNECTE NORMAL    3804.75    1902.38     1192.5     709.87      634.13      75.75       63       37 RECO_AEX1
-MOUNTED  NORMAL     873.75     436.88       1.23     435.64      145.63     290.02        0      100 DBFS_DG
-                ---------- ---------- ---------- ---------- ----------- ----------
-sum                19906.5    9953.26    6063.29    3889.95     3317.76     572.21
-&lt;/pre&gt;I hope that clears up the confusion on the space usage. &lt;br&gt;&lt;br&gt;I'm also referencing a very good blog post that discuss about the required mirror free and usable file mb&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://prutser.wordpress.com/2013/01/03/demystifying-asm-required_mirror_free_mb-and-usable_file_mb/&quot; href=&quot;http://prutser.wordpress.com/2013/01/03/demystifying-asm-required_mirror_free_mb-and-usable_file_mb/&quot; class=&quot;externalLink&quot;&gt;http://prutser.wordpress.com/2013/01/03/demystifying-asm-required_mirror_free_mb-and-usable_file_mb/&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;-- WITH REDUNDANCY
-set colsep ','
-set lines 600
-col state format a9
-col dgname format a15
-col sector format 999990
-col block format 999990
-col label format a25
-col path format a40
-col redundancy format a25
-col pct_used format 990
-col pct_free format 990
-col voting format a6   
-BREAK ON REPORT
-COMPUTE SUM OF raw_gb ON REPORT 
-COMPUTE SUM OF usable_total_gb ON REPORT 
-COMPUTE SUM OF usable_used_gb ON REPORT 
-COMPUTE SUM OF usable_free_gb ON REPORT 
-COMPUTE SUM OF required_mirror_free_gb ON REPORT 
-COMPUTE SUM OF usable_file_gb ON REPORT 
-COL name NEW_V _hostname NOPRINT
-select lower(host_name) name from v$instance;
-select 
-        trim('&amp;amp;_hostname') hostname,
-        name as dgname,
-        state,
-        type,
-        sector_size sector,
-        block_size block,
-        allocation_unit_size au,
-        round(total_mb/1024,2) raw_gb,
-        round((DECODE(TYPE, 'HIGH', 0.3333 * total_mb, 'NORMAL', .5 * total_mb, total_mb))/1024,2) usable_total_gb,
-        round((DECODE(TYPE, 'HIGH', 0.3333 * (total_mb - free_mb), 'NORMAL', .5 * (total_mb - free_mb), (total_mb - free_mb)))/1024,2) usable_used_gb,
-        round((DECODE(TYPE, 'HIGH', 0.3333 * free_mb, 'NORMAL', .5 * free_mb, free_mb))/1024,2) usable_free_gb,
-        round((DECODE(TYPE, 'HIGH', 0.3333 * required_mirror_free_mb, 'NORMAL', .5 * required_mirror_free_mb, required_mirror_free_mb))/1024,2) required_mirror_free_gb,
-        round(usable_file_mb/1024,2) usable_file_gb,
-        round((total_mb - free_mb)/total_mb,2)*100 as &quot;PCT_USED&quot;, 
-        round(free_mb/total_mb,2)*100 as &quot;PCT_FREE&quot;,
-        offline_disks,
-        voting_files voting
-from v$asm_diskgroup
-where total_mb != 0
-order by 1;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;
--- count of datafiles for each disk group
+<title>library cache lock parallel CTAS NO_GATHER_OPTIMIZER_STATISTICS</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' reason and fix - 12c: _optimizer_gather_stats_on_load', event)&quot;&gt; reason and fix - 12c: _optimizer_gather_stats_on_load&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the bug ', event)&quot;&gt; the bug &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the final fix', event)&quot;&gt; the final fix&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/35417273/library-cache-lock-in-parallelized-statements&quot; href=&quot;https://stackoverflow.com/questions/35417273/library-cache-lock-in-parallelized-statements&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/35417273/library-cache-lock-in-parallelized-statements&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/32229729/faster-way-to-load-huge-data-warehouse-table&quot; href=&quot;https://stackoverflow.com/questions/32229729/faster-way-to-load-huge-data-warehouse-table&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/32229729/faster-way-to-load-huge-data-warehouse-table&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://orainternals.wordpress.com/2016/05/21/library-cache-lock-on-build-object/&quot; href=&quot;https://orainternals.wordpress.com/2016/05/21/library-cache-lock-on-build-object/&quot; class=&quot;externalLink&quot;&gt;https://orainternals.wordpress.com/2016/05/21/library-cache-lock-on-build-object/&lt;/a&gt;&lt;br&gt;Using Frequent Truncate in Application &lt;a target=&quot;_blank&quot; title=&quot;External link to https://asktom.oracle.com/pls/apex/f%3Fp%3D100:11:0::::P11_QUESTION_ID:47911859692542&quot; href=&quot;https://asktom.oracle.com/pls/apex/f%3Fp%3D100:11:0::::P11_QUESTION_ID:47911859692542&quot; class=&quot;externalLink&quot;&gt;https://asktom.oracle.com/pls/apex/f%3Fp%3D100:11:0::::P11_QUESTION_ID:47911859692542&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; reason and fix - 12c: _optimizer_gather_stats_on_load&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;The parameter controlling this change is not mentioned:
+
+_optimizer_gather_stats_on_load
+The default is TRUE since Oracle 12.1.0.1 – the parameter or functionality did not exist before Oracle Database 12c.
+
+In Oracle Database 12c, online statistics gathering “piggybacks” statistics gather as part of a direct-path
+data loading operation such as, create table as select (CTAS) and insert as select (IAS) operations.
+Gathering statistics as part of the data loading operation, means no additional full data scan is required
+to have statistics available immediately after the data is loaded.
+
+&lt;/pre&gt;&lt;pre&gt;insert /*+append NO_GATHER_OPTIMIZER_STATISTICS*/ into MYTAB select …
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the bug &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;High Parse Time Elapsed And High Cursor : Pin S Wait On X Wait Event With Parallelism (Doc ID 1675659.1)&lt;br&gt;&lt;pre&gt;	
+Copyright (c) 2020, Oracle. All rights reserved. Oracle Confidential.
+Click to add to Favorites		High Parse Time Elapsed And High Cursor : Pin S Wait On X Wait Event With Parallelism (Doc ID 1675659.1)	To BottomTo Bottom	
+
+In this Document
+	Symptoms
+	Changes
+	Cause
+	Solution
+	References
+
+
+Applies to:
+Oracle Database - Enterprise Edition - Version 11.2.0.3 to 12.1.0.1 [Release 11.2 to 12.1]
+Oracle Database Cloud Schema Service - Version N/A and later
+Oracle Database Exadata Express Cloud Service - Version N/A and later
+Oracle Database Exadata Cloud Machine - Version N/A and later
+Oracle Cloud Infrastructure - Database Service - Version N/A and later
+Information in this document applies to any platform.
+Symptoms
+
+PROBLEM:
+----------
+
+We have a test case with a create table as select statement with a dop of 4.  The table used by the CTAS contains 500000 rows.
+
+When we execute the statement, we note that Oracle spends all the time to parse (parse time elapsed 99%) and that wait class concurrency are 60% with 40% cursor: pin S wait on X.
+
+We are also able to reproduce the same problem with an insert statement.
+
+
+We can reproduce  the issue in Oracle 11.2.0.3  and 11.2.0.4.
+
+
+High parse time elapsed (&amp;gt;85%) and high cursor : pin S wait on X wait event
+(&amp;gt;60%) seen with parallel execution.
+
+DIAGNOSTIC ANALYSIS:
+--------------------
+This affects both 11.2.0.3 and 11.2.0.4. Issue does not occur when ran in serial.
+
+- Investigation 1
+Setting  Parallelism to 4 on the source TABLE SR_TMP_TABLE.
+We see the « cursor: pin S wait on X » wait event.
+
+- Investigation 2
+Checking what is generating those « cursor: pin S wait on X » wait.
+
+By looking at MUTEX_SLEEP view, we notice that ONE main function generates those mutexes.
+Function « kkslce [KKSCHLPIN2] ».
+
+MUTEX_TYPE                       LOCATION                                    
+SLEEPS  WAIT_TIME
+-------------------------------- ----------------------------------------
+---------- ----------
+Cursor Pin                       kkslce [KKSCHLPIN2]                          
+383360          0
+Library Cache                    kglhdgn2 106                                
+    74          0
+
+When we set the trace cursor at level 612 on the cursor, we can see the
+following reason for NOT sharing the cursor : PQ Slave mismatch(5).
+
+To generate the necessary cursor tracing:
+
+alter session set events 'immediate trace name cursortrace level 612, address &amp;amp;hashvalue';
+
+Example:
+
+select sql_id, hash_value from v$sql
+where sql_text  LIKE  'insert /*+ NOAPPEND */ into SR_TMP%';
+
+SQL_ID        HASH_VALUE
+------------- ----------
+9ykqjuv9zgb96 3556224294
+
+alter session set events 'immediate trace name cursortrace level 612, address 3556224294';
+
+&amp;lt; Run the sql statement&amp;gt;
+To turn it off:
+
+alter system set events 'immediate trace name cursortrace level 128, address 3556224294';
+&lt;/pre&gt;&lt;pre&gt;Bug 17950283 - high parse time elapsed and high cursor : pin s wait on x wait event with parallel filed for this SR.
+Development determined this to be a duplicate of bug 17805316.
+
+Bug 17805316 - improve cursor sharing for px slaves for statements with cdt
  
-select count(*), name
-from
-(select regexp_substr(name, '[^/]+', 1, 1) name from v$datafile
-union all
-select regexp_substr(name, '[^/]+', 1, 1) name from v$tempfile)
-group by name
-order by 1 desc;
+&lt;/pre&gt;&lt;pre&gt;Apply Patch 17805316: IMPROVE CURSOR SHARING FOR PX SLAVES FOR STATEMENTS WITH CDT.
+
+If one does not exist for your version or  platform, open SR and request one.
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the final fix&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;
+
  
-478 +DATA
-241 +DATAHC
-213 +DATAEF
-1   +DBFS
+
+The fix:
+
  
+
  
+
+The original SQL runs for 7064 seconds. The new ones below are 892 and 620 seconds respectively.
+
  
--- count datafile vs tempfile 
+
  
-col name format a30
-select count(*), name || ' - Datafile' name
-from
-(select regexp_substr(name, '[^/]+', 1, 1) name from v$datafile)
-group by name
-union all
-select count(*), name || ' - Tempfile' name
-from
-(select regexp_substr(name, '[^/]+', 1, 1) name from v$tempfile)
-group by name
-order by 1 desc, 2 asc; 
+
+For all of the CREATE TABLE commands on the packages put the following on the hint
+
+     
+
+    Option 1: 892 seconds - index fast full scan on CISADM.D1_MSRMT
+
+        NO_GATHER_OPTIMIZER_STATISTICS
+
+    Option 2: 620 seconds - full table scan on CISADM.D1_MSRMT
+
+        NO_GATHER_OPTIMIZER_STATISTICS FULL(MSRMT)
+
  
-  COUNT(*) NAME
----------- ------------------------------
-        39 +DATA - Datafile
-         4 +DATA - Tempfile
-         4 +DATA2 – Tempfile
+
  
+
+Option 1 is more scalable when you expect multiple sessions hitting CTAS at the same time because you are reading from an index.
+
+Option 2 is faster if your session is the only one running at a time but will slow down when more sessions are doing full table scan at the same time.
+
  
-&lt;/pre&gt;</description>
-<category>ExadataStorage</category>
-<category>DatabaseHealthCheck</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BExadata%20Storage%20Size%20-%20ASM-size%5D%5D</link>
-<pubDate>Tue, 27 Oct 2020 19:00:34 GMT</pubDate>
 
-</item>
-<item>
-<title>vbox install internet explorer 11</title>
-<description>&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; IE 11 will be used by Junos VPN&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; disable protected mode&lt;ul&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.edmentum.com/4_General_and_Technical_Solutions/How_to_disable_Protected_Mode_in_Internet_Explorer&quot; href=&quot;https://support.edmentum.com/4_General_and_Technical_Solutions/How_to_disable_Protected_Mode_in_Internet_Explorer&quot; class=&quot;externalLink&quot;&gt;https://support.edmentum.com/4_General_and_Technical_Solutions/How_to_disable_Protected_Mode_in_Internet_Explorer&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</description>
-<category>MacBook, macosx, mac osx</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bvbox%20install%20internet%20explorer%2011%5D%5D</link>
-<pubDate>Sat, 24 Oct 2020 00:25:40 GMT</pubDate>
-
-</item>
-<item>
-<title>check patch level</title>
-<description>&lt;br&gt;&lt;pre&gt;How to determine BP Level? https://forums.oracle.com/forums/thread.jspa?threadID=2224966
-
-opatch lsinv -bugs_fixed | egrep -i 'bp|exadata|bundle'
-/u01/app/oracle/product/11.2.0/dbhome_1/OPatch/opatch lsinventory -bugs_fixed | egrep -i 'bp|exadata|bundle'
-OR
-registry$history or dba_registry_history
-
-col action format a10
-col namespace format a10
-col action_time format a30
-col version format a10
-col comments format a30
-select * from dba_registry_history;
+ 
 
 
-and then.. go to 
-MOS 888828.1 --&amp;gt; Patch Release History for Exadata Database Machine Components --&amp;gt; Exadata Storage Server software patches
+ 
 
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;SELECT TO_CHAR(action_time, 'YYYY-MM-DD HH24:MI:SS')  as action_time,
-action,
- status,
- description,
- version,
- patch_id,
- bundle_series
- FROM   sys.dba_registry_sqlpatch
- ORDER by action_time;
-
-ACTION_TIME         ACTION          STATUS          DESCRIPTION                                                                                          VERSION                PATCH_ID BUNDLE_SERIES
-------------------- --------------- --------------- ---------------------------------------------------------------------------------------------------- -------------------- ---------- ------------------------------
-2020-03-26 20:26:32 APPLY           SUCCESS         Database PSU 12.1.0.2.200114, Oracle JavaVM Component (JAN2020)                                      12.1.0.2               30502041
-2020-03-26 20:26:34 APPLY           SUCCESS         DATABASE BUNDLE PATCH 12.1.0.2.200114                                                                12.1.0.2               30364137 DBBP
-2020-09-11 11:50:33 APPLY           WITH ERRORS     DATABASE BUNDLE PATCH 12.1.0.2.200714                                                                12.1.0.2               31001106 DBBP
-2020-09-11 12:16:42 APPLY           SUCCESS         DATABASE BUNDLE PATCH 12.1.0.2.200714                                                                12.1.0.2               31001106 DBBP
-2020-09-11 13:16:37 ROLLBACK        SUCCESS         Database PSU 12.1.0.2.200114, Oracle JavaVM Component (JAN2020)                                      12.1.0.2               30502041
-2020-09-11 13:16:37 APPLY           SUCCESS         Database PSU 12.1.0.2.200714, Oracle JavaVM Component (JUL2020)                                      12.1.0.2               31219939
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;select * from registry$history;
-
-ACTION_TIME                    ACTION     NAMESPACE  VERSION            ID COMMENTS                                 BUNDLE_SERIES
------------------------------- ---------- ---------- ---------- ---------- ---------------------------------------- ---------------
-                               BOOTSTRAP  DATAPATCH  12.1.0.2              RDBMS_12.1.0.2.0DBBP_LINUX.X64_170106
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;
-COL cv_cellname       HEAD CELL_NAME        FOR A20
-COL cv_cell_path      HEAD CELL_PATH        FOR A30
-COL cv_cellversion    HEAD CELLSRV_VERSION  FOR A20
-COL cv_flashcachemode HEAD FLASH_CACHE_MODE FOR A20
-
-PROMPT Show Exadata cell versions from V$CELL_CONFIG....
+CREATE TABLE DWADM.IF45_STAGING_II_60_TEST NOLOGGING AS
 
 SELECT
-    cellname cv_cell_path
-  , CAST(extract(xmltype(confval), '/cli-output/cell/name/text()') AS VARCHAR2(20))  cv_cellname
-  , CAST(extract(xmltype(confval), '/cli-output/cell/releaseVersion/text()') AS VARCHAR2(20))  cv_cellVersion 
-  , CAST(extract(xmltype(confval), '/cli-output/cell/flashCacheMode/text()') AS VARCHAR2(20))  cv_flashcachemode
-  , CAST(extract(xmltype(confval), '/cli-output/cell/cpuCount/text()')       AS VARCHAR2(10))  cpu_count
-  , CAST(extract(xmltype(confval), '/cli-output/cell/upTime/text()')         AS VARCHAR2(20))  uptime
-  , CAST(extract(xmltype(confval), '/cli-output/cell/kernelVersion/text()')  AS VARCHAR2(30))  kernel_version
-  , CAST(extract(xmltype(confval), '/cli-output/cell/makeModel/text()')      AS VARCHAR2(50))  make_model
-FROM 
-    v$cell_config  -- gv$ isn't needed, all cells should be visible in all instances
-WHERE 
-    conftype = 'CELL'
-ORDER BY
-    cv_cellname
-/
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;$ opatch lsinventory
 
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;$ opatch lspatches
+  /*+PARALLEL(16) NO_GATHER_OPTIMIZER_STATISTICS*/
 
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;opatch lsinventory|grep &quot;Patch description&quot;
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Type of Patches Used with &lt;a tiddlylink=&quot;OPatch&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OPatch&quot; href=&quot;http://karlarao.tiddlyspot.com#OPatch&quot; class=&quot;externalLink null&quot;&gt;OPatch&lt;/a&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/middleware/1221/core/OPATC/GUID-C87906B2-D871-4279-A1D6-FC9D76C87C7E.htm#OPATC102&quot; href=&quot;https://docs.oracle.com/middleware/1221/core/OPATC/GUID-C87906B2-D871-4279-A1D6-FC9D76C87C7E.htm#OPATC102&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/middleware/1221/core/OPATC/GUID-C87906B2-D871-4279-A1D6-FC9D76C87C7E.htm#OPATC102&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
-<category>ExadataPatching</category>
-<category>Patching</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bcheck%20patch%20level%5D%5D</link>
-<pubDate>Sat, 24 Oct 2020 00:15:07 GMT</pubDate>
+  CUSTOMERS.*,
 
-</item>
-<item>
-<title>ExadataPatching</title>
-<description>&lt;br&gt;&lt;br&gt;&lt;h1&gt; check this&lt;/h1&gt;&lt;a tiddlylink=&quot;check patch level&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#check patch level&quot; href=&quot;http://karlarao.tiddlyspot.com#check%20patch%20level&quot; class=&quot;externalLink null&quot;&gt;check patch level&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;Software Updates, Best Practices and Notes&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/XPSONHA/entry/software_updates_best_practices_and&quot; href=&quot;https://blogs.oracle.com/XPSONHA/entry/software_updates_best_practices_and&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/XPSONHA/entry/software_updates_best_practices_and&lt;/a&gt;&lt;br&gt;Database Machine and Exadata Storage Server 11g Release 2 (11.2) Supported Versions &lt;strong&gt;[ID 888828.1]&lt;/strong&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://support.oracle.com/epmos/faces/ui/km/DocContentDisplay.jspx?_afrLoop=908824894646555&amp;amp;id=888828.1&quot; href=&quot;https://support.oracle.com/epmos/faces/ui/km/DocContentDisplay.jspx?_afrLoop=908824894646555&amp;amp;id=888828.1&quot; class=&quot;externalLink&quot;&gt;https://support.oracle.com/epmos/faces/ui/km/DocContentDisplay.jspx?_afrLoop=908824894646555&amp;amp;id=888828.1&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;strong&gt;How to determine BP Level?&lt;/strong&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://forums.oracle.com/forums/thread.jspa?threadID=2224966&quot; href=&quot;https://forums.oracle.com/forums/thread.jspa?threadID=2224966&quot; class=&quot;externalLink&quot;&gt;https://forums.oracle.com/forums/thread.jspa?threadID=2224966&lt;/a&gt;&lt;br&gt;&lt;pre&gt;opatch lsinv -bugs_fixed | egrep -i 'bp|exadata|bundle'
-/u01/app/oracle/product/11.2.0/dbhome_1/OPatch/opatch lsinventory -bugs_fixed | egrep -i 'bp|exadata|bundle'
-OR
-registry$history or dba_registry_history
+  CASE
 
-col action format a10
-col namespace format a10
-col action_time format a30
-col version format a10
-col comments format a30
-select * from dba_registry_history;
 
 
-and then.. go to 
-MOS 888828.1 --&amp;gt; Patch Release History for Exadata Database Machine Components --&amp;gt; Exadata Storage Server software patches
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;I think you want this doc: 11.2.0.2, 11.2.0.3, 11.2.0.4 or 12.1.0.1 to 12.1.0.2 Grid Infrastructure and Database Upgrade on Exadata Database Machine running Oracle Linux (Doc ID 1681467.1).&lt;br&gt;&lt;br&gt;And all of the patches' readme files have detailed installation instructions. Read every one of them.&lt;br&gt;&lt;br&gt;It's working out all of the dependencies that is most complicated. There's a long string of dependencies that's going to come into play for you:&lt;br&gt;Grid Infrastructure 12.1.0.x requires Exadata storage software (ESS) 12.1.1.1.1. (You can use ESS 11.2.3.3.1 but you will lose some Exadata features).&lt;br&gt;ESS 12.1.1.1.1 requires Oracle Linux (OL) 5.5 (kernel 2.6.18-194) or later, so you'll likely have to upgrade the OS on the database nodes.&lt;br&gt;ESS updates are full OS images, so you'll get an &lt;a tiddlylink=&quot;OL6&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OL6&quot; href=&quot;http://karlarao.tiddlyspot.com#OL6&quot; class=&quot;externalLink null&quot;&gt;OL6&lt;/a&gt; upgrade on your storage servers with the update.&lt;br&gt;Because of #3, you should update your database servers to &lt;a tiddlylink=&quot;OL6&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OL6&quot; href=&quot;http://karlarao.tiddlyspot.com#OL6&quot; class=&quot;externalLink null&quot;&gt;OL6&lt;/a&gt; in #2 rather than the minimum 5.5, so that everything is on &lt;a tiddlylink=&quot;OL6&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OL6&quot; href=&quot;http://karlarao.tiddlyspot.com#OL6&quot; class=&quot;externalLink null&quot;&gt;OL6&lt;/a&gt;.&lt;br&gt;Some more links you'll want:&lt;br&gt;The starting point for Exadata patching is Information Center: Upgrading Oracle Exadata Database Machine(1364356.2).&lt;br&gt;&lt;br&gt;There's a patching overview at Exadata Patching Overview and Patch Testing Guidelines.&lt;br&gt;&lt;br&gt;To update the database server OS, follow Document 1284070.1.&lt;br&gt;&lt;br&gt;Exadata Database Machine and Exadata Storage Server Supported Versions (Doc ID 888828.1)&lt;br&gt;11.2.0.2, 11.2.0.3, 11.2.0.4 or 12.1.0.1 to 12.1.0.2 Grid Infrastructure and Database Upgrade on Exadata Database Machine running Oracle Linux (Doc ID 1681467.1)&lt;br&gt;Exadata Patching Overview and Patch Testing Guidelines (Doc ID 1262380.1)&lt;br&gt;Updating key software components on database hosts to match those on the cells (Doc ID 1284070.1)&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Exadata</category>
-<link>http://karlarao.tiddlyspot.com#ExadataPatching</link>
-<pubDate>Sat, 24 Oct 2020 00:14:21 GMT</pubDate>
 
-</item>
-<item>
-<title>oem data masking pack</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.oraclenext.com/2017/04/data-masking-using-oem-cloud-control.html&quot; href=&quot;https://www.oraclenext.com/2017/04/data-masking-using-oem-cloud-control.html&quot; class=&quot;externalLink&quot;&gt;https://www.oraclenext.com/2017/04/data-masking-using-oem-cloud-control.html&lt;/a&gt;&lt;br&gt;</description>
-<category>EnterpriseManager</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Boem%20data%20masking%20pack%5D%5D</link>
-<pubDate>Fri, 23 Oct 2020 23:32:13 GMT</pubDate>
 
-</item>
-<item>
-<title>superputty (the alternative to puttycm)</title>
-<description>&lt;ul&gt;&lt;li&gt; downside is this tool doesn't have macros&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/jimradford/superputty&quot; href=&quot;https://github.com/jimradford/superputty&quot; class=&quot;externalLink&quot;&gt;https://github.com/jimradford/superputty&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/phendryx/superputty/issues/34&quot; href=&quot;https://github.com/phendryx/superputty/issues/34&quot; class=&quot;externalLink&quot;&gt;https://github.com/phendryx/superputty/issues/34&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
-<category>PuttyConnectionManager</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsuperputty%20(the%20alternative%20to%20puttycm)%5D%5D</link>
-<pubDate>Tue, 20 Oct 2020 13:32:00 GMT</pubDate>
 
-</item>
-<item>
-<title>slow SEG$ - dbms_space_admin.tablespace_fix_segment_extblks</title>
-<description>&lt;pre&gt;Description: With Oracle 9i it was required to retrieve segment information like the number of extents, blocks or byte from the segment header.
+CREATE TABLE DWADM.IF45_STAGING_II_60_TEST3 NOLOGGING AS
 
-The segment headers were not cached and so requesting this kind of information for a high number of segments resulted in a high amount of single block disk reads and a long runtime of DBA_SEGMENTS queries.
+SELECT
 
-it was required to access the segment headers. The information related to bytes, blocks and extents is stored centrally in SEG$, but as a prerequisite SEG$ has to be updated using the Oracle procedure DBMS_SPACE_ADMIN.TABLESPACE_FIX_SEGMENT_EXTBLKS.
+  /*+PARALLEL(16) NO_GATHER_OPTIMIZER_STATISTICS FULL(MSRMT)*/
 
-If this procedure is not executed, segments will only be updated in case they allocate a new extent, but other segments still suffer from the segment header accesses.  
+  CUSTOMERS.*,
 
+  CASE
 
-
-
-Advantages: 
-
-    Faster access on SEG$, performance improvement on the monitoring SQLs and anything that accesses the DBA_SEGMENT/DBA_EXTENTS
-
- 
-
- 
-
-Here’s the risk (as per Doc ID 463101.1): 
-
-    Make sure to test and time this on DEV environment first and then execute the command during a low workload or idle period
-    Also do not running this on SYSTEM tablespace (Bug 12940620 - Cached block/extent counts in SEG$ not updated after ADD extent (Doc ID 12940620.8))
-
- 
-
-The procedure fixes extents, blocks and bytes in the segment headers to synchronize seg$ and 
-
-segment header entries. It holds the allocation enqueue for the tablespace till the command 
-
-is completed and this may delay some sort of operations in this tablespace (new extent allocation, 
-
-deallocate extent, etc.). So it needs to be run during an idle period.
-
- 
-
-Here’s how to find the objects with mismatch and affected tablespaces: 
-
-    Find and Fix the Mismatch Between DBA_SEGMENTS and DBA_EXTENTS Views (Doc ID 463101.1)
-    The query 
-
-
-select /*+ RULE */ s.tablespace_name, s.segment_name segment, s.partition_name, 
-s.owner owner, s.segment_type, s.blocks sblocks, e.blocks eblocks, 
-s.extents sextents, e.extents eextents, s.bytes sbytes, e.bytes ebytes
-from dba_segments s, 
-(select count(*) extents, sum(blocks) blocks, sum(bytes) bytes, segment_name, 
-partition_name, segment_type, owner 
-from dba_extents 
-group by segment_name,partition_name,segment_type,owner) e 
-where s.segment_name=e.segment_name 
-and s.owner = e.owner 
-and (s.partition_name = e.partition_name or s.partition_name is null) 
-and s.segment_type = e.segment_type 
-and s.owner not like 'SYS%' 
-and ((s.blocks &amp;lt;&amp;gt; e.blocks) or (s.extents &amp;lt;&amp;gt; e.extents) or (s.bytes &amp;lt;&amp;gt; e.bytes)); 
-
-
-
-
-Segments not pre-calculated for DBA_SEGMENTS 
-
- 
-
-The tablespace_fix_segment_extblks procedure suggested by Oracle GCS is related to Bug. 27038986
-
- 
-
-. Bug.27038986: (seg$ is still not updated frequently for changes in index or lob segment)
-
-Description
-
-    SEG$ is not updated although Patch 12963364 is applied and the hidden parameter &quot;_bug12963364_spacebg_sync_segblocks&quot; is set to TRUE.
-
- 
-
-Workaround
-
-    Manually execute the following procedure frequently: dbms_space_admin.tablespace_fix_segment_extblks
-
- 
-
-This bug is not fixed until 12.2.0.1.181016 (Oct 2018) Database Release Update (DB RU)
-
- 
-
-. Bug.12963364: (block/extent count caching in SEG$ stops working for some segments)
-
-Description:
-
-The cached block/extents counts in SEG$ can become disabled for segments in local tablespaces if the update triggered by an add extent operation is lost before the 5 minute update window expires (such as by a database shutdown).
-
- 
-
-Thereafter, the cached information stays out of sync permanently unless an update procedure is manually run by the DBA. The result is that, over time, the amount of segments with uncached sizing data can grow, resulting in the degradation of performance when querying DBA_SEGMENTS.
-
- 
-
-Rediscovery Notes
-
-  You are exposed to this bug issue if select query on seg$ shows &quot;bitand(s.spare1,131072) as 0&quot; even after 5 mins BG update task timeout.
-
- 
-
-Workaround
-
-  Running dbms_space_admin.tablespace_fix_segment_extblks on occasion will restore the segments that have lost synchronization.
-
- 
-
-This bug is not fixed until 12.2.0.1 (base release)
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.sap.com/2011/02/14/poor-performance-when-accessing-oracle-dba-views-the-story/&quot; href=&quot;https://blogs.sap.com/2011/02/14/poor-performance-when-accessing-oracle-dba-views-the-story/&quot; class=&quot;externalLink&quot;&gt;https://blogs.sap.com/2011/02/14/poor-performance-when-accessing-oracle-dba-views-the-story/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/ARPLS/d_spadmn.htm#ARPLS68124&quot; href=&quot;https://docs.oracle.com/database/121/ARPLS/d_spadmn.htm#ARPLS68124&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/ARPLS/d_spadmn.htm#ARPLS68124&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ora-solutions.net/web/2011/07/18/performance-degradation-for-query-on-dba_segments-bytes-in-11gr2/&quot; href=&quot;https://www.ora-solutions.net/web/2011/07/18/performance-degradation-for-query-on-dba_segments-bytes-in-11gr2/&quot; class=&quot;externalLink&quot;&gt;https://www.ora-solutions.net/web/2011/07/18/performance-degradation-for-query-on-dba_segments-bytes-in-11gr2/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orafaq.com/maillist/oracle-l/2007/05/10/1139.htm&quot; href=&quot;http://www.orafaq.com/maillist/oracle-l/2007/05/10/1139.htm&quot; class=&quot;externalLink&quot;&gt;http://www.orafaq.com/maillist/oracle-l/2007/05/10/1139.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.dadbm.com/oracle-slow-sql-query-against-dba_segments-solved/&quot; href=&quot;http://www.dadbm.com/oracle-slow-sql-query-against-dba_segments-solved/&quot; class=&quot;externalLink&quot;&gt;http://www.dadbm.com/oracle-slow-sql-query-against-dba_segments-solved/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Find and Fix the Mismatch Between &lt;a tiddlylink=&quot;DBA_SEGMENTS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBA_SEGMENTS&quot; href=&quot;http://karlarao.tiddlyspot.com#DBA_SEGMENTS&quot; class=&quot;externalLink null&quot;&gt;DBA_SEGMENTS&lt;/a&gt; and &lt;a tiddlylink=&quot;DBA_EXTENTS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBA_EXTENTS&quot; href=&quot;http://karlarao.tiddlyspot.com#DBA_EXTENTS&quot; class=&quot;externalLink null&quot;&gt;DBA_EXTENTS&lt;/a&gt; Views &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.itpub.net/12798004/viewspace-2680783/&quot; href=&quot;http://blog.itpub.net/12798004/viewspace-2680783/&quot; class=&quot;externalLink&quot;&gt;http://blog.itpub.net/12798004/viewspace-2680783/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>data file header contention, SEG$, uniform extent allocation, space wastage, enq FB, HW, ktsj</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bslow%20SEG%24%20-%20dbms_space_admin.tablespace_fix_segment_extblks%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 16:40:00 GMT</pubDate>
-
-</item>
-<item>
-<title>awrinfo.sql</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' awrinfo.sql', event)&quot;&gt; awrinfo.sql&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' manual purge ', event)&quot;&gt; manual purge &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' purge related notes ', event)&quot;&gt; purge related notes &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; awrinfo.sql&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; manual purge &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://grepora.com/2017/11/08/orphan-awr-data-consuming-sysaux-space/&quot; href=&quot;https://grepora.com/2017/11/08/orphan-awr-data-consuming-sysaux-space/&quot; class=&quot;externalLink&quot;&gt;https://grepora.com/2017/11/08/orphan-awr-data-consuming-sysaux-space/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; purge related notes &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;“_awr_mmon_deep_purge_all_expired” = TRUE
-
-
-manual purge Doc ID: 2537247.1
-
-
-&lt;/pre&gt;</description>
-<category>AWR retention</category>
-<link>http://karlarao.tiddlyspot.com#awrinfo.sql</link>
-<pubDate>Sat, 19 Sep 2020 16:09:00 GMT</pubDate>
-
-</item>
-<item>
-<title>cloud data warehouse</title>
-<description>&lt;h1&gt; cloud data warehouses in real life &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/AlexanderTokarev4/cloud-dwh-deep-dive&quot; href=&quot;https://www.slideshare.net/AlexanderTokarev4/cloud-dwh-deep-dive&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/AlexanderTokarev4/cloud-dwh-deep-dive&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Cloud Data Warehouse Benchmark: Redshift, Snowflake, Azure, Presto and &lt;a tiddlylink=&quot;BigQuery&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#BigQuery&quot; href=&quot;http://karlarao.tiddlyspot.com#BigQuery&quot; class=&quot;externalLink null&quot;&gt;BigQuery&lt;/a&gt; &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://fivetran.com/blog/warehouse-benchmark&quot; href=&quot;https://fivetran.com/blog/warehouse-benchmark&quot; class=&quot;externalLink&quot;&gt;https://fivetran.com/blog/warehouse-benchmark&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>cloud database</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bcloud%20data%20warehouse%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 07:16:00 GMT</pubDate>
-
-</item>
-<item>
-<title>vladmihalcea - High-Performance Java Persistence Book</title>
-<description>the book &lt;a target=&quot;_blank&quot; title=&quot;External link to https://vladmihalcea.teachable.com/courses/enrolled/348278&quot; href=&quot;https://vladmihalcea.teachable.com/courses/enrolled/348278&quot; class=&quot;externalLink&quot;&gt;https://vladmihalcea.teachable.com/courses/enrolled/348278&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>Java and JDBC for Oracle DBAs</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bvladmihalcea%20-%20High-Performance%20Java%20Persistence%20Book%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 04:22:00 GMT</pubDate>
-
-</item>
-<item>
-<title>vladmihalcea tutorial - hibernate</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://vladmihalcea.com/tutorials/hibernate/&quot; href=&quot;https://vladmihalcea.com/tutorials/hibernate/&quot; class=&quot;externalLink&quot;&gt;https://vladmihalcea.com/tutorials/hibernate/&lt;/a&gt;</description>
-<category>vladmihalcea - High-Performance Java Persistence Book</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bvladmihalcea%20tutorial%20-%20hibernate%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 04:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>vladmihalcea tutorial - spring</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://vladmihalcea.com/tutorials/spring/&quot; href=&quot;https://vladmihalcea.com/tutorials/spring/&quot; class=&quot;externalLink&quot;&gt;https://vladmihalcea.com/tutorials/spring/&lt;/a&gt;</description>
-<category>vladmihalcea - High-Performance Java Persistence Book</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bvladmihalcea%20tutorial%20-%20spring%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 04:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>vladmihalcea tutorial - SQL</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://vladmihalcea.com/tutorials/sql/&quot; href=&quot;https://vladmihalcea.com/tutorials/sql/&quot; class=&quot;externalLink&quot;&gt;https://vladmihalcea.com/tutorials/sql/&lt;/a&gt;</description>
-<category>vladmihalcea - High-Performance Java Persistence Book</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bvladmihalcea%20tutorial%20-%20SQL%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 04:20:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Java and JDBC for Oracle DBAs</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.jcon.no/oracle/?p=1942&quot; href=&quot;http://www.jcon.no/oracle/?p=1942&quot; class=&quot;externalLink&quot;&gt;http://www.jcon.no/oracle/?p=1942&lt;/a&gt;&lt;br&gt;&lt;blockquote&gt;&lt;br&gt;&lt;br&gt;    Part 1: Install/setup Oracle database (in docker)&lt;br&gt;    Part 2: Installing Java (JDK), Eclipse and Maven&lt;br&gt;    Part 3: Git, Oracle schemas and your first Java application&lt;br&gt;    Part 4: Your first JDBC Application&lt;br&gt;    Part 5: &lt;a tiddlylink=&quot;Spring-Boot&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Spring-Boot&quot; href=&quot;http://karlarao.tiddlyspot.com#Spring-Boot&quot; class=&quot;externalLink null&quot;&gt;Spring-Boot&lt;/a&gt;, &lt;a tiddlylink=&quot;JdbcTemplate&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#JdbcTemplate&quot; href=&quot;http://karlarao.tiddlyspot.com#JdbcTemplate&quot; class=&quot;externalLink null&quot;&gt;JdbcTemplate&lt;/a&gt; &amp;amp; DB migration (Using &lt;a tiddlylink=&quot;FlywayDB&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#FlywayDB&quot; href=&quot;http://karlarao.tiddlyspot.com#FlywayDB&quot; class=&quot;externalLink null&quot;&gt;FlywayDB&lt;/a&gt;)&lt;br&gt;    Part 6: Spring-boot, JPA and Hibernate (this)&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
-<category>Java</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BJava%20and%20JDBC%20for%20Oracle%20DBAs%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 04:17:00 GMT</pubDate>
-
-</item>
-<item>
-<title>snow api</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' api ', event)&quot;&gt; api &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' plain JDBC ', event)&quot;&gt; plain JDBC &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; api &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.snowflake.com/en/user-guide/connecting.html&quot; href=&quot;https://docs.snowflake.com/en/user-guide/connecting.html&quot; class=&quot;externalLink&quot;&gt;https://docs.snowflake.com/en/user-guide/connecting.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.snowflake.com/en/user-guide/jdbc-configure.html&quot; href=&quot;https://docs.snowflake.com/en/user-guide/jdbc-configure.html&quot; class=&quot;externalLink&quot;&gt;https://docs.snowflake.com/en/user-guide/jdbc-configure.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://discourse.snowplowanalytics.com/t/snowflake-loader-setup-ssl-error/3578/1&quot; href=&quot;https://discourse.snowplowanalytics.com/t/snowflake-loader-setup-ssl-error/3578/1&quot; class=&quot;externalLink&quot;&gt;https://discourse.snowplowanalytics.com/t/snowflake-loader-setup-ssl-error/3578/1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://snowflakecommunity.force.com/s/question/0D50Z00007BKctqSAD/connection-issues-with-python-api&quot; href=&quot;https://snowflakecommunity.force.com/s/question/0D50Z00007BKctqSAD/connection-issues-with-python-api&quot; class=&quot;externalLink&quot;&gt;https://snowflakecommunity.force.com/s/question/0D50Z00007BKctqSAD/connection-issues-with-python-api&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; &lt;a tiddlylink=&quot;APEX_WEB_SERVICE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#APEX_WEB_SERVICE&quot; href=&quot;http://karlarao.tiddlyspot.com#APEX_WEB_SERVICE&quot; class=&quot;externalLink null&quot;&gt;APEX_WEB_SERVICE&lt;/a&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.google.com/search?sxsrf=ALeKk025kqPiieZxUsrNeHMGFuhvw-HVGg%3A1600461592531&amp;amp;source=hp&amp;amp;ei=GBtlX4CDHrCb_QaT6rKwBw&amp;amp;q=apex_web_service&amp;amp;oq=apex_web_service&amp;amp;gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADIECAAQQzoECCMQJzoFCAAQkQI6DgguELEDEIMBEMcBEKMCOggIABCxAxCDAToICC4QsQMQgwE6BQgAELEDOgcILhCxAxBDOgUILhCxAzoECAAQClCgAVisGmC2G2gAcAB4AIABhAKIAf0NkgEFNi45LjGYAQCgAQGqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwiA78mFyPPrAhWwTd8KHRO1DHYQ4dUDCAg&amp;amp;uact=5&quot; href=&quot;https://www.google.com/search?sxsrf=ALeKk025kqPiieZxUsrNeHMGFuhvw-HVGg%3A1600461592531&amp;amp;source=hp&amp;amp;ei=GBtlX4CDHrCb_QaT6rKwBw&amp;amp;q=apex_web_service&amp;amp;oq=apex_web_service&amp;amp;gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADIECAAQQzoECCMQJzoFCAAQkQI6DgguELEDEIMBEMcBEKMCOggIABCxAxCDAToICC4QsQMQgwE6BQgAELEDOgcILhCxAxBDOgUILhCxAzoECAAQClCgAVisGmC2G2gAcAB4AIABhAKIAf0NkgEFNi45LjGYAQCgAQGqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwiA78mFyPPrAhWwTd8KHRO1DHYQ4dUDCAg&amp;amp;uact=5&quot; class=&quot;externalLink&quot;&gt;https://www.google.com/search?sxsrf=ALeKk025kqPiieZxUsrNeHMGFuhvw-HVGg%3A1600461592531&amp;amp;source=hp&amp;amp;ei=GBtlX4CDHrCb_QaT6rKwBw&amp;amp;q=apex_web_service&amp;amp;oq=apex_web_service&amp;amp;gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADIECAAQQzoECCMQJzoFCAAQkQI6DgguELEDEIMBEMcBEKMCOggIABCxAxCDAToICC4QsQMQgwE6BQgAELEDOgcILhCxAxBDOgUILhCxAzoECAAQClCgAVisGmC2G2gAcAB4AIABhAKIAf0NkgEFNi45LjGYAQCgAQGqAQdnd3Mtd2l6&amp;amp;sclient=psy-ab&amp;amp;ved=0ahUKEwiA78mFyPPrAhWwTd8KHRO1DHYQ4dUDCAg&amp;amp;uact=5&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html&quot; href=&quot;https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html&quot; class=&quot;externalLink&quot;&gt;https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; plain JDBC &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.snowflake.com/s/question/0D50Z00007M8RHk/how-to-connect-from-oralce-sql-developer-to-snowflake-using-jdbc&quot; href=&quot;https://community.snowflake.com/s/question/0D50Z00007M8RHk/how-to-connect-from-oralce-sql-developer-to-snowflake-using-jdbc&quot; class=&quot;externalLink&quot;&gt;https://community.snowflake.com/s/question/0D50Z00007M8RHk/how-to-connect-from-oralce-sql-developer-to-snowflake-using-jdbc&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.snowflake.com/blog/ability-to-connect-to-snowflake-with-jdbc/&quot; href=&quot;https://www.snowflake.com/blog/ability-to-connect-to-snowflake-with-jdbc/&quot; class=&quot;externalLink&quot;&gt;https://www.snowflake.com/blog/ability-to-connect-to-snowflake-with-jdbc/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>snowflakedb</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20api%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 04:01:00 GMT</pubDate>
-
-</item>
-<item>
-<title>snow federated queries</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' direct connection ', event)&quot;&gt; direct connection &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' connect oracle directly to snowflake - using FREEWARE', event)&quot;&gt; connect oracle directly to snowflake - using FREEWARE&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' connect oracle directly to snowflake - using GLUENT ', event)&quot;&gt; connect oracle directly to snowflake - using GLUENT &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' CDATA (paid)', event)&quot;&gt; CDATA (paid)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' using 3rd party - mentioned on snowflake site ', event)&quot;&gt; using 3rd party - mentioned on snowflake site &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' compared to bigquery ', event)&quot;&gt; compared to bigquery &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' oracle analytics cloud ', event)&quot;&gt; oracle analytics cloud &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' oracle analytics desktop ', event)&quot;&gt; oracle analytics desktop &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; direct connection &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;h2&gt; connect oracle directly to snowflake - using FREEWARE&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;others have created a freeware connector https://datacons.co.uk/oracle-snowflake-connector/ that uses APEX_WEB_SERVICE under the hood and utilizes the snowflake rest APIs
-The freeware would be a stored proc call then you would need to use JSON functions on the SELECT part (check the video demo) 
-
-
-https://datacons.co.uk/wp-content/uploads/2020/06/doc.v.0.8.pdf
-https://www.doag.org/de/home/news/aufgezeichnet-present-snowflake-data-using-oracle-application-express-apex/detail/ &amp;lt;-- VIDEO DEMO
-
-
- 8   C_URL_LOGIN                   VARCHAR2(32767) := 'https://#ACCOUNT#.snowflakecomputing.com/session/v1/login-request?__uiAppName=Login';
-    9   C_URL_REQ_QUERY_STATUS        VARCHAR2(32767) := 'https://#ACCOUNT#.snowflakecomputing.com/monitoring/queries/#QUERY_ID#';
-   10   C_URL_REQ_QUERY               VARCHAR2(32767) := 'https://#ACCOUNT#.snowflakecomputing.com/queries/v1/query-request?requestId=#REQEST_ID#';
-   11   C_URL_REQ_QUERY_RESULT_BY_ID  VARCHAR2(32767) := 'https://#ACCOUNT#.snowflakecomputing.com/queries/#QUERY_ID#/result';
-&lt;/pre&gt;youtube &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=817izaPoa84&quot; href=&quot;https://www.youtube.com/watch?v=817izaPoa84&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=817izaPoa84&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; connect oracle directly to snowflake - using GLUENT &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;
-I know Gluent also has a snowflake connector which will probably represent the snowflake tables seamlessly without any code change like they do in hadoop environments.
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; CDATA (paid)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.cdata.com/kb/tech/snowflake-odbc-oracle-hs.rst&quot; href=&quot;https://www.cdata.com/kb/tech/snowflake-odbc-oracle-hs.rst&quot; class=&quot;externalLink&quot;&gt;https://www.cdata.com/kb/tech/snowflake-odbc-oracle-hs.rst&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.cdata.com/drivers/snowflake/odbc/&quot; href=&quot;https://www.cdata.com/drivers/snowflake/odbc/&quot; class=&quot;externalLink&quot;&gt;https://www.cdata.com/drivers/snowflake/odbc/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; using 3rd party - mentioned on snowflake site &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;pre&gt;go through a 3rd party (fivetran, matillion, HVR, etc.) and then to snowflake because snowflake has this jdbc driver
-https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; compared to bigquery &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;btw federated queries from on-prem to bigquery is also something that is not yet possible as far as i know.&lt;br&gt;&lt;br&gt;you can do federated queries through cloud sql &lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting_up_database_connections&quot; href=&quot;https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting_up_database_connections&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries#setting_up_database_connections&lt;/a&gt;&lt;br&gt;but not sure if you can connect the cloud sql to on-prem you'll be able to push that data up to bigquery&lt;br&gt;&lt;br&gt;&lt;br&gt;I reached out to Kent Graziano of Snowflake&lt;br&gt;&lt;br&gt;He confirmed no DB link type feature. And he mentioned most work with the tools I mentioned like Fivetran, HVR, etc. &lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; oracle analytics cloud &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/en/cloud/paas/analytics-cloud/acsds/connect-data-enterprise-data-models.html#GUID-3C8367BE-8CCF-4ECF-BD71-103C37F5C59A&quot; href=&quot;https://docs.oracle.com/en/cloud/paas/analytics-cloud/acsds/connect-data-enterprise-data-models.html#GUID-3C8367BE-8CCF-4ECF-BD71-103C37F5C59A&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/en/cloud/paas/analytics-cloud/acsds/connect-data-enterprise-data-models.html#GUID-3C8367BE-8CCF-4ECF-BD71-103C37F5C59A&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; oracle analytics desktop &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/en/middleware/bi/analytics-desktop/bidvd/connect-snowflake-data-warehouse.html&quot; href=&quot;https://docs.oracle.com/en/middleware/bi/analytics-desktop/bidvd/connect-snowflake-data-warehouse.html&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/en/middleware/bi/analytics-desktop/bidvd/connect-snowflake-data-warehouse.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>snowflakedb</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20federated%20queries%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 03:59:00 GMT</pubDate>
-
-</item>
-<item>
-<title>.snow releases, release notes</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.snowflake.com/s/topic/0TO0Z000000Unu5WAC/releases&quot; href=&quot;https://community.snowflake.com/s/topic/0TO0Z000000Unu5WAC/releases&quot; class=&quot;externalLink&quot;&gt;https://community.snowflake.com/s/topic/0TO0Z000000Unu5WAC/releases&lt;/a&gt;</description>
-<category>snowflakedb</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.snow%20releases%2C%20release%20notes%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 03:40:00 GMT</pubDate>
-
-</item>
-<item>
-<title>snow devtools</title>
-<description></description>
-<category>snowflakedb</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20devtools%5D%5D</link>
-<pubDate>Sat, 19 Sep 2020 03:13:00 GMT</pubDate>
-
-</item>
-<item>
-<title>bq vagrant, gce vagrant, gcp vagrant</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' vagrant gce provider ', event)&quot;&gt; vagrant gce provider &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' example videos ', event)&quot;&gt; example videos &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' vagrant boxes ', event)&quot;&gt; vagrant boxes &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' step by step example vagrant provisioning on GCE - from MACBOOK', event)&quot;&gt; step by step example vagrant provisioning on GCE - from MACBOOK&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1) install vagrant-google provider', event)&quot;&gt; 1) install vagrant-google provider&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2) on gcp IAM grant &quot; compute=&quot;&quot; admin&quot;=&quot;&quot; on=&quot;&quot; the=&quot;&quot; service=&quot;&quot; account',=&quot;&quot; event)&quot;=&quot;&quot;&gt; 2) on gcp IAM grant &quot;compute admin&quot; on the service account&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 3) create public key ', event)&quot;&gt; 3) create public key &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 4) add ssh public key to GCE metadata ', event)&quot;&gt; 4) add ssh public key to GCE metadata &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 5) add the Vagrant provider box ', event)&quot;&gt; 5) add the Vagrant provider box &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 6) create the Vagrantfile script ', event)&quot;&gt; 6) create the Vagrantfile script &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 7) provision the machine ', event)&quot;&gt; 7) provision the machine &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 8) list machines', event)&quot;&gt; 8) list machines&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 9) ssh to the machine ', event)&quot;&gt; 9) ssh to the machine &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 10) destroy the machine ', event)&quot;&gt; 10) destroy the machine &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' step by step example vagrant provisioning on GCE - from GCE DEV VM', event)&quot;&gt; step by step example vagrant provisioning on GCE - from GCE DEV VM&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 1) create a vm and install vagrant ', event)&quot;&gt; 1) create a vm and install vagrant &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2) install the google cloud sdk', event)&quot;&gt; 2) install the google cloud sdk&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 3) follow steps on the MACBOOK guide (see VM specific notes below - asterisk)', event)&quot;&gt; 3) follow steps on the MACBOOK guide (see VM specific notes below - asterisk)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' you can use the same public key on both MACBOOK and GCE VM and be able to passwordless ssh', event)&quot;&gt; you can use the same public key on both MACBOOK and GCE VM and be able to passwordless ssh&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' references ', event)&quot;&gt; references &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; vagrant gce provider &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mitchellh/vagrant-google&quot; href=&quot;https://github.com/mitchellh/vagrant-google&quot; class=&quot;externalLink&quot;&gt;https://github.com/mitchellh/vagrant-google&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mitchellh/vagrant-google/blob/master/vagrantfile_examples/Vagrantfile.multiple_machines&quot; href=&quot;https://github.com/mitchellh/vagrant-google/blob/master/vagrantfile_examples/Vagrantfile.multiple_machines&quot; class=&quot;externalLink&quot;&gt;https://github.com/mitchellh/vagrant-google/blob/master/vagrantfile_examples/Vagrantfile.multiple_machines&lt;/a&gt;  &amp;lt;- examples &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; example videos &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=u4Y5eRg-feI&amp;amp;ab_channel=GoogleCloudPlatform&quot; href=&quot;https://www.youtube.com/watch?v=u4Y5eRg-feI&amp;amp;ab_channel=GoogleCloudPlatform&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=u4Y5eRg-feI&amp;amp;ab_channel=GoogleCloudPlatform&lt;/a&gt;  &amp;lt;- Partnering on open source: Vagrant and GCP - GOOD STUFF, shows &quot;provisioning script&quot;, &quot;synced folders&quot; examples and more &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; vagrant boxes &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://learn.hashicorp.com/tutorials/vagrant/getting-started-boxes&quot; href=&quot;https://learn.hashicorp.com/tutorials/vagrant/getting-started-boxes&quot; class=&quot;externalLink&quot;&gt;https://learn.hashicorp.com/tutorials/vagrant/getting-started-boxes&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://app.vagrantup.com/boxes/search?utf8=%E2%9C%93&amp;amp;sort=downloads&amp;amp;provider=&amp;amp;q=gce&quot; href=&quot;https://app.vagrantup.com/boxes/search?utf8=%E2%9C%93&amp;amp;sort=downloads&amp;amp;provider=&amp;amp;q=gce&quot; class=&quot;externalLink&quot;&gt;https://app.vagrantup.com/boxes/search?utf8=%E2%9C%93&amp;amp;sort=downloads&amp;amp;provider=&amp;amp;q=gce&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; step by step example vagrant provisioning on GCE - from MACBOOK&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; 1) install vagrant-google provider&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;vagrant plugin install vagrant-google
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 2) on gcp IAM grant &quot;compute admin&quot; on the service account&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;ul&gt;&lt;li&gt; thanks to this thread &lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mitchellh/vagrant-google/issues/234&quot; href=&quot;https://github.com/mitchellh/vagrant-google/issues/234&quot; class=&quot;externalLink&quot;&gt;https://github.com/mitchellh/vagrant-google/issues/234&lt;/a&gt;&lt;/li&gt;&lt;li&gt; verify your permission by doing &lt;/li&gt;&lt;/ul&gt;&lt;pre&gt;Perhaps the permissions are locked down on the organisation level somehow? 
-You should be able to verify whether it's vagrant or something with your service account by making a 
-direct call to the api like so:
-
-$ gcloud auth activate-service-account --key-file=/full/path/to/your/key.json
-$ alias gcurl='curl -H &quot;Authorization: Bearer $(gcloud auth print-access-token)&quot;'
-$ gcurl https://compute.googleapis.com/compute/v1/projects/ansible-swarm/zones/us-east1-c/diskTypes/pd-standard
-
-&lt;/pre&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/93125899-c1331100-f699-11ea-93a0-eb4bb5bdd4d0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 3) create public key &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;Add the username to prefix the SSH key, so the Compute Engine will pick it up and create the corresponding user:
-
-$ echo -n 'kristofferson.a.arao:' &amp;gt; /tmp/id_rsa.pub
-$ cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; /tmp/id_rsa.pub
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 4) add ssh public key to GCE metadata &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;Setting up SSH keys at the project level:
-
-gcloud compute project-info add-metadata --metadata-from-file sshKeys=/tmp/id_rsa.pub
-&lt;/pre&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/93496065-c6cc6900-f8dc-11ea-8a89-ef0d087fb8dc.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 5) add the Vagrant provider box &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;vagrant box add gce https://github.com/mitchellh/vagrant-google/raw/master/google.box
-
-vagrant box list
-
-
-vagrant box list
-gce                 (google, 0)
-geerlingguy/centos7 (virtualbox, 1.2.3)
-google/gce          (google, 0.1.0)
-ol7-latest          (virtualbox, 0)
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 6) create the Vagrantfile script &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;(py385_2) kristofferson.a.arao$ ls
-the vagrant script -&amp;gt; Vagrantfile				
-the gcp auth file -&amp;gt; example-dev-284123-1c4cf8cf3f8c.json
-
-(py385_2) kristofferson.a.arao$ cat Vagrantfile 
-Vagrant.configure(&quot;2&quot;) do |config|
-  
-  config.vm.box = &quot;google/gce&quot;
-  config.vm.provider :google do |google, override|
-    google.google_project_id = &quot;example-dev-284123&quot;
-    google.google_json_key_location = &quot;example-dev-284123-1c4cf8cf3f8c.json&quot;
-    
-    # Define the name of the instance.
-    google.name = &quot;develmach3&quot;
-
-    # Set the zone where the instance will be located. To find out available zones:
-    # `gcloud compute zones list`.
-    google.zone = &quot;us-east1-b&quot;
-
-    # Set the machine type to use. To find out available types:
-    # `gcloud compute machine-types list --zone asia-east1-c`.
-    google.machine_type = &quot;n1-standard-2&quot;
-
-    # Set the machine image to use. To find out available images:
-    # `$ gcloud compute images list`.
-    google.image = &quot;centos-7-v20200910&quot;
-    google.disk_size = 20
-    override.ssh.username = &quot;kristofferson.a.arao&quot;
-    override.ssh.private_key_path = &quot;~/.ssh/id_rsa&quot;
-  end
-end
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 7) provision the machine &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;vagrant up --provider=google
-
-
-
-vagrant up --provider=google
-Bringing machine 'default' up with 'google' provider...
-==&amp;gt; default: Checking if box 'google/gce' version '0.1.0' is up to date...
-==&amp;gt; default: Launching an instance with the following settings...
-==&amp;gt; default:  -- Name:            develmach3
-==&amp;gt; default:  -- Project:         example-dev-284123
-==&amp;gt; default:  -- Type:            n1-standard-2
-==&amp;gt; default:  -- Disk type:       pd-standard
-==&amp;gt; default:  -- Disk size:       20 GB
-==&amp;gt; default:  -- Disk name:       
-==&amp;gt; default:  -- Image:           centos-7-v20200910
-==&amp;gt; default:  -- Image family:    
-==&amp;gt; default:  -- Instance Group:  
-==&amp;gt; default:  -- Zone:            us-east1-b
-==&amp;gt; default:  -- Network:         default
-==&amp;gt; default:  -- Network Project: example-dev-284123
-==&amp;gt; default:  -- Metadata:        '{}'
-==&amp;gt; default:  -- Labels:          '{}'
-==&amp;gt; default:  -- Network tags:    '[]'
-==&amp;gt; default:  -- IP Forward:      
-==&amp;gt; default:  -- Use private IP:  false
-==&amp;gt; default:  -- External IP:     
-==&amp;gt; default:  -- Network IP:      
-==&amp;gt; default:  -- Preemptible:     false
-==&amp;gt; default:  -- Auto Restart:    true
-==&amp;gt; default:  -- On Maintenance:  MIGRATE
-==&amp;gt; default:  -- Autodelete Disk: true
-==&amp;gt; default:  -- Additional Disks:[]
-==&amp;gt; default: Waiting for instance to become &quot;ready&quot;...
-==&amp;gt; default: Machine is booted and ready for use!
-==&amp;gt; default: Waiting for SSH to become available...
-==&amp;gt; default: Machine is ready for SSH access!
-==&amp;gt; default: Rsyncing folder: /Users/kristofferson.a.arao/vagrant/gcp-vagrant/develmach3/ =&amp;gt; /vagrant
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 8) list machines&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;
-vagrant global-status
-id       name    provider   state    directory                                                    
---------------------------------------------------------------------------------------------------
-615a946  node1   virtualbox poweroff /Users/kristofferson.a.arao/vagrant/hadoop 
-3d0685c  node2   virtualbox poweroff /Users/kristofferson.a.arao/vagrant/hadoop 
-45be751  node3   virtualbox poweroff /Users/kristofferson.a.arao/vagrant/hadoop 
-1c13821  default google     running  /Users/kristofferson.a.arao/vagrant/gcp-vagrant/develmach3 
-
-    
-&lt;/pre&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/93504764-eddc6800-f8e7-11ea-8132-00dd653c90ba.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 9) ssh to the machine &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;SSH into the machine:
-$ vagrant ssh
-
-
-vagrant ssh
-==&amp;gt; vagrant: A new version of Vagrant is available: 2.2.10 (installed version: 2.2.9)!
-==&amp;gt; vagrant: To upgrade visit: https://www.vagrantup.com/downloads.html
-
-Last login: Sun Sep 13 19:39:41 2020 from cpe-69-206-123-5.nyc.res.rr.com
-[kristofferson.a.arao@develmach3 ~]$ exit
-logout
-Connection to 35.190.174.255 closed.
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 10) destroy the machine &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;
-Dispose the DEFAULT machine:
-$ vagrant destroy
-
-OR specity the specific ID 
-vagrant destroy 1c13821  
-
-
-vagrant destroy
-    default: Are you sure you want to destroy the 'default' VM? [y/N] y
-==&amp;gt; default: Terminating the instance...
-
-
-vagrant global-status
-id       name   provider   state    directory                                                    
--------------------------------------------------------------------------------------------------
-615a946  node1  virtualbox poweroff /Users/kristofferson.a.arao/vagrant/hadoop 
-3d0685c  node2  virtualbox poweroff /Users/kristofferson.a.arao/vagrant/hadoop 
-45be751  node3  virtualbox poweroff /Users/kristofferson.a.arao/vagrant/hadoop 
- 
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; step by step example vagrant provisioning on GCE - from GCE DEV VM&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 1) create a vm and install vagrant &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;sudo apt-cache search vagrant
-sudo apt-get install vagrant
-&lt;/pre&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/93125901-c1cba780-f699-11ea-977a-1325c22b28f0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; 2) install the google cloud sdk&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install google-cloud-sdk
-gcloud init
-&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; 3) follow steps on the MACBOOK guide (see VM specific notes below - asterisk)&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;    1) install vagrant-google provider
-    2) on gcp IAM grant &quot;compute admin&quot; on the service account
-    *3) use the public key on your MACBOOK
-    *4) if you haven't added then add ssh public key to GCE metadata
-    5) add the Vagrant provider box
-    6) create the Vagrantfile script
-    7) provision the machine
-    8) list machines
-    9) ssh to the machine
-    10) destroy the machine 
-&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; you can use the same public key on both MACBOOK and GCE VM and be able to passwordless ssh&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; references &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://realguess.net/2015/09/07/setup-development-environment-with-vagrant-on-google-compute-engine/&quot; href=&quot;https://realguess.net/2015/09/07/setup-development-environment-with-vagrant-on-google-compute-engine/&quot; class=&quot;externalLink&quot;&gt;https://realguess.net/2015/09/07/setup-development-environment-with-vagrant-on-google-compute-engine/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>.bq automation, gcp automation</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bbq%20vagrant%2C%20gce%20vagrant%2C%20gcp%20vagrant%5D%5D</link>
-<pubDate>Thu, 17 Sep 2020 17:49:00 GMT</pubDate>
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;</description>
+<category>Library Cache Lock</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Blibrary%20cache%20lock%20parallel%20CTAS%20NO_GATHER_OPTIMIZER_STATISTICS%5D%5D</link>
+<pubDate>Mon, 28 Dec 2020 18:55:00 GMT</pubDate>
 
 </item>
 </channel>
