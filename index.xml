@@ -6,16 +6,24 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2021 YourName</copyright>
-<pubDate>Fri, 15 Jan 2021 06:51:30 GMT</pubDate>
-<lastBuildDate>Fri, 15 Jan 2021 06:51:30 GMT</lastBuildDate>
+<pubDate>Fri, 15 Jan 2021 16:03:50 GMT</pubDate>
+<lastBuildDate>Fri, 15 Jan 2021 16:03:50 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>gluent advisor</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/gdp/gluent-advisor/&quot; href=&quot;https://gluent.com/gdp/gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/gdp/gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/run-gluent-advisor/&quot; href=&quot;https://gluent.com/run-gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/run-gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; download &lt;/h1&gt;wget &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2&quot; href=&quot;https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2&quot; class=&quot;externalLink&quot;&gt;https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2&lt;/a&gt;</description>
+<category>gluent</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bgluent%20advisor%5D%5D</link>
+<pubDate>Fri, 15 Jan 2021 16:03:30 GMT</pubDate>
+
+</item>
+<item>
 <title>gluent express</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.gluent.com/4.0.x/goe/gluent_express.html&quot; href=&quot;https://docs.gluent.com/4.0.x/goe/gluent_express.html&quot; class=&quot;externalLink&quot;&gt;https://docs.gluent.com/4.0.x/goe/gluent_express.html&lt;/a&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.gluent.com/4.0.x/goe/gluent_express.html&quot; href=&quot;https://docs.gluent.com/4.0.x/goe/gluent_express.html&quot; class=&quot;externalLink&quot;&gt;https://docs.gluent.com/4.0.x/goe/gluent_express.html&lt;/a&gt;</description>
 <category>gluent</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bgluent%20express%5D%5D</link>
-<pubDate>Fri, 15 Jan 2021 06:51:25 GMT</pubDate>
+<pubDate>Fri, 15 Jan 2021 06:51:00 GMT</pubDate>
 
 </item>
 <item>
@@ -23,7 +31,7 @@
 <description>Recent trends in data and machine learning technologies - Ben Lorica (O'Reilly Media)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=xnf4Dr8regw&amp;amp;list=PLklSCDzsQHdn76gvqjszRugFuPhN-7BdL&amp;amp;index=3&amp;amp;t=0s&quot; href=&quot;https://www.youtube.com/watch?v=xnf4Dr8regw&amp;amp;list=PLklSCDzsQHdn76gvqjszRugFuPhN-7BdL&amp;amp;index=3&amp;amp;t=0s&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=xnf4Dr8regw&amp;amp;list=PLklSCDzsQHdn76gvqjszRugFuPhN-7BdL&amp;amp;index=3&amp;amp;t=0s&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; 2021&lt;/h1&gt;&lt;h2&gt; The Big Book of Machine Learning Use Cases&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://pages.databricks.com/rs/094-YMS-629/images/The%20Big%20Book%20of%20Machine%20Learning%20Use%20Case.pdf?mkt_tok=eyJpIjoiWkRjNVpUWmxZVEpoTmpVdyIsInQiOiJENVlRODAxMWpIT00waDFta2tVNDRSZERGSkRrbzVSRGkza0pURG5lbFpuc1NlanRDXC9DWWF6NzZ4WDRnQ0RSUTFIc3RucTBkUWs4VU9TVVFvNWgycTlLazFZQjI1OXVmRWxldEdYeCtBRTd3Q2pWcCtocDZhZ1JMRHFaOXRrV1AifQ%3D%3D&quot; href=&quot;https://pages.databricks.com/rs/094-YMS-629/images/The%20Big%20Book%20of%20Machine%20Learning%20Use%20Case.pdf?mkt_tok=eyJpIjoiWkRjNVpUWmxZVEpoTmpVdyIsInQiOiJENVlRODAxMWpIT00waDFta2tVNDRSZERGSkRrbzVSRGkza0pURG5lbFpuc1NlanRDXC9DWWF6NzZ4WDRnQ0RSUTFIc3RucTBkUWs4VU9TVVFvNWgycTlLazFZQjI1OXVmRWxldEdYeCtBRTd3Q2pWcCtocDZhZ1JMRHFaOXRrV1AifQ%3D%3D&quot; class=&quot;externalLink&quot;&gt;https://pages.databricks.com/rs/094-YMS-629/images/The%20Big%20Book%20of%20Machine%20Learning%20Use%20Case.pdf?mkt_tok=eyJpIjoiWkRjNVpUWmxZVEpoTmpVdyIsInQiOiJENVlRODAxMWpIT00waDFta2tVNDRSZERGSkRrbzVSRGkza0pURG5lbFpuc1NlanRDXC9DWWF6NzZ4WDRnQ0RSUTFIc3RucTBkUWs4VU9TVVFvNWgycTlLazFZQjI1OXVmRWxldEdYeCtBRTd3Q2pWcCtocDZhZ1JMRHFaOXRrV1AifQ%3D%3D&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; cache &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.scylladb.com/wp-content/uploads/wp-7-reasons-cache.pdf&quot; href=&quot;https://www.scylladb.com/wp-content/uploads/wp-7-reasons-cache.pdf&quot; class=&quot;externalLink&quot;&gt;https://www.scylladb.com/wp-content/uploads/wp-7-reasons-cache.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; vmware&lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.vmware.com/content/dam/learn/en/amer/fy21/pdf/549356_intel_modern_infrastructure_for_dummies.pdf&quot; href=&quot;https://www.vmware.com/content/dam/learn/en/amer/fy21/pdf/549356_intel_modern_infrastructure_for_dummies.pdf&quot; class=&quot;externalLink&quot;&gt;https://www.vmware.com/content/dam/learn/en/amer/fy21/pdf/549356_intel_modern_infrastructure_for_dummies.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; segment &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gopages.segment.com/rs/667-MPQ-382/images/Segment-Customer-Data-Platform-Report-2020.pdf?mkt_tok=eyJpIjoiWlRBek9HRTBNbVkxWlRVeiIsInQiOiJBV1Vwd1lvSDh5SjZpSEZxTTRLRXVuOHVjOXd6dzVtRGVSd0s1SnAwN0k5OVVMNjVWenVxSkk5cjRtVWduY0h5RVFIS2VPV0l3WU5uWDUxaGZzREJxN0E2amdrOFwvSGpWUXd1bTBqQlNlVXREV1dxNFwvdkJGblNiSjUxOGV3YzdDIn0%3D&quot; href=&quot;https://gopages.segment.com/rs/667-MPQ-382/images/Segment-Customer-Data-Platform-Report-2020.pdf?mkt_tok=eyJpIjoiWlRBek9HRTBNbVkxWlRVeiIsInQiOiJBV1Vwd1lvSDh5SjZpSEZxTTRLRXVuOHVjOXd6dzVtRGVSd0s1SnAwN0k5OVVMNjVWenVxSkk5cjRtVWduY0h5RVFIS2VPV0l3WU5uWDUxaGZzREJxN0E2amdrOFwvSGpWUXd1bTBqQlNlVXREV1dxNFwvdkJGblNiSjUxOGV3YzdDIn0%3D&quot; class=&quot;externalLink&quot;&gt;https://gopages.segment.com/rs/667-MPQ-382/images/Segment-Customer-Data-Platform-Report-2020.pdf?mkt_tok=eyJpIjoiWlRBek9HRTBNbVkxWlRVeiIsInQiOiJBV1Vwd1lvSDh5SjZpSEZxTTRLRXVuOHVjOXd6dzVtRGVSd0s1SnAwN0k5OVVMNjVWenVxSkk5cjRtVWduY0h5RVFIS2VPV0l3WU5uWDUxaGZzREJxN0E2amdrOFwvSGpWUXd1bTBqQlNlVXREV1dxNFwvdkJGblNiSjUxOGV3YzdDIn0%3D&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; snowflake &lt;/h2&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://info.snowflake.net/rs/252-RFO-227/images/SnowflakeDataeBook.pdf&quot; href=&quot;https://info.snowflake.net/rs/252-RFO-227/images/SnowflakeDataeBook.pdf&quot; class=&quot;externalLink&quot;&gt;https://info.snowflake.net/rs/252-RFO-227/images/SnowflakeDataeBook.pdf&lt;/a&gt;</description>
 <category>..Data Engineering Ecosystem</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bbig%20data%20trends%2019%2C20%2C21%5D%5D</link>
-<pubDate>Fri, 15 Jan 2021 06:42:21 GMT</pubDate>
+<pubDate>Fri, 15 Jan 2021 06:42:00 GMT</pubDate>
 
 </item>
 <item>
@@ -36,7 +44,7 @@
 </item>
 <item>
 <title>MLaaS - aws sagemaker vs azure ml vs google ml</title>
-<description>&lt;br&gt;&lt;h1&gt; aws sagemaker vs azure ml vs google ml&lt;/h1&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.altexsoft.com/blog/datascience/comparing-machine-learning-as-a-service-amazon-microsoft-azure-google-cloud-ai-ibm-watson/&quot; href=&quot;https://www.altexsoft.com/blog/datascience/comparing-machine-learning-as-a-service-amazon-microsoft-azure-google-cloud-ai-ibm-watson/&quot; class=&quot;externalLink&quot;&gt;https://www.altexsoft.com/blog/datascience/comparing-machine-learning-as-a-service-amazon-microsoft-azure-google-cloud-ai-ibm-watson/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://towardsdatascience.com/aws-sagemaker-vs-azure-machine-learning-3ac0172495da&quot; href=&quot;https://towardsdatascience.com/aws-sagemaker-vs-azure-machine-learning-3ac0172495da&quot; class=&quot;externalLink&quot;&gt;https://towardsdatascience.com/aws-sagemaker-vs-azure-machine-learning-3ac0172495da&lt;/a&gt;&lt;br&gt;</description>
+<description>&lt;h1&gt; aws sagemaker vs azure ml vs google ml&lt;/h1&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.altexsoft.com/blog/datascience/comparing-machine-learning-as-a-service-amazon-microsoft-azure-google-cloud-ai-ibm-watson/&quot; href=&quot;https://www.altexsoft.com/blog/datascience/comparing-machine-learning-as-a-service-amazon-microsoft-azure-google-cloud-ai-ibm-watson/&quot; class=&quot;externalLink&quot;&gt;https://www.altexsoft.com/blog/datascience/comparing-machine-learning-as-a-service-amazon-microsoft-azure-google-cloud-ai-ibm-watson/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://towardsdatascience.com/aws-sagemaker-vs-azure-machine-learning-3ac0172495da&quot; href=&quot;https://towardsdatascience.com/aws-sagemaker-vs-azure-machine-learning-3ac0172495da&quot; class=&quot;externalLink&quot;&gt;https://towardsdatascience.com/aws-sagemaker-vs-azure-machine-learning-3ac0172495da&lt;/a&gt;&lt;br&gt;</description>
 <category>Machine Learning</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BMLaaS%20-%20aws%20sagemaker%20vs%20azure%20ml%20vs%20google%20ml%5D%5D</link>
 <pubDate>Fri, 15 Jan 2021 06:21:00 GMT</pubDate>
@@ -195,20 +203,6 @@ Mustermann                     C3
 <category>snow scripting, snow procedures</category>
 <link>http://karlarao.tiddlyspot.com#snowsql</link>
 <pubDate>Mon, 04 Jan 2021 19:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>snow dynamic slots</title>
-<description>&lt;h1&gt; dynamic upscale is determined by the virtual warehouse used&lt;/h1&gt;&lt;br&gt;the hierarchy is table -&amp;gt; database -&amp;gt; warehouse (engine) &lt;br&gt;&lt;pre&gt;[user]#[warehouse]@[database].[schema]&amp;gt;
-
-Return the 25 most recent queries that ran in the specified warehouse:
-!queries warehouse=mywh
-
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; auto scaling and concurrency &lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/61346996/snowflake-auto-scaling-and-concurrency&quot; href=&quot;https://stackoverflow.com/questions/61346996/snowflake-auto-scaling-and-concurrency&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/61346996/snowflake-auto-scaling-and-concurrency&lt;/a&gt;</description>
-<category>snow perf</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20dynamic%20slots%5D%5D</link>
-<pubDate>Mon, 04 Jan 2021 17:31:00 GMT</pubDate>
 
 </item>
 </channel>
