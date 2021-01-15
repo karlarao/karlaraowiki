@@ -6,16 +6,200 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2021 YourName</copyright>
-<pubDate>Fri, 15 Jan 2021 16:03:50 GMT</pubDate>
-<lastBuildDate>Fri, 15 Jan 2021 16:03:50 GMT</lastBuildDate>
+<pubDate>Fri, 15 Jan 2021 16:15:17 GMT</pubDate>
+<lastBuildDate>Fri, 15 Jan 2021 16:15:17 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
 <title>gluent advisor</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/gdp/gluent-advisor/&quot; href=&quot;https://gluent.com/gdp/gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/gdp/gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/run-gluent-advisor/&quot; href=&quot;https://gluent.com/run-gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/run-gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; download &lt;/h1&gt;wget &lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2&quot; href=&quot;https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2&quot; class=&quot;externalLink&quot;&gt;https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2&lt;/a&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/gdp/gluent-advisor/&quot; href=&quot;https://gluent.com/gdp/gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/gdp/gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/run-gluent-advisor/&quot; href=&quot;https://gluent.com/run-gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/run-gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; download &lt;/h1&gt;&lt;pre&gt;wget https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2
+tar -xjvpf gluent_advisor_data_extractor.tar.bz2
+cd advisor_extract/
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; running the advisor &lt;/h1&gt;&lt;pre&gt;sqlplus &amp;lt;username&amp;gt;/&amp;lt;password&amp;gt;
+SYS@orcl&amp;gt; @advisor_extract.sql
+
+
+===================================================================================
+Gluent Offload Advisor (Advisor Data Extractor) v4.0.2 (15f441f)
+Copyright 2015-2020 Gluent Inc. All rights reserved.
+===================================================================================
+
+***********************************************************************************
+
+!!! WARNING !!!
+
+Gluent Offload Advisor accesses views and packages that are licensed separately
+under the Oracle Diagnostics Pack and Oracle Tuning Pack. Please ensure you have
+the correct licenses to run this utility. See the README for further details.
+
+To continue, press Enter. To cancel, press Ctrl-C.
+
+***********************************************************************************
+
+
+Initializing Advisor Data Extractor...
+
+Wrote file _gluent_adv_orig_env.tmp
+Parameters:
+* gluent_adv_schema................ NULL
+* gluent_adv_table_name............ NULL
+* gluent_adv_snapshot_days......... 30
+* gluent_adv_awr_source............ ROOT
+* gluent_adv_awr_dbid.............. 887751344
+* gluent_adv_db_name............... CDB1
+* gluent_adv_spool_dir............. ./
+* gluent_adv_zip_binary............ zip -j
+* gluent_adv_include_ash........... Y
+* gluent_adv_include_space......... Y
+* gluent_adv_include_object_list... Y
+* gluent_adv_include_sqlmons....... Y
+
+Step completed.
+
+Extracting Advisor data...
+
+15-JAN-2021 16:04:38: Started advisor_extract_db_settings.sql
+15-JAN-2021 16:04:38: Finished advisor_extract_db_settings.sql
+
+15-JAN-2021 16:04:38: Started advisor_extract_execution_metadata.sql
+15-JAN-2021 16:04:38: Finished advisor_extract_execution_metadata.sql
+
+15-JAN-2021 16:04:38: Started advisor_extract_partition_data.sql
+15-JAN-2021 16:04:40: Finished advisor_extract_partition_data.sql
+
+15-JAN-2021 16:04:43: Started advisor_extract_schema_usage.sql
+15-JAN-2021 16:04:47: Finished advisor_extract_schema_usage.sql
+
+15-JAN-2021 16:04:48: Started advisor_extract_segment_data.sql
+15-JAN-2021 16:05:18: Finished advisor_extract_segment_data.sql
+
+15-JAN-2021 16:05:22: Started advisor_extract_stats_data.sql
+15-JAN-2021 16:05:25: Finished advisor_extract_stats_data.sql
+
+15-JAN-2021 16:05:25: Started advisor_extract_table_data.sql
+15-JAN-2021 16:05:39: Finished advisor_extract_table_data.sql
+
+15-JAN-2021 16:05:41: Started advisor_extract_tablespace_usage.sql
+15-JAN-2021 16:05:44: Finished advisor_extract_tablespace_usage.sql
+
+15-JAN-2021 16:05:45: Started advisor_extract_ash_data.sql
+15-JAN-2021 16:05:49: Finished advisor_extract_ash_data.sql
+
+15-JAN-2021 16:05:50: Started advisor_extract_cpu_usage.sql
+15-JAN-2021 16:05:51: Finished advisor_extract_cpu_usage.sql
+
+15-JAN-2021 16:05:51: Started advisor_extract_sql_usage.sql
+15-JAN-2021 16:06:22: Finished advisor_extract_sql_usage.sql
+
+Step completed. Advisor data successfully extracted.
+
+Archiving files ./advisor_extract_*_CDB1.csv ./advisor_extract_*_CDB1*.txt into ./advisor_extract_CDB1_2021_01_15-16_04_38.zip
+  adding: advisor_extract_ash_data_CDB1.csv (stored 0%)
+  adding: advisor_extract_db_settings_CDB1.csv (deflated 6%)
+  adding: advisor_extract_execution_metadata_CDB1.csv (deflated 6%)
+  adding: advisor_extract_partition_data_CDB1.csv (deflated 94%)
+  adding: advisor_extract_schema_usage_CDB1.csv (deflated 67%)
+  adding: advisor_extract_segment_data_CDB1.csv (deflated 79%)
+  adding: advisor_extract_stats_data_CDB1.csv (stored 0%)
+  adding: advisor_extract_table_data_CDB1.csv (deflated 83%)
+  adding: advisor_extract_tablespace_usage_CDB1.csv (deflated 67%)
+  adding: advisor_extract_ash_data_CDB1.sqlmon.txt (deflated 89%)
+  adding: advisor_extract_cpu_usage_CDB1.sqlmon.txt (deflated 2%)
+  adding: advisor_extract_cpu_usage_CDB1.txt (deflated 92%)
+  adding: advisor_extract_partition_data_CDB1.sqlmon.txt (deflated 91%)
+  adding: advisor_extract_schema_usage_CDB1.sqlmon.txt (deflated 91%)
+  adding: advisor_extract_segment_data_CDB1.sqlmon.txt (deflated 93%)
+  adding: advisor_extract_sql_usage_by_plan_CDB1.txt (deflated 95%)
+  adding: advisor_extract_sql_usage_by_sql_CDB1.txt (deflated 95%)
+  adding: advisor_extract_sql_usage_CDB1.sqlmon.txt (deflated 2%)
+  adding: advisor_extract_stats_data_CDB1.sqlmon.txt (deflated 87%)
+  adding: advisor_extract_table_data_CDB1.sqlmon.txt (deflated 91%)
+  adding: advisor_extract_tablespace_usage_CDB1.sqlmon.txt (deflated 87%)
+O/S Message: No child processes
+Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+&lt;/pre&gt;&lt;br&gt;&lt;h1&gt; advisor output &lt;/h1&gt;&lt;pre&gt;$ ls -ltr
+total 880
+-rw-r--r--. 1 oracle oinstall     62 Oct 22 10:46 VERSION.txt
+-rw-r--r--. 1 oracle oinstall  15873 Oct 22 10:46 sql_disco.sql
+-rw-r--r--. 1 oracle oinstall   3521 Oct 22 10:46 show_awr_sources.sql
+-rw-r--r--. 1 oracle oinstall   3646 Oct 22 10:46 README.txt
+-rw-r--r--. 1 oracle oinstall     53 Oct 22 10:46 LICENSE.txt
+-rw-r--r--. 1 oracle oinstall   7291 Oct 22 10:46 cpu_usage_by_hour.sql
+-rw-r--r--. 1 oracle oinstall   1236 Oct 22 10:46 advisor_extract_valid_schemas.sql
+-rw-r--r--. 1 oracle oinstall   1719 Oct 22 10:46 advisor_extract_tablespace_usage.sql
+-rw-r--r--. 1 oracle oinstall   8373 Oct 22 10:46 advisor_extract_table_data.sql
+-rw-r--r--. 1 oracle oinstall    547 Oct 22 10:46 advisor_extract_stop_script.sql
+-rw-r--r--. 1 oracle oinstall   3289 Oct 22 10:46 advisor_extract_stats_data.sql
+-rw-r--r--. 1 oracle oinstall    420 Oct 22 10:46 advisor_extract_start_script.sql
+-rw-r--r--. 1 oracle oinstall    633 Oct 22 10:46 advisor_extract_sql_usage.sql
+-rw-r--r--. 1 oracle oinstall   2461 Oct 22 10:46 advisor_extract_sqlmon_report.sql
+-rw-r--r--. 1 oracle oinstall   2503 Oct 22 10:46 advisor_extract.sql
+-rw-r--r--. 1 oracle oinstall  14870 Oct 22 10:46 advisor_extract_segment_data.sql
+-rw-r--r--. 1 oracle oinstall   1623 Oct 22 10:46 advisor_extract_schema_usage.sql
+-rw-r--r--. 1 oracle oinstall    119 Oct 22 10:46 advisor_extract_restore.sql
+-rw-r--r--. 1 oracle oinstall   1853 Oct 22 10:46 advisor_extract_partition_data.sql
+-rw-r--r--. 1 oracle oinstall  16511 Oct 22 10:46 advisor_extract_init.sql
+-rw-r--r--. 1 oracle oinstall   1251 Oct 22 10:46 advisor_extract_execution_metadata.sql
+-rw-r--r--. 1 oracle oinstall   3787 Oct 22 10:46 advisor_extract_env.sql
+-rw-r--r--. 1 oracle oinstall   1045 Oct 22 10:46 advisor_extract_define_predicate.sql
+-rw-r--r--. 1 oracle oinstall   1728 Oct 22 10:46 advisor_extract_db_settings.sql
+-rw-r--r--. 1 oracle oinstall    494 Oct 22 10:46 advisor_extract_cpu_usage.sql
+-rw-r--r--. 1 oracle oinstall   3786 Oct 22 10:46 advisor_extract_ash_data.sql
+-rw-r--r--. 1 oracle oinstall   2672 Jan 15 16:04 _gluent_adv_orig_env.tmp
+-rw-r--r--. 1 oracle oinstall     49 Jan 15 16:04 advisor_extract_db_settings_CDB1.csv
+-rw-r--r--. 1 oracle oinstall     79 Jan 15 16:04 advisor_extract_execution_metadata_CDB1.csv
+-rw-r--r--. 1 oracle oinstall   7922 Jan 15 16:04 advisor_extract_partition_data_CDB1.csv
+-rw-r--r--. 1 oracle oinstall  50895 Jan 15 16:04 advisor_extract_partition_data_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall   1031 Jan 15 16:04 advisor_extract_schema_usage_CDB1.csv
+-rw-r--r--. 1 oracle oinstall  61997 Jan 15 16:04 advisor_extract_schema_usage_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall   4904 Jan 15 16:05 advisor_extract_segment_data_CDB1.csv
+-rw-r--r--. 1 oracle oinstall 203241 Jan 15 16:05 advisor_extract_segment_data_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall      0 Jan 15 16:05 advisor_extract_stats_data_CDB1.csv
+-rw-r--r--. 1 oracle oinstall  29378 Jan 15 16:05 advisor_extract_stats_data_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall   8993 Jan 15 16:05 advisor_extract_table_data_CDB1.csv
+-rw-r--r--. 1 oracle oinstall  82119 Jan 15 16:05 advisor_extract_table_data_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall   1073 Jan 15 16:05 advisor_extract_tablespace_usage_CDB1.csv
+-rw-r--r--. 1 oracle oinstall  18839 Jan 15 16:05 advisor_extract_tablespace_usage_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall      0 Jan 15 16:05 advisor_extract_ash_data_CDB1.csv
+-rw-r--r--. 1 oracle oinstall  42655 Jan 15 16:05 advisor_extract_ash_data_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall  21764 Jan 15 16:05 advisor_extract_cpu_usage_CDB1.txt
+-rw-r--r--. 1 oracle oinstall     61 Jan 15 16:05 advisor_extract_cpu_usage_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall  41236 Jan 15 16:06 advisor_extract_sql_usage_by_sql_CDB1.txt
+-rw-r--r--. 1 oracle oinstall  41237 Jan 15 16:06 advisor_extract_sql_usage_by_plan_CDB1.txt
+-rw-r--r--. 1 oracle oinstall     61 Jan 15 16:06 advisor_extract_sql_usage_CDB1.sqlmon.txt
+-rw-r--r--. 1 oracle oinstall  57735 Jan 15 16:06 advisor_extract_CDB1_2021_01_15-16_04_38.zip  &amp;lt;-- email this to us please 
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; advisor zip file &lt;/h1&gt;&lt;pre&gt;unzip -l advisor_extract_CDB1_2021_01_15-16_04_38.zip
+Archive:  advisor_extract_CDB1_2021_01_15-16_04_38.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  01-15-2021 16:05   advisor_extract_ash_data_CDB1.csv
+       49  01-15-2021 16:04   advisor_extract_db_settings_CDB1.csv
+       79  01-15-2021 16:04   advisor_extract_execution_metadata_CDB1.csv
+     7922  01-15-2021 16:04   advisor_extract_partition_data_CDB1.csv
+     1031  01-15-2021 16:04   advisor_extract_schema_usage_CDB1.csv
+     4904  01-15-2021 16:05   advisor_extract_segment_data_CDB1.csv
+        0  01-15-2021 16:05   advisor_extract_stats_data_CDB1.csv
+     8993  01-15-2021 16:05   advisor_extract_table_data_CDB1.csv
+     1073  01-15-2021 16:05   advisor_extract_tablespace_usage_CDB1.csv
+    42655  01-15-2021 16:05   advisor_extract_ash_data_CDB1.sqlmon.txt
+       61  01-15-2021 16:05   advisor_extract_cpu_usage_CDB1.sqlmon.txt
+    21764  01-15-2021 16:05   advisor_extract_cpu_usage_CDB1.txt
+    50895  01-15-2021 16:04   advisor_extract_partition_data_CDB1.sqlmon.txt
+    61997  01-15-2021 16:04   advisor_extract_schema_usage_CDB1.sqlmon.txt
+   203241  01-15-2021 16:05   advisor_extract_segment_data_CDB1.sqlmon.txt
+    41237  01-15-2021 16:06   advisor_extract_sql_usage_by_plan_CDB1.txt
+    41236  01-15-2021 16:06   advisor_extract_sql_usage_by_sql_CDB1.txt
+       61  01-15-2021 16:06   advisor_extract_sql_usage_CDB1.sqlmon.txt
+    29378  01-15-2021 16:05   advisor_extract_stats_data_CDB1.sqlmon.txt
+    82119  01-15-2021 16:05   advisor_extract_table_data_CDB1.sqlmon.txt
+    18839  01-15-2021 16:05   advisor_extract_tablespace_usage_CDB1.sqlmon.txt
+---------                     -------
+   617534                     21 files
+&lt;/pre&gt;</description>
 <category>gluent</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bgluent%20advisor%5D%5D</link>
-<pubDate>Fri, 15 Jan 2021 16:03:30 GMT</pubDate>
+<pubDate>Fri, 15 Jan 2021 16:14:58 GMT</pubDate>
 
 </item>
 <item>
