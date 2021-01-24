@@ -6,10 +6,49 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2021 YourName</copyright>
-<pubDate>Fri, 15 Jan 2021 16:15:17 GMT</pubDate>
-<lastBuildDate>Fri, 15 Jan 2021 16:15:17 GMT</lastBuildDate>
+<pubDate>Thu, 21 Jan 2021 22:59:21 GMT</pubDate>
+<lastBuildDate>Thu, 21 Jan 2021 22:59:21 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>sql converter - teradata to bigquery / snowflake</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.sqlines.com/online&quot; href=&quot;http://www.sqlines.com/online&quot; class=&quot;externalLink&quot;&gt;http://www.sqlines.com/online&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://roboquery.com/&quot; href=&quot;https://roboquery.com/&quot; class=&quot;externalLink&quot;&gt;https://roboquery.com/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.compilerworks.com/&quot; href=&quot;https://www.compilerworks.com/&quot; class=&quot;externalLink&quot;&gt;https://www.compilerworks.com/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.dbsolo.com/help/compare.html&quot; href=&quot;https://www.dbsolo.com/help/compare.html&quot; class=&quot;externalLink&quot;&gt;https://www.dbsolo.com/help/compare.html&lt;/a&gt;  &amp;lt;- haven't used this but this both a schema compare and DDL generator </description>
+<category>bq performance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsql%20converter%20-%20teradata%20to%20bigquery%20%2F%20snowflake%5D%5D</link>
+<pubDate>Thu, 21 Jan 2021 22:59:14 GMT</pubDate>
+
+</item>
+<item>
+<title>sqlmonitor repository history</title>
+<description>&lt;br&gt;&lt;pre&gt;
+Creating a history of sql monitor reports
+
+$Header: 215187.1 0_mon_readme.txt 11.4.5.8 2013/05/10 carlos.sierra $
+
+Requires Oracle Tuning Pack license.
+
+1. Open a new session and execute 1_mon_repository.sql followed by 2_mon_capture.sql.
+   The latter will loop indefinitely.
+2. On a second session execute 3_mon_reports.sql every so often.
+3. When ready to review unzip mon_reports.zip into a directory and browse mon_main.html.
+
+
+
+215187.1 SQLTXPLAIN (SQLT) Tool that helps to diagnose SQL statements performing poorly
+Download SQLTXPLAIN (SQLT)
+
+10.2, 11.1, 11.2 ,12.1, and 12.2 download
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; on ADG&lt;/h1&gt;&lt;pre&gt;
+You can modify the code to poll on the ADG and insert on a real table on the primary. You get both summary and SQL mon report in a table.
+Just an idea, I haven't tried this.
+
+
+&lt;/pre&gt;</description>
+<category>RealTimeSQLMonitoring-sql_monitor</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bsqlmonitor%20repository%20history%5D%5D</link>
+<pubDate>Wed, 20 Jan 2021 17:48:58 GMT</pubDate>
+
+</item>
 <item>
 <title>gluent advisor</title>
 <description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/gdp/gluent-advisor/&quot; href=&quot;https://gluent.com/gdp/gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/gdp/gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://gluent.com/run-gluent-advisor/&quot; href=&quot;https://gluent.com/run-gluent-advisor/&quot; class=&quot;externalLink&quot;&gt;https://gluent.com/run-gluent-advisor/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; download &lt;/h1&gt;&lt;pre&gt;wget https://gluent.s3.amazonaws.com/gluent_advisor_data_extractor.tar.bz2
@@ -199,7 +238,7 @@ Archive:  advisor_extract_CDB1_2021_01_15-16_04_38.zip
 &lt;/pre&gt;</description>
 <category>gluent</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bgluent%20advisor%5D%5D</link>
-<pubDate>Fri, 15 Jan 2021 16:14:58 GMT</pubDate>
+<pubDate>Fri, 15 Jan 2021 16:14:00 GMT</pubDate>
 
 </item>
 <item>
@@ -371,22 +410,6 @@ Mustermann                     C3
 <category>Data Model, Design</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bhousing%20mortgage%20data%20model%5D%5D</link>
 <pubDate>Mon, 04 Jan 2021 22:22:00 GMT</pubDate>
-
-</item>
-<item>
-<title>snow scripting, snow procedures</title>
-<description></description>
-<category>.snowflake essentials hands-on</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsnow%20scripting%2C%20snow%20procedures%5D%5D</link>
-<pubDate>Mon, 04 Jan 2021 19:21:00 GMT</pubDate>
-
-</item>
-<item>
-<title>snowsql</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.snowflake.com/en/user-guide/snowsql-use.html&quot; href=&quot;https://docs.snowflake.com/en/user-guide/snowsql-use.html&quot; class=&quot;externalLink&quot;&gt;https://docs.snowflake.com/en/user-guide/snowsql-use.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://hevodata.com/learn/snowflake-sql/&quot; href=&quot;https://hevodata.com/learn/snowflake-sql/&quot; class=&quot;externalLink&quot;&gt;https://hevodata.com/learn/snowflake-sql/&lt;/a&gt;&lt;br&gt;</description>
-<category>snow scripting, snow procedures</category>
-<link>http://karlarao.tiddlyspot.com#snowsql</link>
-<pubDate>Mon, 04 Jan 2021 19:21:00 GMT</pubDate>
 
 </item>
 </channel>
