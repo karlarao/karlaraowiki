@@ -6,24 +6,282 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2021 YourName</copyright>
-<pubDate>Tue, 16 Mar 2021 17:08:47 GMT</pubDate>
-<lastBuildDate>Tue, 16 Mar 2021 17:08:47 GMT</lastBuildDate>
+<pubDate>Sun, 28 Mar 2021 17:55:02 GMT</pubDate>
+<lastBuildDate>Sun, 28 Mar 2021 17:55:02 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>data lineage and GDPR</title>
+<description>&lt;pre&gt;
+
+Amundsen
+https://eng.lyft.com/amundsen-lyfts-data-discovery-metadata-engine-62d27254fbb9
+https://www.dataengineeringpodcast.com/amundsen-data-discovery-episode-92/
+Amundsen: A Data Discovery Platform From Lyft | Lyft https://www.youtube.com/watch?v=EOCYw0yf63k
+https://www.amundsen.io/amundsen/
+
+
+Data Fusion 
+https://cloud.google.com/data-fusion/docs/tutorials/lineage
+
+
+
+C360 
+https://en.wikipedia.org/wiki/Janrain
+https://marketingplatform.google.com/about/tag-manager/
+https://www.ordergroove.com/home-vb/
+https://www.bigcommerce.com/
+https://www.lytics.com/
+https://segment.com/
+
+
+
+DBT 
+https://rittmananalytics.com/blog/2020/5/28/introducing-the-ra-warehouse-dbt-framework-how-rittman-analytics-does-data-centralization
+https://rittmananalytics.com/blog/tag/dbt
+https://blog.getdbt.com/what--exactly--is-dbt-/
+https://docs.getdbt.com/docs/building-a-dbt-project/documentation
+
+
+
+collibra 
+https://marketplace.collibra.com/listings/jdbc-driver-for-oracle/
+https://www.collibra.com/
+
+
+
+apache atlas 
+https://medium.com/google-cloud/a-metadata-comparison-between-apache-atlas-and-google-data-catalog-7e1ad391b4c2
+Apache Atlas Introduction: Need for Governance and Metadata management: Vimal Sharma https://www.youtube.com/watch?v=6vNJOHDE15g
+https://community.cloudera.com/t5/Community-Articles/Customizing-Atlas-Part1-Model-governance-traceability-and/ta-p/249250
+
+Data Discovery and Lineage: Integrating streaming data in the public cloud with on-prem, classic datastores and heterogeneous schema types
+https://conferences.oreilly.com/strata/strata-ny-2018/cdn.oreillystatic.com/en/assets/1/event/278/Data%20discovery%20and%20lineage_%20Integrating%20streaming%20data%20in%20the%20public%20cloud%20with%20on-prem,%20classic%20data%20stores,%20and%20heterogeneous%20schema%20types%20Presentation.pdf
+Barbara Eckman, Ph.D.Principal ArchitectComcast
+https://conferences.oreilly.com/strata/strata-ny-2018/public/schedule/detail/69518.html
+https://learning.oreilly.com/videos/strata-data-conference/9781491976326/9781491976326-video316438?autoplay=false 
+https://www.youtube.com/results?search_query=heterogeneous+big+data+environment+with+Apache+Atlas+and+Avro+-+Barbara+Eckman
+
+
+
+navigator (precursor to atlas)
+https://community.cloudera.com/t5/Support-Questions/Cloudera-Navigator-vs-Apache-Atlas/td-p/297931
+
+
+
+gcp data lineage 
+https://stackoverflow.com/questions/55000865/how-can-i-perform-data-lineage-in-gcp
+https://github.com/GoogleCloudPlatform/datacatalog-connectors-hive/tree/master/google-datacatalog-apache-atlas-connector
+
+
+
+spark spline 
+https://medium.com/@reenugrewal/data-lineage-tracking-using-spline-on-atlas-via-event-hub-6816be0fd5c7
+
+
+
+apache airflow marquez
+https://www.dremio.com/subsurface/data-lineage-with-apache-airflow
+https://www.slideshare.net/WillyLulciuc/data-lineage-with-apache-airflow-using-marquez
+Data Lineage with Apache Airflow | Datakin https://www.youtube.com/watch?v=dfRetdg9444 
+
+
+airflow with atlas 
+https://www.datastackpros.com/2020/04/gcp-cloud-data-lineage-with-airflow.html
+https://stackoverflow.com/questions/53539491/how-import-the-lineage-of-airflow-to-the-atlas
+https://github.com/apache/airflow/blob/master/docs/apache-airflow/lineage.rst
+
+
+
+
+talend to atlas  
+https://help.talend.com/r/TakcAFoOnWMPdNo8XXlPpg/_FqzpSa92Vga9NfumjCM~Q
+https://help.talend.com/r/XSofSS9S7oLFhM0dJizFlg/hPYn15mq7Is2544uaVhvxQ
+
+
+
+streaming avro schema registry 
+https://community.cloudera.com/t5/Community-Articles/Avro-Schema-Registry-with-Apache-Atlas-for-Streaming-Data/ta-p/247037
+End to end Data Governance with Apache Avro and Atlas https://www.youtube.com/watch?v=b--xwHHukRA
+https://community.cloudera.com/t5/Community-Articles/Apache-Atlas-as-an-Avro-Schema-Registry-Test-Drive/ta-p/247039
+https://community.cloudera.com/t5/Community-Articles/Avro-Schema-Registry-with-Apache-Atlas-for-Streaming-Data/ta-p/247037
+
+
+
+finos waltz https://www.finos.org/blog/introduction-to-finos-waltz
+https://waltz.finos.org/
+https://waltz.finos.org/blog/index.html
+http://www.waltztechnology.com/measurable-category/4
+
+
+
+data lineage GDPR 
+https://info.talend.com/rs/talend/images/WP_EN_TLD_Talend_Outlining_PracticalSteps_GDPR_Compliance.pdf
+https://www.octopai.com/gdpr-experts/?creative=499030836191&amp;amp;keyword=data%20governance%20data%20lineage&amp;amp;matchtype=b&amp;amp;network=g&amp;amp;device=c&amp;amp;gclid=CjwKCAjwr_uCBhAFEiwAX8YJgf2QLkmBIZu7JRszD2JtmwbbGgwZ6QSGlsB5niAFmAmN_GDmTXWv3hoCS8cQAvD_BwE
+https://www.talend.com/resources/gdpr-stitch-data-lineage/
+https://www.talend.com/resources/16-step-data-governance-plan-gdpr-compliance/?ty=content
+https://www.talend.com/resources/gdpr-govern-analytical-models/
+https://www.talend.com/solutions/data-protection-gdpr-compliance/
+https://www.slideshare.net/Hadoop_Summit/practical-experiences-using-atlas-and-ranger-to-implement-gdpr
+https://theworldofapenguin.blogspot.com/
+https://github.com/SvenskaSpel/cobra-policytool
+https://github.com/SvenskaSpel/cobra-policytool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;/pre&gt;</description>
+<category>data governance</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20lineage%20and%20GDPR%5D%5D</link>
+<pubDate>Sun, 28 Mar 2021 17:54:59 GMT</pubDate>
+
+</item>
+<item>
+<title>data governance</title>
+<description></description>
+<category>Data Engineering</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20governance%5D%5D</link>
+<pubDate>Sun, 28 Mar 2021 17:54:22 GMT</pubDate>
+
+</item>
+<item>
+<title>utilities datamap book</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87041_01/PDF/MWM_BI_DataMap_2.7.0.pdf&quot; href=&quot;https://docs.oracle.com/cd/E87041_01/PDF/MWM_BI_DataMap_2.7.0.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87041_01/PDF/MWM_BI_DataMap_2.7.0.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87041_01/PDF/MDM_BI_DataMap_2.7.0.pdf&quot; href=&quot;https://docs.oracle.com/cd/E87041_01/PDF/MDM_BI_DataMap_2.7.0.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87041_01/PDF/MDM_BI_DataMap_2.7.0.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87041_01/PDF/CCB_BI_DataMap_2.7.0.0.12.pdf&quot; href=&quot;https://docs.oracle.com/cd/E87041_01/PDF/CCB_BI_DataMap_2.7.0.0.12.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87041_01/PDF/CCB_BI_DataMap_2.7.0.0.12.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;...</description>
+<category>Oracle Utilities Analytics - OBIEE,ODI combo</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Butilities%20datamap%20book%5D%5D</link>
+<pubDate>Sun, 28 Mar 2021 17:52:40 GMT</pubDate>
+
+</item>
+<item>
+<title>CCB - Customer Care and Billing</title>
+<description>&lt;ul&gt;&lt;li&gt; Oracle Utilities Customer Care and Billing (CC&amp;amp;B) - utilities companies like DLC&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; Oracle Utilities (CC&amp;amp;B, MDM, ...) - Develop, Deploy and Debug with Eclipse and the SDK&lt;ul&gt;&lt;li&gt; &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=fuPzFCBEEWg&quot; href=&quot;https://www.youtube.com/watch?v=fuPzFCBEEWg&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=fuPzFCBEEWg&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; batch &lt;/h1&gt;Oracle Utilities Customer Care And Billing Batch Operations and Configuration Guide &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E18733_01/pdf/E18372_01.pdf&quot; href=&quot;https://docs.oracle.com/cd/E18733_01/pdf/E18372_01.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E18733_01/pdf/E18372_01.pdf&lt;/a&gt;</description>
+<category>oracle best of breed enterprise apps</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BCCB%20-%20Customer%20Care%20and%20Billing%5D%5D</link>
+<pubDate>Sat, 20 Mar 2021 03:24:00 GMT</pubDate>
+
+</item>
+<item>
+<title>ORMB - Oracle Revenue Management and Billing</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.oracle.com/technical-resources/documentation/fsgbu.html&quot; href=&quot;https://www.oracle.com/technical-resources/documentation/fsgbu.html&quot; class=&quot;externalLink&quot;&gt;https://www.oracle.com/technical-resources/documentation/fsgbu.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; batch stack &lt;/h1&gt;Oracle Revenue Management and Billing  &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87761_01/homepage.htm&quot; href=&quot;https://docs.oracle.com/cd/E87761_01/homepage.htm&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87761_01/homepage.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87761_01/books/V2.6.0.0.0/Oracle_Revenue_Management_and_Billing_Transaction_Feed_Management_-_Batch_Execution_Guide.pdf&quot; href=&quot;https://docs.oracle.com/cd/E87761_01/books/V2.6.0.0.0/Oracle_Revenue_Management_and_Billing_Transaction_Feed_Management_-_Batch_Execution_Guide.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87761_01/books/V2.6.0.0.0/Oracle_Revenue_Management_and_Billing_Transaction_Feed_Management_-_Batch_Execution_Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; analytics stack&lt;/h1&gt;Oracle Revenue Management and Billing Analytics &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E64452_01/homepage.htm&quot; href=&quot;https://docs.oracle.com/cd/E64452_01/homepage.htm&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E64452_01/homepage.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E64452_01/books/V2.8.0.0.0/Oracle_Revenue_Management_and_Billing_Analytics_Installation_Guide.pdf&quot; href=&quot;https://docs.oracle.com/cd/E64452_01/books/V2.8.0.0.0/Oracle_Revenue_Management_and_Billing_Analytics_Installation_Guide.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E64452_01/books/V2.8.0.0.0/Oracle_Revenue_Management_and_Billing_Analytics_Installation_Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E64452_01/books/V2.8.0.0.0/Oracle_Revenue_Management_and_Billing_Analytics_Admin_Guide.pdf&quot; href=&quot;https://docs.oracle.com/cd/E64452_01/books/V2.8.0.0.0/Oracle_Revenue_Management_and_Billing_Analytics_Admin_Guide.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E64452_01/books/V2.8.0.0.0/Oracle_Revenue_Management_and_Billing_Analytics_Admin_Guide.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;</description>
+<category>oracle best of breed enterprise apps</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BORMB%20-%20Oracle%20Revenue%20Management%20and%20Billing%5D%5D</link>
+<pubDate>Sat, 20 Mar 2021 03:24:00 GMT</pubDate>
+
+</item>
+<item>
+<title>OBIEE sizing and tuning</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/BI4success/entry/high_level_flow_of_obiee&quot; href=&quot;https://blogs.oracle.com/BI4success/entry/high_level_flow_of_obiee&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/BI4success/entry/high_level_flow_of_obiee&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/obieeTips/entry/aix_checklist_for_stable_obiee&quot; href=&quot;https://blogs.oracle.com/obieeTips/entry/aix_checklist_for_stable_obiee&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/obieeTips/entry/aix_checklist_for_stable_obiee&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/obieeTips/entry/obiee_memory_usage&quot; href=&quot;https://blogs.oracle.com/obieeTips/entry/obiee_memory_usage&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/obieeTips/entry/obiee_memory_usage&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; sizing &lt;/h1&gt;OBIEE 11g and 12c: Architectural Deployment Capacity Planning Guide (Doc ID 1323646.1)&lt;br&gt;NOTE:1333049.1 - OBIEE 11g Infrastructure Performance Tuning Guide&lt;br&gt;NOTE:2106183.1 - OBIEE 12c: Best Practices Guide for Infrastructure Tuning Oracle® Business Intelligence Enterprise Edition 12c (12.2.1)&lt;br&gt;NOTE:1323646.1 - OBIEE 11g | 12c: Architectural Deployment Capacity Planning Guide&lt;br&gt;NOTE:2106183.1 - OBIEE 12c: Best Practices Guide for Infrastructure Tuning Oracle® Business Intelligence Enterprise Edition 12c (12.2.1)&lt;br&gt;NOTE:1611188.1 - OBIEE: Load Testing OBIEE Using Oracle Load Testing (OLT) 12.x&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/cealteam/obiee-1111-tuning-guide-script-v1&quot; href=&quot;https://blogs.oracle.com/cealteam/obiee-1111-tuning-guide-script-v1&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/cealteam/obiee-1111-tuning-guide-script-v1&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/proactivesupportepm/obiee-tuning-guide-whitepaper-update-available&quot; href=&quot;https://blogs.oracle.com/proactivesupportepm/obiee-tuning-guide-whitepaper-update-available&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/proactivesupportepm/obiee-tuning-guide-whitepaper-update-available&lt;/a&gt;&lt;br&gt;NOTE:1611188.1 - OBIEE: Load Testing OBIEE Using Oracle Load Testing (OLT) 12.x&lt;br&gt;NOTE:1323646.1 - OBIEE 11g | 12c: Architectural Deployment Capacity Planning Guide&lt;br&gt;NOTE:2087801.1 - OBIEE 12c: How To Configure The External Subject Area (XSA) Cache For Data Blending| Mashup And Performance&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; obiee active data guard&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.oracle.com/technetwork/database/features/availability/maa-wp-11g-biee-activedataguard-1-131999.pdf&quot; href=&quot;https://www.oracle.com/technetwork/database/features/availability/maa-wp-11g-biee-activedataguard-1-131999.pdf&quot; class=&quot;externalLink&quot;&gt;https://www.oracle.com/technetwork/database/features/availability/maa-wp-11g-biee-activedataguard-1-131999.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.slideshare.net/bogloap/it-2020-technology-optimism-an-oracle-scenario&quot; href=&quot;https://www.slideshare.net/bogloap/it-2020-technology-optimism-an-oracle-scenario&quot; class=&quot;externalLink&quot;&gt;https://www.slideshare.net/bogloap/it-2020-technology-optimism-an-oracle-scenario&lt;/a&gt;</description>
+<category>OBIEE</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOBIEE%20sizing%20and%20tuning%5D%5D</link>
+<pubDate>Sat, 20 Mar 2021 03:21:00 GMT</pubDate>
+
+</item>
+<item>
+<title>OBIEE</title>
+<description>&lt;strong&gt;&lt;span&gt;—&lt;/span&gt; usage tracking&lt;/strong&gt;&lt;br&gt;&lt;pre&gt;$ cat obi_reports.sql
+set lines 200
+set echo off
+set feedback off
+col &quot;Elapse Time(Min)&quot; form 999,999
+col &quot;Elapse Time(Hr)&quot;  form 999.9
+col &quot;Total Row Ct.&quot;    form 999,999,999
+col &quot;Exec Ct.&quot;         form 999,999,999
+col &quot;SQL Ct.&quot;          form 999,999,999
+col &quot;Db Time(Sec)&quot;     form 999,999,999
+col &quot;Db Time(Min)&quot;     form 999,999
+col &quot;Db Time(Hr)&quot;      form 999.9
+col &quot;Total Row Ct.&quot;    form 999,999,999,999
+
+SELECT to_char(to_date(start_dt, 'dd-MON-yy'), 'yyyy-mm-dd') &quot;Exec Date&quot;,
+       count(*)                                              &quot;Exec Ct&quot;,
+       sum(row_count)                                        &quot;Row Ct&quot;,
+       sum(total_time_sec/60)                                &quot;Elapse Time(Min)&quot;,
+       sum(total_time_sec/60/60)                             &quot;Elapse Time(Hr)&quot;,
+       sum(num_db_query)                                     &quot;SQL Ct.&quot;,
+       sum(cum_db_time_sec)                                  &quot;Db Time(Sec)&quot;,
+       sum(cum_db_time_sec/60)                               &quot;Db Time(Min)&quot;,
+       sum(cum_db_time_sec/60/60)                            &quot;Db Time(Hr)&quot;,
+       sum(cum_num_db_row)                                   &quot;Total Row Ct.&quot;
+  FROM OBIUSAGE.S_NQ_ACCT
+ WHERE 1=1
+   AND QUERY_SRC_CD NOT IN ('ValuePrompt','DashboardPrompt')
+   AND cache_ind_flg = 'N'
+   AND presentation_name = 'CBRE Financials - GL Profit and Loss'
+   AND start_dt &amp;gt; = '07-MAY-2012'
+ GROUP BY start_dt
+ ORDER BY 1;
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; OBIEE workload separation&lt;/h1&gt;&lt;pre&gt;IF contains(lower(trim([Module])),'BIP')=true THEN 'BIP'
+ELSEIF contains(lower(trim([Module])),'ODI')=true THEN 'ODI'
+ELSEIF contains(lower(trim([Module])),'nqs')=true THEN 'nqsserver'
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>DataWarehouse</category>
+<category>oracle best of breed enterprise apps</category>
+<link>http://karlarao.tiddlyspot.com#OBIEE</link>
+<pubDate>Sat, 20 Mar 2021 03:05:00 GMT</pubDate>
+
+</item>
+<item>
+<title>Oracle Utilities Analytics - OBIEE,ODI combo</title>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87041_01/index.htm&quot; href=&quot;https://docs.oracle.com/cd/E87041_01/index.htm&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87041_01/index.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87041_01/PDF/OUA_Developer_Guide_2.7.0.pdf&quot; href=&quot;https://docs.oracle.com/cd/E87041_01/PDF/OUA_Developer_Guide_2.7.0.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87041_01/PDF/OUA_Developer_Guide_2.7.0.pdf&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/cd/E87041_01/PDF/OUA_Admin_Guide_2.7.0.0.12.pdf&quot; href=&quot;https://docs.oracle.com/cd/E87041_01/PDF/OUA_Admin_Guide_2.7.0.0.12.pdf&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/cd/E87041_01/PDF/OUA_Admin_Guide_2.7.0.0.12.pdf&lt;/a&gt;&lt;br&gt;</description>
+<category>CCB - Customer Care and Billing</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOracle%20Utilities%20Analytics%20-%20OBIEE%2CODI%20combo%5D%5D</link>
+<pubDate>Sat, 20 Mar 2021 02:59:00 GMT</pubDate>
+
+</item>
+<item>
+<title>PeopleSoft</title>
+<description>&lt;span&gt;—&lt;/span&gt; CERTIFICATION MATRIX	&lt;br&gt; &lt;br&gt;Operating System, RDBMS &amp;amp; Additional Component Patches Required for Installation &lt;a tiddlylink=&quot;PeopleTools&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleTools&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleTools&quot; class=&quot;externalLink null&quot;&gt;PeopleTools&lt;/a&gt; - Master List [ID 756571.1]    ß go here&lt;br&gt;&lt;br&gt;                &lt;a tiddlylink=&quot;PeopleTools&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleTools&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleTools&quot; class=&quot;externalLink null&quot;&gt;PeopleTools&lt;/a&gt; Certifications - Suggested Fixes for PT 8.52 Note:1385944.1   ß click on here&lt;br&gt; &lt;br&gt;                                Oracle Server - Enterprise Edition (Doc ID 1100831.1)  ß click on here&lt;br&gt;&lt;br&gt;                                                Required Interim Patches for the Oracle Database with &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; [ID 1100831.1] ß click on here&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Enterprise &lt;a tiddlylink=&quot;PeopleTools&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleTools&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleTools&quot; class=&quot;externalLink null&quot;&gt;PeopleTools&lt;/a&gt; Certification Table of Contents [ID 759851.1]&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; PERFORMANCE &lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Enterprise Performance on Oracle 10g Database (Doc ID 747254.1)&lt;br&gt;&lt;a tiddlylink=&quot;E-ORACLE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-ORACLE&quot; href=&quot;http://karlarao.tiddlyspot.com#E-ORACLE&quot; class=&quot;externalLink null&quot;&gt;E-ORACLE&lt;/a&gt;:10g Master Performance Solution for Oracle 10g (Doc ID 656639.1)&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.x: Performance issue while running Paycalc in GP with Oracle 9 and 10 as DB (Doc ID 652910.1)&lt;br&gt;EGP 8.x:Changing Global Payroll COBOL Process without changing delivered code (Doc ID 652805.1)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dbasrus.blogspot.com/2007/09/one-for-peoplesoft-folks.html&quot; href=&quot;http://dbasrus.blogspot.com/2007/09/one-for-peoplesoft-folks.html&quot; class=&quot;externalLink&quot;&gt;http://dbasrus.blogspot.com/2007/09/one-for-peoplesoft-folks.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;Performance issue with On Lines Pages and Batch Processes on Oracle 10G (Doc ID 651774.1)&lt;br&gt;&lt;br&gt;Performance Issue at Tier Processing (Selection at Database Level) (Doc ID 755402.1)&lt;br&gt;&lt;br&gt;Activity Batch Assignment Performance: Object Where Clause not filtering correct no records (Doc ID 518178.1)&lt;br&gt;&lt;br&gt;Performance and Tuning: Oracle 10g R2 Real Application Cluster (RAC) with &lt;a tiddlylink=&quot;EnterpriseOne&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EnterpriseOne&quot; href=&quot;http://karlarao.tiddlyspot.com#EnterpriseOne&quot; class=&quot;externalLink null&quot;&gt;EnterpriseOne&lt;/a&gt; (Doc ID 748353.1)&lt;br&gt;&lt;br&gt;Performance and Tuning UBE Performance and Tuning (Doc ID 748333.1)&lt;br&gt;&lt;br&gt;Online Performance Configuration Guidelines for &lt;a tiddlylink=&quot;PeopleTools&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleTools&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleTools&quot; class=&quot;externalLink null&quot;&gt;PeopleTools&lt;/a&gt; 8.45, 8.46, 8.47, 8.48 and 8.49 (Doc ID 747389.1)&lt;br&gt;&lt;br&gt;Sizing System Hardware for JD Edwards &lt;a tiddlylink=&quot;EnterpriseOne&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EnterpriseOne&quot; href=&quot;http://karlarao.tiddlyspot.com#EnterpriseOne&quot; class=&quot;externalLink null&quot;&gt;EnterpriseOne&lt;/a&gt; (Doc ID 748339.1)&lt;br&gt;&lt;br&gt;E- ORA: Is there any documentation on Oracle 10g RAC implemention in &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt;? (Doc ID 663340.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;E-INST&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-INST&quot; href=&quot;http://karlarao.tiddlyspot.com#E-INST&quot; class=&quot;externalLink null&quot;&gt;E-INST&lt;/a&gt;: Does &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; support Oracle RAC (Real Application Clusters)? (Doc ID 620325.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;E-ORA&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-ORA&quot; href=&quot;http://karlarao.tiddlyspot.com#E-ORA&quot; class=&quot;externalLink null&quot;&gt;E-ORA&lt;/a&gt;: Oracle RAC Clusterware support (Doc ID 663690.1)&lt;br&gt;&lt;br&gt;How To Set Up Oracle RAC for Siebel Applications (Doc ID 473859.1)&lt;br&gt;&lt;br&gt;What Are the Supported Oracle Real Application Clusters (RAC) Versions? (Doc ID 478215.1)&lt;br&gt;&lt;br&gt;Oracle 10g RAC support for Analytics (Doc ID 482330.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;PeopleTools&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleTools&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleTools&quot; class=&quot;externalLink null&quot;&gt;PeopleTools&lt;/a&gt; Certification &lt;a tiddlylink=&quot;FAQs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#FAQs&quot; href=&quot;http://karlarao.tiddlyspot.com#FAQs&quot; class=&quot;externalLink null&quot;&gt;FAQs&lt;/a&gt; - Database Platforms - Oracle (Doc ID 756280.1)&lt;br&gt;&lt;br&gt;Siebel Recommendation on table logging (Doc ID 730133.1)&lt;br&gt;&lt;br&gt;What does Siebel recommend for the Oracle parameter &quot;compatible&quot; on 10g database (Doc ID 551979.1)&lt;br&gt;&lt;br&gt;Oracle cluster (Doc ID 522337.1)&lt;br&gt;&lt;br&gt;Support Status for Oracle Business Intelligence on &lt;a tiddlylink=&quot;VMware&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#VMware&quot; href=&quot;http://karlarao.tiddlyspot.com#VMware&quot; class=&quot;externalLink null&quot;&gt;VMware&lt;/a&gt; Virtualized Environments (Doc ID 475484.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;E-PIA&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-PIA&quot; href=&quot;http://karlarao.tiddlyspot.com#E-PIA&quot; class=&quot;externalLink null&quot;&gt;E-PIA&lt;/a&gt;: Red Paper on Implementing Clustering and High Availability for &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; (Doc ID 612096.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;E-PIA&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-PIA&quot; href=&quot;http://karlarao.tiddlyspot.com#E-PIA&quot; class=&quot;externalLink null&quot;&gt;E-PIA&lt;/a&gt;: Red Paper on Implementing Clustering and High Availability for &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; (Doc ID 612096.1)&lt;br&gt;&lt;br&gt;747378.1 Clustering and High Availability for Enterprise Tools 8.4x (Doc ID 747378.1)&lt;br&gt;&lt;br&gt;747962.1 &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; EPM Red Paper: &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Enterprise Initial Consolidations —04/2007 (Doc ID 747962.1)&lt;br&gt;&lt;br&gt;&lt;br&gt;747962.1 &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; EPM Red Paper: &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Enterprise Initial Consolidations&lt;br&gt;&lt;br&gt;747962.1 &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; EPM Red Paper: &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Enterprise Initial Consolidations —04/2007 (Doc ID 747962.1)&lt;br&gt;&lt;br&gt;Is there a way to automatically kill long running SQL statements (Oracle DB only) at the database after a pre-determined maximum waiting time ? (Doc ID 753941.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;E-CERT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-CERT&quot; href=&quot;http://karlarao.tiddlyspot.com#E-CERT&quot; class=&quot;externalLink null&quot;&gt;E-CERT&lt;/a&gt; Red Hat Linux 4.0 64 bit certification (Doc ID 656686.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Enterprise &lt;a tiddlylink=&quot;PeopleTools&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleTools&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleTools&quot; class=&quot;externalLink null&quot;&gt;PeopleTools&lt;/a&gt; Certifications (Doc ID 747587.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Performance on Oracle 10.2.0.2 &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.freelists.org/post/oracle-l/PeopleSoft-Performance-on-Oracle-10202&quot; href=&quot;http://www.freelists.org/post/oracle-l/PeopleSoft-Performance-on-Oracle-10202&quot; class=&quot;externalLink&quot;&gt;http://www.freelists.org/post/oracle-l/PeopleSoft-Performance-on-Oracle-10202&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; Hidden Parameters&lt;br&gt;&lt;br&gt;_disable_function_based_index&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.orafaq.com/parms/parm467.htm&quot; href=&quot;http://www.orafaq.com/parms/parm467.htm&quot; class=&quot;externalLink&quot;&gt;http://www.orafaq.com/parms/parm467.htm&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; SECURITY&lt;br&gt;&lt;br&gt;747524.1 Securing Your &lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Application Environment (Doc ID 747524.1)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; PAYROLL &lt;br&gt;&lt;br&gt;EPY: Performance issue with work table &lt;a tiddlylink=&quot;PS_WRK_SEQ_CHECK&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PS_WRK_SEQ_CHECK&quot; href=&quot;http://karlarao.tiddlyspot.com#PS_WRK_SEQ_CHECK&quot; class=&quot;externalLink null&quot;&gt;PS_WRK_SEQ_CHECK&lt;/a&gt; (Doc ID 646824.1)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dbasrus.blogspot.com/2007/09/more-on-peoplesoft.html&quot; href=&quot;http://dbasrus.blogspot.com/2007/09/more-on-peoplesoft.html&quot; class=&quot;externalLink&quot;&gt;http://dbasrus.blogspot.com/2007/09/more-on-peoplesoft.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dbasrus.blogspot.com/2007/09/one-for-peoplesoft-folks.html&quot; href=&quot;http://dbasrus.blogspot.com/2007/09/one-for-peoplesoft-folks.html&quot; class=&quot;externalLink&quot;&gt;http://dbasrus.blogspot.com/2007/09/one-for-peoplesoft-folks.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;EPY: Performance issue with work table &lt;a tiddlylink=&quot;PS_WRK_SEQ_CHECK&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PS_WRK_SEQ_CHECK&quot; href=&quot;http://karlarao.tiddlyspot.com#PS_WRK_SEQ_CHECK&quot; class=&quot;externalLink null&quot;&gt;PS_WRK_SEQ_CHECK&lt;/a&gt; (Doc ID 646824.1)&lt;br&gt;&lt;br&gt;EPY: Performance issue on Pay confirm process &lt;a tiddlylink=&quot;PSPEBUPD_S_BENF_NO&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PSPEBUPD_S_BENF_NO&quot; href=&quot;http://karlarao.tiddlyspot.com#PSPEBUPD_S_BENF_NO&quot; class=&quot;externalLink null&quot;&gt;PSPEBUPD_S_BENF_NO&lt;/a&gt; (Doc ID 660649.1)&lt;br&gt;&lt;br&gt;EPY: COBOL Performance Issues: Paycalc or other COBOL jobs take too long to run (Doc ID 607905.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;E-ORACLE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-ORACLE&quot; href=&quot;http://karlarao.tiddlyspot.com#E-ORACLE&quot; class=&quot;externalLink null&quot;&gt;E-ORACLE&lt;/a&gt;:10g Master Performance Solution for Oracle 10g (Doc ID 656639.1)&lt;br&gt;&lt;br&gt;EPY - Bonus payroll performance slow due to FLSA processing (Doc ID 634806.1)&lt;br&gt;&lt;br&gt;EPY 8.x:Performance issues on Paycalc/Dedcalc in release 8 &lt;a tiddlylink=&quot;SP1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SP1&quot; href=&quot;http://karlarao.tiddlyspot.com#SP1&quot; class=&quot;externalLink null&quot;&gt;SP1&lt;/a&gt; and above (Doc ID 611138.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;ETL8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ETL8&quot; href=&quot;http://karlarao.tiddlyspot.com#ETL8&quot; class=&quot;externalLink null&quot;&gt;ETL8&lt;/a&gt;.8/&lt;a tiddlylink=&quot;GP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#GP8&quot; href=&quot;http://karlarao.tiddlyspot.com#GP8&quot; class=&quot;externalLink null&quot;&gt;GP8&lt;/a&gt;.8: Poor Performance GP Payroll Process (GPPDPRUN) modified TL Data (Doc ID 661283.1)&lt;br&gt;&lt;br&gt;EGP: Performance issues with &quot;UNKNOWN&quot; sql statements in timing trace. (Doc ID 657792.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Global Payroll &lt;a tiddlylink=&quot;Off-Cycle&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Off-Cycle&quot; href=&quot;http://karlarao.tiddlyspot.com#Off-Cycle&quot; class=&quot;externalLink null&quot;&gt;Off-Cycle&lt;/a&gt; Payment Processing (Doc ID 704478.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.X: Global Payroll runs to 'Success' but does not process any data (Doc ID 637945.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.x: What are the tables to partition for Global Payroll Stream Processing ? (Doc ID 619386.1)&lt;br&gt;&lt;br&gt;EGP 8.x:Changing Global Payroll COBOL Process without changing delivered code (Doc ID 652805.1)&lt;br&gt;&lt;br&gt;EGP 8.9: Running payslip Generation Process using &lt;a tiddlylink=&quot;SFTP-&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SFTP-&quot; href=&quot;http://karlarao.tiddlyspot.com#SFTP-&quot; class=&quot;externalLink null&quot;&gt;SFTP-&lt;/a&gt; Global Payroll (Doc ID 652909.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.x: Global Payroll Process fails on AIX with 105 Memory allocation error. (Doc ID 656695.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;ETL9&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#ETL9&quot; href=&quot;http://karlarao.tiddlyspot.com#ETL9&quot; class=&quot;externalLink null&quot;&gt;ETL9&lt;/a&gt;.0: AM/&lt;a tiddlylink=&quot;TL9&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#TL9&quot; href=&quot;http://karlarao.tiddlyspot.com#TL9&quot; class=&quot;externalLink null&quot;&gt;TL9&lt;/a&gt;.0: AM absence is doubling quantity when processing time admin. (Doc ID 664004.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.x : How to recognize when the Global Payroll is ending in error ? (Doc ID 636120.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.x: Performance issue while running Paycalc in GP with Oracle 9 and 10 as DB (Doc ID 652910.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.9/9.0: Is it possible to enable Commitment Reporting on Global Payroll? (Doc ID 662078.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.x: Global Payroll &lt;a tiddlylink=&quot;PayGroup&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PayGroup&quot; href=&quot;http://karlarao.tiddlyspot.com#PayGroup&quot; class=&quot;externalLink null&quot;&gt;PayGroup&lt;/a&gt; sizing recommendation (Doc ID 639164.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Global Payroll COBOL Array Information (Doc ID 701403.1)&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;EGP8&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EGP8&quot; href=&quot;http://karlarao.tiddlyspot.com#EGP8&quot; class=&quot;externalLink null&quot;&gt;EGP8&lt;/a&gt;.3SP1 How Far does Retro go back in history? (Doc ID 618944.1)&lt;br&gt;&lt;br&gt;EGP: Deadlock when using streams and partitions (Doc ID 642914.1)&lt;br&gt;&lt;br&gt;E1: 07: Pre-payroll Troubleshooting (Doc ID 625863.1)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; TRIGGER PERFORMANCE ISSUES&lt;br&gt;Performance/Deadlock Issues Caused By SYNCID Database Triggers [ID 1059120.1]&lt;br&gt;&lt;a tiddlylink=&quot;E-WF&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-WF&quot; href=&quot;http://karlarao.tiddlyspot.com#E-WF&quot; class=&quot;externalLink null&quot;&gt;E-WF&lt;/a&gt;: Database Locking Issue on PSSYSTEMID Table, Because of SYNCID Field in PSWORKLILST [ID 619750.1]&lt;br&gt;How Is SYNCID On The &lt;a tiddlylink=&quot;PS_PROJECT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PS_PROJECT&quot; href=&quot;http://karlarao.tiddlyspot.com#PS_PROJECT&quot; class=&quot;externalLink null&quot;&gt;PS_PROJECT&lt;/a&gt; Record Maintained? [ID 1303668.1]&lt;br&gt;ECRM: Information about the SYNCID field and what is it used for. [ID 614739.1]&lt;br&gt;&lt;a tiddlylink=&quot;PeopleSoft&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PeopleSoft&quot; href=&quot;http://karlarao.tiddlyspot.com#PeopleSoft&quot; class=&quot;externalLink null&quot;&gt;PeopleSoft&lt;/a&gt; Enterprise DFW &lt;a tiddlylink=&quot;Plug-In&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#Plug-In&quot; href=&quot;http://karlarao.tiddlyspot.com#Plug-In&quot; class=&quot;externalLink null&quot;&gt;Plug-In&lt;/a&gt; - SYNCID Database Trigger Diagnostic Check [ID 1074332.1]&lt;br&gt;TX Transaction and Enq: Tx - Row Lock Contention - Example wait scenarios [ID 62354.1]&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; PERFORMANCE INDEXES&lt;br&gt;&lt;a tiddlylink=&quot;E-AWE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-AWE&quot; href=&quot;http://karlarao.tiddlyspot.com#E-AWE&quot; class=&quot;externalLink null&quot;&gt;E-AWE&lt;/a&gt;: Approval Framework Indexes for 9.1 Applications [ID 1289904.1]&lt;br&gt;&lt;a tiddlylink=&quot;E-AWE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-AWE&quot; href=&quot;http://karlarao.tiddlyspot.com#E-AWE&quot; class=&quot;externalLink null&quot;&gt;E-AWE&lt;/a&gt;: Recommended Indexes for Application Cross Reference (XREF) Tables to Improve Performance of Approval Workflow Engine (AWE) [ID 1328945.1]&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>.MOSNotes</category>
+<category>oracle best of breed enterprise apps</category>
+<link>http://karlarao.tiddlyspot.com#PeopleSoft</link>
+<pubDate>Sat, 20 Mar 2021 02:57:00 GMT</pubDate>
+
+</item>
+<item>
+<title>E-businessSuite</title>
+<description>Installing Oracle Apps 11i&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://avdeo.com/2010/11/01/installing-oracle-apps-11i/?utm_source=feedburner&amp;amp;utm_medium=feed&amp;amp;utm_campaign=Feed:+advait+(IN+ORACLE+MILIEU&quot; href=&quot;http://avdeo.com/2010/11/01/installing-oracle-apps-11i/?utm_source=feedburner&amp;amp;utm_medium=feed&amp;amp;utm_campaign=Feed:+advait+%28IN+ORACLE+MILIEU&quot; class=&quot;externalLink&quot;&gt;http://avdeo.com/2010/11/01/installing-oracle-apps-11i/?utm_source=feedburner&amp;amp;utm_medium=feed&amp;amp;utm_campaign=Feed:+advait+(IN+ORACLE+MILIEU&lt;/a&gt;+...)&lt;br&gt;&lt;br&gt;Virtualizing Oracle &lt;a tiddlylink=&quot;E-Business&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#E-Business&quot; href=&quot;http://karlarao.tiddlyspot.com#E-Business&quot; class=&quot;externalLink null&quot;&gt;E-Business&lt;/a&gt; Suite through Oracle VM&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kyuoracleblog.wordpress.com/2012/08/13/virtualizing-oracle-e-business-suite-through-oracle-vm/&quot; href=&quot;http://kyuoracleblog.wordpress.com/2012/08/13/virtualizing-oracle-e-business-suite-through-oracle-vm/&quot; class=&quot;externalLink&quot;&gt;http://kyuoracleblog.wordpress.com/2012/08/13/virtualizing-oracle-e-business-suite-through-oracle-vm/&lt;/a&gt;</description>
+<category>Oracle</category>
+<category>oracle best of breed enterprise apps</category>
+<link>http://karlarao.tiddlyspot.com#E-businessSuite</link>
+<pubDate>Sat, 20 Mar 2021 02:55:00 GMT</pubDate>
+
+</item>
+<item>
+<title>oracle best of breed enterprise apps</title>
+<description></description>
+<category>Oracle</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Boracle%20best%20of%20breed%20enterprise%20apps%5D%5D</link>
+<pubDate>Sat, 20 Mar 2021 02:55:00 GMT</pubDate>
+
+</item>
+<item>
 <title>IBM Curam Social Program Management</title>
-<description>&lt;br&gt;IBM Cúram Social Program Management 7.0.10 - 7.0.11&lt;br&gt;&lt;br&gt;Batch Streaming Architecture&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;The Chunker&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;br&gt;&lt;br&gt;The Stream&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&lt;/a&gt;</description>
+<description>IBM Cúram Social Program Management 7.0.10 - 7.0.11&lt;br&gt;&lt;br&gt;Batch Streaming Architecture&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&lt;/a&gt;&lt;br&gt; &lt;br&gt;The Chunker&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;The Stream&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>Other breed apps</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BIBM%20Curam%20Social%20Program%20Management%5D%5D</link>
-<pubDate>Tue, 16 Mar 2021 17:08:41 GMT</pubDate>
+<pubDate>Sat, 20 Mar 2021 02:53:00 GMT</pubDate>
 
 </item>
 <item>
 <title>Other breed apps</title>
 <description></description>
-<category>oracle best of breed apps</category>
+<category>oracle best of breed enterprise apps</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BOther%20breed%20apps%5D%5D</link>
-<pubDate>Tue, 16 Mar 2021 17:07:53 GMT</pubDate>
+<pubDate>Tue, 16 Mar 2021 17:07:00 GMT</pubDate>
 
 </item>
 <item>
@@ -32,7 +290,7 @@
 <category>RealTimeSQLMonitoring-sql_monitor</category>
 <category>Object Name, Access Predicates, Filter Predicates, Projection</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bsqlmonitor%20-%20start%20active%2C%20time%20active%5D%5D</link>
-<pubDate>Tue, 16 Mar 2021 15:15:19 GMT</pubDate>
+<pubDate>Tue, 16 Mar 2021 15:15:00 GMT</pubDate>
 
 </item>
 <item>
@@ -532,152 +790,6 @@ sudo spctl --master-disable
 <category>Apple</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BMacBook%2C%20macosx%2C%20mac%20osx%5D%5D</link>
 <pubDate>Fri, 12 Mar 2021 12:47:00 GMT</pubDate>
-
-</item>
-<item>
-<title>oracle adw video courses</title>
-<description>Warehousing Data with Oracle Autonomous Data Warehouse Cloud &lt;a target=&quot;_blank&quot; title=&quot;External link to https://app.pluralsight.com/library/courses/oracle-autonomous-data-warehouse-cloud/table-of-contents&quot; href=&quot;https://app.pluralsight.com/library/courses/oracle-autonomous-data-warehouse-cloud/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://app.pluralsight.com/library/courses/oracle-autonomous-data-warehouse-cloud/table-of-contents&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; oracle cloud infrastructure migration &lt;/h1&gt;Practical Oracle Cloud Infrastructure: Infrastructure as a Service, Autonomous Database, Managed Kubernetes, and Serverless &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/library/view/practical-oracle-cloud/9781484255063/&quot; href=&quot;https://learning.oreilly.com/library/view/practical-oracle-cloud/9781484255063/&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/library/view/practical-oracle-cloud/9781484255063/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; oci book&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/Apress/pract-oracle-cloud-infrastructure&quot; href=&quot;https://github.com/Apress/pract-oracle-cloud-infrastructure&quot; class=&quot;externalLink&quot;&gt;https://github.com/Apress/pract-oracle-cloud-infrastructure&lt;/a&gt; &lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/mtjakobczyk/oci-book&quot; href=&quot;https://github.com/mtjakobczyk/oci-book&quot; class=&quot;externalLink&quot;&gt;https://github.com/mtjakobczyk/oci-book&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/course/foundation-to-oracle-database-in-oracle-cloud-infrastructure/&quot; href=&quot;https://www.udemy.com/course/foundation-to-oracle-database-in-oracle-cloud-infrastructure/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/course/foundation-to-oracle-database-in-oracle-cloud-infrastructure/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.udemy.com/course/oracle-database-migration-methods-on-prem-to-oracle-cloud/&quot; href=&quot;https://www.udemy.com/course/oracle-database-migration-methods-on-prem-to-oracle-cloud/&quot; class=&quot;externalLink&quot;&gt;https://www.udemy.com/course/oracle-database-migration-methods-on-prem-to-oracle-cloud/&lt;/a&gt;&lt;br&gt;</description>
-<category>oracle adw</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Boracle%20adw%20video%20courses%5D%5D</link>
-<pubDate>Mon, 08 Mar 2021 02:06:00 GMT</pubDate>
-
-</item>
-<item>
-<title>aws rds video courses</title>
-<description>Creating, Connecting, and Monitoring Databases with Amazon RDS &lt;a target=&quot;_blank&quot; title=&quot;External link to https://app.pluralsight.com/library/courses/aws-amazon-rds/table-of-contents&quot; href=&quot;https://app.pluralsight.com/library/courses/aws-amazon-rds/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://app.pluralsight.com/library/courses/aws-amazon-rds/table-of-contents&lt;/a&gt;&lt;br&gt;Querying Data in AWS Databases &lt;a target=&quot;_blank&quot; title=&quot;External link to https://app.pluralsight.com/library/courses/querying-data-aws-databases/table-of-contents&quot; href=&quot;https://app.pluralsight.com/library/courses/querying-data-aws-databases/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://app.pluralsight.com/library/courses/querying-data-aws-databases/table-of-contents&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>AWS RDS - Oracle</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Baws%20rds%20video%20courses%5D%5D</link>
-<pubDate>Mon, 08 Mar 2021 02:01:00 GMT</pubDate>
-
-</item>
-<item>
-<title>oracle cloud devops ci/cd</title>
-<description>Introducing Continuous Integration and Delivery Concepts for &lt;a tiddlylink=&quot;DevOps&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DevOps&quot; href=&quot;http://karlarao.tiddlyspot.com#DevOps&quot; class=&quot;externalLink null&quot;&gt;DevOps&lt;/a&gt; on Oracle Cloud &lt;a target=&quot;_blank&quot; title=&quot;External link to https://app.pluralsight.com/library/courses/oracle-cloud-devops-integration-delivery/table-of-contents&quot; href=&quot;https://app.pluralsight.com/library/courses/oracle-cloud-devops-integration-delivery/table-of-contents&quot; class=&quot;externalLink&quot;&gt;https://app.pluralsight.com/library/courses/oracle-cloud-devops-integration-delivery/table-of-contents&lt;/a&gt;</description>
-<category>oracle adw</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Boracle%20cloud%20devops%20ci%2Fcd%5D%5D</link>
-<pubDate>Mon, 08 Mar 2021 02:00:00 GMT</pubDate>
-
-</item>
-<item>
-<title>the new sqldb360 (edb360)</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' tricks ', event)&quot;&gt; tricks &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' aegcfg', event)&quot;&gt; aegcfg&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' change span of dates to be collected', event)&quot;&gt; change span of dates to be collected&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' skip ESP', event)&quot;&gt; skip ESP&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' special DLP selector that correlates to AWR reports', event)&quot;&gt; special DLP selector that correlates to AWR reports&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; tricks &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;h2&gt; aegcfg&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;blockquote&gt;all the available conf flags are in sql/edb360_00_config.sql&lt;br&gt;&lt;/blockquote&gt;&lt;h3&gt; change span of dates to be collected&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;pre&gt;In the sqldb360/sql directory you will find aegcfg.sql file.
-In it you can set the exact dates to collect.
-
--- range of dates below superceed history days when values are other than YYYY-MM-DD
--- default values YYYY-MM-DD mean: use edb360_conf_days
--- actual values sample: 2016-04-26
-DEF edb360_conf_date_from = 'YYYY-MM-DD';
-DEF edb360_conf_date_to = 'YYYY-MM-DD';
-&lt;/pre&gt;&lt;br&gt;&lt;h3&gt; skip ESP&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h3&gt;&lt;pre&gt;-- use only if you have to skip esp and escp (value --skip--) else null
---DEF skip_esp_and_escp = '--skip--';
-DEF skip_esp_and_escp = '';
-&lt;/pre&gt;&lt;br&gt;&lt;h2&gt; special DLP selector that correlates to AWR reports&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;pre&gt;    after the edb360 is generated 
-    you place the .js in the directory.
-    you just need to rename the file to edb360_dlp.js
-
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;</description>
-<category>edb360</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bthe%20new%20sqldb360%20(edb360)%5D%5D</link>
-<pubDate>Mon, 08 Mar 2021 01:46:00 GMT</pubDate>
-
-</item>
-<item>
-<title>oracle generate sample data</title>
-<description>&lt;pre&gt;SELECT * from emp SAMPLE(25) SEED(1)
-&lt;/pre&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://stackoverflow.com/questions/733652/select-a-random-sample-of-results-from-a-query-result&quot; href=&quot;https://stackoverflow.com/questions/733652/select-a-random-sample-of-results-from-a-query-result&quot; class=&quot;externalLink&quot;&gt;https://stackoverflow.com/questions/733652/select-a-random-sample-of-results-from-a-query-result&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/tech/developers/discussion/3673906/how-to-randomly-select-rows-by-percentage-of-rows-by-specific-column&quot; href=&quot;https://community.oracle.com/tech/developers/discussion/3673906/how-to-randomly-select-rows-by-percentage-of-rows-by-specific-column&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/tech/developers/discussion/3673906/how-to-randomly-select-rows-by-percentage-of-rows-by-specific-column&lt;/a&gt;&lt;br&gt;&lt;pre&gt;select
-deptno
-,count(*) cnt
-from emp
-group by deptno
-
-DEPTNO    CNT
-30    6
-20    5
-10    3
-
-choose 50% from each dept randomly
-expected (round up to next integer)
-
-DEPTNO    CNT
-30    3
-20    3
-10    2
-
-select * from (
-select
-empno
-,deptno
-,count(*)    over (partition by deptno) cnt
-,row_number() over (partition by deptno order by dbms_random.random) rn
-from emp
-)
-where rn &amp;lt;= round(cnt*0.5)
-order by deptno
-
-EMPNO    DEPTNO    CNT    RN
-7782    10    3    1
-7934    10    3    2
-7566    20    5    1
-7876    20    5    2
-7902    20    5    3
-7900    30    6    1
-7521    30    6    2
-7654    30    6    3
-&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/oraclemagazine/on-rownum-and-limiting-results&quot; href=&quot;https://blogs.oracle.com/oraclemagazine/on-rownum-and-limiting-results&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/oraclemagazine/on-rownum-and-limiting-results&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
-<category>generate random data</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Boracle%20generate%20sample%20data%5D%5D</link>
-<pubDate>Fri, 05 Mar 2021 16:09:00 GMT</pubDate>
-
-</item>
-<item>
-<title>.oracle enhancement requests</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.oracle.com/tech/apps-infra/categories/database-ideas-ideas&quot; href=&quot;https://community.oracle.com/tech/apps-infra/categories/database-ideas-ideas&quot; class=&quot;externalLink&quot;&gt;https://community.oracle.com/tech/apps-infra/categories/database-ideas-ideas&lt;/a&gt;</description>
-<category>New Features</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5B.oracle%20enhancement%20requests%5D%5D</link>
-<pubDate>Thu, 04 Mar 2021 17:59:00 GMT</pubDate>
-
-</item>
-<item>
-<title>New Features</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://apex.oracle.com/database-features/&quot; href=&quot;https://apex.oracle.com/database-features/&quot; class=&quot;externalLink&quot;&gt;https://apex.oracle.com/database-features/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://twitter.com/dominic_giles/status/1169161999026184193&quot; href=&quot;https://twitter.com/dominic_giles/status/1169161999026184193&quot; class=&quot;externalLink&quot;&gt;https://twitter.com/dominic_giles/status/1169161999026184193&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/csARb3I.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
-<category>Oracle</category>
-<category>MigrationUpgrade</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BNew%20Features%5D%5D</link>
-<pubDate>Thu, 04 Mar 2021 17:54:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp db migration</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.pluralsight.com/courses/enterprise-database-migration&quot; href=&quot;https://www.pluralsight.com/courses/enterprise-database-migration&quot; class=&quot;externalLink&quot;&gt;https://www.pluralsight.com/courses/enterprise-database-migration&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.</description>
-<category>gcp bare metal , gcp oracle bare metal, gcp bms</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20db%20migration%5D%5D</link>
-<pubDate>Thu, 04 Mar 2021 17:42:00 GMT</pubDate>
-
-</item>
-<item>
-<title>gcp bare metal , gcp oracle bare metal, gcp bms</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://medium.com/google-cloud-platform-by-cloud-ace/oracle-database-on-google-cloud-platform-what-do-you-need-to-know-1e331c874c24&quot; href=&quot;https://medium.com/google-cloud-platform-by-cloud-ace/oracle-database-on-google-cloud-platform-what-do-you-need-to-know-1e331c874c24&quot; class=&quot;externalLink&quot;&gt;https://medium.com/google-cloud-platform-by-cloud-ace/oracle-database-on-google-cloud-platform-what-do-you-need-to-know-1e331c874c24&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/bare-metal&quot; href=&quot;https://cloud.google.com/bare-metal&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/bare-metal&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://cloud.google.com/solutions/migrating-bare-metal-workloads&quot; href=&quot;https://cloud.google.com/solutions/migrating-bare-metal-workloads&quot; class=&quot;externalLink&quot;&gt;https://cloud.google.com/solutions/migrating-bare-metal-workloads&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;gcp bms servers &lt;a target=&quot;_blank&quot; title=&quot;External link to https://atos.net/en/solutions/enterprise-servers/bullsequana-s&quot; href=&quot;https://atos.net/en/solutions/enterprise-servers/bullsequana-s&quot; class=&quot;externalLink&quot;&gt;https://atos.net/en/solutions/enterprise-servers/bullsequana-s&lt;/a&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt; the hosting vendor is ATOS&lt;/li&gt;&lt;li&gt; the machine is Bullsequana &lt;/li&gt;&lt;/ul&gt;</description>
-<category>Google Compute Platform</category>
-<category>cloud OLTP</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bgcp%20bare%20metal%20%2C%20gcp%20oracle%20bare%20metal%2C%20gcp%20bms%5D%5D</link>
-<pubDate>Wed, 03 Mar 2021 06:31:00 GMT</pubDate>
-
-</item>
-<item>
-<title>aws db migration dms and sct</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/results?search_query=AWS+DMS+and+SCT&quot; href=&quot;https://www.youtube.com/results?search_query=AWS+DMS+and+SCT&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/results?search_query=AWS+DMS+and+SCT&lt;/a&gt;&lt;br&gt;AWS re:Invent 2018: Migrating Databases to the Cloud with AWS Database Migration Service (&lt;a tiddlylink=&quot;DAT207&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DAT207&quot; href=&quot;http://karlarao.tiddlyspot.com#DAT207&quot; class=&quot;externalLink null&quot;&gt;DAT207&lt;/a&gt;) &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.youtube.com/watch?v=11IHvxjy4hw&quot; href=&quot;https://www.youtube.com/watch?v=11IHvxjy4hw&quot; class=&quot;externalLink&quot;&gt;https://www.youtube.com/watch?v=11IHvxjy4hw&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; DMS &lt;/h1&gt;Lab Session - Migrating from Oracle to Aurora using AWS Data Migration Service &lt;a target=&quot;_blank&quot; title=&quot;External link to https://learning.oreilly.com/videos/aws-certified-sysops/9781788999946/9781788999946-video7_6?autoplay=false&quot; href=&quot;https://learning.oreilly.com/videos/aws-certified-sysops/9781788999946/9781788999946-video7_6?autoplay=false&quot; class=&quot;externalLink&quot;&gt;https://learning.oreilly.com/videos/aws-certified-sysops/9781788999946/9781788999946-video7_6?autoplay=false&lt;/a&gt;&lt;br&gt;Using an Oracle Database as a Source for AWS DMS &lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.Oracle.html&quot; href=&quot;https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.Oracle.html&quot; class=&quot;externalLink&quot;&gt;https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.Oracle.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://ilparle.com/2017/08/30/setup-change-data-capture-cdc-for-dms/&quot; href=&quot;https://ilparle.com/2017/08/30/setup-change-data-capture-cdc-for-dms/&quot; class=&quot;externalLink&quot;&gt;https://ilparle.com/2017/08/30/setup-change-data-capture-cdc-for-dms/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.pythian.com/aws-dms-tips-oracle-migrations/&quot; href=&quot;https://blog.pythian.com/aws-dms-tips-oracle-migrations/&quot; class=&quot;externalLink&quot;&gt;https://blog.pythian.com/aws-dms-tips-oracle-migrations/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; SCT&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://aws.amazon.com/blogs/database/tag/schema-conversion-tool-sct/&quot; href=&quot;https://aws.amazon.com/blogs/database/tag/schema-conversion-tool-sct/&quot; class=&quot;externalLink&quot;&gt;https://aws.amazon.com/blogs/database/tag/schema-conversion-tool-sct/&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>AWS RDS - Oracle</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Baws%20db%20migration%20dms%20and%20sct%5D%5D</link>
-<pubDate>Wed, 03 Mar 2021 06:30:00 GMT</pubDate>
-
-</item>
-<item>
-<title>AWS RDS - Oracle</title>
-<description>&lt;blockquote&gt;&lt;br&gt;&lt;br&gt;Oracle on RDS &lt;br&gt;&lt;br&gt;There are Oracle native features that do not work with RDS such as RAC, Data Guard and RMAN.&lt;br&gt;Instead of Data Guard,  RDS uses replicas which is basically block copies from primary to replica copy.&lt;br&gt;Backups via RMAN are not possible.  AWS performs storage volume snapshots.&lt;br&gt;Hot backups are possible only if there is a replica in play.  In this case, the backup is taken from the secondary instead of the primary.  If there is only a primary, the storage snapshot will cause and temporary I/O suspension; so no hot backup.&lt;br&gt;No access to sys/system; some normal DBA tasks will need to be done via AWS api.&lt;br&gt;No access to underlying file system&lt;br&gt; &lt;br&gt;If they really want Oracle on AWS, I would recommend putting Oracle on &lt;a tiddlylink=&quot;EC2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#EC2&quot; href=&quot;http://karlarao.tiddlyspot.com#EC2&quot; class=&quot;externalLink null&quot;&gt;EC2&lt;/a&gt;.  The performance and cost are better on OCI.&lt;br&gt; &lt;br&gt;&lt;br&gt;Oracle RDS database max size up to 6TB&lt;br&gt;Getting Data into RDS is also another challenge – you are limited to datapump  and can’t not use lift and shift approach as RMAN backup is not supported.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
-<category>Amazon EC2, AWS</category>
-<category>cloud OLTP</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BAWS%20RDS%20-%20Oracle%5D%5D</link>
-<pubDate>Wed, 03 Mar 2021 06:07:00 GMT</pubDate>
 
 </item>
 </channel>
