@@ -6,10 +6,258 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2021 YourName</copyright>
-<pubDate>Tue, 06 Apr 2021 05:57:42 GMT</pubDate>
-<lastBuildDate>Tue, 06 Apr 2021 05:57:42 GMT</lastBuildDate>
+<pubDate>Sat, 10 Apr 2021 16:37:35 GMT</pubDate>
+<lastBuildDate>Sat, 10 Apr 2021 16:37:35 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
+<item>
+<title>Elapsed-AvgMinMax , ash elap - shark fin</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' ash elap - shark fin ', event)&quot;&gt; ash elap - shark fin &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Making use of STDDEV on elapsed time', event)&quot;&gt; Making use of STDDEV on elapsed time&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; ash elap - shark fin &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;tableau calculated field &lt;br&gt;&lt;pre&gt;DATEDIFF('second',MIN([TMS]),max([TM]))
+
+
+Above calculates the diff of these two columns to form a shark fin, bigger fins mean longer running query. Then you can use the ASH dimensions to slice and dice the data
+min(SQL_EXEC_START), max(SAMPLE_TIME)
+&lt;/pre&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/XqWgFxM.jpg&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://i.imgur.com/OzlGpU4.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2011/05/04/sql-execution-times-from-ash/&quot; href=&quot;http://dboptimizer.com/2011/05/04/sql-execution-times-from-ash/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2011/05/04/sql-execution-times-from-ash/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2011/05/06/sql-timings-for-ash-ii/&quot; href=&quot;http://dboptimizer.com/2011/05/06/sql-timings-for-ash-ii/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2011/05/06/sql-timings-for-ash-ii/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://dboptimizer.com/2011/05/06/sql-ash-timings-iii/&quot; href=&quot;http://dboptimizer.com/2011/05/06/sql-ash-timings-iii/&quot; class=&quot;externalLink&quot;&gt;http://dboptimizer.com/2011/05/06/sql-ash-timings-iii/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;blockquote&gt;&lt;ul&gt;&lt;li&gt; this is pretty awesome way of characterizing the response times of &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt;.. another way of doing this is through 10046 trace and using the Mr. Tools, and there are so many things you can do with both of the tools, another thing I'm interested in (although not related to this tiddler) is getting the IO size distribution from the 10046 along side it is the data coming from ASH which is basically pulling the data from the p1,p2,p3 values of the IO events.. &lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;[oracle@oel5-11g bin]$ cat ash_test.sh
+export DATE=$(date +%Y%m%d%H%M%S%N)
+
+sqlplus &quot;/ as sysdba&quot; &amp;lt;&amp;lt;EOF
+set timing on
+set echo on
+spool all_nodes_full_table_scan_$DATE.log
+
+select /* ash_elapsed */ * from
+(select owner, object_name from karltest
+where owner = 'SYSTEM'
+and object_type = 'TABLE'
+union
+select owner, object_name from karltest
+where owner = 'SYSTEM'
+and object_type = 'INDEX')
+order by object_name
+/
+
+spool off
+exit
+EOF
+[oracle@oel5-11g bin]$
+[oracle@oel5-11g bin]$ cat loadtest.sh
+(( n=0 ))
+while (( n&amp;lt;$1 ));do
+(( n=n+1 ))
+sh ash_test.sh &amp;amp;
+done
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;[oracle@oel5-11g bin]$ ls -ltr
+total 1468
+-rwxr-xr-x 1 oracle oinstall    107 Apr 23 08:21 startdb.sh
+-rwxr-xr-x 1 oracle oinstall    118 Apr 23 08:21 stopdb.sh
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:12 all_nodes_full_table_scan_20110505181225583938000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508275739000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508273773000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508273060000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508269189000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508265790000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508262532000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508259253000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508256596000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508251337000.log
+-rw-r--r-- 1 oracle oinstall 127675 May  5 18:17 all_nodes_full_table_scan_20110505181508245849000.log
+-rw-r--r-- 1 oracle oinstall     64 May  5 19:23 loadtest.sh
+-rw-r--r-- 1 oracle oinstall    397 May  5 19:23 ash_test.sh
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;[oracle@oel5-11g bin]$ cat *log | grep Elapsed
+Elapsed: 00:00:15.00
+Elapsed: 00:02:00.41
+Elapsed: 00:02:00.10
+Elapsed: 00:02:00.03
+Elapsed: 00:02:00.15
+Elapsed: 00:02:00.32
+Elapsed: 00:02:00.08
+Elapsed: 00:02:00.20
+Elapsed: 00:01:59.99
+Elapsed: 00:02:00.31
+Elapsed: 00:02:00.11
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt; SELECT /* example */ substr(sql_text, 1, 80) sql_text,
+           sql_id, 
+	    hash_value, address, child_number, plan_hash_value, FIRST_LOAD_TIME
+      FROM v$sql
+     WHERE 
+	--sql_id = '6wps6tju5b8tq'
+	-- hash_value = 1481129178
+	sql_text LIKE '%ash_elapsed%'
+       AND sql_text NOT LIKE '%example%' 
+      order by first_load_time; 
+
+SQL_TEXT                                                                                                                                                            SQL_ID        HASH_VALUE ADDRESS           CHILD_NUMBER PLAN_HASH_VALUE FIRST_LOAD_TIME
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ------------- ---------- ---------------- ------------ --------------- ----------------------------------------------------------------------------
+select /* ash_elapsed */ * from (select owner, object_name from karltest where o                                                                                    gy6j5kg641saa 3426804042 000000006C523480             0      1959977140 2011-05-05/18:12:25
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;pre&gt;select sql_id, 
+      run_time run_time_timestamp, 
+ (EXTRACT(HOUR FROM run_time) * 3600
+                    + EXTRACT(MINUTE FROM run_time) * 60 
+                    + EXTRACT(SECOND FROM run_time)) run_time_sec
+from  (
+select 
+       sql_id,
+       max(sample_time - sql_exec_start) run_time 
+from 
+       dba_hist_active_sess_history 
+where
+       sql_exec_start is not null 
+group by sql_id,SQL_EXEC_ID
+order by sql_id 
+)
+-- where rownum &amp;lt; 100
+where sql_id = 'gy6j5kg641saa'
+order by sql_id, run_time desc
+/
+
+SQL_ID        RUN_TIME_TIMESTAMP                                                          RUN_TIME_SEC
+------------- --------------------------------------------------------------------------- ------------
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:54.575                                                          114.575
+gy6j5kg641saa +000000000 00:01:53.575                                                          113.575
+gy6j5kg641saa +000000000 00:01:53.575                                                          113.575
+gy6j5kg641saa +000000000 00:00:11.052                                                           11.052
+
+11 rows selected.
+&lt;/pre&gt;&lt;br&gt;&lt;pre&gt;select sql_id,  
+		count(*),
+        round(avg(EXTRACT(HOUR FROM run_time) * 3600
+                    + EXTRACT(MINUTE FROM run_time) * 60 
+                    + EXTRACT(SECOND FROM run_time)),2) avg , 
+        round(min(EXTRACT(HOUR FROM run_time) * 3600
+                    + EXTRACT(MINUTE FROM run_time) * 60 
+                    + EXTRACT(SECOND FROM run_time)),2) min , 
+        round(max(EXTRACT(HOUR FROM run_time) * 3600
+                    + EXTRACT(MINUTE FROM run_time) * 60 
+                    + EXTRACT(SECOND FROM run_time)),2) max 
+from  (
+        select 
+               sql_id,
+               max(sample_time - sql_exec_start) run_time
+        from 
+               dba_hist_active_sess_history 
+        where
+               sql_exec_start is not null 
+               and sql_id = 'gy6j5kg641saa'
+        group by sql_id,SQL_EXEC_ID
+        order by sql_id 
+       )
+-- where rownum &amp;lt; 100
+group by sql_id
+order by avg desc
+/
+
+SQL_ID          COUNT(*)      AVG        MIN        MAX
+------------- ---------- -------- ---------- ----------
+gy6j5kg641saa         11  104.980      11.05     114.58
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;span&gt;—&lt;/span&gt; Also verify the data points and avg min max in Excel &lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://lh6.googleusercontent.com/_F2x5WXOJ6Q8/TcKKM6OwQNI/AAAAAAAABQQ/6AunDw4VDvI/avgminmax.png&quot; title=&quot;picturename&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL&amp;gt; select count(*) from karltest;&lt;br&gt;&lt;br&gt;  COUNT(*)&lt;br&gt;&lt;hr&gt;   2215968&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL&amp;gt; insert into karltest select * from dba_objects;&lt;br&gt;&lt;br&gt;69249 rows created.&lt;br&gt;&lt;br&gt;Elapsed: 00:00:00.86&lt;br&gt;SQL&amp;gt; commit;&lt;br&gt;&lt;br&gt;Commit complete.&lt;br&gt;&lt;br&gt;SQL&amp;gt; select count(*) from karltest;&lt;br&gt;&lt;br&gt;  COUNT(*)&lt;br&gt;&lt;hr&gt;     69249&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;[oracle@oel5-11g bin]$ cat *log | grep Elapsed&lt;br&gt;Elapsed: 00:00:00.67&lt;br&gt;Elapsed: 00:00:00.35&lt;br&gt;Elapsed: 00:00:01.16&lt;br&gt;Elapsed: 00:00:00.33&lt;br&gt;Elapsed: 00:00:00.35&lt;br&gt;Elapsed: 00:00:00.31&lt;br&gt;Elapsed: 00:00:00.31&lt;br&gt;Elapsed: 00:00:01.32&lt;br&gt;Elapsed: 00:00:00.34&lt;br&gt;Elapsed: 00:00:00.31&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt; SELECT /* example */ substr(sql_text, 1, 80) sql_text,&lt;br&gt;           sql_id, &lt;br&gt;	    hash_value, address, child_number, plan_hash_value, &lt;a tiddlylink=&quot;FIRST_LOAD_TIME&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#FIRST_LOAD_TIME&quot; href=&quot;http://karlarao.tiddlyspot.com#FIRST_LOAD_TIME&quot; class=&quot;externalLink null&quot;&gt;FIRST_LOAD_TIME&lt;/a&gt;&lt;br&gt;      FROM v$sql&lt;br&gt;     WHERE &lt;br&gt;	&lt;strike&gt;sql_id = '6wps6tju5b8tq'&lt;br&gt;	&lt;/strike&gt; hash_value = 1481129178&lt;br&gt;	sql_text LIKE '%ash_elapsed2%'&lt;br&gt;       AND sql_text NOT LIKE '%example%' &lt;br&gt;      order by first_load_time; &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL&amp;gt;  SELECT /* example */ substr(sql_text, 1, 80) sql_text,&lt;br&gt;  2             sql_id,&lt;br&gt;  3         hash_value, address, child_number, plan_hash_value, &lt;a tiddlylink=&quot;FIRST_LOAD_TIME&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#FIRST_LOAD_TIME&quot; href=&quot;http://karlarao.tiddlyspot.com#FIRST_LOAD_TIME&quot; class=&quot;externalLink null&quot;&gt;FIRST_LOAD_TIME&lt;/a&gt;&lt;br&gt;  4        FROM v$sql&lt;br&gt;  5       WHERE&lt;br&gt;  6     &lt;strike&gt;sql_id = '6wps6tju5b8tq'&lt;br&gt;  7     &lt;/strike&gt; hash_value = 1481129178&lt;br&gt;  8     sql_text LIKE '%ash_elapsed2%'&lt;br&gt;  9         AND sql_text NOT LIKE '%example%'&lt;br&gt;      order by first_load_time;  10&lt;br&gt;&lt;br&gt;&lt;a tiddlylink=&quot;SQL_TEXT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_TEXT&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_TEXT&quot; class=&quot;externalLink null&quot;&gt;SQL_TEXT&lt;/a&gt;                                                                                                                                                            &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt;        &lt;a tiddlylink=&quot;HASH_VALUE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#HASH_VALUE&quot; href=&quot;http://karlarao.tiddlyspot.com#HASH_VALUE&quot; class=&quot;externalLink null&quot;&gt;HASH_VALUE&lt;/a&gt; ADDRESS           &lt;a tiddlylink=&quot;CHILD_NUMBER&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CHILD_NUMBER&quot; href=&quot;http://karlarao.tiddlyspot.com#CHILD_NUMBER&quot; class=&quot;externalLink null&quot;&gt;CHILD_NUMBER&lt;/a&gt; &lt;a tiddlylink=&quot;PLAN_HASH_VALUE&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#PLAN_HASH_VALUE&quot; href=&quot;http://karlarao.tiddlyspot.com#PLAN_HASH_VALUE&quot; class=&quot;externalLink null&quot;&gt;PLAN_HASH_VALUE&lt;/a&gt; &lt;a tiddlylink=&quot;FIRST_LOAD_TIME&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#FIRST_LOAD_TIME&quot; href=&quot;http://karlarao.tiddlyspot.com#FIRST_LOAD_TIME&quot; class=&quot;externalLink null&quot;&gt;FIRST_LOAD_TIME&lt;/a&gt;&lt;br&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt; &lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;- &lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;span&gt;—&lt;/span&gt; &lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt; &lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt; &lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;- &lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;strike&gt;&lt;/strike&gt;&lt;span&gt;—&lt;/span&gt;&lt;br&gt;select /* ash_elapsed2 */ * from (select owner, object_name from karltest where                                                                                     4bkcftyvj2j6p 3071362261 000000006C776858             0      1959977140 2011-05-05/19:59:58&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL&amp;gt; BEGIN&lt;br&gt;  &lt;a tiddlylink=&quot;DBMS_WORKLOAD_REPOSITORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DBMS_WORKLOAD_REPOSITORY&quot; href=&quot;http://karlarao.tiddlyspot.com#DBMS_WORKLOAD_REPOSITORY&quot; class=&quot;externalLink null&quot;&gt;DBMS_WORKLOAD_REPOSITORY&lt;/a&gt;.&lt;a tiddlylink=&quot;CREATE_SNAPSHOT&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CREATE_SNAPSHOT&quot; href=&quot;http://karlarao.tiddlyspot.com#CREATE_SNAPSHOT&quot; class=&quot;externalLink null&quot;&gt;CREATE_SNAPSHOT&lt;/a&gt; ();&lt;br&gt;END;&lt;br&gt;/  2    3    4&lt;br&gt;&lt;br&gt;PL/SQL procedure successfully completed.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;SQL&amp;gt; select sql_id,&lt;br&gt;  2        run_time run_time_timestamp,&lt;br&gt;  3   (EXTRACT(HOUR FROM run_time) * 3600&lt;br&gt;                    + EXTRACT(MINUTE FROM run_time) * 60&lt;br&gt;  4    5                      + EXTRACT(SECOND FROM run_time)) run_time_sec&lt;br&gt;  6  from  (&lt;br&gt;  7  select&lt;br&gt;  8         sql_id,&lt;br&gt;  9         max(sample_time - sql_exec_start) run_time&lt;br&gt; 10  from&lt;br&gt; 11         dba_hist_active_sess_history&lt;br&gt; 12  where&lt;br&gt; 13         sql_exec_start is not null&lt;br&gt; 14  group by sql_id,&lt;a tiddlylink=&quot;SQL_EXEC_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_EXEC_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_EXEC_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_EXEC_ID&lt;/a&gt;&lt;br&gt;order by sql_id&lt;br&gt; 15   16  )&lt;br&gt;&lt;span&gt;—&lt;/span&gt; where rownum &amp;lt; 100&lt;br&gt; 17   18  where sql_id = '4bkcftyvj2j6p'&lt;br&gt; 19  order by sql_id, run_time desc&lt;br&gt;/ 20&lt;br&gt;&lt;br&gt;no rows selected&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Making use of STDDEV on elapsed time&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;This gets the avg,min,max,stddev on a specific time window.. then drill down further with a join on dba_hist_active_sess_history with particular filters (module, user, etc.)&lt;br&gt;&lt;br&gt;&lt;pre&gt;
+-- CREATE A TEMP TABLE THAT SHOWS AVG,MIN,MAX,STDDEV RESPONSE TIME OF SQLS    
+define begin='03/08/2012 14:40'
+define end='03/08/2012 14:45'
+
+
+SYS@fsprd2&amp;gt; create table karl_sql_id2 as
+select sql_id,
+  2    3                  count(*) count,
+  4          round(avg(EXTRACT(HOUR FROM run_time) * 3600
+  5                      + EXTRACT(MINUTE FROM run_time) * 60
+  6                      + EXTRACT(SECOND FROM run_time)),2) avg ,
+  7          round(min(EXTRACT(HOUR FROM run_time) * 3600
+  8                      + EXTRACT(MINUTE FROM run_time) * 60
+  9                      + EXTRACT(SECOND FROM run_time)),2) min ,
+10          round(max(EXTRACT(HOUR FROM run_time) * 3600
+11                      + EXTRACT(MINUTE FROM run_time) * 60
+12                      + EXTRACT(SECOND FROM run_time)),2) max,
+13          round(stddev(EXTRACT(HOUR FROM run_time) * 3600
+14                      + EXTRACT(MINUTE FROM run_time) * 60
+15                      + EXTRACT(SECOND FROM run_time)),2) stddev
+16  from  (
+17          select
+18                 sql_id,
+19                 max(sample_time - sql_exec_start) run_time
+20          from
+21                 dba_hist_active_sess_history
+22          where
+23                 sql_exec_start is not null
+24                                         and sample_time
+25                                         between to_date('&amp;amp;begin', 'MM/DD/YY HH24:MI:SS')
+26                                         and to_date('&amp;amp;end', 'MM/DD/YY HH24:MI:SS')
+27          group by sql_id,SQL_EXEC_ID
+28          order by sql_id
+29         )
+30  group by sql_id
+31  order by avg desc
+32  /
+
+Table created.
+
+
+define _start_time='03/08/2012 14:40'
+define _end_time='03/08/2012 14:45'
+
+
+SYS@fsprd2&amp;gt; select * from karl_sql_id2
+where sql_id in
+  2    3        (select sql_id from
+  4     dba_hist_active_sess_history
+  5     where sample_time
+  6                                            between to_date('&amp;amp;_start_time', 'MM/DD/YY HH24:MI')
+  7                                            and to_date('&amp;amp;_end_time', 'MM/DD/YY HH24:MI')
+  8     and lower(module) like 'ex_%')
+  9  order by stddev asc;
+
+SQL_ID             COUNT        AVG        MIN        MAX     STDDEV
+------------- ---------- ---------- ---------- ---------- ----------
+aadkvg74cknvc          1         .8         .8         .8          0
+c96tdmv2wu0mb          1        .81        .81        .81          0
+03zk40yazk2cj          1        .81        .81        .81          0
+89s2kmgjcyg08          1       1.96       1.96       1.96          0
+cb5gq5xu04sbb          3        2.6       1.92       3.93       1.15
+991y15af5jxx9          5       2.07        .96       5.93       2.16
+c2fn0swka653f          6      18.94       9.99      28.99       7.28
+
+7 rows selected.
+
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>ASH</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BElapsed-AvgMinMax%20%2C%20ash%20elap%20-%20shark%20fin%5D%5D</link>
+<pubDate>Sat, 10 Apr 2021 16:37:32 GMT</pubDate>
+
+</item>
+<item>
+<title>OCI hugepages, oracle cloud hugepages</title>
+<description>&lt;br&gt;&lt;blockquote&gt;my experience: &lt;br&gt;&lt;ul&gt;&lt;li&gt; automatically configured in &lt;a tiddlylink=&quot;X8M&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#X8M&quot; href=&quot;http://karlarao.tiddlyspot.com#X8M&quot; class=&quot;externalLink null&quot;&gt;X8M&lt;/a&gt;&lt;/li&gt;&lt;li&gt; &lt;a tiddlylink=&quot;CDBs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CDBs&quot; href=&quot;http://karlarao.tiddlyspot.com#CDBs&quot; class=&quot;externalLink null&quot;&gt;CDBs&lt;/a&gt; are set to use_large_pages=ONLY &lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blog.pythian.com/hugepages-for-oracle-database-in-oracle-cloud/&quot; href=&quot;https://blog.pythian.com/hugepages-for-oracle-database-in-oracle-cloud/&quot; class=&quot;externalLink&quot;&gt;https://blog.pythian.com/hugepages-for-oracle-database-in-oracle-cloud/&lt;/a&gt;&lt;br&gt;</description>
+<category>HugePages</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BOCI%20hugepages%2C%20oracle%20cloud%20hugepages%5D%5D</link>
+<pubDate>Sat, 10 Apr 2021 14:37:57 GMT</pubDate>
+
+</item>
+<item>
+<title>EXACS - exadata cloud service oci</title>
+<description>&lt;br&gt;.</description>
+<category>EXACC - Exadata Cloud at Customer</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BEXACS%20-%20exadata%20cloud%20service%20oci%5D%5D</link>
+<pubDate>Sat, 10 Apr 2021 14:34:44 GMT</pubDate>
+
+</item>
+<item>
+<title>.disable sql profile and baselines</title>
+<description>&lt;blockquote&gt;QUESTION:&lt;br&gt;is there a way to ignore hints AND profiles through 1 single parameter?&lt;br&gt;like **** you all hints and profiles i hate you!&lt;br&gt; or is the only way to do this is set _optimizer_ignore_hints and disable/drop all profiles ?&lt;br&gt;&lt;br&gt;ANSWER: &lt;br&gt;For profiles: ALTER SESSION SET &lt;a tiddlylink=&quot;SQLTUNE_CATEGORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; class=&quot;externalLink null&quot;&gt;SQLTUNE_CATEGORY&lt;/a&gt; = 'IGNOREMENOW';&lt;br&gt;For baselines: ALTER SESSION SET &lt;a tiddlylink=&quot;OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; href=&quot;http://karlarao.tiddlyspot.com#OPTIMIZER_USE_SQL_PLAN_BASELINES&quot; class=&quot;externalLink null&quot;&gt;OPTIMIZER_USE_SQL_PLAN_BASELINES&lt;/a&gt;=false&lt;br&gt;&lt;br&gt;just everything off, these are the knobs :)  because gluent doesn't like having &lt;a tiddlylink=&quot;USE_NL&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#USE_NL&quot; href=&quot;http://karlarao.tiddlyspot.com#USE_NL&quot; class=&quot;externalLink null&quot;&gt;USE_NL&lt;/a&gt; hint on offloaded tables it errors with &lt;a tiddlylink=&quot;KUP-04108&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#KUP-04108&quot; href=&quot;http://karlarao.tiddlyspot.com#KUP-04108&quot; class=&quot;externalLink null&quot;&gt;KUP-04108&lt;/a&gt;: unable to reread file&lt;br&gt;just in case the developers have to deal with 1000+ &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt; we know how to attack this with these knobs&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;OTHER WAYS OF DISABLING: &lt;br&gt;&lt;a tiddlylink=&quot;IGNORE_OPTIM_EMBEDDED_HINTS&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; href=&quot;http://karlarao.tiddlyspot.com#IGNORE_OPTIM_EMBEDDED_HINTS&quot; class=&quot;externalLink null&quot;&gt;IGNORE_OPTIM_EMBEDDED_HINTS&lt;/a&gt; &amp;lt;- disables hints at session level  &lt;br&gt;&lt;pre&gt;select /*+ index(DEPT) ignore_optim_embedded_hints */ * from SCOTT.DEPT;
+&lt;/pre&gt;optimizer_ignore_hints &amp;lt;- database wide or session level through trigger&lt;br&gt;&lt;pre&gt;alter session set optimizer_ignore_hints=true;
+alter session set optimizer_ignore_parallel_hints=true;
+&lt;/pre&gt;&lt;/blockquote&gt;</description>
+<category>SQLProfiles</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.disable%20sql%20profile%20and%20baselines%5D%5D</link>
+<pubDate>Thu, 08 Apr 2021 17:05:00 GMT</pubDate>
+
+</item>
 <item>
 <title>VST optimized CTE and onion approach same query logic</title>
 <description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' rewrite process ', event)&quot;&gt; rewrite process &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' query logic before rewrite', event)&quot;&gt; query logic before rewrite&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' query logic after rewrite', event)&quot;&gt; query logic after rewrite&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' query logic onion approach', event)&quot;&gt; query logic onion approach&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' how do you compare 2 queries and say if they are logically equivalent?', event)&quot;&gt; how do you compare 2 queries and say if they are logically equivalent?&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the SQLs', event)&quot;&gt; the SQLs&lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' original 2.6hours', event)&quot;&gt; original 2.6hours&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 2nd version - optimized CTE', event)&quot;&gt; 2nd version - optimized CTE&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' 3rd version - onion approach ', event)&quot;&gt; 3rd version - onion approach &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; rewrite process &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; was able to rewrite the query, now runs 45secs in OUHUBPRD and 86secs in OUHUBDEV&lt;/li&gt;&lt;li&gt; transformed the correlated query cisadm.ci_per_name, cisadm.ci_acct_per to a join on cisadm.ci_sa &lt;/li&gt;&lt;li&gt; i retained the other one as correlated because it's just 80+ rows &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;pre&gt;cisa_cte_tmp as
@@ -851,12 +1099,12 @@ system@ouhubprd&amp;gt; select count(1) from t2;
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>..my rewrite examples</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BVST%20optimized%20CTE%20and%20onion%20approach%20same%20query%20logic%5D%5D</link>
-<pubDate>Tue, 06 Apr 2021 05:57:40 GMT</pubDate>
+<pubDate>Tue, 06 Apr 2021 05:57:00 GMT</pubDate>
 
 </item>
 <item>
 <title>normalized to unpivot, multiple left join rewrite</title>
-<description>&lt;br&gt;&lt;ul&gt;&lt;li&gt; if you UNPIVOT or denormalize you only join once on the table.generatedjobid and not join for every &quot;type&quot; or &quot;parametertype&quot;. you can also take advantage of parallelism and partition pruning on &quot;dateacquired&quot;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;pre&gt;
+<description>&lt;ul&gt;&lt;li&gt; if you UNPIVOT or denormalize you only join once on the table.generatedjobid and not join for every &quot;type&quot; or &quot;parametertype&quot;. you can also take advantage of parallelism and partition pruning on &quot;dateacquired&quot;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;pre&gt;
 # original 
 ```
 SELECT TOP (100) j.[generatedjobid],
@@ -1176,7 +1424,7 @@ RUNNAME,BEGIN,20160420 21:58:36,User I/O - cell multiblock physical read        
 &lt;/pre&gt;</description>
 <category>..my rewrite examples</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bnormalized%20to%20unpivot%2C%20multiple%20left%20join%20rewrite%5D%5D</link>
-<pubDate>Tue, 06 Apr 2021 04:17:32 GMT</pubDate>
+<pubDate>Tue, 06 Apr 2021 04:17:00 GMT</pubDate>
 
 </item>
 <item>
@@ -1460,245 +1708,6 @@ ELSE 'OTHER' END
 <category>Object Name, Access Predicates, Filter Predicates, Projection</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bsqlmonitor%20-%20start%20active%2C%20time%20active%5D%5D</link>
 <pubDate>Tue, 16 Mar 2021 15:15:00 GMT</pubDate>
-
-</item>
-<item>
-<title>Object Name, Access Predicates, Filter Predicates, Projection</title>
-<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Reading Execution Plans ', event)&quot;&gt; Reading Execution Plans &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' “Access Predicates” ', event)&quot;&gt; “Access Predicates” &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' “Filter Predicates”', event)&quot;&gt; “Filter Predicates”&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' column projection ', event)&quot;&gt; column projection &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' QB name ', event)&quot;&gt; QB name &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' gather_plan_statistics columns', event)&quot;&gt; gather_plan_statistics columns&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' starts', event)&quot;&gt; starts&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Reading Execution Plans &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/TGSQL/tgsql_interp.htm#TGSQL94618&quot; href=&quot;https://docs.oracle.com/database/121/TGSQL/tgsql_interp.htm#TGSQL94618&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/TGSQL/tgsql_interp.htm#TGSQL94618&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://blogs.oracle.com/sql/query-tuning-101:-comparing-execution-plans-and-access-vs-filter-predicates&quot; href=&quot;https://blogs.oracle.com/sql/query-tuning-101:-comparing-execution-plans-and-access-vs-filter-predicates&quot; class=&quot;externalLink&quot;&gt;https://blogs.oracle.com/sql/query-tuning-101:-comparing-execution-plans-and-access-vs-filter-predicates&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://blog.tanelpoder.com/files/Oracle_SQL_Plan_Execution.pdf&quot; href=&quot;http://blog.tanelpoder.com/files/Oracle_SQL_Plan_Execution.pdf&quot; class=&quot;externalLink&quot;&gt;http://blog.tanelpoder.com/files/Oracle_SQL_Plan_Execution.pdf&lt;/a&gt;&lt;br&gt;14 part series &lt;a target=&quot;_blank&quot; title=&quot;External link to https://jonathanlewis.wordpress.com/explain-plan/&quot; href=&quot;https://jonathanlewis.wordpress.com/explain-plan/&quot; class=&quot;externalLink&quot;&gt;https://jonathanlewis.wordpress.com/explain-plan/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; “Access Predicates” &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Predicates used to locate rows in an access structure. For example, start or stop predicates for an index range scan, hash join &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; “Filter Predicates”&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; Predicates used to filter rows before producing them.&lt;/li&gt;&lt;li&gt; Any condition that would throw away/filter rows &lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;h1&gt; column projection &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;“column projection” is what you extract from the rowsource you are reading.&lt;br&gt;In set theory you project (subset of columns) and filter (subset of rows) &lt;br&gt;so for example “select object_id from table” then you are projecting just “object_id” column&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; QB name &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt; name of the query block, either system-generated or defined by the user with the &lt;a tiddlylink=&quot;QB_NAME&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#QB_NAME&quot; href=&quot;http://karlarao.tiddlyspot.com#QB_NAME&quot; class=&quot;externalLink null&quot;&gt;QB_NAME&lt;/a&gt; hint&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; gather_plan_statistics columns&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.red-gate.com/simple-talk/sql/oracle/execution-plans-part-11-actuals/&quot; href=&quot;https://www.red-gate.com/simple-talk/sql/oracle/execution-plans-part-11-actuals/&quot; class=&quot;externalLink&quot;&gt;https://www.red-gate.com/simple-talk/sql/oracle/execution-plans-part-11-actuals/&lt;/a&gt; &lt;br&gt;here’s a reference to the rest of the columns relating to execution statistics:&lt;br&gt;&lt;br&gt;    Starts:  The number of times this operation actually occurred&lt;br&gt;    E-rows:  Estimated rows (per execution of the operation) – i.e. the “Rows” column from a call to display()&lt;br&gt;    A-rows:  The accumulated number of rows forwarded by this operation&lt;br&gt;    A-time:  The accumulated time spent in this operation – including time spent in its descendents.&lt;br&gt;    Buffers:  Accumulated buffer visits made by this operation – including its descendents.&lt;br&gt;    Reads:  Accumulated number of blocks read from disc by this operation – including its descendents.&lt;br&gt;    Writes:  Accumulated number of blocks written to disc by this operation – including its descendents.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;h1&gt; starts&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;blockquote&gt;so when we are trying to assess the accuracy of the optimizer’s predictions we generally need to compare &lt;a tiddlylink=&quot;A-Rows&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#A-Rows&quot; href=&quot;http://karlarao.tiddlyspot.com#A-Rows&quot; class=&quot;externalLink null&quot;&gt;A-Rows&lt;/a&gt; with E-rows * Starts and (as we shall see in the next article) we still have to be careful about deciding when that is a useful comparison and when it is meaningless.&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;</description>
-<category>ExecutionPlans</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BObject%20Name%2C%20Access%20Predicates%2C%20Filter%20Predicates%2C%20Projection%5D%5D</link>
-<pubDate>Tue, 16 Mar 2021 05:50:00 GMT</pubDate>
-
-</item>
-<item>
-<title>sqlmonitor - execs column</title>
-<description>&lt;pre&gt;The &quot;Execs&quot; of SQL Monitor Report Is Larger Than The Execution Count of DML Statement Sometimes (Doc ID 2639748.1)
-
-Applies to:
-Oracle Database - Enterprise Edition - Version 12.2.0.1 and later
-Information in this document applies to any platform.
-Goal
-The purpose of the note is to explain why sometimes the &quot;Execs&quot; of SQL Monitor Report is larger than the execution count of DML statement.
-
-
- 
-Solution
-
-The Executions column &quot;Execs&quot; of SQL Monitor Report displays the number of times each line of the plan has been executed.
-And due to write consistency DML operation need to restart if another session changed its target key value during its execution.
-
-For example:
-
-Test preparation:
-
-grant dba to osp identified by osp;
-
-conn osp/osp
-Connected.
-SQL&amp;gt; create table testa(col1 number,col2 number);
-begin
-  for i in 1..10000 loop
-    insert into testa values(i,i);
-  end loop;
-  commit;
-end;
-/
-exec DBMS_STATS.GATHER_TABLE_STATS('OSP', 'TESTA', method_opt =&amp;gt; 'FOR ALL COLUMNS',NO_INVALIDATE=&amp;gt;false);
-
-Session 1:
-
-SQL&amp;gt; update testa set col2=col2+1 where col1=5038;
-
-1 row updated.
-
-
-Session 2:
-
--- Update 18 rows data using COL1 as condition
-SQL&amp;gt; update /*+ monitor */ testa set col2=col2+1 where col1 in (1684,2243,2802,566,1125,3920,6715,7274,4479,5038,5597,6156,3361,7833,8392,8951,9510,10000);
-
--&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; Blocking by Session and hung.
-
-Session 3:
-
--- Change the COL1 value of one of target rows of Session 2 and commit.
-SQL&amp;gt; update testa set col1=col1+1 where col1 in (10000);
-
-1 row updated.
-
-SQL&amp;gt; commit;
-
-Commit complete.
-
-
-Session 4:
-
--- Check the &quot;Execs&quot; of SQL Monitor Report of the SQL statement of Session 2, currently the &quot;Execs&quot; is 1.
-SQL&amp;gt; set pagesize 1000 linesize 20000 long 100000 numwidth 10 echo on
-SQL&amp;gt; SELECT DBMS_SQLTUNE.report_sql_monitor(sql_id =&amp;gt; '36yyhquwybkk3', type =&amp;gt; 'TEXT') AS report FROM dual;
-
-REPORT
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SQL Monitoring Report
-
-SQL Text
-------------------------------
-update /*+ monitor */ testa set col2=col2+1 where col1 in (1684,2243,2802,566,1125,3920,6715,7274,4479,5038,5597,6156,3361,7833,8392,8951,9510,10000)
-
-Global Information
-------------------------------
- Status              :  EXECUTING
- Instance ID         :  1
- Session             :  OSP (55:26075)
- SQL ID              :  36yyhquwybkk3
- SQL Execution ID    :  16777217
- Execution Started   :  02/17/2020 11:32:11
- First Refresh Time  :  02/17/2020 11:32:11
- Last Refresh Time   :  02/17/2020 11:32:43
- Duration            :  35s
- Module/Action       :  SQL*Plus/-
- Service             :  SYS$USERS
- Program             :  sqlplus@celvpvm13887.us.oracle.com (TNS V1-V3)
-
-Global Stats
-============================================
-| Elapsed |   Cpu   | Application | Buffer |
-| Time(s) | Time(s) |  Waits(s)   |  Gets  |
-============================================
-|      32 |    0.00 |          32 |     27 |
-============================================
-
-SQL Plan Monitoring Details (Plan Hash Value=1298344373)
-================================================================================================================================================
-| Id   |      Operation       | Name  |  Rows   | Cost |   Time    | Start  | Execs |   Rows   | Activity |          Activity Detail           |
-|      |                      |       | (Estim) |      | Active(s) | Active |       | (Actual) |   (%)    |            (# samples)             |
-================================================================================================================================================
-|    0 | UPDATE STATEMENT     |       |         |      |         1 |     +3 |     1 |        0 |          |                                    |
-| -&amp;gt; 1 |   UPDATE             | TESTA |         |      |        35 |     +1 |     1 |        0 |   100.00 | enq: TX - row lock contention (34) |
-| -&amp;gt; 2 |    TABLE ACCESS FULL | TESTA |      18 |    7 |        30 |     +3 |     1 |       10 |          |                                    |
-================================================================================================================================================
-
-
-Session 1:
-　
-SQL&amp;gt; commit;
-
-Commit complete.
-
-Session 2:
-
--- Because Session 1 commited and released the lock, UPDATE proceed to execute and update 17 rows data according to the latest status of target status.
-SQL&amp;gt; update /*+ monitor */ testa set col2=col2+1 where col1 in (1684,2243,2802,566,1125,3920,6715,7274,4479,5038,5597,6156,3361,7833,8392,8951,9510,10000);
-
-17 rows updated.
-
-SQL&amp;gt;
-
-
-Session 4:
-
--- Check the &quot;Execs&quot; of SQL Monitor Report of the SQL statement of Session 2, the &quot;Execs&quot; become larger than 1.
-SQL&amp;gt; SELECT DBMS_SQLTUNE.report_sql_monitor(sql_id =&amp;gt; '36yyhquwybkk3', type =&amp;gt; 'TEXT') AS report FROM dual;
-
-REPORT
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SQL Monitoring Report
-
-SQL Text
-------------------------------
-update /*+ monitor */ testa set col2=col2+1 where col1 in (1684,2243,2802,566,1125,3920,6715,7274,4479,5038,5597,6156,3361,7833,8392,8951,9510,10000)
-
-Global Information
-------------------------------
- Status              :  DONE
- Instance ID         :  1
- Session             :  OSP (55:26075)
- SQL ID              :  36yyhquwybkk3
- SQL Execution ID    :  16777217
- Execution Started   :  02/17/2020 11:32:11
- First Refresh Time  :  02/17/2020 11:32:11
- Last Refresh Time   :  02/17/2020 11:33:02
- Duration            :  51s
- Module/Action       :  SQL*Plus/-
- Service             :  SYS$USERS
- Program             :  sqlplus@celvpvm13887.us.oracle.com (TNS V1-V3)
-
-Global Stats
-=======================================================
-| Elapsed |   Cpu   | Application |  Other   | Buffer |
-| Time(s) | Time(s) |  Waits(s)   | Waits(s) |  Gets  |
-=======================================================
-|      51 |    0.01 |          51 |     0.01 |    162 |
-=======================================================
-
-SQL Plan Monitoring Details (Plan Hash Value=1298344373)
-==============================================================================================================================================
-| Id |      Operation       | Name  |  Rows   | Cost |   Time    | Start  | Execs |   Rows   | Activity |          Activity Detail           |
-|    |                      |       | (Estim) |      | Active(s) | Active |       | (Actual) |   (%)    |            (# samples)             |
-==============================================================================================================================================
-|  0 | UPDATE STATEMENT     |       |         |      |        49 |     +3 |     3 |        1 |          |                                    |
-|  1 |   UPDATE             | TESTA |         |      |        52 |     +1 |     3 |        1 |   100.00 | enq: TX - row lock contention (51) |
-|  2 |    TABLE ACCESS FULL | TESTA |      18 |    7 |        49 |     +3 |     3 |       52 |          |                                    |
-==============================================================================================================================================
-
-
-If set 10046 events trace to above Session 2, we can find the restart is showing on the row source operation as &quot;starts=x&quot;.
-
-SQL ID: 36yyhquwybkk3 Plan Hash: 1298344373
-
-update /*+ monitor */ testa set col2=col2+1
-where
- col1 in (1684,2243,2802,566,1125,3920,6715,7274,4479,5038,5597,6156,3361,
-  7833,8392,8951,9510,10000)
-
-
-call     count       cpu    elapsed       disk      query    current        rows
-------- ------  -------- ---------- ---------- ---------- ----------  ----------
-Parse        1      0.00       0.00          0          0          0           0
-Execute      1      0.01      45.88          0         71         92          17
-Fetch        0      0.00       0.00          0          0          0           0
-------- ------  -------- ---------- ---------- ---------- ----------  ----------
-total        2      0.01      45.88          0         71         92          17
-
-Misses in library cache during parse: 1
-Optimizer mode: ALL_ROWS
-Parsing user id: 107
-Number of plan statistics captured: 1
-
-Rows (1st) Rows (avg) Rows (max)  Row Source Operation
----------- ---------- ----------  ---------------------------------------------------
-         0          0          0  UPDATE  TESTA (cr=71 pr=0 pw=0 time=45880583 us starts=3) &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;-------starts=3 indicates this operation restarted
-        52         52         52   TABLE ACCESS FULL TESTA (cr=70 pr=0 pw=0 time=3386 us starts=3 cost=7 size=144 card=18) &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;-------starts=3 indicates this operation restarted
-
-
-Elapsed times include waiting on following events:
-  Event waited on                             Times   Max. Wait  Total Waited
-  ----------------------------------------   Waited  ----------  ------------
-  enq: TX - row lock contention                   1       45.87         45.87
-  SQL*Net message to client                       1        0.00          0.00
-  SQL*Net message from client                     1       15.88         15.88
-********************************************************************************
-&lt;/pre&gt;</description>
-<category>RealTimeSQLMonitoring-sql_monitor</category>
-<category>Object Name, Access Predicates, Filter Predicates, Projection</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bsqlmonitor%20-%20execs%20column%5D%5D</link>
-<pubDate>Tue, 16 Mar 2021 05:45:00 GMT</pubDate>
-
-</item>
-<item>
-<title>tableau TRUNC CAST sql tuning</title>
-<description>&lt;blockquote&gt;Tableau generates ineffcienct SQL for date predicates using functins like &lt;a tiddlylink=&quot;DATE_PART&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#DATE_PART&quot; href=&quot;http://karlarao.tiddlyspot.com#DATE_PART&quot; class=&quot;externalLink null&quot;&gt;DATE_PART&lt;/a&gt;(), EXTRACT() and CAST()&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://community.tableau.com/s/question/0D54T00000C5mVXSAZ/tableau-generates-ineffcienct-sql-for-date-predicates-using-functins-like-datepart-extract-and-cast&quot; href=&quot;https://community.tableau.com/s/question/0D54T00000C5mVXSAZ/tableau-generates-ineffcienct-sql-for-date-predicates-using-functins-like-datepart-extract-and-cast&quot; class=&quot;externalLink&quot;&gt;https://community.tableau.com/s/question/0D54T00000C5mVXSAZ/tableau-generates-ineffcienct-sql-for-date-predicates-using-functins-like-datepart-extract-and-cast&lt;/a&gt;&lt;br&gt;&lt;br&gt;Performance Improvement: Use date range instead of casting #4043&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://github.com/metabase/metabase/issues/4043&quot; href=&quot;https://github.com/metabase/metabase/issues/4043&quot; class=&quot;externalLink&quot;&gt;https://github.com/metabase/metabase/issues/4043&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;</description>
-<category>tableau performance</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Btableau%20TRUNC%20CAST%20sql%20tuning%5D%5D</link>
-<pubDate>Sun, 14 Mar 2021 20:09:00 GMT</pubDate>
-
-</item>
-<item>
-<title>oci 360</title>
-<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://oci360.dbarj.com.br/&quot; href=&quot;http://oci360.dbarj.com.br/&quot; class=&quot;externalLink&quot;&gt;http://oci360.dbarj.com.br/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
-<category>oracle adw</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Boci%20360%5D%5D</link>
-<pubDate>Sun, 14 Mar 2021 20:05:00 GMT</pubDate>
 
 </item>
 </channel>
