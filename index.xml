@@ -6,29 +6,256 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2021 YourName</copyright>
-<pubDate>Thu, 15 Apr 2021 23:26:19 GMT</pubDate>
-<lastBuildDate>Thu, 15 Apr 2021 23:26:19 GMT</lastBuildDate>
+<pubDate>Mon, 26 Apr 2021 08:29:44 GMT</pubDate>
+<lastBuildDate>Mon, 26 Apr 2021 08:29:44 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>ASH IBM Curam batch instrumentation</title>
+<description>&lt;br&gt;I got the job chain info of IBM Curam batch from the dev team&lt;br&gt;&lt;br&gt;Here are the details of how the batch works &lt;br&gt;&lt;blockquote&gt;        IBM Cúram Social Program Management 7.0.10 - 7.0.11&lt;br&gt;&lt;br&gt;        Batch Streaming Architecture&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&lt;/a&gt;&lt;br&gt;        The Chunker&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&lt;/a&gt;&lt;br&gt;        The Stream&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;Here's the SQL to pull data from &lt;a tiddlylink=&quot;SCHEDULER_HISTORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; class=&quot;externalLink null&quot;&gt;SCHEDULER_HISTORY&lt;/a&gt; table &lt;br&gt;&lt;br&gt;&lt;pre&gt; SELECT *
+FROM   (SELECT Substr(H.job_name, Instr(H.job_name, 'jobId-') + 6, 20)
+               JOB_ID
+                      ,
+               Substr(H.job_name, Instr(H.job_name, 'job-') + 4,
+               Instr(H.job_name, '-jobId-') - ( Instr(H.job_name, 'job-') + 4 ))
+                      JOB_NAME,
+               H.start_time,
+               H.end_time,
+               Regexp_substr(H.job_name, '[A-Za-z0-9\-]+',
+               Instr(H.job_name, '/'))
+                      FUNCTIONAL_AREA,
+               Nvl(Regexp_substr(H.job_name, 'tier-[0-9]+'), 'N/A')
+               TIER,
+               Substr(H.job_name, 1, Instr(H.job_name, '/') - 1)
+                      ORDERED_OR_STANDALONE
+        FROM   scheduler_history H
+        WHERE  ( ( H.start_time BETWEEN :startTime AND :endTime )
+                  OR ( :startTime BETWEEN H.start_time AND H.end_time
+                        OR ( :startTime &amp;gt;= H.start_time
+                             AND H.end_time IS NULL ) ) )
+               AND H.start_time &amp;gt; To_date(:startTime, 'YYYYMMDD HH24:MI:SS') - 2
+               AND H.job_name LIKE '%jobId%'
+               AND H.job_name NOT LIKE '%parallel%'
+               AND H.job_name NOT LIKE '%snyc%'
+               AND H.job_name NOT LIKE '%Reporting%'
+               AND H.job_name NOT LIKE '%Stream%'
+        ORDER  BY 5,
+                  3) sub1
+ORDER  BY 3 ASC  
+&lt;/pre&gt;&lt;br&gt;This is the dependency diagram of the jobs, I defined the levels 1 to 5 to clearly see the sequential dependency on the data set&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116051201-53df5980-a646-11eb-8acc-85946c99a655.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Here's the calculated field I used. The tableau developer needs to complete this as reflected on the diagram above. What I did is just the jobs executed on 20210317.xlsx data set&lt;br&gt;&lt;br&gt;&lt;pre&gt;IF contains(lower(trim([Functional Area])),'daytimebatch')=true then 'level 0'
+ELSEIF contains(lower(trim([Functional Area])),'standalone-only')=true then 'level 0'
+ELSEIF contains(lower(trim([Functional Area])),'post-start-of-batchjobs')=true then 'level 1'
+
+ELSEIF contains(lower(trim([Functional Area])),'recipientfile')=true then 'level 2'
+ELSEIF contains(lower(trim([Functional Area])),'pre-financials')=true then 'level 2'
+
+ELSEIF contains(lower(trim([Functional Area])),'post-financials-reports')=true then 'level 4'
+ELSEIF contains(lower(trim([Functional Area])),'post-financials')=true then 'level 4'
+ELSEIF contains(lower(trim([Functional Area])),'post-financials2')=true then 'level 4'
+ELSEIF contains(lower(trim([Functional Area])),'pre-bulkprint')=true then 'level 4'
+
+ELSEIF contains(lower(trim([Functional Area])),'bulkprint')=true then 'level 5'
+ELSEIF contains(lower(trim([Functional Area])),'ebt-2')=true then 'level 5'
+ELSEIF contains(lower(trim([Functional Area])),'ebt-response')=true then 'level 5'
+
+ELSEIF contains(lower(trim([Functional Area])),'financials')=true then 'level 3'
+ELSEIF contains(lower(trim([Functional Area])),'ebt')=true then 'level 4'
+
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Here's the gantt chart. &lt;br&gt;&lt;br&gt;From here we can be tactical and systematic when it comes to tuning. We can identify the blocking jobs and the longest running jobs and how it impacts the overall batch elapsed time. We can isolate these jobs from the Dynatrace instrumentation and even run the identified bad performing batch as standalone and then profile/tune the top &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt;. &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116051156-4924c480-a646-11eb-85bf-265efbe56fa4.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Here's how to create the gantt chart but the tableau developer needs to tap the &lt;a tiddlylink=&quot;SCHEDULER_HISTORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; class=&quot;externalLink null&quot;&gt;SCHEDULER_HISTORY&lt;/a&gt; table directly instead of a data dump from SQL&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116051200-5346c300-a646-11eb-88b1-6fbab7b01cb0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>ASH perf instrumentation</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BASH%20IBM%20Curam%20batch%20instrumentation%5D%5D</link>
+<pubDate>Mon, 26 Apr 2021 08:29:41 GMT</pubDate>
+
+</item>
+<item>
+<title>ASH ORMB and OBIEE batch instrumentation</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' End to end picture of ORMB and OBIEE performance', event)&quot;&gt; End to end picture of ORMB and OBIEE performance&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Logic to separate the workload of OBIEE', event)&quot;&gt; Logic to separate the workload of OBIEE&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; End to end picture of ORMB and OBIEE performance&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047450-17a9fa00-a642-11eb-83fc-06b6d9c2c482.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047452-17a9fa00-a642-11eb-939f-1ef82583b6c9.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047454-18429080-a642-11eb-9ccf-d81de4442dd3.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047455-18429080-a642-11eb-8b99-93520ddd7c29.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047456-18db2700-a642-11eb-8ca5-1c09c3ebc379.png&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047465-1a0c5400-a642-11eb-8906-e790b70a9195.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047466-1a0c5400-a642-11eb-900d-be731beb1eb6.png&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047473-1b3d8100-a642-11eb-9392-c3ef0e6e7334.png&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047475-1b3d8100-a642-11eb-9a0e-e8c8d24c126f.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047476-1b3d8100-a642-11eb-98db-f14e777cc084.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047479-1bd61780-a642-11eb-85c2-dd7a43bcad28.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047484-1bd61780-a642-11eb-8e24-c93d0ceea5e3.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047485-1c6eae00-a642-11eb-850d-f6f8b1ddd015.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047487-1c6eae00-a642-11eb-811d-099f8aeca152.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047491-1d9fdb00-a642-11eb-8eaf-5856619d69e8.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047492-1d9fdb00-a642-11eb-8938-1bc8d59b78e5.png&quot;&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047494-1ed10800-a642-11eb-9ec0-af7f85d9ad0a.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; Logic to separate the workload of OBIEE&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;&lt;br&gt;Here's what I used on the ASH data to separate the workload of OBIEE.&lt;br&gt;&lt;ul&gt;&lt;li&gt; BIP reports (front end)&lt;/li&gt;&lt;li&gt; ODI ETL jobs&lt;/li&gt;&lt;li&gt; nqsserver (OBIEE processes)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;pre&gt;Tableau calculated field: 
+IF contains(lower(trim([Module])),'BIP')=true THEN 'BIP'
+ELSEIF contains(lower(trim([Module])),'ODI')=true THEN 'ODI'
+ELSEIF contains(lower(trim([Module])),'nqs')=true THEN 'nqsserver'
+ELSE 'OTHER' END
+&lt;/pre&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047456-18db2700-a642-11eb-8ca5-1c09c3ebc379.png&quot;&gt;&lt;br&gt;&lt;br&gt;Some of the reports are instrumented enough that the ACTION column shows the report number. But separating the workload by module is the best&lt;br&gt;</description>
+<category>ASH perf instrumentation</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5BASH%20ORMB%20and%20OBIEE%20batch%20instrumentation%5D%5D</link>
+<pubDate>Mon, 26 Apr 2021 08:01:36 GMT</pubDate>
+
+</item>
+<item>
+<title>top level SQL_ID (PL/SQL) of batch job - from 2.5hours to 19mins</title>
+<description>&lt;div class=&quot;dcTOC&quot;&gt;&lt;a class=&quot;toggleButton&quot; title=&quot;show/collapse table of contents&quot; href=&quot;javascript:;&quot;&gt;/* Table of Contents */&lt;/a&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' summary of the issue:', event)&quot;&gt; summary of the issue:&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' summary of the fix: ', event)&quot;&gt; summary of the fix: &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' XD10 cluster: 22mins (fast performance) ', event)&quot;&gt; XD10 cluster: 22mins (fast performance) &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' XD11 cluster: ~2.5hours (bad performance) ', event)&quot;&gt; XD11 cluster: ~2.5hours (bad performance) &lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the fix ', event)&quot;&gt; the fix &lt;/a&gt;&lt;/span&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' the complexity and decision behind the fix', event)&quot;&gt; the complexity and decision behind the fix&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href=&quot;javascript:;&quot; onclick=&quot;window.scrollToHeading('', ' Here's the final SQL', event)&quot;&gt; Here's the final SQL&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; summary of the issue:&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;This client have primary (&lt;a tiddlylink=&quot;XD10&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XD10&quot; href=&quot;http://karlarao.tiddlyspot.com#XD10&quot; class=&quot;externalLink null&quot;&gt;XD10&lt;/a&gt;) and standby (&lt;a tiddlylink=&quot;XD11&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XD11&quot; href=&quot;http://karlarao.tiddlyspot.com#XD11&quot; class=&quot;externalLink null&quot;&gt;XD11&lt;/a&gt;) exadata environments, golden gate is used to replicate data to the standby site. Every 6 months they alternate switching to the two environments. The problem here was, when they switched to &lt;a tiddlylink=&quot;XD11&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XD11&quot; href=&quot;http://karlarao.tiddlyspot.com#XD11&quot; class=&quot;externalLink null&quot;&gt;XD11&lt;/a&gt; the batch run of &lt;a tiddlylink=&quot;CA1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CA1&quot; href=&quot;http://karlarao.tiddlyspot.com#CA1&quot; class=&quot;externalLink null&quot;&gt;CA1&lt;/a&gt; was running longer from 22mins to ~2.5hours&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; summary of the fix: &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;Added the &lt;a tiddlylink=&quot;NL_SJ&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#NL_SJ&quot; href=&quot;http://karlarao.tiddlyspot.com#NL_SJ&quot; class=&quot;externalLink null&quot;&gt;NL_SJ&lt;/a&gt; hint inside the correlated subquery to make it operate as a nested loop semi-join. &lt;br&gt;This will force the plan to always use nested loops, and we avoided create a SQL profile/baseline. &lt;br&gt;After the fix was integrated to the code, the new elapsed was 19mins from ~2.5hours. &lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116030850-7fece180-a62a-11eb-89e9-832dd628d37c.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;a tiddlylink=&quot;XD10&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XD10&quot; href=&quot;http://karlarao.tiddlyspot.com#XD10&quot; class=&quot;externalLink null&quot;&gt;XD10&lt;/a&gt; cluster: 22mins (fast performance) &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;This shows consistent elapsed of 22mins. Nov 16, 17, 18 at 9am &lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/115981471-143f4180-a562-11eb-9e98-dc7c72ac57be.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;Drilling down on the top level &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; 1nhgrtxz5fjx5 (the procedure of the batch job) and the driver &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; 18qdxm4pkyguk&lt;br&gt;&lt;br&gt;15mins spent by driver &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; 18qdxm4pkyguk&lt;br&gt;&lt;br&gt;ONLY 1min spent on INDEX RANGE SCAN by &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; 18qdxm4pkyguk&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/115976322-d11da800-a53a-11eb-8234-a6569d9dc5a7.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;This showing the detailed data of that bar chart associated with INDEX RANGE SCAN, it just confirms that &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; 18qdxm4pkyguk did that operation&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/115976433-10002d80-a53c-11eb-87a4-4ca202bfffe6.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; &lt;a tiddlylink=&quot;XD11&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#XD11&quot; href=&quot;http://karlarao.tiddlyspot.com#XD11&quot; class=&quot;externalLink null&quot;&gt;XD11&lt;/a&gt; cluster: ~2.5hours (bad performance) &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;This shows consistent elapsed of ~2.5hours &lt;br&gt;&lt;br&gt;March 15, 16, 17&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116026097-f9330700-a61f-11eb-84ec-e5bf6a6d8bda.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;Drilling down on the ~2.5hours, the driver &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; 18qdxm4pkyguk is dragging the total elapsed time of the batch. This is because the plan changed from index range scan to fast full scan &lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116027231-4c0dbe00-a622-11eb-8d5e-bf22813c5b5b.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;On this graph just focus on read_gb row, the sustained red bar is the INDEX FAST FULL SCAN IO by &lt;a tiddlylink=&quot;SQL_ID&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQL_ID&quot; href=&quot;http://karlarao.tiddlyspot.com#SQL_ID&quot; class=&quot;externalLink null&quot;&gt;SQL_ID&lt;/a&gt; 18qdxm4pkyguk. &lt;br&gt;The pl/sql package/procedure performance is getting dragged by 18qdxm4pkyguk because it’s the slowest sql.&lt;br&gt;That’s why 22mins (index range scan - selective index blocks PHV 2662027970) vs 2 hours (index fast full scan PHV 1973837680)&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116028549-62694900-a625-11eb-9cc5-bc71d8c56915.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 80%; height: 80%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h1&gt; the fix &lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h1&gt;&lt;br&gt;The correlated subquery is where the SQL is having issues those two tables (tracked_offender_profile and tracked_offender_device) are getting accessed as correlated subquery more like row by row and then you have this date filter with function in it which is another issue. &lt;br&gt;&lt;br&gt;&lt;pre&gt;-- this date_utilities_pkg.Convert_to_gmt (tracked_offender_device.rec_end_dt, :B5) &amp;gt; :B4)
+FROM tracked_offender_profile OFFENDER,
+       AND EXISTS (SELECT 'ACTIVE'
+                   FROM   tracked_offender_device
+                   WHERE  tracked_offender_device.ct_tracked_offender_id =
+                          OFFENDER.ct_tracked_offender_id
+                          AND date_utilities_pkg.Convert_to_gmt (
+                              tracked_offender_device.rec_end_dt, :B5) &amp;gt;
+                              :B4)
+&lt;/pre&gt;&lt;br&gt;The bottleneck, plan_line_id 69&lt;br&gt;&lt;pre&gt;
+
+                    |  65 |    HASH JOIN                                |                                |   276 | 51336 |   129   (1)| 00:00:01 |
+                    |  66 |     NESTED LOOPS                            |                                |    37 |  5735 |   125   (1)| 00:00:01 |
+                    |  67 |      NESTED LOOPS                           |                                |    37 |  5735 |   125   (1)| 00:00:01 |
+                    |  68 |       HASH JOIN RIGHT SEMI                  |                                |    37 |  4884 |    88   (2)| 00:00:01 |
+                    |  69 |        INDEX STORAGE FAST FULL SCAN         | AK2_TRACKED_OFFENDER_DEVICE    |   521 |  6773 |    11  (10)| 00:00:01 |
+                    |  70 |        HASH JOIN                            |                                |   498 | 59262 |    77   (0)| 00:00:01 |
+
+&lt;/pre&gt;&lt;br&gt;What’s happening here I think is the date filter is not really working because of the function, then it uses that &lt;a tiddlylink=&quot;AK2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#AK2&quot; href=&quot;http://karlarao.tiddlyspot.com#AK2&quot; class=&quot;externalLink null&quot;&gt;AK2&lt;/a&gt; index because of the ct_tracked_offender_id, and since &lt;a tiddlylink=&quot;CA1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CA1&quot; href=&quot;http://karlarao.tiddlyspot.com#CA1&quot; class=&quot;externalLink null&quot;&gt;CA1&lt;/a&gt; has a lot of rows optimizer chooses fast full scan vs range scan for smaller size schemas. &lt;a tiddlylink=&quot;AK2&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#AK2&quot; href=&quot;http://karlarao.tiddlyspot.com#AK2&quot; class=&quot;externalLink null&quot;&gt;AK2&lt;/a&gt; index contains the ct_tracked_offender_id, rec_end_dt columns&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; the complexity and decision behind the fix&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;Given that we have 50+ parsing schemas and only &lt;a tiddlylink=&quot;CA1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CA1&quot; href=&quot;http://karlarao.tiddlyspot.com#CA1&quot; class=&quot;externalLink null&quot;&gt;CA1&lt;/a&gt; is having this issue, we decided to fix the code of the package being used by &lt;a tiddlylink=&quot;CA1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CA1&quot; href=&quot;http://karlarao.tiddlyspot.com#CA1&quot; class=&quot;externalLink null&quot;&gt;CA1&lt;/a&gt;. At first I suggested to create a SQL Profile and then issue ALTER SESSION SET &lt;a tiddlylink=&quot;SQLTUNE_CATEGORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLTUNE_CATEGORY&quot; class=&quot;externalLink null&quot;&gt;SQLTUNE_CATEGORY&lt;/a&gt; = ‘&lt;a tiddlylink=&quot;CA1_PLAN&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CA1_PLAN&quot; href=&quot;http://karlarao.tiddlyspot.com#CA1_PLAN&quot; class=&quot;externalLink null&quot;&gt;CA1_PLAN&lt;/a&gt;’; when &lt;a tiddlylink=&quot;CA1&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#CA1&quot; href=&quot;http://karlarao.tiddlyspot.com#CA1&quot; class=&quot;externalLink null&quot;&gt;CA1&lt;/a&gt; runs its batch so other parsing schemas will not be affected. But then that's a more complicated solution. We went with the easier route, just put the hint in the subquery to make it operate as a nested loop semi-join. &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;h2&gt; Here's the final SQL&lt;div style=&quot;font-size: 0.5em; color: blue;&quot;&gt;&lt;a class=&quot;dcTOCTop&quot; title=&quot;Go to top of tiddler&quot; href=&quot;javascript:;&quot;&gt; [top]&lt;/a&gt;&lt;/div&gt;&lt;/h2&gt;&lt;br&gt;&lt;pre&gt;SELECT /*+ QB_NAME(first_union) */ DISTINCT OFFENDER.ct_tracked_offender_id,
+                OFFENDER.offender_first_name,
+                OFFENDER.offender_last_name,
+                OFFENDER.spvsn_sch_end_dt,
+                vt_user_profile.ct_user_id OFFICER_ID,
+                app_user.user_first_name   OFFICER_FIRST_NAME,
+                app_user.user_last_name    OFFICER_LAST_NAME,
+                ori.ori_txt,
+                OFFENDER.to_risk_level_id,
+                tracked_offender_risk_level.to_risk_level_sort_id,
+                tracked_offender_risk_level.to_risk_level_name,
+                vt_user_profile.user_login
+FROM   vt_user_profile,
+       user_notification,
+       ori,
+       vt_common.t_notification_type,
+       tracked_offender_profile OFFENDER,
+       vt_user.app_user,
+       tracked_offender_risk_level
+WHERE  OFFENDER.ct_user_id = vt_user_profile.ct_user_id
+       AND ori.ct_ori_id = OFFENDER.ct_ori_id
+       AND t_notification_type.by_offender_flag = :B3
+       AND vt_user_profile.ct_user_id = user_notification.ct_user_id
+       AND user_notification.notification_type_id =
+           t_notification_type.notification_type_id
+       AND t_notification_type.immediate_alert_flag = :B2
+       AND app_user.user_id = vt_user_profile.app_user_id
+       AND vt_user_profile.ct_user_id = :B1
+       AND OFFENDER.to_risk_level_id =
+           tracked_offender_risk_level.to_risk_level_id
+       AND EXISTS (SELECT /*+ QB_NAME(first_inner) NL_SJ */ 'ACTIVE'
+                   FROM   tracked_offender_device
+                   WHERE  tracked_offender_device.ct_tracked_offender_id =
+                          OFFENDER.ct_tracked_offender_id
+                          AND date_utilities_pkg.Convert_to_gmt (
+                              tracked_offender_device.rec_end_dt, :B5) &amp;gt;
+                              :B4)
+UNION
+SELECT /*+ QB_NAME(second_union) */ DISTINCT OFFENDER.ct_tracked_offender_id,
+                OFFENDER.offender_first_name,
+                OFFENDER.offender_last_name,
+                OFFENDER.spvsn_sch_end_dt,
+                OFFICER.ct_user_id                          OFFICER_ID,
+                app_user.user_first_name                    OFFICER_FIRST_NAME,
+                Nvl (app_user.user_last_name, 'UNASSIGNED') OFFICER_LAST_NAME,
+                ori.ori_txt,
+                OFFENDER.to_risk_level_id,
+                tracked_offender_risk_level.to_risk_level_sort_id,
+                tracked_offender_risk_level.to_risk_level_name,
+                OFFICER.user_login
+FROM   vt_user_profile,
+       user_notification,
+       ori,
+       vt_common.t_notification_type,
+       tracked_offender_profile OFFENDER,
+       user_additional_offender,
+       vt_user_profile OFFICER,
+       vt_user.app_user,
+       tracked_offender_risk_level
+WHERE  OFFENDER.ct_tracked_offender_id =
+              user_additional_offender.ct_tracked_offender_id
+       AND user_additional_offender.ct_user_id = vt_user_profile.ct_user_id
+       AND ori.ct_ori_id = OFFENDER.ct_ori_id
+       AND t_notification_type.by_offender_flag = :B3
+       AND OFFENDER.ct_user_id = OFFICER.ct_user_id(+)
+       AND vt_user_profile.ct_user_id = user_notification.ct_user_id
+       AND user_notification.notification_type_id =
+           t_notification_type.notification_type_id
+       AND t_notification_type.immediate_alert_flag = :B2
+       AND app_user.user_id = OFFICER.app_user_id
+       AND vt_user_profile.ct_user_id = :B1
+       AND OFFENDER.to_risk_level_id =
+           tracked_offender_risk_level.to_risk_level_id
+       AND EXISTS (SELECT /*+ QB_NAME(second_inner) NL_SJ */ 'ACTIVE'
+                   FROM   tracked_offender_device
+                   WHERE  tracked_offender_device.ct_tracked_offender_id =
+                          OFFENDER.ct_tracked_offender_id
+                          AND date_utilities_pkg.Convert_to_gmt (
+                              tracked_offender_device.rec_end_dt, :B5) &amp;gt;
+                              :B4)
+UNION
+SELECT /*+ QB_NAME(third_union) */ DISTINCT OFFENDER.ct_tracked_offender_id,
+                OFFENDER.offender_first_name,
+                OFFENDER.offender_last_name,
+                OFFENDER.spvsn_sch_end_dt,
+                OFFICER.ct_user_id                          OFFICER_ID,
+                app_user.user_first_name                    OFFICER_FIRST_NAME,
+                Nvl (app_user.user_last_name, 'UNASSIGNED') OFFICER_LAST_NAME,
+                ori.ori_txt,
+                OFFENDER.to_risk_level_id,
+                tracked_offender_risk_level.to_risk_level_sort_id,
+                tracked_offender_risk_level.to_risk_level_name,
+                OFFICER.user_login
+FROM   vt_user_profile,
+       user_notification,
+       vt_common.t_notification_type,
+       tracked_offender_profile OFFENDER,
+       ori,
+       ori_parent,
+       vt_user_profile OFFICER,
+       vt_user.app_user,
+       tracked_offender_risk_level
+WHERE  OFFENDER.ct_ori_id = ori.ct_ori_id
+       AND OFFENDER.ct_ori_id = ori_parent.child_id
+       AND ori_parent.parent_id = vt_user_profile.ct_ori_id
+       AND t_notification_type.by_ori_flag = :B3
+       AND OFFENDER.ct_user_id = OFFICER.ct_user_id(+)
+       AND vt_user_profile.ct_user_id = user_notification.ct_user_id
+       AND user_notification.notification_type_id =
+           t_notification_type.notification_type_id
+       AND t_notification_type.immediate_alert_flag = :B2
+       AND app_user.user_id = OFFICER.app_user_id
+       AND vt_user_profile.ct_user_id = :B1
+       AND OFFENDER.to_risk_level_id =
+           tracked_offender_risk_level.to_risk_level_id
+       AND EXISTS (SELECT /*+ QB_NAME(third_inner) NL_SJ */ 'ACTIVE'
+                   FROM   tracked_offender_device
+                   WHERE  tracked_offender_device.ct_tracked_offender_id =
+                          OFFENDER.ct_tracked_offender_id
+                          AND date_utilities_pkg.Convert_to_gmt (
+                              tracked_offender_device.rec_end_dt, :B5) &amp;gt;
+                              :B4)
+ORDER  BY ori_txt,
+          officer_last_name,
+          officer_first_name,
+          user_login,
+          to_risk_level_sort_id,
+          offender_last_name,
+          offender_first_name
+/
+&lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>ASH perf instrumentation</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5Btop%20level%20SQL_ID%20(PL%2FSQL)%20of%20batch%20job%20-%20from%202.5hours%20to%2019mins%5D%5D</link>
+<pubDate>Mon, 26 Apr 2021 07:08:11 GMT</pubDate>
+
+</item>
+<item>
 <title>12.1 recover database from service</title>
-<description>&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://balazspapp.wordpress.com/2018/04/05/oracle-18c-recover-standby-database-from-service/&quot; href=&quot;https://balazspapp.wordpress.com/2018/04/05/oracle-18c-recover-standby-database-from-service/&quot; class=&quot;externalLink&quot;&gt;https://balazspapp.wordpress.com/2018/04/05/oracle-18c-recover-standby-database-from-service/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.virtual-dba.com/blog/refreshing-physical-standby-using-recover-from-service-on-12c/&quot; href=&quot;https://www.virtual-dba.com/blog/refreshing-physical-standby-using-recover-from-service-on-12c/&quot; class=&quot;externalLink&quot;&gt;https://www.virtual-dba.com/blog/refreshing-physical-standby-using-recover-from-service-on-12c/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dbtut.com/index.php/2019/12/27/recover-datbase-using-service-refresh-standby-database-in-oracle-12c/&quot; href=&quot;https://dbtut.com/index.php/2019/12/27/recover-datbase-using-service-refresh-standby-database-in-oracle-12c/&quot; class=&quot;externalLink&quot;&gt;https://dbtut.com/index.php/2019/12/27/recover-datbase-using-service-refresh-standby-database-in-oracle-12c/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Restoring and Recovering Files Over the Network (from SERVICE)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/BRADV/rcmadvre.htm#BRADV685&quot; href=&quot;https://docs.oracle.com/database/121/BRADV/rcmadvre.htm#BRADV685&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/BRADV/rcmadvre.htm#BRADV685&lt;/a&gt;&lt;br&gt;&lt;br&gt;Creating a Physical Standby database using RMAN restore database from service (Doc ID 2283978.1)&lt;br&gt;</description>
+<description>&lt;a target=&quot;_blank&quot; title=&quot;External link to https://balazspapp.wordpress.com/2018/04/05/oracle-18c-recover-standby-database-from-service/&quot; href=&quot;https://balazspapp.wordpress.com/2018/04/05/oracle-18c-recover-standby-database-from-service/&quot; class=&quot;externalLink&quot;&gt;https://balazspapp.wordpress.com/2018/04/05/oracle-18c-recover-standby-database-from-service/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.virtual-dba.com/blog/refreshing-physical-standby-using-recover-from-service-on-12c/&quot; href=&quot;https://www.virtual-dba.com/blog/refreshing-physical-standby-using-recover-from-service-on-12c/&quot; class=&quot;externalLink&quot;&gt;https://www.virtual-dba.com/blog/refreshing-physical-standby-using-recover-from-service-on-12c/&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://dbtut.com/index.php/2019/12/27/recover-datbase-using-service-refresh-standby-database-in-oracle-12c/&quot; href=&quot;https://dbtut.com/index.php/2019/12/27/recover-datbase-using-service-refresh-standby-database-in-oracle-12c/&quot; class=&quot;externalLink&quot;&gt;https://dbtut.com/index.php/2019/12/27/recover-datbase-using-service-refresh-standby-database-in-oracle-12c/&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Restoring and Recovering Files Over the Network (from SERVICE)&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to https://docs.oracle.com/database/121/BRADV/rcmadvre.htm#BRADV685&quot; href=&quot;https://docs.oracle.com/database/121/BRADV/rcmadvre.htm#BRADV685&quot; class=&quot;externalLink&quot;&gt;https://docs.oracle.com/database/121/BRADV/rcmadvre.htm#BRADV685&lt;/a&gt;&lt;br&gt;&lt;br&gt;Creating a Physical Standby database using RMAN restore database from service (Doc ID 2283978.1)&lt;br&gt;</description>
 <category>DataGuard Setup Types, DG build method types</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B12.1%20recover%20database%20from%20service%5D%5D</link>
-<pubDate>Thu, 15 Apr 2021 23:26:17 GMT</pubDate>
+<pubDate>Thu, 15 Apr 2021 23:26:00 GMT</pubDate>
 
 </item>
 <item>
 <title>DataGuard Setup Types, DG build method types</title>
-<description>&lt;br&gt;Build data guard using the following methods&lt;br&gt;&lt;ul&gt;&lt;li&gt; from backupset &lt;/li&gt;&lt;li&gt; Active Duplicate &lt;/li&gt;&lt;li&gt; recover database from service &amp;lt;primary_service&amp;gt; (new in 12.1)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;</description>
+<description>Build data guard using the following methods&lt;br&gt;&lt;ul&gt;&lt;li&gt; from backupset &lt;/li&gt;&lt;li&gt; Active Duplicate &lt;/li&gt;&lt;li&gt; recover database from service &amp;lt;primary_service&amp;gt; (new in 12.1)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>DataGuard</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BDataGuard%20Setup%20Types%2C%20DG%20build%20method%20types%5D%5D</link>
-<pubDate>Thu, 15 Apr 2021 23:22:38 GMT</pubDate>
+<pubDate>Thu, 15 Apr 2021 23:22:00 GMT</pubDate>
 
 </item>
 <item>
 <title>ASH latency , ASH io latency</title>
-<description>&lt;br&gt;&lt;pre&gt;If you see the time waited for IOs go up, but you're not trying to do more I/O (same amount of data &amp;amp; workload and exec plans haven't changed), you can report the individual I/O latencies to see if your I/O is just slower this time (due to other activity in the storage subsystem).
+<description>&lt;pre&gt;If you see the time waited for IOs go up, but you're not trying to do more I/O (same amount of data &amp;amp; workload and exec plans haven't changed), you can report the individual I/O latencies to see if your I/O is just slower this time (due to other activity in the storage subsystem).
 
 You can even estimate wait event counts in different latency buckets using ASH data (more granularity and flexibility compared to AWR).
 
@@ -79,31 +306,7 @@ This way, any potential latency outliers won't get hidden in averages.
 &lt;/pre&gt;</description>
 <category>ASH time_waited</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BASH%20latency%20%2C%20ASH%20io%20latency%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 18:34:55 GMT</pubDate>
-
-</item>
-<item>
-<title>top level SQL_ID (PL/SQL) of batch job</title>
-<description></description>
-<category>ASH perf instrumentation</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Btop%20level%20SQL_ID%20(PL%2FSQL)%20of%20batch%20job%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 05:19:15 GMT</pubDate>
-
-</item>
-<item>
-<title>ASH IBM Curam batch instrumentation</title>
-<description></description>
-<category>ASH perf instrumentation</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BASH%20IBM%20Curam%20batch%20instrumentation%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 05:18:46 GMT</pubDate>
-
-</item>
-<item>
-<title>ASH ORMB and OBIEE batch instrumentation</title>
-<description></description>
-<category>ASH perf instrumentation</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5BASH%20ORMB%20and%20OBIEE%20batch%20instrumentation%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 05:18:33 GMT</pubDate>
+<pubDate>Tue, 13 Apr 2021 18:34:00 GMT</pubDate>
 
 </item>
 <item>
@@ -111,7 +314,7 @@ This way, any potential latency outliers won't get hidden in averages.
 <description></description>
 <category>Elapsed-AvgMinMax , ash elap - shark fin</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BASH%20perf%20instrumentation%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 05:17:44 GMT</pubDate>
+<pubDate>Tue, 13 Apr 2021 05:17:00 GMT</pubDate>
 
 </item>
 <item>
@@ -146,7 +349,7 @@ SQL_ID          SQL_PLAN_HASH_VALUE        COUNT(*)        AVG        MIN       
 <category>peoplesoft troubleshooting</category>
 <category>ASH perf instrumentation</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BASH%20granularity%2C%20SAMPLE_TIME%20and%20SQL_EXEC_START%20-%20peoplesoft%20job%20troubleshooting%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 05:16:26 GMT</pubDate>
+<pubDate>Tue, 13 Apr 2021 05:16:00 GMT</pubDate>
 
 </item>
 <item>
@@ -154,7 +357,7 @@ SQL_ID          SQL_PLAN_HASH_VALUE        COUNT(*)        AVG        MIN       
 <description>&lt;a target=&quot;_blank&quot; title=&quot;External link to http://edn.embarcadero.com/article/28886&quot; href=&quot;http://edn.embarcadero.com/article/28886&quot; class=&quot;externalLink&quot;&gt;http://edn.embarcadero.com/article/28886&lt;/a&gt;	&amp;lt;&lt;span&gt;—&lt;/span&gt; weird giving subsecond value&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://forums.oracle.com/forums/thread.jspa?threadID=1117064&quot; href=&quot;http://forums.oracle.com/forums/thread.jspa?threadID=1117064&quot; class=&quot;externalLink&quot;&gt;http://forums.oracle.com/forums/thread.jspa?threadID=1117064&lt;/a&gt;   &amp;lt;&lt;span&gt;—&lt;/span&gt; helpful post by user11268895&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://kr.forums.oracle.com/forums/thread.jspa?messageID=2517203&quot; href=&quot;http://kr.forums.oracle.com/forums/thread.jspa?messageID=2517203&quot; class=&quot;externalLink&quot;&gt;http://kr.forums.oracle.com/forums/thread.jspa?messageID=2517203&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://bytes.com/topic/oracle/answers/65116-help-need-avg-timestamp1-timestamp2-get-type-error&quot; href=&quot;http://bytes.com/topic/oracle/answers/65116-help-need-avg-timestamp1-timestamp2-get-type-error&quot; class=&quot;externalLink&quot;&gt;http://bytes.com/topic/oracle/answers/65116-help-need-avg-timestamp1-timestamp2-get-type-error&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://mikerault.blogspot.com/2006/07/oracle-timestamp-math.html&quot; href=&quot;http://mikerault.blogspot.com/2006/07/oracle-timestamp-math.html&quot; class=&quot;externalLink&quot;&gt;http://mikerault.blogspot.com/2006/07/oracle-timestamp-math.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.forumtopics.com/busobj/viewtopic.php?t=132019&amp;amp;start=0&amp;amp;postdays=0&amp;amp;postorder=asc&amp;amp;sid=14bcf84697b244aca41a387791d4b729&quot; href=&quot;http://www.forumtopics.com/busobj/viewtopic.php?t=132019&amp;amp;start=0&amp;amp;postdays=0&amp;amp;postorder=asc&amp;amp;sid=14bcf84697b244aca41a387791d4b729&quot; class=&quot;externalLink&quot;&gt;http://www.forumtopics.com/busobj/viewtopic.php?t=132019&amp;amp;start=0&amp;amp;postdays=0&amp;amp;postorder=asc&amp;amp;sid=14bcf84697b244aca41a387791d4b729&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.excelforum.com/excel-worksheet-functions/573306-how-to-convert-date-time-to-seconds.html&quot; href=&quot;http://www.excelforum.com/excel-worksheet-functions/573306-how-to-convert-date-time-to-seconds.html&quot; class=&quot;externalLink&quot;&gt;http://www.excelforum.com/excel-worksheet-functions/573306-how-to-convert-date-time-to-seconds.html&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://en.allexperts.com/q/Excel-1059/2009/4/excel-formula-convert-min-1.htm&quot; href=&quot;http://en.allexperts.com/q/Excel-1059/2009/4/excel-formula-convert-min-1.htm&quot; class=&quot;externalLink&quot;&gt;http://en.allexperts.com/q/Excel-1059/2009/4/excel-formula-convert-min-1.htm&lt;/a&gt;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.mrexcel.com/forum/showthread.php?t=2641&quot; href=&quot;http://www.mrexcel.com/forum/showthread.php?t=2641&quot; class=&quot;externalLink&quot;&gt;http://www.mrexcel.com/forum/showthread.php?t=2641&lt;/a&gt;&lt;br&gt;&lt;br&gt;Do Date Arithmetic on Dates&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.appsdba.com/blog/?p=278&quot; href=&quot;http://www.appsdba.com/blog/?p=278&quot; class=&quot;externalLink&quot;&gt;http://www.appsdba.com/blog/?p=278&lt;/a&gt;</description>
 <category>SQL*Plus SYSDATE math</category>
 <link>http://karlarao.tiddlyspot.com#TimestampMath</link>
-<pubDate>Tue, 13 Apr 2021 04:31:17 GMT</pubDate>
+<pubDate>Tue, 13 Apr 2021 04:31:00 GMT</pubDate>
 
 </item>
 <item>
@@ -354,7 +557,7 @@ END;
 <category>force_matching</category>
 <category>..step by step SQL Profile and Baseline</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BEXACT_MATCHING_SIGNATURE%20vs%20FORCE_MATCHING_SIGNATURE%20vs%20dbms_sqltune.sqltext_to_signature%20across%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 04:27:40 GMT</pubDate>
+<pubDate>Tue, 13 Apr 2021 04:27:00 GMT</pubDate>
 
 </item>
 <item>
@@ -886,7 +1089,7 @@ c2fn0swka653f          6      18.94       9.99      28.99       7.28
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;.&lt;br&gt;&lt;br&gt;</description>
 <category>ASH</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BElapsed-AvgMinMax%20%2C%20ash%20elap%20-%20shark%20fin%5D%5D</link>
-<pubDate>Tue, 13 Apr 2021 04:13:42 GMT</pubDate>
+<pubDate>Tue, 13 Apr 2021 04:13:00 GMT</pubDate>
 
 </item>
 <item>
@@ -1067,7 +1270,7 @@ SELECT * FROM dual WHERE dummy = 'Y' OR dummy = :b1
 &lt;/pre&gt;</description>
 <category>force_matching</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bdbms_sqltune.sqltext_to_signature%20vs%20force_matching%5D%5D</link>
-<pubDate>Mon, 12 Apr 2021 04:58:12 GMT</pubDate>
+<pubDate>Mon, 12 Apr 2021 04:58:00 GMT</pubDate>
 
 </item>
 <item>
@@ -2179,7 +2382,7 @@ PLAN_TABLE_OUTPUT
 &lt;/pre&gt;</description>
 <category>..step by step SQL Profile and Baseline</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5B.step%20by%20step%20-%20attach%202%20plans%20to%20a%20SQL%20baseline%5D%5D</link>
-<pubDate>Mon, 12 Apr 2021 03:06:45 GMT</pubDate>
+<pubDate>Mon, 12 Apr 2021 03:06:00 GMT</pubDate>
 
 </item>
 <item>
