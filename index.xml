@@ -6,13 +6,21 @@
 <description></description>
 <language>en</language>
 <copyright>Copyright 2021 YourName</copyright>
-<pubDate>Mon, 26 Apr 2021 08:29:44 GMT</pubDate>
-<lastBuildDate>Mon, 26 Apr 2021 08:29:44 GMT</lastBuildDate>
+<pubDate>Tue, 27 Apr 2021 05:04:25 GMT</pubDate>
+<lastBuildDate>Tue, 27 Apr 2021 05:04:25 GMT</lastBuildDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>TiddlyWiki 2.5.0</generator>
 <item>
+<title>. oracle hints</title>
+<description>&lt;br&gt;good compilation of oracle hints &lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.hellodba.com/Download/OracleSQLHints.pdf&quot; href=&quot;http://www.hellodba.com/Download/OracleSQLHints.pdf&quot; class=&quot;externalLink&quot;&gt;http://www.hellodba.com/Download/OracleSQLHints.pdf&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;12c new SQL hints&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.hellodba.com/reader.php?ID=220&amp;amp;lang=EN&quot; href=&quot;http://www.hellodba.com/reader.php?ID=220&amp;amp;lang=EN&quot; class=&quot;externalLink&quot;&gt;http://www.hellodba.com/reader.php?ID=220&amp;amp;lang=EN&lt;/a&gt;&lt;br&gt;&lt;br&gt;search for &quot;hints&quot;&lt;br&gt;&lt;a target=&quot;_blank&quot; title=&quot;External link to http://www.hellodba.com/index.php?class=DOC&amp;amp;lang=EN&quot; href=&quot;http://www.hellodba.com/index.php?class=DOC&amp;amp;lang=EN&quot; class=&quot;externalLink&quot;&gt;http://www.hellodba.com/index.php?class=DOC&amp;amp;lang=EN&lt;/a&gt;&lt;br&gt;&lt;br&gt;</description>
+<category>OptimizerTransformations</category>
+<link>http://karlarao.tiddlyspot.com#%5B%5B.%20oracle%20hints%5D%5D</link>
+<pubDate>Tue, 27 Apr 2021 03:53:55 GMT</pubDate>
+
+</item>
+<item>
 <title>ASH IBM Curam batch instrumentation</title>
-<description>&lt;br&gt;I got the job chain info of IBM Curam batch from the dev team&lt;br&gt;&lt;br&gt;Here are the details of how the batch works &lt;br&gt;&lt;blockquote&gt;        IBM Cúram Social Program Management 7.0.10 - 7.0.11&lt;br&gt;&lt;br&gt;        Batch Streaming Architecture&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&lt;/a&gt;&lt;br&gt;        The Chunker&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&lt;/a&gt;&lt;br&gt;        The Stream&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;Here's the SQL to pull data from &lt;a tiddlylink=&quot;SCHEDULER_HISTORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; class=&quot;externalLink null&quot;&gt;SCHEDULER_HISTORY&lt;/a&gt; table &lt;br&gt;&lt;br&gt;&lt;pre&gt; SELECT *
+<description>I got the job chain info of IBM Curam batch from the dev team&lt;br&gt;&lt;br&gt;Here are the details of how the batch works &lt;br&gt;&lt;blockquote&gt;        IBM Cúram Social Program Management 7.0.10 - 7.0.11&lt;br&gt;&lt;br&gt;        Batch Streaming Architecture&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1BatchStreamingArchitecture1.html&lt;/a&gt;&lt;br&gt;        The Chunker&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Chunker1.html&lt;/a&gt;&lt;br&gt;        The Stream&lt;br&gt;        &lt;a target=&quot;_blank&quot; title=&quot;External link to https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; href=&quot;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&quot; class=&quot;externalLink&quot;&gt;https://www.ibm.com/support/knowledgecenter/SS8S5A_7.0.11/com.ibm.curam.content.doc/BatchPerformanceMechanisms/c_BATCHPER_Architecture1Stream1.html&lt;/a&gt;&lt;br&gt;&lt;/blockquote&gt;&lt;br&gt;Here's the SQL to pull data from &lt;a tiddlylink=&quot;SCHEDULER_HISTORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; class=&quot;externalLink null&quot;&gt;SCHEDULER_HISTORY&lt;/a&gt; table &lt;br&gt;&lt;br&gt;&lt;pre&gt; SELECT *
 FROM   (SELECT Substr(H.job_name, Instr(H.job_name, 'jobId-') + 6, 20)
                JOB_ID
                       ,
@@ -65,7 +73,7 @@ ELSE 'OTHER' END
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Here's the gantt chart. &lt;br&gt;&lt;br&gt;From here we can be tactical and systematic when it comes to tuning. We can identify the blocking jobs and the longest running jobs and how it impacts the overall batch elapsed time. We can isolate these jobs from the Dynatrace instrumentation and even run the identified bad performing batch as standalone and then profile/tune the top &lt;a tiddlylink=&quot;SQLs&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SQLs&quot; href=&quot;http://karlarao.tiddlyspot.com#SQLs&quot; class=&quot;externalLink null&quot;&gt;SQLs&lt;/a&gt;. &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116051156-4924c480-a646-11eb-85bf-265efbe56fa4.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Here's how to create the gantt chart but the tableau developer needs to tap the &lt;a tiddlylink=&quot;SCHEDULER_HISTORY&quot; refresh=&quot;link&quot; target=&quot;_blank&quot; title=&quot;External link to http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; href=&quot;http://karlarao.tiddlyspot.com#SCHEDULER_HISTORY&quot; class=&quot;externalLink null&quot;&gt;SCHEDULER_HISTORY&lt;/a&gt; table directly instead of a data dump from SQL&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116051200-5346c300-a646-11eb-88b1-6fbab7b01cb0.png&quot; title=&quot;SHIFT-CLICK=show full size, CTRL-CLICK=restore initial size&quot; style=&quot;width: 100%; height: 100%; cursor: move;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>ASH perf instrumentation</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BASH%20IBM%20Curam%20batch%20instrumentation%5D%5D</link>
-<pubDate>Mon, 26 Apr 2021 08:29:41 GMT</pubDate>
+<pubDate>Mon, 26 Apr 2021 08:29:00 GMT</pubDate>
 
 </item>
 <item>
@@ -78,7 +86,7 @@ ELSE 'OTHER' END
 &lt;/pre&gt;&lt;br&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/3683046/116047456-18db2700-a642-11eb-8ca5-1c09c3ebc379.png&quot;&gt;&lt;br&gt;&lt;br&gt;Some of the reports are instrumented enough that the ACTION column shows the report number. But separating the workload by module is the best&lt;br&gt;</description>
 <category>ASH perf instrumentation</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5BASH%20ORMB%20and%20OBIEE%20batch%20instrumentation%5D%5D</link>
-<pubDate>Mon, 26 Apr 2021 08:01:36 GMT</pubDate>
+<pubDate>Mon, 26 Apr 2021 08:01:00 GMT</pubDate>
 
 </item>
 <item>
@@ -234,7 +242,7 @@ ORDER  BY ori_txt,
 &lt;/pre&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;</description>
 <category>ASH perf instrumentation</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Btop%20level%20SQL_ID%20(PL%2FSQL)%20of%20batch%20job%20-%20from%202.5hours%20to%2019mins%5D%5D</link>
-<pubDate>Mon, 26 Apr 2021 07:08:11 GMT</pubDate>
+<pubDate>Mon, 26 Apr 2021 07:08:00 GMT</pubDate>
 
 </item>
 <item>
@@ -3586,144 +3594,6 @@ RUNNAME,BEGIN,20160420 21:58:36,User I/O - cell multiblock physical read        
 <description></description>
 <category>Data Engineering</category>
 <link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20governance%5D%5D</link>
-<pubDate>Sun, 28 Mar 2021 17:54:00 GMT</pubDate>
-
-</item>
-<item>
-<title>data lineage and GDPR</title>
-<description>&lt;pre&gt;
-
-Amundsen
-https://eng.lyft.com/amundsen-lyfts-data-discovery-metadata-engine-62d27254fbb9
-https://www.dataengineeringpodcast.com/amundsen-data-discovery-episode-92/
-Amundsen: A Data Discovery Platform From Lyft | Lyft https://www.youtube.com/watch?v=EOCYw0yf63k
-https://www.amundsen.io/amundsen/
-
-
-Data Fusion 
-https://cloud.google.com/data-fusion/docs/tutorials/lineage
-
-
-
-C360 
-https://en.wikipedia.org/wiki/Janrain
-https://marketingplatform.google.com/about/tag-manager/
-https://www.ordergroove.com/home-vb/
-https://www.bigcommerce.com/
-https://www.lytics.com/
-https://segment.com/
-
-
-
-DBT 
-https://rittmananalytics.com/blog/2020/5/28/introducing-the-ra-warehouse-dbt-framework-how-rittman-analytics-does-data-centralization
-https://rittmananalytics.com/blog/tag/dbt
-https://blog.getdbt.com/what--exactly--is-dbt-/
-https://docs.getdbt.com/docs/building-a-dbt-project/documentation
-
-
-
-collibra 
-https://marketplace.collibra.com/listings/jdbc-driver-for-oracle/
-https://www.collibra.com/
-
-
-
-apache atlas 
-https://medium.com/google-cloud/a-metadata-comparison-between-apache-atlas-and-google-data-catalog-7e1ad391b4c2
-Apache Atlas Introduction: Need for Governance and Metadata management: Vimal Sharma https://www.youtube.com/watch?v=6vNJOHDE15g
-https://community.cloudera.com/t5/Community-Articles/Customizing-Atlas-Part1-Model-governance-traceability-and/ta-p/249250
-
-Data Discovery and Lineage: Integrating streaming data in the public cloud with on-prem, classic datastores and heterogeneous schema types
-https://conferences.oreilly.com/strata/strata-ny-2018/cdn.oreillystatic.com/en/assets/1/event/278/Data%20discovery%20and%20lineage_%20Integrating%20streaming%20data%20in%20the%20public%20cloud%20with%20on-prem,%20classic%20data%20stores,%20and%20heterogeneous%20schema%20types%20Presentation.pdf
-Barbara Eckman, Ph.D.Principal ArchitectComcast
-https://conferences.oreilly.com/strata/strata-ny-2018/public/schedule/detail/69518.html
-https://learning.oreilly.com/videos/strata-data-conference/9781491976326/9781491976326-video316438?autoplay=false 
-https://www.youtube.com/results?search_query=heterogeneous+big+data+environment+with+Apache+Atlas+and+Avro+-+Barbara+Eckman
-
-
-
-navigator (precursor to atlas)
-https://community.cloudera.com/t5/Support-Questions/Cloudera-Navigator-vs-Apache-Atlas/td-p/297931
-
-
-
-gcp data lineage 
-https://stackoverflow.com/questions/55000865/how-can-i-perform-data-lineage-in-gcp
-https://github.com/GoogleCloudPlatform/datacatalog-connectors-hive/tree/master/google-datacatalog-apache-atlas-connector
-
-
-
-spark spline 
-https://medium.com/@reenugrewal/data-lineage-tracking-using-spline-on-atlas-via-event-hub-6816be0fd5c7
-
-
-
-apache airflow marquez
-https://www.dremio.com/subsurface/data-lineage-with-apache-airflow
-https://www.slideshare.net/WillyLulciuc/data-lineage-with-apache-airflow-using-marquez
-Data Lineage with Apache Airflow | Datakin https://www.youtube.com/watch?v=dfRetdg9444 
-
-
-airflow with atlas 
-https://www.datastackpros.com/2020/04/gcp-cloud-data-lineage-with-airflow.html
-https://stackoverflow.com/questions/53539491/how-import-the-lineage-of-airflow-to-the-atlas
-https://github.com/apache/airflow/blob/master/docs/apache-airflow/lineage.rst
-
-
-
-
-talend to atlas  
-https://help.talend.com/r/TakcAFoOnWMPdNo8XXlPpg/_FqzpSa92Vga9NfumjCM~Q
-https://help.talend.com/r/XSofSS9S7oLFhM0dJizFlg/hPYn15mq7Is2544uaVhvxQ
-
-
-
-streaming avro schema registry 
-https://community.cloudera.com/t5/Community-Articles/Avro-Schema-Registry-with-Apache-Atlas-for-Streaming-Data/ta-p/247037
-End to end Data Governance with Apache Avro and Atlas https://www.youtube.com/watch?v=b--xwHHukRA
-https://community.cloudera.com/t5/Community-Articles/Apache-Atlas-as-an-Avro-Schema-Registry-Test-Drive/ta-p/247039
-https://community.cloudera.com/t5/Community-Articles/Avro-Schema-Registry-with-Apache-Atlas-for-Streaming-Data/ta-p/247037
-
-
-
-finos waltz https://www.finos.org/blog/introduction-to-finos-waltz
-https://waltz.finos.org/
-https://waltz.finos.org/blog/index.html
-http://www.waltztechnology.com/measurable-category/4
-
-
-
-data lineage GDPR 
-https://info.talend.com/rs/talend/images/WP_EN_TLD_Talend_Outlining_PracticalSteps_GDPR_Compliance.pdf
-https://www.octopai.com/gdpr-experts/?creative=499030836191&amp;amp;keyword=data%20governance%20data%20lineage&amp;amp;matchtype=b&amp;amp;network=g&amp;amp;device=c&amp;amp;gclid=CjwKCAjwr_uCBhAFEiwAX8YJgf2QLkmBIZu7JRszD2JtmwbbGgwZ6QSGlsB5niAFmAmN_GDmTXWv3hoCS8cQAvD_BwE
-https://www.talend.com/resources/gdpr-stitch-data-lineage/
-https://www.talend.com/resources/16-step-data-governance-plan-gdpr-compliance/?ty=content
-https://www.talend.com/resources/gdpr-govern-analytical-models/
-https://www.talend.com/solutions/data-protection-gdpr-compliance/
-https://www.slideshare.net/Hadoop_Summit/practical-experiences-using-atlas-and-ranger-to-implement-gdpr
-https://theworldofapenguin.blogspot.com/
-https://github.com/SvenskaSpel/cobra-policytool
-https://github.com/SvenskaSpel/cobra-policytool
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;/pre&gt;</description>
-<category>data governance</category>
-<link>http://karlarao.tiddlyspot.com#%5B%5Bdata%20lineage%20and%20GDPR%5D%5D</link>
 <pubDate>Sun, 28 Mar 2021 17:54:00 GMT</pubDate>
 
 </item>
