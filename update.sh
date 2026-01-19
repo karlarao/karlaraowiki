@@ -1,13 +1,13 @@
-# cp -R /Users/kristofferson.a.arao/Dropbox2/Box\ Sync/00_GTD/* /Volumes/vm/Dropbox/CodeNinja/GitHub/00_GTD/
-# cp /Users/kristofferson.a.arao/Dropbox2/Box\ Sync/TiddlyWiki/xyz.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
-# cp /Users/kristofferson.a.arao/Dropbox2/Box\ Sync/TiddlyWiki/xyz.xml /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
-# cp /Users/kristofferson.a.arao/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
-# cp /Users/kristofferson.a.arao/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.xml /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
-# cp /Users/kristofferson.a.arao/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.html index.html
-# cp /Users/kristofferson.a.arao/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.xml index.xml
+# cp -R ~/Dropbox2/Box\ Sync/00_GTD/* /Volumes/vm/Dropbox/CodeNinja/GitHub/00_GTD/
+# cp    ~/Dropbox2/Box\ Sync/TiddlyWiki/xyz.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+# cp    ~/Dropbox2/Box\ Sync/TiddlyWiki/xyz.xml /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+# cp    ~/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.html /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+# cp    ~/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.xml /Volumes/vm/Dropbox/Documents/KnowledgeFiles/InformationTechnology/TiddlyWiki/
+# cp    ~/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.html index.html
+# cp    ~/Dropbox2/Box\ Sync/TiddlyWiki/karlarao.xml index.xml
 
-cp /Users/kaarao/Documents/TiddlyWiki/karlarao.html /Users/kaarao/Documents/dev/karlaraowiki/index.html
-cp /Users/kaarao/Documents/TiddlyWiki/karlarao.xml  /Users/kaarao/Documents/dev/karlaraowiki/index.xml 
+cp ~/Documents/TiddlyWiki/karlarao.html ~/Documents/dev/karlaraowiki/index.html
+cp ~/Documents/TiddlyWiki/karlarao.xml  ~/Documents/dev/karlaraowiki/index.xml 
 
 git config --global user.name "karlarao"
 git config --global user.email "karlarao@gmail.com"
